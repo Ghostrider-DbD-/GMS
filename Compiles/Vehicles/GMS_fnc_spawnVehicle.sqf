@@ -13,7 +13,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
 params["_vehType","_pos",["_special","NONE"]];
-
+diag_log format["spawnVehicle.sqf:  _vehType = %1 | _pos = %2",_vehType,_pos];
 #ifdef blck_debugMode
 if (blck_debugLevel > 1) then {diag_log format["spawnVehicle.sqf:  _vehType = %1 | _pos = %2",_vehType,_pos];};
 #endif
@@ -24,7 +24,7 @@ _veh allowDamage true;
 _veh enableRopeAttach true;
 _veh setVariable["blck_vehicle",true];
 [_veh] call blck_fnc_protectVehicle;
-
+[_veh] call blck_fnc_emptyObject;
 #ifdef blck_debugMode
 if (blck_debugLevel > 1) then {diag_log format["spawnVehicle.sqf:: vehicle spawned is %1",_veh];};
 #endif

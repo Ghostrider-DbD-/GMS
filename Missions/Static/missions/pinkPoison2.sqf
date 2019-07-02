@@ -124,6 +124,6 @@ _missionLootBoxes = [
 
 //////////
 // Do not modify anything below this line.
-#include "\q\addons\custom_server\Missions\Static\Code\GMS_fnc_sm_initializeMission.sqf"; 
+#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_initializeMission.sqf"; 
 
 diag_log format["[blckeagls static missions] COMPLETED initializing middions %1 position at %2 difficulty %3",_mission,_missionCenter,_difficulty];

@@ -18,7 +18,7 @@
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
 	blck_debugON = true;  //  Do not touch ... 
-	blck_debugLevel = 0;  //  Do not touch ... 
+	blck_debugLevel = 3;  //  Do not touch ... 
 	#ifdef blck_milServer
 	if (true) exitWith 
 	{
@@ -107,6 +107,10 @@
 	blck_SmokeAtMissions = [false,"random"];  // set to [false,"anything here"] to disable this function altogether. 
 	blck_useSignalEnd = true; // When true a smoke grenade/chemlight will appear at the loot crate for 2 min after mission completion.
 	blck_missionEndCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+
+	///////////////////////////////
+	// General Mission Completion and Loot Settings
+	///////////////////////////////	
 	blck_killPercentage = 0.999999;  // The mission will complete if this fraction of the total AI spawned has been killed.
 								// This facilitates mission completion when one or two AI are spawned into objects.	
 	blck_spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionEndGround","atMissionEndAir". 
@@ -121,10 +125,12 @@
 							// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 							// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 							// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
+	blck_allowClaimVehicle = true; // Set this to true if you wish to allow players to claim vehicles using one of the claim vehicle scripts floating around.
+
 	///////////////////////////////
 	// PLAYER PENALTIES
 	///////////////////////////////	
-	
+
 	blck_RunGear = true;	// When set to true, AI that have been run over will ve stripped of gear, and the vehicle will be given blck_RunGearDamage of damage.
 	blck_RunGearDamage = 0.2; // Damage applied to player vehicle for each AI run over
 	blck_VK_Gear = true; // When set to true, AI that have been killed by a player in a vehicle in the list of forbidden vehicles or using a forbiden gun will be stripped of gear and the vehicle will be given blck_RunGearDamage of damage

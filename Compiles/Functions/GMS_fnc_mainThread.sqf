@@ -58,7 +58,6 @@ while {true} do
 		if (blck_useHC) then {[] call blck_fnc_HC_passToHCs};
 		if (blck_useTimeAcceleration) then {[] call blck_fnc_timeAcceleration};
 		#ifdef blck_debugMode
-		//diag_log format["_fnc_mainThread: active SQFscripts include: %1",diag_activeSQFScripts];
 		diag_log format["_fnc_mainThread: active scripts include: %1",diag_activeScripts];
 		#endif
 	};
@@ -68,3 +67,4 @@ while {true} do
 		_timer5min = diag_tickTime + 300;
 	};
 };
+// TODO: enable and test waypoint monnitor

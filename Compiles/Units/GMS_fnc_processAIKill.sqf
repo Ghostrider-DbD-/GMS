@@ -14,7 +14,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 if !(isServer) exitWith {};
 params["_unit","_killer","_instigator"];
-//diag_log format["_fnc_processAIKill: _unit = %1 | _killer = %2",_unit,_killer];
+diag_log format["_fnc_processAIKill: _unit = %1 | _killer = %2",_unit,_killer];
 if (_unit getVariable["blck_cleanupAt",-1] > 0) exitWith {};  // this is here so that the script is not accidently run more than once for each MPKilled occurrence.
 _unit setVariable ["blck_cleanupAt", (diag_tickTime) + blck_bodyCleanUpTimer];
 blck_deadAI pushback _unit;
@@ -25,7 +25,7 @@ if (count(units (group _unit)) isEqualTo 0) then
 [_unit] joinSilent grpNull;
 if !(_unit isKindOf "Man") then 
 {
-	//diag_log format["_fnc_processAIKill: unit linked to crew of vehicle %1 | typeOf (vehicle _unit = %2)",vehicle _unit,typeOf (vehicle _unit)];
+	diag_log format["_fnc_processAIKill: unit linked to crew of vehicle %1 | typeOf (vehicle _unit = %2)",vehicle _unit,typeOf (vehicle _unit)];
 	[_unit, ["Eject", vehicle _unit]] remoteExec ["action",(owner _unit)];
 	//[vehicle _unit,_unit] call blck_fnc_checkForEmptyVehicle;
 /*

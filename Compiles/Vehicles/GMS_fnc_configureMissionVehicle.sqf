@@ -16,10 +16,6 @@
 
 params["_veh",["_locked",0]];
 private["_unit"];
-if (_clearInventory) then 
-{
-	[_veh] call blck_fnc_emptyObject;
-};
 //_veh setVehicleLock "LOCKEDPLAYER";
 _veh lock _locked;
 _veh addMPEventHandler["MPHit",{ _this call blck_EH_AIVehicle_HandleHit}];

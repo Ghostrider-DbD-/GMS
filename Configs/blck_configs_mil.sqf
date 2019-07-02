@@ -82,6 +82,10 @@
 	// It's position can be either "center" or "random".  smoking wreck will be spawned at a random location between 15 and 50 m from the mission.
 	blck_SmokeAtMissions = [false,"random"];  // set to [false,"anything here"] to disable this function altogether. 
 	blck_useSignalEnd = true; // When true a smoke grenade/chemlight will appear at the loot crate for 2 min after mission completion.
+	
+	///////////////////////////////
+	// General Mission Completion and Loot Settings
+	///////////////////////////////		
 	blck_missionEndCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 	blck_killPercentage = 0.99999999999;  // The mission will complete if this fraction of the total AI spawned has been killed.
 								// This facilitates mission completion when one or two AI are spawned into objects.	
@@ -91,7 +95,8 @@
 	blck_loadCratesTiming = "atMissionSpawn"; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
 							// Pertains only to crates spawned at mission spawn.
 							// This sets the default but can be overridden for specific missions by defining _loadCratesTiming
-	
+	blck_allowClaimVehicle = true; // Set this to true if you wish to allow players to claim vehicles using one of the claim vehicle scripts floating around.
+
 	///////////////////////////////
 	// PLAYER PENALTIES
 	///////////////////////////////	
@@ -268,10 +273,10 @@
 	blck_SpawnVeh_Blue = 1;  // Number of vehicles at Blue Missions
 	blck_SpawnVeh_Red = 2;  // Number of vehicles at Red Missions
 
-	blck_vehCrew_blue = 3;
-	blck_vehCrew_red = 3;
-	blck_vehCrew_green = 3;
-	blck_vehCrew_orange = 3;
+	blck_vehCrew_blue = 5;
+	blck_vehCrew_red = 5;
+	blck_vehCrew_green = 4;
+	blck_vehCrew_orange = 5;
 
 	///////////////////////////////
 	// AI STATIC WEAPON Settings	

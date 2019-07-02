@@ -48,6 +48,8 @@ if (blck_debugLevel >= 2) then
 	diag_log format["_fnc_spawnMissionAI (30):: _unitsToSpawn %1 ; _unitsPerGroup %2  _ResidualUnits %3",_unitsToSpawn,_unitsPerGroup,_ResidualUnits];
 };
 #endif
+private _newGroup = grpNull;
+
 if ( (count _missionGroups > 0) && _noAIGroups > 0) then
 { 	
 	{
@@ -264,6 +266,7 @@ if (_missionGroups isEqualTo [] && _noAIGroups > 0) then
 			};
 	};
 };
+
 #ifdef blck_debugMode
 if (blck_debugLevel >= 1) then
 {

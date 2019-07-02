@@ -121,6 +121,6 @@ _backpacks = blck_backpacks; // You can replace this list with a custom list of 
 _weapons   = blck_WeaponList_Orange; // You can replace this list with a customized list of weapons, or another predifined list from blck_configs_epoch or blck_configs_exile as appropriate.
 _sideArms  = blck_pistols;    // You can replace this list with a custom list of sidearms.
 
-#include "\q\addons\custom_server\Missions\Static\Code\GMS_fnc_sm_initializeMission.sqf"; 
+#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_initializeMission.sqf"; 
 
 diag_log format["[blckeagls static missions] COMPLETED initializing middions %1 position at %2 difficulty %3",_mission,_missionCenter,_difficulty];

@@ -22,7 +22,7 @@ params["_center","_pos",["_vehType","I_G_Offroad_01_armed_F"],["_minDis",40],["_
 //_maxDis = maximum distance from the center of the mission for vehicle waypoints
 //_groupForVehiclePatrol = The group with which to man the vehicle
 // _crewCount = the number of AI including driver and gunners to place in the vehicle
-
+// TODO: verify that all old code is now called in the varous functions 
 private["_veh"];
 if !(isNull _group) then {
 	_veh = [_vehType,_pos] call blck_fnc_spawnVehicle;
@@ -33,12 +33,9 @@ if !(isNull _group) then {
 	_veh setVariable["blck_vehicleSearchRadius",blck_playerDetectionRangeGroundVehicle];
 	_veh setVariable["blck_vehiclePlayerDetectionOdds",blck_vehiclePlayerDetectionOdds];
 	private _maxCrew = [_crewCount] call blck_fnc_getNumberFromRange;
-	//_group setVariable["groupVehicle",_veh];
-	private _seats = [_vehType,true] call BIS_fnc_crewCount; 
-	//_unitNumber = 0;
-	//diag_log format["_fnc_spawnVehiclePatrol: _veh = %1 | _maxCrew = %2 | _seats = %3",_veh,_maxCrew,_seats];
 	[_veh,_group,_crewCount] call blck_fnc_loadVehicleCrew;
-
+	//diag_log format["_fnc_spawnVehiclePatrol: crew of vehicle %1 = %2",_veh, crew _veh];
+	[_veh,2] call blck_fnc_configureMissionVehicle;
 	if (_setWaypoints) then
 	{
 		// params["_pos","_minDis","_maxDis","_group",["_mode","random"],["_wpPatrolMode","SAD"],["_soldierType","null"] ];

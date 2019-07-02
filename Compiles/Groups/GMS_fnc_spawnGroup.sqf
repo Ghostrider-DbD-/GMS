@@ -60,4 +60,10 @@ if !(isNull _groupSpawned) then
 {
 	diag_log "_fnc_spawnGroup:: ERROR CONDITION : NULL GROUP CREATED";
 };
+#ifdef blck_debugMode 
+if (blck_debugLevel > 2) then 
+{
+	diag_log format["_fnc_spawnGroup: _groupSpawned = %1",_groupSpawned];
+};
+#endif
 _groupSpawned

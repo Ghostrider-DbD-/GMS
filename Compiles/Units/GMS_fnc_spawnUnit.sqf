@@ -82,7 +82,12 @@ if (_scuba) then
 
 _skin = "";
 _counter = 1;
-//diag_log format["_fnc_spawnUnit: _uniforms = %1",_uniforms];
+#ifdef blck_debugMode
+if (blck_debugLevel >= 2) then
+{
+	diag_log format["_fnc_spawnUnit: _uniforms = %1",_uniforms];
+};
+#endif
 while {_skin isEqualTo "" && _counter < 10} do
 {
 	_unit forceAddUniform (selectRandom _uniforms);
@@ -93,7 +98,7 @@ while {_skin isEqualTo "" && _counter < 10} do
 		diag_log format["_fnc_spawnUnit::-->> for unit _unit % uniform is %2",_unit, uniform _unit];
 	};
 	#endif	
-	_counter =+1;
+	_counter = _counter + 1;
 };
 //Sets AI Tactics
 _unit enableAI "ALL";
