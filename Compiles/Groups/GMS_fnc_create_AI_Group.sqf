@@ -9,10 +9,10 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-
+params[["_side",blck_AI_Side],["_deleteWhenEmpty",true]];
 private["_groupSpawned"];
 
-_groupSpawned = createGroup [blck_AI_Side, true]; 
+_groupSpawned = createGroup [_side, true]; 
 if (isNull _groupSpawned) exitWith{"ERROR:-> Null Group created by blck_fnc_spawnGroup";};
 
 if (blck_simulationManager == blck_useDynamicSimulationManagement) then 
