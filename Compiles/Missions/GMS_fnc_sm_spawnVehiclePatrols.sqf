@@ -10,7 +10,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-
+// TODO: Seems like the active one - confirm.
 
 params["_coords","_noVehiclePatrols","_vehiclePatrolSpawns","_aiDifficultyLevel","_uniforms","_headGear",["_missionType","unspecified"]];
 //diag_log format["_sm_spawnVehiclePatrols:: _vehiclePatrolSpawns = %1",_vehiclePatrolSpawns];
@@ -34,15 +34,20 @@ if (_vehiclePatrolSpawns isEqualTo []) then
 	_difficulty = _x select 2;
 	_patrolRadius = _x select 3;
 	//_newGroup = [_x,_unitsPerGroup,_unitsPerGroup,_aiDifficultyLevel,_coords,_minDist,_maxDist,_uniforms,_headGear,true,_weapons,_vests,_isScubaGroup] call blck_fnc_spawnGroup;
-	_vehGroup = [_spawnPos,_spawnPos,3,3,_difficulty,1,2,_uniforms,_headGear,false] call blck_fnc_spawnGroup;
-
-	//params["_center","_pos",["_vehType","I_G_Offroad_01_armed_F"],["_minDis",30],["_maxDis",45],["_group",grpNull]];
-	_patrolVehicle = [_spawnPos,_spawnPos,_vehicle,_patrolRadius,_patrolRadius,_vehGroup] call blck_fnc_spawnVehiclePatrol;
-	//_vehGroup setVariable["groupVehicle",_vehicle];
-
-	if !(isNull _patrolVehicle) then
+	private _vehGroup = [] call blck_fnc_createGroup;
+	if !(isNull _vehGroup) then 
 	{
-		_patrolVehicle setVariable["vehicleGroup",_vehGroup];
+		[_vehGroup,_spawnPos,_spawnPos,3,3,_difficulty,1,2,_uniforms,_headGear,false] call blck_fnc_spawnGroup;
+
+		//params["_center","_pos",["_vehType","I_G_Offroad_01_armed_F"],["_minDis",30],["_maxDis",45],["_group",grpNull]];
+		_patrolVehicle = [_spawnPos,_spawnPos,_vehicle,_patrolRadius,_patrolRadius,_vehGroup] call blck_fnc_spawnVehiclePatrol;  // Check whether we should pass the group; looks like we should.
+																								// Nope, not necessary
+		//_vehGroup setVariable["groupVehicle",_vehicle];
+
+		if !(isNull _patrolVehicle) then
+		{
+			_patrolVehicle setVariable["vehicleGroup",_vehGroup];
+		};
 	};
 } forEach _vehiclePatrolSpawns;
 

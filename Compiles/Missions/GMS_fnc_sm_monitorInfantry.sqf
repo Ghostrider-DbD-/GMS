@@ -54,21 +54,25 @@ for "_i" from 0 to (count blck_sm_Infantry) do
 							{
 								private _numAI = [_units] call blck_fnc_getNumberFromRange;
 								//params["_pos",  "_center", ["_numai1",5],  ["_numai2",10],  ["_skillLevel","red"], ["_minDist",20], ["_maxDist",35],["_configureWaypoints",true], ["_uniforms",blck_SkinList], ["_headGear",blck_headgear],["_vests",blck_vests],["_backpacks",blck_backpacks],["_weaponList",[]],["_sideArms",blck_Pistols], ["_scuba",false] ];
-								_group = [
-									_pos,_pos,_numAI,_numAI,_difficulty,_patrolRadius-1,_patrolRadius,true,
-									[_difficulty] call blck_fnc_selectAIUniforms,
-									[_difficulty] call blck_fnc_selectAIHeadgear,
-									[_difficulty] call blck_fnc_selectAIVests,
-									[_difficulty] call blck_fnc_selectAIBackpacks,
-									[_difficulty] call blck_fnc_selectAILoadout,
-									[_difficulty] call blck_fnc_selectAISidearms
-								] call blck_fnc_spawnGroup;
-								_element set[patrolGroup,_group];
-								_element set[groupSpawned,1];
-								_element set[timesSpawned,_timesSpawned + 1];
-								_element set[respawnAt,0];	
-								//diag_log format["_fnc_monitorInfantry (67): _element %1",_element];
-								//diag_log format["_fnc_monitorInfantry (69): blck_sm_Infantry %1",blck_sm_Infantry];								
+								_group = [] call blck_fnc_createGroup;
+								if !(isNull _group) then 
+								{
+									[
+										_group,_pos,_pos,_numAI,_numAI,_difficulty,_patrolRadius-1,_patrolRadius,true,
+										[_difficulty] call blck_fnc_selectAIUniforms,
+										[_difficulty] call blck_fnc_selectAIHeadgear,
+										[_difficulty] call blck_fnc_selectAIVests,
+										[_difficulty] call blck_fnc_selectAIBackpacks,
+										[_difficulty] call blck_fnc_selectAILoadout,
+										[_difficulty] call blck_fnc_selectAISidearms
+									] call blck_fnc_spawnGroup;
+									_element set[patrolGroup,_group];
+									_element set[groupSpawned,1];
+									_element set[timesSpawned,_timesSpawned + 1];
+									_element set[respawnAt,0];	
+									//diag_log format["_fnc_monitorInfantry (67): _element %1",_element];
+									//diag_log format["_fnc_monitorInfantry (69): blck_sm_Infantry %1",blck_sm_Infantry];								
+								};
 							};
 							blck_sm_Infantry pushBack _element;
 						};
@@ -107,5 +111,4 @@ for "_i" from 0 to (count blck_sm_Infantry) do
 			};
 		};
 	};
-	//blck_sm_Infantry pushBack _element;
 };

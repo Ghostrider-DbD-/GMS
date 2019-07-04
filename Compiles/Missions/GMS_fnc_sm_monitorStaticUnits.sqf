@@ -1,7 +1,6 @@
 /*
 	by Ghostrider [GRG]
 	for ghostridergaming
-	12/5/17
 	--------------------------
 	License
 	--------------------------
@@ -10,7 +9,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-
+// Todo: convert to deleteAt method.
 private _triggerRange = 2000;
 _fnc_updateGroupSpawnTimerFields = {
 	//diag_log format["_fnc_updateGroupSpawnTimerFields::-> _this = %1",_this];
@@ -39,10 +38,14 @@ _sm_groups = +blck_sm_Groups;
 			_numAI = [_units] call blck_fnc_getNumberFromRange;
 			//diag_log format["[blckeagls static group spawner] _units = %1 and _numAI = %2",_units,_numAI];		
 			// // params["_pos",  "_center", _numai1,  _numai2,  _skillLevel, _minDist, _maxDist, _configureWaypoints, _uniforms, _headGear,_vests,_backpacks,_weaponList,_sideArms, _scuba ];
-			_group = [_pos,_pos,_numAI,_numAI,_difficulty,_patrolRadius-2,_patrolRadius,true] call blck_fnc_spawnGroup;
-			//diag_log format["[blckeagls static group spawner] _group %1",_group];
-			[blck_sm_Groups,_x,_group,-1] call _fnc_updateGroupSpawnTimerFields;
-			//diag_log format["_sm_monitorStaticUnits | spawn Group step :: blck_sm_Groups updated to %1",blck_sm_Groups];
+			_group = [] call blck_fnc_createGroup;
+			if !(isNull _group) then 
+			{
+				[_group,_pos,_pos,_numAI,_numAI,_difficulty,_patrolRadius-2,_patrolRadius,true] call blck_fnc_spawnGroup;
+				//diag_log format["[blckeagls static group spawner] _group %1",_group];
+				[blck_sm_Groups,_x,_group,-1] call _fnc_updateGroupSpawnTimerFields;
+				//diag_log format["_sm_monitorStaticUnits | spawn Group step :: blck_sm_Groups updated to %1",blck_sm_Groups];
+			};
 		};
 		if (!(_groupSpawned) && (isNull _group) && (_spawnAt == -1) && (_respawnTime > 0)) then // a group was spawned and all units are dead and we should rspawn them after a certain interval
 		{
@@ -72,7 +75,7 @@ _sm_scubaGroups = +blck_sm_scubaGroups;
 			_numAI = [_units] call blck_fnc_getNumberFromRange;
 			//diag_log format["[blckeagls static scubaGroup spawning routine] _units = %1 and _numAI = %2",_units,_numAI];		
 			//params["_pos", "_numUnits", ["_skillLevel","red"], "_center", ["_minDist",20], ["_maxDist",35], ["_uniforms",blck_UMS_uniforms], ["_headGear",blck_UMS_headgear],["_configureWaypoints",true],["_weapons",blck_UMS_weapons],["_vests",blck_UMS_vests]];
-			_group = [_pos,_difficulty,_units,_patrolRadius] call blck_fnc_spawnScubaGroup;
+			_group = [_pos,_difficulty,_units,_patrolRadius] call blck_fnc_spawnScubaGroup;  
 			//diag_log format["[blckeagls static scubaGroup spawner] _group %1",_group];
 			[blck_sm_scubaGroups,_x,_group,-1] call _fnc_updateGroupSpawnTimerFields;
 			//diag_log format["_sm_monitorStaticUnits | spawn Group step :: blck_sm_Groups updated to %1",blck_sm_Groups];

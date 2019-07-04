@@ -13,10 +13,9 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-// TODO: Add pushBack for groups spawned at static missions.
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-
+// TODO: Test functionality of this
 _fn_waypointComplete = {
 	private _group = _this select 0;
 	private _wp = currentWaypoint _group;

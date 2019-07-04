@@ -30,6 +30,7 @@ blck_fnc_sm_AddVehicle = compileFinal  preprocessFileLineNumbers "\q\addons\cust
 blck_fnc_sm_AddAircraft = compileFinal  preprocessFileLineNumbers "\q\addons\custom_server\Missions\Static\Code\GMS_fnc_sm_AddAircraft.sqf";
 blck_fnc_sm_AddEmplaced = compileFinal  preprocessFileLineNumbers "\q\addons\custom_server\Missions\Static\Code\GMS_fnc_sm_AddEmplaced.sqf";
 */
+// TODO: Delte soon
 private _functions = [
 	//["blck_fnc_sm_monitorStaticUnits","\q\addons\custom_server\Missions\Static\Code\GMS_fnc_sm_monitorStaticPatrols.sqf"],
 	["blck_fnc_sm_monitorInfantry","\q\addons\custom_server\Missions\Static\Code\GMS_fnc_sm_monitorInfantry.sqf"],
