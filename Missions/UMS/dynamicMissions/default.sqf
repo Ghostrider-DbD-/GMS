@@ -169,5 +169,5 @@ _chanceLoot = 0.999999990;
 _paraLoot = blck_BoxLoot_Blue;
 _paraLootCounts = blck_lootCountsRed;  // Throw in something more exotic than found at a normal blue mission.
 
-#include "\q\addons\custom_server\Missions\UMS\code\GMS_fnc_spawnDynamicUMSMission.sqf"; 
+#include "\q\addons\custom_server\Missions\UMS\GMS_fnc_spawnDynamicUMSMission.sqf"; 
 

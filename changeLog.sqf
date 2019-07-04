@@ -7,9 +7,15 @@ Many thanks for new Coding and ideas from Grahame.
 
 Significant Changes:
 =====================
+// TODO: update to add support for toasts for kills and for disabling smoke while healing.
 6.92
 Support for claim-vehicle scripts is now built-in 
 	blck_allowClaimVehicle = true; // To allow players to claim vehicles (Exile only).
+Added a setting to disable having AI toss smoke before healing. Set:
+	blck_useSmokeWhenHealing=false; // to disable this
+
+Added an option to display kill notices using Toasts
+	blck_aiKillUseToast=true; // in blckClient.sqf in the debug folder of your mission.pbo to enable these.
 
 Code for spawning vehicles redone to reduced redundancy.
 Monitoring of groups refined to route mission groups that have left the mission area back to it.

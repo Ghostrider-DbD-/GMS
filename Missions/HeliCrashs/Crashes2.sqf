@@ -76,7 +76,7 @@ fn_fillContainer = {
 	};	
 };
 
-private["_fn_spawnWreckMission"];
+private["_fn_spawnWreckMission","_group"];
 _fn_spawnWreckMission = {
 	params["_index"];
 
@@ -135,10 +135,11 @@ _fn_spawnWreckMission = {
 		_obj pushback _x;
 	}forEach _containers;
 	#define configureWaypoints true
-	_group = [_posOfCrash,_posOfCrash,_minAI,_maxAI,_difficulty,10,30,configureWaypoints,_uniforms,_headGear] call blck_fnc_spawnGroup;
+	_group = [] call blck_fnc_createGroup;
+	[_group,_posOfCrash,_posOfCrash,_minAI,_maxAI,_difficulty,10,30,configureWaypoints,_uniforms,_headGear] call blck_fnc_spawnGroup;
 	if !(isNull _group) then
 	{
-		waitUntil{{(isPlayer _x) && (_x distance2d _posOfCrash) < 25 /*&& (vehicle _x == _x)*/} count allPlayers > 0};	
+		waitUntil{uiSleep 3; {(isPlayer _x) && (_x distance2d _posOfCrash) < 25 /*&& (vehicle _x == _x)*/} count allPlayers > 0};	
 	};
 	[_posOfCrash] spawn blck_fnc_missionCompleteMarker;
 	[_CrashName] call blck_fnc_deleteMarker;

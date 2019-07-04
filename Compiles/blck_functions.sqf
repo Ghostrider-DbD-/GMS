@@ -98,14 +98,14 @@ private _functions = [
 	["blck_fnc_sm_monitorEmplaced","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_monitorEmplaced.sqf"],
 	["blck_fnc_sm_monitorGarrisonsASL","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_monitorGarrisonsASL.sqf"],
 	["blck_fnc_sm_monitorGarrisons_relPos","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_monitorGarrisons_relPos.sqf"],	
-	["blck_fnc_sm_spawnVehiclePatrol","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnVehiclePatrol.sqf"],
+	//["blck_fnc_sm_spawnVehiclePatrol","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnVehiclePatrol.sqf"],
 	["blck_fnc_sm_spawnAirPatrol","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnAirPatrol.sqf"],
 	["blck_fnc_sm_spawnEmplaced","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnEmplaced.sqf"],
 //	["blck_fnc_sm_spawnInfantryPatrol","\q\addons\custom_server\Compiles\Missions\GMS_sm_spawnInfantryPatrol.sqf"],
 	["blck_fnc_sm_staticPatrolMonitor","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_staticPatrolMonitor.sqf"],
 //	["blck_fnc_sm_checkForPlayerNearMission","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_checkForPlayerNearMission.sqf"],
 	["blck_fnc_sm_spawnAirPatrols","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnAirPatrols.sqf"],
-	["blck_fnc_sm_spawnEmplaceds","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnEmplaced.sqf"],
+	//["blck_fnc_sm_spawnEmplaceds","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnEmplaced.sqf"],
 	["blck_fnc_sm_spawnInfantryPatrols","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnInfantryPatrols.sqf"],
 	["blck_fnc_sm_spawnLootContainers","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnLootContainers.sqf"],
 	["blck_fnc_sm_spawnObjects","\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_spawnObjects.sqf"],
@@ -130,7 +130,7 @@ private _functions = [
 //	["blck_fnc_setNextWaypoint","\q\addons\custom_server\Compiles\Groups\GMS_fnc_setNextWaypoint.sqf"],
 	["blck_fnc_cleanEmptyGroups","\q\addons\custom_server\Compiles\Groups\GMS_fnc_cleanEmptyGroups.sqf"],		 // GMS_fnc_cleanEmptyGroups
 	["blck_fnc_findNearestInfantryGroup","\q\addons\custom_server\Compiles\Groups\GMS_fnc_findNearestInfantryGroup.sqf"],
-	["blck_fnc_create_AI_Group","\q\addons\custom_server\Compiles\Groups\GMS_fnc_create_AI_Group.sqf"],			// create a group for which other functions spawn AI.
+	["blck_fnc_createGroup","\q\addons\custom_server\Compiles\Groups\GMS_fnc_create_AI_Group.sqf"],			// create a group for which other functions spawn AI.
 	["blck_fnc_blckSimulationManager","\q\addons\custom_server\Compiles\Groups\GMS_fnc_blckSimulationMonitor.sqf"], 
 	["blck_fnc_groupWaypointMonitor","\q\addons\custom_server\Compiles\Groups\GMS_fnc_groupWaypointMonitor.sqf"],
 	
@@ -169,7 +169,7 @@ private _functions = [
 	["blck_EH_AIKilled","\q\addons\custom_server\Compiles\Units\GMS_EH_AIKilled.sqf"], 					// Event handler to process AI deaths	
 	["blck_EH_AIHit","\q\addons\custom_server\Compiles\Units\GMS_EH_AIHit.sqf"],
 	["blck_EH_unitWeaponReloaded","\q\addons\custom_server\Compiles\Units\GMS_EH_unitWeaponReloaded.sqf"],
-	["blck_EH_animDone","\q\addons\custom_server\Compiles\Units\GMS_EH_animDone.sqf"],
+	//["blck_EH_animDone","\q\addons\custom_server\Compiles\Units\GMS_EH_animDone.sqf"],
 	["blck_fnc_processAIKill","\q\addons\custom_server\Compiles\Units\GMS_fnc_processAIKill.sqf"],
 	["blck_fnc_removeLaunchers","\q\addons\custom_server\Compiles\Units\GMS_fnc_removeLaunchers.sqf"],
 	["blck_fnc_removeNVG","\q\addons\custom_server\Compiles\Units\GMS_fnc_removeNVG.sqf"],

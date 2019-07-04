@@ -17,8 +17,8 @@
 		changing any of these variables may break the mission systemChat
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
-	blck_debugON = true;  //  Do not touch ... 
-	blck_debugLevel = 3;  //  Do not touch ... 
+	blck_debugON = false;  //  Do not touch ... 
+	blck_debugLevel = 0;  //  Do not touch ... 
 	#ifdef blck_milServer
 	if (true) exitWith 
 	{
@@ -365,10 +365,12 @@
 
 		];	
 	/////////////////////////////////////////////
-
+	
 	blck_groupBehavior = "SENTRY";  // Suggested choices are "SAD", "SENTRY", "AWARE"   https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
 	blck_combatMode = "RED"; // Change this to "YELLOW" if the AI wander too far from missions for your tastes.
 	blck_groupFormation = "WEDGE"; // Possibilities include "WEDGE","VEE","FILE","DIAMOND"
+
+	blck_useSmokeWhenHealing = true;  // when true, injured AI will toss a smoke when they attempt to heal.
 	blck_addAIMoney = true;
 	blck_chanceBackpack = 0.3;  // Chance AI will be spawned with a backpack
 	blck_useNVG = true; // When true, AI will be spawned with NVG if is dark
@@ -379,10 +381,10 @@
 	blck_launchersPerGroup = 1;  // Defines the number of AI per group spawned with a launcher
 	blck_launcherCleanup = true;// When true, launchers and launcher ammo are removed from dead AI.
 	blck_minimumPatrolRadius = 22;  // AI will patrol within a circle with radius of approximately min-max meters. note that because of the way waypoints are completed they may more more or less than this distance.
-	blck_maximumPatrolRadius = 35;
+	blck_maximumPatrolRadius = 45;
 	
 	//This defines how long after an AI dies that it's body disappears.
-	blck_bodyCleanUpTimer = 60*40; // time in seconds after which dead AI bodies are deleted
+	blck_bodyCleanUpTimer = 60*30; // time in seconds after which dead AI bodies are deleted
 	// Each time an AI is killed, the location of the killer will be revealed to all AI within this range of the killed AI, set to -1 to disable
 	// values are ordered as follows [blue, red, green, orange];
 	blck_AliveAICleanUpTimer = 60*20;  // Time after mission completion at which any remaining live AI are deleted.
@@ -435,7 +437,7 @@
 		["aimingAccuracy",0.1],["aimingShake",0.5],["aimingSpeed",0.5],["endurance",0.50],["spotDistance",0.6],["spotTime",0.6],["courage",0.60],["reloadSpeed",0.60],["commanding",0.7],["general",0.60]
 	];
 		
-	// Add some money to AI; only works with Exile for now.
+	// Add some money to AI;  
 	blck_maxMoneyOrange = 25;
 	blck_maxMoneyGreen = 20;
 	blck_maxMoneyRed = 15;
@@ -488,7 +490,7 @@
 		["aimingAccuracy",[0.08,16]],["aimingShake",[0.25,0.35]],["aimingSpeed",0.5],["endurance",0.50],["spotDistance",0.6],["spotTime",0.6],["courage",0.60],["reloadSpeed",0.60],["commanding",0.7],["general",0.60]
 	];
 		
-	// Add some money to AI; only works with Exile for now.
+	// Add some money to AI; 
 	blck_maxMoneyOrange = 25;
 	blck_maxMoneyGreen = 20;
 	blck_maxMoneyRed = 15;
