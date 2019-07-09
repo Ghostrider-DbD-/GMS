@@ -33,7 +33,7 @@ while {true} do
 	{
 		_timer5sec = diag_tickTime + 5;
 		//[] call blck_fnc_missionGroupMonitor;
-		if (blck_simulationManager == blck_useBlckeaglsSimulationManagement) then {call blck_fnc_blckSimulationManager};
+		if (blck_simulationManager == blck_useBlckeaglsSimulationManagement) then {call blck_fnc_simulationManager};
 		[] call blck_fnc_sm_staticPatrolMonitor;
 		[] call blck_fnc_vehicleMonitor;		
 	};
@@ -53,10 +53,11 @@ while {true} do
 		_timer1min = diag_tickTime + 60;
 		[] call blck_fnc_spawnPendingMissions;
 		[] call blck_fnc_cleanEmptyGroups;
-		[] call blck_fnc_groupWaypointMonitor;
+		[] call blck_fnc_groupWaypointMonitor;  //  TODO: Test implementation of this function.
 		if (blck_dynamicUMS_MissionsRuning < blck_numberUnderwaterDynamicMissions) then {[] spawn blck_fnc_addDyanamicUMS_Mission};
 		if (blck_useHC) then {[] call blck_fnc_HC_passToHCs};
 		if (blck_useTimeAcceleration) then {[] call blck_fnc_timeAcceleration};
+		if (blck_ai_offload_to_client) then {[] call blck_fnc_ai_offloadToClients};
 		#ifdef blck_debugMode
 		diag_log format["_fnc_mainThread: active scripts include: %1",diag_activeScripts];
 		#endif
@@ -67,4 +68,3 @@ while {true} do
 		_timer5min = diag_tickTime + 300;
 	};
 };
-// TODO: enable and test waypoint monnitor

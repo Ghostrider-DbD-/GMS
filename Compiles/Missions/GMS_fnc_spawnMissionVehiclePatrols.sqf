@@ -53,6 +53,7 @@ if (_missionPatrolVehicles isEqualTo []) then
 	_vehicle = _x select 0;
 
 	_vehGroup = [] call blck_fnc_createGroup;
+	_vehGroup setVariable["soldierType","vehicle"];
 	if !(isNull _vehGroup) then 
 	{
 		[_vehGroup,_spawnPos,_coords,_crewCount,_crewCount,_skillAI,1,2,false,_uniforms, _headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;

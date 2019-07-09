@@ -31,7 +31,7 @@ if (blck_modType isEqualTo "Exile") then
 		
 		//#endif
 	};
-	diag_log format["_fnc_addMoneyToOject: ExileMoney set to %1", _obj getVariable "ExileMoney"];	
+	//diag_log format["_fnc_addMoneyToOject: ExileMoney set to %1", _obj getVariable "ExileMoney"];	
 };
 
 if (blck_modType isEqualTo "Epoch") then
@@ -43,5 +43,5 @@ if (blck_modType isEqualTo "Epoch") then
 		case "green":{_obj setVariable["Crypto", floor(random([blck_crateMoneyGreen] call blck_fnc_getNumberFromRange)),true];};
 		case "orange":{_obj setVariable["Crypto", floor(random([blck_crateMoneyGreen] call blck_fnc_getNumberFromRange)),true];};
 	};
-	diag_log format["_fnc_addMoneyToOject: Crypto set to %1", _obj getVariable "Crypto"];
+	//diag_log format["_fnc_addMoneyToOject: Crypto set to %1", _obj getVariable "Crypto"];
 };

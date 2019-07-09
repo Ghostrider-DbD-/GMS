@@ -42,6 +42,8 @@ private _functions = [
 	["GMS_fnc_isClass","\q\addons\custom_server\Compiles\Functions\GMS_fnc_isClass.sqf"],
 	["blck_fnc_findShoreLocation","q\addons\custom_server\Compiles\Functions\GMS_UMS_fnc_findShoreLocation.sqf"],  
 	["blck_fnc_findWaterDepth","q\addons\custom_server\Compiles\Functions\GMS_UMS_fnc_findWaterDepth.sqf"],
+	["blck_fnc_setAILocality","\q\addons\custom_server\Compiles\Functions\GMS_fnc_setAILocality.sqf"],
+	["blck_fnc_ai_offloadToClients","\q\addons\custom_server\Compiles\Functions\GMS_fnc_ai_offloadToClients.sqf"],	
 
 	// Player-related functions
 	["GMS_fnc_handlePlayerUpdates","\q\addons\custom_server\Compiles\Units\GMS_fnc_handlePlayerUpdates.sqf"],
@@ -131,7 +133,7 @@ private _functions = [
 	["blck_fnc_cleanEmptyGroups","\q\addons\custom_server\Compiles\Groups\GMS_fnc_cleanEmptyGroups.sqf"],		 // GMS_fnc_cleanEmptyGroups
 	["blck_fnc_findNearestInfantryGroup","\q\addons\custom_server\Compiles\Groups\GMS_fnc_findNearestInfantryGroup.sqf"],
 	["blck_fnc_createGroup","\q\addons\custom_server\Compiles\Groups\GMS_fnc_create_AI_Group.sqf"],			// create a group for which other functions spawn AI.
-	["blck_fnc_blckSimulationManager","\q\addons\custom_server\Compiles\Groups\GMS_fnc_blckSimulationMonitor.sqf"], 
+	["blck_fnc_simulationManager","\q\addons\custom_server\Compiles\Groups\GMS_fnc_simulationMonitor.sqf"], 
 	["blck_fnc_groupWaypointMonitor","\q\addons\custom_server\Compiles\Groups\GMS_fnc_groupWaypointMonitor.sqf"],
 	
 	// Functions specific to vehicles, whether wheeled, aircraft or static

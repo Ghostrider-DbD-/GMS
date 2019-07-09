@@ -94,6 +94,7 @@ if (blck_debugLevel > 1) then
 		[_empGroup,(_x select 1),_pos,minAI,maxAI,_aiDifficultyLevel,minDist,maxDist,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnGroup;
 		_empGroup setcombatmode "RED";
 		_empGroup setBehaviour "COMBAT";
+		_empGroup setVariable ["soldierType","emplaced"];
 		[(_x select 1),0.01,0.02,_empGroup,"random","SAD","emplaced"] spawn blck_fnc_setupWaypoints;
 		//if (isNull _empGroup) exitWith {_abort = true};
 		// params["_vehType","_pos",["_clearInventory",true]];
