@@ -12,7 +12,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 private["_playerType","_players"];
 _playerType = ["LandVehicle","SHIP","AIR","TANK"];
-diag_log format["_fnc_simulationMonitor Called at %1",diag_tickTime];
+//diag_log format["_fnc_simulationMonitor Called at %1",diag_tickTime];
 switch (toLower(blck_modType)) do
 {
 	case "exile": {_playerType = _playerType + ["Exile_Unit_Player"]};

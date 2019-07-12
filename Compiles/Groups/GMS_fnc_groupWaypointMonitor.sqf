@@ -22,7 +22,7 @@ _fn_waypointComplete = {
 	private _done = if (currentWaypoint _group) > (count (waypoints _group)) then {true} else {false};
 	_done
 };
-diag_log format["_fnc_groupWaypointMonitor called at %1 with %2 groups to monitor",diag_tickTime,count blck_monitoredMissionAIGroups];
+//diag_log format["_fnc_groupWaypointMonitor called at %1 with %2 groups to monitor",diag_tickTime,count blck_monitoredMissionAIGroups];
 {
 	private["_timeStamp","_index","_unit","_soldierType"];
 	if ( !(_x isEqualTo grpNull) && ({alive _x} count (units _x) > 0) ) then

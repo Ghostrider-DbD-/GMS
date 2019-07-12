@@ -11,7 +11,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
 private ["_veh","_killer","_group","_wp"];
-diag_log format["_fnc_processAIVehicleKill:  _this = %1",_this];
+//diag_log format["_fnc_processAIVehicleKill:  _this = %1",_this];
 params["_veh","_killer","_killer"];
 //params["_veh","_killer"];
 
@@ -22,8 +22,8 @@ params["_veh","_killer","_killer"];
 	_veh removeAllMPEventHandlers _x;
 } forEach ["MPHit","MPKilled"];
 
-diag_log format["_fnc_processAIVehicleKill:  _this = %1",_this];
-diag_log format["_fnc_processAIVehicleKill:: _veh = %1 and _killer = %2 units damage is %3",_veh,_killer, damage _veh];
+//diag_log format["_fnc_processAIVehicleKill:  _this = %1",_this];
+//diag_log format["_fnc_processAIVehicleKill:: _veh = %1 and _killer = %2 units damage is %3",_veh,_killer, damage _veh];
 
 if (!(isPlayer _killer)) exitWith {};
 
