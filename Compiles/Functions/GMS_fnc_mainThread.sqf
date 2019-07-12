@@ -32,8 +32,7 @@ while {true} do
 	if (diag_tickTime > _timer5sec) then
 	{
 		_timer5sec = diag_tickTime + 5;
-		//[] call blck_fnc_missionGroupMonitor;
-		if (blck_simulationManager == blck_useBlckeaglsSimulationManagement) then {call blck_fnc_simulationManager};
+		if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManagement) then {[] call blck_fnc_simulationManager};
 		[] call blck_fnc_sm_staticPatrolMonitor;
 		[] call blck_fnc_vehicleMonitor;		
 	};
@@ -65,6 +64,21 @@ while {true} do
 	if (diag_tickTime > _timer5min) then 
 	{
 		diag_log format["[blckeagls] Timstamp %8 |Dynamic Missions Running %1 | UMS Running %2 | Vehicles %3 | Groups %4 | Server FPS %5 | Server Uptime %6 Min | Missions Run %7",blck_missionsRunning,blck_dynamicUMS_MissionsRuning,count blck_monitoredVehicles,count blck_monitoredMissionAIGroups,diag_FPS,floor(diag_tickTime/60),blck_missionsRun, diag_tickTime];
+		#ifdef blck_debugMode
+		/*
+			Syntax:
+			diag_activeSQFScripts 
+			Return Value:
+			Array of Arrays - to format [[scriptName, fileName, isRunning, currentLine], ...]: 
+		*/
+		//private _activeScripts = call diag_activeSQFScripts;
+		{
+			if (_x select 2 /* isRunning */) then 
+			{
+				diag_log format["script name %1",_x select 0];
+			};
+		} forEach diag_activeSQFScripts;
+		#endif		
 		_timer5min = diag_tickTime + 300;
 	};
 };

@@ -135,6 +135,8 @@ private _functions = [
 	["blck_fnc_createGroup","\q\addons\custom_server\Compiles\Groups\GMS_fnc_create_AI_Group.sqf"],			// create a group for which other functions spawn AI.
 	["blck_fnc_simulationManager","\q\addons\custom_server\Compiles\Groups\GMS_fnc_simulationMonitor.sqf"], 
 	["blck_fnc_groupWaypointMonitor","\q\addons\custom_server\Compiles\Groups\GMS_fnc_groupWaypointMonitor.sqf"],
+	["blck_fnc_checkgroupwaypointstatus","\q\addons\custom_server\Compiles\Groups\GMS_fnc_checkgroupwaypointstatus.sqf"],
+	// blck_fnc_checkgroupwaypointstatus
 	
 	// Functions specific to vehicles, whether wheeled, aircraft or static
 	["blck_fnc_spawnVehicle","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_spawnVehicle.sqf"],           

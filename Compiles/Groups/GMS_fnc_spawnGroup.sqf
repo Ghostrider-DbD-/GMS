@@ -13,8 +13,22 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
 private["_numbertospawn","_safepos","_launcherType","_infantryType"];	
-params[["_group",grpNull],"_pos",  "_center", ["_numai1",5],  ["_numai2",10],  ["_skillLevel","red"], ["_minDist",30], ["_maxDist",45],["_configureWaypoints",true], ["_uniforms",[]], ["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]], ["_scuba",false]];
-if (isNull _group) exitWith {diag_log format["ERROR: No valid value _group was passed to blck_fnc_spawnGroup"]};
+params[["_group","Error"],"_pos",  "_center", ["_numai1",5],  ["_numai2",10],  ["_skillLevel","red"], ["_minDist",30], ["_maxDist",45],["_configureWaypoints",true], ["_uniforms",[]], ["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]], ["_scuba",false]];
+
+#ifdef blck_debugMode 
+if (blck_debugLevel > 3) then 
+{
+	{
+		diag_log format["_fnc_spawnGroup: _this select %1 = %2",_forEachIndex,_this select _forEachIndex];
+	}forEach _this;
+};
+#endif
+
+if !(typeName _group isEqualTo "GROUP") exitWith {
+	if (_group isEqualTo "Error") exitWith {diag_log format["_fnc_spawnGroup [ERROR]: no parameter was passed for _group"]};
+	diag_log format["_fnc_spawnGroup {ERROR]}: parameter %2 of type %1 passed, 'GROUP expected",typeName _group,_group];
+};
+//if (isNull _group) exitWith {diag_log format["ERROR: No valid value _group was passed to blck_fnc_spawnGroup"]};
 if (_weaponList isEqualTo []) then {_weaponList = [_skillLevel] call blck_fnc_selectAILoadout};
 if (_sideArms isEqualTo [])  then {_sideArms = [_skillLevel] call blck_fnc_selectAISidearms};
 if (_uniforms isEqualTo [])  then {_uniforms = [_skillLevel] call blck_fnc_selectAIUniforms};

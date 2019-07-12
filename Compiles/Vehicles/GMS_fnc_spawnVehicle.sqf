@@ -13,7 +13,8 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
 params["_vehType","_pos",["_special","NONE"]];
-diag_log format["spawnVehicle.sqf:  _vehType = %1 | _pos = %2",_vehType,_pos];
+//diag_log format["spawnVehicle.sqf: _this = %3 | _vehType = %1 | _pos = %2",_vehType,_pos,_this];
+
 #ifdef blck_debugMode
 if (blck_debugLevel > 1) then {diag_log format["spawnVehicle.sqf:  _vehType = %1 | _pos = %2",_vehType,_pos];};
 #endif

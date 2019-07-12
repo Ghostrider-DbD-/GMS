@@ -33,7 +33,7 @@ diag_log format["_fnc_groupWaypointMonitor called at %1 with %2 groups to monito
 		#define blck_turnBackRadiusHelis 1000
 		#define blck_turnBackRadiusJets 1500
 		*/
-		diag_log format["_fn_monitorGroupWaypoints - radii: on foot %1 | vehicle %2 | heli %3 | jet %4",blck_turnBackRadiusInfantry,blck_turnBackRadiusVehicles,blck_turnBackRadiusHelis,blck_turnBackRadiusJets];
+		//diag_log format["_fn_monitorGroupWaypoints - radii: on foot %1 | vehicle %2 | heli %3 | jet %4",blck_turnBackRadiusInfantry,blck_turnBackRadiusVehicles,blck_turnBackRadiusHelis,blck_turnBackRadiusJets];
 		_timeStamp = _x getVariable ["timeStamp",0];
 		if (_timeStamp isEqualTo 0) then 
 		{
@@ -42,11 +42,11 @@ diag_log format["_fnc_groupWaypointMonitor called at %1 with %2 groups to monito
 		};
 		_soldierType = _x getVariable["soldierType","null"];
 		//diag_log format["_fn_monitorGroupWaypoints::--> soldierType for group %1 = %2 and timeStamp = %3",_x,_soldierType,_timeStamp];
-		switch (soldierType) do
+		switch (_soldierType) do
 		{
-			case "infantry": {[_x, 60] call GMS_fnc_checkGroupWaypointStatus;};
-			case "vehicle": {[_x, 90, 800] call GMS_fnc_checkGroupWaypointStatus;};
-			case "aircraft": {[_x, 90, 1000] call GMS_fnc_checkGroupWaypointStatus;};
+			case "infantry": {[_x, 60] call blck_fnc_checkgroupwaypointstatus;};
+			case "vehicle": {[_x, 90, 800] call blck_fnc_checkgroupwaypointstatus;};
+			case "aircraft": {[_x, 90, 1000] call blck_fnc_checkgroupwaypointstatus;};
 		};
 	};
 	//private _updateNeeded = if (diag_tickTime > (_x getVariable "timeStamp") + 60) then

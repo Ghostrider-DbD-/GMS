@@ -14,6 +14,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #define configureWaypoints true
 // TODO: consolidate code where possible, for example the recurring code to create the group and add units to the list of units spawned.
+// TODO: find reason that this sometimes throws errors because it passes an array rather than group.
 params["_coords",["_minNoAI",3],["_maxNoAI",6],"_missionGroups",["_aiDifficultyLevel","red"],["_uniforms",[]],["_headGear",blck_BanditHeadgear],["_vests",[]],["_backpacks",[]],["_weapons",[]],["_sideArms",[]],["_isScubaGroup",false]];
 #ifdef blck_debugMode
 if (blck_debugLevel >=2) then
@@ -46,14 +47,14 @@ if (blck_debugLevel >= 2) then
 };
 #endif
 private _newGroup = grpNull;
-
+//_newGroup setVariable ["soldierType","infantry"];
 if ( (count _missionGroups > 0) && _noAIGroups > 0) then
 { 	
 	{
 		_x params["_position","_minAI","_maxAI","_skillLevel","_minPatrolRadius","_maxPatrolRadius"];
 		_groupSpawnPos = _coords vectorAdd _position;
 		_newGroup = [] call blck_fnc_createGroup;
-			
+		_newGroup setVariable ["soldierType","infantry"];	
 		#ifdef blck_debugMode
 		if (blck_debugLevel >= 2) then
 		{
@@ -64,6 +65,7 @@ if ( (count _missionGroups > 0) && _noAIGroups > 0) then
 		if !(isNull _newGroup) then 
 		{
 			[_newGroup,_groupSpawnPos,_coords,_minAI,_maxAI,_aiDifficultyLevel,_minPatrolRadius,_maxPatrolRadius,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
+			_newGroup setVariable ["soldierType","infantry"];
 			_newAI = units _newGroup;
 			blck_monitoredMissionAIGroups pushback _newGroup;
 			#ifdef blck_debugMode
@@ -94,6 +96,7 @@ if (_missionGroups isEqualTo [] && _noAIGroups > 0) then
 				};
 				#endif
 				_newGroup = [] call blck_fnc_createGroup;
+				_newGroup setVariable ["soldierType","infantry"];				
 				#ifdef blck_debugMode
 				if (blck_debugLevel >= 2) then
 				{
@@ -103,6 +106,7 @@ if (_missionGroups isEqualTo [] && _noAIGroups > 0) then
 				if !(isNull _newGroup) then 
 				{
 					[_newGroup,_coords,_coords,_unitsToSpawn,_unitsToSpawn,_aiDifficultyLevel,_minPatrolRadius,_maxPatrolRadius,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
+					_newGroup setVariable ["soldierType","infantry"];
 					_newAI = units _newGroup;
 					blck_monitoredMissionAIGroups pushback _newGroup;
 					#ifdef blck_debugMode
@@ -134,6 +138,7 @@ if (_missionGroups isEqualTo [] && _noAIGroups > 0) then
 						_adjusttedGroupSize = _unitsPerGroup;
 					};
 					_newGroup = [] call blck_fnc_createGroup;
+					_newGroup setVariable ["soldierType","infantry"];					
 					if !(isNull _newGroup) then 
 					{
 						[_newGroup,_x,_coords,_adjusttedGroupSize,_adjusttedGroupSize,_aiDifficultyLevel,_minPatrolRadius,_maxPatrolRadius,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
@@ -160,6 +165,7 @@ if (_missionGroups isEqualTo [] && _noAIGroups > 0) then
 				};
 				#endif
 				_newGroup = [] call blck_fnc_createGroup;
+				_newGroup setVariable ["soldierType","infantry"];
 				if !(isNull _newGroup) then 
 				{
 					[_newGroup,_coords,_coords,_unitsPerGroup + _ResidualUnits,_unitsPerGroup + _ResidualUnits,_aiDifficultyLevel,_minPatrolRadius,_maxPatrolRadius,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
@@ -174,7 +180,8 @@ if (_missionGroups isEqualTo [] && _noAIGroups > 0) then
 					_blck_AllMissionAI append _newAI;
 					_groupLocations = [_coords,2,20,35] call blck_fnc_findPositionsAlongARadius;
 					{
-						_newGroup = [] call blck_fnc_createGroup;			
+						_newGroup = [] call blck_fnc_createGroup;	
+						_newGroup setVariable ["soldierType","infantry"];		
 						if !(isNull _newGroup) then 
 						{
 							[_newGroup,_x,_coords,_unitsPerGroup,_unitsPerGroup,_aiDifficultyLevel,_minPatrolRadius,_maxPatrolRadius,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
@@ -200,7 +207,8 @@ if (_missionGroups isEqualTo [] && _noAIGroups > 0) then
 				};
 				#endif
 
-				_newGroup = [] call blck_fnc_createGroup;				
+				_newGroup = [] call blck_fnc_createGroup;	
+				_newGroup setVariable ["soldierType","infantry"];			
 				if (isNull _newGroup) then 
 				{
 					[_newGroup,_coords,_coords,_unitsPerGroup + _ResidualUnits,_unitsPerGroup + _ResidualUnits,_aiDifficultyLevel,_minPatrolRadius,_maxPatrolRadius,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;				
@@ -217,6 +225,7 @@ if (_missionGroups isEqualTo [] && _noAIGroups > 0) then
 				_groupLocations = [_coords,(_noAIGroups - 1),20,40] call blck_fnc_findPositionsAlongARadius;
 				{
 					_newGroup = [] call blck_fnc_createGroup;
+					_newGroup setVariable ["soldierType","infantry"];
 					if !(isNull _newGroup) then 
 					{
 						[_newGroup,_x,_coords,_unitsPerGroup,_unitsPerGroup,_aiDifficultyLevel,_minPatrolRadius,_maxPatrolRadius,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
