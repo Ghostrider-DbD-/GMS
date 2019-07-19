@@ -50,6 +50,11 @@
 	////////
 	//  Headless Client Configurations
 	blck_useHC = true; // 
+	//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
+	blck_ai_offload_to_client = true; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
+	blck_ai_offload_notifyClient = true;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
+										// TODO: set to false before release
+	blck_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated.
 	
 	///////////////////////////////
 	//  Kill message configurations

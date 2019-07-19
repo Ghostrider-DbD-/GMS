@@ -136,6 +136,7 @@ _fn_spawnWreckMission = {
 	}forEach _containers;
 	#define configureWaypoints true
 	_group = [] call blck_fnc_createGroup;
+	blck_monitoredMissionAIGroups pushBack _group;
 	[_group,_posOfCrash,_posOfCrash,_minAI,_maxAI,_difficulty,10,30,configureWaypoints,_uniforms,_headGear] call blck_fnc_spawnGroup;
 	if !(isNull _group) then
 	{
