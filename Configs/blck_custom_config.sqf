@@ -148,7 +148,7 @@ if (blck_debugON || (blck_debugLevel > 0)) then // These variables are found in 
 
 	blck_maxSpawnedMissions = 15;
 	blck_mainThreadUpdateInterval = 10;
-	blck_enableOrangeMissions = -1;  
+	blck_enableOrangeMissions = 1;  
 	blck_enableGreenMissions = 1;
 	blck_enableRedMissions = 1;
 	blck_enableBlueMissions = -1;
@@ -165,9 +165,11 @@ if (blck_debugON || (blck_debugLevel > 0)) then // These variables are found in 
 	//blck_vehicleDeleteTimer = 20; 
 	//blck_MissionTimeout = 30;
 	
-	//blck_noPatrolHelisOrange = 1;
-	//blck_chanceHeliPatrolOrange = 1;
-	//blck_chanceParaOrange = 1;
+	blck_noPatrolHelisOrange = 1;
+	blck_chanceHeliPatrolOrange = 1;
+	blck_chanceParaOrange = 1;
+	blck_chanceHeliPatrolGreen = 1;
+	blck_chanceParaGreen = 1;	
 	//blck_chanceHeliPatrolRed = -1;
 	//blck_chanceHeliPatrolBlue = -1;
 	//blck_noPatrolHelisBlue = -1;

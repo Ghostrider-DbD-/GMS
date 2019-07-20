@@ -17,7 +17,7 @@
 		changing any of these variables may break the mission systemChat
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
-	blck_debugON = false;  //  Do not touch ... 
+	blck_debugON = true;  //  Do not touch ... 
 	blck_debugLevel = 0;  //  Do not touch ... 
 	#ifdef blck_milServer
 	if (true) exitWith 
@@ -72,9 +72,13 @@
 	
 	***********************************************************/
 	////////
-	//  Headless Client Configurations
+	//  Client Offloading and Headless Client Configurations
 	blck_useHC = true; // Experimental (death messages and rewards not yet working).
-	
+	//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
+	blck_ai_offload_to_client = true; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
+	blck_ai_offload_notifyClient = false;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
+	blck_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated.
+
 	///////////////////////////////
 	//  Kill message configurations
 	// These determine whether and when messages are sent to players regarding AI Kills or illegal kills that might damage a vehicle.
@@ -322,18 +326,20 @@
 	//blck_maximumitempriceinai_loadouts = 1000;
 	// lists of black-listed items to be excluded from dynamic loadouts
 		blck_blacklistedVests = [
-			"V_Press_F"
+			//"V_Press_F"
 		];
 
 		blck_blacklistedUniforms = [
 			"U_I_Protagonist_VR",
 			"U_C_Protagonist_VR",			
 			"U_O_Protagonist_VR",
-			"U_B_Protagonist_VR"
+			"U_B_Protagonist_VR",
+			"Exile_Uniform_BambiOverall",
+			"Exile_Uniform_ExileCustoms"
 		];
 
 		blck_blacklistedBackpacks = [
-			"B_ViperLightHarness_blk_F"
+			//"B_ViperLightHarness_blk_F"
 		];
 
 		blck_blacklistedHeadgear = [
@@ -342,7 +348,7 @@
 		];
 
 		blck_blacklistedPrimaryWeapons = [
-			"srifle_LRR_tna_F"
+			//"srifle_LRR_tna_F"
 		];
 
 		blck_blacklistedSecondaryWeapons = [
@@ -354,7 +360,7 @@
 		];
 
 		blck_blacklistedOptics = [
-			"optic_tws"
+			//"optic_tws"
 		];
 
 		blck_blacklistedAttachments = [
@@ -366,7 +372,7 @@
 		];	
 	/////////////////////////////////////////////
 	
-	blck_groupBehavior = "SENTRY";  // Suggested choices are "SAD", "SENTRY", "AWARE"   https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
+	blck_groupBehavior = "SAD";  // Suggested choices are "SAD", "SENTRY", "AWARE"   https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
 	blck_combatMode = "RED"; // Change this to "YELLOW" if the AI wander too far from missions for your tastes.
 	blck_groupFormation = "WEDGE"; // Possibilities include "WEDGE","VEE","FILE","DIAMOND"
 

@@ -31,10 +31,14 @@ _pathRed = "Red";
 //_missionListRed = ["carThieves"];
 _missionListRed = [/*"default","default2","medicalCamp","hostage1","captive1",*/"fuelDepot","junkyardWilly","TraderBoss","carThieves"];
 // Passed 
-
+private ["_missionListGreen"];
 _pathGreen = "Green";
-//_missionListGreen = ["redCamp"/*,"colonelsBase","banditVillage"*/];
-_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
+if (blck_debugOn || blck_debugLevel > 0) then
+{
+	_missionListGreen = ["redCamp"/*,"colonelsBase","banditVillage"*/];
+} else {
+	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
+};
 // Passed 
 
 _pathOrange = "Orange";
@@ -43,12 +47,12 @@ _missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCa
 // Passed 
 
 #ifdef blck_milServer
-//_missionListGreen = ["banditVillage"];
-_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
+_missionListGreen = ["colonelsBase"];
+//_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
 // Passed 
 
-//_missionListOrange = ["CommandersComplex"/*,"pinkPoison","stronghold","operationShutdown","operationTakeover","generalsCamp","colonel2"*/];
-_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp",*/"CommandersComplex","generalsCamp","colonel2","pinkPoison","stronghold","operationShutdown","operationTakeover"/*,"temple"*/];
+_missionListOrange = ["operationShutdown"/*,"pinkPoison","stronghold","operationShutdown","operationTakeover","generalsCamp","colonel2"*/];
+//_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp",*/"CommandersComplex","generalsCamp","colonel2","pinkPoison","stronghold","operationShutdown","operationTakeover"/*,"temple"*/];
 // Passed 
 #endif
 
