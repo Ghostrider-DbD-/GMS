@@ -24,8 +24,6 @@ if (isNil "_markerLabel") then {_markerLabel = _markerMissionName};
 
 [_markerName,  "active",_coords] call blck_fnc_updateMissionQue;
 
-diag_log format["[blckeagls] missionSpawner (17):: Initializing mission: _cords %1 : _markerName %2 :  _aiDifficultyLevel %3",_coords,_markerName,_aiDifficultyLevel,_markerLabel];
-
 if (isNil "_assetKilledMsg")			 then {_assetKilledMsg = ""};
 if (isNil "_markerColor") 				then {_markerColor = "ColorBlack"};
 if (isNil "_markerType") 				then {_markerType = ["mil_box",[]]};
@@ -70,6 +68,14 @@ if (isNil "_lootCrates") then {_lootCrates = blck_crateTypes};
 if (isNil "_lootCratePositions") then {_lootCratePositions = []};
 if (isNil "_isScubaMission") then {_isScubaMission = false};
 if (isNil "_missionLootBoxes") then {_missionLootBoxes = []};
+
+
+/**
+
+From Build 206:  
+     TODO: pull over the code for managing markers.
+	 TODO: Be sure the code for managing pre-defined mission locations is pulled over.  NOTES: Seems that this is handled in _initializeMission
+
 
 private "_temp";
 

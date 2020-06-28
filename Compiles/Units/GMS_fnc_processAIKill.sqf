@@ -59,5 +59,5 @@ _wp setWaypointBehaviour "COMBAT";
 _wp setWaypointCombatMode "RED";
 
 if ([_unit,_killer] call blck_fnc_processIlleagalAIKills) then {
-	[_unit,_killer] call GMS_fnc_handlePlayerUpdates;
+	[_unit,_killer] call blck_fnc_handlePlayerUpdates;
 };

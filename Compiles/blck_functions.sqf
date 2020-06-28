@@ -50,10 +50,11 @@ private _functions = [
 	["blck_fnc_getAllMarkersOfSubtype","\q\addons\custom_server\Compiles\Functions\GMS_fnc_getAllMarkersOfSubtype.sqf"],
 	["blck_fnc_getAllDMSMarkers","\q\addons\custom_server\Compiles\Functions\GMS_fnc_getAllDMSMarkers.sqf"],
 	["blck_fnc_createMissionMarkers","\q\addons\custom_server\Compiles\Functions\GMS_fnc_createMissionMarkers.sqf"],
+	["blck_fnc_log","\q\addons\custom_server\Compiles\Functions\GMS_fnc_log.sqf"],
 
 	// Player-related functions
-	["GMS_fnc_handlePlayerUpdates","\q\addons\custom_server\Compiles\Units\GMS_fnc_handlePlayerUpdates.sqf"],
-	["blck_fnc_MessagePlayers","\q\addons\custom_server\Compiles\Functions\GMS_fnc_AIM.sqf"],	 // Send messages to players regarding Missions
+	["blck_fnc_handlePlayerUpdates","\q\addons\custom_server\Compiles\Units\GMS_fnc_handlePlayerUpdates.sqf"],
+	["blck_fnc_MessagePlayers","\q\addons\custom_server\Compiles\Functions\GMS_fnc_messagePlayers.sqf"],	 // Send messages to players regarding Missions
 
 	// Mission-related functions
 	["blck_fnc_selectAILoadout","\q\addons\custom_server\Compiles\Missions\GMS_fnc_selectAILoadout.sqf"],
@@ -117,7 +118,7 @@ private _functions = [
 	["blck_fnc_initializeMission", "\q\addons\custom_server\Compiles\Missions\GMS_fnc_initializeMission.sqf"],
 	["blck_fnc_monitorInitializedMissions","\q\addons\custom_server\Compiles\Missions\GMS_fnc_monitorInitializedMissions.sqf"],
 	["blck_fnc_spawnInitializedMissions","\q\addons\custom_server\Compiles\Missions\GMS_fnc_spawnInitializedMissions.sqf"],
-		
+
 	// Group-related functions
 	["blck_fnc_spawnGroup","\q\addons\custom_server\Compiles\Groups\GMS_fnc_spawnGroup.sqf"],					// Spawn a single group and populate it with AI units]
 	["blck_fnc_setupWaypoints","\q\addons\custom_server\Compiles\Groups\GMS_fnc_setupWaypoints.sqf"],			// Set default waypoints for a group
