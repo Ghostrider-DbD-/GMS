@@ -48,10 +48,14 @@
 	
 	***********************************************************/
 	////////
-	//  Headless Client Configurations
-	blck_useHC = true; // 
-	//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
+	//  Client Offloading and Headless Client Configurations
+	blck_useHC = false; // Experimental (should be working).
+	
+										//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
 	blck_ai_offload_to_client = true; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
+										// *******************************************************
+										//  Experimental; may cause issues with waypoints 
+										// *******************************************************
 	blck_ai_offload_notifyClient = false;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
 	blck_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated.
 	
@@ -72,10 +76,11 @@
 	blck_showCountAliveAI = true;	
 
 	//Minimum distance between missions
-	blck_MinDistanceFromMission = 1500;
-	blck_minDistanceToBases = 900;
-	blck_minDistanceToPlayer = 900;
+	blck_MinDistanceFromMission = 1000;
+	blck_minDistanceToBases = 500;
+	blck_minDistanceToPlayer = 500;
 	blck_minDistanceFromTowns = 300;
+	blck_minDistanceFromDMS = 500;  // minimum distance for a blackeagls mission from any nearby DMS missions. set to -1 to disable this check.
 	
 	///////////////////////////////
 	// Mission Smoke and Signals
@@ -151,14 +156,14 @@
 	//  Heli Patrol Heli Types	
 	// Armed Helis
 	//////////////////////////////
-	_blck_littleBirds = ["B_Heli_Light_01_armed_F"];  //  AH-9 Pawnee  (WEST)
-	_blck_armed_hellcats = ["I_Heli_light_03_F"];
-	_blck_armed_orcas = ["O_Heli_Light_02_F","O_Heli_Light_02_v2_F"];
-	_blck_armed_ghosthawks = ["B_Heli_Transport_01_F","B_Heli_Transport_01_camo_F"];
-	_blck_armed_hurons = ["B_Heli_Transport_03_F","B_Heli_Transport_03_black_F"];
-	_blck_armed_attackHelis = ["B_Heli_Attack_01_F"];
-	_blck_armed_heavyAttackHelis = ["O_Heli_Attack_02_F","O_Heli_Attack_02_black_F"];
-	_blck_fighters = [
+	blck_littleBirds = ["B_Heli_Light_01_armed_F"];  //  AH-9 Pawnee  (WEST)
+	blck_armed_hellcats = ["I_Heli_light_03_F"];
+	blck_armed_orcas = ["O_Heli_Light_02_F","O_Heli_Light_02_v2_F"];
+	blck_armed_ghosthawks = ["B_Heli_Transport_01_F","B_Heli_Transport_01_camo_F"];
+	blck_armed_hurons = ["B_Heli_Transport_03_F","B_Heli_Transport_03_black_F"];
+	blck_armed_attackHelis = ["B_Heli_Attack_01_F"];
+	blck_armed_heavyAttackHelis = ["O_Heli_Attack_02_F","O_Heli_Attack_02_black_F"];
+	blck_fighters = [
 		//"O_Plane_CAS_02_F",  // /ti-199 Neophron (CAS)
 		"I_Plane_Fighter_03_AA_F",  //  A-143 Buzzard (AA)
 		//"I_Plane_Fighter_04_F",  //   	A-149 Gryphon
@@ -184,27 +189,27 @@
 	///////////////////////////////
 
 	blck_chanceHeliPatrolBlue = 0.8;  //[0 - 1]  Set to 0 to deactivate and 1 to always have a heli spawn over the mission center and patrol the mission area. The chance of paratroops dropping from the heli is defined by blck_chancePara(Blue|Red|Green|Orange) above.
-	blck_patrolHelisBlue = _blck_littleBirds;
+	blck_patrolHelisBlue = blck_littleBirds;
 	blck_noPatrolHelisBlue = 0;
 	
 	blck_chanceHeliPatrolRed = 0.8; // 0.4;
-	blck_patrolHelisRed = _blck_armed_hellcats;
+	blck_patrolHelisRed = blck_armed_hellcats;
 	blck_noPatrolHelisRed = 1;
 	
 	blck_chanceHeliPatrolGreen = 0.9999;
-	blck_patrolHelisGreen = _blck_armed_ghosthawks;
+	blck_patrolHelisGreen = blck_armed_ghosthawks;
 	blck_noPatrolHelisGreen = [1,3];
 	
 	blck_chanceHeliPatrolOrange = 0.9999;
-	blck_patrolHelisOrange = _blck_armed_attackHelis + _blck_armed_heavyAttackHelis; // + _blck_fighters;
+	blck_patrolHelisOrange = blck_armed_attackHelis + blck_armed_heavyAttackHelis; // + _blck_fighters;
 	blck_noPatrolHelisOrange = [2,4];
 
-	if (toLower(worldName) isEqualTo "namalsk") then
+	if (toLower(worldName) isEqualTo "namalsk" || toLower(worldName) isEqualTo "enoch") then
 	{
-		blck_patrolHelisRed = _blck_littleBirds + _blck_armed_hellcats;
-		blck_patrolHelisGreen = _blck_armed_hellcats + _blck_armed_ghosthawks;
+		blck_patrolHelisRed = blck_littleBirds + blck_armed_hellcats;
+		blck_patrolHelisGreen = blck_armed_hellcats + blck_armed_ghosthawks;
 		blck_noPatrolHelisGreen = 1;
-		blck_patrolHelisOrange = _blck_armed_ghosthawks;
+		blck_patrolHelisOrange = blck_armed_ghosthawks;
 		blck_noPatrolHelisOrange = 1;
 	};
 	////////////////////
@@ -216,7 +221,7 @@
 	blck_maxSpawnedMissions = 15;
 	#else
 	// Change this value to reduce the number of spawned missions at any one time.
-	blck_maxSpawnedMissions = 4;
+	blck_maxSpawnedMissions = 7;
 	#endif
 	
 	//Set to -1 to disable. Values of 2 or more force the mission spawner to spawn copies of that mission - this feature is not recommended because you may run out of available groups.
@@ -224,7 +229,7 @@
 	blck_enableGreenMissions = 1;
 	blck_enableRedMissions = 2;
 	blck_enableBlueMissions = 2;
-	blck_numberUnderwaterDynamicMissions = 2;  // Values from 0 (no UMS) to N (N Underwater missions will be spawned; static UMS units and subs will be spawned.	
+	blck_numberUnderwaterDynamicMissions = 3;  // Values from 0 (no UMS) to N (N Underwater missions will be spawned; static UMS units and subs will be spawned.	
 
 	#ifdef GRGserver
 	blck_enableHunterMissions = 1;
@@ -356,7 +361,7 @@
 		];	
 	/////////////////////////////////////////////
 
-	blck_groupBehavior = "SAD";  // Suggested choices are "SAD", "SENTRY", "AWARE"   https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
+	blck_groupBehavior = "SAFE";  // https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
 	blck_combatMode = "RED"; // Change this to "YELLOW" if the AI wander too far from missions for your tastes.
 	blck_groupFormation = "WEDGE"; // Possibilities include "WEDGE","VEE","FILE","DIAMOND"
 
@@ -503,6 +508,11 @@
 		diag_log format["[blckeagls] Loading Mission System using Parameters for %1 for militarized servers",blck_modType];
 		execVM "\q\addons\custom_server\Configs\blck_configs_exile_mil.sqf";
 	};	
+	if (toLower(blck_modType) isEqualTo "default") then 
+	{
+		diag_log format["[blckeagls] Loading Mission System using Parameters for %1 for militarized servers",blck_modType];
+		execVM "\q\addons\custom_server\Configs\blck_configs_default_mil.sqf";
+	};
 	//waitUntil{!isNil "blck_useConfigsGeneratedLoadouts"};
 	//waitUntil {!isNil "blck_maximumItemPriceInAI_Loadouts"};
 	uiSleep 10;

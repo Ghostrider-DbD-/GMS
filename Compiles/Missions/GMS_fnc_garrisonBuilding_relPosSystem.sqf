@@ -20,9 +20,11 @@ params["_center","_garrisonedBuilding_relPosSystem",
         ["_weaponList",[]],
         ["_sideArms",[]]
     ];
+/*
 {
     diag_log format["_fnc_garrisonBuilding_relPosSystem: _this %1 = %2",_forEachIndex,_this select _forEachIndex];
 }forEach _this;
+*/
 if (_weaponList isEqualTo []) then {_weaponList = [_aiDifficultyLevel] call blck_fnc_selectAILoadout};
 if (_sideArms  isEqualTo [])  then {_sideArms = [_aiDifficultyLevel] call blck_fnc_selectAISidearms};
 if (_uniforms  isEqualTo [])  then {_uniforms = [_aiDifficultyLevel] call blck_fnc_selectAIUniforms};
@@ -32,7 +34,7 @@ if (_backpacks  isEqualTo []) then {_backpacks = [_aiDifficultyLevel] call blck_
 private["_group","_buildingsSpawned","_staticsSpawned","_g","_building","_return"];
 _buildingsSpawned = [];
 _staticsSpawned = [];
-_group = call blck_fnc_createGroup;
+_group = [blck_AI_Side,true] call blck_fnc_createGroup;
 if !(isNull _group) then 
 {
     {

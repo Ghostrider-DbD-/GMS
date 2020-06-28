@@ -17,7 +17,7 @@
 		changing any of these variables may break the mission systemChat
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
-	blck_debugON = true;  //  Do not touch ... 
+	blck_debugON = false;  //  Do not touch ... 
 	blck_debugLevel = 0;  //  Do not touch ... 
 	#ifdef blck_milServer
 	if (true) exitWith 
@@ -73,12 +73,16 @@
 	***********************************************************/
 	////////
 	//  Client Offloading and Headless Client Configurations
-	blck_useHC = true; // Experimental (death messages and rewards not yet working).
-	//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
-	blck_ai_offload_to_client = true; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
-	blck_ai_offload_notifyClient = false;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
-	blck_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated.
-
+	blck_useHC = true; // Experimental (should be working).
+										//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
+	blck_ai_offload_to_client = false; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
+										// *******************************************************
+										//  Experimental; may cause issues with waypoints 
+										// *******************************************************
+	blck_ai_offload_notifyClient = true;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
+	blck_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated. (Recommended)
+	blck_allow_hunting_behaviors = true;  // Not used yet
+	
 	///////////////////////////////
 	//  Kill message configurations
 	// These determine whether and when messages are sent to players regarding AI Kills or illegal kills that might damage a vehicle.
@@ -93,13 +97,14 @@
 	// When set to true,"dot", ext will be to the right of a black dot at the center the mission marker. 
 	blck_labelMapMarkers = [true,"center"];  
 	blck_preciseMapMarkers = true;  // Map markers are/are not centered at the loot crate
-	blck_showCountAliveAI = false;
+	blck_showCountAliveAI = true;
 
 	//Minimum distance between missions
-	blck_MinDistanceFromMission = 1500;
-	blck_minDistanceToBases = 900;
-	blck_minDistanceToPlayer = 900;
-	blck_minDistanceFromTowns = 300;
+	blck_MinDistanceFromMission = 1000;
+	blck_minDistanceToBases = 1000;
+	blck_minDistanceToPlayer = 800;
+	blck_minDistanceFromTowns = 500;
+	blck_minDistanceFromDMS = 500;  // minimum distance for a blackeagls mission from any nearby DMS missions. set to -1 to disable this check.	
 	
 	///////////////////////////////
 	// Mission Smoke and Signals
@@ -186,7 +191,7 @@
 	_blck_armed_hurons = ["B_Heli_Transport_03_F","B_Heli_Transport_03_black_F"];
 	_blck_armed_attackHelis = ["B_Heli_Attack_01_F"];
 	_blck_armed_heavyAttackHelis = ["O_Heli_Attack_02_F","O_Heli_Attack_02_black_F"];
-		_blck_fighters = [
+	_blck_fighters = [
 		"O_Plane_CAS_02_F",  // /ti-199 Neophron (CAS)
 		"I_Plane_Fighter_03_AA_F",  //  A-143 Buzzard (AA)
 		"I_Plane_Fighter_04_F",  //   	A-149 Gryphon
@@ -228,7 +233,7 @@
 	blck_maxSpawnedMissions = 15;
 	#else
 	// Change this value to reduce the number of spawned missions at any one time.
-	blck_maxSpawnedMissions = 4;
+	blck_maxSpawnedMissions = 7;
 	#endif
 	
 	//Set to -1 to disable. Values of 2 or more force the mission spawner to spawn copies of that mission - this feature is not recommended because you may run out of available groups.
@@ -278,7 +283,7 @@
 	// AI VEHICLE PATROL PARAMETERS
 	///////////////////////////////	
 
-	blck_useVehiclePatrols = false; // When true vehicles will be spawned at missions and will patrol the mission area.
+	blck_useVehiclePatrols = true; // When true vehicles will be spawned at missions and will patrol the mission area.
 	blck_killEmptyAIVehicles = false; // when true, the AI vehicle will be extensively damaged once all AI have gotten outor been killed.
     blck_vehicleDeleteTimer = 120*60;
 	////////////////////
@@ -372,7 +377,7 @@
 		];	
 	/////////////////////////////////////////////
 	
-	blck_groupBehavior = "SAD";  // Suggested choices are "SAD", "SENTRY", "AWARE"   https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
+	blck_groupBehavior = "SAFE";  // https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
 	blck_combatMode = "RED"; // Change this to "YELLOW" if the AI wander too far from missions for your tastes.
 	blck_groupFormation = "WEDGE"; // Possibilities include "WEDGE","VEE","FILE","DIAMOND"
 
@@ -390,10 +395,10 @@
 	blck_maximumPatrolRadius = 45;
 	
 	//This defines how long after an AI dies that it's body disappears.
-	blck_bodyCleanUpTimer = 60*30; // time in seconds after which dead AI bodies are deleted
+	blck_bodyCleanUpTimer = 60*45; // time in seconds after which dead AI bodies are deleted
 	// Each time an AI is killed, the location of the killer will be revealed to all AI within this range of the killed AI, set to -1 to disable
 	// values are ordered as follows [blue, red, green, orange];
-	blck_AliveAICleanUpTimer = 60*20;  // Time after mission completion at which any remaining live AI are deleted.
+	blck_AliveAICleanUpTimer = 60*15;  // Time after mission completion at which any remaining live AI are deleted.
 
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];	
@@ -411,6 +416,9 @@
 	
 	**************************************************************/
 	//This defines the skill, minimum/Maximum number of AI and how many AI groups are spawned for each mission type
+	// See the links below for information on how these affect the AI behavior and performance.
+	// https://community.bistudio.com/wiki/Arma_3_AI_Skill 
+	// https://community.bistudio.com/wiki/setSkill
 	// Orange Missions
 	blck_MinAI_Orange = 20;
 	blck_MaxAI_Orange = 25;
@@ -505,14 +513,16 @@
 	
 	if (toLower(blck_modType) isEqualTo "epoch") then
 	{
-		diag_log format["[blckeagls] Loading Mission System using Parameters for %1",blck_modType];
 		execVM "\q\addons\custom_server\Configs\blck_configs_epoch.sqf";
 	};
 	if (toLower(blck_modType)  isEqualTo "exile") then
 	{
-		diag_log format["[blckeagls] Loading Mission System using Parameters for %1",blck_modType];
 		execVM "\q\addons\custom_server\Configs\blck_configs_exile.sqf";
 	};	
+	if (toLower(blck_modType) isEqualTo "default") then 
+	{
+		execVM "\q\addons\custom_server\Configs\blck_configs_default.sqf";		
+	};
 	uiSleep 10;
 	if (blck_useConfigsGeneratedLoadouts) then
 	{

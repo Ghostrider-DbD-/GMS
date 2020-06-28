@@ -23,15 +23,16 @@ blck_missionSystemRunning = true;
 
 if (isServer) then 
 {
-	execVM "\q\addons\custom_server\init\blck_init_server.sqf";
+	[] execVM "\q\addons\custom_server\init\blck_init_server.sqf";
+};
+if (!isServer && !hasInterface) then 
+{
+	diag_log format["Loading blackeagls for headless clients"];
+	[] execVM "\q\addons\custom_server\init\blck_init_HC.sqf";
 };
 
-if(!(isServer) && !(hasInterface)) then
-{
-	execVM "\q\addons\custom_server\init\blck_init_HC.sqf";	
-};
+/*
+	TODO 
+	Check patrol radius for Air units, Ship units, land vehicle units, and infantry, both static and dynamically spawned.
 
-if ((!isServer) && (hasInterface)) then
-{
-	diag_log "[blckeagls] <ERROR CONDITION: this mission system must be run on either a dedicated server or headless client";
-};
+*/

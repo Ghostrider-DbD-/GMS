@@ -42,18 +42,15 @@ _addonsEpoch = [
 ];
 
 _addonsExile = [
-	#ifdef blck_milServer
 	//["Taviana","Taviana","TavianaTraders1.sqf"],
 	["Taviana","Taviana","water_coolers_etc.sqf"],
 	["Taviana","Taviana","ZooAIBASEFinal.sqf"],
 	["Taviana","Taviana","powerplanttavi.sqf"],
 	["Taviana","Taviana","SubmarinePen_SectorA.sqf"],
-	#else
-	["Altis","Altis","altis_epoch_beach_SH-DBD_final.sqf"],
-	["Altis","Altis","DBD_EPOCH_Altis_Dump_SH.FINAL.sqf"],
-	["Altis","Altis","packStronghold-1.sqf"],
-	["Altis","Altis","packStrongholdMolos.sqf"],
-	#endif
+	//["Altis","Altis","altis_epoch_beach_SH-DBD_final.sqf"],
+	//["Altis","Altis","DBD_EPOCH_Altis_Dump_SH.FINAL.sqf"],
+	//["Altis","Altis","packStronghold-1.sqf"],
+	//["Altis","Altis","packStrongholdMolos.sqf"],
 	["Taviana","Taviana","water_coolers_etc.sqf"],
 	["Taviana","Taviana","ZooAIBASEFinal.sqf"],
 	["Taviana","Taviana","powerplanttavi.sqf"],

@@ -13,12 +13,13 @@
 private ["_crate"];
 params["_coords",["_crateType","Box_NATO_Wps_F"],["_crateDir",0]];
 
+
+
 _crate = createVehicle [_crateType,[0,0,0],[], 2, "NONE"];
 _crate setVariable ["LAST_CHECK", 100000];
 _crate allowDamage false;
 _crate enableRopeAttach false;
 [_crate] call blck_fnc_emptyObject;
-//uiSleep 1;
 _crate setPosATL [_coords select 0, _coords select 1, (_coords select 2) + 0.25];
 _crate setDir _crateDir;
 //_crate setVectorUp [0,0,1];

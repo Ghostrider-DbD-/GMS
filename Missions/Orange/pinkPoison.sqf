@@ -75,12 +75,22 @@ _missionLootBoxes = [
 _missionLootVehicles = [
 ];
 
+#ifdef blck_milServer
+private _CUP_Tanks = [
+     "CUP_O_T90_RU",
+     "CUP_B_M1A1_DES_US_Army",
+     "CUP_B_M1A2_TUSK_MG_DES_US_Army",
+     "CUP_B_Leopard2A6_GER",
+     "CUP_B_Challenger2_NATO"
+];
+#endif
+
 _missionPatrolVehicles = [
          #ifdef blck_milServer
         ["O_Radar_System_02_F",[27.1289,15.6582,-2.38419e-007],0],
         ["O_T_APC_Tracked_02_AA_ghex_F",[-62.4141,31.1484,2.38419e-007],297.601],
-        ["O_MBT_04_command_F",[-56.8105,-47.6035,0],227.158],
-        ["O_MBT_04_command_F",[27.918,39.0273,0],29.7763],
+        [selectRandom _CUP_Tanks,[-56.8105,-47.6035,0],227.158],
+        [selectRandom _CUP_Tanks,[27.918,39.0273,0],29.7763],
         ["O_T_APC_Tracked_02_AA_ghex_F",[37.4941,-42.7852,2.38419e-007],109.403],        
         ["O_T_LSV_02_armed_F",[-69.6152,-6.05859,0],205.251],
         ["O_T_LSV_02_AT_F",[51.2461,-15.6367,0],0]

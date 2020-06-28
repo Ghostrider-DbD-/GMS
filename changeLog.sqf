@@ -7,8 +7,69 @@ Many thanks for new Coding and ideas from Grahame.
 
 Significant Changes:
 =====================
+6.98 Build 206
+FIXED: few minor bug fixes. 
+FIXED: Static Mission Loot vehicles are no longer deleted by Epoch servers when players enter them.
+FIXED: an error in coordinates for some randomly spawned missions tha added an extra 0 to the array with the coordinaates.
+Added: a define for NIA all in one in blck_defines; 
+Added a few preconfiguration variables with lists of NIA Armas items.
+Added: an optional parameter to define the location of a mission as one of one or more locations in an array 
+  _defaultMissionLocations = [];
 
-6.92 Build 179
+Added: a function that returns an array of all mission markers used by blckeagls for mission makers and server owners 
+	blck_fnc_getAllBlackeaglsMarkers
+	Returns: an array with all markers used by the mission system.
+
+Added: a function to pull a list of all map markers belonging to DMS and avoid spawning new blckeagls missions near these.
+	Configuraiont parameter: blck_minDistanceFromDMS  // set to -1 to disable this check.
+	Function: blck_fnc_getAllDMSMarkers
+
+Removed: some debugging and map sepcific settings from blck_custom_config.sqf 
+Changed: some code for finding locations for a new mission. 
+Added: all blckeagls map markers have the same prefix:  "blckeagls_marker"
+
+
+
+
+
+
+
+6.96 Build 199
+Added support for Arma servers not running Epoch or Exile 
+
+6.96 Build 197
+Sorted some wisses with the dynamic UMS spawner. 
+Removing debugging info
+TODO: come back to grpNull detection 
+
+6092 Build 196
+sorted issues with markers 
+and added new findSafeLocation 
+
+6.92 Build 194
+Added _noAIGroups to parameter list for _spawnMissionAI
+Other minor changes to delete logging.
+
+6.92 Build 193
+Updates to scripts to see if player(s) are near locations.
+Updates to scripts to delete alive and dead AI.
+Updates to simulation managers.
+
+6.92 Guild 192
+All actions on dead AI are handled throug units blck_graveyardGroup 
+All use of blck_deadAI has been deleted.
+
+6.92 Build 184
+Fixed an issues that caused blckeagls to load before exile servers were ready to accept players.
+Added checks that ensure that live AI and mission scenery do not despawn when players are nearby.
+Decreased the frequency with which some checks (dead AI, live AI, scenery at completed missions) is checked.
+Redid a few lops that should be using the more speedy deleteAt rather than forEach methods.
+worked on killed and hit EH so that these can run on the client owning the unit and server with each having a specific role 
+  - note that this requires that the code be streamed to clients and compiled on the HC.
+Updates to client to reduce logging 
+Added a firedNear EH 
+Redid system for setting up combatmode and behavior to be context dependent
+Redid setNextWaypont to include an antiStuck check and implement the above checks on behavior and combat mode. 
 Support for claim-vehicle scripts is now built-in 
 	blck_allowClaimVehicle = true; // To allow players to claim vehicles (Exile only).
 Added a setting to disable having AI toss smoke before healing. Set:

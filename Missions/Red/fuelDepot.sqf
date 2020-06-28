@@ -20,10 +20,6 @@ _missionLandscape = [
 	["Land_WaterBarrel_F",[7.45703,10.0078,0],0,[false,false]],
 	["Land_FuelStation_Build_F",[13.5215,6.42578,0],241.006,[false,false]],
 	["Land_fs_feed_F",[7.96484,3.57227,0],240.674,[true,false]],
-	["I_C_Van_01_transport_brown_F",[8.09375,13.6113,0.000131369],233.88,[false,false]],
-	["I_C_Van_01_transport_olive_F",[5.44531,17.5313,0.000131369],234.719,[false,false]],
-	["Ural_Civ_01",[20.4961,-1.33398,-2.38419e-007],61.0105,[false,false]],
-	["Land_CinderBlocks_F",[18.0488,13.832,0],0,[false,false]],
 	["Land_CinderBlocks_F",[21.541,8.54492,0],0,[false,false]],
 	["Land_CinderBlocks_F",[19.9473,11.0273,0],0,[false,false]],
 	["Land_CinderBlocks_F",[22.9277,6.02344,0],0,[false,false]],
@@ -42,6 +38,7 @@ _missionLandscape = [
 	["Land_CinderBlocks_01_F",[3.63672,0.902344,2.38419e-007],0,[false,false]],
 	["Land_CinderBlocks_01_F",[-2.59961,2.11719,2.38419e-007],0,[false,false]],
 	["Land_CinderBlocks_01_F",[5.08398,-3.11719,2.38419e-007],0,[false,false]],
+	["Land_CinderBlocks_F",[18.0488,13.832,0],0,[false,false]],		
 	["Land_BagFence_Long_F",[30.0352,-6.17773,0],94.1174,[false,false]],
 	["Land_BagFence_Long_F",[29.6074,-2.18164,0],256.414,[false,false]],
 	["Land_BagFence_Long_F",[28.0918,1.85547,0],64.7377,[false,false]],
@@ -60,7 +57,11 @@ _missionLandscape = [
 	["Land_ConcreteWall_01_m_8m_F",[-38.4297,3.92773,0],115.41,[false,false]]
 ]; // list of objects to spawn as landscape
 _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
-_missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
+_missionLootVehicles = [
+	["I_C_Van_01_transport_brown_F",[8.09375,13.6113,0.000131369],233.88,_crateLoot,_lootCounts,0],
+	["I_C_Van_01_transport_olive_F",[5.44531,17.5313,0.000131369],234.719,_crateLoot,_lootCounts,0],
+	["Exile_Car_Ural_Open_Blue",[20.4961,-1.33398,-2.38419e-007],61.0105,_crateLoot,_lootCounts,0]
+]; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionEmplacedWeapons = []; // can be used to define the precise placement of static weapons [[1,2,3] /*loc 1*/, [2,3,4] /*loc 2*/]; if blank random locations will be used
 _minNoAI = blck_MinAI_Red;
 _maxNoAI = blck_MaxAI_Red;
@@ -69,13 +70,16 @@ _noVehiclePatrols = blck_SpawnVeh_Red;
 _noEmplacedWeapons = blck_SpawnEmplaced_Red;
 
 #ifdef blck_useCUP
-_uniforms = blck_CUPUniforms + blck_RHS_UniformsSAF;
-_weaponList = blck_CUPWeapons + blck_NIA_WeaponsAR + blck_NIA_WeaponsLMG;
-_vests = blck_RHS_VestsSAF;
-_backpacks = blck_RHS_BackpacksSAF;
+_uniforms = blck_CUPUniforms;
+_vests = blck_CUPVests;
+_backpacs = blck_CUPBackpacks;
 _headgear = blck_CUPHeadgear;
+_headgear = blck_CUPHeadgear;
+_weaponList = blck_CUPWeapons;
 #endif
-
+#ifdef blck_useNIA
+_weaponList = blck_NIA_WeaponsAR + blck_NIA_WeaponsLMG;
+#endif
 _endCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

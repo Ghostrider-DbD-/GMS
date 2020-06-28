@@ -76,40 +76,39 @@ fn_fillContainer = {
 	};	
 };
 
-private["_fn_spawnWreckMission","_group"];
-_fn_spawnWreckMission = {
-	params["_index"];
 
-	
-	private["_wreckMission","_obj","_wreck","_crashedVehicle","_obj"];
-	private["_uniforms","_headGear","_mission","_posOfCrash","_missionLandscape"];
-	_uniforms = ["U_C_Scientist","U_OrestesBody","U_NikosAgedBody","U_NikosBody"];
+blck_activeCrashSites = 0;
+_fn_spawnWreckMission = {
+	params["_index","_posOfCrash"];
+	blck_activeCrashSites  = blck_activeCrashSites + 1;
+	blck_ActiveMissionCoords pushBack _posOfCrash;	
+	private _uniforms = ["U_C_Scientist","U_OrestesBody","U_NikosAgedBody","U_NikosBody"];
 	if ((toLower blck_modType) isEqualTo "epoch") then
 	{
-		//_uniforms = _uniforms + blck_femaleUniformsEpoch;	
+		_uniforms = _uniforms + blck_femaleUniformsEpoch;	
 	};
-	_headGear = ["H_StrawHat_dark","H_StrawHat","H_Hat_brown","H_Hat_grey"];
+	private _headGear = ["H_StrawHat_dark","H_StrawHat","H_Hat_brown","H_Hat_grey"];
 	
-	_wrecks = [
+	private _wrecks = [
 		["Plane_Fighter_03_wreck_F","Fighter Crash", "A %1 lord crashed his jet fighter","Survivors secured a jet crash site",5,7,"Red","ammo",3],
 		["Land_UWreck_MV22_F","Osprey Crash", "A %1 lord crashed his MV22","Survivors secured an MV22 crash site",5,7,"Red","ammo",3],
 		["Land_Wreck_Plane_Transport_01_F","C-192 Crash", "A %1 pilot crashed a C-192","Survivors secured a C-192 crash site",5,7,"Red","supplies",3],
 		["Land_Wreck_Heli_Attack_02_F","MI-48 Crash", "A %1 pilot crashed an MI-48","Survivors secured an Mi-48 crash site",5,7,"Red","ammo",3],
 		["Land_Wreck_Heli_Attack_01_F","Blackfoot Crash","A %1 pilot crashed a Blackfoot","Survivors secured a Blackfoot crash site",5,7,"Red","ammo",3],
-		["Land_Scrap_MRAP_01_F","Hunter Crash","An MRAP was crashed in a %1 convoy","Survivors have secured the crashe site",4,5,"Blue","ammo",2],
+		["Land_Scrap_MRAP_01_F","MRAP Crash","An MRAP was crashed in a %1 convoy","Survivors have secured the crashe site",4,5,"Blue","ammo",2],
 		["Land_Wreck_Offroad2_F","Offroad Crash","A pickup in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Red","ammo",3],
 		["Land_Wreck_Offroad_F","Offroad Crash","A pickup in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Blue","ammo",2],
 		["Land_Wreck_Hunter_F","Hunter Crashed","A Hunter in a %1 convoy has crashed","Survivors have secured the crash site",5,7,"Red","ammo",3],
 		["Land_Wreck_HMMWV_F","HMMV Crash","A HMMVV in a %1 convoy has crashed","Survivors have secured the crash site",5,7,"Red","ammo",3],
 		["Land_Wreck_Ural_F","Ural Crash","A Ural in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Blue","supplies",2]
 	];
-	_mission = selectRandom _wrecks;
+	private _mission = selectRandom _wrecks;
 	_mission params ["_wreckName","_markerLabel","_startMsg","_endMsg","_minAI","_maxAI","_difficulty","_lootType","_level"];
-	_posOfCrash = [] call blck_fnc_FindSafePosn;
-	_CrashName = format["CrashSite%1",_index];
-	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> spawning a new crash site %1 spawned at %2",_CrashName,_posOfCrash];};
-	blck_heliCrashSites pushback _posOfCrash;
-	[ [_CrashName,_posOfCrash,_markerLabel,"","ColorGreen",["mil_triangle",[]]] ] call blck_fnc_spawnMarker;
+	private _CrashName = format["CrashSite%1",_index];
+	
+	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> Crash site %1 spawned at %2",_CrashName,_posOfCrash];};
+	
+	private _markers = [_CrashName,_posOfCrash,_markerLabel,"ColorGreen","mil_triangle",[],""] call blck_fnc_createMissionMarkers;
 	if (blck_modType isEqualTo "Epoch") then
 	{
 		_startMsg = format[_startMsg,"Bandit"];
@@ -120,63 +119,63 @@ _fn_spawnWreckMission = {
 	};
 
 	[["start",_startMsg,format["%1",_markerLabel]]] call blck_fnc_messageplayers;
-	_crashedVehicle = _wreckName createVehicle [0,0,0];
-	  	_crashedVehicle setpos [(_posOfCrash) select 0,(_posOfCrash) select 1,0];
-	_obj = [];
-	_missionLandscape = ["Land_WoodPile_F","Land_TentA_F","Land_TentA_F","Land_BagFence_Short_F","Land_Sacks_heap_F","Land_Sacks_heap_F","Land_Grave_rocks_F","Land_Grave_rocks_F"];
-	_obj = [_posOfCrash,_missionLandscape] call blck_fnc_spawnRandomLandscape;
+	private _crashedVehicle = _wreckName createVehicle [0,0,0];
+	_crashedVehicle setpos [(_posOfCrash) select 0,(_posOfCrash) select 1,0];
+	private _missionLandscape = ["Land_WoodPile_F","Land_TentA_F","Land_TentA_F","Land_BagFence_Short_F","Land_Sacks_heap_F","Land_Sacks_heap_F","Land_Grave_rocks_F","Land_Grave_rocks_F"];
+	private _obj = [_posOfCrash,_missionLandscape] call blck_fnc_spawnRandomLandscape;
 	_obj pushback _crashedVehicle;
-	_containers = [_posOfCrash,call fn_selectCrateType /*_containerType*/,_level] call fn_spawnLootContainers;
+	private _containers = [_posOfCrash,call fn_selectCrateType /*_containerType*/,_level] call fn_spawnLootContainers;
 	{
 		[_x,_difficulty,_lootType,_level] call fn_fillContainer;
-		_cutter0 = "Land_ClutterCutter_medium_F" createVehicle (getpos _x);	
+		private _cutter0 = "Land_ClutterCutter_medium_F" createVehicle (getpos _x);	
 		_cutter0 setVariable ["LAST_CHECK", 100000];
 		_obj pushback _cutter0;
 		_obj pushback _x;
 	}forEach _containers;
 	#define configureWaypoints true
-	_group = [] call blck_fnc_createGroup;
+	private _group = [blck_AI_Side,true]  call blck_fnc_createGroup;
 	blck_monitoredMissionAIGroups pushBack _group;
 	[_group,_posOfCrash,_posOfCrash,_minAI,_maxAI,_difficulty,10,30,configureWaypoints,_uniforms,_headGear] call blck_fnc_spawnGroup;
+	if (blck_showCountAliveAI) then
+	{
+		[_markers select 1,_markerLabel,units _group] call blck_fnc_updateMarkerAliveCount;
+		blck_missionLabelMarkers pushBack [_markers select 1,_markerLabel,units _group];
+	};		
 	if !(isNull _group) then
 	{
 		waitUntil{uiSleep 3; {(isPlayer _x) && (_x distance2d _posOfCrash) < 25 /*&& (vehicle _x == _x)*/} count allPlayers > 0};	
 	};
 	[_posOfCrash] spawn blck_fnc_missionCompleteMarker;
-	[_CrashName] call blck_fnc_deleteMarker;
+	diag_log format["crashes2 (145) _crashName = %1",_crashName];
+	[_markers select 1] call blck_fnc_deleteMarker;
 	[["end",_endMsg,_markerLabel]] call blck_fnc_messageplayers;
 	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> crash site %1 at %1 cleared",_CrashName,_posOfCrash];};
-	[_obj, blck_cleanupCompositionTimer] call blck_fnc_addObjToQue;
+	blck_oldMissionObjects pushback [_posOfCrash,_obj, blck_AliveAICleanUpTimer];	
 	[(units _group),blck_AliveAICleanUpTimer] call blck_fnc_addLiveAItoQue;
-	blck_heliCrashSites = blck_heliCrashSites - [_posOfCrash];
 	blck_recentMissionCoords pushback[_posOfCrash,diag_tickTime];
+	blck_ActiveMissionCoords = blck_ActiveMissionCoords - _posOfCrash;
+	blck_activeCrashSites = blck_activeCrashSites - 1;
 };
 
-private["_index"];
 diag_log "[blckeagls] <<--->> starting crash site monitor";
 
-_index = 0;
-_lootNum = 5;
-
-blck_heliCrashSites = [];
+private _index = 0;
+private _lootNum = 5;
 
 while {true} do
 {
-	if ((count blck_heliCrashSites) < blck_maxCrashSites)  then // Spawn another site
+	if (blck_activeCrashSites < blck_maxCrashSites)  then // Spawn another site
 	{
-		private["_start","_end"];
-		_start = diag_tickTime;
-		_end = ((blck_TMin_Crashes + random(blck_TMax_Crashes)) - blck_TMin_Crashes);
-		
-		while { (diag_tickTime - _start) < _end} do
+		uiSleep ((blck_TMin_Crashes + random(blck_TMax_Crashes)) - blck_TMin_Crashes);
+		if (diag_FPS > blck_minFPS) then 
 		{
-			////diag_log format["[crashSpawner] timer in progress for crash %1 at time of %2",_index,diag_tickTime];
-			uiSleep 30;
+			_index = _index + 1;
+			private _posOfCrash = [] call blck_fnc_findSafePosn;
+			if !(_posOfCrash isEqualTo []) then 
+			{
+				[_index,_posOfCrash] spawn _fn_spawnWreckMission;
+			};
 		};
-		waitUntil{diag_FPS > blck_minFPS};
-		_index = _index + 1;
-		diag_log "[crashSpawner] ready to spawn crash site";
-		[_index] spawn _fn_spawnWreckMission;
 	};
 	uiSleep 20;
 };

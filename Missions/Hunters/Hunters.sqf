@@ -28,15 +28,8 @@ _maxNoAI = 12;
 _noAIGroups = 3;
 _noVehiclePatrols = -1;
 _noEmplacedWeapons = -1;
-#ifdef useRHS
-_uniforms = blck_RHS_UniformsGREF;
-_vests = blck_RHS_VestsGREF;
-_backpacks = blck_RHS_BackpacksUSAF;
-_headGear = blck_RHS_HeadgearGREF;
-_weaponList = blck_NIA_WeaponsAR + blck_NIA_WeaponsLMG;
-#else
 _uniforms = ["U_OG_leader","U_O_PilotCoveralls","U_O_CombatUniform_ocamo","U_OG_leader","U_O_PilotCoveralls","U_O_CombatUniform_ocamo","U_OG_leader","U_O_PilotCoveralls","U_O_CombatUniform_ocamo","U_O_FullGhillie_lsh","U_O_FullGhillie_sard","U_O_FullGhillie_ard"];
-#endif
+
 
 if (blck_modType isEqualTo "Epoch") then
 {

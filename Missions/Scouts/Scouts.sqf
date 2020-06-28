@@ -11,6 +11,7 @@ _lootCounts = [3,5,2,3,6,1];
 _startMsg = "A group of Bandit Scouts was sighted in a nearby sector! Check the Red triangular marker on your map for the location!";
 _endMsg = "The Scout Camp is under Survivor Control!";
 _markerLabel = "Scouts";
+//_markerType = ["mil_triangle",[0,0]];
 _markerType = ["mil_triangle",[0,0]];
 _markerColor = "ColorRed";
 _markerMissionName = "Scouts";
@@ -32,7 +33,7 @@ _uniforms = blck_RHS_UniformsUSAF;
 _vests = blck_RHS_VestsUSAF;
 _backpacks = blck_RHS_BackpacksUSAF;
 _headGear = blck_RHS_HeadgearUSAF;
-_weaponList = blck_RHS_Weapons;
+_weaponList = blck_CUPWeapons;
 #else
 _uniforms = ["U_OG_Guerilla1_1","U_OG_Guerilla2_1","U_OG_Guerilla2_2","U_OG_Guerilla2_3","U_OG_Guerilla3_1","U_OG_Guerilla3_2"];
 

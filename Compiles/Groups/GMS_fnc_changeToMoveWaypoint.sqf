@@ -10,6 +10,8 @@
 	All the code and information provided here is provided under an Attribution Non-Commercial ShareAlike 4.0 Commons License.
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
+
+	// TODO: used for 'unstuck' cases
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #ifdef blck_debugMode
@@ -37,7 +39,7 @@ _maxDis = _group getVariable["maxDis",30];
 _dis = (_minDis) + random( (_maxDis) - (_minDis) );
 _newPos = (_center) getPos[_dis,_dir];
 _wp setWPPos [_newPos select 0, _newPos select 1];
-_wp setWaypointCompletionRadius (_group getVariable["wpRadius",30]);
+_wp setWaypointCompletionRadius (_group getVariable["wpRadius",0]);
 _wp setWaypointType "MOVE";
 _wp setWaypointName "move";
 _wp setWaypointBehaviour "COMBAT";
@@ -47,6 +49,7 @@ _wp setWaypointLoiterRadius (_group getVariable["wpRadius",30]);
 _wp setWaypointLoiterType "CIRCLE";
 _wp setWaypointSpeed "LIMITED";
 _group setCurrentWaypoint _wp;
+diag_log format["_fnc_changeToMoveWaypoint:: -- >> group to update is %1 and new Waypoint position is %2",_group, getWPPos _wp];
 #ifdef blck_debugMode
 if (blck_debugLevel > 2) then
 {

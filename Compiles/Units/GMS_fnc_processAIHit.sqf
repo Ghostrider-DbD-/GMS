@@ -16,7 +16,6 @@ private ["_unit","_instigator","_group","_wp"];
 _unit = _this select 0 select 0;
 _instigator = _this select 0 select 3;
 //diag_log format["_fnc_processAIHit:(19): _units = %1 and _instigator = %2 units damage is %3",_unit,_instigator, damage _unit];
-//if (true) exitWith {};
 
 //diag_log format["_fnc_processAIHit: evaluating case of ai not alive"];
 if (!(alive _unit)) exitWith {
@@ -59,7 +58,7 @@ if ((damage _unit) > 0.2 ) then
 	_unit addItem "FAK";
 	_unit action ["HealSoldierSelf",  _unit];
 	_unit setDamage 0;
-	uiSleep 1;
+	//uiSleep 1;
 	if ("FAK" in (items _unit)) then {_unit removeItem "FAK"};
 	//_unit removeItem "FAK";
 };

@@ -1,4 +1,6 @@
 /*
+	GMS_fnc_sm_spawnMission
+	
 	by Ghostrider [GRG]
 	for ghostridergaming
 	12/5/17

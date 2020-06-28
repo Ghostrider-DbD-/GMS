@@ -50,6 +50,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 
 	blck_allowSalesAtBlackMktTraders = true; // Allow vehicles to be sold at Halvjes black market traders.
 	
+	
 	blck_lightlyArmed_ARMA3 = [
 		"B_G_Offroad_01_armed_F", 
 		"O_G_Offroad_01_armed_F",
@@ -63,19 +64,29 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"I_APC_Wheeled_03_cannon_F"	
 	];
 
+	blck_light_AT_ARMA3 = [
+		"O_G_Offroad_01_AT_F", 
+		"B_G_Offroad_01_AT_F", 
+		"O_T_LSV_02_AT_F", 
+		"O_LSV_02_AT_F", 
+		"B_T_LSV_01_AT_F", 
+		"B_LSV_01_AT_F"
+	];
+	blck_tracked_AA_ARMA3 = [
+		"O_APC_Tracked_02_AA_F",
+		"B_APC_Tracked_01_AA_F"	
+	];
 	blck_tracked_APC_ARMA3 = [
 		"B_APC_Tracked_01_rcws_F",
 		"B_APC_Tracked_01_CRV_F",
-		"B_APC_Tracked_01_AA_F",
 		"O_APC_Tracked_02_cannon_F", 
-		"O_APC_Tracked_02_AA_F",
 		"O_APC_Wheeled_02_rcws_F", 
 		"I_APC_tracked_03_cannon_F"
 	];
 
 	blck_Tanks_ARMA3 = [
 		//"B_MBT_01_arty_F",
-		"B_MBT_01_mlrs_F",
+		//"B_MBT_01_mlrs_F",
 		"B_MBT_01_TUSK_F",
 		"O_MBT_02_cannon_F",
 		//"O_MBT_02_arty_F",
@@ -108,7 +119,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"CUP_O_GAZ_Vodnik_PK_RU"
 	];
 
-	_blck_Tanks_CUP = [
+	blck_Tanks_CUP = [
 		"CUP_B_M2A3Bradley_USA_D",  
 		"CUP_B_M113_desert_USA",  
 		"CUP_B_M163_USA",  
@@ -515,6 +526,15 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 				"U_B_CTRG_Soldier_urb_2_F",
 				"U_B_CTRG_Soldier_urb_3_F"
 			];
+		blck_femaleUniformsEpoch = [
+				"U_CamoBlue_uniform", "U_CamoBrn_uniform", "U_CamoPinkPolka_uniform","U_CamoPink_uniform","U_CamoOutback_uniform",
+				"U_CamoBubblegum_uniform","U_CamoBiker_uniform","U_CamoAloha_uniform","U_CamoRed_uniform"
+		];
+		blck_femaleWetsuitsEpoch = [
+			"U_Wetsuit_uniform","U_Wetsuit_White","U_Wetsuit_Blue","U_Wetsuit_Purp","U_Wetsuit_Camo"
+		];
+		blck_skinlist_male = blck_SkinList;
+		blck_SkinList = blck_femaleUniformsEpoch + blck_femaleWetsuitsEpoch + blck_SkinList_Male;			
 		blck_SkinList_blue = blck_SkinList;
 		blck_SkinList_red = blck_SkinList;
 		blck_SkinList_green = blck_SkinList;

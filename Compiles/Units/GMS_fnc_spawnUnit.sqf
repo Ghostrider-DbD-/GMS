@@ -48,7 +48,7 @@ if (blck_modType isEqualTo "Epoch") then
 	};
 	//diag_log format["_fnc_spawnUnit: for unit %1 Crypto set to %2",_unit,_unit getVariable "Crypto"];	
 };
-if (blck_modType isEqualTo "Exile") then
+if !(blck_modType isEqualTo "Epoch") then
 {
 	"i_g_soldier_unarmed_f" createUnit [_pos, _aiGroup, "_unit = this", blck_baseSkill, "COLONEL"];
 	switch(_skillLevel) do
@@ -64,32 +64,16 @@ if (blck_modType isEqualTo "Exile") then
 private _tempPos = _pos findEmptyPosition [0.1, 3, typeOf _unit];
 //diag_log format["_fnc_spawnUnit: _pos = %1 | _tempPos = %2",_pos,_tempPos];
 if !(_tempPos isEqualTo []) then {_unit setPos _tempPos};
-#ifdef blck_debugMode
-if (blck_debugLevel >= 2) then
-{
-	diag_log format["_fnc_spawnUnit::-->> unit spawned = %1",_unit];
-};
-#endif
+
 [_unit] call blck_fnc_removeGear;
 if (_scuba) then
 {
-	_unit swiminDepth (_pos select 2);
-	#ifdef blck_debugMode
-	if (blck_debugLevel >= 2) then
-	{
-		diag_log format["_fnc_spawnUnit:: -- >> unit depth = %1 and underwater for unit = %2",_pos select 2, underwater _unit];
-	};
-	#endif
+	_unit swiminDepth (([_pos] call blck_fnc_findWaterDepth) / 2);
 };
 
 _skin = "";
 _counter = 1;
-#ifdef blck_debugMode
-if (blck_debugLevel >= 2) then
-{
-	diag_log format["_fnc_spawnUnit: _uniforms = %1",_uniforms];
-};
-#endif
+
 while {_skin isEqualTo "" && _counter < 10} do
 {
 	_unit forceAddUniform (selectRandom _uniforms);
@@ -131,12 +115,11 @@ _optics = getArray (configfile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> 
 _pointers = getArray (configFile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems");
 _muzzles = getArray (configFile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "MuzzleSlot" >> "compatibleItems");
 _underbarrel = getArray (configFile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "UnderBarrelSlot" >> "compatibleItems");
-_legalOptics = _optics - blck_blacklistedOptics;
 
-_unit addMagazines [selectRandom _ammoChoices, 3];
+
 
 if (random 1 < 0.4) then {_unit addPrimaryWeaponItem (selectRandom _muzzles)};
-if (random 1 < 0.4) then {_unit addPrimaryWeaponItem (selectRandom _legalOptics)};
+if (random 1 < 0.4) then {_unit addPrimaryWeaponItem (selectRandom _optics)};
 if (random 1 < 0.4) then {_unit addPrimaryWeaponItem (selectRandom _pointers)};
 if (random 1 < 0.4) then {_unit addPrimaryWeaponItem (selectRandom _muzzles)};
 if (random 1 < 0.4) then {_unit addPrimaryWeaponItem (selectRandom _underbarrel)};
@@ -193,13 +176,7 @@ else
 
 _unit addWeapon selectRandomWeighted["",4,"Binocular",3,"Rangefinder",1];
 
-#ifdef blck_debugMode
-if (blck_debugLevel > 2) then
-{
-	diag_log format["_fnc_spawnUnit:: --> unit loadout = %1", getUnitLoadout _unit];
-};
-#endif
-
+_unit addEventHandler ["FiredNear",{_this call blck_EH_AIfiredNear;}];
 _unit addEventHandler ["Reloaded", {_this call blck_EH_unitWeaponReloaded;}];
 _unit addMPEventHandler ["MPKilled", {[(_this select 0), (_this select 1)] call blck_EH_AIKilled;}];
 _unit addMPEventHandler ["MPHit",{[_this] call blck_EH_AIHit;}];

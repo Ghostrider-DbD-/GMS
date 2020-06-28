@@ -25,7 +25,7 @@ _markerColor = "ColorGreen";
 _markerMissionName = "Munitions";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 _missionLandscape = [
-	["Flag_AltisColonial_F",[3,3],0,[false,false]],
+	["Flag_AltisColonial_F",[3,3,0],0,[false,false]],
 	["Land_Research_HQ_F",[-40.4258,-57.4492,-7.15256e-007],0,[true,false]],
 	["Land_Research_HQ_F",[79.9063,68.1406,2.38419e-007],0,[true,false]],
 	["Land_Research_house_V1_F",[-27.6895,70.9883,0],0,[true,false]],

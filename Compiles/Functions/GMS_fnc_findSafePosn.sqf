@@ -1,6 +1,3 @@
-// self explanatory. Checks to see if the position is in either a black listed location or near a player spawn. 
-// As written this relies on BIS_fnc_findSafePos to ensure that the spawn point is not on water or an excessively steep slope. 
-// 
 /*
 	for ghostridergaming
 	By Ghostrider [GRG]
@@ -14,122 +11,83 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-private["_findNew","_tries","_coords","_dist","_xpos","_ypos","_newPos","_townPos","_pole"];
-private["_minDistFromBases","_minDistFromMission","_minDistanceFromTowns","_minSistanceFromPlayers","_weightBlckList","_weightBases","_weightMissions","_weightTowns","_weightPlayers"];
-_findNew = true;
-_tries = 0;
+if (isNil "blck_locationBlackList") then {blck_locationBlackList = []};
 
-_minDistFromBases = blck_minDistanceToBases;
-_minDistFromMission = blck_MinDistanceFromMission;
-_minDistanceFromTowns = blck_minDistanceFromTowns;
-_minSistanceFromPlayers = blck_minDistanceToPlayer;
-_weightBlckList = 0.95;
-_weightBases = 0.9;
-_weightMissions = 0.8;
-_weightTowns = 0.7;
-_weightPlayers = 0.6;
-if (blck_modType isEqualTo "Epoch") then {_pole = "PlotPole_EPOCH"};
-if (blck_modType isEqualTo "Exile") then {_pole = "Exile_Construction_Flag_Static"};
-_recentMissionCoords = +blck_recentMissionCoords;
-{
-	if (diag_tickTime > ((_x select 1) + 1200)) then // if the prior mission was completed more than 20 min ago then delete it from the list and ignore the check for this location.
-	{
-		blck_recentMissionCoords deleteAt (blck_recentMissionCoords find _x);
-	};
-}forEach _recentMissionCoords;
+_fn_buildBlacklistedLocationsList = {
+	params["_minToBases","_minToPlayers","_minToMissions","_minToTowns","_minToRecentMissionLocation"];
+	/* locations of villages / cities / others already included in blck_locationBlackList so we do not need to add it here.  */
+	private _blacklistedLocs =  +blck_locationBlackList;	
 
-while {_findNew} do
-{
-	_findNew = false;
-	_coords = [blck_mapCenter,0,blck_mapRange,30,0,5,0] call BIS_fnc_findSafePos;
-	//diag_log format["_fnc_findSafePosn: _coords = %1 | _tries = %2",_coords,_tries];
-	{
-		if ( ((_x select 0) distance2D _coords) < (_x select 1)) exitWith
+	for '_i' from 1 to (count blck_recentMissionCoords) do {
+		private _loc = blck_recentMissionCoords deleteAt 0;
+		if (_loc select 1 < diag_tickTime) then 
 		{
-			_findNew = true;
+			blck_recentMissionCoords pushBack _loc;
+			_blacklistedLocs pushBack [_loc select 0, _minToRecentMissionLocation];
 		};
-	} forEach blck_locationBlackList;
-	if !(_findNew) then
-	{
-	{
-		if ((_x distance2D _coords) < _minDistFromMission) then {
-			_findNew = true;
-		};
-		}forEach blck_heliCrashSites;	
 	};	
-	if !(_findNew) then
+
 	{
-		{
-			if ( (_x distance2D _coords) < _minDistFromMission) exitWith
-			{
-				_FindNew = true;
-			};
-		} forEach blck_ActiveMissionCoords;	
+		_blacklistedLocs pushBack [_x,_minToMissions];
+	} forEach blck_ActiveMissionCoords;	
+
+	private _bases = [];
+	if (blck_modType isEqualTo "Epoch") then {_bases = nearestObjects[blck_mapCenter, ["PlotPole_EPOCH"], blck_mapRange + 25000]};
+	if (blck_modType isEqualTo "Exile") then {_bases = nearestObjects[blck_mapCenter, ["Exile_Construction_Flag_Static"], blck_mapRange + 25000]};
+
+	{
+		_blacklistedLocs pushBack [getPosATL _x,_minToBases];
+	} forEach _bases;	
+
+	{
+		_blacklistedLocs pushBack [getPosATL _x,_minToPlayers];
+	} forEach allPlayers;	
+
+	if (blck_minDistanceFromDMS > 0) then 
+	{
+		_blacklistedLocs append ([] call blck_fnc_getAllDMSMarkers);
 	};
-	if !(_findNew) then
-	{
-		{
-			if ((_x distance2D _coords) < blck_minDistanceToBases) then
-			{
-				_findNew = true;
-			};
-		}forEach  nearestObjects[blck_mapCenter, [_pole], blck_minDistanceToBases];		
-	};		
-	if !(_findNew) then
-	{
-		{
-			_townPos = [((locationPosition _x) select 0), ((locationPosition _x) select 1), 0];
-			if (_townPos distance2D _coords < blck_minDistanceFromTowns) exitWith {
-				_findNew = true;
-			};
-		} forEach blck_townLocations;	
-	};		
-	if !(_findNew) then
-	{
-		{
-			if (isPlayer _x && (_x distance2D _coords) < blck_minDistanceToPlayer) then 
-			{
-					_findNew = true;
-			};
-		}forEach playableUnits;	
-	};
-	if !(_findNew) then
-	{
-		// test for water nearby
-		_dist = 50;
-		for [{_i=0}, {_i<360}, {_i=_i+20}] do
-		{
-			_xpos = (_coords select 0) + sin (_i) * _dist;
-			_ypos = (_coords select 1) + cos (_i) * _dist;
-			_newPos = [_xpos,_ypos,0];
-			if (surfaceIsWater _newPos) then
-			{
-				_findNew = true;
-				_i = 361;
-			};
-		};
-	};
-	if (_findNew) then
-	{
-		if (_tries in [3,6,9,12,15,18,21]) then
-		{
-			_minDistFromMission = _minDistFromMission * _weightMissions;
-			_minDistFromBases = _minDistFromBases * _weightBases;
-			_minSistanceFromPlayers = _minSistanceFromPlayers * _minSistanceFromPlayers;
-			_minDistanceFromTowns = _minDistanceFromTowns * _weightTowns;
-		};
-		if (_tries > 25) then 
-		{
-			_findNew = false;
-		};
-	};
+	//diag_log format["_blacklistedLocs = %1",_blacklistedLocs];
+	_blacklistedLocs
 };
-if ((count _coords) > 2) then 
+
+private _minDistToBases = blck_minDistanceToBases;
+private _minDistToPlayers = blck_minDistanceToPlayer;
+private _minDistToTowns = blck_minDistanceFromTowns;
+private _mindistToMissions = blck_MinDistanceFromMission;
+private _minToRecentMissionLocation = 200;
+private _coords = [];
+private _blacklistedLocations = [_minDistToBases,_minDistToPlayers,_minDistToTowns,_mindistToMissions,_minToRecentMissionLocation] call _fn_buildBlacklistedLocationsList;
+//diag_log format["_blacklistedLocations = %1",_blacklistedLocations];
+private _count = 25;
+while {_coords isEqualTo [] && _count > 0} do 
 {
-	private["_temp"];
-	_temp = [_coords select 0, _coords select 1];
-	_coords = _temp;
+	/*
+		6-13-20
+		Notes 
+		increased min distance to objects from 3 to 10 
+		decreased max slope from 5 to 0.5
+	*/
+
+	_coords = [blck_mapCenter,0,blck_mapRange,10,0,0.5,0,_blacklistedLocations] call BIS_fnc_findSafePos;
+
+	/* Check whether the location is flat enough: returns [] if not. */
+	private _isFlat = _coords isFlatEmpty [20,0,0.5,100,0,false];
+	if (_coords isEqualTo [] || !(_isFlat isEqualTo [])) then 
+	{
+		{
+			//private _range = (_x select 1) * 0.7;
+			_x set[1,(_x select 1) * 0.75];
+		} forEach _blackListedLocations;
+		_count = _count - 1;
+	};
 };
-_coords;
+
+if (_coords isEqualTo []) then 
+{
+	diag_log format["[blckeagls] <ERROR> Could not find a safe position for a mission, consider reducing values for minimum distances between missions and players, bases, other missions or towns"];
+};
+_coords
+
 
 

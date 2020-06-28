@@ -9,7 +9,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-params["_markerName"];
-deleteMarker _markerName;
-deleteMarker ("label" + _markerName);
+params[["_markerName",""]];
 
+deleteMarker _markerName;
+deleteMarker (_markerName + "label");

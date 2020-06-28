@@ -15,14 +15,13 @@
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
 //diag_log "[blckeagls] Spawning Green Mission with template = default";
-_crateLoot = blck_BoxLoot_Green;
-_lootCounts = blck_lootCountsGreen;
+_crateLoot = blck_BoxLoot_Orange;
+_lootCounts = blck_lootCountsOrange;
 _startMsg = "The enemy have occupied an office complex in a nearby sector! Check the Black marker on your map for the location!";
 _endMsg = "The Sector at the Pink Marker is under survivor control!";
 
 _markerType = ["ellipse",[225,225],"GRID"];
 _markerColor = "ColorPink";
-_markerMissionName = " Colonel";
 _markerMissionName = "Office Complex";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
@@ -64,12 +63,21 @@ _missionlootvehicles = [];
 _missionLootBoxes = [
 ];
 
+#ifdef blck_milServer
+private _CUP_Tanks = [
+     "CUP_O_T90_RU",
+     "CUP_B_M1A1_DES_US_Army",
+     "CUP_B_M1A2_TUSK_MG_DES_US_Army",
+     "CUP_B_Leopard2A6_GER",
+     "CUP_B_Challenger2_NATO"
+];
+#endif
 _missionPatrolVehicles = [
      ["O_T_LSV_02_armed_F",[47086.9,35887,0],205.251],
      ["O_T_LSV_02_AT_F",[47207.8,35877.4,0],0],
      ["O_T_APC_Tracked_02_AA_ghex_F",[47094.1,35924.2,2.38419e-007],297.601],
-     ["O_MBT_04_command_F",[47099.8,35845.4,0],227.158],
-     ["O_MBT_04_command_F",[47184.5,35932.1,0],29.7763],
+     [selectRandom _CUP_Tanks,[47099.8,35845.4,0],227.158],
+     [selectRandom _CUP_Tanks,[47184.5,35932.1,0],29.7763],
      ["O_T_APC_Tracked_02_AA_ghex_F",[47194.1,35850.3,2.38419e-007],109.403]
 ];
 

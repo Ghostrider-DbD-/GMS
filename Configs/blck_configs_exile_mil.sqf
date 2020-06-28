@@ -99,7 +99,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"I_MBT_03_cannon_F"
 	];
 	#ifdef useCUP
-	_blck_APC_CUP = [
+	blck_APC_CUP = [
 		"CUP_B_Mastiff_GMG_GB_D",  
 		"CUP_B_Mastiff_HMG_GB_D",  
 		"CUP_B_Ridgback_HMG_GB_D",  
@@ -125,7 +125,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"CUP_O_GAZ_Vodnik_PK_RU"
 	];
 
-	_blck_Tanks_CUP = [
+	blck_Tanks_CUP = [
 		"CUP_B_M2A3Bradley_USA_D",  
 		//"CUP_B_M113_desert_USA",  
 		//"CUP_B_M163_USA",  
@@ -157,6 +157,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		//"CUP_O_BMP1_TKA""
 	];
 	#endif
+
 	blck_AIPatrolVehicles = 
 	[
 	//"Exile_Car_Offroad_Armed_Guerilla01",
@@ -185,6 +186,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	"B_APC_Tracked_01_rcws_F"																						
 	]; // Type of vehicle spawned to defend AI bases	
 
+	///  Defined again below in this instance to show options available and also my personal preferences for mil servers
 	blck_AIPatrolVehiclesBlue = [	
 		"Exile_Car_Offroad_Armed_Guerilla01",
 		"Exile_Car_Offroad_Armed_Guerilla02",

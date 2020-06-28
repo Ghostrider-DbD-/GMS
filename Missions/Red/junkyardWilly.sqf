@@ -45,10 +45,13 @@ _noEmplacedWeapons = blck_SpawnEmplaced_Red;
 //  Change _useMines to true/false below to enable mission-specific settings.
 #ifdef blck_useCUP
 _uniforms = blck_CUPUniforms;
-_weaponList = blck_CUPWeapons + blck_NIA_WeaponsSniper;
+_weaponList = blck_CUPWeapons;
 _vests = blck_CUPVests;
 _backpacks = blck_CUPBackpacks;
 _headgear = blck_CUPHeadgear;
+#endif
+#ifdef blck_useNIA
+_weaponList = _weaponList +  + blck_NIA_WeaponsSniper;
 #endif
 
 _endCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"

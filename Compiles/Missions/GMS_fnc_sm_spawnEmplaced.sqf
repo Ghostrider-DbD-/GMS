@@ -38,17 +38,19 @@ if (_missionEmplacedWeapons isEqualTo []) then
 	_difficulty = _x select 2;
 	
 	//  params["_pos", ["_numai1",5], ["_numai2",10], ["_skillLevel","red"], "_center", ["_minDist",20], ["_maxDist",35], ["_uniforms",blck_SkinList], ["_headGear",blck_headgear] ];
-	private _empGroup = [] call blck_fnc_createGroup;
+	private _empGroup = [blck_AI_Side,true]  call blck_fnc_createGroup;
 	if !(_empGroup) then 
 	{
 		[_empGroup,_pos,1,1,_difficulty,_pos,1,2,_uniforms,_headGear,false] call blck_fnc_spawnGroup;
 		_empGroup setcombatmode "RED";
 		_empGroup setBehaviour "COMBAT";
-		[_pos,0.01,0.02,_empGroup,"random","SAD","emplaced"] spawn blck_fnc_setupWaypoints;
+		//  // params["_pos","_minDis","_maxDis","_group",["_mode","random"],["_wpPatrolMode","SAFE"],["_soldierType","null"],["_patrolRadius",30],["_wpTimeout",[5.0,7.5,10]]];	
+		// Not sure of the value of giving waypoints here	
+		//[_pos,0.01,0.02,_empGroup,"random","SAD","emplaced"] spawn blck_fnc_setupWaypoints;
 		//if (isNull _empGroup) exitWith {_abort = _true};
 		_wep = [_wepnClassName,[0,0,0],false] call blck_fnc_spawnVehicle;
 		//_empGroup setVariable["groupVehicle",_wep];
-		_wep setVariable["vehicleGroup",_empGroup];
+		//_wep setVariable["vehicleGroup",_empGroup];
 		_wep setVariable["GRG_vehType","emplaced"];	
 		_wep setPosATL _pos;
 		[_wep,false] call blck_fnc_configureMissionVehicle;	

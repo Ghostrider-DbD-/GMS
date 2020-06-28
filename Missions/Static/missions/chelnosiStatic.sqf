@@ -309,7 +309,8 @@ _aiGroupParameterChoices = [
 _aiGroupParameters = [];
 for "_i" from 1 to 15 do
 {
-     _g = _aiGroupParameterChoices deleteAt round(random(count _aiGroupParameterChoices));
+     _aiGroupParameterChoices call BIS_fnc_arrayShuffle;
+     _g = _aiGroupParameterChoices deleteAt 0;
      if !(_g isEqualTo []) then
      {
           _aiGroupParameters pushBack _g;

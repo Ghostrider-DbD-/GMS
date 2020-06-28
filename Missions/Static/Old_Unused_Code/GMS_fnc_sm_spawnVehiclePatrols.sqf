@@ -28,22 +28,14 @@ if (_vehiclePatrolSpawns isEqualTo []) then
 };
 
 {
-	private ["_vehicle","_spawnPos","_difficulty","_patrolRadius"];
-	_vehicle = _x select 0;
-	_spawnPos = _x select 1;
-	_difficulty = _x select 2;
-	_patrolRadius = _x select 3;
-	//_newGroup = [_x,_unitsPerGroup,_unitsPerGroup,_aiDifficultyLevel,_coords,_minDist,_maxDist,_uniforms,_headGear,true,_weapons,_vests,_isScubaGroup] call blck_fnc_spawnGroup;
+	_x params ["_vehicle","_spawnPos","_difficulty","_patrolRadius"];
 	_vehGroup = [_spawnPos,_spawnPos,3,3,_difficulty,1,2,_uniforms,_headGear,false] call blck_fnc_spawnGroup;
-
-	//params["_center","_pos",["_vehType","I_G_Offroad_01_armed_F"],["_minDis",30],["_maxDis",45],["_group",grpNull]];
-	_patrolVehicle = [_spawnPos,_spawnPos,_vehicle,_patrolRadius,_patrolRadius,_vehGroup] call blck_fnc_spawnVehiclePatrol;
-	//_vehGroup setVariable["groupVehicle",_vehicle];
-
-	if !(isNull _patrolVehicle) then
-	{
-		_patrolVehicle setVariable["vehicleGroup",_vehGroup];
-	};
+	//params["_center","_pos",["_vehType","I_G_Offroad_01_armed_F"],["_minDis",40],["_maxDis",60],["_group",grpNull],["_setWaypoints",true],["_crewCount",4],["_patrolRadius",150],["_waypointTimeout",[5,7.5,10]]]
+	_patrolVehicle = [_spawnPos,_spawnPos,_vehicle,_patrolRadius,_patrolRadius,_vehGroup,[_aiDifficultyLevel]call blck_fnc_selectVehicleCrewCount] call blck_fnc_spawnVehiclePatrol;
+	//if !(isNull _patrolVehicle) then
+	//{
+		//_patrolVehicle setVariable["vehicleGroup",_vehGroup];
+	//};
 } forEach _vehiclePatrolSpawns;
 
 true
