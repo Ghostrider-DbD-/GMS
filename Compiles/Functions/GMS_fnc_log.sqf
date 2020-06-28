@@ -1,6 +1,6 @@
 
 
-params["_message",["_code",""]]];
+params["_message",["_code",""]];
 switch (toLower _code) do 
 {
 	case "error": {_message = format["[blckeagls]  <ERROR>  %1",_message]};

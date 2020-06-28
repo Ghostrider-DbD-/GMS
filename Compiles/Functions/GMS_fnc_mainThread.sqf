@@ -5,7 +5,7 @@
 	License
 	--------------------------
 	All the code and information provided here is provided under an Attribution Non-Commercial ShareAlike 4.0 Commons License.
-
+	?? change to Arma share and share alike license ?
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
@@ -22,8 +22,7 @@ while {true} do
 	uiSleep 1;
 	if (diag_tickTime > _timer1sec) then 
 	{		
-		[] spawn blck_fnc_monitorInitializedMissions;
-		[] spawn blck_fnc_spawnInitializedMissions;			
+		//[] spawn blck_fnc_monitorInitializedMissions;	
 		if (blck_showCountAliveAI) then
 		{
 			{
@@ -52,7 +51,8 @@ while {true} do
 	if ((diag_tickTime > _timer1min)) then
 	{
 		_timer1min = diag_tickTime + 60;
-		//[] call blck_fnc_spawnPendingMissions;
+		[] call blck_fnc_spawnPendingMissions;  //  This is the first stage in spawning things ???
+		//[] spawn blck_fnc_spawnInitializedMissions;	// Seems like a needless step, try to combine with the above			
 		[] call blck_fnc_groupWaypointMonitor; 
 		//if (blck_dynamicUMS_MissionsRuning < blck_numberUnderwaterDynamicMissions) then {[] spawn blck_fnc_addDyanamicUMS_Mission};
 		if (blck_useHC) then {[] call blck_fnc_HC_passToHCs};

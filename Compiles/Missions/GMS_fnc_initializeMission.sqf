@@ -22,9 +22,9 @@ params["_missionCategoryDescriptors","_missionParameters"];
 		"_missionsData"  // 
 	];
 
-/*
+
 {
-	 diag_log format["fnc_initializeMission: _missionCategoryDescriptors:%1 = %2",_x,_missionCategoryDescriptors select _forEachIndex];
+	 ["fnc_initializeMission: _missionCategoryDescriptors:%1 = %2",_x,_missionCategoryDescriptors select _forEachIndex] call blck_fnc_log;
 } forEach [
 	"_difficulty",
 	"_noMissions",  // Max no missions of this category
@@ -34,7 +34,7 @@ params["_missionCategoryDescriptors","_missionParameters"];
 	"_waitTime",  // time at which a mission should be spawned
 	"_missionsData"  // 
 	];
-*/
+
 
 if (_noActive > _noMissions) exitWith {if (blck_debugOn) then {}};
 
@@ -71,6 +71,7 @@ _missionParameters params[
 	"_scubaGroupParameters",		
 	"_hostageConfig",
 	"_enemyLeaderConfig",
+	"_assetKilledMsg",
 	"_uniforms", 
 	"_headgear", 
 	"_vests", 
@@ -129,6 +130,7 @@ _missionParameters params[
 	"_scubaGroupParameters",		
 	"_hostageConfig",
 	"_enemyLeaderConfig",
+	"_assetKilledMsg",	
 	"_uniforms", 
 	"_headgear", 
 	"_vests", 
@@ -187,18 +189,20 @@ private _markers = [];
 */
 private _markerName = format["%1:%2",_markerMissionName,blck_missionsRun];
 //diag_log format["_initializeMission: _markerName = %1",_markerName];
-private "_missionMarkerPosition";
+private "_markerPos";
 if (blck_labelMapMarkers select 0) then
 {
-	_missionMarkerPosition = _coords;
+	_markerPos = _coords;
 };
 if !(blck_preciseMapMarkers) then
 {
-	_missionMarkerPosition = [_coords,75] call blck_fnc_randomPosition;
+	_markerPos = [_coords,75] call blck_fnc_randomPosition;
 };
 
-private _markers = [_markerName,_coords,_markerMissionName,_markerColor,_markerType,_markerSize,_markerBrush] call blck_fnc_createMarker;
-_markers params["_mainMarker",["_labelMarker",""]];
+_markerType params["_type",["_size",[250,250]],["_brush","GRID"]];
+private _markers = [_markerName,_markerPos,_markerMissionName,_markerColor,_type,_size,_brush] call blck_fnc_createMissionMarkers;
+//private _markers = [_markerName,_coords,_markerMissionName,_markerColor,_markerType,_markerSize,_markerBrush] call blck_fnc_createMarker;
+//_markers params["_mainMarker",["_labelMarker",""]];
 
 /*
 	Send a message to players.
@@ -216,7 +220,7 @@ private _blck_AllMissionAI = [];
 private _AI_Vehicles = [];
 private _assetSpawned = objNull;
 
-private _missionData = [_coords,_mines,_objects,_crates, _blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_mainMarker,_labelMarker];
+private _missionData = [_coords,_mines,_objects,_crates, _blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_markers];
 blck_activeMissionsList pushBack [_missionCategoryDescriptors,_missionTimeoutAt,_triggered,_spawnPara,_missionData,_missionParameters];
 
 true

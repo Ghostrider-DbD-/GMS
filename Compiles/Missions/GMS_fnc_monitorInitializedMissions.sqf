@@ -2,7 +2,7 @@
 	GMS_fnc_monitorInitializedMissions
 	by Ghostrider-GRG-
 */
-//diag_log format["fnc_monitorInitializedMissions: time = %1 | count  blck_activeMissionsList %2 | blck_activeMissionsList %3",diag_tickTime,count blck_activeMissionsList,blck_activeMissionsList];
+diag_log format["fnc_monitorInitializedMissions: time = %1 | count  blck_activeMissionsList %2 | blck_activeMissionsList %3",diag_tickTime,count blck_activeMissionsList,blck_activeMissionsList];
 for "_i" from 1 to (count blck_activeMissionsList) do 
 {
 
@@ -72,7 +72,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 	#define setMissionData _missionData = [_coords,_mines,_objects,_crates, _blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_mainMarker,_labelMarker];
 	//private _missionData = [_coords,_mines,_objects,_crates, _blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_mainMarker,_labelMarker];	
 						//   0       1       2          3         4                    5                6                    7             8
-	_missionData params ["_coords","_mines","_objects","_crates","_blck_AllMissionAI","_assetSpawned","_missionAIVehicles","_mainMarker","_labelMarker"];
+	_missionData params ["_coords","_mines","_objects","_crates","_blck_AllMissionAI","_assetSpawned","_missionAIVehicles","_markers"];
 	
 	/*
 	{
@@ -113,6 +113,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 		"_scubaGroupParameters",		
 		"_hostageConfig",
 		"_enemyLeaderConfig",
+		"_assetKilledMsg",		
 		"_uniforms", 
 		"_headgear", 
 		"_vests", 
@@ -158,7 +159,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 		}; 
 	};
 	//diag_log format["_monitorInitializedMissions(149): _triggered = %1 | _monitorAction = %2",_triggered,_monitorAction];
-	private _blck_localMissionMarker = [_markerType,_coords,"","",_markerColor,_markerType];	
+	
 	switch (_monitorAction) do 
 	{
 		// Handle Timeout
@@ -166,8 +167,9 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 		{
 				diag_log format["_fnc_monitorInitializedMissions: mission timed out: %1",_el];
 				_missionCategoryDescriptors set[noActive, _noActive - 1];
-				// params ["_mines","_objects","_crates","_blck_AllMissionAI","_endMsg","_mainMarker","_labelMarker","_markerClass","_coords",["_endCondition",0]]
-				[_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_mainMarker,_labelMarker,_markerType,_coords,1] call blck_fnc_endMission;			
+				_markers params["_mainMarker",["_lableMarker",""]];
+				[_coords,_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_markers,markerPos _mainMarker,_markerName,_markerMissionName,  1] call blck_fnc_endMission;
+				//[_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_mainMarker,_labelMarker,_markerType,_coords,1] call blck_fnc_endMission;			
 		}; 			
 		
 		//  Handle mission waiting to be triggerd and player is within the range to trigger		
@@ -357,8 +359,9 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 				if (blck_showCountAliveAI) then
 				{
-						[_mainMarker,_labelMarker,_markerMissionName,_blck_AllMissionAI] call blck_fnc_updateMarkerAliveCount;
+					blck_missionLabelMarkers pushBack [_markers select 1,_markerMissionName,_blck_AllMissionAI];
 				};
+				
 				{
 					_x setVariable["crateSpawnPos", (getPos _x)];
 				} forEach _crates;			
@@ -379,9 +382,9 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 				if (_exception isEqualTo 1) then 
 				{
 					_missionCategoryDescriptors set[noActive, _noActive - 1];				
-					// params ["_mines","_objects","_crates","_blck_AllMissionAI","_endMsg","_mainMarker","_labelMarker","_markerClass","_coords",["_endCondition",0]]
-					[_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_mainMarker,_labelMarker,_markerType,_coords,  1] call blck_fnc_endMission;	
-					diag_log format["[blkeagls] <WARNING> grpNull returned by one or more critical functions, mission spawning aborted!"];
+					_markers params["_mainMarker",["_lableMarker",""]];
+					[_coords,_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_markers,markerPos _mainMarker,_markerName,_markerMissionName,  1] call blck_fnc_endMission;
+					["Critial Error returned by one or more critical functions, mission spawning aborted!",'error'] call blck_fnc_log;
 				};
 			};
 		};
@@ -400,10 +403,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 				case "allKilledOrPlayerNear": {_secureAsset = false; _endIfPlayerNear = true;_endIfAIKilled = true;};
 				case "assetSecured": {_secureAsset = true; _endIfPlayerNear = false; _endIfAIKilled = false;};
 			};
-			if (blck_showCountAliveAI) then
-			{
-				[_mainMarker,_labelMarker,_markerMissionName,_blck_AllMissionAI] call blck_fnc_updateMarkerAliveCount;
-			};
+
 			try {
 				if (blck_debugLevel == 5) throw 1;
 				if (blck_debugLevel == 6) then {
@@ -545,8 +545,6 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 									};
 								};
 
-								_blck_localMissionMarker set [2, _markerMissionName];
-
 								if (_secureAsset && (alive _assetSpawned)) then
 								{
 									if (_assetSpawned getVariable["assetType",0] isEqualTo 1) then
@@ -569,8 +567,8 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 									};
 								};
 								diag_log format["_fnc_monitorInitializedMissions (430) calling <_fnc_endMission> | _cords %1 : _markerType %2 :  _difficulty %3 _markerMissionName %4",_coords,_markerType,_difficulty,_markerMissionName];														
-								// 	params ["_mines","_objects","_crates","_blck_AllMissionAI","_endMsg","_mainMarker","_labelMarker","_markerClass","_coords",["_endCondition",0]];
-								[_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_mainMarker,_labelMarker,_markerType,_coords, 0] call blck_fnc_endMission;
+
+								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_markers,markerPos _markers select 0,_markerName,_markerLabel, 0] call blck_fnc_endMission;
 								//diag_log format["_fnc_monitorInitializedMissions (430) Mission Completed | _cords %1 : _markerType %2 :  _difficulty %3 _markerMissionName %4",_coords,_markerType,_difficulty,_markerMissionName];						
 								_waitTime = diag_tickTime + _tMin + random(_tMax - _tMin);
 								/*
@@ -605,16 +603,12 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 								*/
 					};
 					case 2: { // Abort, crate moved.
-								//[_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_mainMarker,_labelMarker,_markerType,_coords, 0] 
-								[_mines,_objects,_crates, _blck_AllMissionAI,"Crate Removed from Mission Site Before Mission Completion: Mission Aborted",_mainMarker,_labelMarker,_markerType,_coords,2] call blck_fnc_endMission;
 								_endMsg = "Crate Removed from Mission Site Before Mission Completion: Mission Aborted";
-								[_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_mainMarker,_labelMarker,_markerType,_coords, 0] call blck_fnc_endMission;
+								[_coords,_mines,_objects,_crates, _blck_AllMissionAI,"Crate Removed from Mission Site Before Mission Completion: Mission Aborted",_markers,markerPos _markers select 0,_markerName,_markerLabel,  2] call blck_fnc_endMission;
 							};
 					case 3: {  // Abort, key asset killed		
 								diag_log format["Asset Killed, aborting mission"];		
-								#define missionAbort 1
-								//[_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_mainMarker,_labelMarker,_markerType,_coords, 0]
-								[_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_mainMarker,_labelMarker,_markerType,_coords, missionAbort] call blck_fnc_endMission;
+								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_assetKilledMsg,_markers,markerPos _markers select 0,_markerName,_markerLabel, -1] call blck_fnc_endMission;
 							};
 				};
 			};

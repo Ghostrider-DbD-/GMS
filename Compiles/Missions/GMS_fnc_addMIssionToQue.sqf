@@ -20,7 +20,7 @@ params["_missionList","_path","_marker","_difficulty","_tMin","_tMax",["_noMissi
 	{
 		private _missionFile = format["\q\addons\custom_server\Missions\%1\%2.sqf",_path,_x];
 		private _missionCode = compileFinal preprocessFileLinenumbers _missionFile;//return all of the values that define how the mission is spawned as an array of values.
-		private _data = [] call _missionCode;
+		private _data = [_marker,_difficulty] call _missionCode;
 		_missionsData pushBack _data;
 	} forEach _missionList;
 
