@@ -15,7 +15,7 @@
 private _functions = [
 	// General functions
 	["blck_fnc_waitTimer","\q\addons\custom_server\Compiles\Functions\GMS_fnc_waitTimer.sqf"],
-	["blck_fnc_timedOut","\q\addons\custom_server\Compiles\Functions\GMS_fnc_timedOut.sqf"],
+	//["blck_fnc_timedOut","\q\addons\custom_server\Compiles\Functions\GMS_fnc_timedOut.sqf"],
 	["blck_fnc_FindSafePosn","\q\addons\custom_server\Compiles\Functions\GMS_fnc_findSafePosn.sqf"],
 	["blck_fnc_findSafePosn_2","\q\addons\custom_server\Compiles\Functions\GMS_fnc_findSafePosn_2.sqf"],
 	["blck_fnc_randomPosition","\q\addons\custom_server\Compiles\Functions\GMS_fnc_randomPosn.sqf"],							// find a randomPosn. see script for details.
