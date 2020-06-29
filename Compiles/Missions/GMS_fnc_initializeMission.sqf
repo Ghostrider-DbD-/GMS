@@ -24,7 +24,7 @@ params["_missionCategoryDescriptors","_missionParameters"];
 
 
 {
-	 ["fnc_initializeMission: _missionCategoryDescriptors:%1 = %2",_x,_missionCategoryDescriptors select _forEachIndex] call blck_fnc_log;
+	[ format["fnc_initializeMission: _missionCategoryDescriptors:%1 = %2",_x,_missionCategoryDescriptors select _forEachIndex]] call blck_fnc_log;
 } forEach [
 	"_difficulty",
 	"_noMissions",  // Max no missions of this category
@@ -62,7 +62,6 @@ _missionParameters params[
 	"_vehicleCrewCount",				// 21
 	"_missionEmplacedWeapons",			// 22
 	"_noEmplacedWeapons", 				// 23
-	"_missionLootVehicles",				// 24
 	"_useMines", 						// 25
 	"_minNoAI", 						// 26
 	"_maxNoAI", 
@@ -94,7 +93,7 @@ _missionParameters params[
 	"_isScubaMission"
 ];
 
-/*
+
  {
 	 diag_log format["fnc_initializeMission: _missionParameters:%1 = %2",_x,_missionParameters select _forEachIndex];
  } forEach [
@@ -121,7 +120,6 @@ _missionParameters params[
 	"_vehicleCrewCount",
 	"_missionEmplacedWeapons",
 	"_noEmplacedWeapons", 
-	"_missionLootVehicles",
 	"_useMines", 
 	"_minNoAI", 
 	"_maxNoAI", 
@@ -152,7 +150,7 @@ _missionParameters params[
 	"_endCondition",
 	"_isScubaMission"
 ];
-*/
+
 //diag_log format["_fnc_initializeMission: _isScubaMission = %1",_isScubaMission];
 _coordsArray = [];
 if !(_defaultMissionLocations isEqualTo []) then 

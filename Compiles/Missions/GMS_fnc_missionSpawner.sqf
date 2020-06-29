@@ -74,7 +74,6 @@ _markerType params["_markerType",["_markersize",[250,250]],["_markerBrush","GRID
 private _paraSkill = _aiDifficultyLevel;
 
 private _table = [
-	//_markerClass,  //  duplicate really, not used, ignore going foward as of build 186
 	_defaultMissionLocations,		
 	_crateLoot, // 0
 	_lootCounts, // 1
@@ -85,7 +84,6 @@ private _table = [
 	_markerColor, 
 	_markerSize,
 	_markerBrush,
-	//_markerLabel,		// Never Used, ignore going forward as of Build 186
 	_missionLandscapeMode, 	
 	_garrisonedBuildings_BuildingPosnSystem, 
 	_garrisonedBuilding_ATLsystem,
@@ -99,7 +97,6 @@ private _table = [
 	_vehicleCrewCount,
 	_missionEmplacedWeapons,
 	_noEmplacedWeapons, 
-	_missionLootVehicles,
 	_useMines, 
 	_minNoAI, 
 	_maxNoAI, 
@@ -108,6 +105,7 @@ private _table = [
 	_scubaGroupParameters,		
 	_hostageConfig,
 	_enemyLeaderConfig,
+	_assetKilledMsg,
 	_uniforms, 
 	_headgear, 
 	_vests, 

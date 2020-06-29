@@ -22,7 +22,7 @@ while {true} do
 	uiSleep 1;
 	if (diag_tickTime > _timer1sec) then 
 	{		
-		//[] spawn blck_fnc_monitorInitializedMissions;	
+		[] spawn blck_fnc_monitorInitializedMissions;	
 		if (blck_showCountAliveAI) then
 		{
 			{
@@ -52,7 +52,7 @@ while {true} do
 	{
 		_timer1min = diag_tickTime + 60;
 		[] call blck_fnc_spawnPendingMissions;  //  This is the first stage in spawning things ???
-		//[] spawn blck_fnc_spawnInitializedMissions;	// Seems like a needless step, try to combine with the above			
+		//[] spawn blck_fnc_spawnInitializedMissions;	// Seems like a needless step, try to combine with the above - done, needs testing			
 		[] call blck_fnc_groupWaypointMonitor; 
 		//if (blck_dynamicUMS_MissionsRuning < blck_numberUnderwaterDynamicMissions) then {[] spawn blck_fnc_addDyanamicUMS_Mission};
 		if (blck_useHC) then {[] call blck_fnc_HC_passToHCs};

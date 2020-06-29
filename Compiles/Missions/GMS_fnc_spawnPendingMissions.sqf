@@ -14,52 +14,26 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-
-
 if (blck_missionsRunning >= blck_maxSpawnedMissions) exitWith {};
 
 diag_log format["_fnc_spawnPendingMissions: count blck_missionData = %1",count blck_missionData];
 {	
-	/*
-	_missionCategoryDescriptors params [
-			"_difficulty",
-			"_noMissions",  // Max no missions of this category
-			"_noActive",  // Number active 
-			"_tMin", // Used to calculate waittime in the future
-			"_tMax", // as above
-			"_waitTime",  // time at which a mission should be spawned
-			"_missionsData"  // 
-		];
-	*/	
 	private _missionCategoryDescriptors = _x;	
-								// 0		1					2				   						3		4		  5	       6	   
 	_missionCategoryDescriptors params["_difficulty","_maxNoMissions","_noActiveMissions","_tMin","_tMax","_waitTime","_missionsData"];
-	
 	
 	{
 		diag_log format["_fnc_spawnPendingMissions: _missionCategoryDescriptors param %1 = %2",_x,_missionCategoryDescriptors select _forEachIndex];
 	} forEach ["_difficulty","_maxNoMissions","_noActiveMissions","_tMin","_tMax","_waitTime","_missionsData"];
 	
-	
 	if (_noActiveMissions < _maxNoMissions && diag_tickTime > _waitTime && blck_missionsRunning < blck_maxSpawnedMissions) then 
 	{
 		// time to reset timers and spawn something.
 		private _wt = diag_tickTime + _tmin + (random(_tMax - _tMin));
-
 		#define waitTime 5
 		#define noActive 2
-		
 		_x set[waitTime, _wt];  // _x here is the _missionCategoryDescriptors being evaluated
-		//_x set[timesSpawned, _timesSpawned + 1];
 		_x set[noActive, _noActiveMissions + 1];
-		//private _m = ;
-		//private _mrkr = format["%1:%2",_marker,_timesSpawned];
-
-		//uisleep 1;  // only for debugging purposes.  
-		//  TODO: comment out uiSleep at a later time.
-		//[_x,selectRandom _missionsData] call blck_fnc_initializeMission;
-		//diag_log format["_fnc_spawnPendingMissions: adding mission to cue of missions to be initialized using _x %1 | _noActive %2 | _waitTime %3",_x,_noActiveMissions,_wt];			
-		blck_initializedMissionsList pushBack [_x,selectRandom _missionsData];
+		private _missionInitialized = [_x,selectRandom _missionsData] call blck_fnc_initializeMission;
 	};
 } forEach blck_missionData;
 
