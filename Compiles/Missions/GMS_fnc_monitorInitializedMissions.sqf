@@ -123,7 +123,7 @@ _missionParameters params[
 		{
 				diag_log format["_fnc_monitorInitializedMissions: mission timed out: el = %1 | blck_MissionTimeout = %2",_el, blck_MissionTimeout];
 				_missionCategoryDescriptors set[noActive, _noActive - 1];
-				[_coords,_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 0),_markerName,_markerMissionName,  1] call blck_fnc_endMission;
+				[_coords,_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName,  1] call blck_fnc_endMission;
 		}; 			
 		
 		//  Handle mission waiting to be triggerd and player is within the range to trigger		
@@ -215,7 +215,6 @@ _missionParameters params[
 				};		
 				uisleep 3;
 
-				diag_log format["_fnc_monitorInitializedMissions (271): spawning garrisons using ATL coordinate system as needed: _garrisonedBuilding_ATLsystem == %1",_garrisonedBuilding_ATLsystem];
 				if (count _garrisonedBuilding_ATLsystem > 0) then  // Note that there is no error checking here for nulGroups
 				{
 					private _temp = [_coords, _garrisonedBuilding_ATLsystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_garrisonBuilding_ATLsystem;
@@ -229,7 +228,6 @@ _missionParameters params[
 				};	
 				uiSleep 3;
 
-				diag_log format["_fnc_monitorInitializedMissions (285): spawning garrisons using relative coordinate system as needed: _garrisonedBuildings_BuildingPosnSystem == %1",_garrisonedBuildings_BuildingPosnSystem];
 				if (count _garrisonedBuildings_BuildingPosnSystem > 0) then
 				{
 					private _temp = [_coords, _garrisonedBuildings_BuildingPosnSystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_garrisonBuilding_RelPosSystem;
@@ -316,7 +314,7 @@ _missionParameters params[
 				if (_exception isEqualTo 1) then 
 				{
 					_missionCategoryDescriptors set[noActive, _noActive - 1];				
-					[_coords,_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 0),_markerName,_markerMissionName,  1] call blck_fnc_endMission;
+					[_coords,_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName,  1] call blck_fnc_endMission;
 					["Critial Error returned by one or more critical functions, mission spawning aborted!",'error'] call blck_fnc_log;
 				};
 			};
@@ -487,7 +485,7 @@ _missionParameters params[
 									};
 								};
 								//diag_log format["_fnc_monitorInitializedMissions (430) calling <_fnc_endMission> | _cords %1 : _markerType %2 :  _difficulty %3 _markerMissionName %4",_coords,_markerType,_difficulty,_markerMissionName];														
-								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 0),_markerName,_markerMissionName, 0] call blck_fnc_endMission;
+								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName, 0] call blck_fnc_endMission;
 								diag_log format["_fnc_monitorInitializedMissions (430) Mission Completed | _cords %1 : _markerType %2 :  _difficulty %3 _markerMissionName %4",_coords,_markerType,_difficulty,_markerMissionName];						
 								_waitTime = diag_tickTime + _tMin + random(_tMax - _tMin);
 								_missionCategoryDescriptors set [noActive,_noActive - 1];
@@ -495,11 +493,11 @@ _missionParameters params[
 					};
 					case 2: { // Abort, crate moved.
 								_endMsg = "Crate Removed from Mission Site Before Mission Completion: Mission Aborted";
-								[_coords,_mines,_objects,_crates, _blck_AllMissionAI,"Crate Removed from Mission Site Before Mission Completion: Mission Aborted",_markers,markerPos (_markers select 0),_markerName,_markerMissionName,  2] call blck_fnc_endMission;
+								[_coords,_mines,_objects,_crates, _blck_AllMissionAI,"Crate Removed from Mission Site Before Mission Completion: Mission Aborted",_markers,markerPos (_markers select 1),_markerName,_markerMissionName,  2] call blck_fnc_endMission;
 							};
 					case 3: {  // Abort, key asset killed		
 								diag_log format["Asset Killed, aborting mission"];		
-								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_assetKilledMsg,_markers,markerPos (_markers select 0),_markerName,_markerMissionName, -1] call blck_fnc_endMission;
+								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_assetKilledMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName, -1] call blck_fnc_endMission;
 							};
 				};
 			};
