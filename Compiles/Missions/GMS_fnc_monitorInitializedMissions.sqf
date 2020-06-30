@@ -114,7 +114,6 @@ _missionParameters params[
 				_monitorAction = 1;
 		}; 
 	};
-	//diag_log format["_monitorInitializedMissions(149): _triggered = %1 | _monitorAction = %2 | _missionTimeoutAt = %3 | time = %4",_triggered,_monitorAction,_missionTimeoutAt,diag_tickTime];
 	
 	switch (_monitorAction) do 
 	{
@@ -306,7 +305,6 @@ _missionParameters params[
 				// Everything spawned withouth serous errors so lets keep the mission active for future monitoring
 
 				blck_activeMissionsList pushBack _el;	
-				diag_log format["_fnc_monitorInitializedMissions (366): all objects, men and vehicles spawened, blck_activeMissionsList= %1", blck_activeMissionsList];										
 			} 
 			
 			catch 
@@ -322,7 +320,6 @@ _missionParameters params[
 
 		case 1:
 		{
-			//diag_log format["_fnc_moniorInitializedMissions(398): evaluating status of mission %1 | _missionTimeoutAt = %2 | time = %3 | _crates = %4",_el,_missionTimeoutAt,diag_tickTime,_crates];
 			private _missionComplete = -1;
 			private ["_secureAsset","_endIfPlayerNear","_endIfAIKilled"];
 		
@@ -345,13 +342,11 @@ _missionParameters params[
 
 				if (_endIfPlayerNear) then
 				{
-					//diag_log format["_fnc_monitorInitializedMissions: mission ended, condition player near, mission %1",_el];
 					if (_playerIsNear) throw 1; // mission complete
 				};
 
 				if (_endIfAIKilled) then
 				{
-					//diag_log format["_fnc_monitorInitializedMissions: mission ended, condition AI Killed, mission %1",_el];	
 					if (_aiKilled) throw 1;
 				};
 
@@ -384,21 +379,17 @@ _missionParameters params[
 				{		
 					if !(alive _assetSpawned) then 
 					{
-						//diag_log format["_line 498 asset %1 killed throwing error with code 3",_assetSpawned];
 						throw 3;
 					} else {
-						//diag_log format["line 501: asset alive, count _blck_AllMissionAI = %1",count _blck_AllMissionAI];
 						if (({alive _x} count _blck_AllMissionAI) <= _minNoAliveForCompletion) then
 						{
 							if ((_assetSpawned getVariable["blck_unguarded",0]) isEqualTo 0) then 
 							{
 								_assetSpawned setVariable["blck_unguarded",1,true];
-								//diag_log format["_assetSpawned: blck_unguarded updated to 1 for asset %1",_assetSpawned];
 							};
 							
 							if ((_assetSpawned getVariable["blck_AIState",0]) isEqualTo 1) then 
 							{
-								//diag_log format["_assetSpawned: blck_AIState updated to 1 for asset %1",_assetSpawned];
 								_assetSpawned allowdamage false;
 								[_assetSpawned] remoteExec["GMS_fnc_clearAllActions",-2, true];
 								throw 1;								
@@ -407,17 +398,13 @@ _missionParameters params[
 					};
 				};
 
-				#define max_distance_crate_moved_uncompleted_mission 120
 				private _moved = false;
-
 				if ((_spawnCratesTiming isEqualTo "atMissionSpawnGround") && blck_crateMoveAllowed) then 
 				{
 					{
 						if ( _x distance (_x getVariable ["crateSpawnPos", (getPos _x)]) > max_distance_crate_moved_uncompleted_mission) throw 2;
 					} forEach _crates;
 				};
-
-				 
 
 				_missionData = [_coords,_mines,_objects,_crates, _blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_markers];
 
@@ -429,7 +416,6 @@ _missionParameters params[
 
 			catch // catch all conditions that cause the mission to end.
 			{
-				//diag_log format["_fnc_monitorInitializeMissions (507): _exception = %1",_exception];
 				switch (_exception) do 
 				{
 					case 1: {  // Normal Mission End
@@ -484,21 +470,22 @@ _missionParameters params[
 										[_assetSpawned,selectRandom(_assetSpawned getVariable["endAnimation",["AidlPercMstpSnonWnonDnon_AI"]])] remoteExec["switchMove",-2];
 									};
 								};
-								//diag_log format["_fnc_monitorInitializedMissions (430) calling <_fnc_endMission> | _cords %1 : _markerType %2 :  _difficulty %3 _markerMissionName %4",_coords,_markerType,_difficulty,_markerMissionName];														
-								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName, 0] call blck_fnc_endMission;
-								diag_log format["_fnc_monitorInitializedMissions (430) Mission Completed | _cords %1 : _markerType %2 :  _difficulty %3 _markerMissionName %4",_coords,_markerType,_difficulty,_markerMissionName];						
+								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName, _exception] call blck_fnc_endMission;
+	
 								_waitTime = diag_tickTime + _tMin + random(_tMax - _tMin);
 								_missionCategoryDescriptors set [noActive,_noActive - 1];
 								_missionCategoryDescriptors set [waitTime,_waitTime];
 					};
 					case 2: { // Abort, crate moved.
 								_endMsg = "Crate Removed from Mission Site Before Mission Completion: Mission Aborted";
-								[_coords,_mines,_objects,_crates, _blck_AllMissionAI,"Crate Removed from Mission Site Before Mission Completion: Mission Aborted",_markers,markerPos (_markers select 1),_markerName,_markerMissionName,  2] call blck_fnc_endMission;
+								[_coords,_mines,_objects,_crates, _blck_AllMissionAI,"Crate Removed from Mission Site Before Mission Completion: Mission Aborted",_markers,markerPos (_markers select 1),_markerName,_markerMissionName,  _exception] call blck_fnc_endMission;
 							};
 					case 3: {  // Abort, key asset killed		
-								diag_log format["Asset Killed, aborting mission"];		
-								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_assetKilledMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName, -1] call blck_fnc_endMission;
+								[_coords,_mines,_objects,_crates,_blck_AllMissionAI,_assetKilledMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName, _exception] call blck_fnc_endMission;
 							};
+					case 4: {  // Reserved for grpNull errors in the future
+
+					};
 				};
 			};
 		};
