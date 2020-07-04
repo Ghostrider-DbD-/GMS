@@ -12,7 +12,7 @@
 */
 
 
-//#define useAPEX 
+#define useAPEX 
 //#define blck_useCUP
 //#define blck_useRHS
 //#define blck_useLAGO 

@@ -240,14 +240,14 @@ _missionPatrolVehicles = [
      [selectRandom blck_Tanks_ARMA3,[129.93,-141.285,-0.015038],0.0016877],
      [selectRandom blck_light_AT_ARMA3,[180.85,2.07617,-0.0159585],0.00167379],
      [selectRandom blck_tracked_APC_ARMA3,[-120.836,-109.834,0.00836205],360]	
-	 #endif
-	/*
-	[selectRandom blck_Tanks_ARMA3,[-121.006,89.7305,0.000393867],120,[true,false]],
-	[selectRandom blck_light_AT_ARMA3,[67.7656,89.6133,0.000393867],225,[true,false]],
-	[selectRandom blck_tracked_AA_ARMA3,[66.9902,-96.8418,0.000393867],315,[true,false]],
-	[selectRandom blck_light_AA_ARMA3,[-120.432,-96.3262,0.000393867],45,[true,false]],
-	[selectRandom blck_Tanks_ARMA3,[-87.8457,-109.947,7.15256e-007],0,[true,false]]
-	*/
+	 #else
+	[selectRandom blck_AIPatrolVehicles,[-121.006,89.7305,0.000393867],120,[true,false]],
+	[selectRandom blck_AIPatrolVehicles,[67.7656,89.6133,0.000393867],225,[true,false]],
+	[selectRandom blck_AIPatrolVehicles,[66.9902,-96.8418,0.000393867],315,[true,false]],
+	[selectRandom blck_AIPatrolVehicles,[-120.432,-96.3262,0.000393867],45,[true,false]],
+	[selectRandom blck_AIPatrolVehicles,[-87.8457,-109.947,7.15256e-007],0,[true,false]]
+     #endif
+	
 ];  // can be used to define the spawn positions of vehicle patrols
 
 //  Change _useMines to true/false below to enable mission-specific settings.

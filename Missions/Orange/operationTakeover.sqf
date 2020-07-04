@@ -261,12 +261,21 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
+     #ifdef blck_milServer
      [selectRandom blck_Tanks_ARMA3,[-63.8125,-49.1621,-0.0237918],0.00168037],
      [selectRandom blck_light_AT_ARMA3,[-40.9814,84.885,-0.0230246],0.0016978],
      [selectRandom blck_tracked_AA_ARMA3,[3.84229,-126.072,-0.0232677],0.00169533],
      [selectRandom blck_tracked_APC_ARMA3,[88.3411,-129.767,-0.0238881],0.00167844],
      [selectRandom blck_light_AT_ARMA3,[147.447,-71.3848,-0.0238895],0.00165085],
      [selectRandom blck_Tanks_ARMA3,[127.943,69.7148,-0.0238514],0.00166813]
+     #else 
+     [selectRandom blck_AIPatrolVehicles,[-63.8125,-49.1621,-0.0237918],0.00168037],
+     [selectRandom blck_AIPatrolVehicles,[-40.9814,84.885,-0.0230246],0.0016978],
+     [selectRandom blck_AIPatrolVehicles,[3.84229,-126.072,-0.0232677],0.00169533],
+     [selectRandom blck_AIPatrolVehicles,[88.3411,-129.767,-0.0238881],0.00167844],
+     [selectRandom blck_AIPatrolVehicles,[147.447,-71.3848,-0.0238895],0.00165085],
+     [selectRandom blck_AIPatrolVehicles,[127.943,69.7148,-0.0238514],0.00166813]
+     #endif
 ];
 _submarinePatrolParameters = [
 ];

@@ -27,4 +27,4 @@ _staticMissions = [
 	["newmission","newmap","somescript.sqf"]  //  Here just so you dont have to worry about all those commas
 ];
 
-diag_log "[blckeagls] GMS_StaticMissions_Lists.sqf <Loaded>";
+//diag_log "[blckeagls] GMS_StaticMissions_Lists.sqf <Loaded>";

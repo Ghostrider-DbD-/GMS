@@ -29,50 +29,48 @@ if (blck_debugOn) then
 	diag_log format["_missionLists: _missionListHunters = %1",_missionListHunters];
 };
 
-_pathBlue = "Blue";
+private _pathBlue = "Blue";
+private _missionListBlue = [];
 if (blck_debugOn) then 
 {
-	_missionListBlue = [/*"default",*/"redCamp"/*,"medicalCamp"/*,sniperBase"];
+	_missionListBlue = ["default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
+	diag_log format["_missionLists: _missionListBlue = %1",_missionListBlue];	
 } else {
 	_missionListBlue = ["default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
 };
-diag_log format["_missionLists: _missionListBlue = %1",_missionListBlue];
-// Passed 
+
 
 _pathRed = "Red";
 if (blck_debugOn) then 
 {
-	_missionListRed = [/*"default",*/"redCamp"/*,"medicalCamp"/*,"o/*,"fuelDepot"*/];
+	_missionListRed = [/*"default","default2","medicalCamp","hostage1","captive1",*/"fuelDepot","junkyardWilly","TraderBoss","carThieves"];
+	diag_log format["_missionLists: _missionListRed = %1",_missionListRed];	
 } else {
 	_missionListRed = [/*"default","default2","medicalCamp","hostage1","captive1",*/"fuelDepot","junkyardWilly","TraderBoss","carThieves"];
 };
-diag_log format["_missionLists: _missionListRed = %1",_missionListRed];
-// Passed 
 
 _pathGreen = "Green";
 if (blck_debugOn) then
 {
-	_missionListGreen = [/*"default",*/"redCamp"/*,"medicalCamp"/*,""colonelsBase","","banditVillage"*/];
+	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
+	diag_log format["_missionLists: _missionListGreen = %1",_missionListGreen];	
 } else {
 	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
 };
-diag_log format["_missionLists: _missionListGreen = %1",_missionListGreen];
-// Passed 
 
 _pathOrange = "Orange";
 if (blck_debugOn) then 
 {
-	_missionListOrange = [/*"default",*/"redCamp"/*,"medicalCamp","officeComplex","operationTakeover"*/];
+	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/"CommandersComplex","generalsCamp","colonel2","stronghold","operationShutdown","operationTakeover","dashq","tko_camp"/*,"bunkerMission",*temple"*/];
+	diag_log format["_missionLists: _missionListOrange = %1",_missionListOrange];
 } else {
-	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/"CommandersComplex","generalsCamp","colonel2","stronghold","operationShutdown","operationTakeover","dashq","tko_camp","bunkerMission"/*temple"*/];
+	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/"CommandersComplex","generalsCamp","colonel2","stronghold","operationShutdown","operationTakeover","dashq","tko_camp"/*,"bunkerMission",*temple"*/];
 };
-diag_log format["_missionLists: _missionListOrange = %1",_missionListOrange];
-// Passed 
 
 #ifdef blck_milServer
 if (blck_debugOn) then 
 {
-	_missionListGreen = ["FieldCamp"];
+	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase"/*,"banditVillage"*/];
 } else {
 	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase"/*,"banditVillage"*/];
 };
@@ -80,7 +78,7 @@ if (blck_debugOn) then
 
 if (blck_debugOn) then 
 {
-	_missionListOrange = ["bunkerMission"/*,"pinkPoison","stronghold","operationShutdown","operationTakeover","generalsCamp","colonel2"*/];
+	_missionListOrange =  [/*"default","default2","medicalCamp","redCamp","resupplyCamp",*/"CommandersComplex","generalsCamp","colonel2","pinkPoison","stronghold","operationShutdown","operationTakeover","dashq","tko_camp"/*,"temple"*/];
 } else { 
 	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp",*/"CommandersComplex","generalsCamp","colonel2","pinkPoison","stronghold","operationShutdown","operationTakeover","dashq","tko_camp"/*,"temple"*/];
 };

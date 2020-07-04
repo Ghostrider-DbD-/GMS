@@ -13,15 +13,14 @@
 
 params["_coords","_noVehiclePatrols","_vehiclePatrolSpawns","_aiDifficultyLevel"];
 
-private["_vehGroup","_patrolVehicle","_missionAI","_missiongroups","_vehicles","_return","_vehiclePatrolSpawns","_randomVehicle","_return","_abort"];
-private ["_weaponList","_sideArms","_uniforms","_headgear","_vests","_backpacks"];
+private["_vehGroup","_patrolVehicle","_missionAI","_missiongroups","_vehicles","_return","_vehiclePatrolSpawns","_randomVehicle","_return","_abort",
+        "_weaponList","_sideArms","_uniforms","_headgear","_vests","_backpacks"];
 
 if (_vehiclePatrolSpawns isEqualTo []) then
 {
 	private["_spawnPoints","_vehType"];
 	_spawnPoints = [_coords,_noVehiclePatrols,75,100] call blck_fnc_findPositionsAlongARadius;
 	{
-	  //  ["Vehicle Class Name", position[x,y,z], AI Skill [blue, red, green, orange],patrol radius [0 for static units], respawn time [seconds]]
 		#define vehiclePatrolRadius 150
 		#define vehicleRespawnTime 900
 		_vehType = selectRandom blck_AIPatrolVehicles;

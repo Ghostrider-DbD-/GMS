@@ -5,7 +5,7 @@
 	License
 	--------------------------
 	All the code and information provided here is provided under an Attribution Non-Commercial ShareAlike 4.0 Commons License.
-	?? change to Arma share and share alike license ?
+
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";

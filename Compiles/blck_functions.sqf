@@ -117,7 +117,6 @@ private _functions = [
 	["blck_fnc_sm_AddGroupToArray", "\q\addons\custom_server\Compiles\Missions\GMS_fnc_sm_AddGroupToArray.sqf"],	
 	["blck_fnc_initializeMission", "\q\addons\custom_server\Compiles\Missions\GMS_fnc_initializeMission.sqf"],
 	["blck_fnc_monitorInitializedMissions","\q\addons\custom_server\Compiles\Missions\GMS_fnc_monitorInitializedMissions.sqf"],
-	["blck_fnc_spawnInitializedMissions","\q\addons\custom_server\Compiles\Missions\GMS_fnc_spawnInitializedMissions.sqf"],
 
 	// Group-related functions
 	["blck_fnc_spawnGroup","\q\addons\custom_server\Compiles\Groups\GMS_fnc_spawnGroup.sqf"],					// Spawn a single group and populate it with AI units]
@@ -141,9 +140,7 @@ private _functions = [
 	["blck_fnc_vehicleMonitor","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_vehicleMonitor.sqf"], 
 	["blck_fnc_spawnMissionReinforcements","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_spawnMissionReinforcements.sqf"],
 	["blck_fnc_spawnMissionHeli","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_spawnMissionHeli.sqf"], 
-	 
 	["blck_fnc_HandleAIVehicleHit","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_HandleAIVehicleHit.sqf"],
-	 
 	["blck_fnc_processAIVehicleKill","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_processAIVehicleKill.sqf"],
 	["blck_fnc_selectPatrolVehicle","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_selectPatrolVehicle.sqf"],
 	["blck_fnc_releaseVehicleToPlayers","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_releaseVehicleToPlayers.sqf"],
@@ -155,7 +152,6 @@ private _functions = [
 	["blck_fnc_unlockVehicle","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_unlockVehicle.sqf"],
 	["GMS_fnc_applyVehicleDamagePenalty","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_applyVehicleDamagePenalty.sqf"],		
 	["GMS_fnc_revealVehicleToUnits","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_revealVehicleToUnits.sqf"],	
- 
 	["blck_fnc_handleVehicleGetOut","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_handleVehicleGetOut.sqf"],	
 	["blck_fnc_checkForEmptyVehicle","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_checkForEmptyVehicle.sqf"],		
 	["blck_fnc_handleEmptyVehicle","\q\addons\custom_server\Compiles\Vehicles\GMS_fnc_handleEmptyVehicle.sqf"],		
@@ -170,11 +166,9 @@ private _functions = [
 	["blck_EH_AIHit","\q\addons\custom_server\Compiles\Units\GMS_EH_AIHit.sqf"],
 	["blck_EH_unitWeaponReloaded","\q\addons\custom_server\Compiles\Units\GMS_EH_unitWeaponReloaded.sqf"],
 	["blck_EH_AIfiredNear","\q\addons\custom_server\Compiles\Units\GMS_EH_AIfiredNear.sqf"],
-	 
 	["blck_fnc_processAIKill","\q\addons\custom_server\Compiles\Units\GMS_fnc_processAIKill.sqf"],
 	["blck_fnc_removeLaunchers","\q\addons\custom_server\Compiles\Units\GMS_fnc_removeLaunchers.sqf"],
 	["blck_fnc_removeNVG","\q\addons\custom_server\Compiles\Units\GMS_fnc_removeNVG.sqf"],
-	 
 	["blck_fnc_alertGroupUnits","\q\addons\custom_server\Compiles\Units\GMS_fnc_alertGroupUnits.sqf"],
 	["GMS_fnc_alertNearbyGroups","\q\addons\custom_server\Compiles\Units\GMS_fnc_alertNearbyGroups.sqf"],
 	["blck_fnc_alertNearbyVehicles","\q\addons\custom_server\Compiles\Units\GMS_fnc_alertNearbyVehicles.sqf"],
@@ -188,7 +182,6 @@ private _functions = [
 	["blck_fnc_spawnLeader","\q\addons\custom_server\Compiles\Units\GMS_fnc_spawnLeader.sqf"],
 	["blck_fnc_spawnCharacter","\q\addons\custom_server\Compiles\Units\GMS_fnc_spawnCharacter.sqf"],
 	["blck_fnc_spawnParaUnits","\q\addons\custom_server\Compiles\Units\GMS_fnc_spawnParaUnits.sqf"],
-	 
 	["blck_fnc_placeCharacterInBuilding","\q\addons\custom_server\Compiles\Units\GMS_fnc_placeCharacterInBuilding.sqf"],	
 	["GMS_fnc_removeAllAIgear","\q\addons\custom_server\Compiles\Units\GMS_fnc_removeAllAIgear.sqf"],	
 
@@ -209,6 +202,5 @@ if (isServer) then {blck_fnc_broadcastServerFPS = compileFinal  preprocessFileLi
 diag_log "blck_functions loaded using GRGserver settings ---- >>>> ";
 #endif
 
-//onPlayerDisconnected {[_name,_owner] call blck_fnc_onPlayerDisconnected;};
 
 

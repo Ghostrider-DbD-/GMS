@@ -69,7 +69,6 @@ if ((toLower blck_modType) isEqualTo "default") then
 
 };
 
-diag_log format["blck_ums_crates = %1 | blck_ums_submarines = %2",blck_UMS_crates,blck_ums_submarines];
 blck_UMS_unarmedSurfaceVessels = 
 [
 	"B_Boat_Transport_01_F",

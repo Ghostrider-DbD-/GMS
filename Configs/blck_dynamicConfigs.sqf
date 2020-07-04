@@ -125,7 +125,7 @@ diag_log format["_fnc_dynamicConfigsConfigurator: count _classnameList = %1",cou
 			};
 		};
 	} else {
-		if (["base",_x] call BIS_fnc_inString) then {diag_log format["_dynamicConfigs: excluding class %1",_x]};
+		//if (["base",_x] call BIS_fnc_inString) then {diag_log format["_dynamicConfigs: excluding class %1",_x]};
 	};
 } forEach _classnameList;
 

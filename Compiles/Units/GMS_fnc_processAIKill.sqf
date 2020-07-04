@@ -42,7 +42,6 @@ if (count(units (group _unit)) isEqualTo 0) then
 	deleteGroup _group;
 };
 
-//diag_log format["_fnc_processAIKill: unit linked to crew of vehicle %1 | typeOf (vehicle _unit = %2)",vehicle _unit,typeOf (vehicle _unit)];
 if !((vehicle _unit) isKindOf "Man") then 
 {
 	[_unit, ["Eject", vehicle _unit]] remoteExec ["action",(owner _unit)];

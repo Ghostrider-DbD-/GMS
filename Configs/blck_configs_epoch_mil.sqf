@@ -152,10 +152,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	];		
 	
 	blck_AIPatrolVehicles = ["B_G_Offroad_01_armed_EPOCH","B_LSV_01_armed_F"]; // Type of vehicle spawned to defend AI bases	
-	blck_AIPatrolVehiclesBlue = blck_AIPatrolVehicles;
-	blck_AIPatrolVehiclesRed = blck_AIPatrolVehicles;
-	blck_AIPatrolVehiclesGreen = blck_AIPatrolVehicles;
-	blck_AIPatrolVehiclesOrange = blck_AIPatrolVehicles;
+
 	
 	blck_AIPatrolVehicles = 
 	[
@@ -180,6 +177,12 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	"B_APC_Tracked_01_CRV_F",
 	"B_APC_Tracked_01_rcws_F"																						
 	]; // Type of vehicle spawned to defend AI bases	
+
+	blck_AIPatrolVehiclesBlue = blck_AIPatrolVehicles;
+	blck_AIPatrolVehiclesRed = blck_AIPatrolVehicles;
+	blck_AIPatrolVehiclesGreen = blck_AIPatrolVehicles;
+	blck_AIPatrolVehiclesOrange = blck_AIPatrolVehicles;
+		
 	// Blacklisted itesm
 	blck_blacklistedOptics = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
 	

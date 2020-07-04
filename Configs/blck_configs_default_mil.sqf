@@ -12,7 +12,7 @@
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\init\build.sqf";
-diag_log format["[blckeagls] loading default configurations for blckeagls build %1",blck_buildNumber];
+//diag_log format["[blckeagls] loading default configurations for blckeagls build %1",blck_buildNumber];
 ////////////
 // default settings
 ////////////	

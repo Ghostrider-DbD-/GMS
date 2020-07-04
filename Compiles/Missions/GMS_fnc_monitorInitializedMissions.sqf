@@ -120,7 +120,7 @@ _missionParameters params[
 		// Handle Timeout
 		case -1:
 		{
-				diag_log format["_fnc_monitorInitializedMissions: mission timed out: el = %1 | blck_MissionTimeout = %2",_el, blck_MissionTimeout];
+				[diag_log format["_fnc_monitorInitializedMissions: mission timed out: %1",_el]] call blck_fnc_log;
 				_missionCategoryDescriptors set[noActive, _noActive - 1];
 				[_coords,_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName,  1] call blck_fnc_endMission;
 		}; 			

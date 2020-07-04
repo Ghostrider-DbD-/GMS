@@ -21,6 +21,7 @@ private["_missionType","_wasRunover","_launcher","_legal"];
 params["_unit","_killer"];
 _legal = true;
 if (vehicle _killer == _killer) exitWith {true};  
+
 // Player not in vehicle, no further checks needed.
 if (_killer == (driver (vehicle _killer))) then //  If the killer is also the driver then the killer must have run the AI over
 {
@@ -43,13 +44,8 @@ if (_killer == (driver (vehicle _killer))) then //  If the killer is also the dr
 			[vehicle _killer] call GMS_fnc_applyVehicleDamagePenalty;
 			[_killer] call GMS_fnc_msgIED;
 			_legal = false;
-			diag_log format[
-			"_fnc_processIlleagalKills: _legal = %1 | (typeOf (vehicle _killer)) in blck_forbidenVehicles = %2 | (currentWeapon _killer) in blck_forbidenVehicleGuns) = %3",
-			_legal,(typeOf (vehicle _killer)) in blck_forbidenVehicles,
-			(currentWeapon _killer) in blck_forbidenVehicleGuns
-			];
 		};
 	};
 };
-//diag_log format["_fnc_testForIllegalKills: _legal = %1",_legal];
+
 _legal

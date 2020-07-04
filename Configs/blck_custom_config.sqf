@@ -266,8 +266,8 @@ blck_NIA_WeaponsSniper = [
 	"hlc_rifle_psg1A1"
 ];
 #endif
-diag_log "[blckeagls]  end of Custom Configurations for NIA 5/2/20";
-diag_log format["[blckeagls] blck_NIA_WeaponsLMG = %1",if (isNil "blck_NIA_WeaponsLMG") then {"nil"} else {blck_NIA_WeaponsLMG}];
+//diag_log "[blckeagls]  end of Custom Configurations for NIA 5/2/20";
+//diag_log format["[blckeagls] blck_NIA_WeaponsLMG = %1",if (isNil "blck_NIA_WeaponsLMG") then {"nil"} else {blck_NIA_WeaponsLMG}];
 
 #ifdef blck_useRHS
 blck_RHS_Weapons = [
@@ -728,8 +728,8 @@ blck_RHS_WeaponsSAF = [
 	"rhs_weap_m84"
 ];	
 #endif
-diag_log format["[blckeagls] blck_RHS_Weapons = %1",if (isNil "blck_RHS_Weapons") then {"nil"} else {blck_RHS_Weapons}];
-diag_log "[blckeagls]  end of Custom Configurations for RHS 5/2/20";
+//diag_log format["[blckeagls] blck_RHS_Weapons = %1",if (isNil "blck_RHS_Weapons") then {"nil"} else {blck_RHS_Weapons}];
+//diag_log "[blckeagls]  end of Custom Configurations for RHS 5/2/20";
 
 
 #ifdef blck_useCUP
@@ -1222,21 +1222,24 @@ blck_CUPHeadgear = [
 	"CUP_H_USMC_Officer_Cap"
 ];
 #endif
-diag_log "[blckeagls]  end of Custom Configurations for CUP 5/2/20";
-diag_log format["[blckeagls] blck_CUPHeadgear = %1",if (isNil "blck_CUPHeadgear") then {"nil"} else {blck_CUPHeadgear}];
-diag_log "[blckeagls]  end of Custom Configurations for RHS 5/2/20";
+//diag_log "[blckeagls]  end of Custom Configurations for CUP 5/2/20";
+//diag_log format["[blckeagls] blck_CUPHeadgear = %1",if (isNil "blck_CUPHeadgear") then {"nil"} else {blck_CUPHeadgear}];
+//diag_log "[blckeagls]  end of Custom Configurations for RHS 5/2/20";
 blck_customConfigsLoaded = 1;
 
 uiSleep 5;
 
 if (blck_debugOn) then {
+	
 	diag_log "<GRG_TEST>  HEY YOU ITS WORKING";
 	blck_MinDistanceFromMission = 1000;
     blck_minDistanceToBases = 1000;
     blck_minDistanceToPlayer = 1000;
     blck_minDistanceFromTowns = 500;
 	diag_log "<GRG_TEST>  HEY YOU porkid's settings were loaded";	
-	blck_MissionTimeout = 30;
+
+	blck_MissionTimeout = 3000;
+	
 	blck_maxSpawnedMissions = 15;
 	blck_mainThreadUpdateInterval = 10;
 	blck_enableOrangeMissions = 1;  
@@ -1246,7 +1249,7 @@ if (blck_debugOn) then {
 	blck_numberUnderwaterDynamicMissions = 1;	
 	blck_enableHunterMissions = 1;
 	blck_enableScoutsMissions = 1;
-	blck_maxCrashSites = 1; 
+	blck_maxCrashSites = 0; 
 	diag_log "<GRG_TEST>  HEY YOU custom settings for enabling missions were loaded";	
 
 	blck_TMin_Blue = 7;

@@ -87,6 +87,12 @@ _missionPatrolVehicles = [
      [selectRandom blck_light_AT_ARMA3,[29.0449,-42.6465,-0.319407],0.00168023],
      [selectRandom blck_tracked_APC_ARMA3,[25.6289,19.6641,-0.313045],0.000197989]
      #else
+     [selectRandom blck_AIPatrolVehicles,[-47.8262,-23.5137,-0.321316],0.0016802],
+     [selectRandom blck_AIPatrolVehicles,[-30.4395,13.2695,-0.321565],0.00168791],
+     [selectRandom blck_AIPatrolVehicles,[-14.084,-61.1504,-0.321593],0.0016711],
+     [selectRandom blck_AIPatrolVehicles,[-8.88086,27.3223,-0.312962],0.000197464],
+     [selectRandom blck_AIPatrolVehicles,[29.0449,-42.6465,-0.319407],0.00168023],
+     [selectRandom blck_AIPatrolVehicles,[25.6289,19.6641,-0.313045],0.000197989]     
      #endif     
      
 ];
