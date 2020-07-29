@@ -88,6 +88,7 @@ if (_weaponList isEqualTo []) then {_weaponList = call blck_fnc_selectAILoadout}
 _weap = selectRandom _weaponList;  
 _unit addWeaponGlobal  _weap; 
 _ammoChoices = getArray (configFile >> "CfgWeapons" >> _weap >> "magazines");
+_unit addMagazines[selectRandom _ammochoices,3];
 _optics = getArray (configfile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems");
 _pointers = getArray (configFile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems");
 _muzzles = getArray (configFile >> "CfgWeapons" >> _weap >> "WeaponSlotsInfo" >> "MuzzleSlot" >> "compatibleItems");
@@ -150,7 +151,7 @@ else
 };
 
 _unit addWeapon selectRandomWeighted["",4,"Binocular",3,"Rangefinder",1];
-
+//_unit addEventHandler ["HandleDamage",{_this call blck_EH_handleDamage;}];
 _unit addEventHandler ["FiredNear",{_this call blck_EH_AIfiredNear;}];
 _unit addEventHandler ["Reloaded", {_this call blck_EH_unitWeaponReloaded;}];
 _unit addMPEventHandler ["MPKilled", {[(_this select 0), (_this select 1)] call blck_EH_AIKilled;}];

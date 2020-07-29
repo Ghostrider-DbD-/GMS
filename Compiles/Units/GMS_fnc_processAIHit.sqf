@@ -13,8 +13,12 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 if !(isServer) exitWith {};
 private ["_unit","_instigator","_group","_wp"];
-_unit = _this select 0 select 0;
-_instigator = _this select 0 select 3;
+(_this select 0) params["_unit","_causedBy","_damage","_instigator"];
+
+if !(isPlayer _instigator) exitWith 
+{
+	_unit setDamage ( (damage _unit) - _damage);
+};
 
 if (!(alive _unit)) exitWith {
 	[_unit, _instigator] call blck_fnc_processAIKill;
@@ -24,7 +28,7 @@ if (damage _unit > 0.95) exitWith {
 	_unit setDamage 1.2; [_unit, _instigator] call blck_fnc_processAIKill;
 };
 
-if !(isPlayer _instigator) exitWith {};
+
 
 [_unit,_instigator,50] call GMS_fnc_alertNearbyGroups;
 [_instigator] call blck_fnc_alertNearbyVehicles;

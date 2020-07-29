@@ -150,8 +150,8 @@ _fn_spawnWreckMission = {
 	[_markers select 1] call blck_fnc_deleteMarker;
 	[["end",_endMsg,_markerLabel]] call blck_fnc_messageplayers;
 	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> crash site %1 at %1 cleared",_CrashName,_posOfCrash];};
-	blck_oldMissionObjects pushback [_posOfCrash,_obj, blck_AliveAICleanUpTimer];	
-	[(units _group),blck_AliveAICleanUpTimer] call blck_fnc_addLiveAItoQue;
+	blck_oldMissionObjects pushback [_posOfCrash,_obj, blck_cleanupCompositionTimer];	
+	blck_liveMissionAI pushback [_posOfCrash,units _group, (diag_tickTime + blck_AliveAICleanUpTimer)];
 	blck_recentMissionCoords pushback[_posOfCrash,diag_tickTime];
 	blck_ActiveMissionCoords = blck_ActiveMissionCoords - _posOfCrash;
 	blck_activeCrashSites = blck_activeCrashSites - 1;

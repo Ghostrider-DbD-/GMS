@@ -18,14 +18,14 @@ if (_headGear  isEqualTo [])  then {_headGear = [_aiDifficultyLevel] call blck_f
 if (_vests  isEqualTo [])     then {_vests = [_aiDifficultyLevel] call blck_fnc_selectAIVests};
 if (_backpacks  isEqualTo []) then {_backpacks = [_aiDifficultyLevel] call blck_fnc_selectAIBackpacks};
 
-private["_staticsSpawned","_allBldPsn","_allBldPsn","_floor","_ceil","_statics","_units","_unit","_obj","_staticClassName","_usedBldPsn","_pos","_obj"];
-_allBldPsn =  [_building] call BIS_fnc_buildingPositions;
-_usedBldPsn = [];
-_floor = floor((count _allBldPsn)/2);       
-_ceil = ceil((count _allBldPsn)/2);
-_statics = if (_ceil > _noStatics) then {_noStatics} else {_ceil};
-_units = if (_floor > _noUnits) then {_noUnits} else {_floor};
-_staticsSpawned = [];
+private["_unit","_obj","_staticClassName","_usedBldPsn","_pos","_obj"];
+private _allBldPsn =  [_building] call BIS_fnc_buildingPositions;
+private _usedBldPsn = [];
+private _floor = floor((count _allBldPsn)/2);       
+private _ceil = ceil((count _allBldPsn)/2);
+private _statics = if (_ceil > _noStatics) then {_noStatics} else {_ceil};
+private _units = if (_floor > _noUnits) then {_noUnits} else {_floor};
+private _staticsSpawned = [];
 uiSleep 1;
 for "_i" from 1 to _statics do
 {

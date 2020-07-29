@@ -10,13 +10,6 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-// assumptions:
-// 1) if the muzzle that killed the AI was forbbiden then the kill does not count 
-// 2) if the vehicle the player was in when the player killed the AI, the kill does not count.
-// data to check: blck_forbidenVehicles
-// and blck_forbidenVehicleGuns
-// blck_VK_RunoverDamage
-// blck_RunGear
 private["_missionType","_wasRunover","_launcher","_legal"];
 params["_unit","_killer"];
 _legal = true;

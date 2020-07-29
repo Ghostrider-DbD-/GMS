@@ -254,29 +254,29 @@
 	////////////////////
 	
 	// Reduce to 1 sec for immediate spawns, or longer if you wish to space the missions out	
-	blck_TMin_Orange = 250;
-	blck_TMin_Green = 200;
-	blck_TMin_Blue = 120;
-	blck_TMin_Red = 150;
-	blck_TMin_UMS = 180;	
+	blck_TMin_Orange = 480;
+	blck_TMin_Green = 420;
+	blck_TMin_Blue = 300;
+	blck_TMin_Red = 360;
+	blck_TMin_UMS = 300;	
 	
 	#ifdef GRGserver
-	blck_TMin_Hunter = 120;
-	blck_TMin_Scouts = 115;
-	blck_TMin_Crashes = 115;
+	blck_TMin_Hunter = 340;
+	blck_TMin_Scouts = 300;
+	blck_TMin_Crashes = 300;
 	#endif
 	
 	//Maximum Spawn time between missions in seconds
-	blck_TMax_Orange = 360;
-	blck_TMax_Green = 300;
-	blck_TMax_Blue = 200;
-	blck_TMax_Red = 250;
+	blck_TMax_Orange = 520;
+	blck_TMax_Green = 500;
+	blck_TMax_Blue = 340;
+	blck_TMax_Red = 400;
 	blck_TMax_UMS = 400;
 
 	#ifdef GRGserver
-	blck_TMax_Hunter = 200;
-	blck_TMax_Scouts = 200;
-	blck_TMax_Crashes = 200;
+	blck_TMax_Hunter = 400;
+	blck_TMax_Scouts = 320;
+	blck_TMax_Crashes = 320;
 	#endif
 	
 	///////////////////////////////
@@ -406,7 +406,7 @@
 	//blck_AIAlertDistance = [150,225,400,500];
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];
-	blck_AIIntelligence = [0.3, 0.5, 0.7, 0.9];  
+	blck_AIIntelligence = [0.1, 0.2, 0.3, 0.4];  
 	
 	blck_baseSkill = 1.0;  // The overal skill of the AI - range 0.1 to 1.0.
 	

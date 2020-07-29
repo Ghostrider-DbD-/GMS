@@ -80,7 +80,7 @@ if (blck_spawnMapAddons) then
 {
 	call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\MapAddons\MapAddons_init.sqf";
 }else{
-	diag_log "[blckeagls] Map Addons disabled";
+	["Map Addons disabled"] call blck_fnc_log;
 };
 
 // find and set Mapcenter and size
@@ -96,28 +96,28 @@ if (blck_debugOn) then {diag_log "[blckeagls] blck_init_server: ->> Static and U
 
 switch (blck_simulationManager) do
 {
-	case 2: {diag_log "[blckeagls] dynamic simulation manager enabled"}; 
-	case 1: {diag_log "[blckeagls] blckeagls simulation manager enabled"};
-	case 0: {diag_log "[blckeagls] simulation management disabled"};
+	case 2: {["dynamic simulation manager enabled"] call blck_fnc_log}; 
+	case 1: {["blckeagls simulation manager enabled"] call blck_fnc_log};
+	case 0: {["[blckeagls] simulation management disabled"] call blck_fnc_log};
 };
 
-diag_log format["[blckeagls] version %1 Build %2 Loaded in %3 seconds",blck_versionNumber,blck_buildNumber,diag_tickTime - _blck_loadingStartTime]; //,blck_modType];
-diag_log format["[blckeagls] waiting for players to join ----    >>>>"];
+[format["[blckeagls] version %1 Build %2 Loaded in %3 seconds",blck_versionNumber,blck_buildNumber,diag_tickTime - _blck_loadingStartTime]] call blck_fnc_log;
+[format["[blckeagls] waiting for players to join ----    >>>>"]] call blck_fnc_log;
 
 if ( !(blck_debugON) && (blck_debugLevel isEqualTo 0)) then
 {
 	waitUntil{{isPlayer _x}count allPlayers > 0};
-	diag_log "[blckeagls] Player Connected, spawning missions";
+	["]Player Connected, spawning missions"] call blck_fnc_log;
 } else {
-	diag_log "[blckeagls] Debug mode ON, proceding without players";
+	["Debug mode ON, proceding without players"] call blck_fnc_log;
 };
 
 if (blck_spawnStaticLootCrates) then
 {
 	[] spawn compile preprocessfilelinenumbers "\q\addons\custom_server\SLS\SLS_init.sqf";
-	diag_log "[blckeagls] SLS::  -- >>  Static Loot Spawner Done";
+	["SLS::  -- >>  Static Loot Spawner Done"] call blck_fnc_log;
 }else{
-	diag_log "[blckeagls] SLS::  -- >>  Static Loot Spawner disabled";
+	["SLS::  -- >>  Static Loot Spawner disabled"] call blck_fnc_log;
 };
 
 if (blck_blacklistTraderCities) then
@@ -130,7 +130,7 @@ if (blck_ai_offload_to_client) then
 	if (blck_useHC) then 
 	{
 		blck_useHC = false;
-		diag_log "[blckeagls] <WARNING> blck_useHC has been diabled to allow offloading to clients";
+		["blck_useHC has been diabled to allow offloading to clients",'warning'] call blck_fnc_log;
 	};
 	// Broadcast some code to clients
 	publicVariable "blck_fnc_setNextWaypoint";
@@ -186,7 +186,7 @@ if (blck_enableBlueMissions > 0) then
 };
 
 #ifdef GRGserver
-diag_log "[blckeagls] Running GhostriderGaming Version";
+["Running GhostriderGaming Version"] call blck_fnc_log;
 if (blck_enableScoutsMissions > 0) then
 {
 	[_missionListScouts,_pathScouts,"ScoutsMarker","red",blck_TMin_Scouts,blck_TMax_Scouts,blck_enableScoutsMissions,false] call blck_fnc_addMissionToQue;
@@ -215,4 +215,5 @@ blck_graveyardGroup setVariable ["blck_group",1];
 [] spawn blck_fnc_mainThread;
 blck_pvs_version = blck_versionNumber;
 publicVariable "blck_pvs_version";
-diag_log format["[blckeagls] version %1 Build %2 Date %4 Loaded in %3 seconds",blck_versionNumber,blck_buildNumber,diag_tickTime - _blck_loadingStartTime,blck_buildDate]; //,blck_modType];
+[format["[blckeagls] version %1 Build %2 Date %4 Loaded in %3 seconds",blck_versionNumber,blck_buildNumber,diag_tickTime - _blck_loadingStartTime,blck_buildDate]] call blck_fnc_log;
+

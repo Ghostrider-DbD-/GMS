@@ -13,12 +13,10 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp"
-private["_cleanupAliveAITimer","_cleanupCompositionTimer","_isScubaMission"];
 	
 _fn_missionCleanup = {	
 	params["_coords","_mines","_objects","_blck_AllMissionAI","_markerName","_cleanupAliveAITimer","_cleanupCompositionTimer",["_isScubaMission",false]];
 	[_mines] call blck_fnc_clearMines;
-	//[_coords,_objects, _cleanupCompositionTimer] call blck_fnc_addObjToQue;
 	blck_oldMissionObjects pushback [_coords,_objects, (diag_tickTime + _cleanupCompositionTimer)];	
 	blck_liveMissionAI pushback [_coords,_blck_AllMissionAI, (diag_tickTime + _cleanupAliveAITimer)];
 	blck_missionsRunning = blck_missionsRunning - 1;
@@ -127,4 +125,5 @@ switch (_endCondition) do
 	};
 };
 
-_endCondition
+[format["Mission Completed | _cords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerLabel]] call blck_fnc_log;
+blck_missionsRun = blck_missionsRun + 1;

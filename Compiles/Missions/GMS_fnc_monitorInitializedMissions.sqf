@@ -33,6 +33,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 		"_waitTime",  // time at which a mission should be spawned
 		"_missionsData"  // 
 	];
+				
 						//   0       1       2          3         4                    5                6                    7             8
 	_missionData params ["_coords","_mines","_objects","_crates","_blck_AllMissionAI","_assetSpawned","_missionAIVehicles","_markers"];
 
@@ -91,7 +92,7 @@ _missionParameters params[
 	"_endCondition",
 	"_isScubaMission"
 ];
-	
+	//diag_log format["fnc_monitorInitializedMissions: _tMin = %1 | _tMax = %2 | _waitTime = %3 | time = %4 | _missionTimeoutAt",_tMin,_tMax,_waitTime,diag_tickTime,_missionTimeoutAt];
 	private _playerInRange = [_coords, blck_TriggerDistance, false] call blck_fnc_playerInRange;
 	#define delayTime 1
 	private _monitorAction = -2;
@@ -132,7 +133,7 @@ _missionParameters params[
 			#define timedOut 1
 			_el set[triggered,1];
 			_el set[timedOut,diag_tickTime + 240];
-
+			//diag_log format["fnc_monitorInitializedMissions: Mission Triggered by Player: _tMin = %1 | _tMax = %2 | _waitTime = %3 | time = %4 | _missionTimeoutAt",_tMin,_tMax,_waitTime,diag_tickTime,_missionTimeoutAt];
 			private["_temp"];
 			if (blck_SmokeAtMissions select 0) then  // spawn a fire and smoke near the crate
 			{

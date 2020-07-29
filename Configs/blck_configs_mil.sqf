@@ -49,10 +49,10 @@
 	***********************************************************/
 	////////
 	//  Client Offloading and Headless Client Configurations
-	blck_useHC = false; // Experimental (should be working).
+	blck_useHC = true; // Experimental (should be working).
 	
 										//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
-	blck_ai_offload_to_client = true; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
+	blck_ai_offload_to_client = false; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
 										// *******************************************************
 										//  Experimental; may cause issues with waypoints 
 										// *******************************************************
@@ -89,7 +89,7 @@
 	// global loot crate options
 	// Options to spawn a smoking wreck near the crate.  When the first parameter is true, a wreck or junk pile will be spawned. 
 	// It's position can be either "center" or "random".  smoking wreck will be spawned at a random location between 15 and 50 m from the mission.
-	blck_SmokeAtMissions = [false,"random"];  // set to [false,"anything here"] to disable this function altogether. 
+	blck_SmokeAtMissions = [true,"random"];  // set to [false,"anything here"] to disable this function altogether. 
 	blck_useSignalEnd = true; // When true a smoke grenade/chemlight will appear at the loot crate for 2 min after mission completion.
 	
 	///////////////////////////////
@@ -242,28 +242,29 @@
 	////////////////////
 	
 	// Reduce to 1 sec for immediate spawns, or longer if you wish to space the missions out	
-	blck_TMin_Orange = 250;
-	blck_TMin_Green = 200;
-	blck_TMin_Blue = 120;
-	blck_TMin_Red = 150;
-	blck_TMin_UMS = 180;	
+	blck_TMin_Orange = 480;
+	blck_TMin_Green = 420;
+	blck_TMin_Blue = 300;
+	blck_TMin_Red = 360;
+	blck_TMin_UMS = 300;	
+	
 	#ifdef GRGserver
-	blck_TMin_Hunter = 120;
-	blck_TMin_Scouts = 115;
-	blck_TMin_Crashes = 115;
-
+	blck_TMin_Hunter = 340;
+	blck_TMin_Scouts = 300;
+	blck_TMin_Crashes = 300;
 	#endif
 	
-	//Maximum Spawn time between missions in seconds
-	blck_TMax_Orange = 360;
-	blck_TMax_Green = 300;
-	blck_TMax_Blue = 200;
-	blck_TMax_Red = 250;
-	blck_TMax_UMS = 200;
+	//Maximum Spawn time between missions in seconds  - reduce to 2 secs to spawn missions as soon as possible, or increase to space them out
+	blck_TMax_Orange = 520;
+	blck_TMax_Green = 500;
+	blck_TMax_Blue = 340;
+	blck_TMax_Red = 400;
+	blck_TMax_UMS = 400;
+
 	#ifdef GRGserver
-	blck_TMax_Hunter = 200;
-	blck_TMax_Scouts = 200;
-	blck_TMax_Crashes = 200;
+	blck_TMax_Hunter = 400;
+	blck_TMax_Scouts = 320;
+	blck_TMax_Crashes = 320;
 	#endif
 	
 	///////////////////////////////
@@ -380,11 +381,6 @@
 	
 	//This defines how long after an AI dies that it's body disappears.
 	blck_bodyCleanUpTimer = 80*60; // time in seconds after which dead AI bodies are deleted
-	#ifdef GRGserver
-	#ifdef blck_milServer
-	blck_bodyCleanUpTimer = 80*60;  //  Trying to reduce lag with player counts > 20
-	#endif
-	#endif
 	
 	// Each time an AI is killed, the location of the killer will be revealed to all AI within this range of the killed AI, set to -1 to disable
 	// values are ordered as follows [blue, red, green, orange];
@@ -396,7 +392,7 @@
 	//blck_AIAlertDistance = [150,225,400,500];
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];
-	blck_AIIntelligence = [0.3, 0.5, 0.7, 0.9];  
+	blck_AIIntelligence = [0.1, 0.2, 0.3, 0.4];   
 	
 	blck_baseSkill = 1.0;  // The overal skill of the AI - range 0.1 to 1.0.
 	
@@ -449,7 +445,7 @@
 	//blck_AIAlertDistance = [150,225,400,500];
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];
-	blck_AIIntelligence = [0.3, 0.5, 0.7, 0.9];  
+	blck_AIIntelligence = [0.1, 0.15, 0.2, 0.25]; 
 	
 	blck_baseSkill = 1;  // The overal skill of the AI - range 0.1 to 1.0.
 	
