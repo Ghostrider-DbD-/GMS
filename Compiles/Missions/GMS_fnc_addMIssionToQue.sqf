@@ -39,7 +39,7 @@ private _missionCategoryDescriptors = [
 	_waitTime,  // time at which a mission should be spawned
 	_missionsData  // 
 ];
-diag_log format["fnc_addMissionToQue: _tMin = %1 | _tMax = %2 | _waitime = %3",_tMin,_tMax,_waitTime];
+
 blck_missionData pushBack _missionCategoryDescriptors;
 
 

@@ -382,7 +382,8 @@ _missionParameters params[
 					{
 						throw 3;
 					} else {
-						if (({alive _x} count _blck_AllMissionAI) <= _minNoAliveForCompletion) then
+						//diag_log format["_secureAsset: _count _blck_allMissionAI = %1 | _minNoaliveForCompletion = %2",{alive _x} count _blck_allMissionAI,_minNoAliveForCompletion];
+						if (({alive _x} count _blck_AllMissionAI) <= (_minNoAliveForCompletion + 1)) then
 						{
 							if ((_assetSpawned getVariable["blck_unguarded",0]) isEqualTo 0) then 
 							{

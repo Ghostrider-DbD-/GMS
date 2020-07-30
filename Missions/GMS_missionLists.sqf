@@ -33,7 +33,7 @@ private _pathBlue = "Blue";
 private _missionListBlue = [];
 if (blck_debugOn) then 
 {
-	_missionListBlue = ["default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
+	_missionListBlue = ["hostage1"/*"default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
 	diag_log format["_missionLists: _missionListBlue = %1",_missionListBlue];	
 } else {
 	_missionListBlue = ["default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
@@ -43,7 +43,7 @@ if (blck_debugOn) then
 _pathRed = "Red";
 if (blck_debugOn) then 
 {
-	_missionListRed = [/*"default","default2","medicalCamp","hostage1","captive1",*/"fuelDepot","junkyardWilly","TraderBoss","carThieves"];
+	_missionListRed = ["fuelDepot","junkyardWilly","TraderBoss","carThieves"];
 	diag_log format["_missionLists: _missionListRed = %1",_missionListRed];	
 } else {
 	_missionListRed = [/*"default","default2","medicalCamp","hostage1","captive1",*/"fuelDepot","junkyardWilly","TraderBoss","carThieves"];
@@ -52,7 +52,7 @@ if (blck_debugOn) then
 _pathGreen = "Green";
 if (blck_debugOn) then
 {
-	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
+	_missionListGreen = ["FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
 	diag_log format["_missionLists: _missionListGreen = %1",_missionListGreen];	
 } else {
 	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage"];
@@ -61,7 +61,7 @@ if (blck_debugOn) then
 _pathOrange = "Orange";
 if (blck_debugOn) then 
 {
-	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/"CommandersComplex","generalsCamp","colonel2","stronghold","operationShutdown","operationTakeover","dashq","tko_camp"/*,"bunkerMission",*temple"*/];
+	_missionListOrange = ["CommandersComplex","generalsCamp","colonel2","stronghold","operationShutdown","operationTakeover","dashq","tko_camp"/*,"bunkerMission",*temple"*/];
 	diag_log format["_missionLists: _missionListOrange = %1",_missionListOrange];
 } else {
 	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/"CommandersComplex","generalsCamp","colonel2","stronghold","operationShutdown","operationTakeover","dashq","tko_camp"/*,"bunkerMission",*temple"*/];

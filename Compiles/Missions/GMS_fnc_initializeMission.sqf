@@ -18,7 +18,7 @@ params["_missionCategoryDescriptors","_missionParameters"];
 		"_missionsData"  // 
 	];
 
-diag_log format["_fnc_initializeMissions: _tmin = %1 | _tMax = %2 | _waitTime = %3",_tMin,_tMax,_waitTime];
+
 if (_noActive > _noMissions) exitWith {if (blck_debugOn) then {}};
 
 _missionParameters params[

@@ -10,8 +10,10 @@ Many thanks for new Coding and ideas from Grahame.
 Significant Changes:
 
 =====================
-7.00 Build 208
+7.00 Build 212
 New: 
+Fixed: Don and Hostage missions could not be completed 
+Fixed: Missions tended to spawn all at once 
 Fixed: vehicles are spawned at a safe spot which should reduce unintended explosions 
 Added: The system has been upgreaded to a state-based system, meaning one scrpt is running once all missions are initialized.
 Changed: a lot of debugging was removed.
