@@ -17,7 +17,7 @@ if (blck_missionsRunning >= blck_maxSpawnedMissions) exitWith {};
 
 	if (_noActiveMissions < _maxNoMissions && diag_tickTime > _waitTime && blck_missionsRunning < blck_maxSpawnedMissions) then 
 	{
-		diag_log format["fnc_spawnPendingMissions: spawn conditions reached with: _tMin = %1 | _tMax = %2 | _waitTime %3 | time %4",_tMin,_tMax,_waitTime,diag_tickTime];
+		
 		// time to reset timers and spawn something.
 		private _wt = diag_tickTime + _tmin + (random(_tMax - _tMin));
 		#define waitTime 5

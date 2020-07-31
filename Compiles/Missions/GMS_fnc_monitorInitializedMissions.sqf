@@ -92,7 +92,7 @@ _missionParameters params[
 	"_endCondition",
 	"_isScubaMission"
 ];
-	//diag_log format["fnc_monitorInitializedMissions: _tMin = %1 | _tMax = %2 | _waitTime = %3 | time = %4 | _missionTimeoutAt",_tMin,_tMax,_waitTime,diag_tickTime,_missionTimeoutAt];
+	
 	private _playerInRange = [_coords, blck_TriggerDistance, false] call blck_fnc_playerInRange;
 	#define delayTime 1
 	private _monitorAction = -2;
@@ -121,7 +121,7 @@ _missionParameters params[
 		// Handle Timeout
 		case -1:
 		{
-				[diag_log format["_fnc_monitorInitializedMissions: mission timed out: %1",_el]] call blck_fnc_log;
+				[format["_fnc_monitorInitializedMissions: mission timed out: %1",_el]] call blck_fnc_log;
 				_missionCategoryDescriptors set[noActive, _noActive - 1];
 				[_coords,_mines,_objects,_crates, _blck_AllMissionAI,_endMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName,  1] call blck_fnc_endMission;
 		}; 			
@@ -133,7 +133,7 @@ _missionParameters params[
 			#define timedOut 1
 			_el set[triggered,1];
 			_el set[timedOut,diag_tickTime + 240];
-			//diag_log format["fnc_monitorInitializedMissions: Mission Triggered by Player: _tMin = %1 | _tMax = %2 | _waitTime = %3 | time = %4 | _missionTimeoutAt",_tMin,_tMax,_waitTime,diag_tickTime,_missionTimeoutAt];
+			
 			private["_temp"];
 			if (blck_SmokeAtMissions select 0) then  // spawn a fire and smoke near the crate
 			{
@@ -382,7 +382,7 @@ _missionParameters params[
 					{
 						throw 3;
 					} else {
-						//diag_log format["_secureAsset: _count _blck_allMissionAI = %1 | _minNoaliveForCompletion = %2",{alive _x} count _blck_allMissionAI,_minNoAliveForCompletion];
+						
 						if (({alive _x} count _blck_AllMissionAI) <= (_minNoAliveForCompletion + 1)) then
 						{
 							if ((_assetSpawned getVariable["blck_unguarded",0]) isEqualTo 0) then 
