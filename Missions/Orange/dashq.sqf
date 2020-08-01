@@ -1,6 +1,6 @@
 /*
 	Mission Template by Ghostrider [GRG]
-	Mission Compositions by Bill prepared for ghostridergaming
+	Mission Compositions by Thomas TKO
 	Copyright 2016
 	Last modified 3/20/17
 	
@@ -179,15 +179,15 @@ _missionLandscape = [
 ];
 
 _missionLootBoxes = [
-     ["Exile_Container_SupplyBox",[0.0717773,16.9431,-0.00143814],_crateLoot,_lootCounts,0.000320471]
+     ["B_supplyCrate_F",[0.0717773,16.9431,-0.00143814],_crateLoot,_lootCounts,0.000320471]
 ];
 
 _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["O_T_LSV_02_armed_F",[-62.7971,0.422119,-0.0236669],0.00164848],
-     ["O_T_LSV_02_armed_F",[31.9084,-7.18774,-0.0238085],0.00168349]
+    // ["O_T_LSV_02_armed_F",[-62.7971,0.422119,-0.0236669],0.00164848],
+    // ["O_T_LSV_02_armed_F",[31.9084,-7.18774,-0.0238085],0.00168349]
 ];
 
 _submarinePatrolParameters = [

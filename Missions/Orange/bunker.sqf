@@ -1,3 +1,17 @@
+/*
+	Mission Template by Ghostrider [GRG]
+	Mission Compositions by Thomas TKO
+	Copyright 2016
+	Last modified 3/20/17
+	
+	--------------------------
+	License
+	--------------------------
+	All the code and information provided here is provided under an Attribution Non-Commercial ShareAlike 4.0 Commons License.
+
+	http://creativecommons.org/licenses/by-nc-sa/4.0/
+*/
+
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
@@ -7,14 +21,13 @@ _lootCounts = [15,50,20,60,44,5];  //  	blck_lootCountsOrange = [8,32,8,30,16,1]
 _startMsg = "A Mafia General is building a heavily defended bunker. Stop him and claim a reward!";
 _endMsg = "The Mafia General has been defeated!";
 _markerLabel = "";
-_markerType = ["ellipse",[225,225],"GRID"];
+_markerType = ["ellipse",[300,300],"GRID"];
 _markerColor = "ColorBlack";
 _markerMissionName = " Bunker";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
 _garrisonedBuildings_BuildingPosnSystem = [];
 
-/*
 _garrisonedBuilding_ATLsystem = [
      ["Land_Bunker_01_big_F",[-19.0896,9.22754,0.760561],90.071,true,true,[["O_HMG_01_high_F",[-1.09302,-0.0102539,3.2837],0.00152979],["O_HMG_01_high_F",[-5.45947,-3.38574,0.109706],359.994],["O_HMG_01_high_F",[-0.41333,-10.5659,-0.774119],360],["O_HMG_01_high_F",[-0.826416,11.6274,-0.774119],0.00143682],["O_HMG_01_high_F",[11.355,-8.68066,-0.774117],0.000274398]],[]],
      ["Land_Bunker_01_tall_F",[-18.5415,-8.59961,-0.00143909],90.071,true,true,[["O_HMG_01_high_F",[5.50562,-2.54395,-0.0121188],359.999],["O_HMG_01_high_F",[-1.72095,-0.109375,4.96893],359.998],["O_HMG_01_high_F",[11.7644,-6.72168,-0.0121179],0.000580947]],[]],
@@ -60,8 +73,8 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["O_LSV_02_armed_F",[-40.6245,8.75732,-0.0378561],359.999],
-     ["O_LSV_02_unarmed_F",[35.2053,8.41943,-0.0378113],359.999]
+    // ["O_LSV_02_armed_F",[-40.6245,8.75732,-0.0378561],359.999],
+    // ["O_LSV_02_unarmed_F",[35.2053,8.41943,-0.0378113],359.999]
 ];
 
 _submarinePatrolParameters = [
@@ -103,6 +116,7 @@ _missionGroups = [
 
 _scubaGroupParameters = [
 ];
+
 
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = blck_useMines;

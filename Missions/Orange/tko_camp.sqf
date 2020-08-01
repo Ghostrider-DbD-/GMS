@@ -122,7 +122,7 @@ _missionLandscape = [
 ];
 
 _missionLootBoxes = [
-     ["Exile_Container_SupplyBox",[1.55273,0.0065918,-0.00143957],_crateLoot,_lootCounts,0.000522983]
+     ["B_supplyCrate_F",[1.55273,0.0065918,-0.00143957],_crateLoot,_lootCounts,0.000522983]
 ];
 
 _missionLootVehicles = [
