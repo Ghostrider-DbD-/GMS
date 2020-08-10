@@ -17,7 +17,7 @@
 		changing any of these variables may break the mission systemChat
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
-	blck_debugON = true;  //  Do not touch ... 
+	blck_debugON = false;  //  Do not touch ... 
 	blck_debugLevel = 0;  //  Do not touch ... 
 	#ifdef blck_milServer
 	if (true) exitWith 
@@ -100,8 +100,8 @@
 	blck_showCountAliveAI = true;
 
 	//Minimum distance between missions
-	blck_MinDistanceFromMission = 800;
-	blck_minDistanceToBases = 1000;
+	blck_MinDistanceFromMission = 2000;
+	blck_minDistanceToBases = 800;
 	blck_minDistanceToPlayer = 800;
 	blck_minDistanceFromTowns = 400;
 	blck_minDistanceFromDMS = 800;  // minimum distance for a blackeagls mission from any nearby DMS missions. set to -1 to disable this check.	
@@ -122,7 +122,7 @@
 	///////////////////////////////	
 	blck_killPercentage = 0.999999;  // The mission will complete if this fraction of the total AI spawned has been killed.
 								// This facilitates mission completion when one or two AI are spawned into objects.	
-	blck_spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionEndGround","atMissionEndAir". 
+	blck_spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionStartAir","atMissionEndGround","atMissionEndAir".
 							 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.
 							 //  This sets the default value but can be overridden by defining  _spawnCrateTiming in the file defining a particular mission.
 	blck_loadCratesTiming = "atMissionSpawn"; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 

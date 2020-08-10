@@ -52,11 +52,12 @@ if (blck_debugOn) then
 _pathGreen = "Green";
 if (blck_debugOn) then
 {
-	_missionListGreen = ["fortification"];  // charlston and factory run fine
+	_missionListGreen = ["charlston"];  // charlston and factory run fine
 	// fortification throws error for loot counts
 	diag_log format["_missionLists: _missionListGreen = %1",_missionListGreen];	
 } else {
-	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage","charlston","factory","fortification"];
+	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch",
+	"munitionsResearch","colonelsBase","banditVillage","charlston","factory","fortification"];
 };
 
 _pathOrange = "Orange";
@@ -65,15 +66,31 @@ if (blck_debugOn) then
 	_missionListOrange = ["dashq"/*"dashq","tko_camp","bunkerMission",*temple"*/]; // bunker, dashq, tko_camp all run fine.
 	diag_log format["_missionLists: _missionListOrange = %1",_missionListOrange];
 } else {
-	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/"CommandersComplex","generalsCamp","colonel2","stronghold","operationShutdown","operationTakeover","dashq","tko_camp","bunker"/*,"temple"*/];
+	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/
+	"CommandersComplex","generalsCamp","colonel2","stronghold","operationShutdown","operationTakeover","dashq","tko_camp","bunker"/*,"temple"*/];
+};
+
+_pathUMS = "UMS\dynamicMissions";
+_missionListUMS = ["default"];
+if (blck_debugOn) then 
+{
+	diag_log format["_missionLists: _missionListUMS = %1",_missionListUMS];
 };
 
 #ifdef blck_milServer
 if (blck_debugOn) then 
 {
+	_missionListBlue = ["survivalSupplies"/*"default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
+	diag_log format["_missionLists: _missionListBlue = %1",_missionListBlue];	
+} else {
+	_missionListBlue = ["default","sniperBase","survivalSupplies"/*,"hostage1","captive1","default2","medicalCamp","redCamp","resupplyCamp"*/];
+};
+
+if (blck_debugOn) then 
+{
 	_missionListGreen = ["FieldCamp"];
 } else {
-	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage","charlston","factory","fortification"/*,"banditVillage"*/];
+	_missionListGreen = ["FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage","charlston","factory","fortification"/*,"banditVillage"*/];
 };
 // Passed 
 
@@ -81,7 +98,7 @@ if (blck_debugOn) then
 {
 	_missionListOrange = ["dashq"];
 } else { 
-	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp",*/"CommandersComplex","generalsCamp","colonel2","pinkPoison","stronghold","banditVillage","operationShutdown","operationTakeover","dashq","tko_camp","bunker"/*,"temple"*/];
+	_missionListOrange = ["CommandersComplex","generalsCamp","colonel2","pinkPoison","stronghold","banditVillage","operationShutdown","operationTakeover","dashq","tko_camp","bunker"/*,"temple"*/];
 };
 // Passed CommandersComplex  generalsCamp  colonel2  pinkPoison  stronghold  
 // Failed 
@@ -92,6 +109,6 @@ _pathHeliCrashes = "HeliCrashes";
 if (toLower(worldName) isEqualTo "namalsk") then
 {
 	diag_log format["[blckeagls] GMS_missionLists.sqf:: -> running mission list variants for Namalsk"];
-	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp",*/"FieldCamp","FieldHQ"/*,"weaponsResearch","munitionsResearch"*/];
-	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp",*/"CommandersComplex","generalsCamp"/*,"colonel2","temple"*/];
+	_missionListGreen = ["FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage","charlston","factory","fortification"];
+	_missionListOrange = ["CommandersComplex","generalsCamp","colonel2","pinkPoison","stronghold","banditVillage","operationShutdown","operationTakeover","dashq","tko_camp","bunker"];
 };

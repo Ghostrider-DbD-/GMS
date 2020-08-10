@@ -14,13 +14,13 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-_crateLoot = blck_BoxLoot_Red;
-_lootCounts = blck_lootCountsRed;
+_crateLoot = blck_BoxLoot_Green;
+_lootCounts = blck_lootCountsGreen;
 _startMsg = "Camp Charlston is being built by the enemy in a nearby sector.";
 _endMsg = "Camp Charleston is under survivor control!";
 _markerLabel = "";
-_markerType = ["ellipse",[200,200],"GRID"];
-_markerColor = "ColorRed";
+_markerType = ["ellipse",[250,250],"GRID"];
+_markerColor = "ColorGreen";
 _markerMissionName = "Camp Charleston";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
@@ -151,7 +151,10 @@ _missionLandscape = [
      ["Land_Mil_WallBig_4m_F",[27.3386,-2.35352,-0.00143909],0,true,true]
 ];
 
-_missionLootBoxes = [];
+_missionLootBoxes = [
+     ["B_supplyCrate_F",[15,-15,3],_crateLoot,_lootCounts,3]
+];
+
 
 _missionLootVehicles = [];
 
@@ -160,18 +163,17 @@ _missionPatrolVehicles = [
     // ["B_G_Offroad_01_armed_F",[27.5131,-53.1431,0.00819397],268.528]
 ];
 
-_missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionEmplacedWeapons = [];
 _missionGroups = [];
 
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = blck_useMines;
-_minNoAI = blck_MinAI_Red;
-_maxNoAI = blck_MaxAI_Red;
-_noAIGroups = blck_AIGrps_Red;
-_noVehiclePatrols = blck_SpawnVeh_Red;
-_noEmplacedWeapons = blck_SpawnEmplaced_Red;
+_minNoAI = blck_MinAI_Green;
+_maxNoAI = blck_MaxAI_Green;
+_noAIGroups = blck_AIGrps_Green;
+_noVehiclePatrols = blck_SpawnVeh_Green;
+_noEmplacedWeapons = blck_SpawnEmplaced_Green;
 _uniforms = blck_SkinList;
 _headgear = blck_headgear;
 _chanceLoot = 0.6; 

@@ -268,8 +268,9 @@ _missionParameters params[
 					};
 				};		
 				uiSleep  delayTime;
-
-				if (_spawnCratesTiming isEqualTo "atMissionSpawnGround") then
+				if (blck_debugLevel >= 3) then {diag_log format["monitorInitializedMissions:  _spawnCrateTiming = %1 _loadCratesTiming = %2 | _markerMissionName = %3",_spawnCratesTiming,_loadCratesTiming, _markerMissionName]};
+				if (blck_debugLevel >= 3) then {diag_log format["monitorInitializedMissions:  _missionLootBoxes = %1",_missionLootBoxes]};
+				if (_spawnCratesTiming in ["atMissionSpawnGround","atMissionStartAir"]) then
 				{
 					if (_missionLootBoxes isEqualTo []) then
 					{

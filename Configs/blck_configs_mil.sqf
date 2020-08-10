@@ -76,7 +76,7 @@
 	blck_showCountAliveAI = true;	
 
 	//Minimum distance between missions
-	blck_MinDistanceFromMission = 1000;
+	blck_MinDistanceFromMission = 2000;
 	blck_minDistanceToBases = 500;
 	blck_minDistanceToPlayer = 500;
 	blck_minDistanceFromTowns = 300;
