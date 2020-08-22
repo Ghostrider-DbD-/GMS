@@ -27,13 +27,13 @@ private _statics = if (_ceil > _noStatics) then {_noStatics} else {_ceil};
 private _units = if (_floor > _noUnits) then {_noUnits} else {_floor};
 private _staticsSpawned = [];
 uiSleep 1;
+
 for "_i" from 1 to _statics do
 {
-	diag_log format["_fnc_spawnGarrisonInsideBuilding_relPos: _x = %1",_x];	
 	_pos = selectRandom _allBldPsn;
 	_allBldPsn = _allBldPsn - [_pos];
 	_staticClassName = selectRandom _typesStatics;
-	_obj = [_staticClassName, [0,0,0], true] call blck_fnc_spawnVehicle;  
+	_obj = [_staticClassName, [0,0,0]] call blck_fnc_spawnVehicle;  
 	_obj setVariable["GRG_vehType","emplaced"];
 	_staticsSpawned pushBack _obj;
 	_obj setPosATL _pos; // (_pos vectorAdd (getPosATL _building));

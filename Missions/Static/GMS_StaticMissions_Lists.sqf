@@ -24,7 +24,14 @@ _staticMissions = [
 	//#ifndef blck_milServer
 	//["Exile","Altis","chelnosiStatic.sqf"],
 	//#endif
-	["newmission","newmap","somescript.sqf"]  //  Here just so you dont have to worry about all those commas
+	["Exile","Altis","testMission.sqf"],
+	//["default","Altis","testMission.sqf"],
+	//["newmission","newmap","somescript.sqf"]  //  Here just so you dont have to worry about all those commas
+	/*
+		This is here just as a default end of list element 
+		It serves no other purpose
+	*/
+	["","",""]
 ];
 
 //diag_log "[blckeagls] GMS_StaticMissions_Lists.sqf <Loaded>";

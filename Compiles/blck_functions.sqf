@@ -51,6 +51,7 @@ private _functions = [
 	["blck_fnc_getAllDMSMarkers","\q\addons\custom_server\Compiles\Functions\GMS_fnc_getAllDMSMarkers.sqf"],
 	["blck_fnc_createMissionMarkers","\q\addons\custom_server\Compiles\Functions\GMS_fnc_createMissionMarkers.sqf"],
 	["blck_fnc_log","\q\addons\custom_server\Compiles\Functions\GMS_fnc_log.sqf"],
+	["blck_fnc_setDirUp","\q\addons\custom_server\Compiles\Functions\GMS_fnc_setDirUp.sqf"],
 
 	// Player-related functions
 	["blck_fnc_handlePlayerUpdates","\q\addons\custom_server\Compiles\Units\GMS_fnc_handlePlayerUpdates.sqf"],

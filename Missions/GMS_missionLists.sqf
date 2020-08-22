@@ -52,7 +52,7 @@ if (blck_debugOn) then
 _pathGreen = "Green";
 if (blck_debugOn) then
 {
-	_missionListGreen = ["charlston"];  // charlston and factory run fine
+	_missionListGreen = ["testMission"];  // charlston and factory run fine
 	// fortification throws error for loot counts
 	diag_log format["_missionLists: _missionListGreen = %1",_missionListGreen];	
 } else {

@@ -47,12 +47,6 @@ params[ ["_coords", [0,0,0]], ["_cratesToSpawn",[]], ["_loadCrateTiming","atMiss
 
 private _params = ["_coords","_cratesToSpawn","_loadCrateTiming","_spawnCrateTiming","_missionState","_difficulty"];
 
-if (blck_debugLevel >= 3) then 
-{
-	{
-		diag_log format["_fnc_spawnMissionCrates: %1 = %2",_x,_params select _forEachIndex];
-	} forEach ["_coords","_cratesToSpawn","_loadCrateTiming","_spawnCrateTiming","_missionState","_difficulty"];
-};
 if ((count _coords) == 2) then // assume only X and Y offsets are provided
 {
 	_coords pushback 0;; // calculate the world coordinates
@@ -64,7 +58,7 @@ private _cratesSpawned = [];
 	
 	private _pos = _coords vectorAdd _crateOffset;
 	private _crate = [_pos,_crateType] call blck_fnc_spawnCrate;
-	_crate setDir _crateDir;
+	[_crate, _crateDir] call blck_fnc_setDirUp;
 	_crate setVariable["lootArray",_lootArray];
 	_crate setVariable["lootCounts",_lootCounts];
 	_crate setVariable["difficulty",_difficulty];

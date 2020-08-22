@@ -13,26 +13,15 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 if (toLower(blck_modType) isEqualTo "default") exitWith {};
 
-params["_obj","_difficulty"];
+params["_obj","_difficulty",["_money",-1]];
 
-if (blck_modType isEqualTo "Exile") then
+if (_money == -1) then 
 {
-	switch (_difficulty) do
-	{
-		case "blue":{_obj setVariable["ExileMoney", floor(random([blck_crateMoneyBlue] call blck_fnc_getNumberFromRange)),true];};
-		case "red":{_obj setVariable["ExileMoney", floor(random([blck_crateMoneyRed] call blck_fnc_getNumberFromRange)),true];};
-		case "green":{_obj setVariable["ExileMoney", floor(random([blck_crateMoneyGreen] call blck_fnc_getNumberFromRange)),true];};
-		case "orange":{_obj setVariable["ExileMoney", floor(random([blck_crateMoneyGreen] call blck_fnc_getNumberFromRange)),true];};
-	};
+	private _money = missionNamespace getVariable format["blck_crateMoney%1",_difficulty];
+	_money = floor(random([_money] call blck_fnc_getNumberFromRange));
 };
-
-if (blck_modType isEqualTo "Epoch") then
+switch(toLower(blck_modName)) do 
 {
-	switch (_difficulty) do
-	{
-		case "blue":{_obj setVariable["Crypto", floor(random([blck_crateMoneyBlue] call blck_fnc_getNumberFromRange)),true];};
-		case "red":{_obj setVariable["Crypto", floor(random([blck_crateMoneyRed] call blck_fnc_getNumberFromRange)),true];};
-		case "green":{_obj setVariable["Crypto", floor(random([blck_crateMoneyGreen] call blck_fnc_getNumberFromRange)),true];};
-		case "orange":{_obj setVariable["Crypto", floor(random([blck_crateMoneyGreen] call blck_fnc_getNumberFromRange)),true];};
-	};
+	case "exile": {_obj setVariable["ExileMoney",_money,true]};
+	case "epoch": {_obj setVariable["Crypto", _money,true]};
 };

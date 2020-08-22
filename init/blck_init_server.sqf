@@ -167,6 +167,26 @@ blck_townLocations = _villages + _cites + _capitals + _marine + _other + _airpor
 	blck_locationBlackList pushBack [locationPosition _x, blck_minDistanceFromTowns];
 } forEach blck_townLocations;
 
+/*
+private _loc = [];
+private _old = blck_locationBlackList;
+private _maxElapsed = 0;
+private _passAtMaxElapsed = -1;
+for "_i" from 1 to 500 do 
+{
+	private _start = diag_tickTime;
+	private _pos = [] call blck_fnc_findSafePosn;
+	_m = createMarker[format["random%1",_i],_pos];
+	_m setMarkerType 'mil_dot';
+	_m setMarkerColor 'COLORYELLOW';
+	if (diag_tickTime - _start > _maxElapsed) then {_maxElapsed = diag_tickTime - _start; _passAtMaxElapsed = _i};
+	diag_log format["Marker %1 created at %2 | tElapsed = %3 | past at max = %4",_m,_pos,diag_tickTime - _start, _passAtMaxElapsed];
+	if !(_pos isEqualTo []) then {blck_locationBlackList pushBack [_pos,500]};
+};
+blck_locationBlackList = _old;
+*/
+
+
 //Start the mission timers
 if (blck_enableOrangeMissions > 0) then
 {
@@ -184,17 +204,20 @@ if (blck_enableBlueMissions > 0) then
 {
 	[_missionListBlue,_pathBlue,"BlueMarker","blue",blck_TMin_Blue,blck_TMax_Blue,blck_enableBlueMissions] call blck_fnc_addMissionToQue;
 };
-
+if (blck_numberUnderwaterDynamicMissions > 0) then 
+{
+	[_missionListUMS,_pathUMS,"UMSMarker","Red",blck_TMin_UMS,blck_TMax_UMS,blck_numberUnderwaterDynamicMissions] call blck_fnc_addMissionToQue;
+};
 #ifdef GRGserver
 ["Running GhostriderGaming Version"] call blck_fnc_log;
 if (blck_enableScoutsMissions > 0) then
 {
-	[_missionListScouts,_pathScouts,"ScoutsMarker","red",blck_TMin_Scouts,blck_TMax_Scouts,blck_enableScoutsMissions,false] call blck_fnc_addMissionToQue;
+	[_missionListScouts,_pathScouts,"ScoutsMarker","red",blck_TMin_Scouts,blck_TMax_Scouts,blck_enableScoutsMissions] call blck_fnc_addMissionToQue;
 };
 
 if (blck_enableHunterMissions > 0) then
 {
-	[_missionListHunters,_pathHunters,"HunterMarker","green",blck_TMin_Hunter,blck_TMax_Hunter,blck_enableHunterMissions,false] call blck_fnc_addMissionToQue;
+	[_missionListHunters,_pathHunters,"HunterMarker","green",blck_TMin_Hunter,blck_TMax_Hunter,blck_enableHunterMissions] call blck_fnc_addMissionToQue;
 };
 
 // Running new version of Crash sites.
