@@ -13,16 +13,14 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 if (toLower(blck_modType) isEqualTo "default") exitWith {};
 
-params["_obj","_difficulty",["_money",-1]];
-
-if (_money == -1) then 
+params["_obj",["_money",-1]];
+_money = ([_money] call blck_fnc_getNumberFromRange);
+if (blck_debugLevel >= 3) then {[format["_fnc_addmoneyToObject: _money = %1 _obj = %2",_money,_obj]] call blck_fnc_log};
+if !(_money <= 0) then 
 {
-	private _money = missionNamespace getVariable format["blck_crateMoney%1",_difficulty];
-};
-_money = round([_money] call blck_fnc_getNumberFromRange);
-if (blck_debugLevel >= 3) then {[format["_fnc_addmoneyToObject: _money = %1",_money]] call blck_fnc_log};
-switch(toLower(blck_modType)) do 
-{
-	case "exile": {_obj setVariable["ExileMoney",_money,true]};
-	case "epoch": {_obj setVariable["Crypto", _money,true]};
+	switch(toLower(blck_modType)) do 
+	{
+		case "exile": {_obj setVariable["ExileMoney",_money,true]};
+		case "epoch": {_obj setVariable["Crypto", _money,true]};
+	};
 };
