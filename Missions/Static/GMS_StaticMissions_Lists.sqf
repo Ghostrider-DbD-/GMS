@@ -24,7 +24,7 @@ _staticMissions = [
 	//#ifndef blck_milServer
 	//["Exile","Altis","chelnosiStatic.sqf"],
 	//#endif
-	["Exile","Altis","testMission.sqf"],
+	//["Exile","Altis","testMission.sqf"],
 	//["default","Altis","testMission.sqf"],
 	//["newmission","newmap","somescript.sqf"]  //  Here just so you dont have to worry about all those commas
 	/*

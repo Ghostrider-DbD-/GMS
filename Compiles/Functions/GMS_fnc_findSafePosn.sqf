@@ -183,7 +183,7 @@ if (_coords isEqualTo []) then
 	diag_log format["[blckeagls] <ERROR> Could not find a safe position for a mission, consider reducing values for minimum distances between missions and players, bases, other missions or towns"];
 } else {
 	_coords set[2, 0];
-	diag_log format["_fnc_findSafePosn: _exit with _coords = %1 | time spent = %2",_coords,diag_tickTime - _timeIn];
+	//diag_log format["_fnc_findSafePosn: _exit with _coords = %1 | time spent = %2",_coords,diag_tickTime - _timeIn];
 };
 
 _coords

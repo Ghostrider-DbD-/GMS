@@ -21,7 +21,24 @@ switch (toLower (worldName)) do
 {
 	case "altis":
 	{
-
+		private ["_arr","_sunrise","_sunset","_time"];
+		_arr = date call BIS_fnc_sunriseSunsetTime;
+		_sunrise = _arr select 0;
+		_sunset = _arr select 1;
+		_daylight = _sunset - _sunrise;
+		_nightTime = abs(24 - _daylight);
+		_time = dayTime;
+		#ifdef blck_milServer
+		blck_timeAcceleration = true; // When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
+		blck_timeAccelerationDay = (_daylight)/3;  // Daytime time accelearation
+		blck_timeAccelerationDusk = 4; // Dawn/dusk time accelearation
+		blck_timeAccelerationNight = _nightTime / 6;  // Nighttim time acceleration	
+		#else
+		blck_timeAcceleration = true; // When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
+		blck_timeAccelerationDay = (_daylight)/8;  // Daytime time accelearation
+		blck_timeAccelerationDusk = 4; // Dawn/dusk time accelearation
+		blck_timeAccelerationNight = _nightTime / 8;  // Nighttim time acceleration		
+		#endif
 	};
 	case"tanoa": 
 	{
@@ -29,7 +46,31 @@ switch (toLower (worldName)) do
 	};
 	case"namalsk": 
 	{
-	
+		private ["_arr","_sunrise","_sunset","_time"];
+		_arr = date call BIS_fnc_sunriseSunsetTime;
+		_sunrise = _arr select 0;
+		_sunset = _arr select 1;
+		_daylight = _sunset - _sunrise;
+		_nightTime = abs(24 - _daylight);
+		_time = dayTime;
+		_serverUpTime = 8;
+		blck_enableOrangeMissions = 1;  
+		blck_enableGreenMissions = -1;
+		blck_enableRedMissions = 1;
+		blck_enableBlueMissions = -1;
+		blck_enableHunterMissions = 1;
+		blck_enableScoutsMissions = -1;
+		blck_maxCrashSites = 1;  // recommended settings: 3 for Altis, 2 for Tanoa, 1 for smaller maps. Set to -1 to disable
+		
+		blck_timeAcceleration = true; // When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
+		blck_timeAccelerationDay = 1.5;  // Daytime time accelearation
+		blck_timeAccelerationDusk = 6; // Dawn/dusk time accelearation
+		blck_timeAccelerationNight = (12);  // Nighttim time acceleration	
+
+		blck_MinDistanceFromMission = 500;
+		blck_minDistanceToBases = 300;
+		blck_minDistanceToPlayer = 300;
+		blck_minDistanceFromTowns = 100;		
 	};
 	case "esseker": 
 	{

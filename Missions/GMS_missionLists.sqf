@@ -33,7 +33,7 @@ private _pathBlue = "Blue";
 private _missionListBlue = [];
 if (blck_debugOn) then 
 {
-	_missionListBlue = ["hostage1"/*"default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
+	_missionListBlue = ["default"/*"default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
 	diag_log format["_missionLists: _missionListBlue = %1",_missionListBlue];	
 } else {
 	_missionListBlue = ["default","hostage1","captive1","sniperBase","survivalSupplies"/*,"default2","medicalCamp","redCamp","resupplyCamp"*/];
@@ -52,7 +52,7 @@ if (blck_debugOn) then
 _pathGreen = "Green";
 if (blck_debugOn) then
 {
-	_missionListGreen = ["testMission"];  // charlston and factory run fine
+	_missionListGreen = ["fortification"];  // charlston and factory run fine
 	// fortification throws error for loot counts
 	diag_log format["_missionLists: _missionListGreen = %1",_missionListGreen];	
 } else {

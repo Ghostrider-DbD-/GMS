@@ -165,3 +165,5 @@ private _missionData = [_coords,_mines,_objects,_crates, _blck_AllMissionAI,_ass
 blck_activeMissionsList pushBack [_missionCategoryDescriptors,_missionTimeoutAt,_triggered,_spawnPara,_missionData,_missionParameters];
 
 [format["Initialized Mission %1 | description %2 | difficulty %3 at %4",_markerName, _markerMissionName, _difficulty, diag_tickTime]] call blck_fnc_log;
+
+true

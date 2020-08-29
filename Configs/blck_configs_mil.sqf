@@ -98,7 +98,7 @@
 	blck_missionEndCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 	blck_killPercentage = 0.99999999999;  // The mission will complete if this fraction of the total AI spawned has been killed.
 								// This facilitates mission completion when one or two AI are spawned into objects.	
-	blck_spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionStartAir","atMissionEndGround","atMissionEndAir". 
+	blck_spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir". 
 							 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.
 							 //  This sets the default value but can be overridden by defining  _spawnCrateTiming in the file defining a particular mission.
 	blck_loadCratesTiming = "atMissionSpawn"; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
@@ -249,22 +249,22 @@
 	blck_TMin_UMS = 300;	
 	
 	#ifdef GRGserver
-	blck_TMin_Hunter = 340;
+	blck_TMin_Hunter = 360;
 	blck_TMin_Scouts = 300;
 	blck_TMin_Crashes = 300;
 	#endif
 	
 	//Maximum Spawn time between missions in seconds  - reduce to 2 secs to spawn missions as soon as possible, or increase to space them out
-	blck_TMax_Orange = 520;
+	blck_TMax_Orange = 560;
 	blck_TMax_Green = 500;
-	blck_TMax_Blue = 340;
-	blck_TMax_Red = 400;
+	blck_TMax_Blue = 360;
+	blck_TMax_Red = 420;
 	blck_TMax_UMS = 400;
 
 	#ifdef GRGserver
 	blck_TMax_Hunter = 400;
-	blck_TMax_Scouts = 320;
-	blck_TMax_Crashes = 320;
+	blck_TMax_Scouts = 360;
+	blck_TMax_Crashes = 360;
 	#endif
 	
 	///////////////////////////////

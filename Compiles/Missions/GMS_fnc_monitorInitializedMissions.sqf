@@ -288,7 +288,7 @@ _missionParameters params[
 					if (_loadCratesTiming isEqualTo "atMissionSpawn") then 
 					{
 						private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
-						diag_log format["_monitorInitializedMissions: _crateMoney set to: %1",_crateMoney];
+						diag_log format["_monitorInitializedMissions: _crateMoney set to: %1 | _crates = %2",_crateMoney,_crates];
 						{
 							[_x,_crateMoney] call blck_fnc_addMoneyToObject;
 						} forEach _crates;

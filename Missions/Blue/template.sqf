@@ -140,7 +140,7 @@ _chanceLoot = 0.0;
 _paraLoot = blck_BoxLoot_Blue;
 _paraLootCounts = blck_lootCountsRed;  // Throw in something more exotic than found at a normal blue mission.
 
-_spawnCratesTiming = blck_spawnCratesTiming; // Choices: "atMissionSpawnGround","AtMissionSpawnAir","atMissionEndGround","atMissionEndAir". 
+_spawnCratesTiming = blck_spawnCratesTiming; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir". 
 						 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.
 						 //  This sets the default value but can be overridden by defining  _spawnCrateTiming in the file defining a particular mission.
 _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
