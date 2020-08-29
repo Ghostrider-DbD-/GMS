@@ -31,6 +31,7 @@ Fixed: Missions sometimes spawned on steep hillsides.
 Fixed: Vehicles sometimes blew up on spawn.
 Fixed: Money was not added to crates at dynamic missions 
 
+Changed: Timers for spawning missions adjusted a bit to space out spawn/timeouts a bit more.
 Changed: The system has been upgreaded to a state-based system, meaning only one script (GMS_fnc_mainThread)is running once all missions are initialized.
 Changed: a lot of debugging was removed.
 Changed: List of missions for dynamic Underwater missions was moved to \Missions\GMS_missionLIsts.sqf

@@ -50,10 +50,10 @@ _noChoppers = 0;
 	"_loadCratesTiming", 
 	"_endCondition",
 */
-_endCondition = "blah";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 //_timeOut = -1;
 
-_loadCratesTiming = "blah";
-_spawnCratesTiming = "blah";
+//_loadCratesTiming = "blah";
+//_spawnCratesTiming = "blah";
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

@@ -17,16 +17,16 @@
 		changing any of these variables may break the mission systemChat
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
-	blck_debugON = true;  //  Do not touch ... 
-	blck_debugLevel = 3;  //  Do not touch ... 
+	blck_debugON = false;  //  Do not touch ... 
+	blck_debugLevel = 0;  //  Do not touch ... 
 	#ifdef blck_milServer
 	if (true) exitWith 
 	{
-		diag_log format["[blckeagls] Running configs for militarized servers build %1",blck_buildNumber];
+		[format["Running configs for militarized servers build %1",blck_buildNumber]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_mil.sqf";
 	};
 	#endif
-	diag_log format["[blckeagls] Loading configurations for Non-militarized servers build %1",blck_buildNumber];
+	[format["Loading configurations for Non-militarized servers build %1",blck_buildNumber]] call blck_fnc_log;
 	/*
 		**************************************
 		Configurations begin here
@@ -526,7 +526,7 @@
 	uiSleep 10;
 	if (blck_useConfigsGeneratedLoadouts) then
 	{
-		diag_log format["[blckeagls] Dynamic Configs Enabled"];
+		["Dynamic Configs Enabled"] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_dynamicConfigs.sqf";
 	} else {
 

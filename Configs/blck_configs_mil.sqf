@@ -12,7 +12,7 @@
 
 	#include "\q\addons\custom_server\Configs\blck_defines.hpp";
 	#include "\q\addons\custom_server\init\build.sqf"	
-	diag_log format["[blckeagls] Loading blck_configs_mil.sqf for Militarized Servers for blckeagls build %1",blck_buildNumber];
+	[format["Loading blck_configs_mil.sqf for Militarized Servers for blckeagls build %1",blck_buildNumber]] call blck_fnc_log;
 
 	/***************************************************************
 		BLCKEAGLS SUPPLEMENTAL MODULES
@@ -496,17 +496,17 @@
 	
 	if (toLower(blck_modType) isEqualTo "epoch") then
 	{
-		diag_log format["[blckeagls] Loading Mission System using Parameters for %1 for militarized servers",blck_modType];
+		[format[" Loading Mission System using Parameters for %1 for militarized servers",blck_modType]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_epoch_mil.sqf";
 	};
 	if (toLower(blck_modType) isEqualTo "exile") then
 	{
-		diag_log format["[blckeagls] Loading Mission System using Parameters for %1 for militarized servers",blck_modType];
+		[format[" Loading Mission System using Parameters for %1 for militarized servers",blck_modType]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_exile_mil.sqf";
 	};	
 	if (toLower(blck_modType) isEqualTo "default") then 
 	{
-		diag_log format["[blckeagls] Loading Mission System using Parameters for %1 for militarized servers",blck_modType];
+		diag_log format[" Loading Mission System using Parameters for %1 for militarized servers",blck_modType]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_default_mil.sqf";
 	};
 	//waitUntil{!isNil "blck_useConfigsGeneratedLoadouts"};
@@ -514,7 +514,7 @@
 	uiSleep 10;
 	if (blck_useConfigsGeneratedLoadouts) then
 	{
-		diag_log format["[blckeagls] Dynamic Configs Enabled"];
+		[" Dynamic Configs Enabled"] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_dynamicConfigs.sqf";
 	};	
 

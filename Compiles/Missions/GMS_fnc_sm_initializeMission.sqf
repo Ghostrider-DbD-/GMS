@@ -65,5 +65,5 @@ uiSleep 30;
 // spawn loot chests
 [_missionLootBoxes,_missionCenter,_crateMoney] call blck_fnc_sm_spawnLootContainers;
 [_missionLootVehicles,_missionCenter,_crateMoney] call blck_fnc_sm_spawnLootContainers;
-diag_log format["[blckeagls] Static Mission Spawner: Mission %1 spawned",_mission];
+[format["Static Mission Spawner: Mission %1 spawned",_mission]] call blck_fnc_log;
 

@@ -200,7 +200,7 @@ private _functions = [
 
 #ifdef GRGserver	
 if (isServer) then {blck_fnc_broadcastServerFPS = compileFinal  preprocessFileLineNumbers "\q\addons\custom_server\Compiles\Functions\GMS_fnc_broadcastServerFPS.sqf";};
-diag_log "blck_functions loaded using GRGserver settings ---- >>>> ";
+["blck_functions loaded using GRGserver settings ---- >>>> "] call blck_fnc_log;
 #endif
 
 

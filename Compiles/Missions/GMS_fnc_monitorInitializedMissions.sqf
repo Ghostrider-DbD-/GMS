@@ -288,7 +288,6 @@ _missionParameters params[
 					if (_loadCratesTiming isEqualTo "atMissionSpawn") then 
 					{
 						private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
-						diag_log format["_monitorInitializedMissions: _crateMoney set to: %1 | _crates = %2",_crateMoney,_crates];
 						{
 							[_x,_crateMoney] call blck_fnc_addMoneyToObject;
 						} forEach _crates;
@@ -340,7 +339,6 @@ _missionParameters params[
 			_endIfPlayerNear = true;
 			_endIfAIKilled = true;
 
-			//diag_log format["_monitorInitializedMissions: _endCondition = %1 | isvalid = %2",_endCondition, _endCondition in blck_validEndStates];
 			switch (_endCondition) do
 			{
 				case "playerNear": {_secureAsset = false; _endIfPlayerNear = true;_endIfAIKilled = false;};
@@ -452,7 +450,6 @@ _missionParameters params[
 											_objects append _crates;
 										};
 										private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);										
-										//diag_log format["_monitorInitializedMissions: _crateMoney set to: %1",_crateMoney];
 										{
 											[_x,_crateMoney] call blck_fnc_addMoneyToObject;
 										} forEach _crates;										
