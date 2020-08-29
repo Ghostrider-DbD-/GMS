@@ -27,7 +27,6 @@ private _statics = if (_ceil > _noStatics) then {_noStatics} else {_ceil};
 private _units = if (_floor > _noUnits) then {_noUnits} else {_floor};
 private _staticsSpawned = [];
 uiSleep 1;
-
 for "_i" from 1 to _statics do
 {
 	_pos = selectRandom _allBldPsn;

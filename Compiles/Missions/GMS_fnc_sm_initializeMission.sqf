@@ -43,7 +43,6 @@ _blck_localMissionMarker set [3,blck_labelMapMarkers select 1];  // Use an arrow
 [_blck_localMissionMarker] call blck_fnc_spawnMarker;
 
 [_missionLandscape] call blck_fnc_sm_spawnObjects;
-
 {
 	[blck_sm_Aircraft,_x] call blck_fnc_sm_AddGroupToArray; 
 	

@@ -70,7 +70,7 @@ private _cratesSpawned = [];
 	
 }forEach _cratesToSpawn;
 
-if (_spawnCrateTiming in ["atMissionEndAir","atMissionStartAir"]) then 
+if (_spawnCrateTiming in ["atMissionEndAir","atMissionSpawnAir"]) then 
 {
 	[_cratesSpawned] spawn _fnc_dropMissionCrates;
 };
