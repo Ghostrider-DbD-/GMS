@@ -27,10 +27,11 @@
 	blck_spawnMapAddons = true;  // When true map addons will be spawned based on parameters  define in custum_server\MapAddons\MapAddons_init.sqf
 	blck_spawnStaticLootCrates = true; // When true, static loot crates will be spawned and loaded with loot as specified in custom_server\SLS\SLS_init_Epoch.sqf (or its exile equivalent).
 	blck_simulationManager = blck_useBlckeaglsSimulationManagement; 
-	//diag_log format["[blckeagls] blck_configs:  blck_simulationManager = %1",blck_simulationManager];
+	blck_hideRocksAndPlants = true;  //  When true, any rocks, trees or bushes under enterable buildings will be 'hidden'
+
 	// Note that you can define map-specific variants in custom_server\configs\blck_custom_config.sqf
 	blck_useTimeAcceleration = true; // When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
-	blck_timeAccelerationDay = 2;  // Daytime time accelearation
+	blck_timeAccelerationDay = 2.5;  // Daytime time accelearation
 	blck_timeAccelerationDusk = 4; // Dawn/dusk time accelearation
 	blck_timeAccelerationNight = 8;  // Nighttim time acceleration	
 	
@@ -201,7 +202,7 @@
 	blck_noPatrolHelisGreen = [1,3];
 	
 	blck_chanceHeliPatrolOrange = 0.9999;
-	blck_patrolHelisOrange = blck_armed_attackHelis + blck_armed_heavyAttackHelis; // + _blck_fighters;
+	blck_patrolHelisOrange = blck_armed_attackHelis + blck_armed_heavyAttackHelis; 
 	blck_noPatrolHelisOrange = [2,4];
 
 	if (toLower(worldName) isEqualTo "namalsk" || toLower(worldName) isEqualTo "enoch") then
@@ -506,7 +507,7 @@
 	};	
 	if (toLower(blck_modType) isEqualTo "default") then 
 	{
-		diag_log format[" Loading Mission System using Parameters for %1 for militarized servers",blck_modType]] call blck_fnc_log;
+		[format[" Loading Mission System using Parameters for %1 for militarized servers",blck_modType]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_default_mil.sqf";
 	};
 	//waitUntil{!isNil "blck_useConfigsGeneratedLoadouts"};

@@ -21,6 +21,33 @@ _veh enableRopeAttach true;
 _veh setVariable["blck_vehicle",true];
 [_veh] call blck_fnc_protectVehicle;
 [_veh] call blck_fnc_emptyObject;
-
+if (_vehType isKindOf "Plane") then {
+	private _pos = [_pos select 0, _pos select 1, ((getPos _veh) select 2) + 400];
+	_veh setPosATL _pos;
+	// adapted from: https://community.bistudio.com/wiki/setVelocity
+	private _vel = velocity _veh;
+	private _dir = direction _veh;
+	#define speedIncr 150
+	_veh setVelocity [
+		(_vel select 0) + (sin _dir * speedIncr), 
+		(_vel select 1) + (cos _dir * speedIncr), 
+		(_vel select 2)
+	];
+	_veh flyInHeightASL [200,100,400];
+};
+if (_vehType isKindOf "Helicopter") then 
+{
+	private _pos = [_pos select 0, _pos select 1, ((getPos _veh) select 2) + 100];
+	_veh setPosATL _pos;
+	private _vel = velocity _veh;
+	private _dir = direction _veh;
+	#define speedIncr 25
+	_veh setVelocity [
+		(_vel select 0) + (sin _dir * speedIncr), 
+		(_vel select 1) + (cos _dir * speedIncr), 
+		(_vel select 2)
+	];
+	_veh flyInHeightASL [200,100,400];
+};
 _veh
 	
