@@ -8,6 +8,8 @@
 #define noActive 2
 #define waitTime 5
 
+blck_initializationInProgress = true;
+
 for "_i" from 1 to (count blck_activeMissionsList) do 
 {
 
@@ -195,11 +197,25 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 			_objects append _temp;
  
 			try {
-				_temp = [_coords, _minNoAI,_maxNoAI,_noAIGroups,_missionGroups,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnMissionAI;
+				_temp = [_coords, _minNoAI,_maxNoAI,_noAIGroups,_missionGroups,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call blck_fnc_spawnMissionAI;
 				_temp params["_ai","_abort"];
 				if (_abort) throw 1;
 				_blck_AllMissionAI append (_ai);
-				uiSleep delayTime;		
+				uiSleep delayTime;
+
+				if !(_scubaGroupParameters isEqualTo []) then 
+				{
+					//_umsUniforms = blck_UMS_uniforms;
+					//_umsHeadgear = blck_UMS_headgear;
+					//_umsWeapons = blck_UMS_weapons;
+					//_umsVests = blck_UMS_vests;
+					
+					_temp = [_coords, _minNoAI,_maxNoAI,_noAIGroups,_scubaGroupParameters,_difficulty,blck_UMS_uniforms,blck_UMS_headgear,blck_UMS_vests,_backpacks,blck_UMS_weapons,_sideArms,true] call blck_fnc_spawnMissionAI;
+					_temp params["_ai","_abort"];
+					if (_abort) throw 1;
+					_blck_AllMissionAI append (_ai);
+				};
+				uiSleep delayTime;
 
 				if !(_hostageConfig isEqualTo []) then
 				{
@@ -295,19 +311,26 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 				uisleep 10;
 
 				private _noVehiclePatrols = [_noVehiclePatrols] call blck_fnc_getNumberFromRange;
-				if (blck_useVehiclePatrols && ((_noVehiclePatrols > 0) || count _missionPatrolVehicles > 0)) then
+				if (blck_useVehiclePatrols && ((_noVehiclePatrols > 0) || !(_missionPatrolVehicles isEqualTo []))) then
 				{
 					_temp = [_coords,_noVehiclePatrols,_difficulty,_missionPatrolVehicles,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
 					// TODO: add grpNull checks to missionVehicleSpawner
-					if (_temp isEqualTo grpNull) then {throw 1} else 
-					{
-						//diag_log format["_monitorInitializeMissions(299): _temp select 0 = %1",_temp select 0];
-						//diag_log format["_monitorInitializedMissions(300): _temp select 1 = %1",_temp select 1];
-						_missionAIVehicles = _temp select 0;
-						_blck_AllMissionAI append (_temp select 1);
-					};
+					if (_temp isEqualTo grpNull) throw 1; 
+					_missionAIVehicles append (_temp select 0);
+					_blck_AllMissionAI append (_temp select 1);
 				};		
 				uiSleep  delayTime;
+				if (blck_useVehiclePatrols && ((_noVehiclePatrols > 0) || !(_submarinePatrolParameters isEqualTo []))) then
+				{
+					//params["_coords","_noVehiclePatrols","_skillAI","_missionPatrolVehicles",["_useRelativePos",true],["_uniforms",[]], ["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]], ["_isScubaGroup",false],["_crewCount",4]];
+					_temp = [_coords,_noVehiclePatrols,_difficulty,_submarinePatrolParameters,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
+					// TODO: add grpNull checks to missionVehicleSpawner
+					if (_temp isEqualTo grpNull) throw 1;
+					_missionAIVehicles append (_temp select 0);
+					_blck_AllMissionAI append (_temp select 1);
+				};		
+				uiSleep  delayTime;
+
 				if (blck_debugLevel >= 3) then {diag_log format["monitorInitializedMissions:  _spawnCrateTiming = %1 _loadCratesTiming = %2 | _markerMissionName = %3",_spawnCratesTiming,_loadCratesTiming, _markerMissionName]};
 				if (blck_debugLevel >= 3) then {diag_log format["monitorInitializedMissions:  _missionLootBoxes = %1",_missionLootBoxes]};
 				if (_spawnCratesTiming in ["atMissionSpawnGround","atMissionSpawnAir"]) then
@@ -608,3 +631,5 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 	} forEach [_objects,_hiddenObjects,_crates,_blck_AllMissionAI,_missionAIVehicles,_markers];	
 	*/
 };
+
+blck_initializationInProgress = false;
