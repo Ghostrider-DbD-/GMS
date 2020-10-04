@@ -107,7 +107,7 @@ switch (blck_simulationManager) do
 if ( !(blck_debugON) && (blck_debugLevel isEqualTo 0)) then
 {
 	waitUntil{{isPlayer _x}count allPlayers > 0};
-	["]Player Connected, spawning missions"] call blck_fnc_log;
+	["Player Connected, spawning missions"] call blck_fnc_log;
 } else {
 	["Debug mode ON, proceding without players"] call blck_fnc_log;
 };
@@ -163,29 +163,6 @@ private _other = ["NameLocal"] call _fn_setupLocationType;
 private _airport = ["Airport"] call _fn_setupLocationType;
 
 blck_townLocations = _villages + _cites + _capitals + _marine + _other + _airport;
-{
-	blck_locationBlackList pushBack [locationPosition _x, blck_minDistanceFromTowns];
-} forEach blck_townLocations;
-
-/*
-private _loc = [];
-private _old = blck_locationBlackList;
-private _maxElapsed = 0;
-private _passAtMaxElapsed = -1;
-for "_i" from 1 to 500 do 
-{
-	private _start = diag_tickTime;
-	private _pos = [] call blck_fnc_findSafePosn;
-	_m = createMarker[format["random%1",_i],_pos];
-	_m setMarkerType 'mil_dot';
-	_m setMarkerColor 'COLORYELLOW';
-	if (diag_tickTime - _start > _maxElapsed) then {_maxElapsed = diag_tickTime - _start; _passAtMaxElapsed = _i};
-	diag_log format["Marker %1 created at %2 | tElapsed = %3 | past at max = %4",_m,_pos,diag_tickTime - _start, _passAtMaxElapsed];
-	if !(_pos isEqualTo []) then {blck_locationBlackList pushBack [_pos,500]};
-};
-blck_locationBlackList = _old;
-*/
-
 
 //Start the mission timers
 if (blck_enableOrangeMissions > 0) then

@@ -50,7 +50,7 @@ if (toUpper(_markerType) in ["ELLIPSE","RECTANGLE"]) then // not an Icon ....
 	_m2 setMarkerColor "ColorBlack";
 	_m2 setMarkerText _markerLabel;	
 	_markers = [_m,_m2];	
-	diag_log format["_fnc_createMarkers: case of ELLIPSE/RECTANGLE: _markers = %1",_markers];
+	//diag_log format["_fnc_createMarkers: case of ELLIPSE/RECTANGLE: _markers = %1",_markers];
 } else {
 	private _m = "";
 	private _m2 = createMarker [blck_missionMarkerRootName + _markerName + "label", _markerPos];
@@ -58,7 +58,7 @@ if (toUpper(_markerType) in ["ELLIPSE","RECTANGLE"]) then // not an Icon ....
 	_m2 setMarkerColor _markerColor;
 	_m2 setMarkerText _markerLabel;
 	_markers = [_m,_m2];
-	diag_log format["_fnc_createMarkers: case of ICON: _markers = %1",_markers];		
+	//diag_log format["_fnc_createMarkers: case of ICON: _markers = %1",_markers];		
 };
 
 _markers
