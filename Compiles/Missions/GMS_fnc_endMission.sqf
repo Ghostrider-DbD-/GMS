@@ -16,12 +16,7 @@
 	
 _fn_missionCleanup = {	
 	params["_coords","_mines","_objects","_hiddenObjects","_blck_AllMissionAI","_markerName","_cleanupAliveAITimer","_cleanupCompositionTimer",["_isScubaMission",false]];
-	/*
-	private _vars = ["_coords","_mines","_objects","_hiddenObjects","_blck_AllMissionAI","_markerName","_cleanupAliveAITimer","_cleanupCompositionTimer"];
-	{
-		diag_log format["_endMission:_missionCleanup:  %1 = %2",_x,_this select _forEachIndex];
-	} forEach _vars;
-	*/
+
 	[_mines] call blck_fnc_clearMines;
 	blck_oldMissionObjects pushback [_coords,_objects, (diag_tickTime + _cleanupCompositionTimer)];	
 	blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime + _cleanupCompositionTimer)];
@@ -62,22 +57,6 @@ params[
 	["_isScubaMission",false]
 ];
 
-/*
-{
-	diag_log format["_endMission: %1 = %2",_x, _this select _forEachIndex];
-} forEach [	"_coords",
-	"_mines",
-	"_objects",
-	"_hiddenObjects",
-	"_crates",
-	"_blck_AllMissionAI",
-	"_endMsg",
-	"_markers",
-	"_markerPos",
-	"_markerName",
-	"_markerLabel"
-	];
-*/
 {
 	[_x] call blck_fnc_deleteMarker;
 }forEach (_markers);
@@ -161,6 +140,16 @@ switch (_endCondition) do
 
 			[_coords,_mines,_objects,_hiddenObjects,_blck_AllMissionAI,_markerName,cleanupAliveAITimer,cleanupCompositionTimer,_isScubaMission] call _fn_missionCleanup;
 	};
+	case 5: {
+			#define	cleanupCompositionTimer  0
+			#define	cleanupAliveAITimer  0
+			
+			{
+				if (local _x) then {deleteVehicle _x};
+			}forEach _crates;
+
+			[_coords,_mines,_objects,_hiddenObjects,_blck_AllMissionAI,_markerName,cleanupAliveAITimer,cleanupCompositionTimer,_isScubaMission] call _fn_missionCleanup;
+	};	
 };
 
 blck_missionsRun = blck_missionsRun + 1;

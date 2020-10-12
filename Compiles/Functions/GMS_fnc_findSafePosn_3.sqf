@@ -30,7 +30,6 @@ _fn_buildBlacklistedLocationsList = {
 		if (_loc select 1 < diag_tickTime) then 
 		{
 			blck_recentMissionCoords pushBack _loc;
-			_blacklistedLocs pushBack [_loc select 0, _minToRecentMissionLocation];
 		};
 	};	
 
