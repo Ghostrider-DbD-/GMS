@@ -5,7 +5,7 @@
 */
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-
+// Need to debug for GM map
 private ["_coords","_coordArray","_return"];
 params["_missionCategoryDescriptors","_missionParameters","_missionCount"];
  _missionCategoryDescriptors params [
@@ -103,6 +103,7 @@ if !(_defaultMissionLocations isEqualTo []) then
 		_coords = [] call blck_fnc_findShoreLocation;
 	} else {
 		_coords =  [] call blck_fnc_findSafePosn;
+		_coords = [_coords select 0, _coords select 1, 0];
 	};
 };
 

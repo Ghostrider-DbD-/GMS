@@ -10,6 +10,9 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
+
+//  Need to diag issues on gm 
+
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 params[["_coords",[]],["_range",0],["_onFootOnly",false]];
 private ["_result","_players"];
