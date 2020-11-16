@@ -42,9 +42,9 @@ _useMines = blck_useMines;
 //_backpacks = blck_backpacks;
 //_weaponList = ["blue"] call blck_fnc_selectAILoadout;
 //_sideArms = blck_Pistols;
-_chanceHeliPatrol = blck_chanceHeliPatrolRed;  // Setting this in the mission file overrides the defaults 
-_noChoppers = blck_noPatrolHelisRed;
-_missionHelis = blck_patrolHelisRed;
+//_chanceHeliPatrol = blck_chanceHeliPatrolRed;  // Setting this in the mission file overrides the defaults 
+//_noChoppers = blck_noPatrolHelisRed;
+//_missionHelis = blck_patrolHelisRed;
 
 //_chancePara = 0.0; // Setting this in the mission file overrides the defaults 
 //_noPara = 3;  // Setting this in the mission file overrides the defaults 

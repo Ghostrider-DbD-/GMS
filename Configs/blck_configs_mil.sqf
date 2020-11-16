@@ -77,10 +77,10 @@
 	blck_showCountAliveAI = true;	
 
 	//Minimum distance between missions
-	blck_MinDistanceFromMission = 2000;
-	blck_minDistanceToBases = 500;
+	blck_MinDistanceFromMission = 1000;
+	blck_minDistanceToBases = 300;
 	blck_minDistanceToPlayer = 500;
-	blck_minDistanceFromTowns = 300;
+	blck_minDistanceFromTowns = 200;
 	blck_minDistanceFromDMS = 500;  // minimum distance for a blackeagls mission from any nearby DMS missions. set to -1 to disable this check.
 	
 	///////////////////////////////
@@ -279,8 +279,8 @@
 	// Mission Vehicle Settings
 	////////////////////	
 	//Defines how many AI Vehicles to spawn. Set this to -1 to disable spawning of vehicles. To discourage players running over AI with with vehicles, spawn more B_GMG_01_high
-	blck_SpawnVeh_Orange = [3,5]; // Number of vehicles at Orange Missions
-	blck_SpawnVeh_Green = [3,4]; // Number of vehicles at Green Missions
+	blck_SpawnVeh_Orange = [4,6]; // Number of vehicles at Orange Missions
+	blck_SpawnVeh_Green = [3,5]; // Number of vehicles at Green Missions
 	blck_SpawnVeh_Blue = 1;  // Number of vehicles at Blue Missions
 	blck_SpawnVeh_Red = 2;  // Number of vehicles at Red Missions
 
@@ -408,7 +408,7 @@
 	blck_MaxAI_Orange = 25;
 	blck_AIGrps_Orange = 5;
 	blck_SkillsOrange = [
-		["aimingAccuracy",0.6],["aimingShake",0.9],["aimingSpeed",0.9],["endurance",1.00],["spotDistance",1.0],["spotTime",1.0],["courage",1.00],["reloadSpeed",1.00],["commanding",1.00],["general",1.00]
+		["aimingAccuracy",0.8],["aimingShake",0.99],["aimingSpeed",0.9],["endurance",1.00],["spotDistance",1.0],["spotTime",1.0],["courage",1.00],["reloadSpeed",1.00],["commanding",1.00],["general",1.00]
 	];
 	
 	// Green Missions
@@ -441,12 +441,18 @@
 	blck_maxMoneyRed = 30;
 	blck_maxMoneyBlue = 20;
 
+	// Define the chance of attachments 
+	blck_chanceOptics = 0.4;
+	blck_chanceMuzzle = 0.3;
+	blck_chancePointer = 0.25;
+	blck_chanceUnderbarrel = 0.25;
+	
 	#ifdef GRGserver
 	blck_AIAlertDistance = [250,425,650,800];  //  Radius within which AI will be notified of enemy activity. Depricated as a group-sed system is used now. The group is informed of the enemy location when a group member is hit or killed.
 	//blck_AIAlertDistance = [150,225,400,500];
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];
-	blck_AIIntelligence = [0.1, 0.15, 0.2, 0.25]; 
+	blck_AIIntelligence = [0.1, 0.15, 0.375, 0.75]; 
 	
 	blck_baseSkill = 1;  // The overal skill of the AI - range 0.1 to 1.0.
 	

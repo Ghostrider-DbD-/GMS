@@ -126,7 +126,7 @@
 	blck_spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir".
 							 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.
 							 //  This sets the default value but can be overridden by defining  _spawnCrateTiming in the file defining a particular mission.
-	blck_loadCratesTiming = "atMissionSpawn"; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
+	blck_loadCratesTiming = "atMissionCompletion"; //""atMissionSpawn"; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
 							// Pertains only to crates spawned at mission spawn.
 							// This sets the default but can be overridden for specific missions by defining _loadCratesTiming
 							

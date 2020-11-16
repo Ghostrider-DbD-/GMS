@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsBlue;
 _startMsg = "A Forgotten HQ was sighted in a nearby sector! Check the Blue marker on your map for the location!";
 _endMsg = "The Forgotten HQ at the Blue Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[200,200],"Solid"];
+_markerType = ["ELLIPSE",[200,200],"GRID"];
 _markerColor = "ColorBlue";
 _markerMissionName = "Forgotten";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -141,8 +141,8 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["O_G_Offroad_01_armed_F",[-10.8826,-67.0554,0.00841188],85.3805],
-     ["O_G_Offroad_01_armed_F",[-7.25098,-35.3657,0.00811148],357.094]
+     //["O_G_Offroad_01_armed_F",[-10.8826,-67.0554,0.00841188],85.3805],
+     //["O_G_Offroad_01_armed_F",[-7.25098,-35.3657,0.00811148],357.094]
 ];
 
 _submarinePatrolParameters = [
@@ -190,7 +190,7 @@ private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-_spawnCratesTiming = blck_spawnCratesTiming; // Choices: "atMissionSpawnGround","atMissionEndGround","atMissionEndAir". 
+_spawnCratesTiming = "atMissionSpawnAir"; // Choices: "atMissionSpawnGround","atMissionEndGround","atMissionEndAir". 
 						 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.
 						 //  This sets the default value but can be overridden by defining  _spawnCrateTiming in the file defining a particular mission.
 _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
@@ -202,7 +202,7 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = allKilledOrPlayerNear;  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 									// Setting this in the mission file overrides the defaults 
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

@@ -75,8 +75,8 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["O_LSV_02_armed_F",[-37.46,8.55273,-0.0378561],359.999],
-     ["O_LSV_02_unarmed_F",[38.3699,8.21484,-0.0378113],359.999]
+     //["O_LSV_02_armed_F",[-37.46,8.55273,-0.0378561],359.999],
+    // ["O_LSV_02_unarmed_F",[38.3699,8.21484,-0.0378113],359.999]
 ];
 
 _submarinePatrolParameters = [

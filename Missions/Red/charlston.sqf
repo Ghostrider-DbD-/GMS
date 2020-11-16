@@ -159,8 +159,8 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["B_G_Offroad_01_armed_F",[21.4174,19.0781,0.00804281],90.3115],
-     ["B_G_Offroad_01_armed_F",[27.5131,-53.1431,0.00819397],268.528]
+     [selectRandom blck_AIPatrolVehicles,[21.4174,19.0781,0.00804281],90.3115],
+     [selectRandom blck_AIPatrolVehicles,[27.5131,-53.1431,0.00819397],268.528]
 ];
 
 _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.

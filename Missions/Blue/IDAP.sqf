@@ -78,7 +78,7 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["B_G_Offroad_01_armed_F",[3.04663,-40.3821,0.00804186],262.322]
+     [selectRandom blck_AIPatrolVehicles,[3.04663,-40.3821,0.00804186],262.322]
 ];
 
 _submarinePatrolParameters = [
@@ -137,7 +137,7 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = allKilledOrPlayerNear;  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 									// Setting this in the mission file overrides the defaults 
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

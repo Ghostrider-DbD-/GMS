@@ -43,6 +43,7 @@ _garrisonedBuilding_ATLsystem = [
 
 
 _missionLandscape = [
+     ["RoadCone_L_F",[0.914063,-0.908203,-0.00143838],0,true,true],      
      ["CamoNet_OPFOR_open_F",[-31.8352,-29.0081,-0.00143909],235.13,true,true],
      ["CamoNet_OPFOR_open_F",[-43.8352,-16.6941,-0.00143909],181.375,true,true],
      ["Land_HBarrier_Big_F",[-37.4087,-8.59814,-0.00143909],286.375,true,true],
@@ -138,9 +139,9 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["O_LSV_02_unarmed_F",[-53.4402,-44.895,-0.037971],359.999],
-     ["O_LSV_02_armed_F",[7.56689,40.9209,-0.0379591],359.999],
-     ["O_LSV_02_armed_F",[38.9788,-44.417,-0.0373936],359.999]
+     //["O_LSV_02_unarmed_F",[-53.4402,-44.895,-0.037971],359.999],
+     //["O_LSV_02_armed_F",[7.56689,40.9209,-0.0379591],359.999],
+     //["O_LSV_02_armed_F",[38.9788,-44.417,-0.0373936],359.999]
 ];
 
 _submarinePatrolParameters = [
@@ -178,7 +179,7 @@ private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highP
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
+_spawnCratesTiming = "atMissionSpawnGround"; 
+_endCondition = "allKilledOrPlayerNear";
 
-_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
-//_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

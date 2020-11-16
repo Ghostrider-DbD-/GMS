@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsBlue;
 _startMsg = "A Toxin Center was sighted in a nearby sector! Check the Blue marker on your map for the location!";
 _endMsg = "The Toxin Center at the Blue Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[200,200],"Solid"];
+_markerType = ["ELLIPSE",[200,200],"GRID"];
 _markerColor = "ColorBlue";
 _markerMissionName = "Toxin Center";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -111,13 +111,13 @@ _airPatrols = [
 ];
 
 _missionEmplacedWeapons = [
-     //["B_HMG_01_high_F",[3.93994,-23.1699,-0.0135565],180.433],
-     //["B_HMG_01_high_F",[-7.9519,-23.1421,-0.0135584],180.433]
+     ["B_HMG_01_high_F",[3.93994,-23.1699,-0.0135565],180.433],
+     ["B_HMG_01_high_F",[-7.9519,-23.1421,-0.0135584],180.433]
 ];
 
 _missionGroups = [
-     //[[-1.2981,-19.1914,0],3,6,"Red",30,45],
-     //[[6.48682,10.343,0],3,6,"Red",30,45]
+     [[-1.2981,-19.1914,0],3,6,"Red",30,45],
+     [[6.48682,10.343,0],3,6,"Red",30,45]
 ];
 
 
@@ -160,7 +160,7 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = allKilledOrPlayerNear;  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 									// Setting this in the mission file overrides the defaults 
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

@@ -8,16 +8,34 @@ Many thanks for new Coding and ideas from Grahame.
 
 
 Significant Changes:
+7.04 Build 235
+
+New: Player stats updated for each AI kill on Epoch.
+Fixed: Launchers and Launcher rounds were not being deleted.
+Fixed: AI at Turrets were spawned with scubba loadouts.
+Fixed: Units at UMS missions (Pirate missions) now spawn with scuba gear if spawned over water .
+Fixed: Mission Loot Vehicles were not being spawned. 
+Fixed: Missions that were aborted (hostage or leader killed, other reasons) were not being respawned.
+Fixed: Money not being added to some mission crates.
+Changed: Some improvements in coding efficiency were implemented for frequently called functions.
 
 =====================
-7.00 Build 218
+7.02 Build 230
+
+New: Option to hide bushes and trees that happen to be under the location in which an enterable building is spawned 
+	blck_hideRocksAndPlants = true; //  When true, any rocks, trees or bushes under enterable buildings will be 'hidden'
+
+New: Added support for simple objects.  Note that these can be exported by the editor tool now.
+
 New: Option to drop crates on a parachute at mission spawn which adds some randomness to where crates end up. 
 	blck_spawnCratesTiming = "atMissionSpawnAir";
 
 New: You can now add money to crates at static missions by defining the following parameter in your .sqf for the mission.
 	_crateMoney = 10000;
-	// this can be a value or a range such as [1000,10000];
+	this can be a value or a range such as [1000,10000];
 	a random amount of money from 0 to the maximum defined will be added. 
+
+New: Added checks and logging for invalid marker types and colors; default values are now provided.
 
 New: Added some basic error checking and logging for incorrect entries for some key settings.
 
@@ -26,15 +44,20 @@ New: 3DEN Editor plugin exports missions as .sqf formated text ready to paste in
 
 Fixed: Don and Hostage missions could not be completed 
 Fixed: Missions tended to spawn all at once 
-Fixed: vehicles are spawned at a safe spot which should reduce unintended explosions 
+Fixed: Vehicles sometimes blew up on spawn. vehicles are spawned at a safe spot which should reduce unintended explosions 
 Fixed: Missions sometimes spawned on steep hillsides.
-Fixed: Vehicles sometimes blew up on spawn.
+Fixed: Missions were not distributed over the entire map. The scripts now pick a random quadrant to search thus ensuring broader distribution of mission locations.
 Fixed: Money was not added to crates at dynamic missions 
+Fixed: Markers were not shown if more than once instance of a mission was spawned.
+Fixed: No subs or scuba units were spawned at dynamic UMS missions.
+Fixed: Jets crashed at spawn in.
 
 Changed: Timers for spawning missions adjusted a bit to space out spawn/timeouts a bit more.
-Changed: The system has been upgreaded to a state-based system, meaning only one script (GMS_fnc_mainThread)is running once all missions are initialized.
-Changed: a lot of debugging was removed.
+Changed: The system has been upgraded to a state-based system, meaning only one script (GMS_fnc_mainThread)is running once all missions are initialized.
+Changed: a lot of debugging code was removed.
 Changed: List of missions for dynamic Underwater missions was moved to \Missions\GMS_missionLIsts.sqf
+Changed: Units spawned where the surface is water are spawned with UMS gear now.
+Changed: Added some CBA compatability (Thanks to porkeid for the fixes)
 
 6.98 Build 206
 FIXED: few minor bug fixes. 
@@ -57,21 +80,14 @@ Removed: some debugging and map sepcific settings from blck_custom_config.sqf
 Changed: some code for finding locations for a new mission. 
 Added: all blckeagls map markers have the same prefix:  "blckeagls_marker"
 
-
-
-
-
-
-
 6.96 Build 199
 Added support for Arma servers not running Epoch or Exile 
 
 6.96 Build 197
 Sorted some wisses with the dynamic UMS spawner. 
 Removing debugging info
-TODO: come back to grpNull detection 
 
-6092 Build 196
+6.92 Build 196
 sorted issues with markers 
 and added new findSafeLocation 
 
@@ -114,8 +130,6 @@ Added offloading of AI to clients
 	blck_ai_offload_notifyClient = false;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
 										// TODO: set to false before release
 	blck_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated.
-
-
 
 Fixed - Vehicle unlock when empty of crew through adding a getOut event handler.
 Code for spawning vehicles redone to reduced redundancy.

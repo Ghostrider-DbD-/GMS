@@ -150,8 +150,8 @@ _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the 
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 
 _missionPatrolVehicles = [
-     ["B_G_Offroad_01_armed_F",[21.4174,19.0781,0.00804281],90.3115],
-     ["B_G_Offroad_01_armed_F",[27.5131,-53.1431,0.00819397],268.528]
+    // ["B_G_Offroad_01_armed_F",[21.4174,19.0781,0.00804281],90.3115],
+    // ["B_G_Offroad_01_armed_F",[27.5131,-53.1431,0.00819397],268.528]
 ];
 
 _submarinePatrolParameters = [];
@@ -177,12 +177,12 @@ _noVehiclePatrols = blck_SpawnVeh_Green;
 _noEmplacedWeapons = blck_SpawnEmplaced_Green;
 _uniforms = blck_SkinList;
 _headgear = blck_headgear;
-_chanceLoot = 0.6; 
-private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
-private _paralootCountsChoices = [[0,0,0,8,8,0],[0,0,0,8,8,0],[8,8,0,0,0,0],[0,0,0,0,12,0]];
-_paraLoot = _paralootChoices select _lootIndex;
-_paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
+//_chanceLoot = 0.6; 
+//private _lootIndex = selectRandom[1,2,3,4];
+//private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+//private _paralootCountsChoices = [[0,0,0,8,8,0],[0,0,0,8,8,0],[8,8,0,0,0,0],[0,0,0,0,12,0]];
+//_paraLoot = _paralootChoices select _lootIndex;
+//_paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 _endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

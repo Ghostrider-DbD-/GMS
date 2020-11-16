@@ -30,6 +30,7 @@ _markerColor = "Default";  // Modify as needed
 _markerLabel = "";
 
 _garrisonedBuildings_BuildingPosnSystem = [  //  Units / statics positioned using the built in Arma building position system
+     
      ["Land_i_House_Big_02_V2_F",[-76.2197,64.5181,0],0,true,false,0.67,3,[],4],
      ["Land_Unfinished_Building_01_F",[-65.1536,-71.8145,0],0,true,false,0.67,3,[],4]
 ];

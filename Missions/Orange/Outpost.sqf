@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsOrange;
 _startMsg = "An Anemy Outpost was sighted in a nearby sector! Check the Orange marker on your map for the location!";
 _endMsg = "The Outpost at the Orange Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[200,200],"Solid"];
+_markerType = ["ELLIPSE",[300,300],"Solid"];
 _markerColor = "ColorOrange";
 _markerMissionName = "Outpost";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -44,6 +44,7 @@ _missionLandscape = [
      //["Sign_Arrow_Green_F",[-5049.41,-2726.72,-0.00143862],0,true,true],
      //["Sign_Arrow_Yellow_F",[-5049.41,-2726.72,-0.00143862],0,true,true],
      //["babe_helper",[-5051.91,-2726.22,-0.00143862],78.6345,true,true],
+     ["RoadCone_L_F",[0.914063,-0.908203,-0.00143838],0,true,true],     
      ["Land_HBarrier_Big_F",[-28.8394,-8.42627,-0.00143862],91.041,true,true],
      ["Land_CncShelter_F",[-10.0513,-26.2283,-0.00143862],0.0913576,true,true],
      ["Land_HBarrierWall6_F",[0.581543,-12.7048,-0.00143862],91.041,true,true],
@@ -110,7 +111,7 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["B_G_Offroad_01_armed_F",[35.8379,4.96387,0.00813246],0.00104452]
+     ///["B_G_Offroad_01_armed_F",[35.8379,4.96387,0.00813246],0.00104452]
 ];
 
 _submarinePatrolParameters = [
@@ -148,7 +149,7 @@ private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highP
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
-
-_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_spawnCratesTiming = "atMissionSpawnAir"; 
+_endCondition = "allKilledOrPlayerNear";
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

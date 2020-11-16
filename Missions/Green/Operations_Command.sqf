@@ -138,9 +138,9 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["O_LSV_02_unarmed_F",[-53.4402,-44.895,-0.037971],359.999],
-     ["O_LSV_02_armed_F",[7.56689,40.9209,-0.0379591],359.999],
-     ["O_LSV_02_armed_F",[38.9788,-44.417,-0.0373936],359.999]
+    // ["O_LSV_02_unarmed_F",[-53.4402,-44.895,-0.037971],359.999],
+    // ["O_LSV_02_armed_F",[7.56689,40.9209,-0.0379591],359.999],
+    // ["O_LSV_02_armed_F",[38.9788,-44.417,-0.0373936],359.999]
 ];
 
 _submarinePatrolParameters = [
@@ -164,8 +164,6 @@ _maxNoAI = blck_MaxAI_Green;
 _noAIGroups = blck_AIGrps_Green;
 _noVehiclePatrols = blck_SpawnVeh_Green;
 _noEmplacedWeapons = blck_SpawnEmplaced_Green;
-//_uniforms = blck_SkinList;
-//_headgear = blck_headgear;
 
 _chancePara = 0.75; // Setting this in the mission file overrides the defaults 
 _noPara = 5;  // Setting this in the mission file overrides the defaults 
@@ -178,7 +176,7 @@ private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highP
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
+_spawnCratesTiming = "atMissionSpawnAir"; 
+_endCondition = "allKilledOrPlayerNear";
 
-_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
-//_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

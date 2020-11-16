@@ -52,7 +52,7 @@ _chancePara =  0;
 _noPara = 0;
 _chanceHeli = 0;
 _noChoppers = 0;
-_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = "allUnitsKilled";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 //_timeOut = -1;
 private["_useMines"];
 _useMines = true;

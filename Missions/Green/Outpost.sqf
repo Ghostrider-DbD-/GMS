@@ -14,14 +14,14 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-//diag_log "[blckeagls] Spawning Red Mission with template = default";
-_crateLoot = blck_BoxLoot_Red;
-_lootCounts = blck_lootCountsRed;
-_startMsg = "An Anemy Outpost was sighted in a nearby sector! Check the Red marker on your map for the location!";
-_endMsg = "The Outpost at the Red Marker is under survivor control!";
+//diag_log "[blckeagls] Spawning Green Mission with template = default";
+_crateLoot = blck_BoxLoot_Green;
+_lootCounts = blck_lootCountsGreen;
+_startMsg = "An Anemy Outpost was sighted in a nearby sector! Check the Green marker on your map for the location!";
+_endMsg = "The Outpost at the Green Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[200,200],"Solid"];
-_markerColor = "ColorRed";
+_markerType = ["ELLIPSE",[275,275],"Grid"];
+_markerColor = "ColorGreen";
 _markerMissionName = "Outpost";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
@@ -129,18 +129,18 @@ _missionEmplacedWeapons = []; //
 
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = blck_useMines;
-_minNoAI = blck_MinAI_Red;
-_maxNoAI = blck_MaxAI_Red;
-_noAIGroups = blck_AIGrps_Red;
-_noVehiclePatrols = blck_SpawnVeh_Red;
-_noEmplacedWeapons = blck_SpawnEmplaced_Red;
+_minNoAI = blck_MinAI_Green;
+_maxNoAI = blck_MaxAI_Green;
+_noAIGroups = blck_AIGrps_Green;
+_noVehiclePatrols = blck_SpawnVeh_Green;
+_noEmplacedWeapons = blck_SpawnEmplaced_Green;
 //_uniforms = blck_SkinList;
 //_headgear = blck_headgear;
 
 _chancePara = 0.75; // Setting this in the mission file overrides the defaults 
 _noPara = 5;  // Setting this in the mission file overrides the defaults 
 _paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
-_paraSkill = "Red";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
+_paraSkill = "Green";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
 
 _chanceLoot = 0.7; 
 private _lootIndex = selectRandom[1,2,3,4];

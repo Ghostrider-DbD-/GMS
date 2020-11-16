@@ -14,14 +14,14 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-//diag_log "[blckeagls] Spawning Red Mission with template = default";
-_crateLoot = blck_BoxLoot_Red;
-_lootCounts = blck_lootCountsRed;
-_startMsg = "A Forgotten HQ was sighted in a nearby sector! Check the Red marker on your map for the location!";
-_endMsg = "The Forgotten HQ at the Red Marker is under survivor control!";
+//diag_log "[blckeagls] Spawning Green Mission with template = default";
+_crateLoot = blck_BoxLoot_Green;
+_lootCounts = blck_lootCountsGreen;
+_startMsg = "A Forgotten HQ was sighted in a nearby sector! Check the Green marker on your map for the location!";
+_endMsg = "The Forgotten HQ at the Green Marker is under survivor control!";
 _markerLabel = "";
 _markerType = ["ELLIPSE",[225,225],"Solid"];
-_markerColor = "ColorRed";
+_markerColor = "ColorGreen";
 _markerMissionName = "Forgotten";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
@@ -141,8 +141,8 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     [selectRandom blck_AIPatrolVehicles,[-10.8826,-67.0554,0.00841188],85.3805],
-     [selectRandom blck_AIPatrolVehicles,[-7.25098,-35.3657,0.00811148],357.094]
+    // ["O_G_Offroad_01_armed_F",[-10.8826,-67.0554,0.00841188],85.3805],
+     //["O_G_Offroad_01_armed_F",[-7.25098,-35.3657,0.00811148],357.094]
 ];
 
 _submarinePatrolParameters = [
@@ -170,25 +170,25 @@ _missionGroups = [
 
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = blck_useMines;
-_minNoAI = blck_MinAI_Red;
-_maxNoAI = blck_MaxAI_Red;
-_noAIGroups = blck_AIGrps_Red;
-_noVehiclePatrols = blck_SpawnVeh_Red;
-_noEmplacedWeapons = blck_SpawnEmplaced_Red;
+_minNoAI = blck_MinAI_Green;
+_maxNoAI = blck_MaxAI_Green;
+_noAIGroups = blck_AIGrps_Green;
+_noVehiclePatrols = blck_SpawnVeh_Green;
+_noEmplacedWeapons = blck_SpawnEmplaced_Green;
 //_uniforms = blck_SkinList;
 //_headgear = blck_headgear;
 
-_chancePara = 0.75; // Setting this in the mission file overrides the defaults 
-_noPara = 5;  // Setting this in the mission file overrides the defaults 
-_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
-_paraSkill = "Red";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
+//_chancePara = 0.75; // Setting this in the mission file overrides the defaults 
+//_noPara = 5;  // Setting this in the mission file overrides the defaults 
+//_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
+//_paraSkill = "Green";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
 
-_chanceLoot = 0.7; 
+//_chanceLoot = 0.7; 
 private _lootIndex = selectRandom[1,2,3,4];
 private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
-_paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal Red mission.
+_paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal Green mission.
 
 _spawnCratesTiming = "atMissionSpawnAir"; // Choices: "atMissionSpawnGround","atMissionEndGround","atMissionEndAir". 
 						 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.

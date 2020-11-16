@@ -20,9 +20,9 @@ _lootCounts = blck_lootCountsBlue;
 _startMsg = "An enemy Bunker was sighted in a nearby sector! Check the Blue marker on your map for the location!";
 _endMsg = "The Bunker at the Blue Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[300,300],"Solid"];
+_markerType = ["ELLIPSE",[200,200],"Grid"];
 _markerColor = "ColorBlue";
-_markerMissionName = "DerBunker";
+_markerMissionName = "Bunker";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
 //////////
@@ -75,8 +75,8 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["O_LSV_02_armed_F",[-37.46,8.55273,-0.0378561],359.999],
-     ["O_LSV_02_unarmed_F",[38.3699,8.21484,-0.0378113],359.999]
+     //["O_LSV_02_armed_F",[-37.46,8.55273,-0.0378561],359.999],
+     //["O_LSV_02_unarmed_F",[38.3699,8.21484,-0.0378113],359.999]
 ];
 
 _submarinePatrolParameters = [

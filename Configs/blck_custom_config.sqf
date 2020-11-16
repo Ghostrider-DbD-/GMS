@@ -15,30 +15,36 @@
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-diag_log "[blckeagls]  Loading Custom Configurations 5/2/20";
+["[blckeagls]  Loading Custom Configurations 11/14//20"] call blck_fnc_log;
 
 switch (toLower (worldName)) do
 {
 	case "altis":
 	{
-		private ["_arr","_sunrise","_sunset","_time"];
-		_arr = date call BIS_fnc_sunriseSunsetTime;
-		_sunrise = _arr select 0;
-		_sunset = _arr select 1;
-		_daylight = _sunset - _sunrise;
-		_nightTime = abs(24 - _daylight);
-		_time = dayTime;
-		#ifdef blck_milServer
-		blck_timeAcceleration = true; // When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
-		blck_timeAccelerationDay = (_daylight)/3;  // Daytime time accelearation
-		blck_timeAccelerationDusk = 4; // Dawn/dusk time accelearation
-		blck_timeAccelerationNight = _nightTime / 6;  // Nighttim time acceleration	
-		#else
-		blck_timeAcceleration = true; // When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
-		blck_timeAccelerationDay = (_daylight)/8;  // Daytime time accelearation
-		blck_timeAccelerationDusk = 4; // Dawn/dusk time accelearation
-		blck_timeAccelerationNight = _nightTime / 8;  // Nighttim time acceleration		
-		#endif
+		/*
+		blck_cleanupCompositionTimer = 30;
+		blck_AliveAICleanUpTimer = 30;
+		blck_vehicleDeleteTimer = 30;
+		blck_maxSpawnedMissions = 15;
+
+		blck_TMin_Blue = 7;
+		blck_TMin_Red = 10;
+		blck_TMin_Green = 13;	
+		blck_TMin_Orange = 16;	
+		blck_TMin_Hunter = 20;
+		blck_TMin_Scouts = 20;
+		blck_TMin_Crashes = 5;
+		blck_TMin_UMS = 20;
+		//Maximum Spawn time between missions in seconds
+		blck_TMax_Blue = 12;
+		blck_TMax_Red = 15;
+		blck_TMax_Green = 17;
+		blck_TMax_Orange = 21;
+		blck_TMax_Hunter = 22;
+		blck_TMax_Scouts = 22;
+		blck_TMax_Crashes = 15;
+		blck_TMax_UMS = 25;	
+		*/	
 	};
 	case"tanoa": 
 	{
@@ -55,12 +61,12 @@ switch (toLower (worldName)) do
 		_time = dayTime;
 		_serverUpTime = 8;
 		blck_enableOrangeMissions = 1;  
-		blck_enableGreenMissions = -1;
+		blck_enableGreenMissions = 1;
 		blck_enableRedMissions = 1;
-		blck_enableBlueMissions = -1;
+		blck_enableBlueMissions = 1;
 		blck_enableHunterMissions = 1;
-		blck_enableScoutsMissions = -1;
-		blck_maxCrashSites = 1;  // recommended settings: 3 for Altis, 2 for Tanoa, 1 for smaller maps. Set to -1 to disable
+		blck_enableScoutsMissions = 1;
+		blck_maxCrashSites = -1;  // recommended settings: 3 for Altis, 2 for Tanoa, 1 for smaller maps. Set to -1 to disable
 		
 		blck_timeAcceleration = true; // When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
 		blck_timeAccelerationDay = 1.5;  // Daytime time accelearation
@@ -121,7 +127,7 @@ switch (toLower (worldName)) do
 	};
 };
 
-diag_log "[blckeagls]  End of map-specific block of Custom Configurations 5/2/20";
+["[blckeagls]  End of map-specific block of Custom Configurations 11/14/20"] call blck_fnc_log;
 
 #ifdef blck_useNIA
 blck_NIA_WeaponsLMG = [
@@ -1272,17 +1278,20 @@ uiSleep 5;
 
 if (blck_debugOn) then {
 	
-	diag_log "<GRG_TEST>  HEY YOU ITS WORKING";
 	blck_MinDistanceFromMission = 1000;
     blck_minDistanceToBases = 1000;
     blck_minDistanceToPlayer = 1000;
     blck_minDistanceFromTowns = 500;
-	diag_log "<GRG_TEST>  HEY YOU porkid's settings were loaded";	
-
-	blck_MissionTimeout = 3000;
-	
+	blck_preciseMapMarkers = true;
+	blck_MissionTimeout = 30 * 30;
+	blck_cleanupCompositionTimer = 30;
+	blck_AliveAICleanUpTimer = 30;
+	blck_bodyCleanUpTimer = 30;
+	blck_vehicleDeleteTimer = 30;
 	blck_maxSpawnedMissions = 15;
 	blck_mainThreadUpdateInterval = 10;
+	blck_launchersPerGroup = 6;
+
 	blck_enableOrangeMissions = 1;  
 	blck_enableGreenMissions = 1;
 	blck_enableRedMissions = 1;
@@ -1291,7 +1300,6 @@ if (blck_debugOn) then {
 	blck_enableHunterMissions = 1;
 	blck_enableScoutsMissions = 1;
 	blck_maxCrashSites = 0; 
-	diag_log "<GRG_TEST>  HEY YOU custom settings for enabling missions were loaded";	
 
 	blck_TMin_Blue = 7;
 	blck_TMin_Red = 10;
@@ -1311,5 +1319,5 @@ if (blck_debugOn) then {
 	blck_TMax_Crashes = 15;
 	blck_TMax_UMS = 25;
 
-	diag_log "[blckeagls] Custom Configs <DEBUG ON> Custom mission timers loaded"	
+	["[blckeagls] Custom Configs <DEBUG ON> Custom mission timers loaded"] call blck_fnc_log;
 };

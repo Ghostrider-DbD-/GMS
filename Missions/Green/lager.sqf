@@ -139,9 +139,9 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["Exile_Car_Hunter",[24.8054,-67.8333,0.00875282],89.6558],
-     ["Exile_Car_HEMMT",[24.8997,69.1799,-0.00138235],91.5468],
-     ["O_LSV_02_armed_F",[74.0911,1.21655,-0.0377212],359.999]
+     //["Exile_Car_Hunter",[24.8054,-67.8333,0.00875282],89.6558],
+     //["Exile_Car_HEMMT",[24.8997,69.1799,-0.00138235],91.5468],
+     //["O_LSV_02_armed_F",[74.0911,1.21655,-0.0377212],359.999]
 ];
 
 _submarinePatrolParameters = [

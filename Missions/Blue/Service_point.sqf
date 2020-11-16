@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsBlue;
 _startMsg = "A Service Point was sighted in a nearby sector! Check the Blue marker on your map for the location!";
 _endMsg = "The Service Point at the Blue Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[200,200],"Solid"];
+_markerType = ["ELLIPSE",[200,200],"GRID"];
 _markerColor = "ColorBlue";
 _markerMissionName = "Service Point";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -61,7 +61,7 @@ _missionLandscape = [
      ["Land_HBarrierBig_F",[13.2056,-22.5811,-0.00143862],271.956,true,true],
      ["Land_HBarrierBig_F",[4.76733,-31.5369,-0.00143862],271.956,true,true],
      ["Land_BagFence_Long_F",[15.9219,-12.9792,-0.00143862],359.93,true,true],
-     ["Land_PaperBox_closed_F",[2.95581,-21.4031,-0.00143862],327.535,true,true],
+
      ["Land_PaperBox_closed_F",[9.46167,-21.7529,-0.00143862],88.9779,true,true],
      ["Land_BagFence_Corner_F",[17.7617,-12.5837,-0.00143862],89.1122,true,true],
      ["Land_MedicalTent_01_wdl_generic_outer_F",[6.18726,-18.9663,-0.00143862],90.6678,true,true],
@@ -75,7 +75,7 @@ _missionLandscape = [
      ["B_Slingload_01_Repair_F",[-34.0637,-5.31909,-0.00143814],286.86,true,true],
      ["B_Slingload_01_Ammo_F",[-33.7891,1.13989,-0.00143719],1.26154,true,true],
      ["CargoNet_01_barrels_F",[-20.8491,-21.4822,-0.00143909],326.531,true,true],
-     ["Land_Pod_Heli_Transport_04_fuel_F",[-19.8706,2.42847,7.17512],360,true,true],
+     //["Land_Pod_Heli_Transport_04_fuel_F",[-19.8706,2.42847,7.17512],360,true,true],
      ["CargoNet_01_barrels_F",[-7.34326,5.33838,-0.00143862],36,true,true],
      ["B_Slingload_01_Cargo_F",[-28.2134,-3.27197,-0.00143862],347.458,true,true],
      ["B_Slingload_01_Ammo_F",[-1.96753,20.9294,-0.00143814],13.8038,true,true],
@@ -84,7 +84,8 @@ _missionLandscape = [
      ["B_Slingload_01_Repair_F",[2.70557,16.3206,-0.00143814],299.402,true,true],
      ["CargoNet_01_barrels_F",[2.15674,5.51074,-0.00143957],326.531,true,true],
      ["B_Slingload_01_Cargo_F",[8.86084,17.0483,-0.00143862],360,true,true],
-     ["Land_RepairDepot_01_green_F",[5.00415,1.97778,-0.000936985],180.302,true,true]
+     ["Land_RepairDepot_01_green_F",[5.00415,1.97778,-0.000936985],180.302,true,true],
+     ["Land_PaperBox_closed_F",[2.95581,-21.4031,-0.00143862],327.535,true,true]     
 ];
 
 _missionLootBoxes = [
@@ -94,8 +95,8 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["B_G_Offroad_01_armed_F",[-8.93213,-44.4866,0.00822115],273.053],
-     ["B_G_Offroad_01_armed_F",[16.876,-5.17969,0.00825357],294.284]
+     //["B_G_Offroad_01_armed_F",[-8.93213,-44.4866,0.00822115],273.053],
+     //["B_G_Offroad_01_armed_F",[16.876,-5.17969,0.00825357],294.284]
 ];
 
 _submarinePatrolParameters = [
@@ -156,7 +157,7 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = allKilledOrPlayerNear;  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 									// Setting this in the mission file overrides the defaults 
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

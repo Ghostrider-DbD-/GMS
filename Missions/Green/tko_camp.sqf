@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsGreen;
 _startMsg = "An enemy Military Camp was sighted in a nearby sector! Check the Green marker on your map for the location!";
 _endMsg = "The Military Camp at the Green Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[300,300],"Solid"];
+_markerType = ["ELLIPSE",[275,275],"GRID"];
 _markerColor = "ColorGreen";
 _markerMissionName = "Military Camp";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -130,7 +130,7 @@ _missionLootVehicles = [
 
 _missionPatrolVehicles = [
      //["B_LSV_01_armed_F",[-41.377,-5.40894,-0.0238895],0.00171121],
-     ["B_LSV_01_armed_F",[39.5627,-5.26709,-0.0237107],0.00169144]
+     //["B_LSV_01_armed_F",[39.5627,-5.26709,-0.0237107],0.00169144]
 ];
 
 _submarinePatrolParameters = [

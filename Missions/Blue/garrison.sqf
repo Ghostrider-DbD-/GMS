@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsGreen;
 _startMsg = "An enemy garrison!";
 _endMsg = "The garrison is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[300,300],"Solid"];
+_markerType = ["ELLIPSE",[200,200],"GRID"];
 _markerColor = "ColorBlue";
 _markerMissionName = "Garrison";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -64,8 +64,8 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["B_LSV_01_armed_F",[-1.72729,-70.439,-0.0251398],0.00168032],
-     ["B_LSV_01_armed_F",[-3.96387,50.4224,-0.0167227],0.000187991]
+     //["B_LSV_01_armed_F",[-1.72729,-70.439,-0.0251398],0.00168032],
+     //["B_LSV_01_armed_F",[-3.96387,50.4224,-0.0167227],0.000187991]
      //["B_G_Van_01_transport_F",[11.2661,-13.9561,0.0110526],359.998]
 ];
 
@@ -136,7 +136,7 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = allKilledOrPlayerNear;  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 									// Setting this in the mission file overrides the defaults 
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

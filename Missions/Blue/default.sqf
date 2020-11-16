@@ -61,6 +61,7 @@ _startMsg = "A group of Bandits was sighted in a nearby sector! Check the Blue m
 _endMsg = "The Sector at the Blue Marker is under survivor control!";
 _markerLabel = "";
 _markerType = ["ELLIPSE",[175,175],"GRID"];
+//_markerType = ["RECTANGLE", [350,350],"SolidFull"];
 			// The mission system supports circular or square mission markers as well as typical Arma icon-style (triangle, dot, flag etc) markers.
 			// to have an icon define the map marker as follows:
 			// ["mil_triangle",[0,0]];

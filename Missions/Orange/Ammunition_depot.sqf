@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsOrange;
 _startMsg = "An Anemy Ammunition Depot was sighted in a nearby sector! Check the Orange marker on your map for the location!";
 _endMsg = "The Ammunition depot at the Orange Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[200,200],"Solid"];
+_markerType = ["ELLIPSE",[300,300],"Solid"];
 _markerColor = "ColorOrange";
 _markerMissionName = "Ammunition Depot";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -127,9 +127,9 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["B_G_Offroad_01_armed_F",[-51.5793,28.9631,0.00801468],179.03],
-     ["B_G_Offroad_01_armed_F",[9.30664,88.3091,0.00802708],89.9029],
-     ["B_G_Offroad_01_armed_F",[72.2974,6.63599,0.00802183],0.00106337]
+    [selectRandom blck_AIPatrolVehicles,[-51.5793,28.9631,0.00801468],179.03],
+    [selectRandom blck_AIPatrolVehicles,[9.30664,88.3091,0.00802708],89.9029],
+    [selectRandom blck_AIPatrolVehicles,[72.2974,6.63599,0.00802183],0.00106337]
 ];
 
 _submarinePatrolParameters = [

@@ -80,14 +80,14 @@ _missionLootVehicles = [
 
 _missionPatrolVehicles = [
     #ifdef blck_milServer
-    [selectRandom blck_Tanks_ARMA3,[-53.3984,-32.1953,-0.0238545],0.00168023],
+     [selectRandom blck_Tanks_ARMA3,[-53.3984,-32.1953,-0.0238545],0.00168023],
      [selectRandom blck_light_AT_ARMA3,[-41.373,21.6543,-0.023375],0.00167416],
      [selectRandom blck_tracked_AA_ARMA3,[3.89844,48.4082,-0.0219693],0.00167182],
      [selectRandom blck_Tanks_ARMA3,[12.877,-54.4258,-0.0238872],0.00167124],
      [selectRandom blck_light_AT_ARMA3,[55.5371,-12.541,-0.0210321],0.00167126],
      [selectRandom blck_tracked_APC_ARMA3,[50.2324,21.9902,-0.0222204],0.00167786]
      #else 
-    [selectRandom blck_AIPatrolVehicles,[-53.3984,-32.1953,-0.0238545],0.00168023],
+     [selectRandom blck_AIPatrolVehicles,[-53.3984,-32.1953,-0.0238545],0.00168023],
      [selectRandom blck_AIPatrolVehicles,[-41.373,21.6543,-0.023375],0.00167416],
      [selectRandom blck_AIPatrolVehicles,[3.89844,48.4082,-0.0219693],0.00167182],
      [selectRandom blck_AIPatrolVehicles,[12.877,-54.4258,-0.0238872],0.00167124],

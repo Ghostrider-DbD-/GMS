@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsOrange;
 _startMsg = "Enemy Camp Moreell was sighted in a nearby sector! Check the Orange marker on your map for the location!";
 _endMsg = "The Camp Moreell at the Orange Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[200,200],"Solid"];
+_markerType = ["ELLIPSE",[300,300],"Solid"];
 _markerColor = "ColorOrange";
 _markerMissionName = "Camp Moreell";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -110,7 +110,7 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     ["O_LSV_02_armed_F",[34.9805,-28.0225,-0.0376697],359.999]
+     //["O_LSV_02_armed_F",[34.9805,-28.0225,-0.0376697],359.999]
 ];
 
 _submarinePatrolParameters = [
@@ -136,9 +136,6 @@ _maxNoAI = blck_MaxAI_Orange;
 _noAIGroups = blck_AIGrps_Orange;
 _noVehiclePatrols = blck_SpawnVeh_Orange;
 _noEmplacedWeapons = blck_SpawnEmplaced_Orange;
-//_uniforms = blck_SkinList;
-//_headgear = blck_headgear;
-
 _chancePara = 0.75; // Setting this in the mission file overrides the defaults 
 _noPara = 5;  // Setting this in the mission file overrides the defaults 
 _paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
@@ -150,7 +147,7 @@ private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highP
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
+_spawnCratesTiming = "atMissionSpawnAir"; 
+_endCondition = "allKilledOrPlayerNear";
 
-_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
-//_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  
