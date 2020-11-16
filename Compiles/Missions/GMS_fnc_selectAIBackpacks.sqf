@@ -13,6 +13,8 @@
 
 params["_aiDifficultyLevel"];
 private["_backpacks"];
+_backpacks = missionNamespace getVariable[format["blck_backpacks_%1",_aiDifficultyLevel],[]];
+/*
 switch (toLower (_aiDifficultyLevel)) do
 {
 	case "blue": 	{_backpacks = blck_backpacks_blue};
@@ -21,4 +23,5 @@ switch (toLower (_aiDifficultyLevel)) do
 	case "orange": 	{_backpacks = blck_backpacks_orange};
 	default 		{_backpacks = blck_backpacks};
 };
+*/
 _backpacks

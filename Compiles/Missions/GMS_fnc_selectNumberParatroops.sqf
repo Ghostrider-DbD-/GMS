@@ -13,6 +13,8 @@
 
 params["_aiDifficultyLevel"];
 private["_noPara"];
+_noPara = missionNamespace getVariable [format["blck_noPara%1",_aiDifficultyLevel],0];
+/*
 switch (toLower (_aiDifficultyLevel)) do
 {
 		case "blue": 	{_noPara = blck_noParaBlue};
@@ -21,4 +23,5 @@ switch (toLower (_aiDifficultyLevel)) do
 		case "orange": 	{_noPara = blck_noParaOrange};
 		default 		{_noPara = 0};
 };
+*/
 _noPara

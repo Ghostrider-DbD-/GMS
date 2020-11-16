@@ -13,6 +13,8 @@
 
 params["_aiDifficultyLevel"];
 private["_uniforms"];
+_uniforms = missionNamespace getVariable [format["blck_SkinList_%1",_aiDifficultyLevel],[]];
+/*
 	switch (toLower (_aiDifficultyLevel)) do
 	{
 		case "blue": 	{_uniforms = blck_SkinList_blue};
@@ -21,4 +23,5 @@ private["_uniforms"];
 		case "orange": 	{_uniforms = blck_SkinList_orange};
 		default 		{_uniforms = blck_SkinList};
 	};
+*/
 _uniforms

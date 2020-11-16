@@ -13,6 +13,8 @@
 
 params["_aiDifficultyLevel"];
 private["_noChoppers"];
+_noChoppers = missionNamespace getVariable [format["blck_noPatrolHelis%1",_aiDifficultyLevel],0];
+/*
 switch (toLower (_aiDifficultyLevel)) do
 {
 	case "blue": 	{_noChoppers = blck_noPatrolHelisBlue};
@@ -21,4 +23,5 @@ switch (toLower (_aiDifficultyLevel)) do
 	case "orange": 	{_noChoppers = blck_noPatrolHelisOrange};
 	default 		{_noChoppers = 0};
 };
+*/
 _noChoppers

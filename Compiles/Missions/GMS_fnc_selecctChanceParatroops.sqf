@@ -13,6 +13,8 @@
 
 params["_aiDifficultyLevel"];
 private["_chancePara"];
+_chancePara = missionNamespace getVariable[format["blck_chancePara%1",_aiDifficultyLevel],0];
+/*
 switch (toLower (_aiDifficultyLevel)) do
 {
 		case "blue": 	{_chancePara = blck_chanceParaBlue};
@@ -21,4 +23,5 @@ switch (toLower (_aiDifficultyLevel)) do
 		case "orange": 	{_chancePara = blck_chanceParaOrange};
 		default {_chancePara = blck_chanceParaRed};
 };
+*/
 _chancePara

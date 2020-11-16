@@ -13,6 +13,8 @@
 
 params["_aiDifficultyLevel"];
 private["_chanceHeliPatrol"];
+_chanceHeliPatrol = missionNamespace getVariable[format["blck_chanceHeliPatrol%1",_aiDifficultyLevel],[]];
+/*
 	switch (toLower(_aiDifficultyLevel)) do
 	{
 		case "blue": 	{_chanceHeliPatrol = blck_chanceHeliPatrolBlue};
@@ -21,4 +23,5 @@ private["_chanceHeliPatrol"];
 		case "orange": 	{_chanceHeliPatrol = blck_chanceHeliPatrolOrange};
 		default 		{_chanceHeliPatrol = 0};
 	};
+*/
 _chanceHeliPatrol

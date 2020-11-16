@@ -13,6 +13,8 @@
 
 params["_aiDifficultyLevel"];
 private["_headgear"];
+_headgear = missionNamespace getVariable [format["blck_headgear_%1",_aiDifficultyLevel],[]];
+/*
 switch (toLower (_aiDifficultyLevel)) do
 {
 	case "blue": 	{_headGear = blck_headgear_blue};
@@ -21,4 +23,5 @@ switch (toLower (_aiDifficultyLevel)) do
 	case "orange": 	{_headGear = blck_headgear_orange};
 	default 		{_headGear = blck_headgear};
 };
+*/
 _headgear

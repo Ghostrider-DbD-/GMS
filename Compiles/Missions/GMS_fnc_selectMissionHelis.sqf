@@ -13,6 +13,8 @@
 
 params["_aiDifficultyLevel"];
 private["_missionHelis"];
+_missionHelis = missionNamespace getVariable[format["blck_patrolHelis%1",_aiDifficultyLevel],[]];
+/*
 switch (toLower (_aiDifficultyLevel)) do
 {
 	case "blue":	{_missionHelis = blck_patrolHelisBlue};
@@ -21,4 +23,5 @@ switch (toLower (_aiDifficultyLevel)) do
 	case "orange": 	{_missionHelis = blck_patrolHelisOrange};
 	default			{_missionHelis = blck_patrolHelisBlue};
 };
+*/
 _missionHelis
