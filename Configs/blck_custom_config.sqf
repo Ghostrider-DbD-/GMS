@@ -80,7 +80,7 @@ switch (toLower (worldName)) do
 	};
 	case "esseker": 
 	{
-	
+		blck_numberUnderwaterDynamicMissions = -1;		
 	};
 	case "panthera3":
 	{
@@ -108,7 +108,7 @@ switch (toLower (worldName)) do
 		blck_enableHunterMissions = 1;
 		blck_enableScoutsMissions = 1;
 		blck_maxCrashSites = 3;	
-		blck_numberUnderwaterDynamicMissions = -3;	
+		blck_numberUnderwaterDynamicMissions = -1;	
 	};
 	case "enoch":
 	{
@@ -1279,11 +1279,11 @@ uiSleep 5;
 if (blck_debugOn) then {
 	
 	blck_MinDistanceFromMission = 1000;
-    blck_minDistanceToBases = 1000;
+    blck_minDistanceToBases = 100;
     blck_minDistanceToPlayer = 1000;
-    blck_minDistanceFromTowns = 500;
+    blck_minDistanceFromTowns = 100;
 	blck_preciseMapMarkers = true;
-	blck_MissionTimeout = 30 * 30;
+	blck_MissionTimeout = 600;
 	blck_cleanupCompositionTimer = 30;
 	blck_AliveAICleanUpTimer = 30;
 	blck_bodyCleanUpTimer = 30;
@@ -1292,21 +1292,21 @@ if (blck_debugOn) then {
 	blck_mainThreadUpdateInterval = 10;
 	blck_launchersPerGroup = 6;
 
-	blck_enableOrangeMissions = 1;  
-	blck_enableGreenMissions = 1;
-	blck_enableRedMissions = 1;
-	blck_enableBlueMissions = 1;
-	blck_numberUnderwaterDynamicMissions = 1;	
-	blck_enableHunterMissions = 1;
-	blck_enableScoutsMissions = 1;
-	blck_maxCrashSites = 0; 
+	blck_enableOrangeMissions = -1;  
+	blck_enableGreenMissions = -1;
+	blck_enableRedMissions = -1;
+	blck_enableBlueMissions = -1;
+	blck_numberUnderwaterDynamicMissions = -3;	
+	blck_enableHunterMissions = -2;
+	blck_enableScoutsMissions = 2;
+	blck_maxCrashSites = -3; 
 
 	blck_TMin_Blue = 7;
 	blck_TMin_Red = 10;
 	blck_TMin_Green = 13;	
 	blck_TMin_Orange = 16;	
 	blck_TMin_Hunter = 20;
-	blck_TMin_Scouts = 20;
+	blck_TMin_Scouts = 5;
 	blck_TMin_Crashes = 5;
 	blck_TMin_UMS = 20;
 	//Maximum Spawn time between missions in seconds
@@ -1315,7 +1315,7 @@ if (blck_debugOn) then {
 	blck_TMax_Green = 17;
 	blck_TMax_Orange = 21;
 	blck_TMax_Hunter = 22;
-	blck_TMax_Scouts = 22;
+	blck_TMax_Scouts = 6;
 	blck_TMax_Crashes = 15;
 	blck_TMax_UMS = 25;
 

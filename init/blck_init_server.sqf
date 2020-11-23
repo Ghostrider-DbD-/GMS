@@ -183,7 +183,9 @@ if (blck_enableBlueMissions > 0) then
 };
 if (blck_numberUnderwaterDynamicMissions > 0) then 
 {
-	[_missionListUMS,_pathUMS,"UMSMarker","Red",blck_TMin_UMS,blck_TMax_UMS,blck_numberUnderwaterDynamicMissions] call blck_fnc_addMissionToQue;
+	if !(blck_maxSeaSearchDistance == 0) then {
+		[_missionListUMS,_pathUMS,"UMSMarker","Red",blck_TMin_UMS,blck_TMax_UMS,blck_numberUnderwaterDynamicMissions] call blck_fnc_addMissionToQue;
+	};
 };
 #ifdef GRGserver
 ["Running GhostriderGaming Version"] call blck_fnc_log;
@@ -217,3 +219,11 @@ blck_pvs_version = blck_versionNumber;
 publicVariable "blck_pvs_version";
 [format["Version %1 Build %2 Date %4 Loaded in %3 seconds",blck_versionNumber,blck_buildNumber,diag_tickTime - _blck_loadingStartTime,blck_buildDate]] call blck_fnc_log;
 
+/*
+for "_i" from 1 to 100 do
+{
+	private _mPos = [] call blck_fnc_findSafePosn; 
+	private _mkr = createMarker[format["debug%1",_i],_mPos];
+	_mkr setMarkerColor "COLORYELLOW";
+	_mkr setMarkerType "hd_dot";
+};

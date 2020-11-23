@@ -142,13 +142,13 @@
 	blck_chanceParaBlue = 0; // [0 - 1] set to 0 to deactivate and 1 to always have paratroops spawn over the center of the mission.
 	blck_noParaBlue = 3; //  [1-N]
 	
-	blck_chanceParaRed = 0;
+	blck_chanceParaRed = 0.33;
 	blck_noParaRed = 3;
 	
-	blck_chanceParaGreen = 0;
+	blck_chanceParaGreen = 0.50;
 	blck_noParaGreen = 4;
 	
-	blck_chanceParaOrange = 0;
+	blck_chanceParaOrange = 0.90;
 	blck_noParaOrange = 4;
 	
 	// Supplemental Loot Parameters.

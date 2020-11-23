@@ -14,7 +14,7 @@
 //  Need to diag issues on gm 
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-params[["_coords",[]],["_range",0],["_onFootOnly",false]];
+params[["_coords",[0,0,0]],["_range",0],["_onFootOnly",false]];
 private ["_result","_players"];
 
 private "_players";
@@ -27,5 +27,5 @@ if (_onFootOnly) then
 };
 
 private _result = if (_players isEqualTo []) then {false} else {true};
-//diag_log format["_fnc_playerInRange: _players = %1 | _result = %2 | _pos = %3 | _dist = %4 | _onFootOnly = %5",_players,_result,_coords,_range,_onFootOnly];
+
 _result

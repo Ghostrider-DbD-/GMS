@@ -46,7 +46,7 @@ if (blck_debugOn) then
 		//** */"Service_point",  //  OK
 		//"Toxin",  //  OK but too difficult for a blue mission
 		//"default"  // OK Build 224
-		"hostage1"
+		"default"
 	];	
 	diag_log format["_missionLists: _missionListBlue = %1",_missionListBlue];	
 	// Passed: "Toxin", 
@@ -108,7 +108,7 @@ if (blck_debugOn) then
 {
 	//_missionListGreen = ["fortification"];  // charlston and factory run fine
 	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp","banditVillage",*/
-		"default" 
+		"FieldHQ" 
 	];	
 	diag_log format["_missionLists: _missionListGreen = %1",_missionListGreen];	
 	// Passed: "banditVillage",
@@ -138,7 +138,7 @@ if (blck_debugOn) then
 {
 	//_missionListOrange = ["Outpost"]; // 
 	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/
-	"default"  
+	"colonel2"  
 	];	
 	diag_log format["_missionLists: _missionListOrange = %1",_missionListOrange];
 	// Passed: "banditVillage",

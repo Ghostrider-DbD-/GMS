@@ -13,11 +13,12 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
 private ["_i","_weap","_unit","_skillLevel","_aiSkills","_launcherRound","_index","_ammoChoices","_optics","_pointers","_muzzles","_underbarrel","_legalOptics"];
+
 params["_pos","_aiGroup",["_skillLevel","red"],["_uniforms", []],["_headGear",[]],["_vests",[]],["_backpacks",[]],["_launcher","none"],["_weaponList",[]],["_sideArms",[]],["_scuba",false],["_garrison",false]];
 
-if (_weaponList isEqualTo []) then {_weaponList = [_skillLevel] call blck_fnc_selectAILoadout};
+if (_weaponList isEqualTo []) then {_weaponList = [_skillLevel] call blck_fnc_selectAILoadout;[format["Weaponlist for unit set to %1",_weaponList],"warning"] call blck_fnc_log;};
 if (_sideArms  isEqualTo [])  then {_sideArms = [_skillLevel] call blck_fnc_selectAISidearms};
-if (_uniforms  isEqualTo [])  then {_uniforms = [_skillLevel] call blck_fnc_selectAIUniforms};
+if (_uniforms  isEqualTo [])  then {_uniforms = [_skillLevel] call blck_fnc_selectAIUniforms;[format["Uniforms for unit set to %1",_uniforms],"warning"] call blck_fnc_log;};
 if (_headGear  isEqualTo [])  then {_headGear = [_skillLevel] call blck_fnc_selectAIHeadgear};
 if (_vests  isEqualTo [])     then {_vests = [_skillLevel] call blck_fnc_selectAIVests};
 if (_backpacks  isEqualTo []) then {_backpacks = [_skillLevel] call blck_fnc_selectAIBackpacks};
@@ -73,7 +74,7 @@ _unit setunitpos "AUTO";
 if !(_uniforms isEqualTo []) then {_unit forceAddUniform (selectRandom _uniforms)};
 if !(_headGear isEqualTo []) then {_unit addHeadgear (selectRandom _headGear)};
 if !(_vests  isEqualTo []) then {_unit addVest (selectRandom _vests)};
-if (_weaponList isEqualTo []) then {
+if !(_weaponList isEqualTo []) then {
 	_weap = selectRandom _weaponList; 
 	_unit addWeaponGlobal  _weap; 
 	_ammoChoices = getArray (configFile >> "CfgWeapons" >> _weap >> "magazines");
