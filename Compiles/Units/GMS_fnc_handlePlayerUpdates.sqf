@@ -12,7 +12,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
 _fn_doUpdates = {
-	params["_player"];
+	params["_player","_unit"];
 	private _lastkill = _player getVariable["blck_lastkill",diag_tickTime];
 	_player setVariable["blck_lastkill",diag_tickTime];
 	private _kills = (_player getVariable["blck_kills",0]) + 1;
@@ -30,9 +30,13 @@ _fn_doUpdates = {
 		private _killstreakBonus = 3 * (_player getVariable["blck_kills",0]);
 		private _reward = 25 + _distanceBonus + _killstreakBonus;
 		[_player,_reward ] call blck_fnc_giveTakeCrypto;
+		[_player, 5] call GMS_fnc_setKarma;
+		//if (isNil "GMS_fnc_killedMessages") then {diag_log format["blckeagls: GMS_fnc_killedMessages not defined"]};		
 		if (blck_useKillScoreMessage) then
 		{
 			[["showScore",[_reward,"",_kills],""],[_player]] call blck_fnc_messageplayers;
+			// params["_unit","_killer","_money","_respect","_killStreak"];
+			//[_unit,_player,_reward,5] call GMS_fnc_killedMessages;
 		};
 
 		// SUggestion to update Epoch player stats from He-Man
@@ -92,11 +96,11 @@ if ((_killerType select 0 )isEqualTo "Vehicle") then
 	{
 		_player = _killer;
 		if (getPlayerUID(_x) isEqualTo getPlayerUID(_killer)) exitWith {
-			[_x] call _fn_doUpdates;
+			[_x,_unit] call _fn_doUpdates;
 		};
 
 	}forEach (crew (vehicle _killer));
 } else {
-	[_killer] call _fn_doUpdates;
+	[_killer,_unit] call _fn_doUpdates;
 };
 

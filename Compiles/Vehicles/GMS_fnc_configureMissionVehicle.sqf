@@ -20,7 +20,7 @@ _veh lock _locked;
 _veh addMPEventHandler["MPHit",{if (isServer) then {_this call blck_fnc_AIVehicle_HandleHit}}];
 _veh addMPEventHandler["MPKilled",{if (isServer) then {_this call blck_fnc_processAIVehicleKill}}];
 #define vehicleAffected _this select 0
-_veh addEventHandler["GetOut",{if (isServer || local (vehicleAffected)) then {_this call blck_fnc_handleVehicleGetOut}}];
+_veh addEventHandler["GetOut",{if (isServer || {local (vehicleAffected)}) then {_this call blck_fnc_handleVehicleGetOut}}];
 
 blck_monitoredVehicles pushBackUnique _veh;
 if (blck_modType isEqualTo "Epoch") then

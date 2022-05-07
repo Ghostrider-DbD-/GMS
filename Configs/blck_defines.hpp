@@ -13,11 +13,11 @@
 
 
 #define useAPEX 
-#define blck_useCUP
+//#define blck_useCUP
 //#define blck_useRHS
-#define blck_useLAGO 
+//#define blck_useLAGO 
 //#define blck_useNIA
-#define blck_milServer
+//#define blck_milServer
 
 ////////////////////////////
 //  Do not touch anything below this line
@@ -30,6 +30,12 @@
 #define max_distance_crate_moved_uncompleted_mission 120
 #define onFoot 1
 #define inVehicle 2
+
+// Defines for difficulty
+#define blck_blue 1
+#define blck_red 2 
+#define blck_green 3 
+#define blck_orange 4 
 
 //  defines for static group spawners
 #define staticPatrolTriggerRange 2000

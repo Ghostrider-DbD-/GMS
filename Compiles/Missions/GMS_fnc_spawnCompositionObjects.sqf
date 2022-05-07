@@ -16,7 +16,7 @@ private _hiddenObjs = [];
 
 {
 	_x params["_className","_relPos","_dir","_booleans"];
-	if (typeName (_booleans) isEqualTo "ARRAY") then // assum simulation and damage settings are defined in the old way as [bool,bool]
+	if ((_booleans) isEqualType []) then // assum simulation and damage settings are defined in the old way as [bool,bool]
 	{
 		_dam = (_booleans) select 0;		
 		_sim = (_booleans) select 1;
@@ -29,7 +29,7 @@ private _hiddenObjs = [];
 
 	private _objPos = _center vectorAdd _relPos;
 
-	if (_className isKindOf "House" && blck_hideRocksAndPlants) then 
+	if (_className isKindOf "House" && {blck_hideRocksAndPlants}) then 
 	{
 		private _shrubs = nearestTerrainObjects[_objPos,["TREE", "SMALL TREE", "BUSH","FENCE", "WALL","ROCK"], sizeOf _className];
 		if !(_shrubs isEqualTo []) then 
@@ -39,13 +39,15 @@ private _hiddenObjs = [];
 		};
 	};
 	_obj = createVehicle[_className,[0,0,0],[],0,"CAN_COLLIDE"];
+
 	_obj setPosATL _objPos;
+	[_obj] call blck_fnc_emptyObject;
 	_newObjs pushback (netID _obj);
 	[_obj, _dir] call blck_fnc_setDirUp;
 	_obj setVectorUp [0,0,1];	
 	_obj enableDynamicSimulation _sim;
 	_obj allowDamage _dam;	
-	if ((typeOf _obj) isKindOf "LandVehicle" || (typeOf _obj) isKindOf "Air" || (typeOf _obj) isKindOf "Ship") then
+	if ((typeOf _obj) isKindOf "LandVehicle" || {(typeOf _obj) isKindOf "Air" || {(typeOf _obj) isKindOf "Ship"}}) then
 	{
 		[_obj] call blck_fnc_configureMissionVehicle;
 	};	

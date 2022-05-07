@@ -17,14 +17,11 @@
 #ifdef blck_milServer
 if (true) exitWith 
 {
-	["Running blck_configs_exile_mil for militarized servers"] call blck_fnc_log;
+	diag_log format["Running blck_configs_exile_mil for militarized servers"];
 	execVM "\q\addons\custom_server\Configs\blck_configs_exile_mil.sqf";
 };
 #endif
-["Loading Exile-specific configs for Non-militarized servers: blck_configs_exile.sqf"] call blck_fnc_log;
-////////////
-// Exile-specific settings
-////////////	
+diag_log format ["Loading Exile-specific configs for Non-militarized servers: blck_configs_exile.sqf"];
 	
 // list of locations that are protected against mission spawns
 
@@ -50,7 +47,6 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	
 	blck_blacklistSpawns = true;
 	blck_listConcreteMixerZones	= true;
-	blck_AI_Side = EAST;
 
 	blck_crateMoneyBlue = [100,250];
 	blck_crateMoneyRed = [175, 300];
@@ -61,17 +57,19 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 			
 	blck_maximumItemPriceInAI_Loadouts = 1000;
 	
-	blck_armed_vehicles_Exile = [
+	blck_open_armed_vehicles = [
+		"nameNoGoodOpen",
 		"Exile_Car_BTR40_MG_Green",
 		"Exile_Car_HMMWV_M134_Green",
 		"Exile_Car_HMMWV_M2_Green",
 		"B_LSV_01_armed_F",
-		"Exile_Car_Offroad_Armed_Guerilla01"			
+		"Exile_Car_Offroad_Armed_Guerilla01",		
+		"B_G_Offroad_01_armed_F", 
+		"O_G_Offroad_01_armed_F"		
 	];
 	
 	blck_lightlyArmed_ARMA3 = [
-		"B_G_Offroad_01_armed_F", 
-		"O_G_Offroad_01_armed_F",
+		"nameNoGoodClosed",
 		"B_MRAP_01_gmg_F", 
 		"B_MRAP_01_hmg_F",
 		"O_MRAP_02_gmg_F",  
@@ -96,7 +94,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	];
 	blck_tracked_APC_ARMA3 = [
 		"B_APC_Tracked_01_rcws_F",
-		"B_APC_Tracked_01_CRV_F",
+		//"B_APC_Tracked_01_CRV_F",
 		"O_APC_Tracked_02_cannon_F", 
 		"O_APC_Wheeled_02_rcws_F", 
 		"I_APC_tracked_03_cannon_F"
@@ -110,7 +108,29 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		//"O_MBT_02_arty_F",
 		"I_MBT_03_cannon_F"
 	];
-	#ifdef useCUP
+
+	blck_open_armed_CUP = [
+		"CUP_I_Hilux_DSHKM_TK", 
+		"CUP_I_Hilux_armored_DSHKM_TK", 	
+		"CUP_I_Hilux_armored_igla_TK",	
+		"CUP_O_Datsun_PK", 
+		"CUP_B_HMMWV_M2_USMC", 
+		"CUP_B_HMMWV_MK19_USMC",
+		"CUP_B_LR_MG_CZ_W",
+		"CUP_B_LR_MG_GB_W", 
+		"CUP_B_LR_MG_GB_D", 
+		"CUP_B_LR_Special_M2_GB_W", 
+		"CUP_B_LR_Special_M2_GB_D", 
+		"CUP_B_UAZ_MG_CDF",
+		"CUP_O_UAZ_MG_CHDKZ"
+	];
+
+	blck_closed_armed_CUP = [
+		"CUP_BAF_Jackal2_L2A1_D", 
+		"CUP_B_Mastiff_HMG_GB_D", 
+		"CUP_B_Mastiff_HMG_GB_W"
+	];
+
 	blck_APC_CUP = [
 		"CUP_B_Mastiff_GMG_GB_D",  
 		"CUP_B_Mastiff_HMG_GB_D",  
@@ -168,7 +188,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		//"CUP_O_2S6_RU",  
 		//"CUP_O_BMP1_TKA""
 	];
-	#endif
+
 	
 	blck_AIPatrolVehicles = 
 	[
@@ -194,27 +214,22 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	"B_APC_Tracked_01_AA_F",
 	"B_APC_Tracked_01_AA_F",// Duplicate to increase chance that these will spawn relative to others
 	"B_APC_Tracked_01_AA_F",// Duplicate to increase chance that these will spawn relative to others	
-	"B_APC_Tracked_01_CRV_F",
+	//"B_APC_Tracked_01_CRV_F",
 	"B_APC_Tracked_01_rcws_F"																						
 	]; // Type of vehicle spawned to defend AI bases	
 
-	blck_AIPatrolVehiclesBlue = [	
-		"Exile_Car_Offroad_Armed_Guerilla01",
-		"Exile_Car_Offroad_Armed_Guerilla02",
-		"Exile_Car_BTR40_MG_Green",
-		"Exile_Car_BTR40_MG_Camo",
-		"Exile_Car_HMMWV_M134_Green",
-		"Exile_Car_HMMWV_M134_Desert",
-		"Exile_Car_HMMWV_M134_Desert",
-		"Exile_Car_HMMWV_M2_Desert",
-		"B_LSV_01_armed_F"		
-	];
 	
 	blck_AIPatrolVehicles = ["Exile_Car_Offroad_Armed_Guerilla01","Exile_Car_Offroad_Armed_Guerilla02","Exile_Car_BTR40_MG_Green","Exile_Car_BTR40_MG_Camo","Exile_Car_HMMWV_M134_Green","Exile_Car_HMMWV_M134_Desert",/*"Exile_Car_HMMWV_M134_Desert","Exile_Car_HMMWV_M2_Desert",*/"B_LSV_01_armed_F"]; // Type of vehicle spawned to defend AI bases	
-	blck_AIPatrolVehiclesBlue = blck_AIPatrolVehicles;
-	blck_AIPatrolVehiclesRed = blck_AIPatrolVehicles;
-	blck_AIPatrolVehiclesGreen = blck_AIPatrolVehicles;
-	blck_AIPatrolVehiclesOrange = blck_AIPatrolVehicles;
+	blck_AIPatrolVehiclesBlue = blck_open_armed_vehicles;
+	blck_AIPatrolVehiclesRed = blck_lightlyArmed_ARMA3;
+	blck_AIPatrolVehiclesGreen = blck_light_AT_ARMA3 + blck_tracked_APC_ARMA3;
+	blck_AIPatrolVehiclesOrange = blck_Tanks_ARMA3 + blck_light_AT_ARMA3;
+
+	blck_AIPatrolVehiclesBlue = blck_AIPatrolVehiclesBlue + blck_open_armed_CUP;
+	blck_AIPatrolVehiclesRed = blck_AIPatrolVehiclesRed + blck_closed_armed_CUP;
+	blck_AIPatrolVehiclesGreen = blck_AIPatrolVehiclesGreen + blck_APC_CUP;
+	blck_AIPatrolVehiclesOrange = blck_AIPatrolVehiclesOrange + blck_Tanks_CUP;
+
 	
 	// Blacklisted itesm
 	blck_blacklistedOptics = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
@@ -235,8 +250,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"optic_tws"
 		//"optic_tws_mg",
 		];
-		
-	#ifdef useAPEX	
+	blck_Optics = blck_Optics_Holo + blck_Optics_Reticule + blck_Optics_Scopes;		
 	blck_Optics_Apex = [
 		//Apex
 		"optic_Arco_blk_F",	"optic_Arco_ghex_F",
@@ -247,7 +261,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"optic_LRPS_tna_F","optic_LRPS_ghex_F",
 		"optic_Holosight_blk_F","optic_Holosight_khk_F","optic_Holosight_smg_blk_F"
 		];	
-	blck_Optics = blck_Optics_Holo + blck_Optics_Reticule + blck_Optics_Scopes;
+	#ifdef useAPEX	
 	blck_Optics = blck_Optics + blck_Optics_Apex;
 	#endif
 
@@ -313,24 +327,23 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	blck_WeaponList_Blue = blck_RifleOther + blck_RifleAsault_556 + blck_RifleAsault_650;
 	blck_WeaponList_Red = blck_RifleAsault_556 + blck_RifleSniper + blck_RifleAsault_650 + blck_RifleLMG;
 
-	#ifdef useAPEX
 	blck_apexWeapons = ["arifle_AK12_F","arifle_AK12_GL_F","arifle_AKM_F","arifle_AKM_FL_F","arifle_AKS_F","arifle_ARX_blk_F","arifle_ARX_ghex_F","arifle_ARX_hex_F","arifle_CTAR_blk_F","arifle_CTAR_hex_F",
 						"arifle_CTAR_ghex_F","arifle_CTAR_GL_blk_F","arifle_CTARS_blk_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_khk_F","arifle_SPAR_01_snd_F",
 						"arifle_SPAR_01_GL_blk_F","arifle_SPAR_01_GL_khk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_02_blk_F","arifle_SPAR_02_khk_F","arifle_SPAR_02_snd_F","arifle_SPAR_03_blk_F",
 						"arifle_SPAR_03_khk_F","arifle_SPAR_03_snd_F","arifle_MX_khk_F","arifle_MX_GL_khk_F","arifle_MXC_khk_F","arifle_MXM_khk_F"];
-			
+	#ifdef useAPEX			
 	blck_WeaponList_Orange = blck_WeaponList_Orange + blck_apexWeapons;
 	blck_WeaponList_Green = blck_WeaponList_Green + blck_apexWeapons;	
 	#endif
 	
 	blck_backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
 		
-	#ifdef useAPEX
 	blck_ApexBackpacks = [
 		"B_Bergen_mcamo_F","B_Bergen_dgtl_F","B_Bergen_hex_F","B_Bergen_tna_F","B_AssaultPack_tna_F","B_Carryall_ghex_F",
 		"B_FieldPack_ghex_F","B_ViperHarness_blk_F","B_ViperHarness_ghex_F","B_ViperHarness_hex_F","B_ViperHarness_khk_F",
 		"B_ViperHarness_oli_F","B_ViperLightHarness_blk_F","B_ViperLightHarness_ghex_F","B_ViperLightHarness_hex_F","B_ViperLightHarness_khk_F","B_ViperLightHarness_oli_F"
 		];	
+	#ifdef useAPEX
 	blck_backpacks = blck_ApexBackpacks + blck_backpacks;
 	#endif
 	blck_backpacks_blue = blck_backpacks;
@@ -672,9 +685,6 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	[
 		"arifle_SDAR_F"
 	];
-
-	if ((tolower blck_modType) isEqualTo "exile") then
-	{
 		blck_UMS_submarines =
 		[
 			
@@ -684,26 +694,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		];
 		
 		blck_UMS_crates =	["Exile_Container_SupplyBox"];
-	};
-	if ((tolower blck_modType) isEqualTo "epoch") then
-	{
-		blck_UMS_submarines = ["B_SDV_01_EPOCH"];
-		blck_UMS_crates = blck_crateTypes;
-		//blck_UMS_crates = ["container_epoch"];	
-	};
-	if ((toLower blck_modType) isEqualTo "default") then 
-	{
-		blck_UMS_submarines =
-		[
-			
-			"Exile_Boat_SDV_CSAT",
-			"Exile_Boat_SDV_Digital",
-			"Exile_Boat_SDV_Grey"
-		];
-		
-		blck_UMS_crates = blck_crateTypes;
 
-	};
 
 	blck_UMS_unarmedSurfaceVessels = 
 	[
@@ -755,48 +746,8 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"Exile_Item_Moobar",
 		"Exile_Item_InstantCoffee"
 	];
-	#ifdef blck_addCarParts
-	blck_carParts = [
-		"Exile_Item_CarWheel",
-		"DDR_Item_Tailrotor",
-		"DDR_Item_Main_Rotor",
-		"DDR_Item_Engine",
-		"DDR_Item_Glass",
-		"DDR_Item_Fuel_Tank",
-		"DDR_Item_Fishing_Net",
-		"DDR_Item_Fiberglass"
-	];
-	#endif 	
-	#ifdef useCUP
-	
-	#endif
-	
-	#ifdef useRHS
-	
-	#endif	
-	blck_ConsumableItems = blck_Meats + blck_Drink + blck_Food;
-	blck_throwableExplosives = ["HandGrenade","MiniGrenade"];
-	blck_otherExplosives = ["1Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","DemoCharge_Remote_Mag","SatchelCharge_Remote_Mag"];
-	blck_explosives = blck_throwableExplosives + blck_otherExplosives;
-	blck_medicalItems = ["Exile_Item_InstaDoc","Exile_Item_Bandage","Exile_Item_Vishpirin"];
-	blck_specialItems = blck_throwableExplosives + blck_medicalItems;
-	
-	blck_NVG = ["NVGoggles","NVGoggles_INDEP","NVGoggles_OPFOR","Exile_Item_XM8"];
-	blck_buildingMaterials = ["Exile_Item_ExtensionCord","Exile_Item_JunkMetal","Exile_Item_LightBulb","Exile_Item_MetalBoard",
-			"Exile_Item_MetalPole","Exile_Item_MetalScrews","Exile_Item_Cement","Exile_Item_Sand"];	
-	blck_tools = ["Exile_Item_Matches","Exile_Item_CookingPot","Exile_Melee_Axe","Exile_Melee_SledgeHammmer","Exile_Item_Handsaw","Exile_Item_Pliers"];
-	#ifdef blck_addCarParts
-	blck_carParts = [
-		"Exile_Item_CarWheel",
-		"DDR_Item_Tailrotor",
-		"DDR_Item_Main_Rotor",
-		"DDR_Item_Engine",
-		"DDR_Item_Glass",
-		"DDR_Item_Fuel_Tank",
-		"DDR_Item_Fishing_Net",
-		"DDR_Item_Fiberglass"
-	];
-	#endif 
+
+
 /***************************************************************************************
 DEFAULT CONTENTS OF LOOT CRATES FOR EACH MISSION
 Note however that these configurations can be used in any way you like or replaced with mission-specific customized loot arrays
@@ -1271,5 +1222,5 @@ blck_highPoweredLoot = [
 			
 		]
 ];
-
+blck_configs_loaded = true;
 ["Configurations for Exile Loaded"] call blck_fnc_log;

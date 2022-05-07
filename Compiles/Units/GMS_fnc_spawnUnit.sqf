@@ -26,10 +26,9 @@ if (_backpacks  isEqualTo []) then {_backpacks = [_skillLevel] call blck_fnc_sel
 if (isNull _aiGroup) exitWith {["NULL-GROUP Provided to _fnc_spawnUnit"] call blck_fnc_log};
 
 _unit = ObjNull;
-
+blck_unitType createUnit [_pos, _aiGroup, "_unit = this", blck_baseSkill, "COLONEL"];
 if (blck_modType isEqualTo "Epoch") then
 {
-	"I_Soldier_EPOCH" createUnit [_pos, _aiGroup, "_unit = this", blck_baseSkill, "COLONEL"];
 	_unit setVariable ["LAST_CHECK",28800,true];
 	switch(_skillLevel) do
 	{
@@ -91,9 +90,9 @@ if !(_weaponList isEqualTo []) then {
 if !(_sideArms  isEqualTo []) then
 {
 	_weap = selectRandom _sideArms;
-	_unit addWeaponGlobal  _weap; 
 	_ammoChoices = getArray (configFile >> "CfgWeapons" >> _weap >> "magazines");
 	_unit addMagazines [selectRandom _ammoChoices, 2];
+	_unit addWeaponGlobal  _weap; 	
 };
 if !(blck_ConsumableItems isEqualTo []) then 
 {
@@ -110,30 +109,33 @@ if !(blck_specialItems isEqualTo []) then
 		_unit addItem selectRandom blck_specialItems;
 	};
 };
+
 if !(_backpacks isEqualTo []) then 
 {
-	if (_Launcher isEqualTo "none") then 
-	{
-		if ( random (1) < blck_chanceBackpack) then
-		{ 
-			_unit addBackpack selectRandom _backpacks;
-		};
+	if (random (1) < blck_chanceBackpack) then
+	{ 		
+		_unit addBackpack selectRandom _backpacks;
 	} else {
-		_unit addWeaponGlobal _launcher;
-		_unit addBackpack (selectRandom _backpacks);
-		private _roundsAdded = [];
-		private _mags = getArray (configFile >> "CfgWeapons" >> _Launcher >> "magazines");
-		for "_i" from 1 to 3 do 
-		{
-			private _lr = selectRandom _mags; // call BIS_fnc_selectRandom;
-			_roundsAdded pushBack _lr;
-			_unit addItemToBackpack _lr;
-		};
-		_unit setVariable["Launcher",[_launcher,_roundsAdded]];		
+		// Only add  rounds for the specified launcher if a backpack was equiped ?
+		if !(_Launcher isEqualTo "none") then 
+		{		
+			_unit addBackpack (selectRandom blck_backpacks);
+			_unit addWeaponGlobal _launcher;
+			_unit setVariable["Launcher",[_launcher,[]]];			
+			private _mags = getArray (configFile >> "CfgWeapons" >> _Launcher >> "magazines");
+			private _rnds = [];
+			for "_i" from 1 to 3 do 
+			{
+				private _mag = selectRandom _mags;
+				_unit addItemToBackpack _mag;
+				_rnds pushBack _mag;
+			};
+			_unit setVariable["Launcher",[_launcher,_rnds]];
+		};	
 	};
 };
 
-if(sunOrMoon < 0.2 && blck_useNVG)then
+if(sunOrMoon < 0.2 && {blck_useNVG})then
 {
 	_unit addWeapon selectRandom blck_NVG;
 	_unit setVariable ["hasNVG", true];

@@ -20,7 +20,7 @@ for "_i" from 0 to (count blck_sm_garrisonBuildings_ASL) do
 	//  ["_building","_aiDifficultyLevel","_staticsATL","_unitsATL"];
 	_groupParameters params['_building','_aiDifficulty','_staticsASL','_unitsASL','_respawnTime','_maxRespawns'];	
 	//diag_log format["_fnc_sm_monitorGarrisonASL: _group = %1 | _timesSpawned = %2 | _respawnTime = %3 | _respawnAt = %4 | _groupSpawned = %5",_group,_timesSpawned,_respawnTime,_respawnAt,_groupSpawned];
-	private _pos = position _building;	
+	private _pos = getPosATL _building;	
 	if (!(isNull _group) && {alive _x} count (units _group) == 0) then
 	{
 		deleteGroup _group;

@@ -27,11 +27,11 @@ private _vehicles = [];
 private _missionAI = [];
 private _abort = false;
 private _patrolsThisMission = +_missionPatrolVehicles;
-//diag_log format["_spawnMissionVehiclePatrols(30): _noVehiclePatrols = %1 | _patrolsThisMission = %2",_noVehiclePatrols,_patrolsThisMission];
+diag_log format["_spawnMissionVehiclePatrols(30): _noVehiclePatrols = %1 | _patrolsThisMission = %2",_noVehiclePatrols,_patrolsThisMission];
 if (_patrolsThisMission isEqualTo []) then
 {
 	_useRelativePos = false;
-	private _spawnLocations = [_coords,_noVehiclePatrols,45,60] call blck_fnc_findPositionsAlongARadius;
+	private _spawnLocations = [_coords,_noVehiclePatrols,60,100] call blck_fnc_findPositionsAlongARadius;
 	//diag_log format["_spawnMissionVehiclePatrols (35): _spawnLocations = %1",_spawnLocations];
 	{
 
@@ -50,44 +50,17 @@ if (_patrolsThisMission isEqualTo []) then
 		_spawnPos = _x select 1;
 	};
 	private _vehicle = _x select 0;	
-	private _vehGroup = [blck_AI_Side,true]  call blck_fnc_createGroup;
-	_patrolVehicle = objNull;
-	if !(isNull _vehGroup) then 
-	{
-		_vehGroup setVariable["soldierType","vehicle"];
-		[_vehGroup,_spawnPos,_coords,_crewCount,_crewCount,_skillAI,1,2,false,_uniforms, _headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
-		_missionAI append (units _vehGroup);
-		blck_monitoredMissionAIGroups pushBack _vehGroup;
-		_spawnPos = _spawnPos findEmptyPosition[0,50,_vehicle];;
-		#define useWaypoints true
-		_patrolVehicle = [_coords,_spawnPos,_vehicle,40,60,_vehGroup,useWaypoints,_crewCount] call blck_fnc_spawnVehiclePatrol; 
-
-		if !(isNull _patrolVehicle) then
-		{
-			_vehicles pushback _patrolVehicle;
-		};
-	} else {
-		_abort = true;
-	};
+	#define vehiclePatrolAreaDimensions [300,300]
+	private _vehGroup = [_spawnPos,_crewCount,_skillAI,vehiclePatrolAreaDimensions,_uniforms, _headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
+	_missionAI append (units _vehGroup);
+	blck_monitoredMissionAIGroups pushBack _vehGroup;
+	_spawnPos = _spawnPos findEmptyPosition[0,50,_vehicle];;
+	#define useWaypoints true
+	//TODO: Update waypoint system to the one used for GMSCore
+	_patrolVehicle = [_coords,_spawnPos,_vehicle,40,60,_vehGroup,useWaypoints,_crewCount] call blck_fnc_spawnVehiclePatrol; 
+	_vehicles pushback _patrolVehicle;
 } forEach _patrolsThisMission;
+blck_monitoredVehicles append _vehicles;
 
-if !(_abort) then 
-{
-	blck_monitoredVehicles append _vehicles;
-	if !(isNil "blck_spawnerMode") then 
-	 {	
-		_return = [_vehicles, _missionAI];
-	 } else {
-		_return = [_vehicles, _missionAI, _abort];
-	 };
-} else {
-	 if !(isNil "blck_spawnerMode") then 
-	 {	
-		{[_x] call blck_fnc_destroyVehicleAndCrew} forEach _vehicles;
-		_return = grpNull;
-	 } else {
-		blck_monitoredVehicles append _vehicles;
-		_return = [_emplacedWeps,_emplacedAI,_abort];		
-	 };
-};
+_return = [_vehicles, _missionAI, _abort];
 _return

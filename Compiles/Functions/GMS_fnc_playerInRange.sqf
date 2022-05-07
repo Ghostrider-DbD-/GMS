@@ -21,7 +21,7 @@ private "_players";
 
 if (_onFootOnly) then 
 {
-	_players = allPlayers select {(vehicle _x) isEqualTo _x && _x distance _coords < _range};	
+	_players = allPlayers select {(vehicle _x) isEqualTo _x && {_x distance _coords < _range}};	
 } else {
 	_players = allPlayers select {(_x distance _coords) < _range};
 };

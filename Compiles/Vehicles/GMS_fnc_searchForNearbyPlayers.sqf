@@ -11,7 +11,7 @@
 params["_vehicle","_group","searchRadius","_detectionOdds"];
 private["_nearbyPlayers","_groupLeader","_knowsAbout","_cansee"];
 _groupLeader = leader _group;
-_nearbyPlayers = [position _vehicle, _vehicle getVariable["blck_vehicleSearchRange",500]] call blck_fnc_nearestPlayers;
+_nearbyPlayers = [getPosATL _vehicle, _vehicle getVariable["blck_vehicleSearchRange",500]] call blck_fnc_nearestPlayers;
 {
 	_player = _x;
 	if (random(1) < _detectionOdds) then 

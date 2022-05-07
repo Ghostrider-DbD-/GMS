@@ -13,7 +13,7 @@ params["_veh"];
 
 if (isServer) then 
 {
-	if ({alive _x} count (crew _veh) == 0 || crew(_veh) isEqualTo []) then
+	if ({alive _x} count (crew _veh) == 0 || {crew(_veh) isEqualTo []}) then
 	{	
 		if (_veh getVariable["GRG_vehType","none"] isEqualTo "emplaced") then
 		{

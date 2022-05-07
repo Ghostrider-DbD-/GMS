@@ -18,7 +18,7 @@ _sm_groups = +blck_sm_garrisonBuilding_relPos;
 	//  [_building,_aiDifficulty,_noStatics,_typesStatics,_noUnits,_respawn]
 	_groupParameters params['_building','_aiDifficulty','_noStatics','_typesStatics','_noUnits','_respawnTime','_maxRespawns'];	
 	_element = +_x;//
-	_pos = position _building;
+	_pos = getPosATL _building;
 	if (!(isNull _group) && {alive _x} count (units _group) == 0) then
 	{
 		deleteGroup _group;

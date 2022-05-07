@@ -27,6 +27,7 @@ if (isNil "_aiGroupParameters") then {_aiGroupParameters = []};
 if (isNil "_missionEmplacedWeapons") then {_missionEmplacedWeapons = []};
 if (isNil "_vehiclePatrolParameters") then {_vehiclePatrolParameters = []};
 if (isNil "_missionLootVehicles") then {_missionLootVehicles = []};
+private "_crateMoney";
 if (isNil "_crateMoney") then 
 {
 	missionNamespace setVariable["_crateMoney",missionNamespace getVariable "blck_crateMoneyOrange"];

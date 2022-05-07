@@ -18,7 +18,7 @@ _instigator = _this select 3;
 if (!(isPlayer _instigator)) exitWith {};
 _crew = crew _veh;
 _group = group (_crew select 0);
-[_crew select 0,_instigator,50] call GMS_fnc_alertNearbyGroups;
+[_crew select 0,_instigator,50] call blck_fnc_alertNearbyGroups;
 [_instigator] call blck_fnc_alertNearbyVehicles;
 _group setBehaviour "COMBAT";
 _wp = [_group, currentWaypoint _group];

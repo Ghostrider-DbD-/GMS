@@ -23,7 +23,7 @@ private _hiddenObjs = [];
 {
 	private _spawnPos = _coords getPos[minObjectSpawnRadius + random(maxObjectSpawnRadius), random(359)];
 	private _objClassName = _x;
-	if (_objClassName isKindOf "House" && blck_hideRocksAndPlants) then 
+	if (_objClassName isKindOf "House" && {blck_hideRocksAndPlants}) then 
 	{
 		private _shrubs = nearestTerrainObjects[_spawnPos,["TREE", "SMALL TREE", "BUSH","FENCE", "WALL","ROCK"], sizeOf _objClassName];
 		if !(_shrubs isEqualTo []) then 

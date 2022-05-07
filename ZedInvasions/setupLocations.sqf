@@ -47,7 +47,7 @@ diag_log format ["DEBUG :: allPlaces array contains %1 entries", count _allPlace
 				Zed_HoardLocations pushBack [_placeName,_placePos,_placeType];
 				//diag_log format["addiing trigger for CITY%1",_placeName];
 			};
-			if (_placeType in ["NameLocal"] && _placename in ["military"]) then
+			if (_placeType in ["NameLocal"] && {_placename in ["military"]}) then
 			{
 				Zed_HoardLocations pushBack [_placeName,_placePos,_placeType];
 				//diag_log format["addiing trigger for military location %1",_placePos];				

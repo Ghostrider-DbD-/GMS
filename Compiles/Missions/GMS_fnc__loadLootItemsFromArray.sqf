@@ -36,11 +36,11 @@
 		_tries = 0;
 		//diag_log format["_fn_loadLoot:: -- >> now loading for %1",_x];
 		_q = _x select 1; // this can be a number or array.
-		if ( (typeName _q) isEqualTo "ARRAY") then // Assume the array contains a min/max number to add
+		if ( (_q isEqualType []) then // Assume the array contains a min/max number to add
 		{
 			if ((count _q) isEqualTo 2) then {_tries = (_q select 0) + round(random(((_q select 1) - (_q select 0))));} else {_tries = 0;};
 		};
-		if ((typeName _q) isEqualTo "SCALAR") then
+		if (_q isEqualType 0) then
 		{
 			_tries = _q;
 		};

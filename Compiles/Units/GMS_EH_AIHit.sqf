@@ -7,6 +7,6 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-	if (isServer) then {_this call blck_fnc_processAIHit};
+	if (isServer) then {_this call GMS_fnc_unitHit};
 
 

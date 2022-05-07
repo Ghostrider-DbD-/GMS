@@ -52,7 +52,7 @@ while {_coords isEqualTo []} do
 	_findNew = false;
 	_coords = [];
 	//     [center, minDist, maxDist, objDist, waterMode, maxGrad, shoreMode, blacklistPos, defaultPos] call BIS_fnc_findSafePos 
-	while {_coords isEqualTo [] && _tries < 500} do 
+	while {_coords isEqualTo [] && {_tries < 500}} do 
 	{
 		private _searchCenter = blck_mapCenter getPos[_searchDist, random(359)];
 		_coords = [_searchCenter,0,_searchDist,_minObjDist,_waterMode,_maxGrad,_shoreMode] call BIS_fnc_findSafePos;
@@ -120,7 +120,7 @@ while {_coords isEqualTo []} do
 	if !(_findNew) then
 	{
 		{
-			if (isPlayer _x && (_x distance2D _coords) < blck_minDistanceToPlayer) then 
+			if (isPlayer _x && {(_x distance2D _coords) < blck_minDistanceToPlayer}) then 
 			{
 				_findNew = true;
 				if (blck_debugLevel >= 3) then {[format["_findSafePosn(120): too close to player"]] call blck_fnc_log};
@@ -164,7 +164,7 @@ while {_coords isEqualTo []} do
 		_minDistanceRecentMissions = _minDistanceRecentMissions * _weightRecentMissions;
 		_coords = [];		
 	};
-	[format["_fnc_findSafePosn(140) end of cycle logging: _tries = %1 | _coords = %2 | _findNew = %3",_tries,_coords,_findNew]] call blck_fnc_log;	
+	//[format["_fnc_findSafePosn(140) end of cycle logging: _tries = %1 | _coords = %2 | _findNew = %3",_tries,_coords,_findNew]] call blck_fnc_log;	
 };
 
 if ((count _coords) > 2) then 
@@ -173,7 +173,7 @@ if ((count _coords) > 2) then
 	_temp = [_coords select 0, _coords select 1];
 	_coords = _temp;
 };
-[format["_fnc_findSafePosn(148) final logging: _elapsedTime %3 | _tries = %1 | _coords = %2",_tries,_coords,diag_tickTime - _startTime]] call blck_fnc_log;
+//[format["_fnc_findSafePosn(148) final logging: _elapsedTime %3 | _tries = %1 | _coords = %2",_tries,_coords,diag_tickTime - _startTime]] call blck_fnc_log;
 _coords;
 
 

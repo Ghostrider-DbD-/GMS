@@ -36,12 +36,12 @@ if (_aiSkillsLevel isEqualTo "red") then
 	_missionHelis = blck_patrolHelisRed;	
 };
 
-if ( (_chanceHeliPatrol > 0) && (random (1) < _chanceHeliPatrol) ) then // if helipatrols are 'enabled' then paratroops will only drop if a heli spawns.
+if ( (_chanceHeliPatrol > 0) && {(random (1) < _chanceHeliPatrol}) ) then // if helipatrols are 'enabled' then paratroops will only drop if a heli spawns.
 																		// The chance that they drop is linked to the value for them for that difficulty _aiSkillsLevel
 																		//see _fnc_spannMissionParatroops for how this is handled.
 {
 	_temp = [_coords,_aiSkillsLevel,_weapons,_uniforms,_headgear,_missionHelis,_chancePara] call blck_fnc_spawnMissionHeli; 
-	if (typeName _temp isEqualTo "ARRAY") then
+	if (_temp isEqualType []) then
 	{
 		_return = [_temp select 0, _temp select 1, _temp select 2];
 	}
@@ -52,7 +52,7 @@ if ( (_chanceHeliPatrol > 0) && (random (1) < _chanceHeliPatrol) ) then // if he
 } else {
 		_temp = [_coords,_aiSkillsLevel,_weapons,_uniforms,_headgear] call blck_fnc_spawnMissionParatroops;
 
-		if (typeName _temp isEqualTo "ARRAY") then
+		if (_temp isEqualType []) then
 		{
 			_return = [objNull, _temp select 0 /*units*/, _temp select 1 /*true/false*/];
 		} else {

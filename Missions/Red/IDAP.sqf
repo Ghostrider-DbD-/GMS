@@ -78,7 +78,7 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     [selectRandom blck_AIPatrolVehicles,[3.04663,-40.3821,0.00804186],262.322]
+     [selectRandom blck_AIPatrolVehiclesRed,[3.04663,-40.3821,0.00804186],262.322]
 ];
 
 _submarinePatrolParameters = [

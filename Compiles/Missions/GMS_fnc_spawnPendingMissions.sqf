@@ -15,7 +15,7 @@ if (blck_missionsRunning >= blck_maxSpawnedMissions) exitWith {};
 	private _missionCategoryDescriptors = _x;	
 	_missionCategoryDescriptors params["_difficulty","_maxNoMissions","_noActiveMissions","_tMin","_tMax","_waitTime","_missionsData"];
 
-	if (_noActiveMissions < _maxNoMissions && diag_tickTime > _waitTime && blck_missionsRunning < blck_maxSpawnedMissions) then 
+	if (_noActiveMissions < _maxNoMissions && {diag_tickTime > _waitTime && {blck_missionsRunning < blck_maxSpawnedMissions}}) then 
 	{
 		blck_dynamicMissionsSpawned = blck_dynamicMissionsSpawned + 1;
 		// time to reset timers and spawn something.

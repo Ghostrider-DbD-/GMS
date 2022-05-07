@@ -27,7 +27,7 @@ for "_i" from 1 to (count blck_oldMissionObjects) do {
 			{
 				{
 					if (typeName _x isEqualTo "OBJECT") then {deleteVehicle _x};
-					if (typeName _x isEqualTo "STRING") then {deleteVehicle (objectFromNetId _x)};
+					if (_x isEqualType "") then {deleteVehicle (objectFromNetId _x)};
 				} forEach _objarr;
 			} else {
 				blck_oldMissionObjects pushback _oldObjs;

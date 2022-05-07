@@ -32,8 +32,8 @@
 		diag_log format["blck_addItemToCrate:: -- >> itemInfo = %1 | _crate %2 | _addAmmo %3",_itemInfo, _crate, _addAmmo];
 	};
 	#endif
-	if (typeName _itemInfo isEqualTo "STRING") then {_item = _itemInfo; _quant = 1};  // case where only the item descriptor was provided
-	if (typeName _itemInfo isEqualTo "ARRAY") then {
+	if (_itemInfo isEqualType "") then {_item = _itemInfo; _quant = 1};  // case where only the item descriptor was provided
+	if (_itemInfo isEqualType []) then {
 		
 		if (count _itemInfo isEqualTo 2) then {_item = _itemInfo select 0; _quant = _itemInfo select 1;}; // case where item descriptor and quantity were provided
 		if (count _itemInfo isEqualto 3) then {
@@ -41,17 +41,17 @@
 			_quant = (_itemInfo select 1) + round(random((_itemInfo select 2) - (_itemInfo select 1)));
 		}; // case where item descriptor, min number and max number were provided.
 	};
-	if (((typeName _item) isEqualTo "STRING") && (_item != "")) then
+	if ((_item isEqualType "") && {(_item != "")}) then
 	{
 		if (isClass(configFile >> "CfgWeapons" >> _item)) then {
 			_crate addWeaponCargoGlobal [_item,_quant]; 
 			_isWeapon = true;
 			_count = 0;
-			if (typeName _addAmmo isEqualTo "SCALAR") then
+			if (_addAmmo isEqualType 0) then
 			{
 				_count = _addAmmo;
 			};
-			if (typeName _addAmmo isEqualto "ARRAY") then
+			if (_addAmmo isEqualType []) then
 			{
 				_count = (_addAmmo select 0) + (round(random((_addAmmo select 1) - (_addAmmo select 0))));
 			};
@@ -63,5 +63,5 @@
 		};
 		if (_item isKindOf ["Bag_Base", configFile >> "CfgVehicles"]) then {_crate addBackpackCargoGlobal [_item,_quant]; _isBackpack = true;};
 		if (isClass(configFile >> "CfgMagazines" >> _item)) then {_crate addMagazineCargoGlobal [_item,_quant]; _isMagazine = true;};
-		if (!_isWeapon && !_isMagazine && _isBackpack && isClass(configFile >> "CfgVehicles" >> _item)) then {_crate addItemCargoGlobal [_item,_quant]};
+		if (!_isWeapon && {!_isMagazine && {_isBackpack && {isClass(configFile >> "CfgVehicles" >> _item)}}}) then {_crate addItemCargoGlobal [_item,_quant]};
 	};

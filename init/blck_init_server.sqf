@@ -14,19 +14,26 @@
 ///////////////////////////////////////////////
 //  prevent the system from being started twice
 //////////////////////////////////////////////
-if !(isNil "blck_missionSystemRunning") exitWith {};
+if !(isNil "blck_missionSystemRunning") exitWith {"[blckeagls] Mission System already initialized"};
 blck_missionSystemRunning = true;
 
 // Only run this on a dedicated server
-if ( !(isServer) || hasInterface) exitWith{};
+if ( !(isServer) || hasInterface) exitWith
+{
+	"[blckeagls] Mission system may only be run on a dedicate server or headless client";
+};
+diag_log format["[blckeagls] Loading blackeagls at %1",diag_tickTime];
+
+waitUntil {!isNil "GMSCore_Initialized"}; //  && !isNil "GMS_side" && !isNil "GMS_unitType"; uisleep 5};
 
 // find and set Mod
-blck_modType = "";
-if (!isNull (configFile >> "CfgPatches" >> "exile_server")) then {blck_modType = "Exile"};
-if (!isnull (configFile >> "CfgPatches" >> "a3_epoch_server")) then {blck_modType = "Epoch"}; 
-if (!(blck_modType in ["Exile","Epoch"] )) then {blck_modType = "default"};
+blck_modType = GMS_modType;
 publicVariable "blck_modType";
+diag_log format["[blckeagls] blck_modType = %1",blck_modType];
 
+blck_AI_Side = GMS_Side;
+blck_unitType = GMS_unitType;
+diag_log format["[blckeagls] blck_ai_side = %1 | blck_unitType = %2",blck_AI_Side,blck_unitType];
 
 // Just some housekeeping for ghost.
 private _blck_loadingStartTime = diag_tickTime;
@@ -34,10 +41,177 @@ private _blck_loadingStartTime = diag_tickTime;
 
 // compile functions
 [] call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\Compiles\blck_functions.sqf";
-
+diag_log format["[blckeagls] Loaded Functions at %1",diag_tickTime];
 // Load Configs
 [] call compile preprocessfilelinenumbers "\q\addons\custom_server\Configs\blck_configs.sqf";
-waitUntil{(!isNil "blck_useHC") && (!isNil "blck_simulationManager") && (!isNil "blck_debugOn") && (!isNil "blck_AI_Side")};
+
+diag_log format["[blckeagls] Loaded Configs at %1",diag_tickTime];
+waitUntil{(!isNil "blck_useHC") && (!isNil "blck_simulationManager") && (!isNil "blck_debugOn") && (!isNil "blck_AI_Side") && !(isNil "blck_configs_loaded")};
+
+{
+	[format["blck_init_server: validating classnames and pricing for %1",_x]] call blck_fnc_log;
+	//_x = [_x,true] call GMS_fnc_checkClassnamesArray;
+	//_x = [_x,true] call GMS_fnc_checkClassNamePrices;
+} forEach [
+	blck_patrolHelisBlue,
+	blck_patrolHelisRed,
+	blck_patrolHelisGreen,
+	blck_patrolHelisOrange,
+	blck_AIPatrolVehiclesBlue,
+	blck_AIPatrolVehiclesRed,
+	blck_AIPatrolVehiclesGreen,
+	blck_AIPatrolVehiclesOrange,
+	blck_tools,
+	blck_buildingMaterials,
+	blck_NVG,
+	blck_specialItems,
+	blck_ConsumableItems,
+	blck_vests_blue,
+	blck_vests_red,
+	blck_vests_green,
+	blck_vests_orange,
+	blck_SkinList_blue,
+	blck_SkinList_red,
+	blck_SkinList_green,
+	blck_SkinList_orange,
+	blck_headgear_blue,
+	blck_headgear_red,
+	blck_headgear_green,
+	blck_headgear_orange,
+	blck_backpacks_blue,
+	blck_backpacks_red,
+	blck_backpacks_green,
+	blck_WeaponList_Blue,
+	blck_WeaponList_Red,
+	blck_WeaponList_Green,
+	blck_WeaponList_Orange
+];
+/*
+blck_gearBlue = [
+	[
+		[
+			blck_WeaponList_Blue,
+			blck_chancePrimary,
+			blck_chanceOpticsPrimary,
+			blck_chanceMuzzlePrimary,
+			blck_chancePointerPrimary,
+			blck_blacklistedPrimaryWeapons
+		], // Just adding together all the subclasses of primary weaponss
+		[
+			blck_Pistols_blue, 
+			blck_chanceSecondary, 
+			blck_chanceOpticsSecondary, 
+			blck_chanceMuzzleSecondary, 
+			blck_chancePointerSecondary,
+			blck_blacklistedSecondaryWeapons
+		],
+		[blck_explosives, blck_chanceThowable,GMSAI_blackListedThrowables],
+		[blck_headgear_blue, blck_chanceHeadgear,blck_blacklistedHeadgear],
+		[blck_SkinList_blue, blck_chanceUniform,blck_blacklistedUniforms],
+		[blck_vests_blue, blck_chanceVest,blck_blacklistedVests],
+		[blck_backpacks_blue, blck_chanceBackpack,blck_blacklistedBackpacks],
+		[blck_launcherTypes, 1.0,blck_blacklistedLaunchersAndSwingWeapons],  // this is determined elsewhere for GMSAI
+		[blck_NVG, 1.0,[]],  // this is determined elsewhere for GMSAI
+		[blck_binocs,blck_chanceBinoc,[]],
+		[blck_ConsumableItems, 1.0,[]],
+		[blck_medicalItems, 1.0,[]],
+		[blck_tools, 1.0,[]]
+	]
+];
+blck_gearRed = [
+	[
+		[
+			blck_WeaponList_Red,
+			blck_chancePrimary,
+			blck_chanceOpticsPrimary,
+			blck_chanceMuzzlePrimary,
+			blck_chancePointerPrimary,
+			blck_blacklistedPrimaryWeapons
+		], // Just adding together all the subclasses of primary weaponss
+		[
+			blck_Pistols_Red, 
+			blck_chanceSecondary, 
+			blck_chanceOpticsSecondary, 
+			blck_chanceMuzzleSecondary, 
+			blck_chancePointerSecondary,
+			blck_blacklistedSecondaryWeapons
+		],
+		[blck_explosives, blck_chanceThowable,[]],
+		[blck_headgear_Red, blck_chanceHeadgear,blck_blacklistedHeadgear],
+		[blck_SkinList_Red, blck_chanceUniform,blck_blacklistedUniforms],
+		[blck_vests_Red, blck_chanceVest,blck_blacklistedVests],
+		[blck_backpacks_Red, blck_chanceBackpack,blck_blacklistedBackpacks],
+		[blck_launcherTypes, 1.0 ,blck_blacklistedLaunchersAndSwingWeapons],  // this is determined elsewhere for GMSAI
+		[blck_NVG, 1.0, []],  // this is determined elsewhere for GMSAI
+		[blck_binocs,blck_chanceBinoc,[]],
+		[blck_ConsumableItems, 1.0, []],
+		[blck_medicalItems, 1.0, []],
+		[blck_tools, 1.0, []]
+	]
+];
+blck_gearGreen = [
+	[
+		[
+			blck_WeaponList_Green,
+			blck_chancePrimary,
+			blck_chanceOpticsPrimary,
+			blck_chanceMuzzlePrimary,
+			blck_chancePointerPrimary,
+			blck_blacklistedPrimaryWeapons
+		], // Just adding together all the subclasses of primary weaponss
+		[
+			blck_Pistols_Green, 
+			blck_chanceSecondary, 
+			blck_chanceOpticsSecondary, 
+			blck_chanceMuzzleSecondary, 
+			blck_chancePointerSecondary,
+			blck_blacklistedSecondaryWeapons
+		],
+		[blck_explosives, blck_chanceThowable,[]],
+		[blck_headgear_Green, blck_chanceHeadgear,blck_blacklistedHeadgear],
+		[blck_SkinList_Green, blck_chanceUniform,blck_blacklistedUniforms],
+		[blck_vests_Green, blck_chanceVest,blck_blacklistedVests],
+		[blck_backpacks_Green, blck_chanceBackpack,blck_blacklistedBackpacks],
+		[blck_launcherTypes, 1.0 ,blck_blacklistedLaunchersAndSwingWeapons],  // this is determined elsewhere for GMSAI
+		[blck_NVG, 1.0, []],  // this is determined elsewhere for GMSAI
+		[blck_binocs,blck_chanceBinoc,[]],
+		[blck_ConsumableItems, 1.0, []],
+		[blck_medicalItems, 1.0, []],
+		[blck_tools, 1.0, []]
+	];
+];
+blck_gearOrange = [
+	[
+		[
+			blck_WeaponList_Orange,
+			blck_chancePrimary,
+			blck_chanceOpticsPrimary,
+			blck_chanceMuzzlePrimary,
+			blck_chancePointerPrimary,
+			blck_blacklistedPrimaryWeapons
+		], // Just adding together all the subclasses of primary weaponss
+		[
+			blck_Pistols_Orange, 
+			blck_chanceSecondary, 
+			blck_chanceOpticsSecondary, 
+			blck_chanceMuzzleSecondary, 
+			blck_chancePointerSecondary,
+			blck_blacklistedSecondaryWeapons
+		],
+		[blck_explosives, blck_chanceThowable,[]],
+		[blck_headgear_Orange, blck_chanceHeadgear,blck_blacklistedHeadgear],
+		[blck_SkinList_Orange, blck_chanceUniform,blck_blacklistedUniforms],
+		[blck_vests_Orange, blck_chanceVest,blck_blacklistedVests],
+		[blck_backpacks_Orange, blck_chanceBackpack,blck_blacklistedBackpacks],
+		[blck_launcherTypes, 1.0 ,blck_blacklistedLaunchersAndSwingWeapons],  // this is determined elsewhere for GMSAI
+		[blck_NVG, 1.0, []],  // this is determined elsewhere for GMSAI
+		[blck_binocs,blck_chanceBinoc,[]],
+		[blck_ConsumableItems, 1.0, []],
+		[blck_medicalItems, 1.0, []],
+		[blck_tools, 1.0, []]
+	]
+];
+*/
 if (blck_debugOn) then {[format["blck_AI_Side = %1",blck_AI_Side]] call blck_fnc_log};
 
 // This block waits for the mod to start but is disabled for now
@@ -56,6 +230,7 @@ if ((toLower blck_modType) isEqualTo "default") then
 {
 	["[blckeagls] Configuring Mission System for Default Settings..."] call blck_fnc_log;
 };
+
 
 // Load any user-defined specifications or overrides
 //  HINT: Use these for map-specific settings
@@ -87,6 +262,7 @@ if (blck_spawnMapAddons) then
 call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\init\GMS_fnc_findWorld.sqf";
 if (blck_debugOn) then {diag_log "[blckeagls] Map-specific information defined"};
 
+
 // set up the lists of available missions for each mission category
 #include "\q\addons\custom_server\Missions\GMS_missionLists.sqf";
 if (blck_debugOn) then {diag_log "[blckeagls] Mission Lists Loaded Successfully"};
@@ -102,15 +278,17 @@ switch (blck_simulationManager) do
 };
 
 [format["Version %1 Build %2 Loaded in %3 seconds",blck_versionNumber,blck_buildNumber,diag_tickTime - _blck_loadingStartTime]] call blck_fnc_log;
-[format["Waiting for players to join ----    >>>>"]] call blck_fnc_log;
 
+/*
 if ( !(blck_debugON) && (blck_debugLevel isEqualTo 0)) then
 {
-	waitUntil{{isPlayer _x}count allPlayers > 0};
+	[format["Waiting for players to join ----    >>>>"]] call blck_fnc_log;
+	//waitUntil{{isPlayer _x}count allPlayers > 0};
 	["Player Connected, spawning missions"] call blck_fnc_log;
 } else {
 	["Debug mode ON, proceding without players"] call blck_fnc_log;
 };
+*/
 
 if (blck_spawnStaticLootCrates) then
 {

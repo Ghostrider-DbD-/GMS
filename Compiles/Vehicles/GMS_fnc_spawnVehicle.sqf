@@ -1,4 +1,5 @@
 /*
+	blck_fnc_spawnVehicle
 	Spawn a vehicle and protect it against cleanup by Epoch
 	Returns the object (vehicle) created.
 	By Ghostrider [GRG]
@@ -15,15 +16,15 @@
 params["_vehType",["_pos",[]],["_special","NONE"],["_radius",30]];
 
 private _veh = createVehicle[_vehType, _pos, [], _radius, _special];
-if (count _pos == 2) then {
+if (count _pos == 2) exitWith {
 	_pos pushBack 0;
 	[format["_fnc_spawnVehicle(20): _pos had only 2 parameters, new value = %1",_pos],'warning'] call blck_fnc_log;
 };
-if (_pos isEqualTo []) then 
+if (_pos isEqualTo []) exitWith 
 {
 	[format["_fnc_spawnVehicle(20): _pos undefined, now set to [0,0,0]"],'warning'] call blck_fnc_log;
 };
-_veh setVectorUp surfaceNormal position _veh;
+_veh setVectorUp surfaceNormal getPosATL _veh;
 _veh allowDamage true;
 _veh enableRopeAttach true;
 _veh setVariable["blck_vehicle",true];

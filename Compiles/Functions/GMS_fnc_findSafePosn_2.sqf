@@ -82,7 +82,7 @@ while{!_validspot} do {
 	};
 
 	// Check for DMS missions 
-	if (blck_minDistanceFromDMS > 0 && _validspot) then 
+	if (blck_minDistanceFromDMS > 0 && {_validspot}) then 
 	{
 		{
 			if (_position distance _x < blck_minDistanceFromDMS) exitWith {

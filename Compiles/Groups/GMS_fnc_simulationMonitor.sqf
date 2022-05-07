@@ -18,7 +18,7 @@ if (blck_simulationManager isEqualTo blck_useDynamicSimulationManagement) exitWi
 	// wake groups up if needed.
 	{
 		private _group = _x;
-		private _nearplayer = [position (leader _group),blck_simulationEnabledDistance] call blck_fnc_nearestPlayers;	
+		private _nearplayer = [getPosATL (leader _group),blck_simulationEnabledDistance] call blck_fnc_nearestPlayers;	
 		if !(_nearPlayer isEqualTo []) then 
 		{
 			_group reveal [(_nearplayer select 0),(_group knowsAbout (_nearPlayer select 0)) + 0.001];  //  Force simulation on
@@ -31,7 +31,7 @@ if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManager) then
 
 	{
 		private _group = _x;
-		private _nearplayer = [position (leader _group),blck_simulationEnabledDistance] call blck_fnc_nearestPlayers;	
+		private _nearplayer = [getPosATL (leader _group),blck_simulationEnabledDistance] call blck_fnc_nearestPlayers;	
 		if !(_nearplayer isEqualTo []) then
 		{
 			if !(simulationEnabled (leader _group)) then
@@ -51,7 +51,7 @@ if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManager) then
 
 	{
 		// disable simulation once players have left the area.
-		private _nearPlayers = [position (_x),blck_simulationEnabledDistance] call blck_fnc_nearestPlayers;		
+		private _nearPlayers = [getPosATL (_x),blck_simulationEnabledDistance] call blck_fnc_nearestPlayers;		
 		if (simulationEnabled _x) then 
 		{		
 			if (_nearPlayers isEqualTo []) then 

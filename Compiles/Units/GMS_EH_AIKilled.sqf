@@ -12,5 +12,5 @@
 */
 //#include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #define unit _this select 0
-if (isServer) then {_this call blck_fnc_processAIKill};
-if (local (unit)) then  {_this call blck_fnc_processAIKill};
+//if (isServer) then {_this call blck_fnc_processAIKill};
+if (local (unit)) then  {_this call GMS_fnc_unitKilled};

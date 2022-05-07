@@ -108,7 +108,7 @@ if (blck_debugLevel >= 3) then
 		"_markerBrush"
 	];
 };
-if !(toLower (_markerType) in ["ellipse","rectangle"] || isClass(configFile >> "CfgMarkers" >> _markerType)) then 
+if !(toLower (_markerType) in ["ellipse","rectangle"] || {isClass(configFile >> "CfgMarkers" >> _markerType)}) then 
 {
 	[format["_markerType set to 'ELLIPSE': Illegal marker type %1 used for mission %2 of difficulty %3",_markerType,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
 	_markerType = "ELLIPSE";
@@ -143,7 +143,7 @@ private _chancePara = _paraData param [6];
 private _missionTimeoutAt = diag_tickTime + blck_MissionTimeout;
 private _triggered = 0;
 private _spawnPara = if (random(1) < _chancePara) then {true} else {false};
-diag_log format["_initializeMission: _spawnPara = %1 | _chancePara = %2",_spawnPara,_chancePara];
+//diag_log format["_initializeMission: _spawnPara = %1 | _chancePara = %2",_spawnPara,_chancePara];
 private _objects = [];
 private _hiddenObjects = [];
 private _mines = [];

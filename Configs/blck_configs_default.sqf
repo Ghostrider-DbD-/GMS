@@ -38,8 +38,6 @@
 AI WEAPONS, UNIFORMS, VESTS AND GEAR
 
 **********************************************************************************/
-
-	blck_AI_Side = EAST;
 	
 	blck_crateMoneyBlue = [100,250];
 	blck_crateMoneyRed = [175, 300];
@@ -52,7 +50,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	
 	blck_maximumItemPriceInAI_Loadouts = 100;
 	
-		blck_lightlyArmed_ARMA3 = [
+	blck_lightlyArmed_ARMA3 = [
 		"B_G_Offroad_01_armed_F", 
 		"O_G_Offroad_01_armed_F",
 		"B_MRAP_01_gmg_F", 
@@ -586,9 +584,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 			blck_UMS_submarines =
 			[
 				
-				"Exile_Boat_SDV_CSAT",
-				"Exile_Boat_SDV_Digital",
-				"Exile_Boat_SDV_Grey"
+				"B_SDV_01_F"
 			];
 			
 			blck_UMS_crates = blck_crateTypes;
@@ -962,6 +958,6 @@ for examples of how you can do this see \Major\Compositions.sqf
 blck_contructionLoot = blck_BoxLoot_Orange;
 blck_highPoweredLoot = blck_BoxLoot_Orange;
 blck_supportLoot = blck_BoxLoot_Orange;
-
+blck_configs_loaded = true;
 ["[blckeagls] Default Configurations Loaded"] call blck_fnc_log;
 

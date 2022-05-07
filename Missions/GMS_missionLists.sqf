@@ -17,75 +17,40 @@ private["_pathBlue","_missionListBlue","_pathRed","_missionListRed","_pathGreen"
 
 private _pathScouts = "Scouts";
 private _missionListScouts = ["Scouts"];  // OK Build 224
-if(blck_debugOn) then 
-{
-	diag_log format["_missionLists: _missionListScouts = %1",_missionListScouts];
-};
 
 private _pathHunters = "Hunters";
 private _missionListHunters = ["Hunters"];  // OK Build 224
-if (blck_debugOn) then 
-{
-	diag_log format["_missionLists: _missionListHunters = %1",_missionListHunters];
-};
 
 private _pathBlue = "Blue";
-private _missionListBlue = [];
-if (blck_debugOn) then 
-{
-	//_missionListBlue = ["sniperBase"];
-	_missionListBlue = [
-		//"hostage1",  OK
-		//"captive1",
-		//** */"sniperBase",
-		//** */"survivalSupplies",
-		//"derbunker", // OK, an interesting mission, better as a red / green though
-		//"forgotten_HQ",  //  ok BUT TOO TOUGH FOR BLUE OR RED
-		//"garrison",  //  OK but do not use.
-		//"IDAP",  //  OK but too difficult for a blue mission
-		//** */"Service_point",  //  OK
-		//"Toxin",  //  OK but too difficult for a blue mission
-		//"default"  // OK Build 224
-		"default"
-	];	
-	diag_log format["_missionLists: _missionListBlue = %1",_missionListBlue];	
-	// Passed: "Toxin", 
-} else {
-	_missionListBlue = [
+private _missionListBlue = [
 		//"hostage1",  // OK
 		//"captive1",  // OK
-		"sniperBase",  // OK Build 224
-		"survivalSupplies",  // OK Build 224
+
+
+		"sniperBase",  // Spawns OK Debug = 4 Build 246
+		"survivalSupplies",  // Spawns OK Debug = 4 Build 246
 		//"derbunker", // OK, an interesting mission, better as a red / green though
 		//"forgotten_HQ",  //  ok BUT TOO TOUGH FOR BLUE OR RED
 		//"garrison",  //  OK but do not use.
 		//"IDAP",  //  OK but too difficult for a blue mission
-		"Service_point",  // OK build 224
+
+		// omitted for Cherno at Azock's request		
+		//"Service_point",  // OK build 224
 		//"Toxin",  //  OK but too difficult for a blue mission
-		"default"  // OK Build 224
+		"default"  //  Spawns OK Debug = 4 Build 246
 	];
-};
 
-
-_pathRed = "Red";
-if (blck_debugOn) then 
-{
-	//_missionListRed = ["fuelDepot"];
-	_missionListRed = [
-	"fuelDepot"
-	];	
-	diag_log format["_missionLists: _missionListRed = %1",_missionListRed];	
-} else {
-	_missionListRed = [
+private _pathRed = "Red";
+private _missionListRed = [
 	//"default",  //  OK Build 224
 	//"medicalCamp",
 	//"hostage1",
 	//"captive1",
-	"fuelDepot",  //  OK Build 224
-	"junkyardWilly",  //  OK bulid 224
-	"TraderBoss",  // OK build 224
-	"carThieves",   // OK Build 224
-	"Ammunition_depot",  // OK Bio;d 224
+	"fuelDepot",  // Spawns OK Debug = 4 Build 246
+	"junkyardWilly",  // Spawns OK Debug = 4 Build 246
+	//"TraderBoss",  // OK build 224
+	"carThieves",   // Spawns OK Debug = 4 Build 246
+	"Ammunition_depot",  //  Spawns OK Debug = 4 Build 246
 	//"Camp_Moreell",
 	//"charlston",
 	//"dashq",
@@ -93,65 +58,45 @@ if (blck_debugOn) then
 	//"factory",  //  Good Green / Orange; center position is off though.
 	//"forgotten_HQ",
 	//"garrison",
-	"IDAP",  // OK, Build 224
+	"IDAP",  // Spawns OK Debug = 4 Build 246
 	//"lager",
 	//"Operations_Command",
-	"Outpost",  // OK, Build 224
-	"Service_Point", // OK, Build 224
+	"Outpost",  //  Spawns OK Debug = 4 Build 246
+	"Service_Point", //Spawns OK Debug = 4 Build 246
 	//"tko_camp",  
-	"Toxin" // ok
+	"Toxin" //  Spawns OK Debug = 4 Build 246
 	];
-};
 
-_pathGreen = "Green";
-if (blck_debugOn) then
-{
-	//_missionListGreen = ["fortification"];  // charlston and factory run fine
-	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp","banditVillage",*/
-		"FieldHQ" 
-	];	
-	diag_log format["_missionLists: _missionListGreen = %1",_missionListGreen];	
-	// Passed: "banditVillage",
-} else {
-	_missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp","banditVillage",*/
-		"FieldCamp",  //  OK Build 224
-		"FieldHQ",  // OK Build 224
-		"weaponsResearch",  // OK build 224
-		"munitionsResearch",  // OK Build 224
-		"colonelsBase",  //  OK Build 224
-		"factory",  //  OK Build 224
-		"fortification",  // OK Build 224
+private _pathGreen = "Green";
+private _missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp","banditVillage",*/
+		"FieldCamp",  //  Spawns OK Build 246 Debug == 4
+		"FieldHQ",  // Spawns OK Build 246 Debug == 4
+		//"weaponsResearch",  // OK build 224
+		"munitionsResearch",  // Spawns OK Build 246 Debug == 4
+		//"colonelsBase",  //  OK Build 224
+		"factory",  //  Spawns OK Build 246 Debug == 4
+		"fortification",  //  Spawns OK Debug = 4 Build 246
 		//"banditVillage",  //  OK but do not use.
-		"Camp_Moreell",  // OK Build 224
+		"Camp_Moreell",  // Spawns OK Build 246 Debug == 4
 		//"charlston",  //  Spawns OK but crate glitched under a building
 		//"derbunker",  //  OK
 		//"forgotten_HQ",  // OK, but can't complete
-		"lager"  //  OK - perfect Green / Orange 
+		"lager"  //  Spawns OK but crate glitched under a building
 		//"Operations_Command",  //  OK  bEST SUITED FOR GREEN/ORANGE // Nees R3F or crate spawned by parachute at mission start
 		//"Outpost",  // OK
 		//"tko_camp"  // OK
 	];
-};
 
-_pathOrange = "Orange";
-if (blck_debugOn) then 
-{
-	//_missionListOrange = ["Outpost"]; // 
-	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/
-	"colonel2"  
-	];	
-	diag_log format["_missionLists: _missionListOrange = %1",_missionListOrange];
-	// Passed: "banditVillage",
-} else {
-	_missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/
-	"CommandersComplex",  //  OK Build 224
-	"generalsCamp",  //  OK Build 224
-	"colonel2",  // OK build 224
-	"stronghold",  //  OK Build 224
-	"operationShutdown",  //  OK Build 224
-	"operationTakeover",  //  OK Build 224
-	"dashq",  //  OK Build 224
-	"derbunker", // OK Build 224
+private _pathOrange = "Orange";
+private _missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/
+	"CommandersComplex",  //   Spawns OK Debug = 4 Build 246
+	"generalsCamp",  // Spawns OK Debug = 4 Build 246
+	//"colonel2",  // Spawns OK Debug = 4 Build 246
+	"stronghold",  //   Spawns OK Debug = 4 Build 246
+	"operationShutdown",  //  Spawns OK Debug = 4 Build 246
+	"operationTakeover",  //  Spawns OK Debug = 4 Build 246
+	"dashq",  //  Spawns OK Debug = 4 Build 246
+	"derbunker", // Spawns OK Debug = 4 Build 246
 	//"Ammunition_depot",  // OK Build 224; vics may need predefined spawns more suited for green mission
 	//"Camp_Moreell",  // OK except that the crate spawns at ground level under a building; try dropping from chute for now
 	//"Operations_Command",  //OK  bEST SUITED FOR GREEN/ORANGE // Nees R3F or crate spawned by parachute at mission start
@@ -159,20 +104,8 @@ if (blck_debugOn) then
 	"tko_camp"  // // OK Build 224
 	/*,"temple"*/
 	];
-};
 
-_pathUMS = "UMS\dynamicMissions";
-_missionListUMS = ["default"];
-if (blck_debugOn) then 
-{
-	diag_log format["_missionLists: _missionListUMS = %1",_missionListUMS];
-};
+private _pathUMS = "UMS\dynamicMissions";
+private _missionListUMS = ["default"];
 
-_pathHeliCrashes = "HeliCrashes";
-
-if (toLower(worldName) isEqualTo "namalsk") then
-{
-	diag_log format["[blckeagls] GMS_missionLists.sqf:: -> running mission list variants for Namalsk"];
-	_missionListGreen = ["FieldCamp","FieldHQ","weaponsResearch","munitionsResearch","colonelsBase","banditVillage","charlston","factory","fortification"];
-	_missionListOrange = ["CommandersComplex","generalsCamp","colonel2","pinkPoison","stronghold","banditVillage","operationShutdown","operationTakeover","dashq","tko_camp","bunker"];
-};
+private _pathHeliCrashes = "HeliCrashes";

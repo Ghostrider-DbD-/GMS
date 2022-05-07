@@ -14,7 +14,7 @@
 {
 	private _unit = _x; 
 	if (_unit getVariable["blck_cleanupAt",0] isEqualTo 0) then {_unit setVariable["blck_cleanupAt",diag_tickTime + blck_bodyCleanUpTimer]};
-	private _nearplayer = [position _unit,800] call blck_fnc_nearestPlayers;	
+	private _nearplayer = [getPosATL _unit,800] call blck_fnc_nearestPlayers;	
 
 	if (diag_tickTime > _unit getVariable ["blck_cleanupAt",0]) then 
 	{

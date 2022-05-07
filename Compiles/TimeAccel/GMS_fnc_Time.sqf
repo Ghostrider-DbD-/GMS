@@ -27,14 +27,14 @@ _arr = date call BIS_fnc_sunriseSunsetTime;
 _sunrise = _arr select 0;
 _sunset = _arr select 1;
 _time = dayTime;
-
+//diag_log format["GMS_fnc_Time: called at %1 | _time = %2",diag_tickTime,_time];
 // Night
-if (_time > (_sunset + 0.5) || _time < (_sunrise - 0.5)) exitWith {
+if (_time > (_sunset + 0.5) || {_time < (_sunrise - 0.5)}) exitWith {
 	setTimeMultiplier blck_timeAccelerationNight; 
 };
 
 // Day
-if (_time > (_sunrise + 0.5) && _time < (_sunset - 0.5)) exitWith {
+if (_time > (_sunrise + 0.5) && {_time < (_sunset - 0.5)}) exitWith {
 	setTimeMultiplier blck_timeAccelerationDay; 	
 };
 

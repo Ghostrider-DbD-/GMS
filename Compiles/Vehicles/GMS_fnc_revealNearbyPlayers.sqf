@@ -15,7 +15,7 @@
 */
 params["_vehicle","_searchRadius","_detectionOdds"];
 private["_player","_detectionOdds","_nearbyPlayers","_knowsAbout","_cansee","_knowledgeGained"];
-_nearbyPlayers = [position _vehicle, _vehicle getVariable["blck_vehicleSearchRange",500]] call blck_fnc_nearestPlayers;
+_nearbyPlayers = [getPosATL _vehicle, _vehicle getVariable["blck_vehicleSearchRange",500]] call blck_fnc_nearestPlayers;
 
 switch blck_revealMode do {
 	case "detailed": {
@@ -26,7 +26,7 @@ switch blck_revealMode do {
 				if (random(1) < _detectionOdds) then {
 					_player = _x;
 					{
-						_cansee = [objNull, "VIEW"] checkVisibility [eyePos _x, position _player];
+						_cansee = [objNull, "VIEW"] checkVisibility [eyePos _x, getPosATL _player];
 						if (_cansee > 0) then {
 							_knowledgeGained = _cansee;
 						}

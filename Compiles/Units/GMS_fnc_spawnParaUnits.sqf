@@ -38,7 +38,7 @@ for "_i" from 1 to _numAI do
 	private _chute = createVehicle ["Steerable_Parachute_F", [_unitPos select 0, _unitPos select 1, 250], [], 0, "FLY"];
 	[_chute] call blck_fnc_protectVehicle;
 	private "_unit";
-	if (surfaceIsWater _unitPos && _isScuba) then 
+	if (surfaceIsWater _unitPos && {_isScuba}) then 
 	{
 		_unit = [_unitPos,_paraGroup,_skillLevel,blck_UMS_uniforms,blck_UMS_headgear,blck_UMS_vests,_backpacks,launcherType, blck_UMS_weapons, _sideArms, _isScuba] call blck_fnc_spawnUnit;
 	} else { 

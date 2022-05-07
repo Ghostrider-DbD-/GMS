@@ -28,8 +28,8 @@ _abort = false;
 _pos = [];
 
 private _emplacedWepData = +_missionEmplacedWeapons;  //  So we dont overwrite this for the next instance of the mission
-//diag_log format["_spawnEmplacedWeaponArray(30): _noEmplacedWeapons = %1 | _emplacedWepData = %2",_noEmplacedWeapons,_emplacedWepData];
-// ISSUE: All AI at statics have wetsuits; these must be spawned over water [0,0,0?]
+diag_log format["_spawnEmplacedWeaponArray(30): _noEmplacedWeapons = %1 | _emplacedWepData = %2",_noEmplacedWeapons,_emplacedWepData];
+
 // Define _emplacedWepData if not already configured.
 if (_emplacedWepData isEqualTo []) then
 {
@@ -53,35 +53,25 @@ if (_emplacedWepData isEqualTo []) then
 	};
 
 	#define configureWaypoints false
-	#define minAI 1
-	#define maxAI 1
-	#define minDist 1
-	#define maxDist 2
-
-	private _empGroup = [blck_AI_Side,true]  call blck_fnc_createGroup;
-	if !(isNull _empGroup) then 
-	{
-		_empGroup setcombatmode "RED";
-		_empGroup setBehaviour "COMBAT";
-		_empGroup setVariable ["soldierType","emplaced"];
-		[(_x select 1),0.01,0.02,_empGroup,"random","SAD","emplaced"] spawn blck_fnc_setupWaypoints;
-		private _wep = [(_x select 0),_pos] call blck_fnc_spawnVehicle;
-		_wep setVariable["GRG_vehType","emplaced"];	
-		_wep setPosATL _pos;
-		_wep setdir (random 359);		
-		[_wep,2] call blck_fnc_configureMissionVehicle;	
-		_emplacedWeps pushback _wep;
-		[_empGroup,(_x select 1),_coords,minAI,maxAI,_aiDifficultyLevel,minDist,maxDist,configureWaypoints,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnGroup;
-		_units = units _empGroup;
-		_gunner = _units select 0;
-		_gunner moveingunner _wep;
-		_gunner setVariable["GRG_vehType","emplaced"];	
-		_emplacedAI append _units;		
-	} else {
-		_abort = true;
-		_return = grpNull;
-		["createGroup returned grpNull","warning"] call blck_fnc_log;
-	};
+	#define numberAI 1
+	#define areaDimensions []
+	private _empGroup = [(_x select 1),numberAI,_aiDifficultyLevel,areaDimensions,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnGroup;
+	_empGroup setcombatmode "RED";
+	_empGroup setBehaviour "COMBAT";
+	_empGroup setVariable ["soldierType","emplaced"];
+	[(_x select 1),0.01,0.02,_empGroup,"random","SAD","emplaced"] spawn blck_fnc_setupWaypoints;
+	private _wep = [(_x select 0),_pos] call blck_fnc_spawnVehicle;
+	_wep setVariable["GRG_vehType","emplaced"];	
+	_wep setPosATL _pos;
+	_wep setdir (random 359);		
+	[_wep,2] call blck_fnc_configureMissionVehicle;	
+	_emplacedWeps pushback _wep;
+	
+	_units = units _empGroup;
+	_gunner = _units select 0;
+	_gunner moveingunner _wep;
+	_gunner setVariable["GRG_vehType","emplaced"];	
+	_emplacedAI append _units;		
 } forEach _emplacedWepData;
 if !(_abort) then 
 {

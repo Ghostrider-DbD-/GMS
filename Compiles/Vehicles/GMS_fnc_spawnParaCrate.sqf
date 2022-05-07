@@ -41,7 +41,7 @@ _chute setPos [_offset select 0, _offset select 1, 100  ];  //(_offset select 2)
 private["_crateSelected"];
 _crateSelected = selectRandom["Box_FIA_Ammo_F","Box_FIA_Support_F","Box_FIA_Wps_F","I_SupplyCrate_F","Box_IND_AmmoVeh_F","Box_NATO_AmmoVeh_F","Box_East_AmmoVeh_F","IG_supplyCrate_F"];
 _crate = [getPos _chute, _crateSelected] call blck_fnc_spawnCrate;
-_crate setPos [position _supplyHeli select 0, position _supplyHeli select 1, 250];  //(position _supplyHeli select 2) - 10];	
+_crate setPos [getPosATL _supplyHeli select 0, getPosATL _supplyHeli select 1, 250];  //(position _supplyHeli select 2) - 10];	
 _crate attachTo [_chute, [0, 0, -1.3]];
 _crate allowdamage false;
 _crate enableRopeAttach true;  // allow slingloading where possible
@@ -63,7 +63,7 @@ _fn_monitorCrate = {
 	while {!_crateOnGround} do
 	{
 		uiSleep 1;  
-		if ( (((velocity _crate) select 2) < 0.1)  || ((getPosATL _crate select 2) < 0.1) ) exitWith 
+		if ( (((velocity _crate) select 2) < 0.1)  || {((getPosATL _crate select 2) < 0.1)} ) exitWith 
 		{
 			uiSleep 10; // give some time for everything to settle
 			detach _crate;

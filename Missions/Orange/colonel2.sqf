@@ -168,8 +168,8 @@ if (blck_modType isEqualTo "Exile") then
 	];
 };
 _missionLootBoxes = [    
-     ["Land_Bunker_F",[62.877,-20.1797,0.00650358],_crateLoot,_lootCounts,89.743],
-     ["Land_Bunker_F",[63.877,22.8203,0.00650358],_crateLoot,_lootCounts,89.743]
+     [/*"Land_Bunker_F"*/ selectRandom blck_crateTypes,[62.877,-20.1797,0.00650358],_crateLoot,_lootCounts,89.743],
+     [/*"Land_Bunker_F"*/ selectRandom blck_crateTypes,[63.877,22.8203,0.00650358],_crateLoot,_lootCounts,89.743]
 ];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
@@ -214,39 +214,32 @@ _missionEmplacedWeapons =
 _missionGroups = 
 	[
 	//_x params["_position","_minAI","_maxAI","_skillLevel","_minPatrolRadius","_maxPatrolRadius"];
-	[[-52.6523,15.8281,-0.00143838],4,6,"Orange",7,9],
-	[[-48.6113,-38.877,-0.00143886],4,6,"Orange",7,9],
-	[[18.4492,-39.5684,-0.00143838],4,6,"Orange",7,9],
-	[[42.6504,31.6621,-0.00143886],4,6,"Orange",7,9],
-	[[7.51563,46.4531,-0.001438864],4,6,"Orange",7,9],
-	[[-8.99219,-11.623,-0.00143838],4,6,"Orange",7,9],
-	[[5.70898,46.9668,-0.00143886],4,6,"Orange",7,9],
-	[[-48.9297,48.3809,-0.00143886],4,6,"Orange",7,9],
-	[[-63.0859,58.8594,-0.00143886],4,6,"Orange",7,9],
-	[[15.0547,58.5723,-0.00143886],4,6,"Orange",7,9],
-	[[-8.16211,6.19727,-0.00143886],4,6,"Orange",7,9],
-	[[-39.8711,6.19727,-0.00143886],4,6,"Orange",7,9],
-	[[-34.4902,-20.1328,-0.00143886],4,6,"Orange",7,9],
-	[[-9.00977,-17.8652,-0.00143886],4,6,"Orange",7,9]
+	//[[-52.6523,15.8281,-0.00143838],2,3,"Orange",10,15],
+	[[-48.6113,-38.877,-0.00143886],2,3,"Orange",10,15],
+	//[[18.4492,-39.5684,-0.00143838],2,3,"Orange",10,15],
+	[[42.6504,31.6621,-0.00143886],2,3,"Orange",10,15],
+	//[[7.51563,46.4531,-0.001438864],2,3,"Orange",10,15],
+	[[-8.99219,-11.623,-0.00143838],2,3,"Orange",10,15],
+	//[[5.70898,46.9668,-0.00143886],2,3,"Orange",10,15],
+	[[-48.9297,48.3809,-0.00143886],2,3,"Orange",10,15],
+	//[[-63.0859,58.8594,-0.00143886],2,3,"Orange",10,15],
+	[[15.0547,58.5723,-0.00143886],2,3,"Orange",10,15],
+	//[[-8.16211,6.19727,-0.00143886],2,3,"Orange",10,15],
+	[[-39.8711,6.19727,-0.00143886],2,3,"Orange",10,15],
+	//[[-34.4902,-20.1328,-0.00143886],2,3,"Orange",10,15],
+	[[-9.00977,-17.8652,-0.00143886],2,3,"Orange",10,15]
 	]; // Can be used to define spawn positions of AI patrols
 
 
 
 _missionPatrolVehicles = [
-	 #ifdef blck_milServer  
-     [selectRandom blck_Tanks_ARMA3,[-124.51,3.77344,-0.0159559],0.00168412],
-     [selectRandom blck_light_AT_ARMA3,[-109.133,115.871,-0.03388],315.002],
-     [selectRandom blck_tracked_AA_ARMA3,[106.887,113.871,-0.028933],45.0024],
-     [selectRandom blck_Tanks_ARMA3,[129.93,-141.285,-0.015038],0.0016877],
-     [selectRandom blck_light_AT_ARMA3,[180.85,2.07617,-0.0159585],0.00167379],
-     [selectRandom blck_tracked_APC_ARMA3,[-120.836,-109.834,0.00836205],360]	
-	 #else
-	[selectRandom blck_AIPatrolVehicles,[-121.006,89.7305,0.000393867],120,[true,false]],
-	[selectRandom blck_AIPatrolVehicles,[67.7656,89.6133,0.000393867],225,[true,false]],
-	[selectRandom blck_AIPatrolVehicles,[66.9902,-96.8418,0.000393867],315,[true,false]],
-	[selectRandom blck_AIPatrolVehicles,[-120.432,-96.3262,0.000393867],45,[true,false]],
-	[selectRandom blck_AIPatrolVehicles,[-87.8457,-109.947,7.15256e-007],0,[true,false]]
-     #endif
+     [selectRandom blck_AIPatrolVehiclesOrange,[-124.51,3.77344,-0.0159559],0.00168412],
+     [selectRandom blck_AIPatrolVehiclesOrange,[-109.133,115.871,-0.03388],315.002]
+     //[selectRandom blck_tracked_AA_ARMA3,[106.887,113.871,-0.028933],45.0024],
+     //[selectRandom blck_Tanks_ARMA3,[129.93,-141.285,-0.015038],0.0016877],
+     //[selectRandom blck_light_AT_ARMA3,[180.85,2.07617,-0.0159585],0.00167379],
+     //[selectRandom blck_tracked_APC_ARMA3,[-120.836,-109.834,0.00836205],360]	
+	
 	
 ];  // can be used to define the spawn positions of vehicle patrols
 

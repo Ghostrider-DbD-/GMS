@@ -13,10 +13,11 @@
 #define isScubaGroup true
 #define UMS_backpacks [] 
 #define UMS_sidearms [] 
-
+#define scubaPatrolAreaDimensions [25,25]
 params["_group","_pos",["_skillLevel","red"],["_numUnits",6],["_patrolRadius",15]];
+// private _group = [_pos,_numberAI,_difficulty,configureWaypoints,blck_UMS_uniforms,blck_UMS_headgear,blck_UMS_vests,[],blck_UMS_weapons,_sideArms,true] call blck_fnc_spawnGroup;
 
-[_group,_pos,_pos,_numUnits,_numUnits,_skillLevel, _patrolRadius - 2, _patrolRadius, configureWaypoints, blck_UMS_uniforms, blck_UMS_headgear, blck_UMS_vests, UMS_backpacks, blck_UMS_weapons, UMS_sidearms, isScubaGroup] call blck_fnc_spawnGroup;
+private _group = [_pos,_numUnits,_skillLevel, scubaPatrolAreaDimensions, blck_UMS_uniforms, blck_UMS_headgear, blck_UMS_vests, [], blck_UMS_weapons, [], isScubaGroup] call blck_fnc_spawnGroup;
 
 
 

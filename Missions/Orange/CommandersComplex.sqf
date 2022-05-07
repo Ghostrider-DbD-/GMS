@@ -54,47 +54,28 @@ _missionLandscape = [
 _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionEmplacedWeapons = [
-     #ifdef blck_milServer     
+
      ["B_HMG_01_A_F",[-16.1504,-23.7324,-0.221891],0.00624952],
      ["B_T_HMG_01_F",[-3.32422,-25.418,-0.221891],359.997],
      ["B_T_HMG_01_F",[-21.3145,5.49609,-0.22189],359.997],
      ["B_static_AT_F",[-22.0508,8.89063,-0.294489],0.00423371],
      ["B_static_AA_F",[4.44531,0.0410156,-0.294488],359.997],
      ["B_static_AA_F",[-10.0059,-14.8535,-0.294491],359.999],
-     ["B_Radar_System_01_F",[-5.32813,7.54297,-0.326719],360],
+     //["B_Radar_System_01_F",[-5.32813,7.54297,-0.326719],360],
      ["B_static_AT_F",[17.7715,-21.4863,-0.294491],359.991],
      ["B_T_HMG_01_F",[17.8867,-5.26953,-0.22189],359.997],
      ["B_HMG_01_A_F",[10.0625,13.8516,-0.221892],359.996],
      ["B_static_AT_F",[19.0977,10.4746,-0.294489],359.998],
      ["B_T_GMG_01_F",[17.6973,4.7832,-0.195796],359.997]
-     #else 
-     ["B_HMG_01_A_F",[-16.1504,-23.7324,-0.221891],0.00624952],
-     ["B_T_HMG_01_F",[-3.32422,-25.418,-0.221891],359.997],
-     ["B_T_HMG_01_F",[-21.3145,5.49609,-0.22189],359.997],
-     ["B_T_HMG_01_F",[17.8867,-5.26953,-0.22189],359.997],
-     ["B_HMG_01_A_F",[10.0625,13.8516,-0.221892],359.996],
-     ["B_T_GMG_01_F",[17.6973,4.7832,-0.195796],359.997]
-     #endif
 ];
 
 _missionPatrolVehicles = [
-     
-     #ifdef blck_milServer    
-     [selectRandom blck_Tanks_ARMA3,[-47.8262,-23.5137,-0.321316],0.0016802],
-     [selectRandom blck_light_AT_ARMA3,[-30.4395,13.2695,-0.321565],0.00168791],
-     [selectRandom blck_tracked_APC_ARMA3,[-14.084,-61.1504,-0.321593],0.0016711],
-     [selectRandom blck_Tanks_ARMA3,[-8.88086,27.3223,-0.312962],0.000197464],
-     [selectRandom blck_light_AT_ARMA3,[29.0449,-42.6465,-0.319407],0.00168023],
-     [selectRandom blck_tracked_APC_ARMA3,[25.6289,19.6641,-0.313045],0.000197989]
-     #else
-     [selectRandom blck_AIPatrolVehicles,[-47.8262,-23.5137,-0.321316],0.0016802],
-     [selectRandom blck_AIPatrolVehicles,[-30.4395,13.2695,-0.321565],0.00168791],
-     [selectRandom blck_AIPatrolVehicles,[-14.084,-61.1504,-0.321593],0.0016711],
-     [selectRandom blck_AIPatrolVehicles,[-8.88086,27.3223,-0.312962],0.000197464],
-     [selectRandom blck_AIPatrolVehicles,[29.0449,-42.6465,-0.319407],0.00168023],
-     [selectRandom blck_AIPatrolVehicles,[25.6289,19.6641,-0.313045],0.000197989]     
-     #endif     
-     
+     [selectRandom blck_AIPatrolVehiclesOrange,[-47.8262,-23.5137,-0.321316],0.0016802],
+     ["CUP_B_Hilux_igla_BLU_G_F",[-30.4395,13.2695,-0.321565],0.00168791]
+     //[selectRandom blck_tracked_APC_ARMA3,[-14.084,-61.1504,-0.321593],0.0016711],
+     //[selectRandom blck_Tanks_ARMA3,[-8.88086,27.3223,-0.312962],0.000197464],
+     //[selectRandom blck_light_AT_ARMA3,[29.0449,-42.6465,-0.319407],0.00168023],
+     //[selectRandom blck_tracked_APC_ARMA3,[25.6289,19.6641,-0.313045],0.000197989]   
 ];
 
 //  Change _useMines to true/false below to enable mission-specific settings.
@@ -120,4 +101,5 @@ _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 //_endCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 //_timeOut = -1;
+diag_log format["[blckeagls] Commanders Complex Mission : _missionemplacedweapons set to %1",_missionemplacedweapons];
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

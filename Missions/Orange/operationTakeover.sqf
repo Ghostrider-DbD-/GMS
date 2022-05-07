@@ -261,21 +261,12 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     #ifdef blck_milServer
-     [selectRandom blck_Tanks_ARMA3,[-63.8125,-49.1621,-0.0237918],0.00168037],
-     [selectRandom blck_light_AT_ARMA3,[-40.9814,84.885,-0.0230246],0.0016978],
-     [selectRandom blck_tracked_AA_ARMA3,[3.84229,-126.072,-0.0232677],0.00169533],
-     [selectRandom blck_tracked_APC_ARMA3,[88.3411,-129.767,-0.0238881],0.00167844],
-     [selectRandom blck_light_AT_ARMA3,[147.447,-71.3848,-0.0238895],0.00165085],
-     [selectRandom blck_Tanks_ARMA3,[127.943,69.7148,-0.0238514],0.00166813]
-     #else 
-     [selectRandom blck_AIPatrolVehicles,[-63.8125,-49.1621,-0.0237918],0.00168037],
-     [selectRandom blck_AIPatrolVehicles,[-40.9814,84.885,-0.0230246],0.0016978],
-     [selectRandom blck_AIPatrolVehicles,[3.84229,-126.072,-0.0232677],0.00169533],
-     [selectRandom blck_AIPatrolVehicles,[88.3411,-129.767,-0.0238881],0.00167844],
-     [selectRandom blck_AIPatrolVehicles,[147.447,-71.3848,-0.0238895],0.00165085],
-     [selectRandom blck_AIPatrolVehicles,[127.943,69.7148,-0.0238514],0.00166813]
-     #endif
+     [selectRandom blck_AIPatrolVehiclesOrange,[-63.8125,-49.1621,-0.0237918],0.00168037],
+     ["CUP_B_Hilux_igla_BLU_G_F",[-40.9814,84.885,-0.0230246],0.0016978]
+     //[selectRandom blck_tracked_AA_ARMA3,[3.84229,-126.072,-0.0232677],0.00169533],
+     //[selectRandom blck_tracked_APC_ARMA3,[88.3411,-129.767,-0.0238881],0.00167844],
+     //[selectRandom blck_light_AT_ARMA3,[147.447,-71.3848,-0.0238895],0.00165085],
+     //[selectRandom blck_Tanks_ARMA3,[127.943,69.7148,-0.0238514],0.00166813]
 ];
 _submarinePatrolParameters = [
 ];
@@ -288,9 +279,9 @@ _missionEmplacedWeapons = [
      ["B_static_AT_F",[4.42529,-44.637,1.08487],299.726],
      ["B_HMG_01_high_F",[14.1465,-16.2568,-0.0135579],38.4716],
      ["B_static_AA_F",[40.0945,-44.1187,7.52176],359.535],
-     ["B_HMG_01_high_F",[39.2375,-46.1826,-0.0135565],220.639],
+     //["B_HMG_01_high_F",[39.2375,-46.1826,-0.0135565],220.639],
      ["B_HMG_01_high_F",[42.5383,-44.104,-0.0135584],142.408],
-     ["B_static_AT_F",[34.2683,-44.0796,7.52284],359.944],
+     //["B_static_AT_F",[34.2683,-44.0796,7.52284],359.944],
      ["B_HMG_01_high_F",[34.7786,20.2935,7.94141],114.285]
 ];
 _missionGroups = [

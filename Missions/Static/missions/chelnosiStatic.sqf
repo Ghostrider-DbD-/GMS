@@ -7,7 +7,7 @@
 */
 
 #include "privateVars.sqf";
-
+_crateMoney = 10000;
 _mission = "static mission template";  //  Included for additional documentation. Not intended to be spawned as a mission per se.
 
 _difficulty = "red";  // Skill level of AI (blue, red, green etc)

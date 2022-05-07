@@ -27,19 +27,19 @@
 		{
 			_item = selectRandom _weapons;
 
-			if (typeName _item isEqualTo "ARRAY") then  //  Check whether weapon name is part of an array that might also specify an ammo to use
+			if (_item isEqualType []) then  //  Check whether weapon name is part of an array that might also specify an ammo to use
 			{ 
 				_crate addWeaponCargoGlobal [_item select 0,1];  // if yes then assume the first element in the array is the weapon name
 				if (count _item >1) then {  // if the array has more than one element assume the second is the ammo to use.
 					_crate addMagazineCargoGlobal [_item select 1, 1 + round(random(3))];
 				} else { // if the array has only one element then lets load random ammo for it
-					_crate addMagazineCargoGlobal [selectRandom (getArray (configFile >> "CfgWeapons" >> (_item select 0) >> "magazines")), 1 + round(random(3))];
+					_crate addMagazineCargoGlobal [selectRandom (getArray (configFile >> "CfgWeapons" >> (_item select 0) >> "magazines")), 1 + round(random(5))];
 				};
 			} else {
 				if (_item isKindOf ["Rifle", configFile >> "CfgWeapons"]) then
 				{
 					_crate addWeaponCargoGlobal [_item, 1];
-					_crate addMagazineCargoGlobal [selectRandom (getArray (configFile >> "CfgWeapons" >> _item >> "magazines")), 1 + round(random(3))];
+					_crate addMagazineCargoGlobal [selectRandom (getArray (configFile >> "CfgWeapons" >> _item >> "magazines")), 1 + round(random(5))];
 				};
 			};
 		};
@@ -54,12 +54,12 @@
 		{
 				_item = selectRandom _magazines;
 
-				if (typeName _item isEqualTo "ARRAY") then
+				if (_item isEqualType []) then
 				{
 					_diff = (_item select 2) - (_item select 1);  // Take difference between max and min number of items to load and randomize based on this value
 					_crate addMagazineCargoGlobal [_item select 0, (_item select 1) + round(random(_diff))];
 				};
-				if (typeName _item isEqualTo "STRING") then
+				if (_item isEqualType "") then
 				{
 					_crate addMagazineCargoGlobal [_item, 1];
 				};
@@ -75,12 +75,12 @@
 		{
 				_item = selectRandom _optics;
 
-				if (typeName _item isEqualTo "ARRAY") then
+				if (_item isEqualType "") then
 				{
 					_diff = (_item select 2) - (_item select 1); 
 					_crate additemCargoGlobal [_item select 0, (_item select 1) + round(random(_diff))];		
 				};
-				if (typeName _item isEqualTo "STRING") then
+				if (_item isEqualType "") then
 				{
 					_crate addItemCargoGlobal [_item,1];
 				};
@@ -96,12 +96,12 @@
 		{
 				_item = selectRandom _materials;
 
-				if (typeName _item isEqualTo "ARRAY") then
+				if (_item isEqualType "") then
 				{
 					_diff = (_item select 2) - (_item select 1); 
 					_crate additemCargoGlobal [_item select 0, (_item select 1) + round(random(_diff))];
 				};
-				if (typeName _item isEqualTo "STRING") then
+				if (_item isEqualType "") then
 				{
 					_crate addItemCargoGlobal [_item, 1];
 				};
@@ -116,12 +116,12 @@
 		for "_i" from 0 to (_tries - 1) do 
 		{
 				_item = selectRandom _items;
-				if (typeName _item isEqualTo "ARRAY") then
+				if (_item isEqualType "") then
 				{
 					_diff = (_item select 2) - (_item select 1); 
 					_crate additemCargoGlobal [_item select 0, (_item select 1) + round(random(_diff))];		
 				};
-				if (typeName _item isEqualTo "STRING") then
+				if (_item isEqualType "") then
 				{
 					_crate addItemCargoGlobal [_item, 1];
 				};
@@ -135,12 +135,12 @@
 		{
 				_item = selectRandom _backpacks;
 	
-				if (typeName _item isEqualTo "ARRAY") then
+				if (_item isEqualType "") then
 				{
 					_diff = (_item select 2) - (_item select 1); 
 					_crate addbackpackcargoGlobal [_item select 0, (_item select 1) + round(random(_diff))];
 				};
-				if (typeName _item isEqualTo "STRING") then
+				if (_item isEqualType "") then
 				{
 					_crate addbackpackcargoGlobal [_item, 1];
 				};

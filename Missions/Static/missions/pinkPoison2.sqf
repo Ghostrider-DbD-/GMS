@@ -6,7 +6,7 @@
 	Note that I exported the mission using the exportAll function of M3EDEN editor.
 */
 #include "privateVars.sqf";
-
+_crateMoney = 10000;
 _mission = "static mission example #2";  //  Included for additional documentation. Not intended to be spawned as a mission per se.
 
 _difficulty = "red";  // Skill level of AI (blue, red, green etc)

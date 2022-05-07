@@ -62,7 +62,7 @@ private _cratesSpawned = [];
 	_crate setVariable["lootArray",_lootArray];
 	_crate setVariable["lootCounts",_lootCounts];
 	_crate setVariable["difficulty",_difficulty];
-	if (_loadCrateTiming isEqualTo "atMissionSpawn" || _missionState isEqualTo "end") then
+	if (_loadCrateTiming isEqualTo "atMissionSpawn" || {_missionState isEqualTo "end"}) then
 	{
 		[_crate] call blck_fnc_loadMissionCrate;
 	};

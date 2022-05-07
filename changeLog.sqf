@@ -8,11 +8,17 @@ Many thanks for new Coding and ideas from Grahame.
 
 
 Significant Changes:
+7.10 Build 247 
+Changed format for skills to be compatible with GMS_fnc_skills from GMSCore 
+Changed to code for spawning and configuring units in groups to that from GMSCore 
+Changed from the system of cycling waypoints to the area based patrols supported by GMSCore 
+Change how functions that have been recoded to rely on core functions in GMSCore are compiled; these are compiled now in config.hpp\CfgFunctions
 
-7.06 Build 237
+7.06 Build 240
 
 New: Player stats updated for each AI kill on Epoch.
 New: added support for Mull of Kyntire.
+New: Unit will randomly suppress locations when group members are hit or fired uppon.
 Fixed: Launchers and Launcher rounds were not being deleted.
 Fixed: AI at Turrets were spawned with scubba loadouts.
 Fixed: Units at UMS missions (Pirate missions) now spawn with scuba gear if spawned over water .

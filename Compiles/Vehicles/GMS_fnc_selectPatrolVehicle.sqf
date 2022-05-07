@@ -11,16 +11,9 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
 params["_aiDifficulty"];
-private["_vehicle"];
-switch(toLower _aiDifficulty) do
-{
-	case "blue":{_vehicle = selectRandom blck_AIPatrolVehiclesBlue};
-	case "red":{_vehicle = selectRandom blck_AIPatrolVehiclesRed};
-	case "green":{_vehicle = selectRandom blck_AIPatrolVehiclesGreen};
-	case "orange":{_vehicle = selectRandom blck_AIPatrolVehiclesOrange};
-	default {_vehicle = blck_AIPatrolVehicles};
-};
-
+private _choices = missionNameSpace getVariable (format["%1%2","blck_AIPatrolVehicles",_aiDifficulty]);
+private _vehicle = selectRandom _choices;
+diag_log format["blck_fnc_selectPatrolVehicle returning $1",_vehicle];
 _vehicle
 
 

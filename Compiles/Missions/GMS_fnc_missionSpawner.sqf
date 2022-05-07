@@ -53,7 +53,7 @@ if (isNil "_paraLootCounts") 			then {_paraLootCounts = blck_lootCountsRed}; // 
 if (isNil "_missionLootVehicles") 		then {_missionLootVehicles = []};
 if (isNil "_garrisonedBuilding_ATLsystem") then {_garrisonedBuilding_ATLsystem = []};
 if (isNil "_garrisonedBuildings_BuildingPosnSystem") then {_garrisonedBuildings_BuildingPosnSystem = []};
-if (isNil "_vehicleCrewCount") then {_vehicleCrewCount = [_aiDifficultyLevel] call GMS_fnc_selectVehicleCrewCount};
+if (isNil "_vehicleCrewCount") then {_vehicleCrewCount = [_aiDifficultyLevel] call blck_fnc_selectVehicleCrewCount};
 if (isNil "_airpatrols") then {_airpatrols = []};
 if (isNil "_submarinePatrols") then {_submarinePatrols = 0};
 if (isNil "_submarinePatrolParameters") then {_submarinePatrolParameters = []};
@@ -70,6 +70,11 @@ if (isNil "_isScubaMission") then {_isScubaMission = false};
 if (isNil "_missionLootBoxes") then {_missionLootBoxes = []};
 if (isNil "_defaultMissionLocations") then {_defaultMissionLocations = []};
 if (isNil "_simpleObjects") then {_simpleObjects = []};
+if (isNil "_missionemplacedweapons") then 
+{
+	_missionemplacedweapons = [];
+	diag_log format["[blckeagls] _missionSpawner: setting _missionemplacedweapons to its default value of %1",_missionemplacedweapons];
+};
 if !(_defaultMissionLocations isEqualTo []) then 
 {
 	_coords = selectRandom _defaultMissionLocations;
@@ -93,7 +98,7 @@ if !(_endCondition in blck_validEndStates) then
 	[format['Invalid mission end condition %1 found in mission %2 :: default value "allKilledOrPlayerNear"; used',_endCondition,_markerMissionName],"<WARNING>"] call blck_fnc_log;
 	_endCondition = "allKilledOrPlayerNear";
 };
-
+//diag_log format["_missionSpawner: _markerName %1 | _markerMissionName %2 | _markerColor %3",_markerName,_markerMissionName,_markerColor];
 private _markerData = [
 	_markerName,
 	_markerMissionName, // Name used for setMarkerText and also for the root name for all markers	

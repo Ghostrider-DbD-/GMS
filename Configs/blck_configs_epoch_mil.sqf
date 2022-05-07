@@ -38,8 +38,6 @@
 AI WEAPONS, UNIFORMS, VESTS AND GEAR
 
 **********************************************************************************/
-
-	blck_AI_Side = RESISTANCE;
 	
 	blck_crateMoneyBlue = [100,250];
 	blck_crateMoneyRed = [175, 300];
@@ -276,6 +274,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 						
 	//This defines the random weapon to spawn on the AI
 	//https://community.bistudio.com/wiki/Arma_3_CfgWeapons_Weapons
+	
 	blck_WeaponList_Orange = blck_RifleSniper + blck_RifleAsault_650 + blck_RifleLMG + blck_DLC_Sniper + blck_DLC_MMG;
 	blck_WeaponList_Green = blck_RifleSniper + 	blck_RifleAsault_650 +blck_RifleLMG + blck_DLC_MMG + blck_apexWeapons;
 	blck_WeaponList_Blue = blck_RifleOther + blck_RifleAsault_556 +blck_RifleAsault_650;
@@ -1093,6 +1092,6 @@ for examples of how you can do this see \Major\Compositions.sqf
 	blck_contructionLoot = blck_BoxLoot_Orange;
 	blck_highPoweredLoot = blck_BoxLoot_Orange;
 	blck_supportLoot = blck_BoxLoot_Orange;
-
+blck_configs_loaded = true;
 	["Configurations for Epoch Loaded"] call blck_fnc_log;
 

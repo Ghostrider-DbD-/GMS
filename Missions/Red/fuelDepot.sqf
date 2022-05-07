@@ -58,9 +58,9 @@ _missionLandscape = [
 ]; // list of objects to spawn as landscape
 _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionLootVehicles = [
-	["I_C_Van_01_transport_brown_F",[8.09375,13.6113,0.000131369],233.88,_crateLoot,_lootCounts,0],
-	["I_C_Van_01_transport_olive_F",[5.44531,17.5313,0.000131369],234.719,_crateLoot,_lootCounts,0],
-	["Exile_Car_Ural_Open_Blue",[20.4961,-1.33398,-2.38419e-007],61.0105,_crateLoot,_lootCounts,0]
+	//["I_C_Van_01_transport_brown_F",[8.09375,13.6113,0.000131369],233.88,_crateLoot,_lootCounts,0],
+	//["I_C_Van_01_transport_olive_F",[5.44531,17.5313,0.000131369],234.719,_crateLoot,_lootCounts,0],
+	//["Exile_Car_Ural_Open_Blue",[20.4961,-1.33398,-2.38419e-007],61.0105,_crateLoot,_lootCounts,0]
 ]; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionEmplacedWeapons = []; // can be used to define the precise placement of static weapons [[1,2,3] /*loc 1*/, [2,3,4] /*loc 2*/]; if blank random locations will be used
 _minNoAI = blck_MinAI_Red;
@@ -69,17 +69,6 @@ _noAIGroups = blck_AIGrps_Red;
 _noVehiclePatrols = blck_SpawnVeh_Red;
 _noEmplacedWeapons = blck_SpawnEmplaced_Red;
 
-#ifdef blck_useCUP
-_uniforms = blck_CUPUniforms;
-_vests = blck_CUPVests;
-_backpacs = blck_CUPBackpacks;
-_headgear = blck_CUPHeadgear;
-_headgear = blck_CUPHeadgear;
-_weaponList = blck_CUPWeapons;
-#endif
-#ifdef blck_useNIA
-_weaponList = blck_NIA_WeaponsAR + blck_NIA_WeaponsLMG;
-#endif
 _endCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

@@ -87,7 +87,7 @@ switch (_endCondition) do
 
 			[_markerPos, _markerName] spawn blck_fnc_missionCompleteMarker;
 			{
-				if !(_x getVariable["lootLoaded",false] || _endCondition == 1) then // dont load loot if the asset was killed
+				if !(_x getVariable["lootLoaded",false] || {_endCondition == 1}) then // dont load loot if the asset was killed
 				{
 					[_x,_crateLoot,_lootCounts] call blck_fnc_fillBoxes;
 				};

@@ -80,20 +80,12 @@ _missionLootVehicles = [
 
 _missionPatrolVehicles = [
     #ifdef blck_milServer
-     [selectRandom blck_Tanks_ARMA3,[-53.3984,-32.1953,-0.0238545],0.00168023],
-     [selectRandom blck_light_AT_ARMA3,[-41.373,21.6543,-0.023375],0.00167416],
-     [selectRandom blck_tracked_AA_ARMA3,[3.89844,48.4082,-0.0219693],0.00167182],
-     [selectRandom blck_Tanks_ARMA3,[12.877,-54.4258,-0.0238872],0.00167124],
-     [selectRandom blck_light_AT_ARMA3,[55.5371,-12.541,-0.0210321],0.00167126],
-     [selectRandom blck_tracked_APC_ARMA3,[50.2324,21.9902,-0.0222204],0.00167786]
-     #else 
-     [selectRandom blck_AIPatrolVehicles,[-53.3984,-32.1953,-0.0238545],0.00168023],
-     [selectRandom blck_AIPatrolVehicles,[-41.373,21.6543,-0.023375],0.00167416],
-     [selectRandom blck_AIPatrolVehicles,[3.89844,48.4082,-0.0219693],0.00167182],
-     [selectRandom blck_AIPatrolVehicles,[12.877,-54.4258,-0.0238872],0.00167124],
-     [selectRandom blck_AIPatrolVehicles,[55.5371,-12.541,-0.0210321],0.00167126],
-     [selectRandom blck_AIPatrolVehicles,[50.2324,21.9902,-0.0222204],0.00167786]     
-     #endif
+     [selectRandom blck_AIPatrolVehiclesOrange,[-53.3984,-32.1953,-0.0238545],0.00168023],
+     ["CUP_B_Hilux_igla_BLU_G_F",[-41.373,21.6543,-0.023375],0.00167416]
+     //[selectRandom blck_tracked_AA_ARMA3,[3.89844,48.4082,-0.0219693],0.00167182],
+     //[selectRandom blck_Tanks_ARMA3,[12.877,-54.4258,-0.0238872],0.00167124],
+     //[selectRandom blck_light_AT_ARMA3,[55.5371,-12.541,-0.0210321],0.00167126],
+     //[selectRandom blck_tracked_APC_ARMA3,[50.2324,21.9902,-0.0222204],0.00167786]
 ];
 
 _submarinePatrolParameters = [
@@ -103,23 +95,14 @@ _airPatrols = [
 ];
 
 _missionEmplacedWeapons = [
-	#ifdef blck_milServer
      ["B_T_Static_AT_F",[-17.7773,-27.4141,0.00333524],359.999],
-    ["B_static_AA_F",[-0.751953,13.1641,0.00333142],0.000330652],
+     ["B_static_AA_F",[-0.751953,13.1641,0.00333142],0.000330652],
      ["B_static_AA_F",[9.62305,-17.4297,0.00333142],0.000328912],    
      ["B_Radar_System_01_F",[11.6035,13.4375,-0.0288956],1.31836e-005],   
-    ["B_T_Static_AT_F",[-4.125,30.8418,0.00333095],0.00263487],
+     ["B_T_Static_AT_F",[-4.125,30.8418,0.00333095],0.00263487],
      ["B_T_Static_AT_F",[28.8594,-20.3203,0.00333095],0.0122616],  
-    ["B_static_AT_F",[38.6895,12.291,0.00333142],0.00263745],
+     ["B_static_AT_F",[38.6895,12.291,0.00333142],0.00263745],
      ["B_T_Static_AT_F",[33.5723,20.9922,0.00333142],0.00263668],	 
-	 #endif
-     ["B_T_GMG_01_F",[-24.707,-12.4609,0.10203],359.999],
-     ["B_T_HMG_01_F",[3.88477,-7.12305,0.0759356],359.997],
-     ["B_T_GMG_01_F",[-0.664063,-19.7051,0.102031],359.996],
-     ["B_T_HMG_01_F",[4.46289,13.1895,0.0759351],359.997],
-     ["B_T_GMG_01_F",[-9.02734,21.5566,0.10203],359.996],
-     ["B_T_GMG_01_F",[30.1621,-11.0391,0.102031],359.997],
-     ["B_T_HMG_01_F",[19.4922,25.3184,0.0759351],359.997]
 ];
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = blck_useMines;

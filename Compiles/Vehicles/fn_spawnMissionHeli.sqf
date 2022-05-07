@@ -12,6 +12,7 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 private["_chopperType","_patrolHeli","_launcherType","_unitPilot","_unitCrew","_mags","_turret","_return","_abort","_supplyHeli","_minDist","_maxDist"];
+[format["blck_fnc_spawnMissionHeli: _this = %1",_this]] call blck_fnc_log;
 params["_coords","_skillAI","_helis",["_uniforms",[]], ["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]],["_Launcher","none"],["_crewCount",4]];
 
 if (_uniforms isEqualTo []) 		then {_uniforms = [_skillAI] call blck_fnc_selectAIUniforms};
@@ -29,8 +30,8 @@ switch (toLower(_skillAI)) do
 	case "orange" : {_minDist = 150;_maxDist = blck_maxPatrolRadiusHelisOrange};
 	default {_minDist = 150; _maxDist = 500};
 };
-private _grpPilot = [blck_AI_Side,true]  call blck_fnc_createGroup;
-[_grpPilot,_coords,_coords,_crewCount,_crewCount,_skillAI,_minDist,_maxDist,true,_uniforms,_headgear,_vests,_backpacks,_weaponList,_sideArms,false] call blck_fnc_spawnGroup;
+#define heliPatrolAreaDimensions [400,400]
+private _grpPilot = [_coords,_crewCount,_skillAI,heliPatrolAreaDimensions,_uniforms,_headgear,_vests,_backpacks,_weaponList,_sideArms,false] call blck_fnc_spawnGroup;
 _abort = if (isNull _grpPilot) then{true} else {false};
 if !(isNull _grpPilot)  then
 {
@@ -49,11 +50,13 @@ if !(isNull _grpPilot)  then
 
 	#define aircraftPatrolRadius 800
 	#define aircraftWaypointTimeout [1,1.5,2]
-	[_coords,_minDist,_maxDist,_grpPilot,"random","SAD","aircraft",aircraftPatrolRadius,aircraftWaypointTimeout] call blck_fnc_setupWaypoints;
+
+	//[_coords,_minDist,_maxDist,_grpPilot,"random","SAD","aircraft",aircraftPatrolRadius,aircraftWaypointTimeout] call blck_fnc_setupWaypoints;
+
 	blck_monitoredMissionAIGroups pushBack _grpPilot;
 
 	//create helicopter and spawn it
-	if (( typeName _helis) isEqualTo "ARRAY") then 
+	if ((_helis) isEqualType []) then 
 	{
 		_chopperType = selectRandom _helis
 	} else {
@@ -70,6 +73,6 @@ if !(isNull _grpPilot)  then
 	[_patrolHeli,_grpPilot,_crewCount] call blck_fnc_loadVehicleCrew;
 };
 
-_return = [_patrolHeli,units _grpPilot,_abort];
+private _return = [_patrolHeli,units _grpPilot,_abort];
 
 _return;

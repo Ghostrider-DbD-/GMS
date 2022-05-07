@@ -20,9 +20,9 @@ _crate enableRopeAttach false;
 [_crate] call blck_fnc_emptyObject;
 _crate setPosATL [_coords select 0, _coords select 1, (_coords select 2) + 0.25];
 [_crate, _crateDir] call blck_fnc_setDirUp;
-_crate setVectorUp surfaceNormal position _crate;
+_crate setVectorUp surfaceNormal getPosATL _crate;
 
-if ((_coords select 2) < 0 || surfaceIsWater (_coords)) then
+if ((_coords select 2) < 0 || {surfaceIsWater (_coords)}) then
 {
 
 	private["_lantern","_bbr","_p1","_p2","_maxHeight"];

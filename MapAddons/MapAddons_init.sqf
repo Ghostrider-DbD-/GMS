@@ -21,6 +21,7 @@ _addonsEpoch = [
 	//["mapName","subfolder","filename.sqf"]
 	// when "subfolder" equals "" then the spawner will look for the file in the mapcontent directory 
 	// 
+	/*
 	["Altis","Altis","trader_ATMs.sqf"],
 	["Altis","Altis","DBD_EPOCH_Altis_Dump_SH.FINAL.sqf"],
 	["Altis","Altis","altis_epoch_beach_SH-DBD_final.sqf"],
@@ -39,6 +40,7 @@ _addonsEpoch = [
 	["Lythium","Lythium","TraderCityNorth.sqf"],
 	["Lythium","Lythium","TraderCityCentral.sqf"],
 	["Lythium","Lythium","TraderCitySouth.sqf"]	
+	*/
 ];
 
 _addonsExile = [

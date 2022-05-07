@@ -47,6 +47,7 @@ _lootBoxes =
 					[[21547.027,7695.6738,15.754698],0,true, true]
 					]
 				],*/
+				/*
 				// Dump
 				["altis","Dump", 4,							// Number of crates to select from the array of possible possitions below. Note that there can be multiple arrays of this type.
 					[
@@ -79,6 +80,7 @@ _lootBoxes =
 					[[14293.5,12956.9,0],0,false,false] 
 					]
 				]
+				*/
 				/*,
 				["altis","Pack-2", 4,							// Number of crates to select from the array of possible possitions below. Note that there can be multiple arrays of this type.
 					[

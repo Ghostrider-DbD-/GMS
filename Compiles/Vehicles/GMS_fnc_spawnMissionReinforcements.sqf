@@ -30,7 +30,7 @@ if ( _spawnHeli ) then // if helipatrols are 'enabled' then paratroops will only
 																		//see _fnc_spannMissionParatroops for how this is handled.
 {
 	_temp = [_coords,_missionHelis,_aiDifficultyLevel,_chancePara,_noPara,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnMissionHeli; 
-	if (typeName _temp isEqualTo "ARRAY") then
+	if (_temp isEqualType []) then
 	{
 		_return = [_temp select 0, _temp select 1, _temp select 2];
 	}
@@ -44,7 +44,7 @@ if ( _spawnHeli ) then // if helipatrols are 'enabled' then paratroops will only
 
 		_temp = [_coords,_aiSkillsLevel,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnMissionParatroops;
 
-		if (typeName _temp isEqualTo "ARRAY") then
+		if (_temp isEqualType []) then
 		{
 			_return = [objNull, _temp select 0 /*units*/, _temp select 1 /*true/false*/];
 		} else {

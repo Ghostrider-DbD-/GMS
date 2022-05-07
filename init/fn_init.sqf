@@ -14,7 +14,7 @@
 /////////////////////////////////////////////
 //  Run the initialization routinge
 ////////////////////////////////////////////
-
+//diag_log format["[blckeagls] running fn_init at %1 | isServer = %2",diag_tickTime, if (isServer) then {"true"} else {"false"}];
 if (isServer) then 
 {
 	[] execVM "\q\addons\custom_server\init\blck_init_server.sqf";

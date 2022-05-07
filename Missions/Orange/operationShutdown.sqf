@@ -101,23 +101,13 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     #ifdef blck_milServer
-     [selectRandom blck_Tanks_ARMA3,[-48.9414,-27.9336,-0.00839043],0.014744],
-     [selectRandom blck_Tanks_ARMA3,[-43.2539,15.6504,0.0234108],359.996],
-     [selectRandom blck_light_AT_ARMA3,[-27.0313,26.8213,-0.022541],0.00204721],
-     [selectRandom blck_tracked_AA_ARMA3,[-12.9023,47.8105,0.0262032],359.999],
-     [selectRandom blck_tracked_APC_ARMA3,[-0.851563,-70.9072,-0.02915],0.0194982],
-     [selectRandom blck_light_AT_ARMA3,[38.2285,-66.7969,0.00758934],0.0237408],
-     [selectRandom blck_tracked_APC_ARMA3,[52.9941,22.5596,0.00379944],359.96]
-     #else 
-     [selectRandom blck_AIPatrolVehicles,[-48.9414,-27.9336,-0.00839043],0.014744],
-     [selectRandom blck_AIPatrolVehicles,[-43.2539,15.6504,0.0234108],359.996],
-     [selectRandom blck_AIPatrolVehicles,[-27.0313,26.8213,-0.022541],0.00204721],
-     [selectRandom blck_AIPatrolVehicles,[-12.9023,47.8105,0.0262032],359.999],
-     [selectRandom blck_AIPatrolVehicles,[-0.851563,-70.9072,-0.02915],0.0194982],
-     [selectRandom blck_AIPatrolVehicles,[38.2285,-66.7969,0.00758934],0.0237408],
-     [selectRandom blck_AIPatrolVehicles,[52.9941,22.5596,0.00379944],359.96]  
-     #endif   
+     [selectRandom blck_AIPatrolVehiclesOrange,[-48.9414,-27.9336,-0.00839043],0.014744],
+     ["CUP_B_Hilux_igla_BLU_G_F",[-43.2539,15.6504,0.0234108],359.996]
+     //[selectRandom blck_light_AT_ARMA3,[-27.0313,26.8213,-0.022541],0.00204721],
+     //[selectRandom blck_tracked_AA_ARMA3,[-12.9023,47.8105,0.0262032],359.999],
+     //[selectRandom blck_tracked_APC_ARMA3,[-0.851563,-70.9072,-0.02915],0.0194982],
+     //[selectRandom blck_light_AT_ARMA3,[38.2285,-66.7969,0.00758934],0.0237408],
+     //[selectRandom blck_tracked_APC_ARMA3,[52.9941,22.5596,0.00379944],359.96] 
 ];
 /*
 _missionPatrolVehicles = [];

@@ -18,12 +18,12 @@ if (vehicle _killer == _killer) exitWith {true};
 // Player not in vehicle, no further checks needed.
 if (_killer == (driver (vehicle _killer))) then //  If the killer is also the driver then the killer must have run the AI over
 {
-	if(blck_RunGear && !((vehicle _killer) isKindOf "Air")) then // assume aircraft are too fragile to kill AI by moving close to ground
+	if(blck_RunGear && {!((vehicle _killer) isKindOf "Air")}) then // assume aircraft are too fragile to kill AI by moving close to ground
 	{   
-		[_unit] call GMS_fnc_removeAllAIgear;
+		[_unit] call blck_fnc_removeAllAIgear;
 		if (blck_VK_RunoverDamage) then 
 		{//apply vehicle damage
-			[vehicle _killer] call GMS_fnc_applyVehicleDamagePenalty;	
+			[vehicle _killer] call blck_fnc_applyVehicleDamagePenalty;	
 			[_killer] call GMS_fnc_msgIED;
 		};		
 		_legal = false;
@@ -31,10 +31,10 @@ if (_killer == (driver (vehicle _killer))) then //  If the killer is also the dr
 } else {
 	if ( blck_VK_GunnerDamage ) then
 	{
-		if ((typeOf (vehicle _killer)) in blck_forbidenVehicles || (currentWeapon _killer) in blck_forbidenVehicleGuns) then 
+		if ((typeOf (vehicle _killer)) in blck_forbidenVehicles || {(currentWeapon _killer) in blck_forbidenVehicleGuns}) then 
 		{
-			if (blck_VK_Gear) then {[_unit] call GMS_fnc_removeAllAIgear;};
-			[vehicle _killer] call GMS_fnc_applyVehicleDamagePenalty;
+			if (blck_VK_Gear) then {[_unit] call blck_fnc_removeAllAIgear;};
+			[vehicle _killer] call blck_fnc_applyVehicleDamagePenalty;
 			[_killer] call GMS_fnc_msgIED;
 			_legal = false;
 		};

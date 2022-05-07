@@ -23,7 +23,7 @@ for "_i" from 1 to (count blck_liveMissionAI) do {
 			{
 				{
 					private _unit = _x;
-					if ((alive _unit) && !(isNull objectParent _unit)) then {
+					if ((alive _unit) && {!(isNull objectParent _unit)}) then {
 						[objectParent _unit] call blck_fnc_deleteAIvehicle;
 					};
 					[_unit] call blck_fnc_deleteAI;
