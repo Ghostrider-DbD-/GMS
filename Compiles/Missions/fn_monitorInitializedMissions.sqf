@@ -318,7 +318,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 					private _noPatrols = [_noVehiclePatrols] call blck_fnc_getNumberFromRange;
 
-					if (blck_useVehiclePatrols && ((_noPatrols > 0) || !(_missionPatrolVehicles isEqualTo []))) then
+					if (blck_useVehiclePatrols && {((_noPatrols > 0) || {!(_missionPatrolVehicles isEqualTo [])} )} ) then
 					{
 						_temp = [_coords,_noPatrols,_difficulty,_missionPatrolVehicles,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
 						// TODO: add grpNull checks to missionVehicleSpawner
