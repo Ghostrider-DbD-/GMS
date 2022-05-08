@@ -328,7 +328,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 					};	
 		
 					uiSleep  delayTime;
-					if (blck_useVehiclePatrols && ((_submarinePatrols > 0) || !(_submarinePatrolParameters isEqualTo []))) then
+					if (blck_useVehiclePatrols && {((_submarinePatrols > 0) || {!(_submarinePatrolParameters isEqualTo [])} )} ) then
 					{
 						_temp = [_coords,_noPatrols,_difficulty,_submarinePatrolParameters,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
 						// TODO: add grpNull checks to missionVehicleSpawner
