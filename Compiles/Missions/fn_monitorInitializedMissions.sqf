@@ -296,13 +296,15 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 					private _userelativepos = true;
 					private _emplacedWeaponsThisMission = [_noEmplacedWeapons] call blck_fnc_getNumberFromRange;
-					if (blck_useStatic && {((_emplacedWeaponsThisMission > 0) || {!(_missionEmplacedWeapons isEqualTo [])})}) then
+					if (blck_useStatic && ((_emplacedWeaponsThisMission > 0) || !(_missionEmplacedWeapons isEqualTo []))) then
 					// TODO: add error checks for grpNull to the emplaced weapon spawner
 					{
 
 						private _temp = [_coords,_missionEmplacedWeapons,_userelativepos,_emplacedWeaponsThisMission,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnEmplacedWeaponArray;
-						if (_temp isEqualTo grpNull) then {throw 1} else 
+						if (_temp isEqualTo grpNull) then 
 						{
+							throw 1;
+						} else {
 							_objects append (_temp select 0);
 							_blck_AllMissionAI append (_temp select 1);
 						};
@@ -316,10 +318,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 					private _noPatrols = [_noVehiclePatrols] call blck_fnc_getNumberFromRange;
 
-					if (blck_useVehiclePatrols && 
-						{((_noPatrols > 0) || 
-						{!(_missionPatrolVehicles isEqualTo []))}
-					) then
+					if (blck_useVehiclePatrols && ((_noPatrols > 0) || !(_missionPatrolVehicles isEqualTo []))) then
 					{
 						_temp = [_coords,_noPatrols,_difficulty,_missionPatrolVehicles,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
 						// TODO: add grpNull checks to missionVehicleSpawner
@@ -329,7 +328,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 					};	
 		
 					uiSleep  delayTime;
-					if (blck_useVehiclePatrols && {((_submarinePatrols > 0) || {!(_submarinePatrolParameters isEqualTo [])})}) then
+					if (blck_useVehiclePatrols && ((_submarinePatrols > 0) || !(_submarinePatrolParameters isEqualTo []))) then
 					{
 						_temp = [_coords,_noPatrols,_difficulty,_submarinePatrolParameters,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
 						// TODO: add grpNull checks to missionVehicleSpawner
@@ -550,7 +549,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 							diag_log format["_monitorInitializedMissions: Normal mission end"];
 							if (_spawnCratesTiming in ["atMissionEndGround","atMissionEndAir"]) then
 							{
-								if (!(_secureAsset) || {(_secureAsset && {(alive _assetSpawned)})}) then
+								if (!(_secureAsset) || (_secureAsset && (alive _assetSpawned))) then
 								{
 									if !(_missionLootBoxes isEqualTo []) then
 									{
@@ -575,7 +574,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 							if (_loadCratesTiming isEqualTo "atMissionCompletion") then
 							{
-								if (!(_secureAsset) || {(_secureAsset && {(alive _assetSpawned)})}) then
+								if (!(_secureAsset) || (_secureAsset && (alive _assetSpawned))) then
 								{
 									//private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
 									{
