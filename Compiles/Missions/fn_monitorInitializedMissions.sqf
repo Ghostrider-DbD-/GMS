@@ -549,7 +549,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 							diag_log format["_monitorInitializedMissions: Normal mission end"];
 							if (_spawnCratesTiming in ["atMissionEndGround","atMissionEndAir"]) then
 							{
-								if (!(_secureAsset) || (_secureAsset && (alive _assetSpawned))) then
+								if (!(_secureAsset) || {(_secureAsset && {(alive _assetSpawned)} )} ) then
 								{
 									if !(_missionLootBoxes isEqualTo []) then
 									{
