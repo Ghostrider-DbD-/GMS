@@ -574,7 +574,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 							if (_loadCratesTiming isEqualTo "atMissionCompletion") then
 							{
-								if (!(_secureAsset) || (_secureAsset && (alive _assetSpawned))) then
+								if (!(_secureAsset) || {(_secureAsset && {(alive _assetSpawned)} )} ) then
 								{
 									//private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
 									{
