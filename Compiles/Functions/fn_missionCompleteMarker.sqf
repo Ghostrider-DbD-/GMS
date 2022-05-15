@@ -19,5 +19,5 @@ _m setMarkerColor "ColorBlack";
 _m setMarkerType "n_hq";
 _m setMarkerText "Mission Cleared";
 
-blck_temporaryMarkers pushBack [_m, diag_tickTime + 300];
+[_m, diag_tickTime + 300] call GMS_fnc_addToDeletionCue;
 //diag_log format["missionCompleteMarker complete script for _this = %1",_this];

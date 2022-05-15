@@ -29,7 +29,7 @@ _veh allowDamage true;
 _veh enableRopeAttach true;
 _veh setVariable["blck_vehicle",true];
 [_veh] call blck_fnc_protectVehicle;
-[_veh] call blck_fnc_emptyObject;
+[_veh] call GMS_fnc_emptyObjectInventory;
 if (_vehType isKindOf "Plane") then {
 	private _pos = [_pos select 0, _pos select 1, ((getPos _veh) select 2) + 400];
 	_veh setPosATL _pos;

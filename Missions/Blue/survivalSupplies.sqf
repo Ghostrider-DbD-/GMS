@@ -63,18 +63,26 @@ _submarinePatrolParameters = [
 _airPatrols = [
 ];
 
-_missionEmplacedWeapons = [
-	#ifdef blck_milServer
-     ["I_Mortar_01_F",[4.10889,-12.8853,0.0354419],360],
-     ["I_HMG_01_F",[15.5317,-3.51758,0.0759335],202.402],
-     ["I_HMG_01_high_F",[9.75928,6.43506,-0.0135579],178.241]
-	 #else
-     [selectRandom blck_staticWeapons,[4.10889,-12.8853,0.0354419],360],
-     [selectRandom blck_staticWeapons,[15.5317,-3.51758,0.0759335],202.402],
-     [selectRandom blck_staticWeapons,[9.75928,6.43506,-0.0135579],178.241]
-	 #endif  
-	 //  selectRandom blck_staticWeapons
-];
+#ifdef blck_milServer
+	_missionEmplacedWeapons = [
+
+		["I_Mortar_01_F",[4.10889,-12.8853,0.0354419],360],
+		["I_HMG_01_F",[15.5317,-3.51758,0.0759335],202.402],
+		["I_HMG_01_high_F",[9.75928,6.43506,-0.0135579],178.241]
+	];
+#else 
+	_missionEmplacedWeapons = [];
+	private _locs = [
+		[selectRandom blck_staticWeapons,[4.10889,-12.8853,0.0354419],360],
+		[selectRandom blck_staticWeapons,[15.5317,-3.51758,0.0759335],202.402],
+		[selectRandom blck_staticWeapons,[9.75928,6.43506,-0.0135579],178.241]
+	];
+	for "_i" from 1 to blck_SpawnEmplaced_Blue do 
+	{
+		private _thisLoc = _locs deleteAt 0;
+		_missionEmplacedWeapons pushBack _thisLoc;
+	};
+#endif 
 
 _missionGroups = [
    //  [[-3.30518,3.38721,0],3,6,"blue",30,45],
@@ -132,7 +140,7 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 									// Setting this in the mission file overrides the defaults 
 //_timeOut = -1;
 */

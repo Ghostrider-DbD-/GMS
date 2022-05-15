@@ -71,8 +71,8 @@ if !(isNull _grpPilot)  then
 	_patrolHeli engineOn true;
 	_patrolHeli flyInHeight 100;
 	[_patrolHeli,_grpPilot,_crewCount] call blck_fnc_loadVehicleCrew;
+	blck_aircraftPatrols pushBack _patrolHeli;
 };
+[format["blck_fnc_spawnMissionHeli: _patrolHeli = %1 | _grpPilot = %2",_patrolHeli,_grpPilot]] call blck_fnc_log;
+[_patrolHeli,_grpPilot,_abort];
 
-private _return = [_patrolHeli,units _grpPilot,_abort];
-
-_return;

@@ -28,7 +28,7 @@ params["_loadoutype","_crate"];
 #ifdef blck_debugMode
 diag_log format["DLS: fn_loadLoot: -- >> _this = %1 | _loadoutype %2 | _crate %3",_this,_loadoutype, _crate];
 #endif
-[_crate] call blck_fnc_emptyObject;
+[_crate] call GMS_fnc_emptyObjectInventory;
 
 while {_loadoutype == 0} do {_loadoutype = round(random(3));};
 

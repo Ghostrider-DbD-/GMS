@@ -148,6 +148,6 @@ private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 _spawnCratesTiming = "atMissionSpawnAir"; 
-_endCondition = "allKilledOrPlayerNear";
+_endCondition = allKilledOrPlayerNear;
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

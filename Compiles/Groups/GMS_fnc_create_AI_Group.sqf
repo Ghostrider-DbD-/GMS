@@ -10,7 +10,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-params[["_side",blck_AI_Side],["_deleteWhenEmpty",true]];
+params[["_side",GMS_side],["_deleteWhenEmpty",true]];
 // for information about the _deleteWhenEmpty parameter see: https://community.bistudio.com/wiki/createGroup
 
 private _groupSpawned = createGroup [_side, true]; 

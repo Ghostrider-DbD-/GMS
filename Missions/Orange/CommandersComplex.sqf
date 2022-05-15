@@ -99,7 +99,7 @@ private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highP
 private _paralootCountsChoices = [[0,0,0,25,25,0],[0,0,0,25,25,0],[20,30,0,0,0,0],[0,0,0,0,30,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
-//_endCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+//_endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 //_timeOut = -1;
 diag_log format["[blckeagls] Commanders Complex Mission : _missionemplacedweapons set to %1",_missionemplacedweapons];
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

@@ -157,7 +157,7 @@ _missionLandscape = [
      ["Land_HBarrierWall6_F",[89.877,-11.1797,0.00650382],89.9661,true,true],
      ["Land_HBarrierWall6_F",[89.877,-27.1797,0.00650382],89.9661,true,true]
 ]; // list of objects to spawn as landscape
-if (blck_modType isEqualTo "Exile") then 
+if (GMS_modType isEqualTo "Exile") then 
 { 
 	_missionLandscape = _missionLandscape + [
 		["TargetBootcampHuman_F_Preview",[57.5684,-24.2852,0],271.664,[false,false]],
@@ -270,6 +270,6 @@ _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
 
-//_endCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+//_endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

@@ -26,7 +26,7 @@ _index = 1;
 	//_trigger setTriggerTimeout [10, 90, 180, true];
 	_trigger setTriggerStatements ["{if (isPlayer _x) exitWith {1}} count thisList != 0;","_nul = [thisTrigger] spawn fn_DLS_triggerActivated","_nul = [thisTrigger] spawn fn_DLS_triggerDeactivated"];
 	_trigger setVariable ["position", _x select 0];
-	_trigger setVariable ["playerNear",false,true];
+	_trigger setVariable [playerNear,false,true];
 	_trigger setVariable ["lastSpawned", 0, true];
 	_trigger setVariable ["crateSpawned", false, true];
 	_trigger setVariable ["crate", objNull, true];

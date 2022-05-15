@@ -11,8 +11,8 @@
 */
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\init\build.sqf";
-[format["Loading configurations for Epoch for blckeagls build %1",blck_buildNumber]] call blck_fnc_log;
+
+[format["Loading configurations for Epoch for blckeagls"]] call blck_fnc_log;
 ////////////
 // Epoch-specific settings
 ////////////	
@@ -558,7 +558,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		blck_UMS_crates = blck_crateTypes;
 		//blck_UMS_crates = ["container_epoch"];	
 
-		if ((toLower blck_modType) isEqualTo "default") then 
+		if ((toLower GMS_modType) isEqualTo "default") then 
 		{
 			blck_UMS_submarines = ["B_SDV_01_EPOCH"];
 			blck_UMS_crates = blck_crateTypes;

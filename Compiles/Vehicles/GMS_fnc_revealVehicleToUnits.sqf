@@ -10,9 +10,9 @@
 */
 
 	params["_unit","_vk"];
-	private["_unit"];
+	private _unitPos = getPosATL _unit;
 	{
 			_x reveal [_vk, 4];
 			_x dowatch _vk; 
 			_x doTarget _vk; 
-	} forEach ([getPos _unit, 500] call blck_fnc_allPlayers);  // get all players within 500 m
+	} forEach (allPlayers select {(_unitPos distance _x) < 500});  // get all players within 500 m

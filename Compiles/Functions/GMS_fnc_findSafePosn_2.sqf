@@ -45,7 +45,7 @@ while{!_validspot} do {
 
 	// Check for near Bases
 	if(_validspot) then {
-		if (blck_modType isEqualTo "Epoch") then {
+		if (GMS_modType isEqualTo "Epoch") then {
 			{
 				if (_position distance _x < 1000) exitwith {
 					_validspot = false; 
@@ -53,7 +53,7 @@ while{!_validspot} do {
 			} foreach (missionnamespace getvariable ["Epoch_PlotPoles",[]]);
 		}
 		else {
-			if (blck_modType isEqualTo "Exile") then {
+			if (GMS_modType isEqualTo "Exile") then {
 				{
 					if (_position distance _x < blck_minDistanceToBases) exitwith {
 						_validspot = false; 

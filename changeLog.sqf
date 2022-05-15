@@ -257,12 +257,12 @@ Added: Support for Arrest Leader missions.
 	awaiting arrival of imaginary survivor forces.
 	See missions\blue\capture.sqf for an example mission
 
-Added: 	blck_missionEndCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+Added: 	blck_missionEndCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 		which provides a simple way to define the default conditions under which the mission ends for all missions. 
 		You can of course define _endCondition in the specific mission file if you wish.
 		
 Added:  A new mission completion condition for hostage and captive missions.
-		_endCondition = "assetSecured";
+		_endCondition = assetSecured;
 		
 Added: 	Mission crates can now be spawned on the ground or in the air at mission completion.
 		blck_spawnCratesTiming sets the default for all missions.
@@ -479,7 +479,7 @@ bugfixes.
 	_useMines = blck_useMines;
 [Fixed] Logging by the time acceleration module was disabled.
 [Fixed] Emplaced weapons now spawn in the correct locations.
-[Fixed] Missions end correctly when all AI are dead and _endCondition = "allKilledOrPlayerNear"; 
+[Fixed] Missions end correctly when all AI are dead and _endCondition = allKilledOrPlayerNear; 
 [changed] Reverted to the waypoint system from build 42.
 
 3/18/17 Version 6.58 Build 44
@@ -702,7 +702,7 @@ Inactivated a call to an exile function that had no value
 
 9-3-16 Ver 6.0 
 1) Re-did the custom_server folder so the mod automatically starts. Blck_client.sqf no longer calls the mod from the server.
-2) Added a variable blck_modType which presently can be either "Epoch" or "Exile" with the aim of having a single mission system for both mods.
+2) Added a variable GMS_modType which presently can be either "Epoch" or "Exile" with the aim of having a single mission system for both mods.
 3) Added a more intelligent method for loading key components (variables, functions, and map-specific parameters).
 4) Re-did all code to automatically select correct parameters to run correctly on either exile or epoch servers.
 5) Added the Exile Static Loot Crate Spawner; Re-did this to load either an exile or epoch version as needed since a lot of the variables and also the locations tables are unique.

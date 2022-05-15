@@ -29,10 +29,10 @@ blck_sm_patrolRespawnInterval = 600;
 {
 	if ((toLower worldName) isEqualTo toLower(_x select 1)) then
 	{
-		if ((toLower blck_modType) isEqualTo (toLower(_x select 0))) then
+		if ((toLower GMS_modType) isEqualTo (toLower(_x select 0))) then
 		{
 			[] call compilefinal preprocessFileLineNumbers format["\q\addons\custom_server\Missions\Static\missions\%1",(_x select 2)];
-			diag_log format["_initializing static mission %1 for mod type %2",_x select 1,blck_modType];
+			diag_log format["_initializing static mission %1 for mod type %2",_x select 1,GMS_modType];
 		};
 	};
 }forEach _staticMissions;

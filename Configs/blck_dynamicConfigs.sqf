@@ -54,12 +54,12 @@ _misc = [];
 _baseClasses = [];	
 
 _classnameList = [];
-diag_log format["blck_modType = %1",blck_modType];
-if (toLower(blck_modType) isEqualTo "epoch") then
+diag_log format["GMS_modType = %1",GMS_modType];
+if (toLower(GMS_modType) isEqualTo "epoch") then
 {
 	_classnameList = (missionConfigFile >> "CfgPricing" ) call BIS_fnc_getCfgSubClasses;
 };
-if (toLower(blck_modType) isEqualTo "exile") then
+if (toLower(GMS_modType) isEqualTo "exile") then
 {
 	_classnameList = (missionConfigFile >> "CfgExileArsenal" ) call BIS_fnc_getCfgSubClasses;
 };
@@ -98,11 +98,11 @@ diag_log format["_fnc_dynamicConfigsConfigurator: count _classnameList = %1",cou
 		_itemCategory = _temp select 0;
 		_itemType = _temp select 1;
 		_price = blck_maximumItemPriceInAI_Loadouts;
-		if (toLower(blck_modType) isEqualTo "epoch") then
+		if (toLower(GMS_modType) isEqualTo "epoch") then
 		{
 			_price = getNumber(missionConfigFile >> "CfgPricing" >> _x >> "price");
 		};
-		if (toLower(blck_modType)  isEqualTo "exile") then
+		if (toLower(GMS_modType)  isEqualTo "exile") then
 		{
 			_price = getNumber(missionConfigFile >> "CfgExileArsenal" >> _x >> "price");
 		};

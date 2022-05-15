@@ -23,7 +23,7 @@ _fn_doUpdates = {
 		_player setVariable["blck_kills",0];
 	};
 
-	if (toLower(blck_modType) isEqualTo "epoch") then
+	if (toLower(GMS_modType) isEqualTo "epoch") then
 	{
 		#define maxReward 2500
 		private _distanceBonus = floor((_unit distance _player)/100);
@@ -42,7 +42,7 @@ _fn_doUpdates = {
 		// SUggestion to update Epoch player stats from He-Man
 		[_killer, "AIKills", 1, true] call EPOCH_server_updatePlayerStats;		
 	};
-	if (toLower(blck_modType) isEqualTo "exile") then
+	if (toLower(GMS_modType) isEqualTo "exile") then
 	{
 		private _distanceBonus = floor((_unit distance _player)/100);
 		private _killstreakBonus = 3 * (_player getVariable["blck_kills",0]);
@@ -61,7 +61,7 @@ _fn_doUpdates = {
 			[["showScore",[_respectGained,_distanceBonus,_kills]], [_player]] call blck_fnc_messageplayers;
 		};
 	};
-	if (toLower(blck_modType) isEqualTo "default") then 
+	if (toLower(GMS_modType) isEqualTo "default") then 
 	{
 		private _newKillerFrags = _player getVariable ["ExileKills", 0];
 		_newKillerFrags = _newKillerFrags + 1;

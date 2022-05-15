@@ -26,7 +26,7 @@ if (isNil "_assetKilledMsg")			 then {_assetKilledMsg = ""};
 if (isNil "_markerColor") 				then {_markerColor = "ColorBlack"};
 if (isNil "_markerType") 				then {_markerType = ["mil_box",[]]};
 if (isNil "_markerSize") 				then {_markerSize = []};
-if (isNil "_endCondition") 				then {_endCondition = blck_missionEndCondition};  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"};
+if (isNil "_endCondition") 				then {_endCondition = blck_missionEndCondition};  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear};
 if (isNil "_spawnCratesTiming")	 		then {_spawnCratesTiming = blck_spawnCratesTiming}; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir". 
 if (isNil "_loadCratesTiming") 			then {_loadCratesTiming = blck_loadCratesTiming}; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
 if (isNil "_missionPatrolVehicles") 	then {_missionPatrolVehicles = []};
@@ -42,7 +42,7 @@ if (isNil "_vests") 					then {_vests = [_aiDifficultyLevel] call blck_fnc_selec
 if (isNil "_backpacks") 				then {_backpacks = [_aiDifficultyLevel] call blck_fnc_selectAIBackpacks};
 if (isNil "_chanceHeliPatrol") 			then {_chanceHeliPatrol = [_aiDifficultyLevel] call blck_fnc_selectChanceHeliPatrol};
 if (isNil "_noChoppers") 				then {_noChoppers = [_aiDifficultyLevel] call blck_fnc_selectNumberAirPatrols};
-if (isNil "_chancePara") 				then {_chancePara = [_aiDifficultyLevel] call blck_fnc_selectChanceParatroops};
+if (isNil "_chancePara") 				then {_chancePara = [_aiDifficultyLevel] call blck_fnc_selecctChanceParatroops};
 if (isNil "_missionHelis") 				then {_missionHelis = [_aiDifficultyLevel] call blck_fnc_selectMissionHelis};
 if (isNil "_noPara") 					then {_noPara = [_aiDifficultyLevel] call blck_fnc_selectNumberParatroops};
 if (isNil "_paraSkill")					then {_paraSkill = _aiDifficultyLevel};
@@ -95,8 +95,8 @@ if !(_loadCratesTiming in blck_validLootLoadTimings) then
 };
 if !(_endCondition in blck_validEndStates) then 
 {
-	[format['Invalid mission end condition %1 found in mission %2 :: default value "allKilledOrPlayerNear"; used',_endCondition,_markerMissionName],"<WARNING>"] call blck_fnc_log;
-	_endCondition = "allKilledOrPlayerNear";
+	[format['Invalid mission end condition %1 found in mission %2 :: default value allKilledOrPlayerNear; used',_endCondition,_markerMissionName],"<WARNING>"] call blck_fnc_log;
+	_endCondition = allKilledOrPlayerNear;
 };
 //diag_log format["_missionSpawner: _markerName %1 | _markerMissionName %2 | _markerColor %3",_markerName,_markerMissionName,_markerColor];
 private _markerData = [

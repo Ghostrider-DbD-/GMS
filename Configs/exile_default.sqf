@@ -26,7 +26,7 @@ diag_log format ["Loading Exile-specific configs for Non-militarized servers: bl
 	
 // list of locations that are protected against mission spawns
 
-switch (toLower(worldName)) do
+switch (toLowerANSI(worldName)) do
 {
 	case "altis": {
 		blck_locationBlackList append [
@@ -504,8 +504,8 @@ blck_SkinList = [
 	//https://community.bistudio.com/wiki/Arma_3_CfgWeapons_Equipment
 	// I have commented out some high visibility uniforms that can be reserved for players or special missions.
 	// for example, you could have a uniform list specified in a mission template.
-	"U_AntigonaBody",
-	"U_AttisBody",
+	//"U_AntigonaBody",
+	//"U_AttisBody",
 	"U_B_CombatUniform_mcam","U_B_CombatUniform_mcam_tshirt","U_B_CombatUniform_mcam_vest","U_B_CombatUniform_mcam_worn","U_B_CombatUniform_sgg","U_B_CombatUniform_sgg_tshirt","U_B_CombatUniform_sgg_vest","U_B_CombatUniform_wdl","U_B_CombatUniform_wdl_tshirt","U_B_CombatUniform_wdl_vest",
 	"U_B_CTRG_1","U_B_CTRG_2","U_B_CTRG_3",	
 	"U_B_GhillieSuit",

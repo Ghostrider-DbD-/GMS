@@ -26,7 +26,7 @@ for "_i" from 1 to (count blck_monitoredVehicles) do
 			{
 				if (diag_tickTime > ( _veh getVariable ["blck_deleteAtTime",0])) then
 				{
-					[_veh] call blck_fnc_destroyVehicleAndCrew;				
+					[_veh] call GMS_fnc_destroyVehicleAndCrew;				
 				} else {
 					blck_monitoredVehicles pushBack _veh;
 				};

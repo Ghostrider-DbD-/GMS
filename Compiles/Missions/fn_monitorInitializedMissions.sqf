@@ -7,6 +7,7 @@
 #define missionData 4
 #define noActive 2
 #define waitTime 5
+#define missionTimeout 1
 
 blck_activeMonitorThreads = blck_activeMonitorThreads + 1;
 
@@ -31,7 +32,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 	if (_triggered == 0) then 
 	{
-		if (diag_tickTime > _missionTimeoutAt) then 
+		if ((_missionTimeoutAt > 0) && {diag_tickTime > _missionTimeoutAt}) then 
 		{
 			_monitorAction = -1;
 			//diag_log format["_monitorInitializedMissions (37) Mission Timeout Criteria Met at %1",diag_tickTime];
@@ -168,14 +169,13 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 					"_missionHelis"
 				];
 				#define triggered 2
-				#define timedOut 1
 				_el set[triggered,1];
-				_el set[timedOut,diag_tickTime + 240];
-				
+				_el set[missionTimeout,-1];  //  reset this now that the mission has been triggered
 				private["_temp"];
 				if (blck_SmokeAtMissions select 0) then  // spawn a fire and smoke near the crate
 				{
 					_temp = [_coords,blck_SmokeAtMissions select 1] call blck_fnc_smokeAtCrates;
+					//[format["_monitorInitializedMissions: spawn smoking object at %1 | objects = %2",_coords,_temp]] call blck_fnc_log;					
 					if (_temp isEqualType []) then 
 					{
 						_objects append _temp;
@@ -186,18 +186,21 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 				if (_useMines) then
 				{
 					_mines = [_coords] call blck_fnc_spawnMines;
+					//[format["_monitorInitializedMissions: spawned mines for mission at %1 | mines = %2",_coords,_mines]] call blck_fnc_log;					
 					uiSleep delayTime;
 				};
 
 				if (_missionLandscapeMode isEqualTo "random") then
 				{
 					_temp = [_coords,_missionLandscape, 3, 15, 2] call blck_fnc_spawnRandomLandscape;
+					[format["_monitorInitializedMissions: spawned randomly place objects at %1 | list of objects = %2",_coords,_temp select 0]] call blck_fnc_log;
 				} else {
-
 					_temp = [_coords, _missionLandscape] call blck_fnc_spawnCompositionObjects;
+					//[format["_monitorInitializedMissions: precisly positioned objects at %1 | list of objects = %2",_coords,_temp select 0]] call blck_fnc_log;
 				};
-				_objects append (_temp select 0);
-				_hiddenObjects append (_temp select 1);
+				_temp params["_obj","_hiddenObj"];
+				_objects append _obj;
+				_hiddenObjects append _hiddenObj;
 				
 				uiSleep delayTime;	
 
@@ -206,7 +209,8 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 	
 				try {
 					_ai = [_coords, _minNoAI,_maxNoAI,_noAIGroups,_missionGroups,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call blck_fnc_spawnMissionAI;
-					_blck_AllMissionAI append (_ai);
+					_blck_AllMissionAI append _ai;
+					[format["_monitorInitializedMissions: spawned mission AI at %1 | with count _blck_AllMissionAI = %2 | with _blck_AllMissionAI = %3",diag_tickTime,count _blck_AllMissionAI, _blck_AllMissionAI]] call blck_fnc_log;
 					uiSleep delayTime;
 
 					if !(_scubaGroupParameters isEqualTo [] || {_scubaPatrols > 0}) then 
@@ -216,6 +220,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 					};
 					uiSleep delayTime;
 
+					// TODO: 05/08/22 -> redo code to handle this
 					if !(_hostageConfig isEqualTo []) then
 					{
 						_temp = [_coords,_hostageConfig] call blck_fnc_spawnHostage;
@@ -227,6 +232,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 						};
 					};
 
+					// TODO: 05/08/22 -> redo code to handle this
 					if !(_enemyLeaderConfig isEqualTo []) then
 					{
 						private _temp = [_coords,_enemyLeaderConfig] call blck_fnc_spawnLeader;
@@ -239,53 +245,33 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 					};
 
 					private _noChoppers = [_noChoppers] call blck_fnc_getNumberFromRange;
-					if (_noChoppers > 0) then
+					[format["_monitorInitializeMissions(248): _noChoppers = %1",_noChoppers]] call blck_fnc_log;
+					if ((_noChoppers > 0) && {random(1) < _chanceHeliPatrol}) then
 					{
-						for "_i" from 1 to (_noChoppers) do
-						{
-							if (random(1) < _chanceHeliPatrol) then
-							{
-								private _xaxis = _coords select 0;
-								private _yaxis = _coords select 1;
-								private _zaxis = 100;
-								private _offset = 15 * _i;
-								_temp = [[_xaxis + _offset,_yaxis + _offset, _zaxis + _offset],_difficulty,_missionHelis,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms,"none"] call blck_fnc_spawnMissionHeli;
-								if (_temp isEqualType []) then 
-								{
-									blck_monitoredVehicles pushBack (_temp select 0);
-									_missionAIVehicles pushBack (_temp select 0);
-									_blck_AllMissionAI append (_temp select 1);
-									//diag_log format["_monitorInitializeMissions(238): _temp select 0 = %1",_temp select 0];
-									//diag_log format["_monitorInitializedMissions(239): _temp select 1 = %1",_temp select 1];								
-								} else {
-									if (typeName _temp isEqualTo "GROUP") then 
-									{
-										if (isNull _temp) throw 1;
-									};
-								};
-							};
-						};
+						_temp = [_coords,_noChoppers,_missionHelis,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call blck_fnc_spawnMissionHelis;
+						_temp params["_helisSpawned","_unitsSpawned"];
+						[format["_monitorInitializeMissions: _helisSpawned = %1",_helisSpawned]] call blck_fnc_log;
+						blck_monitoredVehicles append _helisSpawned;
+						_missionAIVehicles append _helisSpawned;
+						_blck_AllMissionAI append _unitsSpawned;
 					};		
 					uisleep 3;
 
+					// TODO: 05/08/22 -> redo code to handle this
 					if !(_garrisonedBuilding_ATLsystem isEqualTo []) then  // Note that there is no error checking here for nulGroups
 					{
 						private _temp = [_coords, _garrisonedBuilding_ATLsystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_garrisonBuilding_ATLsystem;
-						if (_temp isEqualTo grpNull) then {throw 1} else 
-						// TODO: Add error checks for grpNull to the ATLsystem spawner
-						{				
-							_objects append (_temp select 1);
-							blck_monitoredVehicles append (_temp select 2);
-							_blck_AllMissionAI append (units (_temp select 0));
-						};
+						_temp params["_unitsSpawned","_staticsSpawned","_buildingsSpawned"];
+						_objects append _buildingsSpawned;
+						blck_monitoredVehicles append _staticsSpawned;
+						_blck_AllMissionAI append _unitsSpawned;
 					};	
 					uiSleep 3;
-
+					// TODO: 05/08/22 -> redo code to handle this
 					if !(_garrisonedBuildings_BuildingPosnSystem isEqualTo []) then
 					{
 						private _temp = [_coords, _garrisonedBuildings_BuildingPosnSystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_garrisonBuilding_RelPosSystem;
 						if (_temp isEqualTo grpNull) then {throw 1} else 
-						// TODO: add error checks for grpNull to the RelPosSystem
 						{
 							_objects append (_temp select 1);
 							blck_monitoredVehicles append (_temp select 2);
@@ -296,20 +282,15 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 					private _userelativepos = true;
 					private _emplacedWeaponsThisMission = [_noEmplacedWeapons] call blck_fnc_getNumberFromRange;
-					if (blck_useStatic && ((_emplacedWeaponsThisMission > 0) || !(_missionEmplacedWeapons isEqualTo []))) then
-					// TODO: add error checks for grpNull to the emplaced weapon spawner
+					if (blck_useStatic && {((_emplacedWeaponsThisMission > 0) || {!(_missionEmplacedWeapons isEqualTo [])} )} ) then
 					{
-
 						private _temp = [_coords,_missionEmplacedWeapons,_userelativepos,_emplacedWeaponsThisMission,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnEmplacedWeaponArray;
-						if (_temp isEqualTo grpNull) then 
-						{
-							throw 1;
-						} else {
-							_objects append (_temp select 0);
-							_blck_AllMissionAI append (_temp select 1);
-						};
+						_temp params["_statics","_units"];
+						_objects append _statics;
+						_blck_AllMissionAI append _units;
+						//[format["_monitorInitializedMissions: spawned emplaced weapons at %1 | with count _blck_AllMissionAI = %2 | with _statics = %3",diag_tickTime,count _blck_AllMissionAI, _statics]]											
 					};	
-					uisleep 5;
+					uisleep 3;
 
 					if !(_missionLootVehicles isEqualTo []) then 
 					{
@@ -317,37 +298,38 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 					};
 
 					private _noPatrols = [_noVehiclePatrols] call blck_fnc_getNumberFromRange;
-
-					if (blck_useVehiclePatrols && {((_noPatrols > 0) || {!(_missionPatrolVehicles isEqualTo [])} )} ) then
+					//[format["_monitorInitializedMissions: _noPatrols (vehicle) = %1",_noPatrols]] call blck_fnc_log;
+					if (blck_useVehiclePatrols && {( (_noPatrols > 0) || {!(_missionPatrolVehicles isEqualTo [])} )} ) then
 					{
 						_temp = [_coords,_noPatrols,_difficulty,_missionPatrolVehicles,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
-						// TODO: add grpNull checks to missionVehicleSpawner
-						if (_temp isEqualTo grpNull) throw 1; 
-						_missionAIVehicles append (_temp select 0);
-						_blck_AllMissionAI append (_temp select 1);
+						_temp params["_vehs","_units"]; 
+						_missionAIVehicles append _vehs;
+						_blck_AllMissionAI append _units;
+						//[format["_monitorInitializedMissions: spawned vehicle patrols at %1 | with count _blck_AllMissionAI = %2 | with _vehs = %3 | _blck_AllMissionAI = %4",diag_tickTime,count _blck_AllMissionAI, _vehs, _blck_AllMissionAI]] call blck_fnc_log;									
 					};	
 		
-					uiSleep  delayTime;
+					uiSleep  3;
 					if (blck_useVehiclePatrols && {((_submarinePatrols > 0) || {!(_submarinePatrolParameters isEqualTo [])} )} ) then
 					{
 						_temp = [_coords,_noPatrols,_difficulty,_submarinePatrolParameters,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
-						// TODO: add grpNull checks to missionVehicleSpawner
-						if (_temp isEqualTo grpNull) throw 1;
-						_missionAIVehicles append (_temp select 0);
-						_blck_AllMissionAI append (_temp select 1);
+						//[format["_monitorInitializedMissions: spawned sub patrols %1",_coords]] call blck_fnc_log;
+						_temp params["_vehs","_units"]; 
+						_missionAIVehicles append _vehs;
+						_blck_AllMissionAI append _units;
 					};		
 
-					uiSleep  delayTime;
-
+					uiSleep  3;
 					if (_spawnCratesTiming in ["atMissionSpawnGround","atMissionSpawnAir"]) then
 					{
 						if (_missionLootBoxes isEqualTo []) then
 						{
 							_crates = [_coords,[[selectRandom blck_crateTypes,[1,1,0],_crateLoot,_lootCounts]], _loadCratesTiming, _spawnCratesTiming, "start", _difficulty] call blck_fnc_spawnMissionCrates;
+							//[format["_monitorInitializedMissions: standard locations for crates at %1 | _crates = %2",_coords,_crates]] call blck_fnc_log;
 						}
 						else
 						{
-							_crates = [_coords,_missionLootBoxes,_loadCratesTiming, _spawnCratesTiming, "start", _difficulty] call blck_fnc_spawnMissionCrates;						
+							_crates = [_coords,_missionLootBoxes,_loadCratesTiming, _spawnCratesTiming, "start", _difficulty] call blck_fnc_spawnMissionCrates;	
+							//[format["_monitorInitializedMissions: predefined locations for crates at %1 | _crates = %2",_coords,_crates]] call blck_fnc_log;												
 						};
 						//diag_log format["monitorInitializedMission: _spawnCrates Timing = %1 / crates spawned = %2",_spawnCratesTiming,_crate];
 						if (blck_cleanUpLootChests) then
@@ -356,9 +338,10 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 						};
 						if (_loadCratesTiming isEqualTo "atMissionSpawn") then 
 						{
-							//private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
+							private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
+							[format["_monitorInitializedMissions (342) _crateMoney = %1",_crateMoney]] call blck_fnc_log;
 							{
-								[_x,missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call blck_fnc_addMoneyToObject;
+								//[_x,missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call GMS_fnc_setMoney;
 							} forEach _crates;
 							//diag_log format["monitorInitializedMission: Loot LOADED _loadCrates Timing = %1",_loadCratesTiming];
 						} else {
@@ -366,7 +349,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 						};
 					};
 					
-					uiSleep  delayTime;
+					uiSleep  1;
 
 					if (blck_showCountAliveAI) then
 					{
@@ -378,7 +361,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 					} forEach _crates;			
 			
 					_missionData = [_coords,_mines,_objects,_hiddenObjects,_crates,_blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_spawnedLootVehicles,_markers];
-
+					_el set[missionTimeout, diag_tickTime + blck_MissionTimeout];
 					_el set[missionData, _missionData];
 
 					// Everything spawned withouth serious errors so lets keep the mission active for future monitoring
@@ -440,15 +423,18 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 
 				switch (_endCondition) do
 				{
-					case "playerNear": {_secureAsset = false; _endIfPlayerNear = true;_endIfAIKilled = false;};
-					case "allUnitsKilled": {_secureAsset = false; _endIfPlayerNear = false;_endIfAIKilled = true;};
-					case "allKilledOrPlayerNear": {_secureAsset = false; _endIfPlayerNear = true;_endIfAIKilled = true;};
-					case "assetSecured": {_secureAsset = true; _endIfPlayerNear = false; _endIfAIKilled = false;};
+					case playerNear: {_secureAsset = false; _endIfPlayerNear = true;_endIfAIKilled = false;};
+					case allUnitsKilled: {_secureAsset = false; _endIfPlayerNear = false;_endIfAIKilled = true;};
+					case allKilledOrPlayerNear: {_secureAsset = false; _endIfPlayerNear = true;_endIfAIKilled = true;};
+					case assetSecured: {_secureAsset = true; _endIfPlayerNear = false; _endIfAIKilled = false;};
 				};
 
 				try {
+					//[format["_monitorInitializedMissions (448): count _blck_AllMissionAI = %1",count _blck_AllMissionAI]] call blck_fnc_log;
 					if (blck_debugLevel >= 4) throw 5;
-					private _playerIsNear = [_crates,20,true] call blck_fnc_playerInRangeArray;
+					private _playerIsNearCrates = [_crates,20,true] call blck_fnc_playerInRangeArray;
+					private _playerIsNearCenter = [_coords,20,true] call blck_fnc_playerInRange;
+					private _playerIsNear = if (_playerIsNearCrates || {_playerIsNearCenter}) then {true} else {false};
 					private _minNoAliveForCompletion = (count _blck_AllMissionAI) - (round(blck_killPercentage * (count _blck_AllMissionAI)));			
 					private _aiKilled = if (({alive _x} count _blck_AllMissionAI) <= _minNoAliveForCompletion)  then {true} else {false}; // mission complete
 			
@@ -483,12 +469,26 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 								"_backpacks", 
 								"_weaponList",
 								"_sideArms"	
-							];								
-							private _paratroops = [_coords,_noPara,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call blck_fnc_spawnParaUnits;
-							if !(isNull _paratroops) then 
-							{
-								_blck_AllMissionAI append (units _paratroops);
-							};
+							];	
+							/*
+							params[
+								["_pos",[0,0,0]], 
+								["_numbertospawn",0], 
+								["_skillLevel","red"], 
+								["_areaDimensions",[]], 
+								["_uniforms",[]], 
+								["_headGear",[]],
+								["_vests",[]],
+								["_backpacks",[]],
+								["_weaponList",[]],
+								["_sideArms",[]], 
+								["_scuba",false]
+							];
+							*/
+							#define areadDimensions [50,50]
+							private _paraGroup = [_coords,_noPara,_difficulty,areadDimensions,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call blck_fnc_spawnParaUnits;
+							
+							_blck_AllMissionAI append (units _paraGroup);
 							if (random(1) < _chanceLoot) then
 							{
 								private _extraCrates = [_coords,[[selectRandom blck_crateTypes,[0,0,0],_paraLoot,_paraLootCounts]], "atMissionSpawn","atMissionSpawnAir", "start", _difficulty] call blck_fnc_spawnMissionCrates;
@@ -497,6 +497,8 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 									_objects append _extraCrates;
 								};		
 							};	
+							_missionData = [_coords,_mines,_objects,_hiddenObjects,_crates,_blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_spawnedLootVehicles,_markers];
+							_el set[missionData, _missionData];							
 							//diag_log format["_monitorInitializedMissions: para spawned at %1",diag_tickTime];
 						};
 					};
@@ -533,10 +535,6 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 						} forEach _crates;
 					};
 
-					_missionData = [_coords,_mines,_objects,_hiddenObjects,_crates,_blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_spawnedLootVehicles,_markers];
-					
-					_el set[missionData, _missionData];
-
 					// If there were no throws then lets check on the mission in a bit.
 					blck_activeMissionsList pushBack _el;	
 				}
@@ -564,9 +562,10 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 									{
 										_objects append _crates;
 									};
-									//private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);										
+									private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);	
+									[format["_monitorInitializedMissions (564) _crateMoney = %1",_crateMoney]] call blck_fnc_log;																		
 									{
-										[_x, missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call blck_fnc_addMoneyToObject;
+										//[_x, _crateMoney] call GMS_fnc_setMoney;
 									} forEach _crates;		
 																	
 								};
@@ -576,16 +575,16 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 							{
 								if (!(_secureAsset) || {(_secureAsset && {(alive _assetSpawned)} )} ) then
 								{
-									//private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
+									private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
+									[format["_monitorInitializedMissions (576) _crateMoney = %1",_crateMoney]] call blck_fnc_log;									
 									{
 										[_x] call blck_fnc_loadMissionCrate;											
-										[_x, missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call blck_fnc_addMoneyToObject;											
+										//[_x, missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call GMS_fnc_setMoney;									
 									} forEach _crates;
 									//diag_log format["monitorInitializedMission (586): Loot LOADED _loadCrates Timing = %1",_loadCratesTiming];									
-									private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
 									{
 										[_x] call blck_fnc_loadMissionCrate;											
-										[_x, missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call blck_fnc_addMoneyToObject;											
+										//[_x, missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call GMS_fnc_setMoney;										
 									} forEach _spawnedLootVehicles;		
 									//diag_log format["monitorInitializedMission (592): Loot LOADED _loadCrates Timing = %1",_loadCratesTiming];																	
 								};
@@ -640,7 +639,7 @@ for "_i" from 1 to (count blck_activeMissionsList) do
 						};
 						case 5: {
 							// Used for testing purposes only 
-							[format["Programed mission abort, debut level >= 4"]] call blck_fnc_log;
+							[format["Programed mission abort, debug level >= 4"]] call blck_fnc_log;
 							_objects append _missionAIVehicles;
 							_objects append _spawnedLootVehicles;
 							[_coords,_mines,_objects,_hiddenObjects,_crates,_blck_AllMissionAI,_assetKilledMsg,_markers,markerPos (_markers select 1),_markerName,_markerMissionName, _exception] call blck_fnc_endMission;						

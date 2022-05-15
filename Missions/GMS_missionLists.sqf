@@ -27,7 +27,7 @@ private _missionListBlue = [
 		//"captive1",  // OK
 
 
-		"sniperBase",  // Spawns OK Debug = 4 Build 246
+		//"sniperBase",  // Spawns OK does not clear 249
 		"survivalSupplies",  // Spawns OK Debug = 4 Build 246
 		//"derbunker", // OK, an interesting mission, better as a red / green though
 		//"forgotten_HQ",  //  ok BUT TOO TOUGH FOR BLUE OR RED
@@ -35,7 +35,7 @@ private _missionListBlue = [
 		//"IDAP",  //  OK but too difficult for a blue mission
 
 		// omitted for Cherno at Azock's request		
-		//"Service_point",  // OK build 224
+		"Service_point",  // OK build 224
 		//"Toxin",  //  OK but too difficult for a blue mission
 		"default"  //  Spawns OK Debug = 4 Build 246
 	];
@@ -55,10 +55,10 @@ private _missionListRed = [
 	//"charlston",
 	//"dashq",
 	//"derbunker",  // OK, better suited for green or orange mission
-	//"factory",  //  Good Green / Orange; center position is off though.
+	//"factory",  //  Does not clear
 	//"forgotten_HQ",
 	//"garrison",
-	"IDAP",  // Spawns OK Debug = 4 Build 246
+	"IDAP",  // Spawns OK Does not clear Build 249 
 	//"lager",
 	//"Operations_Command",
 	"Outpost",  //  Spawns OK Debug = 4 Build 246
@@ -72,9 +72,9 @@ private _missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","r
 		"FieldCamp",  //  Spawns OK Build 246 Debug == 4
 		"FieldHQ",  // Spawns OK Build 246 Debug == 4
 		//"weaponsResearch",  // OK build 224
-		"munitionsResearch",  // Spawns OK Build 246 Debug == 4
+		//"munitionsResearch"  // Spawns OK Build 246 Debug == 4
 		//"colonelsBase",  //  OK Build 224
-		"factory",  //  Spawns OK Build 246 Debug == 4
+		"factory",  //  Spawns fine but does not clear 249
 		"fortification",  //  Spawns OK Debug = 4 Build 246
 		//"banditVillage",  //  OK but do not use.
 		"Camp_Moreell",  // Spawns OK Build 246 Debug == 4

@@ -34,7 +34,7 @@ if (_missionEmplacedWeapons isEqualTo []) then
 	_pos = _x select 1;
 	_difficulty = _x select 2;
 	
-	private _empGroup = [blck_AI_Side,true]  call blck_fnc_createGroup;
+	private _empGroup = [GMS_side,true]  call blck_fnc_createGroup;
 	if !(_empGroup) then 
 	{
 		[_empGroup,_pos,1,1,_difficulty,_pos,1,2,_uniforms,_headGear,false] call blck_fnc_spawnGroup;

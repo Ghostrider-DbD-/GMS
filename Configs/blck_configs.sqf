@@ -12,22 +12,22 @@
 */
 
 	#include "\q\addons\custom_server\Configs\blck_defines.hpp"
-	#include "\q\addons\custom_server\init\build.sqf"
+
 	/*
 		changing any of these variables may break the mission system
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
-	blck_debugON = true;  //  should be set to false;  ... 
-	blck_debugLevel = 3;  //  should be set to 0 ... 
+	blck_debugON = false;  //  should be set to false;  ... 
+	blck_debugLevel = 0;  //  should be set to 0 ... 
 	
 	#ifdef blck_milServer
 	if (true) exitWith 
 	{
-		[format["Running configs for militarized servers build %1",blck_buildNumber]] call blck_fnc_log;
+		[format["Running configs for militarized servers"]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_mil.sqf";
 	};
 	#endif
-	[format["Loading configurations for Non-militarized servers build %1",blck_buildNumber]] call blck_fnc_log;
+	[format["Loading configurations for Non-militarized servers"]] call blck_fnc_log;
 	/*
 		**************************************
 		Configurations begin here
@@ -91,7 +91,46 @@
 	blck_useKillMessages = true;  // when true a message will be broadcast to all players each time an AI is killed; may impact server performance.
 	blck_useKillScoreMessage = true; // when true a tile is displayed to the killer with the kill score information
 	blck_useIEDMessages = true;  // Displayes a message when a player vehicle detonates and IED (such as would happen if a player killed AI with a forbidden weapon).
-	
+
+blck_rewards = [[0,0],[0,0],[0,0],[0,0]];
+private _modType = [] call GMS_fnc_getModType;
+switch (_modType) do 
+{
+	case "Epoch": {
+		// expressed as crypto min, crypto max
+		blck_rewardsNotifications = ["dynamicText"];
+		
+		// expressed as [][tabs min, tabs max],[respect min,respect max]]
+		blck_rewardsBlue = [[5,10],[8,12]];
+		blck_rewardsRed = [[8,14],12,15];
+		blck_rewardsGreen = [[10,18],[15,20]];
+		blck_rewardsOrange = [[12,20],20,25];
+		blck_rewards = [blck_rewardsBlue,blck_rewardsRed,blck_rewardsGreen,blck_rewardsOrange];
+		blck_distanceBonus = 3; // per 100 M, max = 5 * this value;
+		blck_killsBonus = 3; // from 2X up, max 6* this value
+		blck_killstreakTimeout = 300; // 5 min
+		blck_distantIncrementForCalculatingBonus = 100;
+	};
+	case "Exile": {
+		// expressed as [][tabs min, tabs max],[respect min,respect max]]
+		blck_rewardsBlue = [[5,10],[8,12]];
+		blck_rewardsRed = [[8,14],[12,15]];
+		blck_rewardsGreen = [[10,18],[15,20]];
+		blck_rewardsOrange = [[12,20],[20,25]];
+		blck_rewards = [blck_rewardsBlue,blck_rewardsRed,blck_rewardsGreen,blck_rewardsOrange];
+		blck_rewardsNotifications = ["dynamicText"];
+
+		blck_respectBonusForKillstreaks = 3; 
+		blck_moneyGainedForKillstreaks = 3; // per kill of the current killstreak 
+
+		blck_killstreakTimeout = 300; // 5 min
+		blck_distantIncrementForCalculatingBonus = 100;
+	};
+	case "default": {
+		blck_rewardsNotifications = ["dynamicText"];
+		blck_killstreakTimeout = 300; // 5 min
+	};
+};
 	///////////////////////////////
 	// MISSION MARKER CONFIGURATION
 	// blck_labelMapMarkers: Determines if when the mission composition provides text labels, map markers with have a text label indicating the mission type
@@ -102,10 +141,10 @@
 	blck_showCountAliveAI = true;
 
 	//Minimum distance between missions
-	blck_MinDistanceFromMission = 600;
-	blck_minDistanceToBases = 600;
-	blck_minDistanceToPlayer = 600;
-	blck_minDistanceFromTowns = 400;
+	blck_MinDistanceFromMission = 500;
+	blck_minDistanceToBases = 500;
+	blck_minDistanceToPlayer = 400;
+	blck_minDistanceFromTowns = 300;
 	blck_minDistanceFromDMS = 800;  // minimum distance for a blackeagls mission from any nearby DMS missions. set to -1 to disable this check.	
 	
 	///////////////////////////////
@@ -117,7 +156,7 @@
 	// It's position can be either "center" or "random".  smoking wreck will be spawned at a random location between 15 and 50 m from the mission.
 	blck_SmokeAtMissions = [true,"random"];  // set to [false,"anything here"] to disable this function altogether. 
 	blck_useSignalEnd = true; // When true a smoke grenade/chemlight will appear at the loot crate for 2 min after mission completion.
-	blck_missionEndCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+	blck_missionEndCondition = allKilledOrPlayerNear; //allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 
 	///////////////////////////////
 	// General Mission Completion and Loot Settings
@@ -204,8 +243,9 @@
 	
 	blck_blacklisted_heli_ammo = ["24Rnd_missiles","24Rnd_PG_missiles","12Rnd_PG_missiles","2Rnd_LG_scalpel","6Rnd_LG_scalpel","8Rnd_LG_scalpel","M_Scalpel_AT ","14Rnd_80mm_rockets","38Rnd_80mm_rockets"];
 	blck_blacklisted_heli_weapons = ["missiles_SCALPEL","missiles_titan","rockets_Skyfire","missiles_DAGR","missiles_DAR"];
-	_cup_helis = ["uh1h_armed_EPOCH","uh1h_armed_plus_EPOCH"];
-	
+	//_cup_helis = ["uh1h_armed_EPOCH","uh1h_armed_plus_EPOCH"];
+	_cup_Helis_missiles = ["CUP_B_412_dynamicLoadout_HIL","CUP_B_AW159_RN_Blackcat","CUP_B_AW159_RN_Blackcat"];
+	_cup_attack_helis = [];
 	///////////////////////////////
 	//  Heli Patrol Settings
 	///////////////////////////////
@@ -221,7 +261,7 @@
 	blck_noPatrolHelisRed = 1;
 	
 	blck_chanceHeliPatrolGreen = 0.85;
-	blck_patrolHelisGreen = _blck_armed_hellcats + _blck_armed_orcas + _blck_armed_ghosthawks;  //_blck_littleBirds;
+	blck_patrolHelisGreen = _blck_armed_hellcats + _cup_Helis_missiles;;  // _blck_armed_orcas + _blck_armed_ghosthawks;  //_blck_littleBirds;
 	blck_noPatrolHelisGreen = 1;
 	
 	blck_chanceHeliPatrolOrange = 0.95;
@@ -242,14 +282,14 @@
 	
 	//Set to -1 to disable. Values of 2 or more force the mission spawner to spawn copies of that mission - this feature is not recommended because you may run out of available groups.
 	blck_enableOrangeMissions = 1;  
-	blck_enableGreenMissions = 1;
-	blck_enableRedMissions = 1;
+	blck_enableGreenMissions = 2;
+	blck_enableRedMissions = 2;
 	blck_enableBlueMissions = 1;
 	blck_numberUnderwaterDynamicMissions = 0;  // Values from -1 (no UMS) to N (N Underwater missions will be spawned; static UMS units and subs will be spawned.	
 
 	#ifdef GRGserver
 	blck_enableHunterMissions = 1;
-	blck_enableScoutsMissions =1;
+	blck_enableScoutsMissions =2;
 	blck_maxcrashsites = 2;
 	#endif
 
@@ -462,7 +502,7 @@
 
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];	
-	blck_AIAlertDistance = [250,450,650,800];  //  Radius within which AI will be notified of enemy activity. Depricated as a group-sed system is used now. The group is informed of the enemy location when a group member is hit or killed.
+	blck_AIAlertDistance = [250,450,700,900];  //  Radius within which AI will be notified of enemy activity. Depricated as a group-sed system is used now. The group is informed of the enemy location when a group member is hit or killed.
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];
 	blck_AIIntelligence = [0.3, 0.5, 0.7, 0.9];  
@@ -562,10 +602,10 @@
 	blck_chanceVest = 0.1;
 	blck_chanceBinoc = 0.75;
 
-	private _configToLoad = format["\q\addons\custom_server\Configs\blck_configs_%1.sqf",tolower(blck_modType)];
+	private _configToLoad = format["\q\addons\custom_server\Configs\blck_configs_%1.sqf",tolower(GMS_modType)];
 	diag_log format["[blckeagls] _configToLoad = %1",_configToLoad];
 	//[] call compileFinal preprocessFileLineNumbers _configToLoad;
-	switch (toLower(blck_modType)) do 
+	switch (toLower(GMS_modType)) do 
 	{
 		//case "epoch": 	{execVM "\q\addons\custom_server\Configs\blck_configs_epoch.sqf"};
 		case "exile": 	

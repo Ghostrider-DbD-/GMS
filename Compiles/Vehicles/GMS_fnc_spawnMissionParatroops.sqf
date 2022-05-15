@@ -45,7 +45,7 @@ if ( (random(1) < _chanceParatroops)) then
 {
 	if (isNull _grpParatroops) then
 	{
-		_grpParatroops = createGroup blck_AI_Side; 
+		_grpParatroops = createGroup GMS_side; 
 	};
 	_aborted = [_coords,_grpParatroops,_noPara,_skillAI,_weapons,_uniforms,_headGear,_heli] call blck_fnc_spawnParaUnits;
 };

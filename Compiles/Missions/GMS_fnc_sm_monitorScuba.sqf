@@ -48,7 +48,7 @@ for "_i" from 0 to (count blck_sm_scubaGroups) do
 						if ([_pos,staticPatrolTriggerRange] call blck_fnc_playerInRange) then
 						{
 							private _numAI = [_units] call blck_fnc_getNumberFromRange;
-							private _group = [blck_AI_Side,true] call blck_fnc_createGroup;	
+							private _group = [GMS_side,true] call blck_fnc_createGroup;	
 							if !(isNull _group) then 
 							{
 							//params["_pos",["_skillLevel","red"],["_numUnits",6],["_patrolRadius",15]];

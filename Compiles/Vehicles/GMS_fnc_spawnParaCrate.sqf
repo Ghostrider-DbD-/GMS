@@ -73,7 +73,7 @@ _fn_monitorCrate = {
 				deleteVehicle _crate;
 			} else
 			{
-				[_crate] call blck_fnc_signalEnd;
+				[_crate] call GMS_fnc_visibleMarker;
 			};
 		};
 	};

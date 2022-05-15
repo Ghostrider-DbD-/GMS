@@ -77,7 +77,7 @@ _sm_groups = +blck_sm_garrisonBuilding_relPos;
 
 				_groupParameters set [2, {alive _x} count (units _group)];
 				private _veh = vehicle (leader _group);
-				[_veh] call blck_fnc_destroyVehicleAndCrew;
+				[_veh] call GMS_fnc_destroyVehicleAndCrew;
 				_element set[groupParameters,_groupParameters];
 				_element set[patrolGroup ,grpNull];
 				_element set[timesSpawned,(_timesSpawned - 1)];

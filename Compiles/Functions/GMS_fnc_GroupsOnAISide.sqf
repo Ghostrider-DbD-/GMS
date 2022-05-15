@@ -12,6 +12,6 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-private _groups_AI_Side = {(side _x) isEqualTo blck_AI_side} count allGroups;
+private _groups_AI_Side = {(side _x) isEqualTo GMS_side} count allGroups;
 
 _groups_AI_Side

@@ -31,8 +31,8 @@ _garrisonedBuildings_BuildingPosnSystem = [
 ];
 
 _garrisonedBuilding_ATLsystem = [
-     ["Land_Cargo_Patrol_V1_F",[-19.2107,-30.5151,-0.00143814],0,true,true,[["B_G_HMG_02_high_F",[1.16187,-1.16968,4.38749],177.998],["B_G_HMG_02_high_F",[-2.16211,13.6677,0.0444469],95.0891]],[]],
-     ["Land_Cargo_Patrol_V1_F",[-0.0581055,-30.4399,-0.00143814],0,true,true,[["B_G_HMG_02_high_F",[-1.44629,-1.22632,4.38749],184.401]],[]]
+     //["Land_Cargo_Patrol_V1_F",[-19.2107,-30.5151,-0.00143814],0,true,true,[["B_G_HMG_02_high_F",[1.16187,-1.16968,4.38749],177.998],["B_G_HMG_02_high_F",[-2.16211,13.6677,0.0444469],95.0891]],[]],
+     //["Land_Cargo_Patrol_V1_F",[-0.0581055,-30.4399,-0.00143814],0,true,true,[["B_G_HMG_02_high_F",[-1.44629,-1.22632,4.38749],184.401]],[]]
 ];
 
 _missionLandscape = [
@@ -157,7 +157,7 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = "allKilledOrPlayerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 									// Setting this in the mission file overrides the defaults 
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

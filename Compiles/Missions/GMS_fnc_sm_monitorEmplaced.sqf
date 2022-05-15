@@ -80,7 +80,7 @@ for "_i" from 0 to (count blck_sm_Emplaced) do
 				private _veh = vehicle (leader _group);
 				{deleteVehicle _x} forEach (units _group);
 				deleteGroup _group;				
-				[_veh] call blck_fnc_destroyVehicleAndCrew;
+				[_veh] call GMS_fnc_destroyVehicleAndCrew;
 				_element set[groupParameters,_groupParameters];
 				_element set[patrolGroup ,grpNull];
 				_element set[timesSpawned,(_timesSpawned - 1)];

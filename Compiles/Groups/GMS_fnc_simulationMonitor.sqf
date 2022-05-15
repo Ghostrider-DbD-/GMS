@@ -49,6 +49,7 @@ if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManager) then
 		};
 	} forEach blck_monitoredMissionAIGroups;
 
+	/*
 	{
 		// disable simulation once players have left the area.
 		private _nearPlayers = [getPosATL (_x),blck_simulationEnabledDistance] call blck_fnc_nearestPlayers;		
@@ -64,7 +65,8 @@ if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManager) then
 				_x enableSimulationGlobal true;			
 			};
 		};
-	} forEach units blck_graveyardGroup;		
+	} forEach units blck_graveyardGroup;
+	*/
 };
 
 

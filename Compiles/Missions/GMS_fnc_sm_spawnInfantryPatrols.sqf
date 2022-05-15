@@ -29,7 +29,7 @@ if !(_patrols isEqualTo []) then
 	{
 		// Use the pre-defined spawn positions and other parameters for each group.
 		_x params ["_pos","_difficulty","_noAI","_patrolRadius"];
-		private _group = [blck_AI_Side,true]  call blck_fnc_createGroup;
+		private _group = [GMS_side,true]  call blck_fnc_createGroup;
 		#define setupWaypoints true
 		if !(isNull _group) then 
 		{

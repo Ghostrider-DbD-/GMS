@@ -36,7 +36,7 @@
 		_tries = 0;
 		//diag_log format["_fn_loadLoot:: -- >> now loading for %1",_x];
 		_q = _x select 1; // this can be a number or array.
-		if ( (_q isEqualType []) then // Assume the array contains a min/max number to add
+		if (_q isEqualType []) then // Assume the array contains a min/max number to add
 		{
 			if ((count _q) isEqualTo 2) then {_tries = (_q select 0) + round(random(((_q select 1) - (_q select 0))));} else {_tries = 0;};
 		};
@@ -47,6 +47,6 @@
 		for "_i" from 1 to _tries do
 		{
 			_item = selectRandom (_x select 0);
-			[_item,_crate,_addAmmo] call blck_fnc_addItemToCrate;		
+			[_item,_crate,_addAmmo] call GMS_fnc_addItem;		
 		};
 	}forEach _loadout;

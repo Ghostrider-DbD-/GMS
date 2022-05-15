@@ -39,6 +39,6 @@
 		for "_i" from 1 to _tries do
 		{
 			_item = selectRandom (_x select 0);
-			[_item,_crate,_addAmmo] call blck_fnc_addItemToCrate;		
+			[_item,_crate,_addAmmo] call GMS_fnc_addItem;		
 		};
 	}forEach _loadout;

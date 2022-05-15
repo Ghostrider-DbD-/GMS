@@ -45,7 +45,7 @@ private _client = objNull;
 if (!isNull _client) then
 {
 	private _swapped = if (_AIType isEqualTo "OBJECT") then {_AI setOwner (owner _client)} else {_AI setGroupOwner (owner _client)};
-	if (toLower(blck_modType) isEqualTo "exile") then
+	if (toLowerANSI(GMS_modType) isEqualTo "exile") then
 	{
 		if (!_swapped) then
 		{

@@ -611,6 +611,6 @@ _chanceLoot = 0.5;
 _paraLoot = blck_BoxLoot_Orange;
 _paraLootCounts = blck_lootCountsOrange;  // Throw in something more exotic than found at a normal blue mission.
 
-_endCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

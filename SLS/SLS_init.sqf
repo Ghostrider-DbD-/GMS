@@ -15,11 +15,11 @@
 #endif
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-if ((tolower blck_modType) isEqualto "epoch") then
+if ((tolower GMS_modType) isEqualto "epoch") then
 {
 	call compile preprocessfilelinenumbers "\q\addons\custom_server\SLS\SLS_init_epoch.sqf";
 };
-if ((tolower blck_modType) isEqualto "exile") then
+if ((tolower GMS_modType) isEqualto "exile") then
 {
 	call compile preprocessfilelinenumbers "\q\addons\custom_server\SLS\SLS_init_exile.sqf";
 };

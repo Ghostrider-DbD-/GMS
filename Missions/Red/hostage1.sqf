@@ -122,6 +122,6 @@ _noEmplacedWeapons = blck_SpawnEmplaced_Red;
 //_noPara = blck_noParaRed;  
 //_chanceHeliPatrol = blck_chanceHeliPatrolRed;
 _spawnCratesTiming = "atMissionEndAir";
-_endCondition = "assetSecured";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear", "assetSecured"
+_endCondition = assetSecured;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear, assetSecured
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

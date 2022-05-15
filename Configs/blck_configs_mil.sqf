@@ -11,8 +11,8 @@
 */
 
 	#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-	#include "\q\addons\custom_server\init\build.sqf"	
-	[format["Loading blck_configs_mil.sqf for Militarized Servers for blckeagls build %1",blck_buildNumber]] call blck_fnc_log;
+	
+	[format["Loading blck_configs_mil.sqf for Militarized Servers for blckeagls"]] call blck_fnc_log;
 
 	/***************************************************************
 		BLCKEAGLS SUPPLEMENTAL MODULES
@@ -96,7 +96,7 @@
 	///////////////////////////////
 	// General Mission Completion and Loot Settings
 	///////////////////////////////		
-	blck_missionEndCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+	blck_missionEndCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 	blck_killPercentage = 0.99999999999;  // The mission will complete if this fraction of the total AI spawned has been killed.
 								// This facilitates mission completion when one or two AI are spawned into objects.	
 	blck_spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir". 
@@ -517,19 +517,19 @@
 	blck_maxMoneyBlue = 10;	
 	#endif
 	
-	if (toLower(blck_modType) isEqualTo "epoch") then
+	if (toLower(GMS_modType) isEqualTo "epoch") then
 	{
-		[format[" Loading Mission System using Parameters for %1 for militarized servers",blck_modType]] call blck_fnc_log;
+		[format[" Loading Mission System using Parameters for %1 for militarized servers",GMS_modType]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_epoch_mil.sqf";
 	};
-	if (toLower(blck_modType) isEqualTo "exile") then
+	if (toLower(GMS_modType) isEqualTo "exile") then
 	{
-		[format[" Loading Mission System using Parameters for %1 for militarized servers",blck_modType]] call blck_fnc_log;
+		[format[" Loading Mission System using Parameters for %1 for militarized servers",GMS_modType]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_exile_mil.sqf";
 	};	
-	if (toLower(blck_modType) isEqualTo "default") then 
+	if (toLower(GMS_modType) isEqualTo "default") then 
 	{
-		[format[" Loading Mission System using Parameters for %1 for militarized servers",blck_modType]] call blck_fnc_log;
+		[format[" Loading Mission System using Parameters for %1 for militarized servers",GMS_modType]] call blck_fnc_log;
 		execVM "\q\addons\custom_server\Configs\blck_configs_default_mil.sqf";
 	};
 	//waitUntil{!isNil "blck_useConfigsGeneratedLoadouts"};

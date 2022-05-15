@@ -9,7 +9,7 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-if ((tolower blck_modType) isEqualTo "epoch") then
+if ((toLowerANSI GMS_modType) isEqualTo "epoch") then
 {
 	_blckListPrior = blck_locationBlackList;
 	private _config = configFile >> "CfgEpoch";
@@ -20,7 +20,7 @@ if ((tolower blck_modType) isEqualTo "epoch") then
 	} foreach _telePos;
 };
 
-if ((tolower blck_modType) isEqualTo "exile") then
+if ((tolower GMS_modType) isEqualTo "exile") then
 {
 	private _traderCites = allMapMarkers;
 	{

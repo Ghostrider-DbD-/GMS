@@ -1,9 +1,9 @@
 
 
 params["_difficulty"];
-diag_log format["getIndexFromDifficult: _dificulty = %1 | typeName _difficulty = %2",_difficulty, typeName _difficulty];
+//diag_log format["getIndexFromDifficult: _dificulty = %1 | typeName _difficulty = %2",_difficulty, typeName _difficulty];
 private _return = 0;
-switch(toLower(_difficulty)) do 
+switch(toLowerANSI(_difficulty)) do 
 {
 	case "red": {_return = 1};
 	case "green": {_return = 2};

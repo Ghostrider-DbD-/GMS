@@ -37,6 +37,12 @@
 #define blck_green 3 
 #define blck_orange 4 
 
+// Defines for mission characteristics 
+#define playerNear 0 
+#define allUnitsKilled 1 
+#define allKilledOrPlayerNear 2 
+#define assetSecured 3 
+
 //  defines for static group spawners
 #define staticPatrolTriggerRange 2000
 #define groupParameters 0

@@ -17,7 +17,7 @@ _crate = createVehicle [_crateType,_coords,[], 0, "NONE"];
 _crate setVariable ["LAST_CHECK", 100000];
 _crate allowDamage false;
 _crate enableRopeAttach false;
-[_crate] call blck_fnc_emptyObject;
+[_crate] call GMS_fnc_emptyObjectInventory;
 _crate setPosATL [_coords select 0, _coords select 1, (_coords select 2) + 0.25];
 [_crate, _crateDir] call blck_fnc_setDirUp;
 _crate setVectorUp surfaceNormal getPosATL _crate;

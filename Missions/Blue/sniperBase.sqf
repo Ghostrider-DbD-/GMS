@@ -64,7 +64,7 @@ _missionLootBoxChoices = [
      ["Land_TentDome_F",[2.39795,1.80518,-0.00143909],_crateLoot,_lootCounts,0]
 ];
 _missionLootBoxes = [];
-for "_i" from 1 to (floor(random(3)) + 1) do
+for "_i" from 1 to (floor(random(0)) + 1) do  // should add one loot container only
 {
 	_missionLootBoxes pushBack (selectRandom _missionLootBoxChoices);
 };
@@ -140,7 +140,7 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = blck_missionEndCondition;  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = blck_missionEndCondition;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 									// Setting this in the mission file overrides the defaults 
 //_timeOut = -1;
 */

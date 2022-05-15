@@ -8,7 +8,7 @@ for "_i" from 1 to 100 do
 	diag_log format["DLS loadLoot:: _loadout [food,medical] | _loot %1",_loot];
 	private _loot = [[blck_ConsumableItems,25],[blck_medicalItems,8],[blck_tools,10],[blck_backpacks, 3]];	
 	private _crate = createVehicle [_box, [0,0,0], [], 0, "CAN_COLLIDE"];	
-	[_crate] call blck_fnc_emptyObject;
+	[_crate] call GMS_fnc_emptyObjectInventory;
 	[_loot,_crate] call blck_fnc_loadLootItemsFromArray;
 	diag_log format["testCrateLoading: pass %2 | crate inventory = %1",getItemCargo _crate,_i];
 	deleteVehicle _crate;
@@ -20,7 +20,7 @@ for "_i" from 1 to 100 do
 	diag_log format["DLS loadLoot:: _loadout [tools/contruction/household] | pass %1",_i];
 	private _loot = [[blck_buildingMaterials,40],[blck_tools,10],[blck_backpacks, 3]];
 	private _crate = createVehicle [_box, [0,0,0], [], 0, "CAN_COLLIDE"];	
-	[_crate] call blck_fnc_emptyObject;
+	[_crate] call GMS_fnc_emptyObjectInventory;
 	[_loot,_crate] call blck_fnc_loadLootItemsFromArray;
 	diag_log format["testCrateLoading: pass %2 | crate inventory = %1",getItemCargo _crate,_i];		
 	deleteVehicle _crate;

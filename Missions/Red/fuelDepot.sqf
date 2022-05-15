@@ -69,6 +69,6 @@ _noAIGroups = blck_AIGrps_Red;
 _noVehiclePatrols = blck_SpawnVeh_Red;
 _noEmplacedWeapons = blck_SpawnEmplaced_Red;
 
-_endCondition = "playerNear";  // Options are "allUnitsKilled", "playerNear", "allKilledOrPlayerNear"
+_endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 //_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

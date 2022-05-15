@@ -78,10 +78,11 @@ for "_i" from 1 to (count blck_sm_Aircraft) do
 			{
 				//diag_log format["_fnc_monitorAircraft: despanwing patrol for _element %1",_element];
 				//_groupParameters set [2, {alive _x} count (units _group)];
-				private _veh = vehicle (leader _group);
-				{deleteVehicle _x} forEach (units _group);
-				deleteGroup _group;				
-				[_veh] call blck_fnc_destroyVehicleAndCrew;
+				//private _veh = vehicle (leader _group);
+				//{deleteVehicle _x} forEach (units _group);
+				//deleteGroup _group;				
+				//[_veh] call blck_fnc_destroyVehicleAndCrew;
+				[_group] call GMS_fnc_destroyVehicleAndCrew;
 				_element set[groupParameters,_groupParameters];
 				_element set[patrolGroup ,grpNull];
 				_element set[timesSpawned,(_timesSpawned - 1)];

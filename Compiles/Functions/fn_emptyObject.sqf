@@ -1,6 +1,9 @@
+
 /*
+		Remove all inventory from an object.
+
 	By Ghostrider [GRG]
-	Copyright 2016
+	Copyright 2016	
 	--------------------------
 	License
 	--------------------------
@@ -8,13 +11,5 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-params["_veh"];
-if (crew(_veh) isEqualTo []) then 
-{
-	[_veh] call blck_fnc_handleEmptyVehicle;
-} else {
-	if ({alive _x} count (crew _veh) isEqualTo 0) then 
-	{
-		[_veh] call blck_fnc_handleEmptyVehicle;
-	};
-};
+
+_this call GMS_fnc_emptyObjectInventory;

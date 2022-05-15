@@ -38,12 +38,12 @@ DLS_Spawn_Locations = [];
 
 //if (blck_debugLevel > 2) then {diag_log "[blckeagls] DLS_Init.sqf:: Base Variables Set";};
 
-if (blck_modType isEqualTo "Epoch") then
+if (GMS_modType isEqualTo "Epoch") then
 {
 	call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\DLS\DLS_triggers_Epoch.sqf";
 };
 
-if (blck_modType isEqualTo "Exile") then
+if (GMS_modType isEqualTo "Exile") then
 {
 	call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\DLS\DLS_triggers_Exile.sqf";
 };

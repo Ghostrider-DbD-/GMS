@@ -24,7 +24,7 @@ if !(_objectDescriptors isEqualTo []) then
 		};
 		if (_money > 0) then 
 		{
-			[_crate,_money] call blck_fnc_addMoneyToObject;
+			[_crate,_money] call GMS_fnc_setMoney;
 		};
 		[_crate, _crateLoot,_lootCounts] call blck_fnc_fillBoxes;
 	} forEach _objectDescriptors;
@@ -36,7 +36,7 @@ else
 	_crate = [_coords,_crateType] call blck_fnc_spawnCrate;
 	if !(_money == -1) then 
 	{
-		[_crate,_money] call blck_fnc_addMoneyToObject;
+		[_crate,_money] call GMS_fnc_setMoney;
 	};
 	[_crate,blck_BoxLoot_Red,blck_lootCountsGreen] call blck_fnc_fillBoxes;
 };

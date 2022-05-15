@@ -32,11 +32,11 @@ if (_index > -1) then
 {	
 	_element = blck_pendingMissions select _index;
 
-	if (toLower(_status) isEqualTo "active") then {
+	if (toLowerANSI(_status) isEqualTo "active") then {
 		_element set[5, -1];
 		_element set[6,_coords];
 	};
-	if (toLower(_status) isEqualTo "inactive") then 
+	if (toLowerANSI(_status) isEqualTo "inactive") then 
 	{
 		_waitTime = (_element select 3) + random((_element select 4) - (_element select 3));
 		_element set[5, diag_tickTime + _waitTime];

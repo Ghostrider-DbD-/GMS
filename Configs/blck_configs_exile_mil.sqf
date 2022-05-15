@@ -691,7 +691,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"arifle_SDAR_F"
 	];
 
-	if ((tolower blck_modType) isEqualTo "exile") then
+	if ((tolower GMS_modType) isEqualTo "exile") then
 	{
 		blck_UMS_submarines =
 		[
@@ -703,13 +703,13 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		
 		blck_UMS_crates =	["Exile_Container_SupplyBox"];
 	};
-	if ((tolower blck_modType) isEqualTo "epoch") then
+	if ((tolower GMS_modType) isEqualTo "epoch") then
 	{
 		blck_UMS_submarines = ["B_SDV_01_EPOCH"];
 		blck_UMS_crates = blck_crateTypes;
 		//blck_UMS_crates = ["container_epoch"];	
 	};
-	if ((toLower blck_modType) isEqualTo "default") then 
+	if ((toLower GMS_modType) isEqualTo "default") then 
 	{
 		blck_UMS_submarines =
 		[

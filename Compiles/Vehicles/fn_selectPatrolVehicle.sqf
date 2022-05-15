@@ -1,9 +1,6 @@
-
 /*
-		Remove all inventory from an object.
-
 	By Ghostrider [GRG]
-	Copyright 2016	
+	Copyright 2016
 	--------------------------
 	License
 	--------------------------
@@ -12,9 +9,12 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-	
-params["_veh"];
-clearWeaponCargoGlobal    _veh;
-clearMagazineCargoGlobal  _veh;
-clearBackpackCargoGlobal  _veh;
-clearItemCargoGlobal      _veh;
+
+params["_aiDifficulty"];
+private _choices = missionNameSpace getVariable [format["blck_AIPatrolVehicles%1",_aiDifficulty],blck_AIPatrolVehicles];
+private _vehicle = selectRandom _choices;
+//diag_log format["blck_fnc_selectPatrolVehicle returning %1 | _choices = %2",_vehicle,_choices];
+_vehicle
+
+
+

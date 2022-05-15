@@ -10,7 +10,9 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 private _crate = _this select 0;
-[_crate,(_crate getVariable "lootArray"),(_crate getVariable "lootCounts")] call blck_fnc_fillBoxes;
+private _lootCounts = _crate getVariable "lootCounts";
+private _lootarray = _crate getVariable "lootArray";
+[_crate,_lootArray,_lootCounts] call blck_fnc_fillBoxes;
 _crate setVariable["lootLoaded",true];
 
 

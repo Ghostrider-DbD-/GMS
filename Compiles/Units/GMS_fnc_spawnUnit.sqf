@@ -26,33 +26,11 @@ if (_backpacks  isEqualTo []) then {_backpacks = [_skillLevel] call blck_fnc_sel
 if (isNull _aiGroup) exitWith {["NULL-GROUP Provided to _fnc_spawnUnit"] call blck_fnc_log};
 
 _unit = ObjNull;
-blck_unitType createUnit [_pos, _aiGroup, "_unit = this", blck_baseSkill, "COLONEL"];
-if (blck_modType isEqualTo "Epoch") then
-{
-	_unit setVariable ["LAST_CHECK",28800,true];
-	switch(_skillLevel) do
-	{
-		case "blue":{_unit setVariable["Crypto",2 + floor(random(blck_maxMoneyBlue)),true];};
-		case "red":{_unit setVariable["Crypto",4 + floor(random(blck_maxMoneyRed)),true];};
-		case "green":{_unit setVariable["Crypto",6 + floor(random(blck_maxMoneyGreen)),true];};
-		case "orange":{_unit setVariable["Crypto",8 + floor(random(blck_maxMoneyOrange)),true];};
-	};
-};
-if !(blck_modType isEqualTo "Epoch") then
-{
-	"i_g_soldier_unarmed_f" createUnit [_pos, _aiGroup, "_unit = this", blck_baseSkill, "COLONEL"];
-	switch(_skillLevel) do
-	{
-		case "blue":{_unit setVariable["ExileMoney",2 + floor(random(blck_maxMoneyBlue)),true];};
-		case "red":{_unit setVariable["ExileMoney",4 + floor(random(blck_maxMoneyRed)),true];};
-		case "green":{_unit setVariable["ExileMoney",6 + floor(random(blck_maxMoneyGreen)),true];};
-		case "orange":{_unit setVariable["ExileMoney",8 + floor(random(blck_maxMoneyOrange)),true];};
-	};
-};
+GMS_unitType createUnit [_pos, _aiGroup, "_unit = this", blck_baseSkill, "COLONEL"];
 
-private _tempPos = _pos findEmptyPosition [0.1, 3, typeOf _unit];
+//private _tempPos = _pos findEmptyPosition [0.1, 3, typeOf _unit];
 
-if !(_tempPos isEqualTo []) then {_unit setPos _tempPos};
+//if !(_tempPos isEqualTo []) then {_unit setPos _tempPos};
 
 [_unit] call blck_fnc_removeGear;
 if (_scuba) then
@@ -146,18 +124,7 @@ else
 };
 
 _unit addWeapon selectRandomWeighted["",4,"Binocular",3,"Rangefinder",1];
-//_unit addEventHandler ["HandleDamage",{_this call blck_EH_handleDamage;}];
-_unit addEventHandler ["FiredNear",{_this call blck_EH_AIfiredNear;}];
-_unit addEventHandler ["Reloaded", {_this call blck_EH_unitWeaponReloaded;}];
-_unit addMPEventHandler ["MPKilled", {[(_this select 0), (_this select 1)] call blck_EH_AIKilled;}];
-_unit addMPEventHandler ["MPHit",{[_this] call blck_EH_AIHit;}];
 
-[_unit, missionNamespace getVariable[format["blck_Skills%1",_skillLevel],blck_SkillsRed]] call blck_fnc_setSkill;
-_index = missionNamespace getVariable[format["blck_skillsIndex_%1",_skillLevel],1];
-_unit setVariable ["alertDist",blck_AIAlertDistance select _index];
-_unit setVariable ["intelligence",blck_AIIntelligence select _index];
-_unit setVariable ["GMS_AI",true];
-//diag_log format["_spawnUnit: _index = %1 | _aiSkills = %2",_index,_aiSkills];
 _unit
 
 

@@ -44,12 +44,12 @@ if (_spawnMode == 2) then {_useChute = 1} else
 {if (_spawnMode == 1) then {_useChute = -1} else
 {_spawnMode = selectRandom  [-1,1]};};
 
-if (toLower(blck_modType) isEqualTo "exile") then
+if (toLowerANSI(GMS_modType) isEqualTo "exile") then
 {
 	//_box = "Exile_Container_SupplyBox";
 	_box = selectRandom blck_crateTypes;	
 };
-if (toLower(blck_modType) isEqualTo "epoch") then
+if (toLowerANSI(GMS_modType) isEqualTo "epoch") then
 {
 	_box = selectRandom blck_crateTypes;
 };

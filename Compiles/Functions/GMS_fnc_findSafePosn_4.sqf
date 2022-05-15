@@ -94,8 +94,8 @@ while {_coords isEqualTo []} do
 	if !(_findNew) then
 	{
 		private _poles = [];
-		if (blck_modType isEqualTo "Epoch") then {_poles = allMissionObjects "PlotPole_EPOCH"};
-		if (blck_modType isEqualTo "Exile") then {_poles = allMissionObjects "Exile_Construction_Flag_Static"};		
+		if (GMS_modType isEqualTo "Epoch") then {_poles = allMissionObjects "PlotPole_EPOCH"};
+		if (GMS_modType isEqualTo "Exile") then {_poles = allMissionObjects "Exile_Construction_Flag_Static"};		
 		//diag_log format["_fnc_findSafePosn: count _poles = %1 | _poles = %2",count _poles,_poles];
 		{
 			if ((_x distance2D _coords) < blck_minDistanceToBases) then

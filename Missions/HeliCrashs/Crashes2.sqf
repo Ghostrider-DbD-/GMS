@@ -1,28 +1,7 @@
-private _uniformsHC = ["U_C_Scientist","U_OrestesBody","U_NikosAgedBody","U_NikosBody"];
-if ((toLower blck_modType) isEqualTo "epoch") then
-{
-	_uniformsHC = _uniformsHC + blck_femaleUniformsEpoch;	
-};
-private _headGearHC = ["H_StrawHat_dark","H_StrawHat","H_Hat_brown","H_Hat_grey"];
-
-private _crashSiteMissions = [
-	["Plane_Fighter_03_wreck_F","Fighter Crash", "A %1 lord crashed his jet fighter","Survivors secured a jet crash site",5,7,"Red","ammo",3],
-	["Land_UWreck_MV22_F","Osprey Crash", "A %1 lord crashed his MV22","Survivors secured an MV22 crash site",5,7,"Red","ammo",3],
-	["Land_Wreck_Plane_Transport_01_F","C-192 Crash", "A %1 pilot crashed a C-192","Survivors secured a C-192 crash site",5,7,"Red","supplies",3],
-	["Land_Wreck_Heli_Attack_02_F","MI-48 Crash", "A %1 pilot crashed an MI-48","Survivors secured an Mi-48 crash site",5,7,"Red","ammo",3],
-	["Land_Wreck_Heli_Attack_01_F","Blackfoot Crash","A %1 pilot crashed a Blackfoot","Survivors secured a Blackfoot crash site",5,7,"Red","ammo",3],
-	["Land_Scrap_MRAP_01_F","MRAP Crash","An MRAP was crashed in a %1 convoy","Survivors have secured the crashe site",4,5,"Blue","ammo",2],
-	["Land_Wreck_Offroad2_F","Offroad Crash","A pickup in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Red","ammo",3],
-	["Land_Wreck_Offroad_F","Offroad Crash","A pickup in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Blue","ammo",2],
-	["Land_Wreck_Hunter_F","Hunter Crashed","A Hunter in a %1 convoy has crashed","Survivors have secured the crash site",5,7,"Red","ammo",3],
-	["Land_Wreck_HMMWV_F","HMMV Crash","A HMMVV in a %1 convoy has crashed","Survivors have secured the crash site",5,7,"Red","ammo",3],
-	["Land_Wreck_Ural_F","Ural Crash","A Ural in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Blue","supplies",2]
-];
-
 fn_selectCrateType = {
 	private["_item"];
 	_item = "";
-	switch (toLower(blck_modType)) do
+	switch (toLowerANSI(GMS_modType)) do
 	{
 		case "epoch": {_item = "GroundWeaponHolder"};
 		case "exile": {_item = "Box_NATO_Wps_F"};
@@ -56,7 +35,7 @@ fn_spawnLootContainers = {
 
 fn_fillContainer = {
 	params["_cntr","_diff","_lType","_level"];
-	if (toLower(blck_modType) isEqualTo "epoch") then
+	if (toLower(GMS_modType) isEqualTo "epoch") then
 	{
 		switch (_diff) do
 		{
@@ -100,21 +79,41 @@ fn_fillContainer = {
 blck_activeCrashSites = 0;
 _fn_spawnWreckMission = {
 	params["_index","_posOfCrash"];
+
 	blck_activeCrashSites  = blck_activeCrashSites + 1;
 	blck_ActiveMissionCoords pushBack _posOfCrash;	
-
+	private _crashSiteMissions = [
+		["Plane_Fighter_03_wreck_F","Fighter Crash", "A %1 lord crashed his jet fighter","Survivors secured a jet crash site",5,7,"Red","ammo",3],
+		["Land_UWreck_MV22_F","Osprey Crash", "A %1 lord crashed his MV22","Survivors secured an MV22 crash site",5,7,"Red","ammo",3],
+		["Land_Wreck_Plane_Transport_01_F","C-192 Crash", "A %1 pilot crashed a C-192","Survivors secured a C-192 crash site",5,7,"Red","supplies",3],
+		["Land_Wreck_Heli_Attack_02_F","MI-48 Crash", "A %1 pilot crashed an MI-48","Survivors secured an Mi-48 crash site",5,7,"Red","ammo",3],
+		["Land_Wreck_Heli_Attack_01_F","Blackfoot Crash","A %1 pilot crashed a Blackfoot","Survivors secured a Blackfoot crash site",5,7,"Red","ammo",3],
+		["Land_Scrap_MRAP_01_F","MRAP Crash","An MRAP was crashed in a %1 convoy","Survivors have secured the crashe site",4,5,"Blue","ammo",2],
+		["Land_Wreck_Offroad2_F","Offroad Crash","A pickup in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Red","ammo",3],
+		["Land_Wreck_Offroad_F","Offroad Crash","A pickup in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Blue","ammo",2],
+		["Land_Wreck_Hunter_F","Hunter Crashed","A Hunter in a %1 convoy has crashed","Survivors have secured the crash site",5,7,"Red","ammo",3],
+		["Land_Wreck_HMMWV_F","HMMV Crash","A HMMVV in a %1 convoy has crashed","Survivors have secured the crash site",5,7,"Red","ammo",3],
+		["Land_Wreck_Ural_F","Ural Crash","A Ural in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Blue","supplies",2]
+	];
+	private _uniformsHC = ["U_C_Scientist","U_OrestesBody","U_NikosAgedBody","U_NikosBody"];
+	if ((toLower GMS_modType) isEqualTo "epoch") then
+	{
+		_uniformsHC = _uniformsHC + blck_femaleUniformsEpoch;	
+	};
+	private _headGearHC = ["H_StrawHat_dark","H_StrawHat","H_Hat_brown","H_Hat_grey"];
 	private _mission = selectRandom _crashSiteMissions;
+	[format["_crashes2: _mission = %1",_mission]] call blck_fnc_log;
 	_mission params ["_wreckName","_markerLabel","_startMsg","_endMsg","_minAI","_maxAI","_difficulty","_lootType","_level"];
 	private _crashName = format["CrashSite%1",_index];
 	
 	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> Crash site %1 spawned at %2",_crashName,_posOfCrash];};
 	
 	private _markers = [_crashName,_posOfCrash,_markerLabel,"ColorGreen","mil_triangle",[],""] call blck_fnc_createMissionMarkers;
-	if (blck_modType isEqualTo "Epoch") then
+	if (GMS_modType isEqualTo "Epoch") then
 	{
 		_startMsg = format[_startMsg,"Bandit"];
 	};
-	if (blck_modType isEqualTo "Exile") then
+	if (GMS_modType isEqualTo "Exile") then
 	{
 		_startMsg = format[_startMsg,"Mafia"];
 	};
@@ -133,7 +132,7 @@ _fn_spawnWreckMission = {
 		_obj pushback _cutter0;
 		_obj pushback _x;
 	}forEach _containers;
-	#define waypointDimensions [30,30]
+	#define waypointDimensions [60,60]
 	private _numberAI = [_minAI,_maxAI] call GMS_fnc_getIntegerFromRange;
 
 	private _group = [_posOfCrash,_numberAI,_difficulty,waypointDimensions,_uniformsHC,_headGearHC] call blck_fnc_spawnGroup;
@@ -153,7 +152,8 @@ _fn_spawnWreckMission = {
 	[_markers select 1] call blck_fnc_deleteMarker;
 	[["end",_endMsg,_markerLabel]] call blck_fnc_messageplayers;
 	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> crash site %1 at %1 cleared",_CrashName,_posOfCrash];};
-	blck_oldMissionObjects pushback [_posOfCrash,_obj, blck_cleanupCompositionTimer];	
+	//blck_oldMissionObjects pushback [_posOfCrash,_obj, blck_cleanupCompositionTimer];	
+	[_obj, (diag_tickTime + blck_cleanupCompositionTimer)] call GMS_fnc_addToDeletionCue;
 	blck_liveMissionAI pushback [_posOfCrash,units _group, (diag_tickTime + blck_AliveAICleanUpTimer)];
 	blck_recentMissionCoords pushback[_posOfCrash,diag_tickTime];
 	blck_ActiveMissionCoords = blck_ActiveMissionCoords - _posOfCrash;

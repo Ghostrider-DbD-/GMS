@@ -41,7 +41,7 @@ while {true} do
 	{
 		_timer5sec = diag_tickTime + 5;
 		if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManagement) then {[] call blck_fnc_simulationManager};
-		[] call blck_fnc_sm_staticPatrolMonitor;
+		//[] call blck_fnc_sm_staticPatrolMonitor;
 		[] call blck_fnc_vehicleMonitor;		
 		#ifdef GRGserver
 		[] call blck_fnc_broadcastServerFPS;
@@ -52,7 +52,7 @@ while {true} do
 		[] call blck_fnc_spawnPendingMissions; 	
 		_timer10Sec = diag_tickTime;
 		[] call blck_fnc_scanForPlayersNearVehicles;
-		[] call blck_fnc_cleanupTemporaryMarkers;
+		//[] call blck_fnc_cleanupTemporaryMarkers;
 		[] call blck_fnc_updateCrateSignals;		
 				
 		//_timer20sec = diag_tickTime + 20;
@@ -64,12 +64,11 @@ while {true} do
 		[] call blck_fnc_restoreHiddenObjects;
 		[] call blck_fnc_groupWaypointMonitor;
 		[] call blck_fnc_cleanupAliveAI;
-		[] call blck_fnc_cleanupObjects;
-		[] call blck_fnc_cleanupDeadAI;		
+		//[] call blck_fnc_cleanupObjects;
+		//[] call blck_fnc_cleanupDeadAI;
 		if (blck_useHC) then {[] call blck_fnc_HC_passToHCs};
 		if (blck_useTimeAcceleration) then {[] call blck_fnc_timeAcceleration};
 		if (blck_ai_offload_to_client) then {[] call blck_fnc_ai_offloadToClients};
-
 	};
 	if (diag_tickTime > _timer5min) then 
 	{

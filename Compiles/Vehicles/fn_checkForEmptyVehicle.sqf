@@ -1,8 +1,6 @@
 /*
 	By Ghostrider [GRG]
-
-	Handles the case where a unit is hit.
-
+	Copyright 2016
 	--------------------------
 	License
 	--------------------------
@@ -10,5 +8,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-_this call GMS_fnc_unitHit;
+params["_veh"];
+if (crew(_veh) isEqualTo [] || {({alive _x} count (crew _veh) isEqualTo 0)}) then 
+{
+	[_veh] call blck_fnc_handleEmptyVehicle;
+};

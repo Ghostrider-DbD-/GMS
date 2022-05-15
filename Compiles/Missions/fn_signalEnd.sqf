@@ -15,6 +15,7 @@
 private ["_start","_maxHeight","_smokeShell","_light","_lightSource"];
 params[["_crate",objNull],["_time",60]]; 
 
+/*
 _smokeShell = selectRandom ["SmokeShellOrange","SmokeShellBlue","SmokeShellPurple","SmokeShellRed","SmokeShellGreen","SmokeShellYellow"];
 _lightSource = selectRandom ["Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"];
 _light  = objNull;
@@ -27,5 +28,6 @@ if(sunOrMoon < 0.2) then
 	_light setPosATL (getPosATL _crate);
 	_light attachTo [_crate,[0,0,(0.55)]];
 };
-
+*/
+[_crate,_time] call GMS_fnc_visibleMarker;
 blck_illuminatedCrates  pushBack [_crate,_smoke,_light,_smokeShell,_lightSource,diag_tickTime + 120, diag_tickTime + 300];	

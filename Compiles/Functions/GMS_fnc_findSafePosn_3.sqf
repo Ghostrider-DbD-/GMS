@@ -38,8 +38,8 @@ _fn_buildBlacklistedLocationsList = {
 	} forEach blck_ActiveMissionCoords;	
 
 	private _bases = [];
-	if (blck_modType isEqualTo "Epoch") then {_bases = nearestObjects[blck_mapCenter, ["PlotPole_EPOCH"], blck_mapRange + 25000]};
-	if (blck_modType isEqualTo "Exile") then {_bases = nearestObjects[blck_mapCenter, ["Exile_Construction_Flag_Static"], blck_mapRange + 25000]};
+	if (GMS_modType isEqualTo "Epoch") then {_bases = nearestObjects[blck_mapCenter, ["PlotPole_EPOCH"], blck_mapRange + 25000]};
+	if (GMS_modType isEqualTo "Exile") then {_bases = nearestObjects[blck_mapCenter, ["Exile_Construction_Flag_Static"], blck_mapRange + 25000]};
 
 	{
 		_blacklistedLocs pushBack [getPosATL _x,_minToBases];
@@ -128,7 +128,7 @@ while { !_validspot} do
 
 		// Check for near Bases
 		if(_validspot) then {
-			if (blck_modType isEqualTo "Epoch") then {
+			if (GMS_modType isEqualTo "Epoch") then {
 				{
 					if (_coords distance _x < blck_minDistanceToBases) exitwith {
 						_validspot = false; 
@@ -136,7 +136,7 @@ while { !_validspot} do
 				} foreach (missionnamespace getvariable ["Epoch_PlotPoles",[]]);
 			}
 			else {
-				if (blck_modType isEqualTo "Exile") then {
+				if (GMS_modType isEqualTo "Exile") then {
 					{
 						if (_coords distance _x < blck_minDistanceToBases) exitwith {
 							_validspot = false; 

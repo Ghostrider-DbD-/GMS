@@ -31,7 +31,7 @@ if (_vehiclePatrolSpawns isEqualTo []) then
 {
 	private _patrolVehicle = objNull;
 	_x params["_vehicle","_spawnPos","_aiDifficultyLevel","_patrolRadius","_respawnTime"];
-	private _vehGroup = [blck_AI_Side,true]  call blck_fnc_createGroup;
+	private _vehGroup = [GMS_side,true]  call blck_fnc_createGroup;
 	if !(isNull _vehGroup) then 
 	{
 		_vehGroup setVariable["soldierType","vehicle"];		

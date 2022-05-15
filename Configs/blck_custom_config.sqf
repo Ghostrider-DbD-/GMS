@@ -140,38 +140,38 @@ if (blck_debugOn) then {
     //blck_minDistanceToPlayer = 1000;
     //blck_minDistanceFromTowns = 100;
 	//blck_preciseMapMarkers = true;
-	//blck_MissionTimeout = 600;
+	//blck_MissionTimeout = 300;
 	blck_cleanupCompositionTimer = 30;
 	blck_AliveAICleanUpTimer = 30;
 	blck_bodyCleanUpTimer = 30;
 	blck_vehicleDeleteTimer = 30;
 	blck_maxSpawnedMissions = 15;
 	blck_mainThreadUpdateInterval = 10;
-	blck_launchersPerGroup = 6;
+	blck_launchersPerGroup = 1;
 
-	blck_enableOrangeMissions = 0;  
-	blck_enableGreenMissions = 0;
-	blck_enableRedMissions = 0;
-	blck_enableBlueMissions = 0;
+	blck_enableOrangeMissions = 1;  
+	blck_enableGreenMissions = 1;
+	blck_enableRedMissions = 1;
+	blck_enableBlueMissions = 1;
 	blck_numberUnderwaterDynamicMissions = 0;	
-	blck_enableHunterMissions = 0;
+	blck_enableHunterMissions = 1;
 	blck_enableScoutsMissions = 1;
-	blck_maxCrashSites = 0; 
+	blck_maxCrashSites = 1; 
 
-	blck_noPatrolHelisBlue = 0;
-	blck_noPatrolHelisRed = 0;
-	blck_noPatrolHelisGreen = 0;
-	blck_noPatrolHelisOrange = 0;
+	blck_noPatrolHelisBlue = 1;
+	blck_noPatrolHelisRed = 1;
+	blck_noPatrolHelisGreen = 1;
+	blck_noPatrolHelisOrange = 1;
 
-	blck_SpawnVeh_Orange = 0; // Number of static weapons at Orange Missions
-	blck_SpawnVeh_Green = 0; // Number of static weapons at Green Missions
-	blck_SpawnVeh_Blue = 0;  // Number of static weapons at Blue Missions
-	blck_SpawnVeh_Red = 0;  // Number of static weapons at Red Missions
+	blck_SpawnVeh_Orange = 2; // Number of static weapons at Orange Missions
+	blck_SpawnVeh_Green = 2; // Number of static weapons at Green Missions
+	blck_SpawnVeh_Blue = 2;  // Number of static weapons at Blue Missions
+	blck_SpawnVeh_Red = 2;  // Number of static weapons at Red Missions
 
-	blck_SpawnEmplaced_Orange = 0; // Number of static weapons at Orange Missions
-	blck_SpawnEmplaced_Green = 0; // Number of static weapons at Green Missions
-	blck_SpawnEmplaced_Blue = 0;  // Number of static weapons at Blue Missions
-	blck_SpawnEmplaced_Red = 0;  // Number of static weapons at Red Missions	
+	blck_SpawnEmplaced_Orange = 2; // Number of static weapons at Orange Missions
+	blck_SpawnEmplaced_Green = 2; // Number of static weapons at Green Missions
+	blck_SpawnEmplaced_Blue = 2;  // Number of static weapons at Blue Missions
+	blck_SpawnEmplaced_Red = 2;  // Number of static weapons at Red Missions	
 
 	blck_MinAI_Orange = 20;
 	blck_MaxAI_Orange = 25;
@@ -179,15 +179,15 @@ if (blck_debugOn) then {
 
 	blck_MinAI_Green = 16;
 	blck_MaxAI_Green = 21;
-	blck_AIGrps_Green = 0;
+	blck_AIGrps_Green = 3;
 
 	blck_MinAI_Red = 12;
 	blck_MaxAI_Red = 15;
-	blck_AIGrps_Red = 0;
+	blck_AIGrps_Red = 3;
 
 	blck_MinAI_Blue = 8;	
 	blck_MaxAI_Blue = 12;
-	blck_AIGrps_Blue = 0;
+	blck_AIGrps_Blue = 3;
 
 	blck_TMin_Blue = 7;
 	blck_TMin_Red = 10;
