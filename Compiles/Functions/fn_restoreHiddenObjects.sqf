@@ -1,4 +1,6 @@
 /*
+	blck_fnc_restoreHiddenObjects
+
 	By Ghostrider [GRG]
 	Copyright 2016	
 	--------------------------

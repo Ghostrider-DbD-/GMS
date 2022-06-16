@@ -1,4 +1,6 @@
 /*
+	blck_fnc_loadLootItemsFromArray
+	
 	Depends on blck_fnc_addItemToCrate
 	
 	call as:
@@ -35,7 +37,7 @@
 		private["_tries","_q","_item"];
 		_tries = 0;
 		_q = _x select 1; // this can be a number or array.
-		_tries = [_q] call blck_fnc_getNumberFromRange;
+		_tries = [_q] call GMS_fnc_getNumberFromRange;
 		for "_i" from 1 to _tries do
 		{
 			_item = selectRandom (_x select 0);

@@ -1,5 +1,8 @@
 /*
 	[] call blck_fnc_createGroup
+
+	Notes: Kept for backwards compatability with the static mission system if this is kept and not updated.
+
 	By Ghostrider [GRG]
 	Copyright 2016
 	--------------------------

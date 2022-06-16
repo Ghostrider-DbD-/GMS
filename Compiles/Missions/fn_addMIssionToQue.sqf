@@ -1,4 +1,6 @@
 /*
+	blck_fnc_addMissionToQue
+	
 	Adds the basic list of parameters that define a mission such as the marker name, mission list, mission path, AI difficulty, and timer settings, to the arrays that the main thread inspects.
 	
 	By Ghostrider-GRG-
@@ -36,17 +38,19 @@ private _missionsData = []; // Parameters definine each of the missions for this
 	};
 } forEach _missionList;
 
-private _missionCategoryDescriptors = [
+private _key = round(random(10000));
+private _missions = [
+	_key,
 	_difficulty,
 	_noMissions,  // Max no missions of this category
 	0,  // Number active 
 	_tMin, // Used to calculate waittime in the future
 	_tMax, // as above
 	_waitTime,  // time at which a mission should be spawned
-	_missionsData  // 
+	_missionsData  // Array of data about individual missions that could be spawned. The data table for each mission is defined in _missionSpawner
 ];
 
-blck_missionData pushBack _missionCategoryDescriptors;
+blck_missionData pushBack _missions;
 
 
 

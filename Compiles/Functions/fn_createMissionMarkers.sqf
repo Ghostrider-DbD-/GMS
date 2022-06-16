@@ -21,7 +21,7 @@ private "_markers";
 	["_markerBrush","GRID"]
  ];
 
-if (blck_debugLevel >= 3) then 
+if (blck_debugLevel > 3) then 
 {
 	private _pList =[
 		"_markerName",  // the name used when creating the marker. Must be unique.

@@ -1,6 +1,7 @@
 /*
+	blck_fnc_setDirUp
+
 	By Ghostrider [GRG]
-	Copyright 2016	
 	--------------------------
 	License
 	--------------------------
@@ -8,6 +9,10 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-
-	params["_killer"];
-	[["IED","",0,0],[_killer]] call blck_fnc_MessagePlayers;
+#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+params["_object","_dir"];
+switch (typeName _dir) do 
+{
+	case "SCALAR": {_object setDir _dir};
+	case "ARRAY": {_object setVectorDirAndUp _dir};
+};

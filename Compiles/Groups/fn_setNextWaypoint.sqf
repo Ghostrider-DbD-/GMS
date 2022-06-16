@@ -1,5 +1,7 @@
 // Sets the WP type for WP for the specified group and updates other atributes accordingly.
 /*
+	blck_fnc_setNextWaypoint
+
 	for ghostridergaming
 	By Ghostrider [GRG]
 	Copyright 2016

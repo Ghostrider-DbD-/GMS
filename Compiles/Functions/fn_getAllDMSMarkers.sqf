@@ -1,5 +1,7 @@
 /*
-	by Ghostrider [GRG] 
+	blck_fnc_getAllDMSMarkers
+
+	By Ghostrider [GRG]
 	Copyright 2016
 	--------------------------
 	License
@@ -9,7 +11,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-params["_marker","_rootText","_missionAI"];
 
-private _txtPrior = markerText _marker;
-_marker setMarkerText format["%1 / %2 AI Alive",_rootText,{alive _x} count _missionAI];
+#define DMS_missionMarkerRootName "DMS_MissionMarker"
+private _dmsMarkers = [DMS_missionMarkerRootName] call blck_fnc_getAllMarkersOfSubtype;
+_dmsMarkers

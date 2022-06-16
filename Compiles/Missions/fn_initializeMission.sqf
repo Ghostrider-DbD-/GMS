@@ -1,58 +1,43 @@
 /*
+	blck_fnc_initializeMission 
 
 	Perform all functions necessary to initialize a mission.
+	A marker is created and mission info is added to blck_initializedMissionsList
+	 
 	[_mrkr,_difficulty,_m] call blck_fnc_initializeMission;
 */
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 // Need to debug for GM map
 private ["_coords","_coordArray","_return"];
-params["_missionCategoryDescriptors","_missionParameters","_missionCount"];
- _missionCategoryDescriptors params [
-		"_difficulty",
-		"_noMissions",  // Max no missions of this category
-		"_noActive",  // Number active 
-		"_tMin", // Used to calculate waittime in the future
-		"_tMax", // as above
-		"_waitTime",  // time at which a mission should be spawned
-		"_missionsData"  // 
-	];
+params[
+	"_key",  			// This key can be used to seach the list of available mission types to update that list when a mission is completed or times out
+	"_missionConfigs",  // Selfevident but this is an array with all configs for the mission 
+	"_missionCount"		// The number of missions run thus far which is used to unsure each marker has a unique name 
+];
 
-if (blck_debugLevel >= 3) then 
-{
-	{
-		diag_log format["_initializeMission: _missionCategoryDescriptors %1 = %2",_forEachIndex, _missionCategoryDescriptors];
-	} forEach [
-			"_difficulty",
-			"_noMissions",  // Max no missions of this category
-			"_noActive",  // Number active 
-			"_tMin", // Used to calculate waittime in the future
-			"_tMax", // as above
-			"_waitTime",  // time at which a mission should be spawned
-			"_missionsData"  // 
-		];
-};
-if (_noActive > _noMissions) exitWith {if (blck_debugOn) then {}};
-
-_missionParameters params[
-	"_markerData",
-	"_missionMessages",
-	"_paraData",
+ _missionConfigs params [
+	"_difficulty",
+	"_markerConfigs",
 	"_endCondition",	
 	"_isscubamission",	
-	"_missionLoot",
-	"_aiData",
+	"_missionLootConfigs",
+	"_aiConfigs",
+	"_missionMessages",	
+	"_paraConfigs",	
 	"_defaultMissionLocations"
 ];
 
-_markerData params[
-	"_markerName",
+_markerConfigs params[
+	"_markerName",  //  Same as _markerLabel when defined as such in missions - this is just a bit of nomenclature difference
 	"_markerMissionName", // Name used for setMarkerText and also for the root name for all markers	
 	"_markerType", 
 	"_markerColor", 
 	"_markerSize",
 	"_markerBrush"
 ];
+
+//[format["_initializeMission (39): _markerName %1 | _key %2 | _missionCount %3",_markerName,_key,_missionCount]] call blck_fnc_log;
 
 _coordsArray = [];
 if !(_defaultMissionLocations isEqualTo []) then 
@@ -72,12 +57,20 @@ if (_coords isEqualTo []) exitWith
 {
 	[format["No Safe Mission Spawn Position Found to spawn Mission %1",_markerMissionName],'warning'] call blck_fnc_log;
 	false;
+	for "_i" from 1 to (count blck_missionData) do 
+	{
+		if (_key == (_x select 0)) exitWith 
+		{
+			#define noActive 3
+			private _activeMissions = _x select noActive;
+			_x set[noActive, _activeMissions - 1];
+		};
+	};
 };
-
-if (blck_debugLevel >= 3) then {diag_log format["_fnc_initializeMission: _markerMissionName = %1 |  _coords = %2",_markerMissionName,_coords]};
 
 blck_ActiveMissionCoords pushback _coords; 
 blck_missionsRunning = blck_missionsRunning + 1;
+//[format["_initializeMission (70): _coords = %1 | blck_missionsRunning = %2",_coords,blck_missionsRunning]] call blck_fnc_log;
 
 private _markers = [];
 
@@ -95,12 +88,11 @@ if !(blck_preciseMapMarkers) then
 {
 	_markerPos = [_coords,75] call blck_fnc_randomPosition;
 };
-private _markerData = [_markerType,_markerColor,_markerSize,_markerBrush];
 
 if (blck_debugLevel >= 3) then 
 {
 	{
-		diag_log format["_initializeMission: %1 = %2",_x,_markerData select _forEachIndex];
+		diag_log format["_initializeMission (95) %1 = %2",_x,_markerConfigs select _forEachIndex];
 	} forEach [	
 		"_markerType", 
 		"_markerColor", 
@@ -108,6 +100,7 @@ if (blck_debugLevel >= 3) then
 		"_markerBrush"
 	];
 };
+
 if !(toLowerANSI (_markerType) in ["ellipse","rectangle"] || {isClass(configFile >> "CfgMarkers" >> _markerType)}) then 
 {
 	[format["_markerType set to 'ELLIPSE': Illegal marker type %1 used for mission %2 of difficulty %3",_markerType,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
@@ -125,41 +118,47 @@ if !(isClass(configFile >> "CfgMarkerColors" >> _markerColor)) then
 	_missionParameters set [1,_markerMissionName];		
 };
 
-private _markers = [format["%1:%2",_markerName,_missionCount],_markerPos,_markerMissionName,_markerColor,_markerType,_markerSize,_markerBrush] call blck_fnc_createMissionMarkers;
-if (blck_debugLevel >= 3) then {[format["_initializeMissions (167): _marker = %1 | _markerMissionName = %2 | _difficulty = %3",_markers,_markerMissionName,_difficulty]] call blck_fnc_log};
+private _markers = [
+	format["%1:%2",_markerName,_missionCount],
+	_markerPos,
+	_markerMissionName,
+	_markerColor,
+	_markerType,
+	_markerSize,
+	_markerBrush] call blck_fnc_createMissionMarkers;
+
+if (blck_debugLevel >= 3) then {[format["_initializeMission (130): _marker = %1 | _markerMissionName = %2 | _difficulty = %3",_markers,_markerMissionName,_difficulty]] call blck_fnc_log};
 
 /*
 	Send a message to players.
 */
- _missionMessages params [
-	"_assetKilledMsg",	
-	"_endMsg",
-	"_startMsg"
- ];
-
+ private _startMsg = _missionMessages select 2;
 [["start",_startMsg,_markerMissionName]] call blck_fnc_messageplayers;
 
-private _chancePara = _paraData param [6];
-private _missionTimeoutAt = -1;
-private _triggered = 0;
-private _spawnPara = if (random(1) < _chancePara) then {true} else {false};
-//diag_log format["_initializeMission: _spawnPara = %1 | _chancePara = %2",_spawnPara,_chancePara];
-private _objects = [];
-private _hiddenObjects = [];
-private _mines = [];
-private _crates = [];
-private _missionAIVehicles = [];
-private _blck_AllMissionAI = [];
-private _spawnedLootVehicles = [];
-private _AI_Vehicles = [];
-private _assetSpawned = objNull;
+#define missionTimeoutAt (diag_tickTime + blck_MissionTimeout)
+#define triggered 0
+#define objects []
+#define hiddenObjects []
+#define mines []
+#define crates  []
+#define missionVehicles []
+#define missionAI []
+#define lootVehicles []
+#define assetSpawned objNull
 
-private _missionData = [_coords,_mines,_objects,_hiddenObjects,_crates, _blck_AllMissionAI,_assetSpawned,_missionAIVehicles,_spawnedLootVehicles,_markers];
-blck_activeMissionsList pushBack [_missionCategoryDescriptors,_missionTimeoutAt,_triggered,_spawnPara,_missionData,_missionParameters];
+private _missionData = [
+	_coords,
+	mines, 
+	objects, 
+	hiddenObjects, 
+	crates, 
+	missionAI, 
+	assetSpawned, 
+	missionVehicles, 
+	lootVehicles,
+	_markers
+];
 
-[format["Initialized Mission %1 | description %2 | difficulty %3 at %4",_markerName, _markerMissionName, _difficulty, diag_tickTime]] call blck_fnc_log;
-if (blck_debugON) then 
-{
-	[format["Mission Marker = %1 | Marker Position = %2 | _coords = %3",_markers,_markerPos,_coords]] call blck_fnc_log;
-};
+blck_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs];
+[format["_initializeMission (163): count blck_initializedMissionsList = %1",count blck_initializedMissionsList]] call blck_fnc_log;
 true

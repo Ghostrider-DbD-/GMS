@@ -23,6 +23,20 @@
 //  Do not touch anything below this line
 ///////////////////////////
 
+// defines for mission initialization and monitoring 
+#define missionNotspawned 0 // Mission marker spawned but nothing else is 
+#define missionInitialized 1  // All mission material is spawned and mission is active 
+#define missionLandscapeSpawned 1 
+#define missionSmokeSpawned 1 
+#define missionLootCratesSpawned 1 
+#define missionEmplacedSpawned 1 
+#define missionVehiclePatrolsSpawned 1 
+#define missionInfantrySpawned 1 
+#define missionAircraftPatrolsSpawned 1 
+#define missionActive 0 
+#define missionComplete 1 
+
+
 //#define blck_debugMode
 #define GRGserver
 //#define blck_addCarParts
@@ -42,6 +56,10 @@
 #define allUnitsKilled 1 
 #define allKilledOrPlayerNear 2 
 #define assetSecured 3 
+#define atMissionSpawnGround 0 
+#define atMissionSpawnAir 1 
+#define atMissionEndGround 2 
+#define atMissionEndAir 3 
 
 //  defines for static group spawners
 #define staticPatrolTriggerRange 2000

@@ -1,8 +1,8 @@
 /*
-	Determines the total number of spawned groups on the side used by the mission system and returns this value.
+	blck_fnc_getAllBlckeaglsMarkers
 
 	By Ghostrider [GRG]
-	Copyright 2016	
+	Copyright 2016
 	--------------------------
 	License
 	--------------------------
@@ -11,7 +11,5 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-
-private _groups_AI_Side = {(side _x) isEqualTo GMS_side} count allGroups;
-
-_groups_AI_Side
+private _blckMarkers = [blck_missionMarkerRootName] call blck_fnc_getAllMarkersOfSubtype;
+_blckMarkers

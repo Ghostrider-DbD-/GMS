@@ -43,7 +43,7 @@ if !(isNull _group) then
         _x params["_bldClassName","_bldRelPos","_bldDir","_allowDamage","_enableSimulation","_probabilityOfGarrision","_noStatics","_typesStatics","_noUnits"];
         if (_typesStatics isEqualTo []) then {_typesStatics = blck_staticWeapons};
         _building = createVehicle[_bldClassName,[0,0,0],[],0,"CAN_COLLIDE"];
-        _buildingsSpawned pushBack (netID _building);
+        _buildingsSpawned pushBack _building;
         _building setPosATL (_bldRelPos vectorAdd _center);
         [_building, _bldDir] call blck_fnc_setDirUp;
         _staticsSpawned = [

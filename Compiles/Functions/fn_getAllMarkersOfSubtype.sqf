@@ -1,4 +1,6 @@
 /*
+	blck_fnc_getAllMarkersOfSubtype
+
 	By Ghostrider [GRG]
 	Copyright 2016
 	--------------------------

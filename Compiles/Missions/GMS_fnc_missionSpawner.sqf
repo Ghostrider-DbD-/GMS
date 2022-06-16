@@ -99,8 +99,8 @@ if !(_endCondition in blck_validEndStates) then
 	_endCondition = allKilledOrPlayerNear;
 };
 //diag_log format["_missionSpawner: _markerName %1 | _markerMissionName %2 | _markerColor %3",_markerName,_markerMissionName,_markerColor];
-private _markerData = [
-	_markerName,
+private _markerConfigs = [
+	_markerLabel,
 	_markerMissionName, // Name used for setMarkerText and also for the root name for all markers	
 	_markerType, 
 	_markerColor, 
@@ -108,7 +108,7 @@ private _markerData = [
 	_markerBrush
 ];
 
-private _paraData = [
+private _paraConfigs = [
 	_noPara, 
 	_paraTriggerDistance,
 	_paraSkill,
@@ -118,7 +118,7 @@ private _paraData = [
 	_chancePara	
 ],
 
-private _missionLoot = [
+private _missionLootConfigs = [
 	_spawnCratesTiming, 
 	_loadCratesTiming,		
 	_crateLoot, 
@@ -127,7 +127,7 @@ private _missionLoot = [
 	_missionLootVehicles	
 ];
 
-private _aiData = [
+private _aiConfigs = [
 	_uniforms, 
 	_headgear, 
 	_vests, 
@@ -168,13 +168,14 @@ private _missionMessages = [
 ];
 
 private _table = [
-	_markerData,
-	_missionMessages,
-	_paraData,
+	_aiDifficultyLevel,
+	_markerConfigs,
 	_endCondition,	
 	_isscubamission,	
-	_missionLoot,
-	_aiData,
+	_missionLootConfigs,
+	_aiConfigs,
+	_missionMessages,
+	_paraConfigs,	
 	_defaultMissionLocations				
 ];
 

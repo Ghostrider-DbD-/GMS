@@ -1,7 +1,9 @@
-/*
-  Set skills for an AI Unit
-  by Ghostrider
 
+/*
+	for ghostridergaming
+	By Ghostrider [GRG]
+	Copyright 2016
+	
 	--------------------------
 	License
 	--------------------------
@@ -10,10 +12,10 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
+// TODO: not sure we need this - can we do the same thing in another script
+private["_group","_wp"];
+_group = group _this;
+_group setVariable["timeStamp",diag_tickTime];
+_wp = [_group, 0];
+_group setCurrentWaypoint _wp;
 
-params ["_unit","_skillsArrray"];
-private["_skillLevel"];
-{
-	_skillLevel = [_x select 1] call GMSS_fnc_getNumberFromRange;
-	_unit setSkill [(_x select 0), _skillLevel];
-} forEach _skillsArrray;

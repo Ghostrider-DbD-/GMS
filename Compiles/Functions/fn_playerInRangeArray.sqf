@@ -1,6 +1,8 @@
 //////////////////////////////////////////////////////
 // Test whether one object (e.g., a player) is within a certain range of any of an array of other objects
 /*
+	blck_fnc_playerInRangeArray
+
 	By Ghostrider [GRG]
 	Copyright 2016	
 	--------------------------

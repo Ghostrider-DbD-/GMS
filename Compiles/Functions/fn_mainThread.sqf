@@ -23,11 +23,8 @@ while {true} do
 	uiSleep 1;
 	
 	if (diag_tickTime > _timer2sec) then 
-	{		
-		//if !(blck_initializationInProgress) then 
-
-			[] spawn blck_fnc_monitorInitializedMissions;	
-
+	{			
+		[] spawn blck_fnc_monitorSpawnedMissions;
 		if (blck_showCountAliveAI) then
 		{
 			{
@@ -40,7 +37,7 @@ while {true} do
 	if (diag_tickTime > _timer5sec) then
 	{
 		_timer5sec = diag_tickTime + 5;
-		if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManagement) then {[] call blck_fnc_simulationManager};
+		if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManagement) then {[] call blck_fnc_simulationMonitor};
 		//[] call blck_fnc_sm_staticPatrolMonitor;
 		[] call blck_fnc_vehicleMonitor;		
 		#ifdef GRGserver
@@ -49,13 +46,11 @@ while {true} do
 	};
 	if (diag_tickTime > _timer10Sec) then 
 	{
-		[] call blck_fnc_spawnPendingMissions; 	
-		_timer10Sec = diag_tickTime;
+		_timer10Sec = diag_tickTime + 10;
 		[] call blck_fnc_scanForPlayersNearVehicles;
-		//[] call blck_fnc_cleanupTemporaryMarkers;
-		[] call blck_fnc_updateCrateSignals;		
-				
-		//_timer20sec = diag_tickTime + 20;
+		[] call blck_fnc_updateCrateSignals;						
+		[] call blck_fnc_spawnNewMissions; 			
+		[] spawn blck_fnc_monitorInitializedMissions;
 	};
 	
 	if ((diag_tickTime > _timer1min)) then
@@ -64,11 +59,12 @@ while {true} do
 		[] call blck_fnc_restoreHiddenObjects;
 		[] call blck_fnc_groupWaypointMonitor;
 		[] call blck_fnc_cleanupAliveAI;
+
 		//[] call blck_fnc_cleanupObjects;
 		//[] call blck_fnc_cleanupDeadAI;
 		if (blck_useHC) then {[] call blck_fnc_HC_passToHCs};
-		if (blck_useTimeAcceleration) then {[] call blck_fnc_timeAcceleration};
-		if (blck_ai_offload_to_client) then {[] call blck_fnc_ai_offloadToClients};
+		if (blck_useTimeAcceleration) then {[] call blck_fnc_timeAccel};
+		//if (blck_ai_offload_to_client) then {[] call blck_fnc_ai_offloadToClients};
 	};
 	if (diag_tickTime > _timer5min) then 
 	{
@@ -86,11 +82,11 @@ while {true} do
 		{
 			private _activeScripts = diag_activeScripts;
 			[
-				format["count diag_activeSQFScripts %1 | Threads [spawned %2, execVM %3] | monitorThreads %4",
+				format["count diag_activeSQFScripts %1 | Threads [spawned %2, execVM %3]",
 					count diag_activeSQFScripts,
 					_activeScripts select 0,
-					_activeScripts select 1,
-					blck_activeMonitorThreads	
+					_activeScripts select 1
+					//blck_activeMonitorThreads	
 				]
 			] call blck_fnc_log;
 			{

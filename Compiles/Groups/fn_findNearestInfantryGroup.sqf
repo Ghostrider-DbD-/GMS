@@ -1,5 +1,7 @@
 
 /*
+	blck_fnc_findNearestInfantryGroup
+	
 	by Ghostrider
 	 
 	--------------------------

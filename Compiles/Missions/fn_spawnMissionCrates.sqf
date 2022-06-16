@@ -19,7 +19,7 @@ _fnc_dropMissionCrates = {
 	_markers = [];
 	
 	{
-		[(getPos _x), _x, true, 150] call blck_fnc_paraDropObject;
+		[(getPos _x), _x, true, 50] call blck_fnc_paraDropObject;
 	} forEach _crates;
 	
 	_airborneCrates = _crates;

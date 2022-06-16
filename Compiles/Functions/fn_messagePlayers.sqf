@@ -1,4 +1,7 @@
+//This script sends Message Information to allplayers
 /*
+	blck_fnc_messagePlayers
+
 	By Ghostrider [GRG]
 	Copyright 2016	
 	--------------------------
@@ -9,7 +12,12 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-params[["_markerName",""]];
+if !(isServer) exitWith {};
+params["_msg",["_players",allplayers]];
 
-deleteMarker _markerName;
-deleteMarker (_markerName + "label");
+{
+	if (isPlayer _x) then {_msg remoteExec["fn_handleMessage",(owner _x)]};
+} forEach _players;
+
+
+

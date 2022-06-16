@@ -52,7 +52,7 @@ for "_i" from 0 to (count blck_sm_Infantry) do
 							//diag_log format["_fnc_sm_monitorInfantry(49): spawning  infantry group with element = %1",_element];
 							if ([_pos,staticPatrolTriggerRange] call blck_fnc_playerInRange) then
 							{
-								private _numAI = [_units] call blck_fnc_getNumberFromRange;
+								private _numAI = [_units] call GMS_fnc_getNumberFromRange;
 								//params["_pos",  "_center", ["_numai1",5],  ["_numai2",10],  ["_skillLevel","red"], ["_minDist",20], ["_maxDist",35],["_configureWaypoints",true], ["_uniforms",blck_SkinList], ["_headGear",blck_headgear],["_vests",blck_vests],["_backpacks",blck_backpacks],["_weaponList",[]],["_sideArms",blck_Pistols], ["_scuba",false] ];
 								_group = [GMS_side,true] call blck_fnc_createGroup;
 								if !(isNull _group) then 

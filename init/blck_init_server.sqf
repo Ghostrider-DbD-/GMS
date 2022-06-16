@@ -250,7 +250,7 @@ if (blck_maxCrashSites > 0) then
 	[] execVM "\q\addons\custom_server\Missions\HeliCrashs\Crashes2.sqf";
 };
 
-call compile preprocessfilelinenumbers "\q\addons\custom_server\DLS\DLS_init.sqf";
+//call compile preprocessfilelinenumbers "\q\addons\custom_server\DLS\DLS_init.sqf";
 #endif
 
 //  start the main thread for the mission system which monitors missions running and stuff to be cleaned up
@@ -262,6 +262,11 @@ private _build = getText(configFile >> "GMSBuild" >> "Build");
 private _date = getText(configFile >> "GMSBuile" >> "Date");
 [format["Version %1 Build %2 Date %4 Loaded in %3 seconds",_version,_build,diag_tickTime - _blck_loadingStartTime,_date]] call blck_fnc_log;
 
+private _num = 1;
+for "_i" from 1 to _num do 
+{
+	[format["initServerTestRoutine: _num = %1",_num]] call blck_fnc_log;
+};
 /*
 for "_i" from 1 to 100 do
 {

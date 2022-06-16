@@ -1,4 +1,8 @@
 /*
+	blck_fnc_spawnMarker 
+
+	Note: kept for backwards compatability with older parts of GMS like the static and dynamic loot spawns and spawns of map addons.
+
 	By Ghostrider [GRG]
 	Copyright 2016	
 	--------------------------

@@ -24,7 +24,7 @@ if (_killer == (driver (vehicle _killer))) then //  If the killer is also the dr
 		if (blck_VK_RunoverDamage) then 
 		{//apply vehicle damage
 			[vehicle _killer] call blck_fnc_applyVehicleDamagePenalty;	
-			[_killer] call GMS_fnc_msgIED;
+			[_killer] call blck_fnc_msgIED;
 		};		
 		_legal = false;
 	};
@@ -35,7 +35,7 @@ if (_killer == (driver (vehicle _killer))) then //  If the killer is also the dr
 		{
 			if (blck_VK_Gear) then {[_unit] call blck_fnc_removeAllAIgear;};
 			[vehicle _killer] call blck_fnc_applyVehicleDamagePenalty;
-			[_killer] call GMS_fnc_msgIED;
+			[_killer] call blck_fnc_msgIED;
 			_legal = false;
 		};
 	};

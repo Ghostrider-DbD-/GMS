@@ -76,7 +76,17 @@ private _reward = 0;
 private _experience = 0;
 private _killstreak = 0;
 [_unit,_instigator] call blck_fnc_alertVehicles;
-
+if !(vehicle _unit isEqualTo _unit) then 
+{
+	if (blck_killEmptyStaticWeapons) then 
+	{
+		private _isEmplaced = (group _unit) getVariable ["soldierType",""];
+		if (isEmplaced || {(vehicle _unit isKindOf "StaticWeapon")}) then 
+		{
+			(vehicle _unit) setDamage 2.0;
+		};
+	};
+};
 if (_isRunover) then 
 {
 	_reward = blck_runoverMoneyPenalty; 

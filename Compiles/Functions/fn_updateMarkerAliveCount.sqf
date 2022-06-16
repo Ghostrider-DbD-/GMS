@@ -1,9 +1,8 @@
-
 /*
-	for ghostridergaming
-	By Ghostrider [GRG]
-	Copyright 2016
+	blck_fnc_updateMarkerAliveCount
 	
+	by Ghostrider [GRG] 
+	Copyright 2016
 	--------------------------
 	License
 	--------------------------
@@ -12,10 +11,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
+params["_marker","_rootText","_missionAI"];
 
-private["_group","_wp"];
-_group = group _this;
-_group setVariable["timeStamp",diag_tickTime];
-_wp = [_group, 0];
-_group setCurrentWaypoint _wp;
-
+private _txtPrior = markerText _marker;
+_marker setMarkerText format["%1 / %2 AI Alive",_rootText,{alive _x} count _missionAI];

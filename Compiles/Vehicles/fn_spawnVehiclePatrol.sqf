@@ -29,7 +29,7 @@ _veh = [_vehType,_pos] call blck_fnc_spawnVehicle;
 
 _veh setVariable["blck_vehicleSearchRadius",blck_playerDetectionRangeGroundVehicle];
 _veh setVariable["blck_vehiclePlayerDetectionOdds",blck_vehiclePlayerDetectionOdds];
-private _maxCrew = [_crewCount] call blck_fnc_getNumberFromRange;
+private _maxCrew = [_crewCount] call GMSS_fnc_getNumberFromRange;
 [_veh,_group,_maxCrew] call blck_fnc_loadVehicleCrew;
 
 [_veh,2] call blck_fnc_configureMissionVehicle;

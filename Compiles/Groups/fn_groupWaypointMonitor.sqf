@@ -3,6 +3,9 @@
 	Checks for groups that have not reached their waypoints within a proscribed period
 	and redirects them.
 
+
+	blck_fnc_groupWaypointMonitor 
+	
 	for ghostridergaming
 	By Ghostrider [GRG]
 	Copyright 2016

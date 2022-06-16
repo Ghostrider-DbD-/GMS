@@ -1,4 +1,6 @@
 /*
+	blck_fnc_findShoreLocation
+
 	by Ghostrider [GRG]
 	Copyright 2016
 	--------------------------

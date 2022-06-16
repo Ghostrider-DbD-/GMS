@@ -29,7 +29,7 @@ _fn_doUpdates = {
 		private _distanceBonus = floor((_unit distance _player)/100);
 		private _killstreakBonus = 3 * (_player getVariable["blck_kills",0]);
 		private _reward = 25 + _distanceBonus + _killstreakBonus;
-		[_player,_reward ] call blck_fnc_giveTakeCrypto;
+		[_player,_reward ] call GMS_fnc_giveTakeCrypto;
 		[_player, 5] call GMS_fnc_setKarma;
 		//if (isNil "GMS_fnc_killedMessages") then {diag_log format["blckeagls: GMS_fnc_killedMessages not defined"]};		
 		if (blck_useKillScoreMessage) then

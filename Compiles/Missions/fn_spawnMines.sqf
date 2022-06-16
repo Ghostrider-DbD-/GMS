@@ -35,7 +35,7 @@ for "_i" from 1 to noMines/2 do
 		private _mine = createMine ["ATMine", _posMine, [], 0];
 		if (GMS_modType isEqualTo "Epoch") then {_mine setVariable ["LAST_CHECK", (diag_tickTime + 14400)]};
 		_mine setPos _posMine;
-		private _minesPlaced = _minesPlaced + [_mine];
+		_minesPlaced pushBack _mine;
 	};
 	_dir = _dir + _incr;
 };

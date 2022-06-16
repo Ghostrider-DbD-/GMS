@@ -1,4 +1,6 @@
 /*
+	blck_fnc_findPositionsAlongARadius
+	
 	Generates an array of equidistant positions along the circle of diameter _radius
 	for ghostridergaming
 	By Ghostrider [GRG]

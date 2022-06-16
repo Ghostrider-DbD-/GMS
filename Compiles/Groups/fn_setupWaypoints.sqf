@@ -1,5 +1,7 @@
 // Sets up waypoints for a specified group.
 /*
+	blck_fnc_setupWaypoints
+
 	for ghostridergaming
 	By Ghostrider [GRG]
 	Copyright 2016

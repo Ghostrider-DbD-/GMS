@@ -47,7 +47,7 @@ for "_i" from 0 to (count blck_sm_scubaGroups) do
 			case 1: {
 						if ([_pos,staticPatrolTriggerRange] call blck_fnc_playerInRange) then
 						{
-							private _numAI = [_units] call blck_fnc_getNumberFromRange;
+							private _numAI = [_units] call GMS_fnc_getNumberFromRange;
 							private _group = [GMS_side,true] call blck_fnc_createGroup;	
 							if !(isNull _group) then 
 							{
