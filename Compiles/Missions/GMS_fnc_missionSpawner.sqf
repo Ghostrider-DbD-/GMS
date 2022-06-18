@@ -109,13 +109,13 @@ private _markerConfigs = [
 ];
 
 private _paraConfigs = [
+	_chancePara,
+	_paraTriggerDistance,	
 	_noPara, 
-	_paraTriggerDistance,
 	_paraSkill,
 	_chanceLoot, 
 	_paraLoot, 
-	_paraLootCounts,
-	_chancePara	
+	_paraLootCounts
 ],
 
 private _missionLootConfigs = [

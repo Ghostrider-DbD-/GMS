@@ -20,6 +20,6 @@ _crate setVariable["chute",_chute];
 _chute setPos [getPos _chute select 0, getPos _chute select 1, _dropHeight];
 _crate setPos (getPos _chute);
 _crate attachTo [_chute, [0,0,0]];	
-if (_crateVisualMarker) then {[_crate] call blck_fnc_signalEnd;};
+if (_crateVisualMarker) then {[_crate,150] spawn GMS_fnc_visibleMarker};
 _chute
 

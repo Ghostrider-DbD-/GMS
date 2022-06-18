@@ -48,7 +48,7 @@ while {true} do
 	{
 		_timer10Sec = diag_tickTime + 10;
 		[] call blck_fnc_scanForPlayersNearVehicles;
-		[] call blck_fnc_updateCrateSignals;						
+		//[] call blck_fnc_updateCrateSignals;						
 		[] call blck_fnc_spawnNewMissions; 			
 		[] spawn blck_fnc_monitorInitializedMissions;
 	};

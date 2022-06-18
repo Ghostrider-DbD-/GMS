@@ -29,8 +29,8 @@ params[
 ];
 
 _markerConfigs params[
-	"_markerName",  //  Same as _markerLabel when defined as such in missions - this is just a bit of nomenclature difference
-	"_markerMissionName", // Name used for setMarkerText and also for the root name for all markers	
+	"_markerName",  //  The unique text identifier for the marker
+	"_markerMissionName", // Name used for setMarkerText - does not need to be unique
 	"_markerType", 
 	"_markerColor", 
 	"_markerSize",
@@ -77,7 +77,6 @@ private _markers = [];
 /*
 	Handle map markers 
 */
-private _markerName = format["%1:%2",_markerMissionName,blck_missionsRun];
 
 private "_markerPos";
 if (blck_labelMapMarkers select 0) then
@@ -100,25 +99,27 @@ if (blck_debugLevel >= 3) then
 		"_markerBrush"
 	];
 };
-
+private _markerError = false;
 if !(toLowerANSI (_markerType) in ["ellipse","rectangle"] || {isClass(configFile >> "CfgMarkers" >> _markerType)}) then 
 {
 	[format["_markerType set to 'ELLIPSE': Illegal marker type %1 used for mission %2 of difficulty %3",_markerType,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
 	_markerType = "ELLIPSE";
 	_markerSize = [200,200];
 	_markerBrush = "SOLID";
-	_markerMissionName = "Invalid Marker Parameters";
-	_missionParameters set [1,_markerMissionName];
+	_markerError = true;
 };
 if !(isClass(configFile >> "CfgMarkerColors" >> _markerColor)) then 
 {
 	[format["_markerColor set to 'default': Illegal color %1 used for mission %2 of difficulty %3",_markerColor,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
 	_markerColor = "DEFAULT";
-	_markerMissionName = "Invalid Marker Parameters";
-	_missionParameters set [1,_markerMissionName];		
+	_markerError = true;
 };
 
-private _markers = [
+
+// _markers holds the two markers generated for the mission. 
+// The first can be "" if the marker type used is an icon such as a triangle. 
+// The second is always an icon which may have a label.
+private _markers = [  
 	format["%1:%2",_markerName,_missionCount],
 	_markerPos,
 	_markerMissionName,
@@ -158,7 +159,7 @@ private _missionData = [
 	lootVehicles,
 	_markers
 ];
-
-blck_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs];
+private _spawnPara = -1;
+blck_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs, _spawnPara];
 [format["_initializeMission (163): count blck_initializedMissionsList = %1",count blck_initializedMissionsList]] call blck_fnc_log;
 true

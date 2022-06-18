@@ -12,9 +12,9 @@
 */
 
  class GMSBuild {
-	 Version = "7.1";
-	 Build = "250"; 
-	 Date = "05-14-2022";
+	 Version = "7.12";
+	 Build = "253"; 
+	 Date = "06-16-2022";
  };
 
 class CfgPatches {
@@ -37,13 +37,46 @@ class CfgFunctions {
 		class functions {
 			file = "\q\addons\custom_server\Compiles\Functions";
 			//class addItemToCrate {};
+			class broadcastServerFPS {};	
+			class cleanEmptyGroups {};	
+			class countAliveAI {};
+			class createMissionMarkers {};
+			class deleteMarker {};
+			class findPositionsAlongARadius {};
+			class findRandomLocationWithinCircle {};
+			class findShoreLocation {};
+			class findWaterDepth {};
+			class getAllBlckeaglsMarkers {};
+			class getAllDMSMarkers {};
+			class getAllMarkersOfSubtype {};
 			class getIndexFromDifficulty {};
-			class emptyObject {};
-			class mainThread {};			
-			class missionCompleteMarker {}
+			class loadLootItemsFromArray {};
+			class log {};
+			class mainThread {};	
+			class markerSetAliveAICount {};	
+			class messagePlayers {};	
+			class missionCompleteMarker {};
+			class msgIED {};
+			class nearestPlayers {};
+			class playerInRange {};
+			class playerInRangeArray {};
+			class restoreHiddenObjects {};
+			class setDirUp {};
+			class spawnMarker {};
+			class updateCrateSignals {};
+			class updateMarkerAliveCount {};
 		};
 		class groups {
 			file = "\q\addons\custom_server\Compiles\Groups";
+			class checkGroupWaypointStatus {};
+			class cleanEmptyGroups {};
+			class createGroup {};  // Kept for backwards compatability with static missions if these are kept and not updated.			
+			class emplacedWeaponWaypoint {};  // Not sure this is needed - can we do the same thing directly in another script?			
+			class findNearestInfantryGroup {};
+			class groupWaypointMonitor {};
+			class setNextWaypoint {};
+			class setupWaypoints {};
+			class simulationMonitor {};
 			class spawnGroup {};
 		};
 		class missions {
@@ -58,6 +91,7 @@ class CfgFunctions {
 			class initializeMission {};
 			class loadMissionCrate {};
 			class monitorInitializedMissions {};
+			class monitorSpawnedMissions {};
 			class selectAIBackpacks {};
 			class selectAILoadout {};
 			class selectAISidearms {};
@@ -81,13 +115,17 @@ class CfgFunctions {
 			class spawnMissionHelis {};
 			class spawnMissionLootVehicles {};
 			class spawnMissionVehiclePatrols {};
-			class spawnPendingMissions {};
+			class spawnNewMissions {};
 			class spawnRandomLandscape {};
 			class spawnScubaGroup {};
 			class spawnSimpleObjects {};
 			class spawnSDVPatrol {};
 			class spawnSurfacePatrol {};
-			class updateMissionQue {};
+			//class updateMissionQue {};
+		};
+		class timeAcceleration {
+			file = "\q\addons\custom_server\Compiles\TimeAccel";
+			class timeAccel {};
 		};
 		class units {
 			file = "\q\addons\custom_server\Compiles\Units";
@@ -109,6 +147,7 @@ class CfgFunctions {
 			class spawnVehiclePatrol {};
 			class vehicleHit {};
 			class vehicleKilled {};
+			class vehicleMonitor {};
 		};
 	};
 };

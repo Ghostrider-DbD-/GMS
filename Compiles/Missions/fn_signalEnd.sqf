@@ -30,4 +30,4 @@ if(sunOrMoon < 0.2) then
 };
 */
 [_crate,_time] call GMS_fnc_visibleMarker;
-blck_illuminatedCrates  pushBack [_crate,_smoke,_light,_smokeShell,_lightSource,diag_tickTime + 120, diag_tickTime + 300];	
+//blck_illuminatedCrates  pushBack [_crate,_smoke,_light,_smokeShell,_lightSource,diag_tickTime + 120, diag_tickTime + 300];	
