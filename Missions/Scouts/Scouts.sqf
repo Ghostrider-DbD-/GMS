@@ -27,7 +27,8 @@ _missionGroups = [
      [[5,5,0],3,3,"Red",30,45]
 ];
 
-_useMines = blck_useMines;
+//_useMines = blck_useMines;
+_useMines = true;
 _minNoAI = 6;
 _maxNoAI = 9;
 _noAIGroups = 3;
@@ -46,13 +47,10 @@ if (GMS_modType isEqualTo "Exile") then
 	_headGear = ["H_Cap_blk","H_Cap_blk_Raven","H_Cap_blu","H_Cap_brn_SPECOPS","H_Cap_grn","H_Cap_headphones","H_Cap_khaki_specops_UK","H_Cap_oli","H_Cap_press","H_Cap_red","H_Cap_tan","H_Cap_tan_specops_US"];
 };
 
-
 _chancePara =  0;
 _noPara = 0;
 _chanceHeli = 0;
 _noChoppers = 0;
 _endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
-//_timeOut = -1;
-private["_useMines"];
-_useMines = true;
+
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

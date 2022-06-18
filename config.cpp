@@ -63,7 +63,7 @@ class CfgFunctions {
 			class restoreHiddenObjects {};
 			class setDirUp {};
 			class spawnMarker {};
-			class updateCrateSignals {};
+			//class updateCrateSignals {};
 			class updateMarkerAliveCount {};
 		};
 		class groups {
@@ -82,8 +82,8 @@ class CfgFunctions {
 		class missions {
 			file = "\q\addons\custom_server\Compiles\Missions";
 			class addMIssionToQue {};
-			class clearMines {};
-			class crateMoved {};
+			//class clearMines {};
+			//class crateMoved {};
 			class endMission {};
 			class fillBoxes {};
 			class garrisonBuilding_ATLsystem {};
@@ -92,6 +92,7 @@ class CfgFunctions {
 			class loadMissionCrate {};
 			class monitorInitializedMissions {};
 			class monitorSpawnedMissions {};
+			class paraDropObject {};
 			class selectAIBackpacks {};
 			class selectAILoadout {};
 			class selectAISidearms {};

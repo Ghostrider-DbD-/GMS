@@ -251,8 +251,8 @@ _missionLandscape = [
 ];
 
 _missionLootBoxes = [
-     ["Box_FIA_Wps_F",[20.4143,-5.66016,-0.00143909],_crateLoot,_lootCounts,0.000109423],
-     ["B_supplyCrate_F",[17.8198,-6.08936,-0.00143909],_crateLoot,_lootCounts,360],
+     //["Box_FIA_Wps_F",[20.4143,-5.66016,-0.00143909],_crateLoot,_lootCounts,0.000109423],
+     //["B_supplyCrate_F",[17.8198,-6.08936,-0.00143909],_crateLoot,_lootCounts,360],
      ["Box_FIA_Ammo_F",[23.3816,-5.58154,-0.00143909],_crateLoot,_lootCounts,0.000104757],
      ["Box_FIA_Support_F",[26.1409,-5.81836,-0.00143909],_crateLoot,_lootCounts,360]
 ];

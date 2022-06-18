@@ -19,7 +19,7 @@ _missionLandscape = ["Land_Cargo_Patrol_V1_F","Land_WoodPile_F","Land_BagFence_S
 _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionEmplacedWeapons = []; // can be used to define the precise placement of static weapons [[1,2,3] /*loc 1*/, [2,3,4] /*loc 2*/]; if blank random locations will be used
-private["_useMines"];
+
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = blck_useMines;
 _useMines = true;
