@@ -11,7 +11,7 @@
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
 _defaultMissionLocations = [];
-_markerType = ["round",[50,50],"Solid"];
+_markerType = ["round",[50,50],"GRID"];
 _markerColor = "red";
 _startMsg = "TODO: Change approiately";
 _endMsg = "TODO: Change Appropriately";
@@ -110,13 +110,13 @@ _missionLootBoxes = [
 _chanceHeliPatrol = blck_chanceHeliPatrolBlue;
 _noChoppers = blck_noPatrolHelisBlue;
 _missionHelis = blck_patrolHelisBlue;
-_chancePara = blck_chanceParaBlue;
-_noPara = blck_noParaBlue;
-_paraTriggerDistance = 400;
-_paraSkill = 'Blue';
-_chanceLoot = 0.0;
-_paraLoot = blck_BoxLoot_Blue;
-_paraLootCounts = blck_lootCountsBlue;
+//_chancePara = blck_chanceParaBlue;
+//_noPara = blck_noParaBlue;
+//_paraTriggerDistance = 400;
+//_paraSkill = 'Blue';
+//_chanceLoot = 0.0;
+//_paraLoot = blck_BoxLoot_Blue;
+//_paraLootCounts = blck_lootCountsBlue;
 _missionLandscapeMode = "precise";
 _uniforms = blck_SkinList;
 _headgear = blck_headgear;

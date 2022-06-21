@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsRed;
 _startMsg = "An enemy HQ center was sighted in a nearby sector! Check the Red marker on your map for the location!";
 _endMsg = "The HQ at the Red Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[300,300],"Solid"];
+_markerType = ["ELLIPSE",[300,300],"GRID"];
 _markerColor = "ColorRed";
 _markerMissionName = "Forward Operations";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -211,21 +211,11 @@ _maxNoAI = blck_MaxAI_Red;
 _noAIGroups = blck_AIGrps_Red;
 _noVehiclePatrols = blck_SpawnVeh_Red;
 _noEmplacedWeapons = blck_SpawnEmplaced_Red;
-//_uniforms = blck_SkinList;
-//_headgear = blck_headgear;
 
-_chancePara = 0.75; // Setting this in the mission file overrides the defaults 
-_noPara = 5;  // Setting this in the mission file overrides the defaults 
-_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
-_paraSkill = "Red";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
-
-_chanceLoot = 0.7; 
 private _lootIndex = selectRandom[1,2,3,4];
 private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-_endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
-//_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

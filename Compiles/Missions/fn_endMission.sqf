@@ -13,7 +13,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp"
-	
+
 ///////////////////////////////////////////////////////////////////////
 //  MAIN FUNCTION STARTS HERE
 //////////////////////////////////////////////////////////////////////
@@ -53,6 +53,8 @@ _missionLootConfigs params [
 	"_lootCounts"
 	// Ignore the remaining entries in the configuration
 ];
+
+/*
 [format["_endMission (56) _endMsg = %1",_endMsg]] call blck_fnc_log;
 [format["_endMission (57) _lootCounts = %1",_lootCounts]] call blck_fnc_log;
 [format["_endMission (58) _crateLoot = %1",_crateLoot]] call blck_fnc_log;
@@ -61,7 +63,7 @@ _missionLootConfigs params [
 [format["_endMission (61) _objects = %1",_objects]] call blck_fnc_log;
 [format["_endMission (62) _missionAI = %1",_missionAI]] call blck_fnc_log;
 [format["_endMission (63) _aiVehicles = %1",_aiVehicles]] call blck_fnc_log;
-
+*/
 {[_x] call blck_fnc_deleteMarker} forEach (_markers);
 
 {
@@ -100,17 +102,6 @@ switch (_endCondition) do
 
 			[_coords, _markerName] spawn blck_fnc_missionCompleteMarker;
 
-			/*
-			{
-				if !(_x getVariable["lootLoaded",false] || {_endCondition == 1}) then // dont load loot if the asset was killed
-				{
-					[_x,_crateLoot,_lootCounts] call blck_fnc_fillBoxes;
-					[format["_endMission: crate %1 contains weapons %2",_x,getWeaponCargo _x]] call blck_fnc_log;
-					[format["_endMission: crate %1 contains items %2",_x,getItemCargo _x]] call blck_fnc_log; 
-					[format["_endMission: crate %1 contains magazines %2",_x, getMagazinecargo _x]] call blck_fnc_log;
-				};
-			}forEach _crates;
-			*/
 			{
 				private ["_v","_posnVeh"];
 				_posnVeh = blck_monitoredVehicles find _x;  // returns -1 if the vehicle is not in the array else returns 0-(count blck_monitoredVehicles -1)
@@ -122,13 +113,15 @@ switch (_endCondition) do
 					blck_monitoredVehicles pushback _x;
 				};
 			} forEach _aiVehicles;
-
-			[_coords,_mines,_objects,_hiddenObjects,_missionAI, blck_AliveAICleanUpTimer,blck_cleanupCompositionTimer,_isScuba] call _fn_missionCleanup;
-			[format["Mission Completed | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerLabel]] call blck_fnc_log;			
+			[_mines, 0] call GMS_fnc_deleteObjectsMethod;
+			[_objects, (diag_tickTime + blck_cleanupCompositionTimer)] call GMS_fnc_addToDeletionCue;	
+			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime + blck_cleanupCompositionTimer)];
+			[_missionAI, (diag_tickTime + blck_AliveAICleanUpTimer)] call GMS_fnc_addToDeletionCue;
+			[format["Mission Completed | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call blck_fnc_log;			
 	};
 	case 2: {  // Aborted for moving a crate 
 			#define illegalCrateMoveMsg "Crate moved before mission completed"
-			[["warming",illegalCrateMoveMsg,_markerLabel]] call blck_fnc_messageplayers;
+			[["warming",illegalCrateMoveMsg,_markerName]] call blck_fnc_messageplayers;
 			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];
 			[_mines, 0] call GMS_fnc_deleteObjectsMethod;	
 			[_crates, 0] call GMS_fnc_deleteObjectsMethod;
@@ -136,10 +129,10 @@ switch (_endCondition) do
 			[_missionAI, 0] call GMS_fnc_deleteObjectsMethod;				
 			[_aiVehicles, 0] call GMS_fnc_deleteObjectsMethod;
 			[_lootVehicles, 0] call GMS_fnc_deleteObjectsMethod;
-			[format["Mission Aborted <CRATE MOVED> | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerLabel]] call blck_fnc_log;
+			[format["Mission Aborted <CRATE MOVED> | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call blck_fnc_log;
 	};
 	case 3: {  // Mision aborted for killing an asset
-			[["warning",_endMsg,_markerLabel]] call blck_fnc_messageplayers;
+			[["warning",_endMsg,_markerName]] call blck_fnc_messageplayers;
 			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];
 			[_mines, 0] call GMS_fnc_deleteObjectsMethod;	
 			[_crates, 0] call GMS_fnc_deleteObjectsMethod;
@@ -147,7 +140,7 @@ switch (_endCondition) do
 			[_missionAI, 0] call GMS_fnc_deleteObjectsMethod;				
 			[_aiVehicles, 0] call GMS_fnc_deleteObjectsMethod;
 			[_lootVehicles, 0] call GMS_fnc_deleteObjectsMethod;
-			[format["Mission Aborted <ASSET KILLED> | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerLabel]] call blck_fnc_log;
+			[format["Mission Aborted <ASSET KILLED> | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call blck_fnc_log;
 	};
 	case 4: {
 			[format["_endMission (153): _exception 4 | count _mines %1 | count _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call blck_fnc_log;
@@ -217,6 +210,20 @@ switch (_endCondition) do
 			[_lootVehicles, 0] call GMS_fnc_deleteObjectsMethod;			
 	};	
 };
+
+blck_missionsRunning = blck_missionsRunning - 1;
+blck_ActiveMissionCoords = blck_ActiveMissionCoords - [ _coords];	
+if !(_isScubaMission) then
+{
+	blck_recentMissionCoords pushback [_coords,diag_tickTime]; 
+};
+if (_isScubaMission) then
+{
+	blck_priorDynamicUMS_Missions pushback [_coords,diag_tickTime]; 
+	blck_UMS_ActiveDynamicMissions = blck_UMS_ActiveDynamicMissions - [_coords];
+	blck_dynamicUMS_MissionsRuning = blck_dynamicUMS_MissionsRuning - 1;		
+};
+
 {
 		[format["_endMission: crate %1 contains weapons %2",_x,getWeaponCargo _x]] call blck_fnc_log;
 		[format["_endMission: crate %1 contains items %2",_x,getItemCargo _x]] call blck_fnc_log; 

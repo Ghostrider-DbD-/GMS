@@ -17,7 +17,7 @@
 		changing any of these variables may break the mission system
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
-	blck_debugON = true;  //  should be set to false;  ... 
+	blck_debugON = false;  //  should be set to false;  ... 
 	blck_debugLevel = 0;  //  should be set to 0 ... 
 	
 	#ifdef blck_milServer
@@ -141,10 +141,10 @@ switch (_modType) do
 	blck_showCountAliveAI = true;
 
 	//Minimum distance between missions
-	blck_MinDistanceFromMission = 500;
-	blck_minDistanceToBases = 500;
-	blck_minDistanceToPlayer = 400;
-	blck_minDistanceFromTowns = 300;
+	blck_MinDistanceFromMission = 1200;
+	blck_minDistanceToBases = 250;
+	blck_minDistanceToPlayer = 300;
+	blck_minDistanceFromTowns = 200;
 	blck_minDistanceFromDMS = 800;  // minimum distance for a blackeagls mission from any nearby DMS missions. set to -1 to disable this check.	
 	
 	///////////////////////////////
@@ -261,7 +261,7 @@ switch (_modType) do
 	blck_noPatrolHelisRed = 1;
 	
 	blck_chanceHeliPatrolGreen = 0.85;
-	blck_patrolHelisGreen = _blck_armed_hellcats + _cup_Helis_missiles;;  // _blck_armed_orcas + _blck_armed_ghosthawks;  //_blck_littleBirds;
+	blck_patrolHelisGreen = _blck_armed_hellcats + _cup_Helis_missiles;  // _blck_armed_orcas + _blck_armed_ghosthawks;  //_blck_littleBirds;
 	blck_noPatrolHelisGreen = 1;
 	
 	blck_chanceHeliPatrolOrange = 0.95;
@@ -273,13 +273,8 @@ switch (_modType) do
 	////////////////////
 	
 	// Maximum number of missions shown on the map at any one time.
-	#ifdef GRGserver
 	blck_maxSpawnedMissions = 15;
-	#else
-	// Change this value to reduce the number of spawned missions at any one time.
-	blck_maxSpawnedMissions = 7;
-	#endif
-	
+		
 	//Set to -1 to disable. Values of 2 or more force the mission spawner to spawn copies of that mission - this feature is not recommended because you may run out of available groups.
 	blck_enableOrangeMissions = 1;  
 	blck_enableGreenMissions = 2;

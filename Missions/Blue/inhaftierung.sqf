@@ -19,7 +19,7 @@ _startMsg = "A local Mafia Don has been spotted! Capture him and earn a reward!"
 _endMsg = "The Maria Don was captured and the area is under survivor control!";
 _assetKilledMsg = "Enemy Leader Killed and Bandits Fled with All Loot: Mission Aborted";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[300,300],"Solid"];
+_markerType = ["ELLIPSE",[300,300],"GRID"];
 _markerColor = "ColorBlue";
 _markerMissionName = "inhaftierung";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -171,10 +171,10 @@ _noVehiclePatrols = blck_SpawnVeh_Blue;
 _noEmplacedWeapons = blck_SpawnEmplaced_Blue;
 //_uniforms = blck_SkinList;
 //_headgear = blck_headgear;
-_chanceReinforcements = blck_chanceParaBlue; 
-_noPara = blck_noParaBlue;  
-_chanceHeliPatrol = 0;
-_spawnCratesTiming = "atMissionEndAir";
-_endCondition = assetSecured;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear, assetSecured
-//_timeOut = -1;
+//_chancePara = blck_chanceParaBlue; 
+//_noPara = blck_noParaBlue;  
+//_chanceHeliPatrol = 0;
+//_spawnCratesTiming = "atMissionEndAir";
+//_endCondition = assetSecured;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear, assetSecured
+
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsGreen;
 _startMsg = "Enemy Camp Moreell was sighted in a nearby sector! Check the Green marker on your map for the location!";
 _endMsg = "The Camp Moreell at the Green Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[200,200],"Solid"];
+_markerType = ["ELLIPSE",[200,200],"GRID"];
 _markerColor = "ColorGreen";
 _markerMissionName = "Camp Moreell";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -151,6 +151,4 @@ private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-_endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
-//_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

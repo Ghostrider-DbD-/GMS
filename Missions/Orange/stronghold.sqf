@@ -80,7 +80,7 @@ _garrisonedBuilding_ATLsystem = [
 
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 _missionLandscape = [
-     ["Land_Addon_02_ruins_F",[-64.209,-12.1621,7.47705],184.217,true,true],
+     ["Land_Addon_02_ruins_F",[-64.209,-12.1621,0],184.217,true,true],
      ["Land_HBarrier_5_F",[-39.2524,-40.6089,0],244.965,true,true],
      ["Land_HBarrier_5_F",[-31.7334,-48.7769,0],209.272,true,true],
      ["Land_HBarrier_5_F",[-26.9553,-51.3354,0],209.272,true,true],
@@ -98,7 +98,7 @@ _missionLandscape = [
      ["Land_HBarrier_5_F",[-28.8904,20.4214,0],333.062,true,true],
      ["Land_HBarrier_5_F",[-39.2024,7.7749,0],297.369,true,true],
      ["Land_Addon_02_ruins_F",[-44.2246,32.7935,0],231.256,true,true],
-     ["Land_Addon_02_ruins_F",[-1.76978,-73.6221,7.47705],78.2878,true,true],
+     ["Land_Addon_02_ruins_F",[-1.76978,-73.6221,0],78.2878,true,true],
      ["Land_HBarrier_5_F",[7.1582,-56.229,0],152.755,true,true],
      ["Land_HBarrier_5_F",[-13.6016,-58.4463,0],209.272,true,true],
      ["Land_HBarrier_5_F",[-17.749,-56.3296,0],209.272,true,true],
@@ -108,14 +108,14 @@ _missionLandscape = [
      ["Land_HBarrier_5_F",[-19.8433,25.23,0],333.062,true,true],
      ["Land_HBarrier_5_F",[-15.554,27.5645,0],333.062,true,true],
      ["Land_HBarrier_5_F",[7.39819,30.313,0],28.3223,true,true],
-     ["Land_Addon_02_ruins_F",[-4.67432,45.1021,7.47705],78.2878,true,true],
+     ["Land_Addon_02_ruins_F",[-4.67432,45.1021,0],78.2878,true,true],
      ["Land_HBarrier_5_F",[30.082,-37.1455,0],117.061,true,true],
      ["Land_HBarrier_5_F",[16.4028,-51.3062,0],152.755,true,true],
      ["Land_HBarrier_5_F",[11.4351,-53.8721,0],152.755,true,true],
      ["Land_HBarrier_5_F",[20.4561,-49.0146,0],152.755,true,true],
      ["Land_HBarrier_5_F",[32.1804,-32.7358,0],117.061,true,true],
      ["Land_HBarrier_5_F",[27.71,-42.0186,0],117.061,true,true],
-     ["Land_Addon_02_ruins_F",[38.1423,-60.2046,7.47705],224.576,true,true],
+     ["Land_Addon_02_ruins_F",[38.1423,-60.2046,0],224.576,true,true],
      ["Land_HBarrier_5_F",[38.4685,1.19434,0],64.016,true,true],
      ["Land_HBarrier_5_F",[40.9368,-3.63086,0],64.016,true,true],
      ["Land_HBarrier_5_F",[34.7178,-27.7534,0],117.061,true,true],
@@ -130,7 +130,7 @@ _missionLandscape = [
      ["Land_Addon_02_ruins_F",[34.0081,26.3223,0],133.368,true,true],
      ["Land_HelipadCircle_F",[16.9146,49.8833,0],0,true,true],
      ["Banner_01_F",[11.9451,45.4272,0],0,true,true],
-     ["Land_Addon_02_ruins_F",[55.3616,-22.4351,7.47705],189.292,true,true]
+     ["Land_Addon_02_ruins_F",[55.3616,-22.4351,0],189.292,true,true]
 ]; // list of objects to spawn as landscape
 
 _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
@@ -157,21 +157,11 @@ _maxNoAI = blck_MaxAI_Orange;
 _noAIGroups = blck_AIGrps_Orange;
 _noVehiclePatrols = blck_SpawnVeh_Orange;
 _noEmplacedWeapons = blck_SpawnEmplaced_Orange;
-//_uniforms = blck_SkinList;
-//_headgear = blck_headgear;
-
-_chancePara = 0.75; // Setting this in the mission file overrides the defaults 
-_noPara = 5;  // Setting this in the mission file overrides the defaults 
-_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
-_paraSkill = "orange";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
-
-_chanceLoot = 0.7; 
+ 
 private _lootIndex = selectRandom[1,2,3,4];
 private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
 private _paralootCountsChoices = [[0,0,0,25,25,0],[0,0,0,25,25,0],[20,30,0,0,0,0],[0,0,0,0,30,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-//_endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
-//_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

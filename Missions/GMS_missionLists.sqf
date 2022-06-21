@@ -54,7 +54,7 @@ private _missionListRed = [
 		//"factory",  //  Does not clear
 		//"forgotten_HQ",
 		//"garrison",
-		"IDAP",  // Spawns OK Does not clear Build 249 
+		"IDAP",  // Spawns OK But not sure where the crate spawns. 
 		//"lager",
 		//"Operations_Command",
 		"Outpost",  //  Spawns OK Debug = 4 Build 246
@@ -70,7 +70,7 @@ private _missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","r
 		//"weaponsResearch",  // OK build 224
 		//"munitionsResearch"  // Spawns OK Build 246 Debug == 4
 		//"colonelsBase",  //  OK Build 224
-		"factory",  //  Spawns fine but does not clear 249
+		"factory",  //  Spawns with some walls above ground level for unclear reasons.
 		"fortification",  //  Spawns OK Debug = 4 Build 246
 		//"banditVillage",  //  OK but do not use.
 		"Camp_Moreell",  // Spawns OK Build 246 Debug == 4
@@ -89,7 +89,7 @@ private _missionListOrange = [/*"default","default2","medicalCamp","redCamp","re
 		"CommandersComplex",  //   Spawns OK Debug = 4 Build 246
 		"generalsCamp",  // Spawns OK Debug = 4 Build 246
 		//"colonel2",  // Spawns OK Debug = 4 Build 246
-		"stronghold",  //   Spawns OK Debug = 4 Build 246
+		//"stronghold",  //   Spawns OK Debug = 4 Build 246  but too big for the Exile.Altis server as of Build 253
 		"operationShutdown",  //  Spawns OK Debug = 4 Build 246
 		"operationTakeover",  //  Spawns OK Debug = 4 Build 246
 		"dashq",  // OK Build 252
@@ -98,7 +98,6 @@ private _missionListOrange = [/*"default","default2","medicalCamp","redCamp","re
 		//"Camp_Moreell"  // OK Build 252 with crate drop from 50 meters
 		//"Operations_Command"  // OK Build 252
 		"tko_camp"  // // OK Build 252
-
 		/////  UNUSED FOR ONE REASON OR ANOTHER
 		//"Outpost"  // dOES NOT COMPLETE, ODD LOOT CHEST PLACEMENT	
 		/*,"temple"*/

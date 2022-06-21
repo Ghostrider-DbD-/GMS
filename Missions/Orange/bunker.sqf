@@ -38,10 +38,10 @@ _garrisonedBuilding_ATLsystem = [
 ];
 
 _missionLandscape = [
-     ["Sign_Arrow_F",[-3166.38,-5166.64,-0.00143909],0,true,true],
-     ["Sign_Arrow_Green_F",[-3166.38,-5166.64,-0.00143909],0,true,true],
-     ["Sign_Arrow_Yellow_F",[-3166.38,-5166.64,-0.00143909],0,true,true],
-     ["babe_helper",[-3168.88,-5166.14,-0.00143909],87.9418,true,true],
+     //["Sign_Arrow_F",[-3166.38,-5166.64,-0.00143909],0,true,true],
+     //["Sign_Arrow_Green_F",[-3166.38,-5166.64,-0.00143909],0,true,true],
+    // ["Sign_Arrow_Yellow_F",[-3166.38,-5166.64,-0.00143909],0,true,true],
+     //["babe_helper",[-3168.88,-5166.14,-0.00143909],87.9418,true,true],
      ["Land_Bunker_01_blocks_3_F",[-16.9785,-4.23682,-0.00143909],270.35,true,true],
      ["Land_Bunker_01_blocks_3_F",[-8.35254,-12.7046,-0.00143909],179.955,true,true],
      ["Land_Bunker_01_blocks_3_F",[-3.26245,-12.6987,-0.00143909],179.955,true,true],
@@ -128,16 +128,15 @@ _noEmplacedWeapons = blck_SpawnEmplaced_Orange;
 _uniforms = blck_SkinList;
 _headgear = blck_headgear;
 
-_chanceHeliPatrol = blck_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
+_chanceHeliPatrol = blck_chanceHeliPatrolOrange;  // Setting this in the mission file overrides the defaults 
 _noChoppers = blck_noPatrolHelisOrange;
 _missionHelis = blck_patrolHelisOrange;
 
-_chancePara = 0.75; // Setting this in the mission file overrides the defaults 
-_noPara = 5;  // Setting this in the mission file overrides the defaults 
-_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
-_paraSkill = "orange";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
-
-_chanceLoot = 0.7; 
+//_chancePara = blck_chanceParaOrange; // Setting this in the mission file overrides the defaults 
+//_noPara = 5;  // Setting this in the mission file overrides the defaults 
+//_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
+//_paraSkill = "orange";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
+//_chanceLoot = 0.7; 
 private _lootIndex = selectRandom[1,2,3,4];
 private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
 private _paralootCountsChoices = [[0,0,0,25,25,0],[0,0,0,25,25,0],[20,30,0,0,0,0],[0,0,0,0,30,0]];

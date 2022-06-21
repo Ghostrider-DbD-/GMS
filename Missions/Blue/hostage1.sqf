@@ -154,7 +154,7 @@ _noEmplacedWeapons = blck_SpawnEmplaced_Blue;
 //_uniforms = blck_SkinList;
 //_headgear = blck_headgear;
 
-_noPara = blck_noParaBlue;  
+//_noPara = blck_noParaBlue;  
 _chanceHeliPatrol = 0;
 _spawnCratesTiming = "atMissionEndAir";
 _endCondition = assetSecured;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear, assetSecured

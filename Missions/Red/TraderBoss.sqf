@@ -48,16 +48,5 @@ _maxNoAI = blck_MaxAI_Red;
 _noAIGroups = blck_AIGrps_Red;
 _noVehiclePatrols = blck_SpawnVeh_Red;
 _noEmplacedWeapons = blck_SpawnEmplaced_Red;
-//  Change _useMines to true/false below to enable mission-specific settings.
-#ifdef blck_useCUP
-_uniforms = blck_CUPUniforms;
-_weapons = blck_CUPWeapons;
-_uniforms = blck_SkinList;
-_vests = blck_CUPVests;
-_backpacs = blck_CUPBackpacks;
-_headgear = blck_CUPHeadgear;
-#endif
 
-_endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
-//_timeOut = -1;
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

@@ -13,8 +13,8 @@
 
  class GMSBuild {
 	 Version = "7.12";
-	 Build = "253"; 
-	 Date = "06-16-2022";
+	 Build = "254"; 
+	 Date = "06-19-2022";
  };
 
 class CfgPatches {
@@ -90,6 +90,7 @@ class CfgFunctions {
 			class loadLootItemsFromArray {};
 			class initializeMission {};
 			class loadMissionCrate {};
+			class missionCleanup {};
 			class monitorInitializedMissions {};
 			class monitorSpawnedMissions {};
 			class paraDropObject {};

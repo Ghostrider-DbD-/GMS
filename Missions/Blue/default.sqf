@@ -61,7 +61,7 @@ _startMsg = "A group of Bandits was sighted in a nearby sector! Check the Blue m
 _endMsg = "The Sector at the Blue Marker is under survivor control!";
 _markerLabel = "";
 _markerType = ["ELLIPSE",[175,175],"GRID"];
-//_markerType = ["RECTANGLE", [350,350],"SolidFull"];
+//_markerType = ["RECTANGLE", [350,350],"GRID"Full"];
 			// The mission system supports circular or square mission markers as well as typical Arma icon-style (triangle, dot, flag etc) markers.
 			// to have an icon define the map marker as follows:
 			// ["mil_triangle",[0,0]];
@@ -119,7 +119,7 @@ _uniforms = blck_SkinList;  // Setting this in the mission file overrides the de
 _headgear = blck_headgear;  // Setting this in the mission file overrides the defaults 
 _vests = blck_vests;
 _backpacks = blck_backpacks;
-_weaponList = ["blue"] call blck_fnc_selectAILoadout;
+
 _sideArms = blck_Pistols;
 _chanceHeliPatrol = blck_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
 _noChoppers = blck_noPatrolHelisBlue;

@@ -179,7 +179,7 @@ for "_i" from 1 to (count _missionsList) do
 			{
 				_temp = [_coords,blck_SmokeAtMissions select 1] call blck_fnc_smokeAtCrates;
 				_objects append _temp;
-				[format["_monitorInitializedMissions (181): added Smoke objects, _iconMarker %3 | count _objects = %1 | _objects = %2",count _objects, _objects,_iconMarker]] call blck_fnc_log;
+				//[format["_monitorInitializedMissions (181): added Smoke objects, _iconMarker %3 | count _objects = %1 | _objects = %2",count _objects, _objects,_iconMarker]] call blck_fnc_log;
 				uiSleep delayTime;					
 			};
 		
@@ -187,31 +187,31 @@ for "_i" from 1 to (count _missionsList) do
 			{
 				_temp = [_coords] call blck_fnc_spawnMines;	
 				_mines = _temp;
-				[format["_monitorInitializedMissions (189): spawned mines for mission _iconMarker %3 | located at %1 | mines = %2",_coords,_mines,_iconMarker]] call blck_fnc_log;								
+				//[format["_monitorInitializedMissions (189): spawned mines for mission _iconMarker %3 | located at %1 | mines = %2",_coords,_mines,_iconMarker]] call blck_fnc_log;								
 				uiSleep delayTime;							
 			};			
 
 			if (_missionLandscapeMode isEqualTo "random") then
 			{
 				_temp = [_coords,_missionLandscape, 3, 15, 2] call blck_fnc_spawnRandomLandscape;
-				[format["_monitorInitializedMissions (196): spawned randomly place objects for _iconMarker %3 | at %1 | list of objects = %2",_coords,_temp select 0,_iconMarker]] call blck_fnc_log;
+				//[format["_monitorInitializedMissions (196): spawned randomly place objects for _iconMarker %3 | at %1 | list of objects = %2",_coords,_temp select 0,_iconMarker]] call blck_fnc_log;
 			} else {
 				_temp = [_coords, _missionLandscape] call blck_fnc_spawnCompositionObjects;
-				[format["_monitorInitializedMissions (199): precisly positioned objects for _iconMarker %3 | at %1 | list of objects = %2",_coords,_temp select 0,_iconMarker]] call blck_fnc_log;
+				//[format["_monitorInitializedMissions (199): precisly positioned objects for _iconMarker %3 | at %1 | list of objects = %2",_coords,_temp select 0,_iconMarker]] call blck_fnc_log;
 			};
 			_temp params["_obj","_hiddenObj"];
 			_objects append _obj;
 			_hiddenObjects append _hiddenObj;
-			[format["_monitorInitializedMissions (204): added landscape objects for _iconMarker %1 | count _objects = %2 | _objects = %3",_iconMarker,count _objects, _objects]] call blck_fnc_log;
+			//[format["_monitorInitializedMissions (204): added landscape objects for _iconMarker %1 | count _objects = %2 | _objects = %3",_iconMarker,count _objects, _objects]] call blck_fnc_log;
 			uiSleep delayTime;	
 
 			_temp = [_coords,_simpleObjects,true] call blck_fnc_spawnSimpleObjects;
 			_objects append _temp;
-			[format["_monitorInitializedMissions (209): added simple objects for _iconMarker %1 | count _objects = %2 | _objects = %3",_iconMarker,count _objects, _objects]] call blck_fnc_log;
+			//[format["_monitorInitializedMissions (209): added simple objects for _iconMarker %1 | count _objects = %2 | _objects = %3",_iconMarker,count _objects, _objects]] call blck_fnc_log;
 
 			_ai = [_coords, _minNoAI,_maxNoAI,_noAIGroups,_missionGroups,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call blck_fnc_spawnMissionAI;
 			_missionInfantry append _ai;
-			[format["_monitorInitializedMissions (213): spawned mission AI for _iconMarker %1 at %2 | with count _missionInfantry = %3 | with _missionInfantry = %4",_iconMarker,diag_tickTime,count _missionInfantry, _missionInfantry]] call blck_fnc_log;
+			//[format["_monitorInitializedMissions (213): spawned mission AI for _iconMarker %1 at %2 | with count _missionInfantry = %3 | with _missionInfantry = %4",_iconMarker,diag_tickTime,count _missionInfantry, _missionInfantry]] call blck_fnc_log;
 			uiSleep delayTime;
 
 			if (!(_scubaGroupParameters isEqualTo []) || {_scubaPatrols > 0}) then 
@@ -244,12 +244,12 @@ for "_i" from 1 to (count _missionsList) do
 			};
 
 			private _noChoppers = [_noChoppers] call GMS_fnc_getNumberFromRange;
-			[format["_monitorInitializeMissions(246): _iconMarker %1 | _noChoppers = %2",_iconMarker,_noChoppers]] call blck_fnc_log;
+			//[format["_monitorInitializeMissions(246): _iconMarker %1 | _noChoppers = %2",_iconMarker,_noChoppers]] call blck_fnc_log;
 			if ((_noChoppers > 0) && {random(1) < _chanceHeliPatrol}) then
 			{
 				_temp = [_coords,_noChoppers,_missionHelis,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call blck_fnc_spawnMissionHelis;
 				_temp params["_helisSpawned","_unitsSpawned"];
-				[format["_monitorInitializeMissions (251): _iconMarker %1 | _helisSpawned = %2",_iconMarker,_helisSpawned]] call blck_fnc_log;			
+				//[format["_monitorInitializeMissions (251): _iconMarker %1 | _helisSpawned = %2",_iconMarker,_helisSpawned]] call blck_fnc_log;			
 				blck_monitoredVehicles append _helisSpawned;
 				_aiVehicles append _helisSpawned;
 				_missionInfantry append _unitsSpawned;				
@@ -262,7 +262,7 @@ for "_i" from 1 to (count _missionsList) do
 				_temp = [_coords, _garrisonedBuilding_ATLsystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_garrisonBuilding_ATLsystem;
 				_temp params["_unitsSpawned","_staticsSpawned","_buildingsSpawned"];
 				_objects append _buildingsSpawned;
-				[format["_monitorInitializedMissions (264): added ATL Garrisons, _iconMarker %1 | count _objects = %2 | _objects = %3",_iconMarker,count _objects, _objects]] call blck_fnc_log;
+				//[format["_monitorInitializedMissions (264): added ATL Garrisons, _iconMarker %1 | count _objects = %2 | _objects = %3",_iconMarker,count _objects, _objects]] call blck_fnc_log;
 				blck_monitoredVehicles append _staticsSpawned;
 				_missionInfantry append _unitsSpawned;
 				uiSleep delayTime;				
@@ -286,7 +286,7 @@ for "_i" from 1 to (count _missionsList) do
 				_temp params["_statics","_units"];
 				_objects append _statics;
 				_missionInfantry append _units;			
-				[format["_monitorInitializedMissions (288): spawned emplaced weapons for _iconMarker %1 at %2 | with count _missionInfantry = %3 | with _statics = %4",_iconMarker,diag_tickTime,count _missionInfantry, _statics]];															
+				//[format["_monitorInitializedMissions (288): spawned emplaced weapons for _iconMarker %1 at %2 | with count _missionInfantry = %3 | with _statics = %4",_iconMarker,diag_tickTime,count _missionInfantry, _statics]];															
 				uisleep delayTime;				
 			};
 
@@ -298,14 +298,14 @@ for "_i" from 1 to (count _missionsList) do
 			};
 
 			private _noPatrols = [_noVehiclePatrols] call GMS_fnc_getNumberFromRange;
-			[format["_monitorInitializedMissions (300): _iconMarker %1 | _noPatrols (vehicle) = %2",_iconMarker,_noPatrols]] call blck_fnc_log;
+			//[format["_monitorInitializedMissions (300): _iconMarker %1 | _noPatrols (vehicle) = %2",_iconMarker,_noPatrols]] call blck_fnc_log;
 			if (blck_useVehiclePatrols && {( (_noPatrols > 0) || {!(_missionPatrolVehicles isEqualTo [])} )} ) then
 			{
 				_temp = [_coords,_noPatrols,_difficulty,_missionPatrolVehicles,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
 				_temp params["_vehs","_units"]; 
 				_aiVehicles append _vehs;
 				_missionInfantry append _units;
-				[format["_monitorInitializedMissions (307): spawned vehicle patrols for _shapedMarker %1 at %2 | with count _missionInfantry = %3 | with _vehs = %4 | _missionInfantry = %5",_shapedMarker,diag_tickTime,count _missionInfantry, _vehs, _missionInfantry]] call blck_fnc_log;
+				//[format["_monitorInitializedMissions (307): spawned vehicle patrols for _shapedMarker %1 at %2 | with count _missionInfantry = %3 | with _vehs = %4 | _missionInfantry = %5",_shapedMarker,diag_tickTime,count _missionInfantry, _vehs, _missionInfantry]] call blck_fnc_log;
 				uiSleep delayTime;				
 			};	
 
@@ -324,14 +324,14 @@ for "_i" from 1 to (count _missionsList) do
 				if (_missionLootBoxes isEqualTo []) then
 				{
 					_crates = [_coords,[[selectRandom blck_crateTypes,[1,1,0],_crateLoot,_lootCounts]], _loadCratesTiming, _spawnCratesTiming, "start", _difficulty] call blck_fnc_spawnMissionCrates;
-					[format["_monitorInitializedMissions (326): _shapedMarker %1 | standard locations for crates at %2 | _crates = %3",_shapedMarker,_coords,_crates]] call blck_fnc_log;
+					//[format["_monitorInitializedMissions (326): _shapedMarker %1 | standard locations for crates at %2 | _crates = %3",_shapedMarker,_coords,_crates]] call blck_fnc_log;
 				}
 				else
 				{
 					_crates = [_coords,_missionLootBoxes,_loadCratesTiming, _spawnCratesTiming, "start", _difficulty] call blck_fnc_spawnMissionCrates;	
-					[format["_monitorInitializedMissions (331): _iconMarker %1 | predefined locations for crates at %2 | _crates = %3",_iconMarker,_coords,_crates]] call blck_fnc_log;												
+					//[format["_monitorInitializedMissions (331): _iconMarker %1 | predefined locations for crates at %2 | _crates = %3",_iconMarker,_coords,_crates]] call blck_fnc_log;												
 				};
-				diag_log format["monitorInitializedMission (333): _spawnCrates Timing = %1 / crates spawned = %2",_spawnCratesTiming,_crates];
+				//diag_log format["monitorInitializedMission (333): _spawnCrates Timing = %1 / crates spawned = %2",_spawnCratesTiming,_crates];
 				if (blck_cleanUpLootChests) then
 				{
 					_objects append _crates;
@@ -339,18 +339,18 @@ for "_i" from 1 to (count _missionsList) do
 				if (_loadCratesTiming isEqualTo "atMissionSpawn") then 
 				{
 					private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
-					[format["_monitorInitializedMissions (341) _crateMoney = %1",_crateMoney]] call blck_fnc_log;
+					//[format["_monitorInitializedMissions (341) _crateMoney = %1",_crateMoney]] call blck_fnc_log;
 					{
 						[_x,missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call GMS_fnc_setMoney;
 					} forEach _crates;
-					diag_log format["monitorInitializedMission (345): _iconMarker %1 | Loot LOADED _loadCrates Timing = %2",_iconMarker,_loadCratesTiming];
+					//diag_log format["monitorInitializedMission (345): _iconMarker %1 | Loot LOADED _loadCrates Timing = %2",_iconMarker,_loadCratesTiming];
 				} else {
-					diag_log format["monitorInitializedMission (347): _iconMarker %1 | NO Loot LOADED _loadCrates Timing = %2",_iconMarker,_loadCratesTiming];
+					//diag_log format["monitorInitializedMission (347): _iconMarker %1 | NO Loot LOADED _loadCrates Timing = %2",_iconMarker,_loadCratesTiming];
 				};
 			};
-			[format["_monitorInitializedMissions (351): added crates, count _crates = %1 | _crates = %2",count _crates, _crates]] call blck_fnc_log;
+			//[format["_monitorInitializedMissions (351): added crates, count _crates = %1 | _crates = %2",count _crates, _crates]] call blck_fnc_log;
 			uiSleep  1;
-			[format["_monitorInitializedMissions (353): _markers selet 1 = %1 | _iconMarker = %2",_markers select 1, _iconMarker]] call blck_fnc_log;
+		//	[format["_monitorInitializedMissions (353): _markers selet 1 = %1 | _iconMarker = %2",_markers select 1, _iconMarker]] call blck_fnc_log;
 			if (blck_showCountAliveAI) then
 			{
 				blck_missionLabelMarkers pushBack [
@@ -363,8 +363,8 @@ for "_i" from 1 to (count _missionsList) do
 			{
 				_x setVariable["crateSpawnPos", (getPos _x)];
 			} forEach _crates;			
-			[format["_monitorInitializedMissions (361): _shapedMarker %1 | _mines = %3",_shapedMarker,_coords,_mines]] call blck_fnc_log;
-			[format["_monitorInitializedMissions (362): _shapedMarker %1 | _crates = %3",_shapedMarker,_coords,_crates]] call blck_fnc_log;			
+			//[format["_monitorInitializedMissions (361): _shapedMarker %1 | _mines = %3",_shapedMarker,_coords,_mines]] call blck_fnc_log;
+			//[format["_monitorInitializedMissions (362): _shapedMarker %1 | _crates = %3",_shapedMarker,_coords,_crates]] call blck_fnc_log;			
 			#define indexMines 1 
 			#define indexCrates 4
 			_missionData set[indexMines, _mines]; 
@@ -398,7 +398,7 @@ for "_i" from 1 to (count _missionsList) do
 			[format["_monitorInitializedMissions (393): _shapedMarker %1 | _coords %2 | count _mines %3 | count _objects %4 | _crates %5",_shapedMarker,_coords,count _mines,count _objects,_crates]] call blck_fnc_log;
 		};
 	};
-	diag_log format["_monitorInitializedMissions (396) End of Code Block | blck_initializedMissionsList = %1",blck_initializedMissionsList];
+	//diag_log format["_monitorInitializedMissions (396) End of Code Block | blck_initializedMissionsList = %1",blck_initializedMissionsList];
 };
 blck_monitoring = false;
 //blck_activeMonitorThreads = blck_activeMonitorThreads - 1;

@@ -100,21 +100,20 @@ if (blck_debugLevel >= 3) then
 	];
 };
 private _markerError = false;
-if !(toLowerANSI (_markerType) in ["ellipse","rectangle"] || {isClass(configFile >> "CfgMarkers" >> _markerType)}) then 
+if !(toLowerANSI (_markerType) in ["ellipse","rectangle"] || {isClass(configFile >> "CfgMarkers" >> _markerType)} ) then 
 {
-	[format["_markerType set to 'ELLIPSE': Illegal marker type %1 used for mission %2 of difficulty %3",_markerType,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
+	//[format["_markerType set to 'ELLIPSE': Illegal marker type %1 used for mission %2 of difficulty %3",_markerType,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
 	_markerType = "ELLIPSE";
 	_markerSize = [200,200];
-	_markerBrush = "SOLID";
+	_markerBrush = "GRID";
 	_markerError = true;
 };
 if !(isClass(configFile >> "CfgMarkerColors" >> _markerColor)) then 
 {
-	[format["_markerColor set to 'default': Illegal color %1 used for mission %2 of difficulty %3",_markerColor,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
+	//[format["_markerColor set to 'default': Illegal color %1 used for mission %2 of difficulty %3",_markerColor,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
 	_markerColor = "DEFAULT";
 	_markerError = true;
 };
-
 
 // _markers holds the two markers generated for the mission. 
 // The first can be "" if the marker type used is an icon such as a triangle. 
@@ -161,5 +160,5 @@ private _missionData = [
 ];
 private _spawnPara = -1;
 blck_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs, _spawnPara];
-[format["_initializeMission (163): count blck_initializedMissionsList = %1",count blck_initializedMissionsList]] call blck_fnc_log;
+//[format["_initializeMission (163): count blck_initializedMissionsList = %1",count blck_initializedMissionsList]] call blck_fnc_log;
 true

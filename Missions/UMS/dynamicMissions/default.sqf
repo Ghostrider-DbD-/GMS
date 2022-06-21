@@ -5,7 +5,7 @@
 */
 private ["_markerLabel","_endMsg","_startMsg","_lootCounts","_crateLoot","_markerMissionName","_missionLandscapeMode","_missionLandscape",
 	"_missionLootBoxes","_missionLootVehicles","_missionEmplacedWeapons","_minNoAI","_maxNoAI","_noAIGroups","_noVehiclePatrols","_noEmplacedWeapons",
-	"_chanceReinforcements","_helipatrol","_endCondition","_markerColor","_markerType","_useMines","_difficulty","_missionCenter",
+	"_chancePara","_helipatrol","_endCondition","_markerColor","_markerType","_useMines","_difficulty","_missionCenter",
 	"_missionGroups","_scubaGroupParameters","_vehiclePatrolParameters","_submarinePatrolParameters","_aircraftTypes","_noAirPatrols","_airPatrols",
 	"_vests","_backpacks","_weaponList","_sideArms","_uniforms","_headGear","_chanceHeliPatrol","_noChoppers","_chancePara","_missionHelis","_noPara",
 	"_chanceLoot","_paraTriggerDistance","_paraLoot","_paraLootCounts"];
@@ -162,14 +162,12 @@ _chanceHeliPatrol = blck_chanceHeliPatrolBlue;  // Setting this in the mission f
 _noChoppers = blck_noPatrolHelisBlue;
 _missionHelis = blck_patrolHelisBlue;
 
-_chancePara = 0.9999990; // Setting this in the mission file overrides the defaults 
-_noPara = 3;  // Setting this in the mission file overrides the defaults 
-_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
-_paraSkill = "red";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
-
-_chanceLoot = 0.999999990; 
-_paraLoot = blck_BoxLoot_Blue;
-_paraLootCounts = blck_lootCountsRed;  // Throw in something more exotic than found at a normal blue mission.
+//_chancePara = blck_chanceParaBlue; // Setting this in the mission file overrides the defaults 
+//_noPara = 3;  // Setting this in the mission file overrides the defaults 
+//_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
+//_paraSkill = "red";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
+//_paraLoot = blck_BoxLoot_Blue;
+//_paraLootCounts = blck_lootCountsRed;  // Throw in something more exotic than found at a normal blue mission.
 
 //#include "\q\addons\custom_server\Missions\UMS\GMS_fnc_spawnDynamicUMSMission.sqf"; 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

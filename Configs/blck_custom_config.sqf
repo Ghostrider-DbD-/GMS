@@ -141,20 +141,20 @@ if (blck_debugOn) then {
     //blck_minDistanceFromTowns = 100;
 	//blck_preciseMapMarkers = true;
 	//blck_MissionTimeout = 300;
-	blck_cleanupCompositionTimer = 30;
-	blck_AliveAICleanUpTimer = 30;
-	blck_bodyCleanUpTimer = 30;
-	blck_vehicleDeleteTimer = 30;
-	blck_maxSpawnedMissions = 15;
-	blck_mainThreadUpdateInterval = 10;
+	//blck_cleanupCompositionTimer = 30;
+	//blck_AliveAICleanUpTimer = 30;
+	//blck_bodyCleanUpTimer = 30;
+	//blck_vehicleDeleteTimer = 30;
+	//blck_maxSpawnedMissions = 15;
+	//blck_mainThreadUpdateInterval = 10;
 	blck_launchersPerGroup = 1;
 
 	blck_enableOrangeMissions = 0;  
 	blck_enableGreenMissions = 0;
 	blck_enableRedMissions = 0;
-	blck_enableBlueMissions = 0;
+	blck_enableBlueMissions = 1;
 	blck_numberUnderwaterDynamicMissions = 0;	
-	blck_enableHunterMissions = 1;
+	blck_enableHunterMissions = 0;
 	blck_enableScoutsMissions = 1;
 	blck_maxCrashSites = 0; 
 
@@ -163,10 +163,13 @@ if (blck_debugOn) then {
 	blck_noPatrolHelisGreen = 1;
 	blck_noPatrolHelisOrange = 1;
 
+	blck_chanceParaBlue = 1; // [0 - 1] set to 0 to deactivate and 1 to always have paratroops spawn over the center of the mission. This value can be a range as well [0.1,0.3]
+	blck_noParaBlue = 3; //  [1-N]	
+
 	blck_SpawnVeh_Orange = 2; // Number of static weapons at Orange Missions
 	blck_SpawnVeh_Green = 2; // Number of static weapons at Green Missions
-	blck_SpawnVeh_Blue = 2;  // Number of static weapons at Blue Missions
-	blck_SpawnVeh_Red = 2;  // Number of static weapons at Red Missions
+	blck_SpawnVeh_Blue = 1;  // Number of static weapons at Blue Missions
+	blck_SpawnVeh_Red = 1;  // Number of static weapons at Red Missions
 
 	blck_SpawnEmplaced_Orange = 2; // Number of static weapons at Orange Missions
 	blck_SpawnEmplaced_Green = 2; // Number of static weapons at Green Missions
@@ -185,16 +188,16 @@ if (blck_debugOn) then {
 	blck_MaxAI_Red = 15;
 	blck_AIGrps_Red = 3;
 
-	blck_MinAI_Blue = 8;	
-	blck_MaxAI_Blue = 12;
-	blck_AIGrps_Blue = 3;
+	blck_MinAI_Blue = 3;	
+	blck_MaxAI_Blue = 6;
+	blck_AIGrps_Blue = 2;
 
 	blck_TMin_Blue = 7;
 	blck_TMin_Red = 10;
 	blck_TMin_Green = 13;	
 	blck_TMin_Orange = 16;	
-	blck_TMin_Hunter = 20;
-	blck_TMin_Scouts = 120;
+	blck_TMin_Hunter = 60;
+	blck_TMin_Scouts = 45;
 	blck_TMin_Crashes = 5;
 	blck_TMin_UMS = 20;
 	//Maximum Spawn time between missions in seconds
@@ -202,8 +205,8 @@ if (blck_debugOn) then {
 	blck_TMax_Red = 15;
 	blck_TMax_Green = 17;
 	blck_TMax_Orange = 21;
-	blck_TMax_Hunter = 22;
-	blck_TMax_Scouts = 180;
+	blck_TMax_Hunter = 120;
+	blck_TMax_Scouts = 20;
 	blck_TMax_Crashes = 15;
 	blck_TMax_UMS = 25;
 

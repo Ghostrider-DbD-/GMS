@@ -20,7 +20,7 @@ _lootCounts = blck_lootCountsGreen;
 _startMsg = "A Forgotten HQ was sighted in a nearby sector! Check the Green marker on your map for the location!";
 _endMsg = "The Forgotten HQ at the Green Marker is under survivor control!";
 _markerLabel = "";
-_markerType = ["ELLIPSE",[225,225],"Solid"];
+_markerType = ["ELLIPSE",[225,225],"GRID"];
 _markerColor = "ColorGreen";
 _markerMissionName = "Forgotten";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
@@ -202,7 +202,5 @@ _loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionComple
 						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
 						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
-									// Setting this in the mission file overrides the defaults 
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

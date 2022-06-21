@@ -1,18 +1,30 @@
 /*
-blck Mission system by Ghostrider [GRG]
-Loosely based on the AI mission system by blckeagls ver 2.0.2
-Contributions by Narines: bug fixes, testing, infinite ammo fix.
+Ghostrider's Mission System 
+
+by Ghostrider [GRG]
+
+This is a complete reworking of blckeagls mission system which I maintained over many years and was built on the AI mission system by blckeagls ver 2.0.2
+Over the time I have developed this code many have contributed to debugging and testing. Some notable contributors include:
+Narines: bug fixes, testing, infinite ammo fix.
 Ideas or code from that by He-Man, Vampire and KiloSwiss have been used for certain functions.
 Many thanks for new Coding and ideas from Grahame.
 
+The reworking of the missions was prompted by several factors. 
+- A desire to optimize code for each function using the most current functions and optimized coding methods.
+- Development of GMSCore which provides many of the basic functions needed and in addition supports a pretty robust area-based system for generating waypoints for patrols.
+- Realization that blckeagls was a bit bloated and hard to use.
+- Discovery that blackeagls had some unrecognized bugs.
 
+What has changed beyond the code: 
 
 Significant Changes:
-7.10 Build 247 
+
+7.11 Build 253
 Changed format for skills to be compatible with GMS_fnc_skills from GMSCore 
 Changed to code for spawning and configuring units in groups to that from GMSCore 
 Changed from the system of cycling waypoints to the area based patrols supported by GMSCore 
 Change how functions that have been recoded to rely on core functions in GMSCore are compiled; these are compiled now in config.hpp\CfgFunctions
+
 
 7.06 Build 240
 

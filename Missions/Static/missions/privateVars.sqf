@@ -7,7 +7,7 @@ private ["_mission","_difficulty","_crateLoot","_lootCounts","_markerMissionName
 	"_minNoAI","_maxNoAI","_noAIGroups","_noVehiclePatrols","_noEmplacedWeapons","_noPara","_helipatrol","_aircraftTypes",
 	"_uniforms","_headgear","_weaponList","_sideArms","_vests","_backpacks",
     "_weapons","_sideArms",
-	"_chanceReinforcements",
+	"_chancePara",
 	"_endCondition",
     "_useMines"
 ];

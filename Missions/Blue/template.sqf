@@ -97,11 +97,6 @@ _missionGroups = [  // The coordinates are the center position for each groups p
 _scubaGroupParameters = [  // These groups remain under water in scuba gear. Settings are otherwise as listed in _missionGroups
 ];
 
-
-
-
-//////////
-//  Edit these variables as needed
 _crateLoot = blck_BoxLoot_Red;  				     // can be individualized for a particular mission by defining a loot array.
 _lootCounts = blck_lootCountsRed;  				//  can be individualized for a particular mission by defining an array with the counts of each loot type.
 _minNoAI = blck_MinAI_Red;  					     // can be any value 0..N
@@ -109,55 +104,5 @@ _maxNoAI = blck_MaxAI_Red;						// can be any value 1..N
 _noAIGroups = blck_AIGrps_Red;					// can be any value 0..N (note that 0 here prevents any groups from being spawned)
 _noVehiclePatrols = blck_SpawnVeh_Red;			     // can be any value  0..N
 _noEmplacedWeapons = blck_SpawnEmplaced_Red;	// can be any value
-
-//////////
-//   The lines below define additional variables you may wish to configure.
-
-/*
-//  Available variables you may wish to change are listed below.
-//  Including any of these overides the defaults in blck_configs.
-// These settings are a great way to individualize missions as far as:
-//        Uniforms used 
-//        Weapons used 
-//        Types of loot available 
-//        Static weapons, vehicle patrols or aircraft 
-//        Number of any troops, air patrols, vehicle patrols etc at missions. 
-
-_useMines = blck_useMines;  // Setting this in the mission file overrides the defaults 
-_uniforms = blck_SkinList;  // Setting this in the mission file overrides the defaults 
-_headgear = blck_headgear;  // Setting this in the mission file overrides the defaults 
-_vests = blck_vests;
-_backpacks = blck_backpacks;
-_weaponList = ["blue"] call blck_fnc_selectAILoadout;
-_sideArms = blck_Pistols;
-_chanceHeliPatrol = blck_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
-_noChoppers = blck_noPatrolHelisBlue;
-_missionHelis = blck_patrolHelisBlue;
-_chancePara = blck_chanceParaBlue; // Setting this in the mission file overrides the defaults 
-_noPara = blck_noParaBlue;  // Setting this in the mission file overrides the defaults 
-_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
-_paraSkill = "red";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
-_chanceLoot = 0.0; 
-_paraLoot = blck_BoxLoot_Blue;
-_paraLootCounts = blck_lootCountsRed;  // Throw in something more exotic than found at a normal blue mission.
-
-_spawnCratesTiming = blck_spawnCratesTiming; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir". 
-						 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.
-						 //  This sets the default value but can be overridden by defining  _spawnCrateTiming in the file defining a particular mission.
-_loadCratesTiming = blck_loadCratesTiming; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
-						// Pertains only to crates spawned at mission spawn.
-						// This sets the default but can be overridden for specific missions by defining _loadCratesTiming
-						
-						// Examples:
-						// To spawn crates at mission start loaded with gear set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionSpawn"
-						// To spawn crates at mission start but load gear only after the mission is completed set blck_spawnCratesTiming = "atMissionSpawnGround" && blck_loadCratesTiming = "atMissionCompletion"
-						// To spawn crates on the ground at mission completion set blck_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
-						// To spawn crates in the air and drop them by chutes set blck_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-_endCondition = blck_missionEndCondition;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
-									// Setting this in the mission file overrides the defaults 
-*/
-
-//////////
-//  DO NOT TOUCH ANYTHING BELOW THIS LINE
 
 #include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

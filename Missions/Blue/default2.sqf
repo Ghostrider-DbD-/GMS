@@ -123,7 +123,7 @@ _noEmplacedWeapons = blck_SpawnEmplaced_Blue;
 _uniforms = ["U_OrestesBody","U_NikosAgedBody","U_NikosBody"];
 
 _headgear = ["H_StrawHat_dark","H_StrawHat","H_Hat_brown","H_Hat_grey"];
-_weaponList = ["blue"] call blck_fnc_selectAILoadout;
+ 
 /*
 _weaponList = [
 	"arifle_Katiba_F","arifle_Katiba_C_F","arifle_Katiba_GL_F","arifle_MXC_F","arifle_MX_F","arifle_MX_GL_F","arifle_MXM_F",
