@@ -14,7 +14,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 	
-//diag_log "[blckeagls] Spawning Orange Mission with template = resupplyCamp";
+//diag_log "[GMS] Spawning Orange Mission with template = resupplyCamp";
 
 _crateLoot = blck_BoxLoot_Orange;
 _lootCounts = blck_lootCountsOrange;

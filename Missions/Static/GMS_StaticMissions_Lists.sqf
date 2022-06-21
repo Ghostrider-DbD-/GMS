@@ -34,4 +34,4 @@ _staticMissions = [
 	["","",""]
 ];
 
-//diag_log "[blckeagls] GMS_StaticMissions_Lists.sqf <Loaded>";
+//diag_log "[GMS] GMS_StaticMissions_Lists.sqf <Loaded>";

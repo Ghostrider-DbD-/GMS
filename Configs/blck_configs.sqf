@@ -598,7 +598,7 @@ switch (_modType) do
 	blck_chanceBinoc = 0.75;
 
 	private _configToLoad = format["\q\addons\custom_server\Configs\blck_configs_%1.sqf",tolower(GMS_modType)];
-	diag_log format["[blckeagls] _configToLoad = %1",_configToLoad];
+	diag_log format["[GMS] _configToLoad = %1",_configToLoad];
 	//[] call compileFinal preprocessFileLineNumbers _configToLoad;
 	switch (toLower(GMS_modType)) do 
 	{

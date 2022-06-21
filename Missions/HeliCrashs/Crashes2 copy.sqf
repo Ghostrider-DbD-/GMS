@@ -153,7 +153,7 @@ _fn_spawnWreckMission = {
 	blck_activeCrashSites = blck_activeCrashSites - 1;
 };
 
-diag_log "[blckeagls] <<--->> starting crash site monitor";
+diag_log "[GMS] <<--->> starting crash site monitor";
 
 private _index = 0;
 private _lootNum = 5;

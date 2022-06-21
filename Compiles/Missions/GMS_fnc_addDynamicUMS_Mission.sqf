@@ -27,7 +27,7 @@ if (blck_debugLevel >= 2) then {diag_log format["_fnc_addDynamicUMS_Mission: blc
 blck_UMS_ActiveDynamicMissions pushBack _pos;
 blck_missionsRunning = blck_missionsRunning + 1;
 blck_dynamicUMS_MissionsRuning = blck_dynamicUMS_MissionsRuning + 1;
-//diag_log format["[blckeagls] UMS Spawner:-> waiting for %1",_waitTime];
+//diag_log format["[GMS] UMS Spawner:-> waiting for %1",_waitTime];
 uiSleep _waitTime;
-//diag_log format["[blckeagls] UMS Spawner:-> spawning mission %1",_UMS_mission];
+//diag_log format["[GMS] UMS Spawner:-> spawning mission %1",_UMS_mission];
 [_pos,_mission] call compileFinal preprocessFileLineNumbers format["q\addons\custom_server\Missions\UMS\dynamicMissions\%1",_UMS_mission];

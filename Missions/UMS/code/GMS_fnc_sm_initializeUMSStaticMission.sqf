@@ -70,4 +70,4 @@ _blck_localMissionMarker set [3,blck_labelMapMarkers select 1];  // Use an arrow
 // spawn loot chests
 [_missionLootBoxes,_missionCenter] call blck_fnc_sm_spawnLootContainers;
 
-diag_log format["[blckeagls] UMS Mission Spawner: Static UMS Mission %1 spawned",_mission];
+diag_log format["[GMS] UMS Mission Spawner: Static UMS Mission %1 spawned",_mission];

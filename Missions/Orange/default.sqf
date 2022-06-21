@@ -13,8 +13,8 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
-//diag_log "[blckeagls] Spawning Orange Mission with template = default";
-//diag_log "[blckeagls] Spawning Orange Mission with template = default";
+//diag_log "[GMS] Spawning Orange Mission with template = default";
+//diag_log "[GMS] Spawning Orange Mission with template = default";
 _crateLoot = blck_BoxLoot_Orange;
 _lootCounts = blck_lootCountsOrange;
 _startMsg = "A group of Bandits was sighted in a nearby sector! Check the Orange marker on your map for the location!";

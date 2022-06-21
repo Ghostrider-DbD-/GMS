@@ -14,7 +14,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 	
-//diag_log "[blckeagls] Spawning Red Mission with template = medicalCamp";
+//diag_log "[GMS] Spawning Red Mission with template = medicalCamp";
 _crateLoot = blck_BoxLoot_Red;
 _lootCounts = blck_lootCountsRed;
 _startMsg = "A Bandit Medical camp has been spotted. Check the Red marker on your map for its location";

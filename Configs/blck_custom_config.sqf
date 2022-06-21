@@ -15,7 +15,7 @@
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-["[blckeagls]  Loading Custom Configurations 11/14//20"] call blck_fnc_log;
+["[GMS]  Loading Custom Configurations 11/14//20"] call blck_fnc_log;
 
 switch (toLower (worldName)) do
 {
@@ -127,7 +127,7 @@ switch (toLower (worldName)) do
 	};
 };
 
-["[blckeagls]  End of map-specific block of Custom Configurations 11/14/20"] call blck_fnc_log;
+["[GMS]  End of map-specific block of Custom Configurations 11/14/20"] call blck_fnc_log;
 
 blck_customConfigsLoaded = 1;
 
@@ -210,5 +210,5 @@ if (blck_debugOn) then {
 	blck_TMax_Crashes = 15;
 	blck_TMax_UMS = 25;
 
-	["[blckeagls] Custom Configs <DEBUG ON> Custom mission timers loaded"] call blck_fnc_log;
+	["[GMS] Custom Configs <DEBUG ON> Custom mission timers loaded"] call blck_fnc_log;
 };

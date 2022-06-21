@@ -12,7 +12,7 @@
 */
 #include"\q\addons\custom_server\Configs\blck_defines.hpp";
 
-if (blck_debugOn) then {diag_log "[blckeagls] loading variables"};
+if (blck_debugOn) then {diag_log "[GMS] loading variables"};
 
 blck_minFPS = 8; 
 
@@ -65,5 +65,5 @@ blck_skillsIndex_Red = 1;
 blck_skillsIndex_Green = 2;
 blck_skillsIndex_Orange = 3;
 
-if (blck_debugOn) then {diag_log "[blckeagls] Variables Loaded"};
+if (blck_debugOn) then {diag_log "[GMS] Variables Loaded"};
 

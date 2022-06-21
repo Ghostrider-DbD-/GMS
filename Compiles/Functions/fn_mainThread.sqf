@@ -38,7 +38,6 @@ while {true} do
 	{
 		_timer5sec = diag_tickTime + 5;
 		if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManagement) then {[] call blck_fnc_simulationMonitor};
-		//[] call blck_fnc_sm_staticPatrolMonitor;
 		[] call blck_fnc_vehicleMonitor;		
 		#ifdef GRGserver
 		[] call blck_fnc_broadcastServerFPS;
@@ -48,7 +47,6 @@ while {true} do
 	{
 		_timer10Sec = diag_tickTime + 10;
 		[] call blck_fnc_scanForPlayersNearVehicles;
-		//[] call blck_fnc_updateCrateSignals;						
 		[] call blck_fnc_spawnNewMissions; 			
 		[] spawn blck_fnc_monitorInitializedMissions;
 	};
@@ -59,23 +57,20 @@ while {true} do
 		[] call blck_fnc_restoreHiddenObjects;
 		[] call blck_fnc_groupWaypointMonitor;
 		[] call blck_fnc_cleanupAliveAI;
-
-		//[] call blck_fnc_cleanupObjects;
-		//[] call blck_fnc_cleanupDeadAI;
-		if (blck_useHC) then {[] call blck_fnc_HC_passToHCs};
-		if (blck_useTimeAcceleration) then {[] call blck_fnc_timeAccel};
-		//if (blck_ai_offload_to_client) then {[] call blck_fnc_ai_offloadToClients};
 	};
 	if (diag_tickTime > _timer5min) then 
 	{
+		private _clientID = if (clientOwner == 2) then {"server"} else {"Headless Client"};
 		[
-			format["Timstamp %8 |Dynamic Missions Running %1 | Vehicles %2 | Groups %3 | Missions Run %4 | Server FPS %5 | Server Uptime %6 Min",
+			format["Timstamp %1 | Running on %2 | Missions Running %2 | Vehicles %3 | Groups %4 | Missions Run %5 | Server FPS %6 | Server Uptime %7 Min",
+				diag_tickTime,
+				_clientID,
 				blck_missionsRunning,
 				count blck_monitoredVehicles,
 				count blck_monitoredMissionAIGroups,
 				blck_missionsRun,
-				diag_FPS,floor(diag_tickTime/60),
-				diag_tickTime
+				diag_FPS,
+				floor(diag_tickTime/60)
 			]
 		] call blck_fnc_log;
 		if (blck_debugON) then 

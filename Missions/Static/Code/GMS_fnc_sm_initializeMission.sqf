@@ -88,5 +88,5 @@ uiSleep 30;
 [_missionLootBoxes,_missionCenter,_crateMoney] call blck_fnc_sm_spawnLootContainers;
 [_missionLootVehicles,_missionCenter,_crateMoney] call blck_fnc_sm_spawnLootVehicles;
 
-diag_log format["[blckeagls] Static Mission Spawner: Mission %1 spawned",_mission];
+diag_log format["[GMS] Static Mission Spawner: Mission %1 spawned",_mission];
 

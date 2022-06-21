@@ -15,7 +15,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-//diag_log "[blckeagls] Spawning Blue Mission with template = default";
+//diag_log "[GMS] Spawning Blue Mission with template = default";
 
 private["_missionEnabled"];
 

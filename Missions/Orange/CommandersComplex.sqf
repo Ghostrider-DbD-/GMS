@@ -3,7 +3,7 @@ Mission Compositions prepared for ghostridergaming by Ghostrider [GRG]
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
-diag_log "[blckeagls] Spawning Orange Mission with template = commandersComplex";
+diag_log "[GMS] Spawning Orange Mission with template = commandersComplex";
 _crateLoot = blck_BoxLoot_Orange;
 _lootCounts = [15,50,20,60,44,5];  //  	blck_lootCountsOrange = [8,32,8,30,16,1];
 _startMsg = "An enemy Commander was sighted in a nearby sector! Check the Orange marker on your map for the location!";

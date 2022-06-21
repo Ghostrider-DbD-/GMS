@@ -14,7 +14,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 	
-//diag_log "[blckeagls] Spawning Green Mission with template = resupplyCamp";
+//diag_log "[GMS] Spawning Green Mission with template = resupplyCamp";
 _crateLoot = blck_BoxLoot_Green;
 _lootCounts = blck_lootCountsGreen;
 _startMsg = "A Bandit resupply camp has been spotted. Check the Green marker on your map for its location";

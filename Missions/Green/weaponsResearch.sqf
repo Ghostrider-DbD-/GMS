@@ -14,7 +14,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-//diag_log "[blckeagls] Spawning Green Mission with template = default";
+//diag_log "[GMS] Spawning Green Mission with template = default";
 _crateLoot = blck_BoxLoot_Green;
 _crateLoot = blck_BoxLoot_Orange;
 _lootCounts = blck_lootCountsOrange;

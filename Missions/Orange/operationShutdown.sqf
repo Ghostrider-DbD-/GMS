@@ -14,7 +14,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-//diag_log "[blckeagls] Spawning Orange Mission with template = default";
+//diag_log "[GMS] Spawning Orange Mission with template = default";
 _crateLoot = blck_BoxLoot_Orange;
 _lootCounts = [15,50,20,60,44,5]; 
 _startMsg = "Operation Shutdown reported in a nearby sector ! Check the marker on your map for the location!";

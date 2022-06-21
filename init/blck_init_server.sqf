@@ -14,28 +14,28 @@
 ///////////////////////////////////////////////
 //  prevent the system from being started twice
 //////////////////////////////////////////////
-if !(isNil "blck_missionSystemRunning") exitWith {"[blckeagls] Mission System already initialized"};
+if !(isNil "blck_missionSystemRunning") exitWith {"[GMS] Mission System already initialized"};
 blck_missionSystemRunning = true;
 
 // Only run this on a dedicated server
-if ( !(isServer) || hasInterface) exitWith 
+if (hasInterface) exitWith 
 {
-	"[blckeagls] Mission system may only be run on a dedicate server or headless client";
+	"[GMS] Mission system may only be run on a dedicate server or headless client";
 };
 waitUntil {!isNil "GMSCore_Initialized"}; 
-diag_log format["[blckeagls] Loading blackeagls at %1",diag_tickTime];
-diag_log format["[blckeagls] GMS_modType = %1 | GMS_side %2 | GMS_unitType %3",GMS_modType,GMS_side,GMS_unitType];
+diag_log format["[GMS] Loading blackeagls at %1",diag_tickTime];
+diag_log format["[GMS] GMS_modType = %1 | GMS_side %2 | GMS_unitType %3",GMS_modType,GMS_side,GMS_unitType];
 
 // Just some housekeeping for ghost.
 private _blck_loadingStartTime = diag_tickTime;
 
 // compile functions
 [] call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\Compiles\blck_functions.sqf";
-diag_log format["[blckeagls] Loaded Functions at %1",diag_tickTime];
+diag_log format["[GMS] Loaded Functions at %1",diag_tickTime];
 // Load Configs
 [] call compile preprocessfilelinenumbers "\q\addons\custom_server\Configs\blck_configs.sqf";
 
-diag_log format["[blckeagls] Loaded Configs at %1",diag_tickTime];
+diag_log format["[GMS] Loaded Configs at %1",diag_tickTime];
 
 waitUntil{(!isNil "blck_useHC") && (!isNil "blck_simulationManager") && (!isNil "blck_debugOn") && !(isNil "blck_configs_loaded")};
 
@@ -82,19 +82,19 @@ waitUntil{(!isNil "blck_useHC") && (!isNil "blck_simulationManager") && (!isNil 
 
 // This block waits for the mod to start but is disabled for now
 if ((toLowerANSI GMS_modType) isEqualto "epoch") then {
-	diag_log "[blckeagls] Waiting until EpochMod is ready...";
+	diag_log "[GMS] Waiting until EpochMod is ready...";
 	if !(blck_debugOn) then {waitUntil {!isnil "EPOCH_SERVER_READY"}};
-	diag_log "[blckeagls] EpochMod is ready...loading blckeagls";
+	diag_log "[GMS] EpochMod is ready...loading blckeagls";
 };
 if ((toLowerANSI GMS_modType) isEqualTo "exile") then
 {
-	diag_log "[blckeagls] Waiting until ExileMod is ready ...";
+	diag_log "[GMS] Waiting until ExileMod is ready ...";
 	if !(blck_debugOn) then {waitUntil {!isNil "PublicServerIsLoaded"}};
-	diag_log "[blckeagls] Exilemod is ready...loading blckeagls";	
+	diag_log "[GMS] Exilemod is ready...loading blckeagls";	
 };
 if ((toLowerANSI GMS_modType) isEqualTo "default") then 
 {
-	["[blckeagls] Configuring Mission System for Default Settings..."] call blck_fnc_log;
+	["[GMS] Configuring Mission System for Default Settings..."] call blck_fnc_log;
 };
 
 
@@ -102,12 +102,12 @@ if ((toLowerANSI GMS_modType) isEqualTo "default") then
 //  HINT: Use these for map-specific settings
 #include "\q\addons\custom_server\Configs\blck_custom_config.sqf";
 
-if (blck_debugOn) then {[format["[blckeagls] Custom Configurations Loaded at %1",diag_tickTime]] call blck_fnc_log};
-if (blck_debugOn) then {[format["[blckeagls] debug mode settings:blck_debugON = %1 | blck_debugLevel = %2",blck_debugON,blck_debugLevel]] call blck_fnc_log};
+if (blck_debugOn) then {[format["[GMS] Custom Configurations Loaded at %1",diag_tickTime]] call blck_fnc_log};
+if (blck_debugOn) then {[format["[GMS] debug mode settings:blck_debugON = %1 | blck_debugLevel = %2",blck_debugON,blck_debugLevel]] call blck_fnc_log};
 
 // Load vaariables used to store information for the mission system.
 [] call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\Compiles\blck_variables.sqf";
-if (blck_debugOn) then {diag_log format["[blckeagls] Variables loaded at %1",diag_tickTime]};
+if (blck_debugOn) then {diag_log format["[GMS] Variables loaded at %1",diag_tickTime]};
 
 // configure dynamic simulation management is this is being used.
 if (blck_simulationManager == 2) then 
@@ -116,54 +116,24 @@ if (blck_simulationManager == 2) then
 	enableDynamicSimulationSystem true;
 };
 
-// spawn map addons to give the server time to position them before spawning in crates etc.
-if (blck_spawnMapAddons) then
-{
-	call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\MapAddons\MapAddons_init.sqf";
-}else{
-	["Map Addons disabled"] call blck_fnc_log;
-};
-
 // find and set Mapcenter and size
 call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\init\GMS_fnc_findWorld.sqf";
-if (blck_debugOn) then {diag_log "[blckeagls] Map-specific information defined"};
+if (blck_debugOn) then {diag_log "[GMS] Map-specific information defined"};
 
 
 // set up the lists of available missions for each mission category
 #include "\q\addons\custom_server\Missions\GMS_missionLists.sqf";
-if (blck_debugOn) then {diag_log "[blckeagls] Mission Lists Loaded Successfully"};
+if (blck_debugOn) then {diag_log "[GMS] Mission Lists Loaded Successfully"};
 //call compile preprocessfilelinenumbers "\q\addons\custom_server\Missions\Static\GMS_StaticMissions_init.sqf";
 //call compile preprocessfilelinenumbers "q\addons\custom_server\Missions\UMS\GMS_UMS_init.sqf";  // loads functions and spawns any static missions.
-//if (blck_debugOn) then {diag_log "[blckeagls] blck_init_server: ->> Static and UMS systems initialized."};
+//if (blck_debugOn) then {diag_log "[GMS] blck_init_server: ->> Static and UMS systems initialized."};
 
 switch (blck_simulationManager) do
 {
 	case 2: {["dynamic simulation manager enabled"] call blck_fnc_log}; 
 	case 1: {["blckeagls simulation manager enabled"] call blck_fnc_log};
-	case 0: {["[blckeagls] simulation management disabled"] call blck_fnc_log};
+	case 0: {["[GMS] simulation management disabled"] call blck_fnc_log};
 };
-
-
-/*
-if ( !(blck_debugON) && (blck_debugLevel isEqualTo 0)) then
-{
-	[format["Waiting for players to join ----    >>>>"]] call blck_fnc_log;
-	//waitUntil{{isPlayer _x}count allPlayers > 0};
-	["Player Connected, spawning missions"] call blck_fnc_log;
-} else {
-	["Debug mode ON, proceding without players"] call blck_fnc_log;
-};
-*/
-
-/*
-if (blck_spawnStaticLootCrates) then
-{
-	[] spawn compile preprocessfilelinenumbers "\q\addons\custom_server\SLS\SLS_init.sqf";
-	["SLS::  -- >>  Static Loot Spawner Done"] call blck_fnc_log;
-}else{
-	["SLS::  -- >>  Static Loot Spawner disabled"] call blck_fnc_log;
-};
-*/
 
 if (blck_blacklistTraderCities) then
 {
@@ -249,29 +219,11 @@ if (blck_maxCrashSites > 0) then
 {
 	[] execVM "\q\addons\custom_server\Missions\HeliCrashs\Crashes2.sqf";
 };
-
-//call compile preprocessfilelinenumbers "\q\addons\custom_server\DLS\DLS_init.sqf";
 #endif
 
 //  start the main thread for the mission system which monitors missions running and stuff to be cleaned up
 [] spawn blck_fnc_mainThread;
-//blck_pvs_version = blck_versionNumber;
-//publicVariable "blck_pvs_version";
 private _version = getText(configFile >> "GMSBuild" >> "Version");
 private _build = getText(configFile >> "GMSBuild" >> "Build");
 private _date = getText(configFile >> "GMSBuile" >> "Date");
 [format["Version %1 Build %2 Date %4 Loaded in %3 seconds",_version,_build,diag_tickTime - _blck_loadingStartTime,_date]] call blck_fnc_log;
-
-private _num = 1;
-for "_i" from 1 to _num do 
-{
-	[format["initServerTestRoutine: _num = %1",_num]] call blck_fnc_log;
-};
-/*
-for "_i" from 1 to 100 do
-{
-	private _mPos = [] call blck_fnc_findSafePosn; 
-	private _mkr = createMarker[format["debug%1",_i],_mPos];
-	_mkr setMarkerColor "COLORYELLOW";
-	_mkr setMarkerType "hd_dot";
-};

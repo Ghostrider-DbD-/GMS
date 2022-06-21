@@ -15,7 +15,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 	
-//diag_log "[blckeagls] Spawning Blue Mission with template = redCamp";
+//diag_log "[GMS] Spawning Blue Mission with template = redCamp";
 _crateLoot = blck_BoxLoot_Blue;
 _lootCounts = blck_lootCountsBlue;
 _startMsg = "A temporary Bandit camp has been spotted. Check the Blue marker on your map for its location";

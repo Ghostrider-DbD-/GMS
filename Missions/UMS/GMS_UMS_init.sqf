@@ -8,7 +8,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-//diag_log "[blckeagls] Initializing UMS";
+//diag_log "[GMS] Initializing UMS";
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 blck_dynamicUMS_MissionsRuning = 0;
@@ -22,6 +22,6 @@ blck_UMS_ActiveDynamicMissions = [];
 //diag_log format ["Initializing UMS static missions at %1",diag_tickTime];
 [] execVM "q\addons\custom_server\Missions\UMS\GMS_UMS_StaticMissions_init.sqf";
 
-//diag_log "[blckeagls] UMS <Initialized>";
+//diag_log "[GMS] UMS <Initialized>";
  
 

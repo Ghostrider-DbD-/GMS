@@ -15,8 +15,8 @@ params[["_message","Unknown Message"],["_code",""]];
 
 switch (toLowerANSI _code) do 
 {
-	case "error": {_message = format["[blckeagls]  <ERROR>  %1",_message]};
-	case "warning": {_message = format["[blckeagls] <WARNING>  %1",_message]};
-	default {_message = format["[blckeagls] %1",_message]};
+	case "error": {_message = format["[GMS]  <ERROR>  %1",_message]};
+	case "warning": {_message = format["[GMS] <WARNING>  %1",_message]};
+	default {_message = format["[GMS] %1",_message]};
 };
 diag_log _message;

@@ -4,7 +4,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-//diag_log "[blckeagls] Spawning Scout Mission";
+//diag_log "[GMS] Spawning Scout Mission";
  
 _crateLoot = blck_BoxLoot_Red;
 _lootCounts = [3,5,2,3,6,1];

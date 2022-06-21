@@ -16,7 +16,7 @@ if !(isNil "blck_Initialized") exitWith{};
 private _blck_loadingStartTime = diag_tickTime;
 
 call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\Compiles\blck_functions_HC.sqf";
-//diag_log format["[blckeagls] Loading Headless Client Version %2 |  Build Date %1 | Build %3 | loaded in %4 seconds",blck_buildDate,blck_versionNumber,blck_buildNumber,diag_tickTime - _blck_loadingStartTime];
+//diag_log format["[GMS] Loading Headless Client Version %2 |  Build Date %1 | Build %3 | loaded in %4 seconds",blck_buildDate,blck_versionNumber,blck_buildNumber,diag_tickTime - _blck_loadingStartTime];
 while {true} do 
 {
 	uiSleep 60;
@@ -25,6 +25,6 @@ while {true} do
 	{
 		_localUnits = _localUnits + count(units _x);
 	} forEach _localGroups;
-	diag_log format["[blckeagls] HC Logging: Groups offloaded = %1 | Units offloaded = %2 | fps = %3 | time = %4 ",_localGroups,_localUnits,diag_FPS,diag_tickTime];
+	diag_log format["[GMS] HC Logging: Groups offloaded = %1 | Units offloaded = %2 | fps = %3 | time = %4 ",_localGroups,_localUnits,diag_FPS,diag_tickTime];
 };
 

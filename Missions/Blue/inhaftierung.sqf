@@ -11,7 +11,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-//diag_log "[blckeagls] Spawning Blue Mission with template = default2";
+//diag_log "[GMS] Spawning Blue Mission with template = default2";
 
 _crateLoot = blck_BoxLoot_Blue;
 _lootCounts = blck_lootCountsBlue;

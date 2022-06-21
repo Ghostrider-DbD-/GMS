@@ -23,7 +23,7 @@ params[["_coords",[]],"_range"];
 if (_coords isEqualTo []) then 
 {
 	_coords = [0,0,0];
-	//diag_log format["[blckeagls] No value passed to blck_fnc_nearestPlayers for _coords - default of [0,0,0] used"];
+	//diag_log format["[GMS] No value passed to blck_fnc_nearestPlayers for _coords - default of [0,0,0] used"];
 };
 
 private _players = allPlayers select {(_x distance _coords) < _range};

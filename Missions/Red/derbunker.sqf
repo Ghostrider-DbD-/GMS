@@ -14,7 +14,7 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 #include "\q\addons\custom_server\Missions\privateVars.sqf";
 
-//diag_log "[blckeagls] Spawning Red Mission with template = default";
+//diag_log "[GMS] Spawning Red Mission with template = default";
 _crateLoot = blck_BoxLoot_Red;
 _lootCounts = blck_lootCountsRed;
 _startMsg = "An enemy Bunker was sighted in a nearby sector! Check the Red marker on your map for the location!";

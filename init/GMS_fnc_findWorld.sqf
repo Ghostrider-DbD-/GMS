@@ -17,7 +17,7 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-diag_log format["[blckeagls] Loading Map-specific settings with worldName = %1",worldName];
+diag_log format["[GMS] Loading Map-specific settings with worldName = %1",worldName];
 switch (toLowerANSI worldName) do 
 {// These may need some adjustment - including a test for shore or water should help as well to avoid missions spawning on water.
 		case "altis":{blck_mapCenter = [12000,10000,0]; blck_mapRange = 25000; blck_maxGradient = 0.20;blck_maxSeaSearchDistance = 20000;};

@@ -73,7 +73,7 @@ if (isNil "_simpleObjects") then {_simpleObjects = []};
 if (isNil "_missionemplacedweapons") then 
 {
 	_missionemplacedweapons = [];
-	diag_log format["[blckeagls] _missionSpawner: setting _missionemplacedweapons to its default value of %1",_missionemplacedweapons];
+	diag_log format["[GMS] _missionSpawner: setting _missionemplacedweapons to its default value of %1",_missionemplacedweapons];
 };
 if !(_defaultMissionLocations isEqualTo []) then 
 {

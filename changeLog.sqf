@@ -1,5 +1,5 @@
 /*
-Ghostrider's Mission System 
+Ghostrider's Mission System (GMS)
 
 by Ghostrider [GRG]
 
@@ -15,8 +15,22 @@ The reworking of the missions was prompted by several factors.
 - Realization that blckeagls was a bit bloated and hard to use.
 - Discovery that blackeagls had some unrecognized bugs.
 
+
 What has changed beyond the code: 
 
+Time Acceleration was moved to a new Mod:
+https://github.com/Ghostrider-DbD-/-timeManagement
+
+The MapAddons module was moved to a new, reworked mod:
+https://github.com/Ghostrider-DbD-/mapAddons 
+
+The Mission system can now be run entirely on an HC - no more passing AI back and forth. 
+
+The static loot system and dynamic loot system are gone. THese outlived thier usefulness. 
+
+
+
+I have kept the change log as a bit of history for those interested in development of this mission system. 
 Significant Changes:
 
 7.11 Build 253
