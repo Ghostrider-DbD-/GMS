@@ -28,7 +28,7 @@ The Mission system can now be run entirely on an HC - no more passing AI back an
 
 The static loot system and dynamic loot system are gone. THese outlived thier usefulness. 
 
-
+Support for Static Missions was removed. Use the ability to spawn a mission at a specific location instead. This reduced the number of functions needed for GMS and should improve reliability.
 
 I have kept the change log as a bit of history for those interested in development of this mission system. 
 Significant Changes:

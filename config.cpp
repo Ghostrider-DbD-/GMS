@@ -13,7 +13,7 @@
 
  class GMSBuild {
 	 Version = "7.12";
-	 Build = "254"; 
+	 Build = "255"; 
 	 Date = "06-19-2022";
  };
 
@@ -51,7 +51,6 @@ class CfgFunctions {
 			class getAllMarkersOfSubtype {};
 			class getIndexFromDifficulty {};
 			class loadLootItemsFromArray {};
-			class log {};
 			class mainThread {};	
 			class markerSetAliveAICount {};	
 			class messagePlayers {};	
@@ -125,24 +124,31 @@ class CfgFunctions {
 			class spawnSurfacePatrol {};
 			//class updateMissionQue {};
 		};
-		class timeAcceleration {
-			file = "\q\addons\custom_server\Compiles\TimeAccel";
-			class timeAccel {};
-		};
 		class units {
 			file = "\q\addons\custom_server\Compiles\Units";
+			class cleanupAliveAI {};
+			class deleteAI {};
 			class removeAllAIgear {};
 			class spawnParaUnits {};
+			class spawnUnit {};
 			class unitHit {};
 			class unitKilled {};
 		};
-		class util {
+		class Utils {
+			file = "\q\addons\custom_server\Compiles\Utils";
+			class log {};
 		};
 		class vehicles {
 			file = "\q\addons\custom_server\Compiles\Vehicles";	
 			class alertVehicles {};
 			class deleteAIVehicle {};
 			class checkForEmptyVehicle {};	
+			class handleEmptyVehicle {};
+			class loadVehicleCrew {};
+			class protectVehicle {};
+			class releaseVehicleToPlayers {};
+			class revealNearbyPlayers {};
+			class scanForPlayersNearVehicles {};
 			class selectPatrolVehicle {};
 			class spawnMissionHeli {};
 			class spawnVehicle {};
