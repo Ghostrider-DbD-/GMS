@@ -88,7 +88,9 @@ while {true} do
 				[format["file %1 | running %2",(_x select 1),(_x select 2)]] call blck_fnc_log;
 			} forEach diag_activeSQFScripts;
 		};
-		[] call blck_fnc_cleanEmptyGroups;			
+		[] call blck_fnc_cleanEmptyGroups;
+		[blck_landVehiclePatrols] call GMS_fnc_removeNullEntries;
+		[blck_aircraftPatrols] call GMS_fnc_removeNullEntries;
 		_timer5min = diag_tickTime + 300;
 	};
 };

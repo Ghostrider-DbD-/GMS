@@ -15,22 +15,7 @@ private["_chopperType","_patrolHeli","_launcherType","_unitPilot","_unitCrew","_
 [format["blck_fnc_spawnMissionHeli: _this = %1",_this]] call blck_fnc_log;
 params["_coords","_skillAI","_helis",["_uniforms",[]], ["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]],["_Launcher","none"],["_crewCount",4]];
 
-if (_uniforms isEqualTo []) 		then {_uniforms = [_skillAI] call blck_fnc_selectAIUniforms};
-if (_headGear  isEqualTo [])		then {_headGear = [_skillAI] call blck_fnc_selectAIHeadgear};
-if (_vests isEqualTo []) 			then {_vests = [_skillAI] call blck_fnc_selectAIVests};
-if (_backpacks  isEqualTo []) 		then {_backpacks = [_skillAI] call blck_fnc_selectAIBackpacks};
-if (_weaponList  isEqualTo []) 		then {_weaponList = [_skillAI] call blck_fnc_selectAILoadout};
-if (_sideArms isEqualTo []) 		then {[_skillAI] call blck_fnc_selectAISidearms};
-
-switch (toLower(_skillAI)) do
-{
-	case "blue": {_minDist = 150;_maxDist = blck_maxPatrolRadiusHelisBlue};
-	case "red" : {_minDist = 150;_maxDist = blck_maxPatrolRadiusHelisRed};
-	case "green" : {_minDist = 150;_maxDist = blck_maxPatrolRadiusHelisGreen};
-	case "orange" : {_minDist = 150;_maxDist = blck_maxPatrolRadiusHelisOrange};
-	default {_minDist = 150; _maxDist = 500};
-};
-#define heliPatrolAreaDimensions [400,400]
+#define heliPatrolAreaDimensions [800,800]
 private _grpPilot = [_coords,_crewCount,_skillAI,heliPatrolAreaDimensions,_uniforms,_headgear,_vests,_backpacks,_weaponList,_sideArms,false] call blck_fnc_spawnGroup;
 _abort = if (isNull _grpPilot) then{true} else {false};
 if !(isNull _grpPilot)  then

@@ -13,7 +13,21 @@
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
-params["_coords","_noVehiclePatrols","_skillAI","_missionPatrolVehicles",["_useRelativePos",true],["_uniforms",[]], ["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]], ["_isScubaGroup",false],["_crewCount",4]];
+params[
+	"_coords",
+	"_noVehiclePatrols",
+	"_skillAI",
+	"_missionPatrolVehicles"
+	,["_useRelativePos",true],
+	["_uniforms",[]], 
+	["_headGear",[]],
+	["_vests",[]],
+	["_backpacks",[]],
+	["_weaponList",[]],
+	["_sideArms",[]], 
+	["_isScubaGroup",false],
+	["_crewCount",4]
+];
 
 private["_spawnPos"];
 private _vehicles = [];
@@ -40,42 +54,16 @@ if (_patrolsThisMission isEqualTo []) then
 	_x params["_vehName","_pos"];
 	if (_useRelativePos) then {_pos = _coords vectorAdd _pos};
 	_pos = _pos findEmptyPosition[0,50,_vehName];	
-	#define vehiclePatrolAreaDimensions [300,300]
+	#define vehiclePatrolAreaDimensions [500,500]
 	private _maxCrewConfigs = [_vehName,true] call BIS_fnc_crewCount;
 	private _maxCrewBlck = missionNamespace getVariable[format["blck_vehCrew_%1",_skillAI],3];
 	private _crewCount = _maxCrewBlck min _maxCrewConfigs;
 	#define offMap [-1,-1,1]
-/*
-params[
-	["_pos",[-1,-1,1]], 
-	["_numbertospawn",0], 
-	["_skillLevel","red"], 
-	["_areaDimensions",[]], 
-	["_uniforms",[]], 
-	["_headGear",[]],
-	["_vests",[]],
-	["_backpacks",[]],
-	["_weaponList",[]],
-	["_sideArms",[]], 
-	["_scuba",false]
-];
-*/
 	private _vehGroup = [offMap,_crewCount,_skillAI,vehiclePatrolAreaDimensions,_uniforms, _headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaGroup] call blck_fnc_spawnGroup;
 	
 	_missionAI append (units _vehGroup);
 	blck_monitoredMissionAIGroups pushBack _vehGroup;
-	
-	//TODO: Update waypoint system to the one used for GMSCore
-	//_patrolVehicle = [_coords,_pos,_vehName,40,60,_vehGroup,useWaypoints,_crewCount] call blck_fnc_spawnVehiclePatrol; 
-	// TODO: recode to use GMS_fnc to create vehicle
-	//private _wep = [_static,_pos] call blck_fnc_spawnVehicle;
-
-	//_wep setVariable["GRG_vehType","emplaced"];	
-	//_wep setPosATL _pos;
-	//_wep setdir _dir;
-
-	// TODO: recode to use GMS_fnc to handle this if needed	
-	//[_wep,2] call blck_fnc_configureMissionVehicle;	
+		
 	#define height 0
 	#define dir 0
 	#define maxDamage 0.5
@@ -84,24 +72,17 @@ params[
 	#define vehKilledCode [blck_fnc_vehicleKilled]
 	private _damage = 0.5;
 	private _releaseToPlayers = blck_allowClaimVehicle;
-	/*
-		["_className",""], // Clasname of vehicle to be spawned
-		["_spawnPos",[0,0,0]],  //  selfevident
-		["_dir",0],  //  selfevident
-		["_height",0],		
-		["_disable",0],  // damage value set to this value if less than this value when all crew are dead
-		["_removeFuel",0.2],  // fuel set to this value when all crew dead
-		["_releaseToPlayers",true],
-		["_deleteTimer",300],
-		["_vehHitCode",[]],
-		["_vehKilledCode",[]]
-	*/	
-	private _patrolVehicle = [_vehName,_pos,dir,height,maxDamage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMS_fnc_spawnPatrolVehicle;
-	
-	[_patrolVehicle,_vehGroup] call GMS_fnc_loadVehicleCrew;
-	_vehicles pushback _patrolVehicle;
-	blck_landVehiclePatrols pushBack _patrolVehicle;
+
+	private _vehicle = [_vehName,_pos,dir,height,maxDamage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMS_fnc_spawnPatrolVehicle;
+	[_vehicle,_vehGroup] call GMS_fnc_loadVehicleCrew;
+	_vehGroup setVariable["GMS_group",true];
+	[_vehicle,GMS_forbidenWeapons,GMS_forbidenMagazines] call GMS_fnc_disableVehicleWeapons;
+	[_vehicle,GMS_disabledSensors] call GMS_fnc_disableVehicleSensors;
+	if (GMS_disableInfrared) then {_vehicle disableTIEquipment true};
+	_vehicles pushback _vehicle;
+	blck_landVehiclePatrols pushBack _vehicle;
 } forEach _patrolsThisMission;
+blck_landVehiclePatrols append _vehicles;
 blck_monitoredVehicles append _vehicles;
 [_vehicles, _missionAI, _abort];
 

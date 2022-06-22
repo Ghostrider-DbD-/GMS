@@ -64,7 +64,7 @@ if !(_role isEqualTo []) then // _instigator was in a vehicle of some sort
 		case "cargo": {};
 	};
 };
-//[format["blck_fnc_unitKilled: _unit %1 | _killer %2 | _instigator %3 | vehicle _killer %4",_unit,_killer,_instigator,vehicle _killer]] call blck_fnc_log;
+[format["blck_fnc_unitKilled: _unit %1 | _killer %2 | _instigator %3 | vehicle _killer %4",_unit,_killer,_instigator,vehicle _killer]] call blck_fnc_log;
 //diag_log format["blck_fnc_unitKilled: _unit %1 | _killer %2 | | weapon = %3 | doing all that stuff now", _unit,_killer, currentWeapon _killer];
 private _difficulty = (group _unit) getVariable["blck_difficulty","Red"];
 private _index = [_difficulty] call blck_fnc_getIndexFromDifficulty;

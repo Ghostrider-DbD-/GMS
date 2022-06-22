@@ -249,8 +249,10 @@ for "_i" from 1 to (count _missionsList) do
 			{
 				_temp = [_coords,_noChoppers,_missionHelis,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call blck_fnc_spawnMissionHelis;
 				_temp params["_helisSpawned","_unitsSpawned"];
-				//[format["_monitorInitializeMissions (251): _iconMarker %1 | _helisSpawned = %2",_iconMarker,_helisSpawned]] call blck_fnc_log;			
+				//[format["_monitorInitializeMissions (251): _iconMarker %1 | _helisSpawned = %2",_iconMarker,_helisSpawned]] call blck_fnc_log;
+
 				blck_monitoredVehicles append _helisSpawned;
+				blck_aircraftPatrols append _helisSpawned; // Used to find nearest heli ... 
 				_aiVehicles append _helisSpawned;
 				_missionInfantry append _unitsSpawned;				
 				uisleep delayTime;				
@@ -303,6 +305,7 @@ for "_i" from 1 to (count _missionsList) do
 			{
 				_temp = [_coords,_noPatrols,_difficulty,_missionPatrolVehicles,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
 				_temp params["_vehs","_units"]; 
+
 				_aiVehicles append _vehs;
 				_missionInfantry append _units;
 				//[format["_monitorInitializedMissions (307): spawned vehicle patrols for _shapedMarker %1 at %2 | with count _missionInfantry = %3 | with _vehs = %4 | _missionInfantry = %5",_shapedMarker,diag_tickTime,count _missionInfantry, _vehs, _missionInfantry]] call blck_fnc_log;
@@ -313,6 +316,8 @@ for "_i" from 1 to (count _missionsList) do
 			{
 				_temp = [_coords,_noPatrols,_difficulty,_submarinePatrolParameters,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission,_vehicleCrewCount] call blck_fnc_spawnMissionVehiclePatrols;
 				_temp params["_vehs","_units"]; 
+				blck_monitoredVehicles append _vehs;
+				blck_landVehiclePatrols append _vehs;
 				_aiVehicles append _vehs;
 				_missionInfantry append _units;
 				uiSleep  delayTime;

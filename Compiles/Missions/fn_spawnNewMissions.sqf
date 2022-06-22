@@ -26,28 +26,24 @@ if (blck_missionsRunning >= blck_maxSpawnedMissions) exitWith
 	
 	if (_activeMissions < _maxMissions && {diag_tickTime > _waitTime && {blck_missionsRunning < blck_maxSpawnedMissions}}) then 
 	{
-		blck_dynamicMissionsSpawned = blck_dynamicMissionsSpawned + 1;
 		// time to reset timers and spawn something.
 		private _missionSelected = selectRandom _missions;
 		//[format["_spawnNewMissions (29): _key %1 | _difficulty %2 | _maxMissions %3 | _activeMissions %4 | _tMin %5 | _tMax %6 | _waitTime %7",_key,_difficulty,_maxMissions,_activeMissions,_tMin,_tMax,_waitTime]] call blck_fnc_log;
 		private _missionInitialized = [_key,_missionSelected,blck_dynamicMissionsSpawned] call blck_fnc_initializeMission;
 
-		if (blck_debugLevel >= 3) then 
+		if (_missionInitialized == 1) then 
 		{
-			if !(_missionInitialized) then 
-			{
-				[format["fnc_spawnPendingMissions: _missionInitialized = %1",_missionInitialized],"warning"] call blck_fnc_log;
-			};
-		};
-
-		if (_missionInitialized) then 
-		{
+			blck_dynamicMissionsSpawned = blck_dynamicMissionsSpawned + 1;			
 			#define waitTime 6
 			#define noActive 3
 			private _wt = diag_tickTime + _tmin + (random(_tMax - _tMin));			
 			_x set[waitTime, _wt];  // _x here is the _missionCategoryDescriptors being evaluated
 			private _noActiveMissions = _x select noActive;
 			_x set[noActive, _noActiveMissions + 1];
+		};
+		if (_missionInitialized == 2) then 
+		{
+			_missions deleteAt (_missions find _missionSelected);
 		};
 	};
 } forEach blck_missionData;

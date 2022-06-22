@@ -58,8 +58,7 @@ for "_i" from 1 to (count _missionsList) do
 			"_missionLootConfigs",
 			"_aiConfigs",
 			"_missionMessages",	
-			"_paraConfigs",	
-			"_defaultMissionLocations"
+			"_paraConfigs"
 		];	
 
 		private _missionComplete = -1;

@@ -13,7 +13,15 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 
 params["_veh"];
-[_veh] call blck_fnc_unlockVehicle;
+if (local _veh) then
+{
+	_veh lock 1;
+}
+else
+{
+	[_veh, 1] remoteExecCall ["lock", _veh];
+};
+
 {
 	_veh removealleventhandlers _x;
 } forEach ["Local","GetIn","GetOut","fired","hit","hitpart","reloaded","dammaged","HandleDamage"];

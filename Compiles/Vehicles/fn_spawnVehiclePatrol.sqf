@@ -24,7 +24,6 @@ if (_group isEqualTo grpNull) exitWith
 
 private _veh = objNull;
 
-
 _veh = [_vehType,_pos] call blck_fnc_spawnVehicle;
 
 _veh setVariable["blck_vehicleSearchRadius",blck_playerDetectionRangeGroundVehicle];

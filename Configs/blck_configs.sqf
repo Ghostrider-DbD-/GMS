@@ -17,16 +17,9 @@
 		changing any of these variables may break the mission system
 	*/
 	blck_locationBlackList = [];  // Do not touch ...
-	blck_debugON = false;  //  should be set to false;  ... 
+	blck_debugON = true;  //  should be set to false;  ... 
 	blck_debugLevel = 0;  //  should be set to 0 ... 
-	
-	#ifdef blck_milServer
-	if (true) exitWith 
-	{
-		[format["Running configs for militarized servers"]] call blck_fnc_log;
-		execVM "\q\addons\custom_server\Configs\blck_configs_mil.sqf";
-	};
-	#endif
+
 	[format["Loading configurations for Non-militarized servers"]] call blck_fnc_log;
 	/*
 		**************************************
@@ -43,8 +36,6 @@
 		3) A time acceleration module.
 	*/
 
-	blck_spawnMapAddons = false;  // Default = false. When true map addons will be spawned based on parameters  define in custum_server\MapAddons\MapAddons_init.sqf
-	blck_spawnStaticLootCrates = false; // Default = false;  When true, static loot crates will be spawned and loaded with loot as specified in custom_server\SLS\SLS_init_Epoch.sqf (or its exile equivalent).
 	blck_simulationManager = blck_useBlckeaglsSimulationManager; 
 	blck_hideRocksAndPlants = true; //  When true, any rocks, trees or bushes under enterable buildings will be 'hidden'
 
@@ -53,12 +44,6 @@
 		blck_useBlckeaglsSimulationManager - simulation is enabled/disabled by periodic checks for nearby players; a 'wake' function is included when a units simulation is turned on
 		blck_useDynamicSimulationManagement 2 - arma dynamic simulation is used
 	*/
-
-	// Note that you can define map-specific variants in custom_server\configs\blck_custom_config.sqf
-	blck_useTimeAcceleration = false; // Default = false; When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
-	blck_timeAccelerationDay = 6;  // Daytime time accelearation
-	blck_timeAccelerationDusk = 6; // Dawn/dusk time accelearation
-	blck_timeAccelerationNight = 6;  // Nighttim time acceleration	
 	
 	/**************************************************************
 	
@@ -73,17 +58,6 @@
 	GENERAL MISSION SYSTEM CONFIGURATION
 	
 	***********************************************************/
-	////////
-	//  Client Offloading and Headless Client Configurations
-	blck_useHC = false; // Experimental (should be working).
-										//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
-	blck_ai_offload_to_client = false; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
-										// *******************************************************
-										//  Experimental; may cause issues with waypoints 
-										// *******************************************************
-	blck_ai_offload_notifyClient = true;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
-	blck_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated. (Recommended)
-	blck_allow_hunting_behaviors = true;  // Not used yet
 	
 	///////////////////////////////
 	//  Kill message configurations
@@ -145,7 +119,7 @@ switch (_modType) do
 	blck_minDistanceToBases = 250;
 	blck_minDistanceToPlayer = 300;
 	blck_minDistanceFromTowns = 200;
-	blck_minDistanceFromDMS = 800;  // minimum distance for a blackeagls mission from any nearby DMS missions. set to -1 to disable this check.	
+	blck_minDistanceFromDMS = 800;  // minimum distance for a GMS mission from any nearby DMS missions. set to -1 to disable this check.	
 	
 	///////////////////////////////
 	// Mission Smoke and Signals
@@ -186,11 +160,33 @@ switch (_modType) do
 	blck_VK_Gear = true; // When set to true, AI that have been killed by a player in a vehicle in the list of forbidden vehicles or using a forbiden gun will be stripped of gear and the vehicle will be given blck_RunGearDamage of damage
 	blck_VK_RunoverDamage = true; // when the AI was run over blck_RunGearDamage of damage will be applied to the killer's vehicle.
 	blck_VK_GunnerDamage = false; // when the AI was killed by a gunner on a vehicle that is is in the list of forbidden vehicles, blck_RunGearDamage of damage will be applied to the killer's vehicle each time an AI is killed with a vehicle's gun.
-	blck_forbidenVehicles = []; // Add any vehicles for which you wish to forbid vehicle kills	
-	// For a listing of the guns mounted on various land vehicles see the following link: https://community.bistudio.com/wiki/Arma_3_CfgWeapons_Vehicle_Weapons
-	// HMG_M2 is mounted on the armed offroad that is spawned by Epoch	
-	blck_forbidenVehicleGuns = []; // Add any vehicles for which you wish to forbid vehicle kills, o
-	
+
+	/* these are weapons, magazines, sensors to be disabled when a vehicle is spawned */
+	GMS_forbidenWeapons = [
+		/*
+		Examples:
+		"HMG_127","HMG_127_APC","HMG_M2","HMG_NSVT","GMG_40mm","autocannon_40mm_CTWS","autocannon_30mm_CTWS","autocannon_35mm","LMG_coax","autocannon_30mm","HMG_127_LSV_01"
+		*/
+	];
+	GMS_forbidenMagazines = [
+		/*
+		Examples
+		"24Rnd_missiles","200Rnd_40mm_G_belt"
+		*/
+	];
+	GMS_disableInfrared = false; 
+	GMS_disabledSensors = [
+		/*
+		Current Arma Sensor (Arma 2.06)
+		"IRSensorComponent",
+		NVSensorComponent",
+		"LaserSensorComponent",
+		"ActiveRadarSensorComponent",
+		"VisualSensorComponent",
+		"ManSensorComponnet",
+		"DataLinkSensorComponent"
+		*/
+	];	
 
 	///////////////////////////////
 	// MISC MISSION PARAMETERS
@@ -599,22 +595,12 @@ switch (_modType) do
 
 	private _configToLoad = format["\q\addons\custom_server\Configs\blck_configs_%1.sqf",tolower(GMS_modType)];
 	diag_log format["[GMS] _configToLoad = %1",_configToLoad];
-	//[] call compileFinal preprocessFileLineNumbers _configToLoad;
-	switch (toLower(GMS_modType)) do 
+	[] call compileFinal preprocessFileLineNumbers _configToLoad;
+
+	if (blck_useConfigsGeneratedLoadouts) then 
 	{
-		//case "epoch": 	{execVM "\q\addons\custom_server\Configs\blck_configs_epoch.sqf"};
-		case "exile": 	
-		{
-			//execVM "\q\addons\custom_server\Configs\blck_configs_exile.sqf";
-			execVM "\q\addons\custom_server\Configs\testConfig.sqf";
-			execVM "\q\addons\custom_server\Configs\exile_default.sqf";
-			// blck_configs_exile
-		};
-		//case "default": {execVM "\q\addons\custom_server\Configs\blck_configs_default.sqf"};		
-	};
-	if (!isNil "blck_configs_exile") then 
-	{
-		diag_log format["blck_configs_exile set to true at %1",diag_tickTime];
+		["Dynamic Configs Enabled"] call blck_fnc_log;
+		execVM "\q\addons\custom_server\Configs\blck_dynamicConfigs.sqf";
 	};
 	blck_configsLoaded = true;
 	//diag_log format["<--- blck_configs loaded at %1 --->",diag_tickTime];

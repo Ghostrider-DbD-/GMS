@@ -90,7 +90,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		//"O_MBT_02_arty_F",
 		"I_MBT_03_cannon_F"
 	];
-	#ifdef useCUP
+
 	blck_APC_CUP = [
 		"CUP_B_Mastiff_GMG_GB_D",  
 		"CUP_B_Mastiff_HMG_GB_D",  
@@ -148,7 +148,6 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		//"CUP_O_2S6_RU",  
 		//"CUP_O_BMP1_TKA""
 	];
-	#endif
 	
 	blck_AIPatrolVehicles = ["B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"]; // Type of vehicle spawned to defend AI bases	
 	blck_AIPatrolVehiclesBlue = blck_AIPatrolVehicles;
@@ -187,15 +186,8 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		];	
 	blck_Optics = blck_Optics_Holo + blck_Optics_Reticule + blck_Optics_Scopes;
 
-	#ifdef useAPEX
 	blck_Optics = blck_Optics + blck_Optics_Apex;
-	#endif
-	blck_bipods = [
-		"bipod_01_F_blk","bipod_01_F_mtp","bipod_01_F_snd","bipod_02_F_blk","bipod_02_F_hex","bipod_02_F_tan","bipod_03_F_blk","bipod_03_F_oli",
-		//Apex
-		"bipod_01_F_khk"
-		];
-	
+
 	blck_silencers = [
 		"muzzle_snds_338_black","muzzle_snds_338_green","muzzle_snds_338_sand","muzzle_snds_93mmg","muzzle_snds_93mmg_tan","muzzle_snds_acp","muzzle_snds_B",
 		"muzzle_snds_H","muzzle_snds_H_MG","muzzle_snds_H_SW","muzzle_snds_L","muzzle_snds_M",
@@ -216,7 +208,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"arifle_Katiba_F","arifle_Katiba_C_F","arifle_Katiba_GL_F","arifle_MXC_F","arifle_MX_F","arifle_MX_GL_F","arifle_MXM_F"
 		];
 	
-	blck_RifleAsault = blck_RifleAsault_556 + blck_RifleAsault_650;
+	blck_RifleAssault = blck_RifleAsault_556 + blck_RifleAsault_650;
 
 	blck_RifleLMG = [
 		"LMG_Mk200_F","LMG_Zafir_F"
@@ -229,6 +221,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	blck_Pistols = [
 		"hgun_PDW2000_F","hgun_ACPC2_F","hgun_Rook40_F","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Pistol_Signal_F"
 	];	
+
 	blck_Pistols_blue = blck_Pistols;
 	blck_Pistols_red = blck_Pistols;
 	blck_Pistols_green = blck_Pistols;
@@ -269,6 +262,9 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	#ifdef useAPEX
 		blck_backpacks = blck_backpacks + blck_ApexBackpacks;
 	#endif
+
+	private _backpacks = blck_backpacks; 
+
 	blck_backpacks_blue = blck_backpacks;
 	blck_backpacks_red = blck_backpacks;
 	blck_backpacks_green = blck_backpacks;
@@ -628,330 +624,43 @@ for examples of how you can do this see \Major\Compositions.sqf
 		// Loot is grouped as [weapons],[magazines],[items] in order to be able to use the correct function to load the item into the crate later on.
 		// Each item consist of the following information ["ItemName",minNum, maxNum] where min is the smallest number added and min+max is the largest number added.
 		
-		[  
-			[// Weapons	
-				#ifdef useAPEX
-				"arifle_AK12_F","arifle_AK12_GL_F","arifle_AKM_F","arifle_AKM_FL_F","arifle_AKS_F","arifle_ARX_blk_F","arifle_ARX_ghex_F","arifle_ARX_hex_F","arifle_CTAR_blk_F","arifle_CTAR_hex_F",
-				"arifle_CTAR_ghex_F","arifle_CTAR_GL_blk_F","arifle_CTARS_blk_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_khk_F","arifle_SPAR_01_snd_F",
-				"arifle_SPAR_01_GL_blk_F","arifle_SPAR_01_GL_khk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_02_blk_F","arifle_SPAR_02_khk_F","arifle_SPAR_02_snd_F","arifle_SPAR_03_blk_F",
-				"arifle_SPAR_03_khk_F","arifle_SPAR_03_snd_F","arifle_MX_khk_F","arifle_MX_GL_khk_F","arifle_MXC_khk_F","arifle_MXM_khk_F",
-				#endif
-				["MultiGun","EnergyPackLg"],
-				["arifle_Katiba_F","30Rnd_65x39_caseless_green"],
-				["arifle_Katiba_GL_F","30Rnd_65x39_caseless_green"],
-				["arifle_MX_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXC_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag"],
-				["arifle_SDAR_F","20Rnd_556x45_UW_mag"],
-				["arifle_TRG20_F","30Rnd_556x45_Stanag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXM_Black_F","30Rnd_65x39_caseless_mag_Tracer"],					
-				["srifle_DMR_01_F","10Rnd_762x54_Mag"],
-				["srifle_LRR_F","7Rnd_408_Mag"],
-				["srifle_EBR_F","20Rnd_762x51_Mag"],
-				["srifle_GM6_F","5Rnd_127x108_APDS_Mag"],
-				["Arifle_MX_SW_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["Arifle_MX_SW_Black_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["LMG_Zafir_F","150Rnd_762x54_Box"],
-				["MMG_01_hex_F","150Rnd_93x64_Mag"],
-				["MMG_01_tan_F","150Rnd_93x64_Mag"],
-				["MMG_02_black_F","130Rnd_338_Mag"],
-				["MMG_02_camo_F","130Rnd_338_Mag"],
-				["MMG_02_sand_F","130Rnd_338_Mag"],
-				["srifle_DMR_02_camo_F","10Rnd_338_Mag"],
-				["srifle_DMR_02_F","10Rnd_338_Mag"],
-				["srifle_DMR_02_sniper_F","10Rnd_338_Mag"],
-				["srifle_DMR_03_F","10Rnd_338_Mag"],
-				["srifle_DMR_03_tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_04_Tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_05_hex_F","10Rnd_338_Mag"],
-				["srifle_DMR_05_tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_06_camo_F","10Rnd_338_Mag"],				
-				["srifle_DMR_04_F","10Rnd_127x54_Mag"],
-				["srifle_DMR_05_blk_F","10Rnd_93x64_DMR_05_Mag"],
-				["srifle_DMR_06_olive_F","20Rnd_762x51_Mag"]
-
-			],
-			[//Magazines
-				["3rnd_HE_Grenade_Shell",3,6],				
-				["30Rnd_65x39_caseless_green",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_45ACP_Mag_SMG_01",3,6],
-				["20Rnd_556x45_UW_mag",3,6],
-				["20Rnd_762x51_Mag",7,14],
-				["200Rnd_65x39_cased_Box",3,6],
-				["100Rnd_65x39_caseless_mag_Tracer",3,6],
-				["3rnd_HE_Grenade_Shell",1,3],
-				["HandGrenade",1,4],
-				// Marksman Pack Ammo
-				["10Rnd_338_Mag",1,4],
-				["10Rnd_338_Mag",1,4],				
-				["10Rnd_127x54_Mag" ,1,4],
-				["10Rnd_127x54_Mag",1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4],
-				// Apex Ammo				
-				["130Rnd_338_Mag",1,3],
-				["150Rnd_93x64_Mag",1,3]
-			],			
-			[  // Optics
-				["optic_SOS",1,2],["optic_LRPS",1,2],["optic_DMS",1,2],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Holosight",1,3],["acc_flashlight",1,3],["acc_pointer_IR",1,3],
-				["optic_Arco",1,3],["optic_Hamr",1,3],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Aco_smg",1,3],["optic_ACO_grn_smg",1,3],
-				["optic_Holosight",1,3],["optic_Holosight_smg",1,3],["optic_SOS",1,3],["optic_MRCO",1,3],["optic_DMS",1,3],["optic_Yorris",1,3],
-				["optic_MRD",1,3],["optic_LRPS",1,3],["optic_NVS",1,3],["optic_Nightstalker",1,2],["optic_Nightstalker",1,2],["optic_Nightstalker",1,2],
-				["optic_tws",1,3],["optic_tws_mg",1,3],["muzzle_snds_H",1,3],["muzzle_snds_L",1,3],["muzzle_snds_M",1,3],["muzzle_snds_B",1,3],["muzzle_snds_H_MG",1,3],["muzzle_snds_acp",1,3],
-				["optic_AMS_khk",1,3],["optic_AMS_snd",1,3],["optic_KHS_blk",1,3],["optic_KHS_hex",1,3],["optic_KHS_old",1,3],["optic_KHS_tan",1,3]
-			],
-			[// Materials and supplies				
-
-			],
-			[//Items
-
-			],
-			[ // Backpacks
-				["B_AssaultPack_dgtl",1,2],["B_AssaultPack_khk",1,2],["B_AssaultPack_mcamo",1,2],["B_AssaultPack_ocamo",1,2],["B_AssaultPack_rgr",1,2],["B_AssaultPack_sgg",1,2],
-				["B_Carryall_cbr",1,2],["B_Carryall_khk",1,2],["B_Carryall_mcamo",1,2],["B_Carryall_ocamo",1,2],["B_Carryall_oli",1,2],["B_Carryall_oucamo",1,2],["B_FieldPack_blk",1,2],
-				["B_FieldPack_cbr",1,2],["B_FieldPack_khk",1,2],["B_FieldPack_ocamo",1,2],["B_FieldPack_oli",1,2],["B_FieldPack_oucamo",1,2],["B_Kitbag_cbr",1,2],["B_Kitbag_mcamo",1,2],
-				["B_Kitbag_rgr",1,2],["B_Kitbag_sgg",1,2],["B_Parachute",1,2],["B_TacticalPack_blk",1,2],["B_TacticalPack_mcamo",1,2],["B_TacticalPack_ocamo",1,2],["B_TacticalPack_oli",1,2],
-				["B_TacticalPack_rgr",1,2]
-			]
+	[  
+			blck_WeaponList_Orange,
+			[] + blck_launcherTypes,			
+			blck_Optics,
+			[],
+			[],
+			blck_backpacks_orange
 	];		
 		
 	blck_BoxLoot_Green = 
 		[
-			[// Weapons
-				// Format is ["Weapon Name","Magazine Name"],
-				#ifdef useAPEX
-				"arifle_AK12_F","arifle_AK12_GL_F","arifle_AKM_F","arifle_AKM_FL_F","arifle_AKS_F","arifle_ARX_blk_F","arifle_ARX_ghex_F","arifle_ARX_hex_F","arifle_CTAR_blk_F","arifle_CTAR_hex_F",
-				"arifle_CTAR_ghex_F","arifle_CTAR_GL_blk_F","arifle_CTARS_blk_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_khk_F","arifle_SPAR_01_snd_F",
-				"arifle_SPAR_01_GL_blk_F","arifle_SPAR_01_GL_khk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_02_blk_F","arifle_SPAR_02_khk_F","arifle_SPAR_02_snd_F","arifle_SPAR_03_blk_F",
-				"arifle_SPAR_03_khk_F","arifle_SPAR_03_snd_F","arifle_MX_khk_F","arifle_MX_GL_khk_F","arifle_MXC_khk_F","arifle_MXM_khk_F",
-				#endif
-				["MultiGun","EnergyPackLg"],
-				["arifle_Katiba_F","30Rnd_65x39_caseless_green"],
-				["arifle_Katiba_GL_F","30Rnd_65x39_caseless_green"],
-				["arifle_MX_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MX_GL_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXC_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag"],		
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXM_Black_F","30Rnd_65x39_caseless_mag_Tracer"],				
-				["srifle_DMR_01_F","10Rnd_762x54_Mag"],
-				["srifle_LRR_F","7Rnd_408_Mag"],
-				["srifle_EBR_F","20Rnd_762x51_Mag"],
-				["srifle_GM6_F","5Rnd_127x108_APDS_Mag"],
-				["LMG_Mk200_F","200Rnd_65x39_cased_Box_Tracer"],
-				["Arifle_MX_SW_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["Arifle_MX_SW_Black_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["LMG_Zafir_F","150Rnd_762x54_Box"],
-				["MMG_01_hex_F","150Rnd_93x64_Mag"],
-				["MMG_01_tan_F","150Rnd_93x64_Mag"],
-				["MMG_02_black_F","130Rnd_338_Mag"],
-				["MMG_02_camo_F","130Rnd_338_Mag"],
-				["MMG_02_sand_F","130Rnd_338_Mag"],
-				["srifle_DMR_02_camo_F","10Rnd_338_Mag"],
-				["srifle_DMR_02_F","10Rnd_338_Mag"],
-				["srifle_DMR_02_sniper_F","10Rnd_338_Mag"],
-				["srifle_DMR_03_F","10Rnd_338_Mag"],
-				["srifle_DMR_03_tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_04_Tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_05_hex_F","10Rnd_338_Mag"],
-				["srifle_DMR_05_tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_06_camo_F","10Rnd_338_Mag"],				
-				["srifle_DMR_04_F","10Rnd_127x54_Mag"],
-				["srifle_DMR_05_blk_F","10Rnd_93x64_DMR_05_Mag"],
-				["srifle_DMR_06_olive_F","20Rnd_762x51_Mag"]
-				
-			],
-			[//Magazines
-				// Format is ["Magazine name, Minimum number to add, Maximum number to add],
-				["3rnd_HE_Grenade_Shell",2,4],
-				["30Rnd_65x39_caseless_green",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_45ACP_Mag_SMG_01",3,6],
-				["20Rnd_556x45_UW_mag",3,6],
-				["20Rnd_762x51_Mag",6,12],
-				["200Rnd_65x39_cased_Box",3,6],
-				["100Rnd_65x39_caseless_mag_Tracer",3,6],
-				["3rnd_HE_Grenade_Shell",1,3],
-				["HandGrenade",1,3],
-				// Marksman Pack Ammo				
-				["10Rnd_338_Mag",1,4],
-				["10Rnd_338_Mag",1,4],				
-				["10Rnd_127x54_Mag" ,1,4],
-				["10Rnd_127x54_Mag",1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4],
-				// Apex Ammo				
-				["130Rnd_338_Mag",1,3],
-				["150Rnd_93x64_Mag",1,3]								
-			],			
-			[  // Optics
-				["optic_SOS",1,2],["optic_LRPS",1,2],["optic_DMS",1,2],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Holosight",1,3],["acc_flashlight",1,3],["acc_pointer_IR",1,3],
-				["optic_Arco",1,3],["optic_Hamr",1,3],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Aco_smg",1,3],["optic_ACO_grn_smg",1,3],
-				["optic_Holosight",1,3],["optic_Holosight_smg",1,3],["optic_SOS",1,3],["optic_MRCO",1,3],["optic_DMS",1,3],["optic_Yorris",1,3],
-				["optic_MRD",1,3],["optic_LRPS",1,3],["optic_NVS",1,3],["optic_Nightstalker",1,2],["optic_Nightstalker",1,2],["optic_Nightstalker",1,2],
-				["optic_tws",1,3],["optic_tws_mg",1,3],["muzzle_snds_H",1,3],["muzzle_snds_L",1,3],["muzzle_snds_M",1,3],["muzzle_snds_B",1,3],["muzzle_snds_H_MG",1,3],["muzzle_snds_acp",1,3],
-				["optic_AMS_khk",1,3],["optic_AMS_snd",1,3],["optic_KHS_blk",1,3],["optic_KHS_hex",1,3],["optic_KHS_old",1,3],["optic_KHS_tan",1,3]
-			],
-			[	
-
-			],
-			[//Items
-				// Format is ["Item name, Minimum number to add, Maximum number to add],
-			],
-			[ // Backpacks
-				["B_AssaultPack_dgtl",1,2],["B_AssaultPack_khk",1,2],["B_AssaultPack_mcamo",1,2],["B_AssaultPack_ocamo",1,2],["B_AssaultPack_rgr",1,2],["B_AssaultPack_sgg",1,2],
-				["B_Carryall_cbr",1,2],["B_Carryall_khk",1,2],["B_Carryall_mcamo",1,2],["B_Carryall_ocamo",1,2],["B_Carryall_oli",1,2],["B_Carryall_oucamo",1,2],["B_FieldPack_blk",1,2],
-				["B_FieldPack_cbr",1,2],["B_FieldPack_khk",1,2],["B_FieldPack_ocamo",1,2],["B_FieldPack_oli",1,2],["B_FieldPack_oucamo",1,2],["B_Kitbag_cbr",1,2],["B_Kitbag_mcamo",1,2],
-				["B_Kitbag_rgr",1,2],["B_Kitbag_sgg",1,2],["B_Parachute",1,2],["B_TacticalPack_blk",1,2],["B_TacticalPack_mcamo",1,2],["B_TacticalPack_ocamo",1,2],["B_TacticalPack_oli",1,2],
-				["B_TacticalPack_rgr",1,2]
-			]
+			blck_WeaponList_Green,
+			[] + blck_launcherTypes,			
+			blck_Optics,
+			[],
+			[],
+			blck_backpacks_green
 		];
 		
 	blck_BoxLoot_Blue = 
 		[
-			[// Weapons
-				["MultiGun","EnergyPackLg"],
-				["arifle_Katiba_F","30Rnd_65x39_caseless_green"],
-				["arifle_Katiba_GL_F","30Rnd_65x39_caseless_green"],
-				["arifle_Mk20_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_plain_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20C_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_GL_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_GL_plain_F","30Rnd_556x45_Stanag"],
-				["arifle_MX_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MX_GL_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXC_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag"],
-				["arifle_SDAR_F","20Rnd_556x45_UW_mag"],
-				["arifle_TRG20_F","30Rnd_556x45_Stanag"],
-				["SMG_02_F","30Rnd_9x21_Mag"],
-				["SMG_01_F","30Rnd_45ACP_Mag_SMG_01"],
-				["Hgun_PDW2000_F","30Rnd_9x21_Mag"],			
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXM_Black_F","30Rnd_65x39_caseless_mag_Tracer"],							
-				["srifle_DMR_01_F","10Rnd_762x54_Mag"],
-				["srifle_LRR_F","7Rnd_408_Mag"],
-				["srifle_EBR_F","20Rnd_762x51_Mag"],
-				["srifle_GM6_F","5Rnd_127x108_APDS_Mag"],
-				["LMG_Mk200_F","200Rnd_65x39_cased_Box_Tracer"],
-				["Arifle_MX_SW_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["Arifle_MX_SW_Black_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["LMG_Zafir_F","150Rnd_762x51_Box_Tracer"]		
-			],
-			[//Magazines
-				["3rnd_HE_Grenade_Shell",1,2],
-				["30Rnd_65x39_caseless_green",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_45ACP_Mag_SMG_01",3,6],
-				["20Rnd_556x45_UW_mag",3,6],
-				["20Rnd_762x51_Mag",3,10],
-				["200Rnd_65x39_cased_Box",3,6],
-				["100Rnd_65x39_caseless_mag_Tracer",3,6],
-				["3rnd_HE_Grenade_Shell",1,4],
-				// Marksman Pack Ammo				
-				["150Rnd_93x64_Mag",1,4],
-				["10Rnd_338_Mag",1,4],
-				["10Rnd_127x54_Mag" ,1,4],
-				["10Rnd_127x54_Mag",1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4]				
-			],	
-			[  // Optics
-				["optic_SOS",1,2],["optic_LRPS",1,2],["optic_DMS",1,2],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Holosight",1,3],["acc_flashlight",1,3],["acc_pointer_IR",1,3],
-				["optic_Arco",1,3],["optic_Hamr",1,3],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Aco_smg",1,3],["optic_ACO_grn_smg",1,3],
-				["optic_Holosight",1,3],["optic_Holosight_smg",1,3],["optic_SOS",1,3],["optic_MRCO",1,3],["optic_DMS",1,3],["optic_Yorris",1,3],
-				["optic_MRD",1,3],["optic_LRPS",1,3],["optic_NVS",1,3],["optic_Nightstalker",1,2],
-				["optic_tws",1,3],["optic_tws_mg",1,3],["muzzle_snds_H",1,3],["muzzle_snds_L",1,3],["muzzle_snds_M",1,3],["muzzle_snds_B",1,3],["muzzle_snds_H_MG",1,3],["muzzle_snds_acp",1,3],
-				["optic_AMS_khk",1,3],["optic_AMS_snd",1,3],["optic_KHS_blk",1,3],["optic_KHS_hex",1,3],["optic_KHS_old",1,3],["optic_KHS_tan",1,3]
-			],
-			[
-		
-			],
-			[//Items
-
-			],
-			[ // Backpacks
-				["B_AssaultPack_dgtl",0,2],["B_AssaultPack_khk",0,2],["B_AssaultPack_mcamo",0,2],["B_AssaultPack_ocamo",0,2],["B_AssaultPack_rgr",0,2],["B_AssaultPack_sgg",0,2],
-				["B_Carryall_cbr",0,2],["B_Carryall_khk",0,2],["B_Carryall_mcamo",0,2],["B_Carryall_ocamo",0,2],["B_Carryall_oli",0,2],["B_Carryall_oucamo",0,2],["B_FieldPack_blk",0,2],
-				["B_FieldPack_cbr",0,2],["B_FieldPack_khk",0,2],["B_FieldPack_ocamo",0,2],["B_FieldPack_oli",0,2],["B_FieldPack_oucamo",0,2],["B_Kitbag_cbr",0,2],["B_Kitbag_mcamo",0,2],
-				["B_Kitbag_rgr",0,2],["B_Kitbag_sgg",0,2],["B_Parachute",0,2],["B_TacticalPack_blk",0,2],["B_TacticalPack_mcamo",0,2],["B_TacticalPack_ocamo",0,2],["B_TacticalPack_oli",0,2],
-				["B_TacticalPack_rgr",0,2]
-			]
+			blck_WeaponList_Blue,
+			[],			
+			blck_Optics,
+			[],
+			[],
+			blck_backpacks_blue
 		];
 	
 	blck_BoxLoot_Red = 
 		[	
-			[// Weapons
-				["MultiGun","EnergyPackLg"],
-				["arifle_Katiba_F","30Rnd_65x39_caseless_green"],
-				["arifle_Katiba_GL_F","30Rnd_65x39_caseless_green"],
-				["arifle_Mk20_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_plain_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20C_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_GL_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_GL_plain_F","30Rnd_556x45_Stanag"],
-				["arifle_MX_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MX_GL_F","30Rnd_65x39_caseless_mag"],
-				//["arifle_MX_SW_Black_Hamr_pointer_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXC_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag"],
-				["arifle_SDAR_F","20Rnd_556x45_UW_mag"],
-				["SMG_02_F","30Rnd_9x21_Mag"],
-				["SMG_01_F","30Rnd_45ACP_Mag_SMG_01"],
-				["Hgun_PDW2000_F","30Rnd_9x21_Mag"],
-				
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXM_Black_F","30Rnd_65x39_caseless_mag_Tracer"],				
-			
-				["srifle_DMR_01_F","10Rnd_762x54_Mag"],
-				["srifle_LRR_F","7Rnd_408_Mag"],
-				["srifle_EBR_F","20Rnd_762x51_Mag"],
-				["srifle_GM6_F","5Rnd_127x108_APDS_Mag"],
-
-				["LMG_Mk200_F","200Rnd_65x39_cased_Box_Tracer"],
-				["Arifle_MX_SW_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["Arifle_MX_SW_Black_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["LMG_Zafir_F","150Rnd_762x54_Box"],
-				["MMG_01_hex_F","150Rnd_93x64_Mag"],
-				["srifle_DMR_04_Tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_06_camo_F","10Rnd_338_Mag"]
-			],
-			[//Magazines
-		
-				["3rnd_HE_Grenade_Shell",1,5],["30Rnd_65x39_caseless_green",3,6],["30Rnd_556x45_Stanag",3,6],["30Rnd_556x45_Stanag",3,6],["30Rnd_45ACP_Mag_SMG_01",3,6],["20Rnd_556x45_UW_mag",3,6],
-				["10Rnd_762x51_Mag",3,6],["20Rnd_762x51_Mag",3,7],["200Rnd_65x39_cased_Box",3,6],["100Rnd_65x39_caseless_mag_Tracer",3,6],
-				["3rnd_HE_Grenade_Shell",1,2],["HandGrenade",1,3],["EnergyPack",2,5],
-				// Marksman Pack Ammo				
-				["150Rnd_93x64_Mag",1,4],
-				["10Rnd_338_Mag",1,4],
-				["10Rnd_127x54_Mag" ,1,4],
-				["10Rnd_127x54_Mag",1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4]				
-			],		
-			[  // Optics
-				["optic_SOS",1,2],["optic_LRPS",1,2],["optic_DMS",1,2],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Holosight",1,3],["acc_flashlight",1,3],["acc_pointer_IR",1,3],
-				["optic_Arco",1,3],["optic_Hamr",1,3],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Aco_smg",1,3],["optic_ACO_grn_smg",1,3],
-				["optic_Holosight",1,3],["optic_Holosight_smg",1,3],["optic_SOS",1,3],["optic_MRCO",1,3],["optic_DMS",1,3],["optic_Yorris",1,3],
-				["optic_MRD",1,3],["optic_LRPS",1,3],["optic_NVS",1,3],["optic_Nightstalker",1,2],
-				["optic_tws",1,3],["optic_tws_mg",1,3],["muzzle_snds_H",1,3],["muzzle_snds_L",1,3],["muzzle_snds_M",1,3],["muzzle_snds_B",1,3],["muzzle_snds_H_MG",1,3],["muzzle_snds_acp",1,3],
-				["optic_AMS_khk",1,3],["optic_KHS_blk",1,3],["optic_KHS_hex",1,3],["optic_KHS_old",1,3],["optic_KHS_tan",1,3]
-			],			
-			[	
-
-			],
-			[//Items
-
-			],
-			[ // Backpacks
-				["B_AssaultPack_dgtl",0,2],["B_AssaultPack_khk",0,2],["B_AssaultPack_mcamo",0,2],["B_AssaultPack_ocamo",0,2],["B_AssaultPack_rgr",0,2],["B_AssaultPack_sgg",0,2],
-				["B_Carryall_cbr",0,2],["B_Carryall_khk",0,2],["B_Carryall_mcamo",0,2],["B_Carryall_ocamo",0,2],["B_Carryall_oli",0,2],["B_Carryall_oucamo",0,2],["B_FieldPack_blk",0,2],
-				["B_FieldPack_cbr",0,2],["B_FieldPack_khk",0,2],["B_FieldPack_ocamo",0,2],["B_FieldPack_oli",0,2],["B_FieldPack_oucamo",0,2],["B_Kitbag_cbr",0,2],["B_Kitbag_mcamo",0,2],
-				["B_Kitbag_rgr",0,2],["B_Kitbag_sgg",0,2],["B_Parachute",0,2],["B_TacticalPack_blk",0,2],["B_TacticalPack_mcamo",0,2],["B_TacticalPack_ocamo",0,2],["B_TacticalPack_oli",0,2],
-				["B_TacticalPack_rgr",0,2]
-			]
+			blck_WeaponList_Red,
+			[],			
+			blck_Optics,
+			[],
+			[],
+			blck_backpacks_red
 		];
 
 blck_contructionLoot = blck_BoxLoot_Orange;

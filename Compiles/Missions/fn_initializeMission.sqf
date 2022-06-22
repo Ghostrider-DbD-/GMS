@@ -5,6 +5,11 @@
 	A marker is created and mission info is added to blck_initializedMissionsList
 	 
 	[_mrkr,_difficulty,_m] call blck_fnc_initializeMission;
+
+	Returns one of the following values:
+	 0 - the search for a position was unsuccessful - _coords == [] 
+	 1 - the mission was successfully initialized at _coords != [0,0,0]
+	 2 - the mission has been run the maximum allowed times. 
 */
 
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
@@ -25,7 +30,9 @@ params[
 	"_aiConfigs",
 	"_missionMessages",	
 	"_paraConfigs",	
-	"_defaultMissionLocations"
+	"_defaultMissionLocations",
+	"_maxMissionRespawns",
+	"_timesSpawned"
 ];
 
 _markerConfigs params[
@@ -37,12 +44,23 @@ _markerConfigs params[
 	"_markerBrush"
 ];
 
-//[format["_initializeMission (39): _markerName %1 | _key %2 | _missionCount %3",_markerName,_key,_missionCount]] call blck_fnc_log;
+[format["_initializeMission (39): _markerName %1 | _key %2 | _missionCount %3 | _maxMissionRespawns %4 | _timesSpawned %5",_markerName,_key,_missionCount,_maxMissionRespawns,_timesSpawned]] call blck_fnc_log;
 
+private _initialized = 0;
+/*
+
+*/
 _coordsArray = [];
 if !(_defaultMissionLocations isEqualTo []) then 
 {
-	_coords = selectRandom _defaultMissionLocations;
+	if (_timesSpawned < _maxMissionRespawns || {_maxMissionRespawns == -1}) then 
+	{
+		_coords = selectRandom _defaultMissionLocations;
+		#define timesSpawnedIndex 10
+		_missionConfigs set[timesSpawnedIndex, _timesSpawned + 1];
+	} else {
+		_initialized = 2;
+	};
 } else {
 	if (_isScubaMission) then 
 	{
@@ -53,19 +71,12 @@ if !(_defaultMissionLocations isEqualTo []) then
 	};
 };
 
-if (_coords isEqualTo []) exitWith 
+if (_initialized == 2) exitWith {_initialized};
+if (_coords isEqualTo [] || {_coords isEqualTo [0,0,0]}) exitWith 
 {
 	[format["No Safe Mission Spawn Position Found to spawn Mission %1",_markerMissionName],'warning'] call blck_fnc_log;
-	false;
-	for "_i" from 1 to (count blck_missionData) do 
-	{
-		if (_key == (_x select 0)) exitWith 
-		{
-			#define noActive 3
-			private _activeMissions = _x select noActive;
-			_x set[noActive, _activeMissions - 1];
-		};
-	};
+	// _initialized should be == 0 here
+	_initialized
 };
 
 blck_ActiveMissionCoords pushback _coords; 
@@ -161,4 +172,5 @@ private _missionData = [
 private _spawnPara = -1;
 blck_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs, _spawnPara];
 //[format["_initializeMission (163): count blck_initializedMissionsList = %1",count blck_initializedMissionsList]] call blck_fnc_log;
-true
+_initialized = 1;
+_initialized

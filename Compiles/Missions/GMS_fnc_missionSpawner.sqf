@@ -18,7 +18,7 @@ private ["_abort","_crates","_aiGroup","_objects","_groupPatrolRadius","_mission
 		"_chanceHeliPatrol","_noPara","_chanceLoot","_heliCrew","_loadCratesTiming","_useMines","_blck_AllMissionAI","_delayTime","_groupPatrolRadius","_simpleObjects",
 		"_wait","_missionStartTime","_playerInRange","_missionTimedOut","_temp","_patrolVehicles","_vehToSpawn","_noChoppers","_chancePara","_paraSkill","_marker","_vehicleCrewCount",
 		"_defaultMissionLocations","_garrisonedbuildings_buildingposnsystem","_garrisonedBuilding_ATLsystem", "_isScubaMission","_markerlabel","_missionLootBoxes","_airpatrols",
-		"_submarinePatrols","_scubaPatrols"];
+		"_submarinePatrols","_scubaPatrols","_maxMissionRespawns"];
 		
 params["_markerName",["_aiDifficultyLevel","Red"]];
 if (isNil "_markerLabel") then {_markerLabel = _markerMissionName};
@@ -69,16 +69,14 @@ if (isNil "_lootCratePositions") then {_lootCratePositions = []};
 if (isNil "_isScubaMission") then {_isScubaMission = false};
 if (isNil "_missionLootBoxes") then {_missionLootBoxes = []};
 if (isNil "_defaultMissionLocations") then {_defaultMissionLocations = []};
+if (isNil "_maxMissionRespawns") then {_maxMissionRespawns = -1};
 if (isNil "_simpleObjects") then {_simpleObjects = []};
 if (isNil "_missionemplacedweapons") then 
 {
 	_missionemplacedweapons = [];
 	diag_log format["[GMS] _missionSpawner: setting _missionemplacedweapons to its default value of %1",_missionemplacedweapons];
 };
-if !(_defaultMissionLocations isEqualTo []) then 
-{
-	_coords = selectRandom _defaultMissionLocations;
-};
+
 _markerType params["_markerType",["_markersize",[250,250]],["_markerBrush","GRID"]];
 private _paraSkill = _aiDifficultyLevel;
 
@@ -167,6 +165,7 @@ private _missionMessages = [
 	_startMsg	
 ];
 
+private _timesSpawned = 0;
 private _table = [
 	_aiDifficultyLevel,
 	_markerConfigs,
@@ -176,7 +175,9 @@ private _table = [
 	_aiConfigs,
 	_missionMessages,
 	_paraConfigs,	
-	_defaultMissionLocations				
+	_defaultMissionLocations,
+	_maxMissionRespawns,
+	_timesSpawned		
 ];
-
+//[format["_missionSpawner (182): _defaultMissionLocations %1 | _maxMissionRespawns %2 | _timesSpawned %3",_defaultMissionLocations,_maxMissionRespawns,_timesSpawned]] call blck_fnc_log;
 _table

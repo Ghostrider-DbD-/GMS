@@ -23,7 +23,7 @@ if (hasInterface) exitWith
 	"[GMS] Mission system may only be run on a dedicate server or headless client";
 };
 waitUntil {!isNil "GMSCore_Initialized"}; 
-diag_log format["[GMS] Loading blackeagls at %1",diag_tickTime];
+diag_log format["[GMS] Loading GMS at %1",diag_tickTime];
 diag_log format["[GMS] GMS_modType = %1 | GMS_side %2 | GMS_unitType %3",GMS_modType,GMS_side,GMS_unitType];
 
 // Just some housekeeping for ghost.
@@ -37,11 +37,11 @@ diag_log format["[GMS] Loaded Functions at %1",diag_tickTime];
 
 diag_log format["[GMS] Loaded Configs at %1",diag_tickTime];
 
-waitUntil{(!isNil "blck_useHC") && (!isNil "blck_simulationManager") && (!isNil "blck_debugOn") && !(isNil "blck_configs_loaded")};
+waitUntil{(!isNil "blck_simulationManager") && {(!isNil "blck_debugOn") && {!(isNil "blck_configs_loaded")}}};
 
 {
 	private _var = missionNameSpace getVariable[_x,[]];
-	[format["blck_init_server: validating classnames and pricing for %1 | count = %2 | _x = %3",_x,count _var, _var]] call blck_fnc_log;
+	[format["validating classnames and pricing for %1 | count = %2 | _x = %3",_x,count _var, _var]] call blck_fnc_log;
 	_var = [_var,true] call GMS_fnc_checkClassnamesArray;
 	_var = [_var,true] call GMS_fnc_checkClassNamePrices;
 	//[format["blck_init_server: Updated %1 | count = %2 | _x = %3",_x,count _var, _var]] call blck_fnc_log;
@@ -124,14 +124,12 @@ if (blck_debugOn) then {diag_log "[GMS] Map-specific information defined"};
 // set up the lists of available missions for each mission category
 #include "\q\addons\custom_server\Missions\GMS_missionLists.sqf";
 if (blck_debugOn) then {diag_log "[GMS] Mission Lists Loaded Successfully"};
-//call compile preprocessfilelinenumbers "\q\addons\custom_server\Missions\Static\GMS_StaticMissions_init.sqf";
-//call compile preprocessfilelinenumbers "q\addons\custom_server\Missions\UMS\GMS_UMS_init.sqf";  // loads functions and spawns any static missions.
-//if (blck_debugOn) then {diag_log "[GMS] blck_init_server: ->> Static and UMS systems initialized."};
+// TODO: merge in underwater / sea missions at some point 
 
 switch (blck_simulationManager) do
 {
 	case 2: {["dynamic simulation manager enabled"] call blck_fnc_log}; 
-	case 1: {["blckeagls simulation manager enabled"] call blck_fnc_log};
+	case 1: {["[GMS] simulation manager enabled"] call blck_fnc_log};
 	case 0: {["[GMS] simulation management disabled"] call blck_fnc_log};
 };
 
@@ -140,27 +138,6 @@ if (blck_blacklistTraderCities) then
 	[] spawn compile preprocessfilelinenumbers "\q\addons\custom_server\init\GMS_fnc_getTraderCites.sqf";
 };
 
-if (blck_ai_offload_to_client) then 
-{
-	if (blck_useHC) then 
-	{
-		blck_useHC = false;
-		["blck_useHC has been diabled to allow offloading to clients",'warning'] call blck_fnc_log;
-	};
-	// Broadcast some code to clients
-	publicVariable "blck_fnc_setNextWaypoint";
-	publicVariable "blck_EH_unitWeaponReloaded";
-	publicVariable "blck_EH_AIfiredNear";
-	publicVariable "blck_fnc_processAIfiredNear";
-	publicVariable "blck_EH_vehicleGetOut";
-	publicVariable "blck_fnc_handleVehicleGetOut";
-	publicVariable "blck_EH_vehicleManGetOut";
-	publicVariable "blck_fnc_checkForEmptyVehicle";
-	publicVariable "blck_fnc_handleEmptyVehicle";
-	publicVariable "blck_fnc_unlockVehicle";
-	publicVariable "blck_EH_AIKilled";
-	publicVariable "blck_fnc_processAIKill";
-};
 
 _fn_setupLocationType = {
 	params[	"_locationType"];

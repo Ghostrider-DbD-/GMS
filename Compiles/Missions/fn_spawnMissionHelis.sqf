@@ -22,8 +22,9 @@ for "_i" from 0 to (_noChoppers) do
 	private _spawnPos = _coords getPos[30,random(359)];
 	private _heli = selectRandom _missionHelis;
 	private _noCrew = [_heli,false] call BIS_fnc_crewCount;
-	#define patrolArea [400,400]
+	#define patrolArea [1000,1000]
 	private _crewGroup = [_spawnPos,_noCrew,_difficulty,patrolArea,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call blck_fnc_spawnGroup;
+	_crewGroup setVariable["GMS_group",true];
 	_units append (units _crewGroup);
 	
 	#define heliDir 0 
@@ -53,4 +54,5 @@ for "_i" from 0 to (_noChoppers) do
 	private _aircraft = [_heli,_crewGroup,_spawnPos,heliDir,heliHeight,heliDamage,heliRemoveFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMS_fnc_spawnPatrolAircraft;
 	_helis pushBack _aircraft;
 };
+
 [_helis,_units]

@@ -747,7 +747,18 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"Exile_Item_InstantCoffee"
 	];
 
-
+	private _foodDrink = blck_meats + blck_drink + blck_food;
+	private _buildingStuff = [
+		["Exile_Item_Matches",1,2],["Exile_Item_CookingPot",1,2],["Exile_Item_Rope",1,2],["Exile_Item_DuctTape",1,8],["Exile_Item_ExtensionCord",1,8],["Exile_Item_FuelCanisterEmpty",1,2],
+		["Exile_Item_JunkMetal",4,10],["Exile_Item_LightBulb",1,10],["Exile_Item_MetalBoard",4,10],["Exile_Item_MetalPole",4,10],["Exile_Item_CamoTentKit",1,3],["Exile_Item_MetalScrews",3,10],
+		["Exile_Item_Sand",4,10],["Exile_Item_Cement",4,10],["Exile_Item_WaterCanisterDirtyWater",1,3],["Exile_Item_FuelCanisterFull",1,3]
+	];
+	private _toolsItems = [
+			"Exile_Item_Matches","Exile_Item_CookingPot","Exile_Item_CanOpener","Exile_Item_Handsaw","Exile_Item_Pliers","Exile_Item_Grinder","Exile_Item_Foolbox","Exile_Item_Hammer",
+			"Exile_Item_CordlessScrewdriver","Exile_Item_FireExtinguisher","Exile_Item_OilCanister","Exile_Item_Screwdriver","Exile_Item_Shovel","Exile_Item_Wrench","Exile_Item_CordlessScrewdriver",
+			"Exile_Item_FireExtinguisher","Exile_Item_OilCanister","Exile_Item_Screwdriver","Exile_Item_DuctTape","Binocular","Rangefinder","ItemGPS"
+	];
+	private _launchers = [];
 /***************************************************************************************
 DEFAULT CONTENTS OF LOOT CRATES FOR EACH MISSION
 Note however that these configurations can be used in any way you like or replaced with mission-specific customized loot arrays
@@ -764,340 +775,43 @@ for examples of how you can do this see \Major\Compositions.sqf
 		// Loot is grouped as [weapons],[magazines],[items] in order to be able to use the correct function to load the item into the crate later on.
 		// Each item consist of the following information ["ItemName",minNum, maxNum] where min is the smallest number added and min+max is the largest number added.
 		
-		[  
-			[// Weapons	
-				#ifdef useAPEX
-				"arifle_AK12_F","arifle_AK12_GL_F","arifle_AKM_F","arifle_AKM_FL_F","arifle_AKS_F","arifle_ARX_blk_F","arifle_ARX_ghex_F","arifle_ARX_hex_F","arifle_CTAR_blk_F","arifle_CTAR_hex_F",
-				"arifle_CTAR_ghex_F","arifle_CTAR_GL_blk_F","arifle_CTARS_blk_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_khk_F","arifle_SPAR_01_snd_F",
-				"arifle_SPAR_01_GL_blk_F","arifle_SPAR_01_GL_khk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_02_blk_F","arifle_SPAR_02_khk_F","arifle_SPAR_02_snd_F","arifle_SPAR_03_blk_F",
-				"arifle_SPAR_03_khk_F","arifle_SPAR_03_snd_F","arifle_MX_khk_F","arifle_MX_GL_khk_F","arifle_MXC_khk_F","arifle_MXM_khk_F",
-				#endif
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXM_Black_F","30Rnd_65x39_caseless_mag_Tracer"],				
-				["srifle_DMR_01_F","10Rnd_762x54_Mag"],
-				["srifle_LRR_F","7Rnd_408_Mag"],
-				["srifle_EBR_F","20Rnd_762x51_Mag"],
-				["srifle_GM6_F","5Rnd_127x108_APDS_Mag"],
-				["LMG_Mk200_F","200Rnd_65x39_cased_Box_Tracer"],
-				["Arifle_MX_SW_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["Arifle_MX_SW_Black_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["LMG_Zafir_F","150Rnd_762x54_Box"],
-				["MMG_01_hex_F","150Rnd_93x64_Mag"],
-				["MMG_01_tan_F","150Rnd_93x64_Mag"],
-				["MMG_02_black_F","130Rnd_338_Mag"],
-				["MMG_02_camo_F","130Rnd_338_Mag"],
-				["MMG_02_sand_F","130Rnd_338_Mag"],
-				["srifle_DMR_02_camo_F","10Rnd_338_Mag"],
-				["srifle_DMR_02_F","10Rnd_338_Mag"],
-				["srifle_DMR_02_sniper_F","10Rnd_338_Mag"],
-				["srifle_DMR_03_F","10Rnd_338_Mag"],
-				["srifle_DMR_03_tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_04_Tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_05_hex_F","10Rnd_338_Mag"],
-				["srifle_DMR_05_tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_06_camo_F","10Rnd_338_Mag"],				
-				["srifle_DMR_04_F","10Rnd_127x54_Mag"],
-				["srifle_DMR_05_blk_F","10Rnd_93x64_DMR_05_Mag"],
-				["srifle_DMR_06_olive_F","20Rnd_762x51_Mag"]				
-			],
-			[//Magazines
-				["3rnd_HE_Grenade_Shell",3,6],				
-				["30Rnd_65x39_caseless_green",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_45ACP_Mag_SMG_01",3,6],
-				["20Rnd_556x45_UW_mag",3,6],
-				["20Rnd_762x51_Mag",7,14],
-				["200Rnd_65x39_cased_Box",3,6],
-				["100Rnd_65x39_caseless_mag_Tracer",3,6],
-				["3rnd_HE_Grenade_Shell",1,3],
-				["HandGrenade",1,5],
-				// Marksman Pack Ammo
-				["10Rnd_338_Mag",1,5],
-				["10Rnd_338_Mag",1,5],				
-				["10Rnd_127x54_Mag" ,1,5],
-				["10Rnd_127x54_Mag",1,5],
-				["10Rnd_93x64_DMR_05_Mag" ,1,5],
-				["10Rnd_93x64_DMR_05_Mag" ,1,5],
-				// Apex Ammo				
-				["130Rnd_338_Mag",1,3],
-				["150Rnd_93x64_Mag",1,3]				
-			],			
-			[  // Optics
-				["optic_SOS",1,2],["optic_LRPS",1,2],["optic_DMS",1,2],
-				["optic_Arco",1,3],
-				["optic_SOS",1,3],["optic_MRCO",1,3],["optic_DMS",1,3],["optic_Yorris",1,3],
-				["optic_MRD",1,3],["optic_LRPS",1,3],["optic_NVS",1,3],["optic_Nightstalker",1,2],["optic_Nightstalker",1,2],["optic_Nightstalker",1,2],
-				["optic_tws",1,3],["optic_tws_mg",1,3],["muzzle_snds_H",1,3],["muzzle_snds_L",1,3],["muzzle_snds_M",1,3],["muzzle_snds_B",1,3],["muzzle_snds_H_MG",1,3],["muzzle_snds_acp",1,3],
-				["optic_AMS_khk",1,3],["optic_AMS_snd",1,3],["optic_KHS_blk",1,3],["optic_KHS_hex",1,3],["optic_KHS_old",1,3],["optic_KHS_tan",1,3]
-			],
-			[// Materials and supplies				
-				["Exile_Item_Matches",1,2],["Exile_Item_CookingPot",1,2],["Exile_Item_Rope",1,2],["Exile_Item_DuctTape",1,8],["Exile_Item_ExtensionCord",1,8],["Exile_Item_FuelCanisterEmpty",1,2],
-				["Exile_Item_JunkMetal",1,10],["Exile_Item_LightBulb",1,10],["Exile_Item_MetalBoard",1,10],["Exile_Item_MetalPole",1,10],["Exile_Item_CamoTentKit",1,10],["Exile_Item_WorkBenchKit",1,10],
-				["Exile_Item_WoodWindowKit",1,10],["Exile_Item_WoodWallKit",1,10],["Exile_Item_WoodStairsKit",1,10],["Exile_Item_WoodGateKit",1,10],["Exile_Item_WoodDoorwayKit",1,10],["Exile_Item_MetalBoard",1,10],
-				["Exile_Item_MetalBoard",1,10],["Exile_Item_ExtensionCord",1,10],["Exile_Item_MetalPole",1,10],["Exile_Item_Sand",3,10],["Exile_Item_Cement",3,10],["Exile_Item_MetalWire",3,10],["Exile_Item_MetalScrews",3,10]
-				//
-			],
-			[//Items
-				["Exile_Item_InstaDoc",1,2],["NVGoggles",1,2],["Rangefinder",1,2],["Exile_Item_Bandage",1,3],["Exile_Item_Vishpirin",1,3],  
-				["Exile_Item_Catfood",1,3],["Exile_Item_Surstromming",1,3],["Exile_Item_BBQSandwich",1,3],["Exile_Item_ChristmasTinner",1,3],["Exile_Item_SausageGravy",1,3],["Exile_Item_GloriousKnakworst",1,3],
-				["Exile_Item_BeefParts",1,3],["Exile_Item_Cheathas",1,3],["Exile_Item_Noodles",1,3],["Exile_Item_SeedAstics",1,3],["Exile_Item_Raisins",1,3],["Exile_Item_Moobar",1,3],["Exile_Item_InstantCoffee",1,3],["Exile_Item_EMRE",1,3],
-				["Exile_Item_PlasticBottleCoffee",1,3],["Exile_Item_PowerDrink",1,3],["Exile_Item_PlasticBottleFreshWater",1,3],["Exile_Item_Beer",1,3],["Exile_Item_EnergyDrink",1,3],["Exile_Item_MountainDupe",1,3]				
-			],
-			[ // Backpacks
-				["B_AssaultPack_dgtl",1,2],["B_AssaultPack_khk",1,2],["B_AssaultPack_mcamo",1,2],["B_AssaultPack_cbr",1,2],["B_AssaultPack_rgr",1,2],["B_AssaultPack_sgg",1,2],
-				["B_Carryall_cbr",1,2],["B_Carryall_khk",1,2],["B_Carryall_mcamo",1,2],["B_Carryall_ocamo",1,2],["B_Carryall_oli",1,2],["B_Carryall_oucamo",1,2],
-				["B_FieldPack_blk",1,2],["B_FieldPack_cbr",1,2],["B_FieldPack_ocamo",1,2],["B_FieldPack_oucamo",1,2],
-				["B_Kitbag_cbr",1,2],["B_Kitbag_mcamo",1,2],["B_Kitbag_sgg",1,2],
-				["B_Parachute",1,2],["V_RebreatherB",1,2],["V_RebreatherIA",1,2],["V_RebreatherIR",1,2],
-				["B_TacticalPack_blk",1,2],["B_TacticalPack_mcamo",1,2],["B_TacticalPack_ocamo",1,2],["B_TacticalPack_oli",1,2],["B_TacticalPack_rgr",1,2],
-				["B_Bergen_blk",1,2],["B_Bergen_mcamo",1,2],["B_Bergen_rgr",1,2],["B_Bergen_sgg",1,2],
-				["B_HuntingBackpack",1,2],["B_OutdoorPack_blk",1,2],["B_OutdoorPack_blu",1,2],["B_OutdoorPack_tan",1,2]
-			]
+	[  
+			blck_WeaponList_Orange,
+			[] + _launchers,			
+			blck_Optics,
+			_buildingStuff + _toolsItems,
+			_foodDrink,
+			blck_backpacks_orange
 	];		
 		
 	blck_BoxLoot_Green = 
 		[
-			[// Weapons
-				// Format is ["Weapon Name","Magazine Name"],
-				#ifdef useAPEX
-				"arifle_AK12_F","arifle_AK12_GL_F","arifle_AKM_F","arifle_AKM_FL_F","arifle_AKS_F","arifle_ARX_blk_F","arifle_ARX_ghex_F","arifle_ARX_hex_F","arifle_CTAR_blk_F","arifle_CTAR_hex_F",
-				"arifle_CTAR_ghex_F","arifle_CTAR_GL_blk_F","arifle_CTARS_blk_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_khk_F","arifle_SPAR_01_snd_F",
-				"arifle_SPAR_01_GL_blk_F","arifle_SPAR_01_GL_khk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_02_blk_F","arifle_SPAR_02_khk_F","arifle_SPAR_02_snd_F","arifle_SPAR_03_blk_F",
-				"arifle_SPAR_03_khk_F","arifle_SPAR_03_snd_F","arifle_MX_khk_F","arifle_MX_GL_khk_F","arifle_MXC_khk_F","arifle_MXM_khk_F",
-				#endif
-				["arifle_Katiba_F","30Rnd_65x39_caseless_green"],
-				["arifle_Katiba_GL_F","30Rnd_65x39_caseless_green"],
-				["arifle_MX_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MX_GL_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXC_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXM_Black_F","30Rnd_65x39_caseless_mag_Tracer"],				
-				["srifle_DMR_01_F","10Rnd_762x54_Mag"],
-				["srifle_LRR_F","7Rnd_408_Mag"],
-				["srifle_EBR_F","20Rnd_762x51_Mag"],
-				["srifle_GM6_F","5Rnd_127x108_APDS_Mag"],
-				["LMG_Mk200_F","200Rnd_65x39_cased_Box_Tracer"],
-				["Arifle_MX_SW_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["Arifle_MX_SW_Black_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["LMG_Zafir_F","150Rnd_762x54_Box"],
-				["MMG_01_hex_F","150Rnd_93x64_Mag"],
-				["MMG_01_tan_F","150Rnd_93x64_Mag"],
-				["MMG_02_black_F","130Rnd_338_Mag"],
-				["MMG_02_camo_F","130Rnd_338_Mag"],
-				["MMG_02_sand_F","130Rnd_338_Mag"],
-				["srifle_DMR_02_camo_F","10Rnd_338_Mag"],
-				["srifle_DMR_03_F","10Rnd_338_Mag"],		
-				["srifle_DMR_04_Tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_05_hex_F","10Rnd_338_Mag"],	
-				["srifle_DMR_06_camo_F","10Rnd_338_Mag"]				
-			],
-			[//Magazines
-				// Format is ["Magazine name, Minimum number to add, Maximum number to add],
-				["3rnd_HE_Grenade_Shell",2,4],
-				["30Rnd_65x39_caseless_green",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_45ACP_Mag_SMG_01",3,6],
-				["20Rnd_556x45_UW_mag",3,6],
-				["20Rnd_762x51_Mag",6,12],
-				["200Rnd_65x39_cased_Box",3,6],
-				["100Rnd_65x39_caseless_mag_Tracer",3,6],
-				["3rnd_HE_Grenade_Shell",1,3],
-				["HandGrenade",1,3],
-				// Marksman Pack Ammo				
-				["10Rnd_338_Mag",1,4],
-				["10Rnd_338_Mag",1,4],				
-				["10Rnd_127x54_Mag" ,1,4],
-				["10Rnd_127x54_Mag",1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4],
-				// Apex Ammo				
-				["130Rnd_338_Mag",1,3],
-				["150Rnd_93x64_Mag",1,3]				
-			],			
-			[  // Optics
-				["optic_SOS",1,2],["optic_LRPS",1,2],["optic_DMS",1,2],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Holosight",1,3],["acc_flashlight",1,3],["acc_pointer_IR",1,3],
-				["optic_Arco",1,3],["optic_Hamr",1,3],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Aco_smg",1,3],["optic_ACO_grn_smg",1,3],
-				["optic_Holosight",1,3],["optic_Holosight_smg",1,3],["optic_SOS",1,3],["optic_MRCO",1,3],["optic_DMS",1,3],["optic_Yorris",1,3],
-				["optic_MRD",1,3],["optic_LRPS",1,3],["optic_NVS",1,3],["optic_Nightstalker",1,2],["optic_Nightstalker",1,2],["optic_Nightstalker",1,2],
-				["optic_tws",1,3],["optic_tws_mg",1,3],["muzzle_snds_H",1,3],["muzzle_snds_L",1,3],["muzzle_snds_M",1,3],["muzzle_snds_B",1,3],["muzzle_snds_H_MG",1,3],["muzzle_snds_acp",1,3],
-				["optic_AMS_khk",1,3],["optic_AMS_snd",1,3],["optic_KHS_blk",1,3],["optic_KHS_hex",1,3],["optic_KHS_old",1,3],["optic_KHS_tan",1,3]
-			],
-			[// Materials and supplies				
-				["Exile_Item_Matches",1,2],["Exile_Item_CookingPot",1,2],["Exile_Item_Rope",1,2],["Exile_Item_DuctTape",1,8],["Exile_Item_ExtensionCord",1,8],["Exile_Item_FuelCanisterEmpty",1,2],
-				["Exile_Item_JunkMetal",1,5],["Exile_Item_LightBulb",1,5],["Exile_Item_MetalBoard",1,5],["Exile_Item_MetalPole",1,5],["Exile_Item_CamoTentKit",1,5],["Exile_Item_WorkBenchKit",1,5],
-				["Exile_Item_MetalBoard",1,5],["Exile_Item_MetalWire",3,10],["Exile_Item_MetalScrews",3,10],["Exile_Item_ExtensionCord",1,5],["Exile_Item_MetalPole",1,5],["Exile_Item_Sand",2,5],["Exile_Item_Cement",2,5]
-			],
-			[//Items
-				["Exile_Item_InstaDoc",1,2],["NVGoggles",1,2],["Rangefinder",1,2],["Exile_Item_Bandage",1,6],["Exile_Item_Vishpirin",1,6],  
-				["Exile_Item_Catfood",1,3],["Exile_Item_Surstromming",1,3],["Exile_Item_BBQSandwich",1,3],["Exile_Item_ChristmasTinner",1,3],["Exile_Item_SausageGravy",1,3],["Exile_Item_GloriousKnakworst",1,3],
-				["Exile_Item_BeefParts",1,3],["Exile_Item_Cheathas",1,3],["Exile_Item_Noodles",1,3],["Exile_Item_SeedAstics",1,3],["Exile_Item_Raisins",1,3],["Exile_Item_Moobar",1,3],["Exile_Item_InstantCoffee",1,3],["Exile_Item_EMRE",1,3],
-				["Exile_Item_PlasticBottleCoffee",1,3],["Exile_Item_PowerDrink",1,3],["Exile_Item_PlasticBottleFreshWater",1,3],["Exile_Item_Beer",1,3],["Exile_Item_EnergyDrink",1,3],["Exile_Item_MountainDupe",1,3]	
-			],
-			[ // Backpacks
-				["B_AssaultPack_dgtl",1,2],["B_AssaultPack_khk",1,2],["B_AssaultPack_mcamo",1,2],["B_AssaultPack_cbr",1,2],["B_AssaultPack_rgr",1,2],["B_AssaultPack_sgg",1,2],
-				["B_Carryall_cbr",1,2],["B_Carryall_khk",1,2],["B_Carryall_mcamo",1,2],["B_Carryall_ocamo",1,2],["B_Carryall_oli",1,2],["B_Carryall_oucamo",1,2],
-				["B_FieldPack_blk",1,2],["B_FieldPack_cbr",1,2],["B_FieldPack_ocamo",1,2],["B_FieldPack_oucamo",1,2],
-				["B_Kitbag_cbr",1,2],["B_Kitbag_mcamo",1,2],["B_Kitbag_sgg",1,2],
-				["B_Parachute",1,2],["V_RebreatherB",1,2],["V_RebreatherIA",1,2],["V_RebreatherIR",1,2],
-				["B_TacticalPack_blk",1,2],["B_TacticalPack_mcamo",1,2],["B_TacticalPack_ocamo",1,2],["B_TacticalPack_oli",1,2],["B_TacticalPack_rgr",1,2],
-				["B_Bergen_blk",1,2],["B_Bergen_mcamo",1,2],["B_Bergen_rgr",1,2],["B_Bergen_sgg",1,2],
-				["B_HuntingBackpack",1,2],["B_OutdoorPack_blk",1,2],["B_OutdoorPack_blu",1,2],["B_OutdoorPack_tan",1,2]
-			]
+			blck_WeaponList_Green,
+			[] + _launchers,			
+			blck_Optics,
+			_buildingStuff + _toolsItems,
+			_foodDrink,
+			blck_backpacks_green
 		];
 		
 	blck_BoxLoot_Blue = 
 		[
-			[// Weapons
-				["arifle_Katiba_F","30Rnd_65x39_caseless_green"],
-				["arifle_Katiba_GL_F","30Rnd_65x39_caseless_green"],
-				["arifle_Mk20_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_plain_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20C_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_GL_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_GL_plain_F","30Rnd_556x45_Stanag"],
-				["arifle_MX_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MX_GL_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXC_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag"],
-				["arifle_SDAR_F","20Rnd_556x45_UW_mag"],
-				["arifle_TRG20_F","30Rnd_556x45_Stanag"],
-				["SMG_02_F","30Rnd_9x21_Mag"],
-				["SMG_01_F","30Rnd_45ACP_Mag_SMG_01"],
-				["Hgun_PDW2000_F","30Rnd_9x21_Mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXM_Black_F","30Rnd_65x39_caseless_mag_Tracer"],				
-				["srifle_DMR_01_F","10Rnd_762x54_Mag"],
-				["srifle_LRR_F","7Rnd_408_Mag"],
-				["srifle_EBR_F","20Rnd_762x51_Mag"],
-				["srifle_GM6_F","5Rnd_127x108_APDS_Mag"],
-				["LMG_Mk200_F","200Rnd_65x39_cased_Box_Tracer"],
-				["Arifle_MX_SW_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["Arifle_MX_SW_Black_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["LMG_Zafir_F","150Rnd_762x51_Box_Tracer"]		
-			],
-			[//Magazines
-				["3rnd_HE_Grenade_Shell",1,2],
-				["30Rnd_65x39_caseless_green",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_556x45_Stanag",3,6],
-				["30Rnd_45ACP_Mag_SMG_01",3,6],
-				["20Rnd_556x45_UW_mag",3,6],
-				["20Rnd_762x51_Mag",3,10],
-				["200Rnd_65x39_cased_Box",3,6],
-				["100Rnd_65x39_caseless_mag_Tracer",3,6],
-				["3rnd_HE_Grenade_Shell",1,4],
-				["HandGrenade",1,3],
-				// Marksman Pack Ammo				
-				["150Rnd_93x64_Mag",1,4],
-				["10Rnd_338_Mag",1,4],
-				["10Rnd_127x54_Mag" ,1,4],
-				["10Rnd_127x54_Mag",1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4]				
-			],	
-			[  // Optics
-				["optic_SOS",1,2],["optic_LRPS",1,2],["optic_DMS",1,2],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Holosight",1,3],["acc_flashlight",1,3],["acc_pointer_IR",1,3],
-				["optic_Arco",1,3],["optic_Hamr",1,3],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Aco_smg",1,3],["optic_ACO_grn_smg",1,3],
-				["optic_Holosight",1,3],["optic_Holosight_smg",1,3],["optic_SOS",1,3],["optic_MRCO",1,3],["optic_DMS",1,3],["optic_Yorris",1,3],
-				["optic_MRD",1,3],["optic_LRPS",1,3],["optic_NVS",1,3],["optic_Nightstalker",1,2],
-				["optic_tws",1,3],["optic_tws_mg",1,3],["muzzle_snds_H",1,3],["muzzle_snds_L",1,3],["muzzle_snds_M",1,3],["muzzle_snds_B",1,3],["muzzle_snds_H_MG",1,3],["muzzle_snds_acp",1,3],
-				["optic_AMS_khk",1,3],["optic_AMS_snd",1,3],["optic_KHS_blk",1,3],["optic_KHS_hex",1,3],["optic_KHS_old",1,3],["optic_KHS_tan",1,3]
-			],
-			[// Materials and supplies				
-				["Exile_Item_Matches",1,2],["Exile_Item_CookingPot",1,2],["Exile_Item_Rope",1,2],["Exile_Item_DuctTape",1,3],["Exile_Item_ExtensionCord",1,2],["Exile_Item_FuelCanisterEmpty",1,2],
-				["Exile_Item_JunkMetal",1,6],["Exile_Item_LightBulb",1,6],["Exile_Item_MetalBoard",1,6],["Exile_Item_MetalPole",1,6],["Exile_Item_CamoTentKit",1,6]
-			],
-			[//Items
-				["Exile_Item_InstaDoc",1,2],["NVGoggles",1,2],["Rangefinder",1,2],["Exile_Item_Bandage",1,3],["Exile_Item_Vishpirin",1,3],  
-				["Exile_Item_Catfood",1,3],["Exile_Item_Surstromming",1,3],["Exile_Item_BBQSandwich",1,3],["Exile_Item_ChristmasTinner",1,3],["Exile_Item_SausageGravy",1,3],["Exile_Item_GloriousKnakworst",1,3],
-				["Exile_Item_BeefParts",1,3],["Exile_Item_Cheathas",1,3],["Exile_Item_Noodles",1,3],["Exile_Item_SeedAstics",1,3],["Exile_Item_Raisins",1,3],["Exile_Item_Moobar",1,3],["Exile_Item_InstantCoffee",1,3],["Exile_Item_EMRE",1,3],
-				["Exile_Item_PlasticBottleCoffee",1,3],["Exile_Item_PowerDrink",1,3],["Exile_Item_PlasticBottleFreshWater",1,3],["Exile_Item_Beer",1,3],["Exile_Item_EnergyDrink",1,3],["Exile_Item_MountainDupe",1,3]	
-			],
-			[ // Backpacks
-				["B_AssaultPack_dgtl",1,2],["B_AssaultPack_khk",1,2],["B_AssaultPack_mcamo",1,2],["B_AssaultPack_cbr",1,2],["B_AssaultPack_rgr",1,2],["B_AssaultPack_sgg",1,2],
-				["B_Carryall_cbr",1,2],["B_Carryall_khk",1,2],["B_Carryall_mcamo",1,2],["B_Carryall_ocamo",1,2],["B_Carryall_oli",1,2],["B_Carryall_oucamo",1,2],
-				["B_FieldPack_blk",1,2],["B_FieldPack_cbr",1,2],["B_FieldPack_ocamo",1,2],["B_FieldPack_oucamo",1,2],
-				["B_Kitbag_cbr",1,2],["B_Kitbag_mcamo",1,2],["B_Kitbag_sgg",1,2],
-				["B_Parachute",1,2],["V_RebreatherB",1,2],["V_RebreatherIA",1,2],["V_RebreatherIR",1,2],
-				["B_TacticalPack_blk",1,2],["B_TacticalPack_mcamo",1,2],["B_TacticalPack_ocamo",1,2],["B_TacticalPack_oli",1,2],["B_TacticalPack_rgr",1,2],
-				["B_Bergen_blk",1,2],["B_Bergen_mcamo",1,2],["B_Bergen_rgr",1,2],["B_Bergen_sgg",1,2],
-				["B_HuntingBackpack",1,2],["B_OutdoorPack_blk",1,2],["B_OutdoorPack_blu",1,2],["B_OutdoorPack_tan",1,2]
-			]
+			blck_WeaponList_Blue,
+			[],			
+			blck_Optics,
+			_buildingStuff + _toolsItems,
+			_foodDrink,
+			blck_backpacks_blue
 		];
 	
 	blck_BoxLoot_Red = 
 		[	
-			[// Weapons
-				["arifle_Katiba_F","30Rnd_65x39_caseless_green"],
-				["arifle_Katiba_GL_F","30Rnd_65x39_caseless_green"],
-				["arifle_Mk20_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_plain_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20C_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_GL_F","30Rnd_556x45_Stanag"],
-				["arifle_Mk20_GL_plain_F","30Rnd_556x45_Stanag"],
-				["arifle_MX_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MX_GL_F","30Rnd_65x39_caseless_mag"],
-				//["arifle_MX_SW_Black_Hamr_pointer_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXC_F","30Rnd_65x39_caseless_mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag"],
-				["arifle_SDAR_F","20Rnd_556x45_UW_mag"],
-				["arifle_TRG20_F","30Rnd_556x45_Stanag"],
-				["SMG_02_F","30Rnd_9x21_Mag"],
-				["SMG_01_F","30Rnd_45ACP_Mag_SMG_01"],
-				["Hgun_PDW2000_F","30Rnd_9x21_Mag"],
-				["arifle_MXM_F","30Rnd_65x39_caseless_mag_Tracer"],
-				["arifle_MXM_Black_F","30Rnd_65x39_caseless_mag_Tracer"],				
-				["srifle_DMR_01_F","10Rnd_762x54_Mag"],
-				["srifle_LRR_F","7Rnd_408_Mag"],
-				["srifle_EBR_F","20Rnd_762x51_Mag"],
-				["srifle_GM6_F","5Rnd_127x108_APDS_Mag"],
-				["LMG_Mk200_F","200Rnd_65x39_cased_Box_Tracer"],
-				["Arifle_MX_SW_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["Arifle_MX_SW_Black_F","100Rnd_65x39_caseless_mag_Tracer"],
-				["LMG_Zafir_F","150Rnd_762x54_Box"],
-				["MMG_01_hex_F","150Rnd_93x64_Mag"],
-				["srifle_DMR_04_Tan_F","10Rnd_338_Mag"],
-				["srifle_DMR_06_camo_F","10Rnd_338_Mag"]
-			],
-			[//Magazines
-		
-				["3rnd_HE_Grenade_Shell",1,5],["30Rnd_65x39_caseless_green",3,6],["30Rnd_556x45_Stanag",3,6],["30Rnd_556x45_Stanag",3,6],["30Rnd_45ACP_Mag_SMG_01",3,6],["20Rnd_556x45_UW_mag",3,6],
-				["10Rnd_762x51_Mag",3,6],["20Rnd_762x51_Mag",3,7],["200Rnd_65x39_cased_Box",3,6],["100Rnd_65x39_caseless_mag_Tracer",3,6],
-				// Marksman Pack Ammo				
-				["150Rnd_93x64_Mag",1,4],
-				["10Rnd_338_Mag",1,4],
-				["10Rnd_127x54_Mag" ,1,4],
-				["10Rnd_127x54_Mag",1,4],
-				["10Rnd_93x64_DMR_05_Mag" ,1,4]				
-			],		
-			[  // Optics
-				["optic_SOS",1,2],["optic_LRPS",1,2],["optic_DMS",1,2],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Holosight",1,3],["acc_flashlight",1,3],["acc_pointer_IR",1,3],
-				["optic_Arco",1,3],["optic_Hamr",1,3],["optic_Aco",1,3],["optic_ACO_grn",1,3],["optic_Aco_smg",1,3],["optic_ACO_grn_smg",1,3],
-				["optic_Holosight",1,3],["optic_Holosight_smg",1,3],["optic_SOS",1,3],["optic_MRCO",1,3],["optic_DMS",1,3],["optic_Yorris",1,3],
-				["optic_MRD",1,3],["optic_LRPS",1,3],["optic_NVS",1,3],["optic_Nightstalker",1,2],
-				["optic_tws",1,3],["optic_tws_mg",1,3],["muzzle_snds_H",1,3],["muzzle_snds_L",1,3],["muzzle_snds_M",1,3],["muzzle_snds_B",1,3],["muzzle_snds_H_MG",1,3],["muzzle_snds_acp",1,3],
-				["optic_AMS_khk",1,3],["optic_KHS_blk",1,3],["optic_KHS_hex",1,3],["optic_KHS_old",1,3],["optic_KHS_tan",1,3]
-			],			
-			[// Materials and supplies				
-				["Exile_Item_Matches",1,2],["Exile_Item_CookingPot",1,2],["Exile_Item_Rope",1,2],["Exile_Item_DuctTape",1,8],["Exile_Item_ExtensionCord",1,8],["Exile_Item_FuelCanisterEmpty",1,2],
-				["Exile_Item_JunkMetal",1,5],["Exile_Item_LightBulb",1,5],["Exile_Item_MetalBoard",1,5],["Exile_Item_MetalPole",1,5],["Exile_Item_CamoTentKit",1,5],["Exile_Item_WorkBenchKit",1,5],
-				["Exile_Item_MetalBoard",1,5],["Exile_Item_MetalWire",3,10],["Exile_Item_MetalScrews",3,10],["Exile_Item_ExtensionCord",1,5],["Exile_Item_MetalPole",1,5],["Exile_Item_Sand",2,5],["Exile_Item_Cement",2,5]
-			],
-			[//Items
-				["Exile_Item_InstaDoc",1,2],["NVGoggles",1,2],["Exile_Item_Energydrink",1,4],["Exile_Item_Beer",1,3],["Rangefinder",1,2],
-				["Exile_Item_Catfood",1,3],["Exile_Item_Surstromming",1,3],["Exile_Item_BBQSandwich",1,3],["Exile_Item_ChristmasTinner",1,3],["Exile_Item_SausageGravy",1,3],["Exile_Item_GloriousKnakworst",1,3] 
-			],
-			[ // Backpacks
-				["B_AssaultPack_dgtl",1,2],["B_AssaultPack_khk",1,2],["B_AssaultPack_mcamo",1,2],["B_AssaultPack_cbr",1,2],["B_AssaultPack_rgr",1,2],["B_AssaultPack_sgg",1,2],
-				["B_Carryall_cbr",1,2],["B_Carryall_khk",1,2],["B_Carryall_mcamo",1,2],["B_Carryall_ocamo",1,2],["B_Carryall_oli",1,2],["B_Carryall_oucamo",1,2],
-				["B_FieldPack_blk",1,2],["B_FieldPack_cbr",1,2],["B_FieldPack_ocamo",1,2],["B_FieldPack_oucamo",1,2],
-				["B_Kitbag_cbr",1,2],["B_Kitbag_mcamo",1,2],["B_Kitbag_sgg",1,2],
-				["B_Parachute",1,2],["V_RebreatherB",1,2],["V_RebreatherIA",1,2],["V_RebreatherIR",1,2],
-				["B_TacticalPack_blk",1,2],["B_TacticalPack_mcamo",1,2],["B_TacticalPack_ocamo",1,2],["B_TacticalPack_oli",1,2],["B_TacticalPack_rgr",1,2],
-				["B_Bergen_blk",1,2],["B_Bergen_mcamo",1,2],["B_Bergen_rgr",1,2],["B_Bergen_sgg",1,2],
-				["B_HuntingBackpack",1,2],["B_OutdoorPack_blk",1,2],["B_OutdoorPack_blu",1,2],["B_OutdoorPack_tan",1,2]
-			]
+			blck_WeaponList_Red,
+			[],			
+			blck_Optics,
+			_buildingStuff + _toolsItems,
+			_foodDrink,
+			blck_backpacks_red
 		];
 
 
