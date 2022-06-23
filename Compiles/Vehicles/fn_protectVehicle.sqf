@@ -12,7 +12,7 @@
 
 params["_veh"];
 
-if (GMS_modType isEqualTo "Epoch") then
+if (GMSCore_modtype isEqualTo "Epoch") then
 {
 	_veh call EPOCH_server_setVToken;
 };

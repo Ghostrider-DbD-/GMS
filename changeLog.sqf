@@ -734,7 +734,7 @@ Inactivated a call to an exile function that had no value
 
 9-3-16 Ver 6.0 
 1) Re-did the custom_server folder so the mod automatically starts. Blck_client.sqf no longer calls the mod from the server.
-2) Added a variable GMS_modType which presently can be either "Epoch" or "Exile" with the aim of having a single mission system for both mods.
+2) Added a variable GMSCore_modtype which presently can be either "Epoch" or "Exile" with the aim of having a single mission system for both mods.
 3) Added a more intelligent method for loading key components (variables, functions, and map-specific parameters).
 4) Re-did all code to automatically select correct parameters to run correctly on either exile or epoch servers.
 5) Added the Exile Static Loot Crate Spawner; Re-did this to load either an exile or epoch version as needed since a lot of the variables and also the locations tables are unique.

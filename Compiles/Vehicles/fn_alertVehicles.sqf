@@ -18,4 +18,6 @@ private _intelligence = blck_AIIntelligence select ([_difficulty] call blck_fnc_
 	private _grp = group(driver _x);
 	private _knowsAbout = _grp knowsAbout _instigator;
 	_grp reveal[_instigator,_intelligence];
+	[(leader _grp),_instigator] call GMSCore_fnc_setHunt;
+	[(leader _grp), _instigator] call GMSCore_fnc_nextWaypointAreaPatrol;
 } forEach (_nearAir + _nearLand);

@@ -14,8 +14,8 @@
 ///////////////////////////////////////////////
 //  prevent the system from being started twice
 //////////////////////////////////////////////
-if !(isNil "blck_missionSystemRunning") exitWith {"[GMS] Mission System already initialized"};
-blck_missionSystemRunning = true;
+if !(isNil "GMS_missionSystemRunning") exitWith {"[GMS] Mission System already initialized"};
+GMS_missionSystemRunning = true;
 
 // Only run this on a dedicated server
 if (hasInterface) exitWith 
@@ -24,10 +24,23 @@ if (hasInterface) exitWith
 };
 waitUntil {!isNil "GMSCore_Initialized"}; 
 diag_log format["[GMS] Loading GMS at %1",diag_tickTime];
-diag_log format["[GMS] GMS_modType = %1 | GMS_side %2 | GMS_unitType %3",GMS_modType,GMS_side,GMS_unitType];
+diag_log format["[GMS] GMSCore_modtype = %1 | GMSCore_side %2 | GMSCore_unitType %3",GMSCore_modtype,GMSCore_side,GMSCore_unitType];
+
+// This block waits for the mod to start but is disabled for now
+if ((toLowerANSI GMSCore_modtype) isEqualto "epoch") then {
+	diag_log "[GMS] Waiting until EpochMod is ready...";
+	waitUntil {!isnil "EPOCH_SERVER_READY"};
+	diag_log "[GMS] EpochMod is ready...loading GMS";
+};
+if ((toLowerANSI GMSCore_modtype) isEqualTo "exile") then
+{
+	diag_log "[GMS] Waiting until ExileMod is ready ...";
+	waitUntil {!isNil "PublicServerIsLoaded"};
+	diag_log "[GMS] Exilemod is ready...loading GMS";	
+};
 
 // Just some housekeeping for ghost.
-private _blck_loadingStartTime = diag_tickTime;
+private _loadingStartTime = diag_tickTime;
 
 // compile functions
 [] call compileFinal preprocessFileLineNumbers "\q\addons\custom_server\Compiles\blck_functions.sqf";
@@ -42,8 +55,8 @@ waitUntil{(!isNil "blck_simulationManager") && {(!isNil "blck_debugOn") && {!(is
 {
 	private _var = missionNameSpace getVariable[_x,[]];
 	[format["validating classnames and pricing for %1 | count = %2 | _x = %3",_x,count _var, _var]] call blck_fnc_log;
-	_var = [_var,true] call GMS_fnc_checkClassnamesArray;
-	_var = [_var,true] call GMS_fnc_checkClassNamePrices;
+	_var = [_var,true] call GMSCore_fnc_checkClassnamesArray;
+	_var = [_var,true] call GMSCore_fnc_checkClassNamePrices;
 	//[format["blck_init_server: Updated %1 | count = %2 | _x = %3",_x,count _var, _var]] call blck_fnc_log;
 } forEach [
 	"blck_patrolHelisBlue",
@@ -80,19 +93,7 @@ waitUntil{(!isNil "blck_simulationManager") && {(!isNil "blck_debugOn") && {!(is
 	"blck_WeaponList_Orange"
 ];
 
-// This block waits for the mod to start but is disabled for now
-if ((toLowerANSI GMS_modType) isEqualto "epoch") then {
-	diag_log "[GMS] Waiting until EpochMod is ready...";
-	if !(blck_debugOn) then {waitUntil {!isnil "EPOCH_SERVER_READY"}};
-	diag_log "[GMS] EpochMod is ready...loading blckeagls";
-};
-if ((toLowerANSI GMS_modType) isEqualTo "exile") then
-{
-	diag_log "[GMS] Waiting until ExileMod is ready ...";
-	if !(blck_debugOn) then {waitUntil {!isNil "PublicServerIsLoaded"}};
-	diag_log "[GMS] Exilemod is ready...loading blckeagls";	
-};
-if ((toLowerANSI GMS_modType) isEqualTo "default") then 
+if ((toLowerANSI GMSCore_modtype) isEqualTo "default") then 
 {
 	["[GMS] Configuring Mission System for Default Settings..."] call blck_fnc_log;
 };
@@ -203,4 +204,4 @@ if (blck_maxCrashSites > 0) then
 private _version = getText(configFile >> "GMSBuild" >> "Version");
 private _build = getText(configFile >> "GMSBuild" >> "Build");
 private _date = getText(configFile >> "GMSBuile" >> "Date");
-[format["Version %1 Build %2 Date %4 Loaded in %3 seconds",_version,_build,diag_tickTime - _blck_loadingStartTime,_date]] call blck_fnc_log;
+[format["Version %1 Build %2 Date %4 Loaded in %3 seconds",_version,_build,diag_tickTime - _loadingStartTime,_date]] call blck_fnc_log;

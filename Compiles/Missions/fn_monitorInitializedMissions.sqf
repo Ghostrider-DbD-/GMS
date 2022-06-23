@@ -243,7 +243,7 @@ for "_i" from 1 to (count _missionsList) do
 				uiSleep delayTime;
 			};
 
-			private _noChoppers = [_noChoppers] call GMS_fnc_getNumberFromRange;
+			private _noChoppers = [_noChoppers] call GMSCore_fnc_getNumberFromRange;
 			//[format["_monitorInitializeMissions(246): _iconMarker %1 | _noChoppers = %2",_iconMarker,_noChoppers]] call blck_fnc_log;
 			if ((_noChoppers > 0) && {random(1) < _chanceHeliPatrol}) then
 			{
@@ -281,7 +281,7 @@ for "_i" from 1 to (count _missionsList) do
 			};
 
 			private _userelativepos = true;
-			private _emplacedWeaponsThisMission = [_noEmplacedWeapons] call GMS_fnc_getNumberFromRange;
+			private _emplacedWeaponsThisMission = [_noEmplacedWeapons] call GMSCore_fnc_getNumberFromRange;
 			if (blck_useStatic && {((_emplacedWeaponsThisMission > 0) || {!(_missionEmplacedWeapons isEqualTo [])} )} ) then
 			{
 				_temp = [_coords,_missionEmplacedWeapons,_userelativepos,_emplacedWeaponsThisMission,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnEmplacedWeaponArray;
@@ -299,7 +299,7 @@ for "_i" from 1 to (count _missionsList) do
 				uiSleep delayTime;
 			};
 
-			private _noPatrols = [_noVehiclePatrols] call GMS_fnc_getNumberFromRange;
+			private _noPatrols = [_noVehiclePatrols] call GMSCore_fnc_getNumberFromRange;
 			//[format["_monitorInitializedMissions (300): _iconMarker %1 | _noPatrols (vehicle) = %2",_iconMarker,_noPatrols]] call blck_fnc_log;
 			if (blck_useVehiclePatrols && {( (_noPatrols > 0) || {!(_missionPatrolVehicles isEqualTo [])} )} ) then
 			{

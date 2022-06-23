@@ -37,12 +37,12 @@ _noEmplacedWeapons = -1;
 
 _uniforms = ["U_OG_Guerilla1_1","U_OG_Guerilla2_1","U_OG_Guerilla2_2","U_OG_Guerilla2_3","U_OG_Guerilla3_1","U_OG_Guerilla3_2"];
 
-if (GMS_modType isEqualTo "Epoch") then
+if (GMSCore_modtype isEqualTo "Epoch") then
 {
 	_headGear = ["H_92_EPOCH","H_91_EPOCH","H_90_EPOCH","H_89_EPOCH","H_88_EPOCH","H_87_EPOCH","H_86_EPOCH"];
 	_uniforms = _uniforms + blck_femaleUniformsEpoch;
 };
-if (GMS_modType isEqualTo "Exile") then
+if (GMSCore_modtype isEqualTo "Exile") then
 {
 	_headGear = ["H_Cap_blk","H_Cap_blk_Raven","H_Cap_blu","H_Cap_brn_SPECOPS","H_Cap_grn","H_Cap_headphones","H_Cap_khaki_specops_UK","H_Cap_oli","H_Cap_press","H_Cap_red","H_Cap_tan","H_Cap_tan_specops_US"];
 };

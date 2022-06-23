@@ -84,10 +84,10 @@ if (_emplacedWepData isEqualTo []) then
 	#define vehKilledCode []
 	private _damage = if (blck_killEmptyStaticWeapons) then {1} else {0};
 	private _releaseToPlayers = if (blck_killEmptyStaticWeapons) then {false} else {true};
-	private _wep = [_static,_pos,_dir,height,_damage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMS_fnc_spawnPatrolVehicle;
+	private _wep = [_static,_pos,_dir,height,_damage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle;
     _wep setVariable["GMS_vehType","emplaced"];	
 	_emplacedWeps pushback _wep;
-	[_wep,_empGroup] call GMS_fnc_loadVehicleCrew;
+	[_wep,_empGroup] call GMSCore_fnc_loadVehicleCrew;
 	//_gunner setVariable["GRG_vehType","emplaced"];	
 	_emplacedAI append _units;		
 } forEach _emplacedWepData;

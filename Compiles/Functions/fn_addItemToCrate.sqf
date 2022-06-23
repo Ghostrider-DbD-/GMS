@@ -18,7 +18,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
-_this call GMS_fnc_addItem;
+_this call GMSCore_fnc_addItem;
 /*
 	params["_itemInfo","_crate",["_addAmmo",0]];
 	private["_isRifle","_isMagazine","_isBackpack"];

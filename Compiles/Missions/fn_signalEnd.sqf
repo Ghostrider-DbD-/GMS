@@ -29,5 +29,5 @@ if(sunOrMoon < 0.2) then
 	_light attachTo [_crate,[0,0,(0.55)]];
 };
 */
-[_crate,_time] call GMS_fnc_visibleMarker;
+[_crate,_time] call GMSCore_fnc_visibleMarker;
 //blck_illuminatedCrates  pushBack [_crate,_smoke,_light,_smokeShell,_lightSource,diag_tickTime + 120, diag_tickTime + 300];	

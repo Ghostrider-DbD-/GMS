@@ -23,12 +23,12 @@ _veh addMPEventHandler["MPKilled",{if (isServer) then {_this call blck_fnc_proce
 _veh addEventHandler["GetOut",{if (isServer || {local (vehicleAffected)}) then {_this call blck_fnc_handleVehicleGetOut}}];
 
 //blck_monitoredVehicles pushBackUnique _veh;
-if (GMS_modType isEqualTo "Epoch") then
+if (GMSCore_modtype isEqualTo "Epoch") then
 {
 	// Adds compatability with Halv's black market traders
 	if (blck_allowSalesAtBlackMktTraders) then {_veh setVariable["HSHALFPRICE",1,true]};
 };
-if (GMS_modType isEqualTo "Exile")	then 
+if (GMSCore_modtype isEqualTo "Exile")	then 
 {
 	// Adds compatability with claim vehicle scripts
 	if (blck_allowClaimVehicle) then 

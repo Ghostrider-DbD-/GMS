@@ -17,9 +17,9 @@ params["_coords","_mines","_objects","_hiddenObjects","_blck_AllMissionAI","_mar
 
 [_mines] call blck_fnc_clearMines;
 //blck_oldMissionObjects pushback [_coords,_objects, (diag_tickTime + _cleanupCompositionTimer)];
-[_objects, (diag_tickTime + _cleanupCompositionTimer)] call GMS_fnc_addToDeletionCue;	
+[_objects, (diag_tickTime + _cleanupCompositionTimer)] call GMSCore_fnc_addToDeletionCue;	
 blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime + _cleanupCompositionTimer)];
-[_blck_AllMissionAI, (diag_tickTime + _cleanupAliveAITimer)] call GMS_fnc_addToDeletionCue;
+[_blck_AllMissionAI, (diag_tickTime + _cleanupAliveAITimer)] call GMSCore_fnc_addToDeletionCue;
 blck_missionsRunning = blck_missionsRunning - 1;
 blck_ActiveMissionCoords = blck_ActiveMissionCoords - [ _coords];	
 if !(_isScubaMission) then

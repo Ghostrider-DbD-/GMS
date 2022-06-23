@@ -31,12 +31,12 @@ _noEmplacedWeapons = -1;
 _uniforms = ["U_OG_leader","U_O_PilotCoveralls","U_O_CombatUniform_ocamo","U_OG_leader","U_O_PilotCoveralls","U_O_CombatUniform_ocamo","U_OG_leader","U_O_PilotCoveralls","U_O_CombatUniform_ocamo","U_O_FullGhillie_lsh","U_O_FullGhillie_sard","U_O_FullGhillie_ard"];
 
 
-if (GMS_modType isEqualTo "Epoch") then
+if (GMSCore_modtype isEqualTo "Epoch") then
 {
 	_headGear = ["H_39_EPOCH","H_40_EPOCH","H_41_EPOCH","H_43_EPOCH","H_44_EPOCH","H_45_EPOCH","H_46_EPOCH"];
 	//_uniforms = _uniforms + blck_femaleUniformsEpoch;	
 };
-if (GMS_modType isEqualTo "Exile") then
+if (GMSCore_modtype isEqualTo "Exile") then
 {
 	_headGear = ["H_Booniehat_dgtl","H_Booniehat_dirty","H_Booniehat_grn","H_Booniehat_indp","H_Booniehat_khk","H_Booniehat_khk_hs","H_Booniehat_mcamo","H_Booniehat_tan"];
 };

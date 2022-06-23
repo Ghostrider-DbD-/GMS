@@ -36,7 +36,7 @@ _fnc_dropMissionCrates = {
 				_location = getPos _x;
 				_blck_localMissionMarker = [format["crateMarker%1%2",_location select 0, _location select 1],_location,"","","ColorBlack",["mil_dot",[]]];
 				_marker = [_blck_localMissionMarker] call blck_fnc_spawnMarker;
-				[_marker,diag_tickTime + 300] call GMS_fnc_addToDeletionCue;
+				[_marker,diag_tickTime + 300] call GMSCore_fnc_addToDeletionCue;
 				_curPosCrate = getPos _x;
 				_x setPos [_curPosCrate select 0, _curPosCrate select 1, 0.3];
 			};

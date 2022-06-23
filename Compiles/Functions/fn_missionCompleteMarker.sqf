@@ -26,6 +26,6 @@ _m setMarkerColor "ColorBlack";
 _m setMarkerType "n_hq";
 _m setMarkerText "Mission Cleared";
 
-[_m, diag_tickTime + 30] call GMS_fnc_addToDeletionCue;
+[_m, diag_tickTime + 30] call GMSCore_fnc_addToDeletionCue;
 _m spawn _fn_cleanup;
 //diag_log format["missionCompleteMarker complete script for _this = %1",_this];

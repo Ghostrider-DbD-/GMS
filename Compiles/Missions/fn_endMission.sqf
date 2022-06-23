@@ -81,18 +81,18 @@ switch (_endCondition) do
 	case -1: {
 			[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call blck_fnc_log;
 			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];			
-			[_mines, 0] call GMS_fnc_deleteObjectsMethod;	
-			[_crates, 0] call GMS_fnc_deleteObjectsMethod;
-			[_objects, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_missionAI, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_aiVehicles, 0] call GMS_fnc_deleteObjectsMethod;
-			[_lootVehicles, 0] call GMS_fnc_deleteObjectsMethod;
+			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;	
+			[_crates, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_objects, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_missionAI, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_aiVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_lootVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
 	};
 	case 1: {  // Normal End
-			[format["_endMission (102): _exception 1 (normal ending) | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call blck_fnc_log;
+			//[format["_endMission (102): _exception 1 (normal ending) | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call blck_fnc_log;
 			if (blck_useSignalEnd) then
 			{
-				[_crates select 0,150] spawn GMS_fnc_visibleMarker;
+				[_crates select 0,150] spawn GMSCore_fnc_visibleMarker;
 				{
 					_x enableRopeAttach true;
 				}forEach _crates;
@@ -113,33 +113,33 @@ switch (_endCondition) do
 					blck_monitoredVehicles pushback _x;
 				};
 			} forEach _aiVehicles;
-			[_mines, 0] call GMS_fnc_deleteObjectsMethod;
-			[_objects, (diag_tickTime + blck_cleanupCompositionTimer)] call GMS_fnc_addToDeletionCue;	
+			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_objects, (diag_tickTime + blck_cleanupCompositionTimer)] call GMSCore_fnc_addToDeletionCue;	
 			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime + blck_cleanupCompositionTimer)];
-			[_missionAI, (diag_tickTime + blck_AliveAICleanUpTimer)] call GMS_fnc_addToDeletionCue;
+			[_missionAI, (diag_tickTime + blck_AliveAICleanUpTimer)] call GMSCore_fnc_addToDeletionCue;
 			[format["Mission Completed | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call blck_fnc_log;			
 	};
 	case 2: {  // Aborted for moving a crate 
 			#define illegalCrateMoveMsg "Crate moved before mission completed"
 			[["warming",illegalCrateMoveMsg,_markerName]] call blck_fnc_messageplayers;
 			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];
-			[_mines, 0] call GMS_fnc_deleteObjectsMethod;	
-			[_crates, 0] call GMS_fnc_deleteObjectsMethod;
-			[_objects, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_missionAI, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_aiVehicles, 0] call GMS_fnc_deleteObjectsMethod;
-			[_lootVehicles, 0] call GMS_fnc_deleteObjectsMethod;
+			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;	
+			[_crates, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_objects, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_missionAI, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_aiVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_lootVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
 			[format["Mission Aborted <CRATE MOVED> | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call blck_fnc_log;
 	};
 	case 3: {  // Mision aborted for killing an asset
 			[["warning",_endMsg,_markerName]] call blck_fnc_messageplayers;
 			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];
-			[_mines, 0] call GMS_fnc_deleteObjectsMethod;	
-			[_crates, 0] call GMS_fnc_deleteObjectsMethod;
-			[_objects, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_missionAI, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_aiVehicles, 0] call GMS_fnc_deleteObjectsMethod;
-			[_lootVehicles, 0] call GMS_fnc_deleteObjectsMethod;
+			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;	
+			[_crates, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_objects, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_missionAI, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_aiVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_lootVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
 			[format["Mission Aborted <ASSET KILLED> | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call blck_fnc_log;
 	};
 	case 4: {
@@ -147,7 +147,7 @@ switch (_endCondition) do
 			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];
 			if (blck_useSignalEnd) then
 			{
-				[_crates select 0,150] spawn GMS_fnc_visibleMarker;
+				[_crates select 0,150] spawn GMSCore_fnc_visibleMarker;
 				{
 					_x enableRopeAttach true;
 				}forEach _crates;
@@ -168,12 +168,12 @@ switch (_endCondition) do
 					blck_monitoredVehicles pushback _x;
 				};
 			} forEach _aiVehicles;			
-			[_mines, 0] call GMS_fnc_deleteObjectsMethod;	
-			[_crates, 1200] call GMS_fnc_deleteObjectsMethod;
-			[_objects, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_missionAI, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_aiVehicles, 0] call GMS_fnc_deleteObjectsMethod;
-			[_lootVehicles, 0] call GMS_fnc_deleteObjectsMethod;			
+			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;	
+			[_crates, 1200] call GMSCore_fnc_deleteObjectsMethod;
+			[_objects, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_missionAI, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_aiVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_lootVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;			
 	};	
 
 	case 5: {
@@ -181,7 +181,7 @@ switch (_endCondition) do
 			blck_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];
 			if (blck_useSignalEnd) then
 			{
-				[_crates select 0,150] spawn GMS_fnc_visibleMarker;
+				[_crates select 0,150] spawn GMSCore_fnc_visibleMarker;
 				{
 					_x enableRopeAttach true;
 				}forEach _crates;
@@ -202,12 +202,12 @@ switch (_endCondition) do
 					blck_monitoredVehicles pushback _x;
 				};
 			} forEach _aiVehicles;			
-			[_mines, 0] call GMS_fnc_deleteObjectsMethod;	
-			[_crates, 120] call GMS_fnc_deleteObjectsMethod;
-			[_objects, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_missionAI, 0] call GMS_fnc_deleteObjectsMethod;				
-			[_aiVehicles, 0] call GMS_fnc_deleteObjectsMethod;
-			[_lootVehicles, 0] call GMS_fnc_deleteObjectsMethod;			
+			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;	
+			[_crates, 120] call GMSCore_fnc_deleteObjectsMethod;
+			[_objects, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_missionAI, 0] call GMSCore_fnc_deleteObjectsMethod;				
+			[_aiVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
+			[_lootVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;			
 	};	
 };
 
@@ -223,10 +223,11 @@ if (_isScubaMission) then
 	blck_UMS_ActiveDynamicMissions = blck_UMS_ActiveDynamicMissions - [_coords];
 	blck_dynamicUMS_MissionsRuning = blck_dynamicUMS_MissionsRuning - 1;		
 };
-
+/*
 {
 		[format["_endMission: crate %1 contains weapons %2",_x,getWeaponCargo _x]] call blck_fnc_log;
 		[format["_endMission: crate %1 contains items %2",_x,getItemCargo _x]] call blck_fnc_log; 
 		[format["_endMission: crate %1 contains magazines %2",_x, getMagazinecargo _x]] call blck_fnc_log;					
 }forEach _crates;
+*/
 blck_missionsRun = blck_missionsRun + 1;

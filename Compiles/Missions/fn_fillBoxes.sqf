@@ -32,7 +32,7 @@
 	*/
 	if !(_weapons isEqualTo []) then
 	{
-		private _tries = [_wepCnt] call GMS_fnc_getIntegerFromRange;
+		private _tries = [_wepCnt] call GMSCore_fnc_getIntegerFromRange;
 		//[format["_fillBoxes: _tries %1 | _wepCnt %2 | _weapons %3",_tries,_wepCnt,_weapons]] call blck_fnc_log;
 		// Add some randomly selected weapons and corresponding magazines
 		for "_i" from 0 to _tries do 
@@ -59,7 +59,7 @@
 
 	if !(_magazines isEqualTo []) then
 	{
-		private _tries = [_magCnt] call GMS_fnc_getIntegerFromRange;
+		private _tries = [_magCnt] call GMSCore_fnc_getIntegerFromRange;
 		//[format["_fillBoxes: _tries %1 | _magCnt %2 | _magazines %3",_tries,_magCnt,_magazines]] call blck_fnc_log;
 		// Add Magazines, grenades, and 40mm GL shells
 		for "_i" from 0 to _tries do 
@@ -80,7 +80,7 @@
 
 	if !(_optics isEqualTo []) then
 	{
-		private _tries = [_opticsCnt] call GMS_fnc_getIntegerFromRange;
+		private _tries = [_opticsCnt] call GMSCore_fnc_getIntegerFromRange;
 		//[format["_fillBoxes: _tries %1 | _wepCnt %2 | _weapons %3",_tries,_opticsCnt,_optics]] call blck_fnc_log;
 		// Add Optics
 		for "_i" from 0 to _tries do 
@@ -101,7 +101,7 @@
 
 	if !(_materials isEqualTo []) then
 	{
-		private _tries = [_materialsCnt] call GMS_fnc_getIntegerFromRange;
+		private _tries = [_materialsCnt] call GMSCore_fnc_getIntegerFromRange;
 		//[format["_fillBoxes: _tries %1 | _materialsCnt %2 | _materials %3",_tries,_materialsCnt,_materials]] call blck_fnc_log;
 		// Add materials (cindar, mortar, electrical parts etc)
 		for "_i" from 0 to _tries do 
@@ -122,7 +122,7 @@
 
 	if !(_items isEqualTo []) then
 	{
-		private _tries = [_itemCnt] call GMS_fnc_getIntegerFromRange;
+		private _tries = [_itemCnt] call GMSCore_fnc_getIntegerFromRange;
 		//[format["_fillBoxes: _tries %1 | _itemCnt %2 | _items %3",_tries,_itemCnt,_items]] call blck_fnc_log;		
 		// Add Items (first aid kits, multitool bits, vehicle repair kits, food and drinks)
 		for "_i" from 0 to _tries do 
@@ -142,7 +142,7 @@
 
 	if !(_backpacks isEqualTo []) then
 	{	
-		private _tries = [_bkcPckCnt] call GMS_fnc_getIntegerFromRange;
+		private _tries = [_bkcPckCnt] call GMSCore_fnc_getIntegerFromRange;
 		//[format["_fillBoxes: _tries %1 | _bkcPckCnt %2 | _backpacks %3",_tries,_bkcPckCnt,_backpacks]] call blck_fnc_log;			
 		for "_i" from 0 to _tries do 
 		{

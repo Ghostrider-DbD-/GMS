@@ -1,7 +1,7 @@
 fn_selectCrateType = {
 	private["_item"];
 	_item = "";
-	switch (toLowerANSI(GMS_modType)) do
+	switch (toLowerANSI(GMSCore_modtype)) do
 	{
 		case "epoch": {_item = "GroundWeaponHolder"};
 		case "exile": {_item = "Box_NATO_Wps_F"};
@@ -35,7 +35,7 @@ fn_spawnLootContainers = {
 
 fn_fillContainer = {
 	params["_cntr","_diff","_lType","_level"];
-	if (toLower(GMS_modType) isEqualTo "epoch") then
+	if (toLower(GMSCore_modtype) isEqualTo "epoch") then
 	{
 		switch (_diff) do
 		{
@@ -96,7 +96,7 @@ _fn_spawnWreckMission = {
 		["Land_Wreck_Ural_F","Ural Crash","A Ural in a %1 convoy has crashed","Survivors have secured the crash site",4,5,"Blue","supplies",2]
 	];
 	private _uniformsHC = ["U_C_Scientist","U_OrestesBody","U_NikosAgedBody","U_NikosBody"];
-	if ((toLower GMS_modType) isEqualTo "epoch") then
+	if ((toLower GMSCore_modtype) isEqualTo "epoch") then
 	{
 		_uniformsHC = _uniformsHC + blck_femaleUniformsEpoch;	
 	};
@@ -109,11 +109,11 @@ _fn_spawnWreckMission = {
 	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> Crash site %1 spawned at %2",_crashName,_posOfCrash];};
 	
 	private _markers = [_crashName,_posOfCrash,_markerLabel,"ColorGreen","mil_triangle",[],""] call blck_fnc_createMissionMarkers;
-	if (GMS_modType isEqualTo "Epoch") then
+	if (GMSCore_modtype isEqualTo "Epoch") then
 	{
 		_startMsg = format[_startMsg,"Bandit"];
 	};
-	if (GMS_modType isEqualTo "Exile") then
+	if (GMSCore_modtype isEqualTo "Exile") then
 	{
 		_startMsg = format[_startMsg,"Mafia"];
 	};

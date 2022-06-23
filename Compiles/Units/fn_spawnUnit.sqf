@@ -26,7 +26,7 @@ if (_backpacks  isEqualTo []) then {_backpacks = [_skillLevel] call blck_fnc_sel
 if (isNull _aiGroup) exitWith {["NULL-GROUP Provided to _fnc_spawnUnit"] call blck_fnc_log};
 
 _unit = ObjNull;
-GMS_unitType createUnit [_pos, _aiGroup, "_unit = this", blck_baseSkill, "COLONEL"];
+GMSCore_unitType createUnit [_pos, _aiGroup, "_unit = this", blck_baseSkill, "COLONEL"];
 
 //private _tempPos = _pos findEmptyPosition [0.1, 3, typeOf _unit];
 

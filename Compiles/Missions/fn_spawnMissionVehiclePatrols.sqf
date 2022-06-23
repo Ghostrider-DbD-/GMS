@@ -73,11 +73,11 @@ if (_patrolsThisMission isEqualTo []) then
 	private _damage = 0.5;
 	private _releaseToPlayers = blck_allowClaimVehicle;
 
-	private _vehicle = [_vehName,_pos,dir,height,maxDamage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMS_fnc_spawnPatrolVehicle;
-	[_vehicle,_vehGroup] call GMS_fnc_loadVehicleCrew;
+	private _vehicle = [_vehName,_pos,dir,height,maxDamage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle;
+	[_vehicle,_vehGroup] call GMSCore_fnc_loadVehicleCrew;
 	_vehGroup setVariable["GMS_group",true];
-	[_vehicle,GMS_forbidenWeapons,GMS_forbidenMagazines] call GMS_fnc_disableVehicleWeapons;
-	[_vehicle,GMS_disabledSensors] call GMS_fnc_disableVehicleSensors;
+	[_vehicle,GMS_forbidenWeapons,GMS_forbidenMagazines] call GMSCore_fnc_disableVehicleWeapons;
+	[_vehicle,GMS_disabledSensors] call GMSCore_fnc_disableVehicleSensors;
 	if (GMS_disableInfrared) then {_vehicle disableTIEquipment true};
 	_vehicles pushback _vehicle;
 	blck_landVehiclePatrols pushBack _vehicle;

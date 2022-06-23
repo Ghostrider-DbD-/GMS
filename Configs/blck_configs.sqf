@@ -26,15 +26,6 @@
 		Configurations begin here
 		**************************************
 	*/
-	/***************************************************************
-		BLCKEAGLS SUPPLEMENTAL MODULES
-	****************************************************************	
-		Configuration for Addons that support the overall Mission system.
-		These are:
-		1) a module to spawn map  addons generated with the Eden Editor
-		2) And a moduel to spawn static loot crates at specific location
-		3) A time acceleration module.
-	*/
 
 	blck_simulationManager = blck_useBlckeaglsSimulationManager; 
 	blck_hideRocksAndPlants = true; //  When true, any rocks, trees or bushes under enterable buildings will be 'hidden'
@@ -67,8 +58,8 @@
 	blck_useIEDMessages = true;  // Displayes a message when a player vehicle detonates and IED (such as would happen if a player killed AI with a forbidden weapon).
 
 blck_rewards = [[0,0],[0,0],[0,0],[0,0]];
-private _modType = [] call GMS_fnc_getModType;
-switch (_modType) do 
+
+switch (GMSCore_modType) do 
 {
 	case "Epoch": {
 		// expressed as crypto min, crypto max
@@ -593,7 +584,7 @@ switch (_modType) do
 	blck_chanceVest = 0.1;
 	blck_chanceBinoc = 0.75;
 
-	private _configToLoad = format["\q\addons\custom_server\Configs\blck_configs_%1.sqf",tolower(GMS_modType)];
+	private _configToLoad = format["\q\addons\custom_server\Configs\blck_configs_%1.sqf",tolower(GMSCore_modtype)];
 	diag_log format["[GMS] _configToLoad = %1",_configToLoad];
 	[] call compileFinal preprocessFileLineNumbers _configToLoad;
 

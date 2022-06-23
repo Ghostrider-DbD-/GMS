@@ -157,7 +157,7 @@ _missionLandscape = [
      ["Land_HBarrierWall6_F",[89.877,-11.1797,0.00650382],89.9661,true,true],
      ["Land_HBarrierWall6_F",[89.877,-27.1797,0.00650382],89.9661,true,true]
 ]; // list of objects to spawn as landscape
-if (GMS_modType isEqualTo "Exile") then 
+if (GMSCore_modtype isEqualTo "Exile") then 
 { 
 	_missionLandscape = _missionLandscape + [
 		["TargetBootcampHuman_F_Preview",[57.5684,-24.2852,0],271.664,[false,false]],

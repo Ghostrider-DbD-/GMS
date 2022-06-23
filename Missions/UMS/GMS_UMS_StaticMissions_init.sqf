@@ -16,10 +16,10 @@
 
 {
 	diag_log format["[GMS] GMS__UMS_StaticMissions_init.sqf <Evaluating Mission = %1>",_x];
-	diag_log format["[GMS] GMS__UMS_StaticMissions_init.sqf <worldName = %1 | _mod = %2>",toLower worldName,(toLower GMS_modType)];	
+	diag_log format["[GMS] GMS__UMS_StaticMissions_init.sqf <worldName = %1 | _mod = %2>",toLower worldName,(toLower GMSCore_modtype)];	
 	if ((toLower worldName) isEqualTo toLower(_x select 1)) then
 	{
-		if ((toLower GMS_modType) isEqualTo (toLower(_x select 0))) then
+		if ((toLower GMSCore_modtype) isEqualTo (toLower(_x select 0))) then
 		{
 			call compilefinal preprocessFileLineNumbers format["\q\addons\custom_server\Missions\UMS\staticMissions\%1",(_x select 2)];
 		};

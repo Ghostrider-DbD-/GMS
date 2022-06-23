@@ -89,8 +89,8 @@ while {true} do
 			} forEach diag_activeSQFScripts;
 		};
 		[] call blck_fnc_cleanEmptyGroups;
-		[blck_landVehiclePatrols] call GMS_fnc_removeNullEntries;
-		[blck_aircraftPatrols] call GMS_fnc_removeNullEntries;
+		[blck_landVehiclePatrols] call GMSCore_fnc_removeNullEntries;
+		[blck_aircraftPatrols] call GMSCore_fnc_removeNullEntries;
 		_timer5min = diag_tickTime + 300;
 	};
 };

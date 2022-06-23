@@ -31,8 +31,8 @@ if !(_missionGroups isEqualTo []) then
 	{
 		//[format["blck_fnc_spawnMissionAI: evaluating _missionGroups element %1",_x]] call blck_fnc_log;
 		_x params["_position","_minAI","_maxAI","_skillLevel"];
-		private _min = [_minAI] call GMS_fnc_getIntegerFromRange;
-		private _max = [_maxAI] call GMS_fnc_getIntegerFromRange;
+		private _min = [_minAI] call GMSCore_fnc_getIntegerFromRange;
+		private _max = [_maxAI] call GMSCore_fnc_getIntegerFromRange;
 		//[format["blck_fnc_spawnMissionAI: params returned _minAI %1 | _maxAI %2 _position %3 | _skillLevel %4",_minAI,_maxAI,_position,_skillLevel]] call blck_fnc_log;
 		_unitsToSpawn = round(_min + round(random(_max - _min)));
 		private _groupPos = _coords vectorAdd _position;
@@ -45,8 +45,8 @@ if !(_missionGroups isEqualTo []) then
 } else {
 	if (_noAIGroups > 0) then
 	{
-		private _min = [_minNoAI] call GMS_fnc_getIntegerFromRange;
-		private _max = [_maxNoAI] call GMS_fnc_getIntegerFromRange;
+		private _min = [_minNoAI] call GMSCore_fnc_getIntegerFromRange;
+		private _max = [_maxNoAI] call GMSCore_fnc_getIntegerFromRange;
 		_unitsToSpawn = round(_min + round(random(_max - _min)));
 		_unitsPerGroup = floor(_unitsToSpawn/_noAIGroups);
 		private _area = [_coords,[200,200]];

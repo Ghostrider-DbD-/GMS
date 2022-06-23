@@ -22,7 +22,7 @@ if (_numAI < 1) exitWith {grpNull};
 private _paraGroup = [offMap,_numAI,_skilllevel,patrolAreadDimensions,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScuba] call blck_fnc_spawnGroup;
 if !(isNull _paraGroup) then 
 {
-	[_paraGroup,_pos] call GMS_fnc_dropParatroops;
+	[_paraGroup,_pos] call GMSCore_fnc_dropParatroops;
 	blck_monitoredMissionAIGroups pushback _paraGroup;
 };
 [format["blck_fnc_spawnParaUnits: _paragroup = %1",_paraGroup]] call blck_fnc_log;

@@ -558,7 +558,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		blck_UMS_crates = blck_crateTypes;
 		//blck_UMS_crates = ["container_epoch"];	
 
-		if ((toLower GMS_modType) isEqualTo "default") then 
+		if ((toLower GMSCore_modtype) isEqualTo "default") then 
 		{
 			blck_UMS_submarines = ["B_SDV_01_EPOCH"];
 			blck_UMS_crates = blck_crateTypes;

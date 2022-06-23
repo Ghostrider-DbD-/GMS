@@ -39,7 +39,7 @@ if !(_role isEqualTo []) then // _instigator was in a vehicle of some sort
 				_cf = 0;
 				_creditKill = false;			
 				_isRunover = true;
-				[_unit] call GMS_fnc_unitRemoveAllGear;	
+				[_unit] call GMSCore_fnc_unitRemoveAllGear;	
 				{
 					deleteVehicle _x;
 				} forEach nearestObject[_unit,["WeaponHolderSimulated","groundWeaponHolder"],2];
@@ -54,7 +54,7 @@ if !(_role isEqualTo []) then // _instigator was in a vehicle of some sort
 			{
 				_cf = 0;
 				_creditKill = false;
-				[_unit] call GMS_fnc_unitRemoveAllGear;	
+				[_unit] call GMSCore_fnc_unitRemoveAllGear;	
 				{
 					deleteVehicle _x;
 				} forEach nearestObject[_unit,["WeaponHolderSimulated","groundWeaponHolder"],2];
@@ -70,8 +70,8 @@ private _difficulty = (group _unit) getVariable["blck_difficulty","Red"];
 private _index = [_difficulty] call blck_fnc_getIndexFromDifficulty;
 private _rewards = blck_rewards select _index;
 private _distance = _unit distance _killer;
-_baseReward = round([_rewards select 0] call GMS_fnc_getNumberFromRange);
-_baseExperience = round([_rewards select 0] call GMS_fnc_getNumberFromRange);
+_baseReward = round([_rewards select 0] call GMSCore_fnc_getNumberFromRange);
+_baseExperience = round([_rewards select 0] call GMSCore_fnc_getNumberFromRange);
 private _reward = 0;
 private _experience = 0;
 private _killstreak = 0;
@@ -108,22 +108,22 @@ if (_isRunover) then
 	_experience = round((_baseExperience + _distanceBonus) * _cf); // Karma in Epoch, Respect in Exile
 };
 
-switch (GMS_modType) do {
+switch (GMSCore_modtype) do {
 	case "Epoch": {
-		[_instigator, _reward] call GMS_fnc_giveTakeCrypto;
-		[_instigator,_experience,false] call GMS_fnc_setKarma;
+		[_instigator, _reward] call GMSCore_fnc_giveTakeCrypto;
+		[_instigator,_experience,false] call GMSCore_fnc_setKarma;
 	};
 	case "Exile": {
-		[_instigator, _reward] call GMS_fnc_giveTakeTabs;
-		[_instigator, _experience] call GMS_fnc_giveTakeRespect;
+		[_instigator, _reward] call GMSCore_fnc_giveTakeTabs;
+		[_instigator, _experience] call GMSCore_fnc_giveTakeRespect;
 	};
 };
-//diag_log format["blck_fnc_unitKilled: _mod %3 | _reward %1 | _experience %2",_reward,_experience,GMS_modType];
+//diag_log format["blck_fnc_unitKilled: _mod %3 | _reward %1 | _experience %2",_reward,_experience,GMSCore_modtype];
 
 if (_creditKill) then 
 {
 	
-	[_instigator,1] call GMS_fnc_updatePlayerKills;
+	[_instigator,1] call GMSCore_fnc_updatePlayerKills;
 	private _msg = format[
 		"%1 killed %2 with %3 at %4 meters %5X KILLSTREAK",
 		name _instigator, 

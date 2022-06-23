@@ -23,14 +23,14 @@ _fn_doUpdates = {
 		_player setVariable["blck_kills",0];
 	};
 
-	if (toLower(GMS_modType) isEqualTo "epoch") then
+	if (toLower(GMSCore_modtype) isEqualTo "epoch") then
 	{
 		#define maxReward 2500
 		private _distanceBonus = floor((_unit distance _player)/100);
 		private _killstreakBonus = 3 * (_player getVariable["blck_kills",0]);
 		private _reward = 25 + _distanceBonus + _killstreakBonus;
-		[_player,_reward ] call GMS_fnc_giveTakeCrypto;
-		[_player, 5] call GMS_fnc_setKarma;
+		[_player,_reward ] call GMSCore_fnc_giveTakeCrypto;
+		[_player, 5] call GMSCore_fnc_setKarma;
 		//if (isNil "GMS_fnc_killedMessages") then {diag_log format["blckeagls: GMS_fnc_killedMessages not defined"]};		
 		if (blck_useKillScoreMessage) then
 		{
@@ -42,7 +42,7 @@ _fn_doUpdates = {
 		// SUggestion to update Epoch player stats from He-Man
 		[_killer, "AIKills", 1, true] call EPOCH_server_updatePlayerStats;		
 	};
-	if (toLower(GMS_modType) isEqualTo "exile") then
+	if (toLower(GMSCore_modtype) isEqualTo "exile") then
 	{
 		private _distanceBonus = floor((_unit distance _player)/100);
 		private _killstreakBonus = 3 * (_player getVariable["blck_kills",0]);
@@ -61,7 +61,7 @@ _fn_doUpdates = {
 			[["showScore",[_respectGained,_distanceBonus,_kills]], [_player]] call blck_fnc_messageplayers;
 		};
 	};
-	if (toLower(GMS_modType) isEqualTo "default") then 
+	if (toLower(GMSCore_modtype) isEqualTo "default") then 
 	{
 		private _newKillerFrags = _player getVariable ["ExileKills", 0];
 		_newKillerFrags = _newKillerFrags + 1;

@@ -51,7 +51,7 @@ for "_i" from 0 to (_noChoppers) do
 		];	
 	*/
 
-	private _aircraft = [_heli,_crewGroup,_spawnPos,heliDir,heliHeight,heliDamage,heliRemoveFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMS_fnc_spawnPatrolAircraft;
+	private _aircraft = [_heli,_crewGroup,_spawnPos,heliDir,heliHeight,heliDamage,heliRemoveFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolAircraft;
 	_helis pushBack _aircraft;
 };
 

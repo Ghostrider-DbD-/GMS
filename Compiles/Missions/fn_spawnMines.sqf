@@ -33,7 +33,7 @@ for "_i" from 1 to noMines/2 do
 		private _ypos = (_pos select 1) + cos (_dir) * _radius;	
 		private _posMine = [_xpos,_ypos,0];
 		private _mine = createMine ["ATMine", _posMine, [], 0];
-		if (GMS_modType isEqualTo "Epoch") then {_mine setVariable ["LAST_CHECK", (diag_tickTime + 14400)]};
+		if (GMSCore_modtype isEqualTo "Epoch") then {_mine setVariable ["LAST_CHECK", (diag_tickTime + 14400)]};
 		_mine setPos _posMine;
 		_minesPlaced pushBack _mine;
 	};

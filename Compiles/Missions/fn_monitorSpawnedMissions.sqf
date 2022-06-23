@@ -219,7 +219,7 @@ for "_i" from 1 to (count _missionsList) do
 						private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);	
 						//[format["_monitorSpawnedMissions: (218) _crateMoney = %1",_crateMoney]] call blck_fnc_log;																		
 						{
-							[_x, _crateMoney] call GMS_fnc_setMoney;
+							[_x, _crateMoney] call GMSCore_fnc_setMoney;
 						} forEach _crates;				
 					};	
 
@@ -229,7 +229,7 @@ for "_i" from 1 to (count _missionsList) do
 						//[format["_monitorSpawnedMissions: (227) _crateMoney = %1",_crateMoney]] call blck_fnc_log;									
 						{
 							[_x] call blck_fnc_loadMissionCrate;											
-							[_x, _crateMoney] call GMS_fnc_setMoney;									
+							[_x, _crateMoney] call GMSCore_fnc_setMoney;									
 						} forEach _crates;
 						//diag_log format["_monitorSpawnedMissions: (232): Loot and Money LOADED _loadCrates Timing = %1 | _crates = %2",_loadCratesTiming,_crates];									
 						{
@@ -304,7 +304,7 @@ for "_i" from 1 to (count _missionsList) do
 							private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);	
 							[format["_monitorSpawnedMissions: (312) _crateMoney = %1",_crateMoney]] call blck_fnc_log;																		
 							{
-								[_x, _crateMoney] call GMS_fnc_setMoney;
+								[_x, _crateMoney] call GMSCore_fnc_setMoney;
 							} forEach _crates;				
 					};	
 
@@ -314,7 +314,7 @@ for "_i" from 1 to (count _missionsList) do
 							//[format["_monitorSpawnedMissions: (323) _crateMoney = %1",_crateMoney]] call blck_fnc_log;									
 							{
 								[_x] call blck_fnc_loadMissionCrate;											
-								[_x, _crateMoney] call GMS_fnc_setMoney;									
+								[_x, _crateMoney] call GMSCore_fnc_setMoney;									
 							} forEach _crates;
 							//diag_log format["_monitorSpawnedMissions: (329): Loot and Money LOADED _loadCrates Timing = %1 | _crates = %2",_loadCratesTiming,_crates];									
 							{

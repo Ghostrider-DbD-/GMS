@@ -41,7 +41,7 @@ private _difficultyIndex = [_skillLevel] call blck_fnc_getIndexFromDifficulty;
 private _group = [
 	_pos,
 	_numberToSpawn,
-	GMS_side,
+	GMSCore_side,
 	blck_baseSkill,
 	(blck_AIAlertDistance select _difficultyIndex),
 	(blck_AIIntelligence select _difficultyIndex),
@@ -56,12 +56,12 @@ private _group = [
 	[blck_fnc_unitKilled],
 	0.33, // chance garrison 
 	false // isDrone Crew
-] call GMS_fnc_spawnInfantryGroup;
+] call GMSCore_fnc_spawnInfantryGroup;
 _group setVariable["blck_difficulty",_skillLevel];
 //[format["blck_fnc_spawnGroup: _group = %1",_group]] call blck_fnc_log;
-[_group] call GMS_fnc_setupGroupBehavior;
+[_group] call GMSCore_fnc_setupGroupBehavior;
 private _skills = missionNamespace getVariable[format["blck_Skills%1",_skillLevel],blck_SkillsRed];
-[_group,_skills] call GMS_fnc_setupGroupSkills;
+[_group,_skills] call GMSCore_fnc_setupGroupSkills;
 // TODO: Add Money if any should be added 
 private _gear = [
 	[
@@ -92,10 +92,10 @@ private _gear = [
 	[blck_medicalItems, 1.0],
 	[blck_loot, 1.0]
 ];
-[_group,_gear,blck_launchersPerGroup,blck_useNVG] call GMS_fnc_setupGroupGear;
+[_group,_gear,blck_launchersPerGroup,blck_useNVG] call GMSCore_fnc_setupGroupGear;
 if !(_areaDimensions isEqualTo []) then 
 {
-	[_group,[],[_pos,_areaDimensions],300,0.33] call GMS_fnc_initializeWaypointsAreaPatrol;
+	[_group,[],[_pos,_areaDimensions],300,0.33] call GMSCore_fnc_initializeWaypointsAreaPatrol;
 };
 
 _group selectLeader ((units _group) select 0);

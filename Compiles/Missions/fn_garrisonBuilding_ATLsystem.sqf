@@ -61,7 +61,7 @@ _unitsSpawned = [];
             #define vehKilledCode []
             private _damage = if (blck_killEmptyStaticWeapons) then {1} else {0};
             private _releaseToPlayers = if (blck_killEmptyStaticWeapons) then {false} else {true};
-            private _wep = [_staticClassName,[0,0,0],_staticDir,height,_damage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMS_fnc_spawnPatrolVehicle; 
+            private _wep = [_staticClassName,[0,0,0],_staticDir,height,_damage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle; 
             _staticsSpawned pushBack _wep;
             _wep setVariable["blck_vehType","emplaced"];
             _staticsSpawned pushBack _wep;

@@ -10,4 +10,4 @@
 */
 	params["_ai"];
 	{deleteVehicle _x}forEach nearestObjects [(getPosATL _ai), ['GroundWeaponHolder','WeaponHolderSimulated','WeaponHolder'], 3];   //Adapted from the AI cleanup logic by KiloSwiss
-	[_ai] call GMS_fnc_unitRemoveAllGear;
+	[_ai] call GMSCore_fnc_unitRemoveAllGear;
