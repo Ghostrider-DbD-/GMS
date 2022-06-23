@@ -1,5 +1,5 @@
 /*
-	removes empty or null groups from blck_monitoredMissionAIGroups
+	removes empty or null groups from GMS_monitoredMissionAIGroups
    By Ghostrider [GRG]
 	--------------------------
 	License
@@ -8,15 +8,15 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
-for "_i" from 0 to ((count blck_monitoredMissionAIGroups) - 1) do
+for "_i" from 0 to ((count GMS_monitoredMissionAIGroups) - 1) do
 {
-	if (_i >= (count blck_monitoredMissionAIGroups)) exitWith {};
-	_grp = blck_monitoredMissionAIGroups deleteat 0;
+	if (_i >= (count GMS_monitoredMissionAIGroups)) exitWith {};
+	_grp = GMS_monitoredMissionAIGroups deleteat 0;
 	if ({alive _x} count units _grp > 0) then 
 	{
-		blck_monitoredMissionAIGroups pushBack _grp;
+		GMS_monitoredMissionAIGroups pushBack _grp;
 	} else {
 		if !(isNull _grp) then {deleteGroup _grp};
 	};

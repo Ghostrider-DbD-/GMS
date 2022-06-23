@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////
 // Test whether one object (e.g., a player) is within a certain range of any of an array of other objects
 /*
-	blck_fnc_playerInRange
+	GMS_fnc_playerInRange
 
 	By Ghostrider [GRG]
 	Copyright 2016	
@@ -13,9 +13,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-//  Need to diag issues on gm 
-
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params[["_coords",[0,0,0]],["_range",0],["_onFootOnly",false]];
 private ["_result","_players"];
 

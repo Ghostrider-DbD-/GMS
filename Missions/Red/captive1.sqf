@@ -9,13 +9,13 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Blue Mission with template = default2";
 
-_crateLoot = blck_BoxLoot_Red;
-_lootCounts = blck_lootCountsRed;
+_crateLoot = GMS_BoxLoot_Red;
+_lootCounts = GMS_lootCountsRed;
 _startMsg = "A local Enemy Leader's Camp has been spotted! Capture him and earn a reward!";
 _endMsg = "The Leader was captured ! A reward has been sent by survivors";
 _assetKilledMsg = "The Leader Was Killed and Bandits Fled with All Loot: Mission Aborted";
@@ -80,7 +80,7 @@ _missionLootBoxes = [
 		//["Land_CargoBox_V1_F",[3,4,0],_crateLoot,[0,10,2,5,5,1]]
 		];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 
-		// blck_lootCountsBlue= [4,12,3,6,6,1];
+		// GMS_lootCountsBlue= [4,12,3,6,6,1];
 _missionLootVehicles = [
 	//["I_G_Offroad_01_armed_F",[-8,8,0],_crateLoot,[0,10,2,5,5,1]],
 	//["I_G_Offroad_01_armed_F",[8,17,0],_crateLoot,[0,10,2,5,5,1]]
@@ -114,18 +114,18 @@ _missionPatrolVehicles = [
 	//["B_MRAP_01_gmg_F",[-87.8457,-109.947,7.15256e-007],0,[true,false]]
 ];	
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Red;
-_maxNoAI = blck_MaxAI_Red;
-_noAIGroups = blck_AIGrps_Red;
-_noVehiclePatrols = blck_SpawnVeh_Red;
-_noEmplacedWeapons = blck_SpawnEmplaced_Red;
-//_uniforms = blck_SkinList;
-//_headgear = blck_headgear;
-//_chancePara = blck_chanceParaRed; 
-//_noPara = blck_noParaRed;  
-//_chanceHeliPatrol = blck_chanceHeliPatrolRed;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Red;
+_maxNoAI = GMS_MaxAI_Red;
+_noAIGroups = GMS_AIGrps_Red;
+_noVehiclePatrols = GMS_SpawnVeh_Red;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Red;
+//_uniforms = GMS_SkinList;
+//_headgear = GMS_headgear;
+//_chancePara = GMS_chanceParaRed; 
+//_noPara = GMS_noParaRed;  
+//_chanceHeliPatrol = GMS_chanceHeliPatrolRed;
 _spawnCratesTiming = "atMissionEndAir";
 _endCondition = assetSecured;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear, assetSecured
 //_timeOut = -1;
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

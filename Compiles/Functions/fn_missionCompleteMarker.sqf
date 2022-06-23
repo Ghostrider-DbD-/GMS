@@ -9,16 +9,16 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 private _fn_cleanup = {
 	private _m = _this;
 	uiSleep 350;
-	[format["_fn_cleanup: deleting marker %1",_m]] call blck_fnc_log;
+	[format["_fn_cleanup: deleting marker %1",_m]] call GMS_fnc_log;
 	deleteMarker _m;
 };
 
 
-//diag_log format["blck_fnc_missionCompleteMarker:: _this = %1",_this];
+//diag_log format["GMS_fnc_missionCompleteMarker:: _this = %1",_this];
 private _location = _this select 0;
 private _name = str(random(1000000)) + "MarkerCleared";
 _m = createMarker [_name, _location];

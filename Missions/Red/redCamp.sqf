@@ -11,13 +11,13 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 	
 //diag_log "[GMS] Spawning Red Mission with template = redCamp";
 
-_crateLoot = blck_BoxLoot_Red;
-_lootCounts = blck_lootCountsRed;
+_crateLoot = GMS_BoxLoot_Red;
+_lootCounts = GMS_lootCountsRed;
 _startMsg = "A temporary enemy camp has been spotted. Check the Red marker on your map for its location";
 _endMsg = "The temporary enemy camp at the Red Marker is under player control";
 _markerLabel = "";
@@ -72,14 +72,14 @@ _missionLandscape = [
 _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionEmplacedWeapons = []; // can be used to define the precise placement of static weapons [[1,2,3] /*loc 1*/, [2,3,4] /*loc 2*/]; if blank random locations will be used
-_minNoAI = blck_MinAI_Red;
-_maxNoAI = blck_MaxAI_Red;
-_noAIGroups = blck_AIGrps_Red;
-_noVehiclePatrols = blck_SpawnVeh_Red;
-_noEmplacedWeapons = blck_SpawnEmplaced_Red;
+_minNoAI = GMS_MinAI_Red;
+_maxNoAI = GMS_MaxAI_Red;
+_noAIGroups = GMS_AIGrps_Red;
+_noVehiclePatrols = GMS_SpawnVeh_Red;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Red;
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
+_useMines = GMS_useMines;
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
 
 

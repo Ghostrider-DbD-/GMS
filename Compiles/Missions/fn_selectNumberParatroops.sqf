@@ -9,8 +9,8 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_aiDifficultyLevel"];
-private _noPara = missionNamespace getVariable [format["blck_noPara%1",_aiDifficultyLevel],0];
+private _noPara = missionNamespace getVariable [format["GMS_noPara%1",_aiDifficultyLevel],0];
 _noPara

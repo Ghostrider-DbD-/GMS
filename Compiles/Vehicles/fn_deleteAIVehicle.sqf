@@ -1,6 +1,8 @@
 /*
-  Delete a unit.
-  by Ghostrider
+ 	GMS_fnc_deleteAIVehicle 
+
+  	by Ghostrider
+	Copyright 2022 
 	--------------------------
 	License
 	--------------------------
@@ -8,8 +10,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_veh"];
-blck_monitoredVehicles deleteAt (blck_monitoredVehicles find _veh);			
+GMS_monitoredVehicles deleteAt (GMS_monitoredVehicles find _veh);			
 deleteVehicle _veh;

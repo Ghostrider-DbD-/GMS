@@ -7,16 +7,16 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include " \GMS\Configs\GMS_defines.hpp";
 
 if ((toLowerANSI GMSCore_modtype) isEqualTo "epoch") then
 {
-	_blckListPrior = blck_locationBlackList;
+	_blckListPrior = GMS_locationBlackList;
 	private _config = configFile >> "CfgEpoch";
 	private _configWorld = _config >> worldname;
 	private _telePos = getArray(configFile >> "CfgEpoch" >> worldName >> "telePos" );
 	{
-		blck_locationBlackList pushback [_x select 3, 1000];
+		GMS_locationBlackList pushback [_x select 3, 1000];
 	} foreach _telePos;
 };
 
@@ -24,16 +24,16 @@ if ((tolower GMSCore_modtype) isEqualTo "exile") then
 {
 	private _traderCites = allMapMarkers;
 	{
-			if (getMarkerType _x isEqualTo "ExileTraderZone" && blck_blacklistTraderCities) then {
-				blck_locationBlackList pushback [(getMarkerPos _x),1000];
+			if (getMarkerType _x isEqualTo "ExileTraderZone" && GMS_blacklistTraderCities) then {
+				GMS_locationBlackList pushback [(getMarkerPos _x),1000];
 			};
 				
-			if ((getMarkerType _x isEqualTo "ExileSpawnZone") && blck_blacklistSpawns) then {
-				blck_locationBlackList pushback [(getMarkerPos _x),1000];			
+			if ((getMarkerType _x isEqualTo "ExileSpawnZone") && GMS_blacklistSpawns) then {
+				GMS_locationBlackList pushback [(getMarkerPos _x),1000];			
 			};
 			//  
-			if (getMarkerType _x isEqualTo "ExileConcreteMixerZone" && blck_listConcreteMixerZones) then {
-				blck_locationBlackList pushback [(getMarkerPos _x),1000];		
+			if (getMarkerType _x isEqualTo "ExileConcreteMixerZone" && GMS_listConcreteMixerZones) then {
+				GMS_locationBlackList pushback [(getMarkerPos _x),1000];		
 			};	
 	}forEach _traderCites;
 };

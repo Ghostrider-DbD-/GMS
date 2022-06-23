@@ -1,7 +1,13 @@
 /*
 	By Ghostrider [GRG]
-    _fnc_handleVehicleGetOut
+    GMS_fnc_handleVehicleGetOut
     Processes an event that fires when a unit gets out of a vehicle
+
+	Parameters 
+		_veh: the vehicle from which a unit ejected or got out. 
+	
+	Returns
+		None 
 	--------------------------
 	License
 	--------------------------
@@ -9,6 +15,6 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 #define veh _this select 0
-if ((isServer) || {local (veh)}) then {[veh] call blck_fnc_checkForEmptyVehicle};
+if ((isServer) || {local (veh)}) then {[veh] call GMS_fnc_checkForEmptyVehicle};

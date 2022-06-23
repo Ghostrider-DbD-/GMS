@@ -10,15 +10,15 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp"
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 #define missionData 4
 #define noActive 2
 #define waitTime 5
 #define missionTimeout 1
 
-//[format["_monitorSpawnedMissions (20): count blck_initializedMissionsList =%1 | blck_initializedMissionsList = %2",count blck_initializedMissionsList,blck_initializedMissionsList]] call blck_fnc_log;
-private _missionsList = blck_initializedMissionsList;
+//[format["_monitorSpawnedMissions (20): count GMS_initializedMissionsList =%1 | GMS_initializedMissionsList = %2",count GMS_initializedMissionsList,GMS_initializedMissionsList]] call GMS_fnc_log;
+private _missionsList = GMS_initializedMissionsList;
 for "_i" from 1 to (count _missionsList) do 
 {
 	if (_i > count _missionsList) exitWith {};
@@ -63,7 +63,7 @@ for "_i" from 1 to (count _missionsList) do
 
 		private _missionComplete = -1;
 		private ["_secureAsset","_endIfPlayerNear","_endIfAIKilled"];
-		//[format["_monitorSpawnedMissions: (67): _endCondition = %1 | _missionMarkerName = %2",_endCondition, _markerConfigs select 1]] call blck_fnc_log;
+		//[format["_monitorSpawnedMissions: (67): _endCondition = %1 | _missionMarkerName = %2",_endCondition, _markerConfigs select 1]] call GMS_fnc_log;
 		switch (_endCondition) do
 		{
 			case playerNear: {_secureAsset = false; _endIfPlayerNear = true;_endIfAIKilled = false;};
@@ -74,13 +74,13 @@ for "_i" from 1 to (count _missionsList) do
 		};
 
 		try {
-			//[format["_monitorSpawnedMissions: (88): _spawnPara = %3 | count _missionInfantry = %1 | _crates = %2",count _missionInfantry, _crates,_spawnPara]] call blck_fnc_log;
-			if (blck_debugLevel >= 5) throw 1;
-			if (blck_debugLevel >= 4) throw 4;
-			private _playerIsNearCrates = [_crates,20,true] call blck_fnc_playerInRangeArray;
-			private _playerIsNearCenter = [_coords,20,true] call blck_fnc_playerInRange;
+			//[format["_monitorSpawnedMissions: (88): _spawnPara = %3 | count _missionInfantry = %1 | _crates = %2",count _missionInfantry, _crates,_spawnPara]] call GMS_fnc_log;
+			if (GMS_debugLevel >= 5) throw 1;
+			if (GMS_debugLevel >= 4) throw 4;
+			private _playerIsNearCrates = [_crates,20,true] call GMS_fnc_playerInRangeArray;
+			private _playerIsNearCenter = [_coords,20,true] call GMS_fnc_playerInRange;
 			private _playerIsNear = if (_playerIsNearCrates || {_playerIsNearCenter}) then {true} else {false};
-			private _minNoAliveForCompletion = (count _missionInfantry) - (round(blck_killPercentage * (count _missionInfantry)));			
+			private _minNoAliveForCompletion = (count _missionInfantry) - (round(GMS_killPercentage * (count _missionInfantry)));			
 			private _aiKilled = if (({alive _x} count _missionInfantry) <= _minNoAliveForCompletion)  then {true} else {false}; // mission complete
 
 			if (_endIfPlayerNear && {_playerIsNear}) then {throw 1}; // mission complete
@@ -95,7 +95,7 @@ for "_i" from 1 to (count _missionsList) do
 			if (_spawnPara) then
 			{
 				#define paraTriggerDistance 1
-				if ([_coords,_paraConfigs select paraTriggerDistance,true] call blck_fnc_playerInRange) then
+				if ([_coords,_paraConfigs select paraTriggerDistance,true] call GMS_fnc_playerInRange) then
 				{
 					_spawnPara = false; // The player gets one try to spawn these.
 					_el set[spawnPara,_spawnPara];
@@ -117,15 +117,15 @@ for "_i" from 1 to (count _missionsList) do
 						"_sideArms"	
 					];	
 					//params["_pos","_numAI","_skilllevel",["_uniforms",[]],["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weapons",[]],["_sideArms",[]],["_isScuba",false]];
-					private _paraGroup = [_coords,_noPara,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call blck_fnc_spawnParaUnits;
-					[format["_monitorSpawneMissions: _noPara = %1 | _chancePara = %2 | _paraGroup = %3",_noPara,_chancePara,_paraGroup]] call blck_fnc_log;
+					private _paraGroup = [_coords,_noPara,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call GMS_fnc_spawnParaUnits;
+					[format["_monitorSpawneMissions: _noPara = %1 | _chancePara = %2 | _paraGroup = %3",_noPara,_chancePara,_paraGroup]] call GMS_fnc_log;
 					if !(isNull _paraGroup) then 
 					{
 						_missionInfantry append (units _paraGroup);
 						if (random(1) < _chanceLoot) then
 						{
-							private _extraCrates = [_coords,[[selectRandom blck_crateTypes,[0,0,0],_paraLoot,_paraLootCounts]], "atMissionSpawn","atMissionSpawnAir", "start", _difficulty] call blck_fnc_spawnMissionCrates;
-							if (blck_cleanUpLootChests) then
+							private _extraCrates = [_coords,[[selectRandom GMS_crateTypes,[0,0,0],_paraLoot,_paraLootCounts]], "atMissionSpawn","atMissionSpawnAir", "start", _difficulty] call GMS_fnc_spawnMissionCrates;
+							if (GMS_cleanUpLootChests) then
 							{
 								_objects append _extraCrates;
 							};		
@@ -146,12 +146,12 @@ for "_i" from 1 to (count _missionsList) do
 					
 					if (({alive _x} count _missionInfantry) <= (_minNoAliveForCompletion + 1)) then
 					{
-						if ((_assetSpawned getVariable["blck_unguarded",0]) isEqualTo 0) then 
+						if ((_assetSpawned getVariable["GMS_unguarded",0]) isEqualTo 0) then 
 						{
-							_assetSpawned setVariable["blck_unguarded",1,true];
+							_assetSpawned setVariable["GMS_unguarded",1,true];
 						};
 						
-						if ((_assetSpawned getVariable["blck_AIState",0]) isEqualTo 1) then 
+						if ((_assetSpawned getVariable["GMS_AIState",0]) isEqualTo 1) then 
 						{
 							_assetSpawned allowdamage false;
 							[_assetSpawned] remoteExec["GMS_fnc_clearAllActions",-2, true];
@@ -162,7 +162,7 @@ for "_i" from 1 to (count _missionsList) do
 			};
 
 			private _moved = false;
-			if (!(_crates isEqualTo []) && {blck_crateMoveAllowed}) then 
+			if (!(_crates isEqualTo []) && {GMS_crateMoveAllowed}) then 
 			{
 				{
 					if ( _x distance (_x getVariable ["crateSpawnPos", (getPos _x)]) > max_distance_crate_moved_uncompleted_mission) throw 2;
@@ -205,19 +205,19 @@ for "_i" from 1 to (count _missionsList) do
 					{
 						if !(_missionLootBoxes isEqualTo []) then
 						{
-							_crates = [_coords,_missionLootBoxes,_loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call blck_fnc_spawnMissionCrates;
+							_crates = [_coords,_missionLootBoxes,_loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call GMS_fnc_spawnMissionCrates;
 						}
 						else
 						{
-							_crates = [_coords,[[selectRandom blck_crateTypes,[0,0,0],_crateLoot,_lootCounts]], _loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call blck_fnc_spawnMissionCrates;
+							_crates = [_coords,[[selectRandom GMS_crateTypes,[0,0,0],_crateLoot,_lootCounts]], _loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call GMS_fnc_spawnMissionCrates;
 						};
 						
-						if (blck_cleanUpLootChests) then
+						if (GMS_cleanUpLootChests) then
 						{
 							_objects append _crates;
 						};
-						private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);	
-						//[format["_monitorSpawnedMissions: (218) _crateMoney = %1",_crateMoney]] call blck_fnc_log;																		
+						private _crateMoney = missionNamespace getVariable (format["GMS_crateMoney%1",_difficulty]);	
+						//[format["_monitorSpawnedMissions: (218) _crateMoney = %1",_crateMoney]] call GMS_fnc_log;																		
 						{
 							[_x, _crateMoney] call GMSCore_fnc_setMoney;
 						} forEach _crates;				
@@ -225,16 +225,16 @@ for "_i" from 1 to (count _missionsList) do
 
 					if (_loadCratesTiming isEqualTo "atMissionCompletion") then
 					{
-						private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
-						//[format["_monitorSpawnedMissions: (227) _crateMoney = %1",_crateMoney]] call blck_fnc_log;									
+						private _crateMoney = missionNamespace getVariable (format["GMS_crateMoney%1",_difficulty]);
+						//[format["_monitorSpawnedMissions: (227) _crateMoney = %1",_crateMoney]] call GMS_fnc_log;									
 						{
-							[_x] call blck_fnc_loadMissionCrate;											
+							[_x] call GMS_fnc_loadMissionCrate;											
 							[_x, _crateMoney] call GMSCore_fnc_setMoney;									
 						} forEach _crates;
 						//diag_log format["_monitorSpawnedMissions: (232): Loot and Money LOADED _loadCrates Timing = %1 | _crates = %2",_loadCratesTiming,_crates];									
 						{
-							[_x] call blck_fnc_loadMissionCrate;											
-							//[_x, missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call GMS_fnc_setMoney;										
+							[_x] call GMS_fnc_loadMissionCrate;											
+							//[_x, missionNamespace getVariable (format["GMS_crateMoney%1",_difficulty])] call GMS_fnc_setMoney;										
 						} forEach _lootVehicles;		
 						//diag_log format["_monitorSpawnedMissions: (237): Loot LOADED _loadCrates Timing = %1",_loadCratesTiming];	
 					};
@@ -263,24 +263,24 @@ for "_i" from 1 to (count _missionsList) do
 					};
 					//diag_log format["_monitorSpawnedMissions: (262):_crates = %1",_crates];
 
-					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call blck_fnc_endMission;
-					//[format["_monitorSpawnedMissions (265): _markerMissionName %1: end of case 1 for mission completion",_markerMissionName]] call blck_fnc_log;
+					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call GMS_fnc_endMission;
+					//[format["_monitorSpawnedMissions (265): _markerMissionName %1: end of case 1 for mission completion",_markerMissionName]] call GMS_fnc_log;
 				};
 
 				case 2: { // Abort, crate moved.
 					_endMsg = "Crate Removed from Mission Site Before Mission Completion: Mission Aborted";
-					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs, _isscubamission,_exception] call blck_fnc_endMission;								
+					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs, _isscubamission,_exception] call GMS_fnc_endMission;								
 				};
 
 				case 3: {  // Abort, key asset killed							
-					[_key, _missionData, _assetKilledMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call blck_fnc_endMission;							
+					[_key, _missionData, _assetKilledMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call GMS_fnc_endMission;							
 				};
 
 				case 4: {
 					// Used for testing purposes only 
-					[format["Programed mission abort, debug level >= 4"]] call blck_fnc_log;
+					[format["Programed mission abort, debug level >= 4"]] call GMS_fnc_log;
 					//diag_log format["_monitorSpawnedMissions: (286): _crates = %1 | _mines = %2",_crates,_mines];					
-					[_key, _missionData, "DEBUG SETTING >= 4", _markerConfigs, _missionLootConfigs, _isscubamission, _exception] call blck_fnc_endMission;												
+					[_key, _missionData, "DEBUG SETTING >= 4", _markerConfigs, _missionLootConfigs, _isscubamission, _exception] call GMS_fnc_endMission;												
 				};
 				
 				case 5: {  // SIMULATED Normal Mission End
@@ -290,19 +290,19 @@ for "_i" from 1 to (count _missionsList) do
 					{
 							if !(_missionLootBoxes isEqualTo []) then
 							{
-								_crates = [_coords,_missionLootBoxes,_loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call blck_fnc_spawnMissionCrates;
+								_crates = [_coords,_missionLootBoxes,_loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call GMS_fnc_spawnMissionCrates;
 							}
 							else
 							{
-								_crates = [_coords,[[selectRandom blck_crateTypes,[0,0,0],_crateLoot,_lootCounts]], _loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call blck_fnc_spawnMissionCrates;
+								_crates = [_coords,[[selectRandom GMS_crateTypes,[0,0,0],_crateLoot,_lootCounts]], _loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call GMS_fnc_spawnMissionCrates;
 							};
 							
-							if (blck_cleanUpLootChests) then
+							if (GMS_cleanUpLootChests) then
 							{
 								_objects append _crates;
 							};
-							private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);	
-							[format["_monitorSpawnedMissions: (312) _crateMoney = %1",_crateMoney]] call blck_fnc_log;																		
+							private _crateMoney = missionNamespace getVariable (format["GMS_crateMoney%1",_difficulty]);	
+							[format["_monitorSpawnedMissions: (312) _crateMoney = %1",_crateMoney]] call GMS_fnc_log;																		
 							{
 								[_x, _crateMoney] call GMSCore_fnc_setMoney;
 							} forEach _crates;				
@@ -310,16 +310,16 @@ for "_i" from 1 to (count _missionsList) do
 
 					if (_loadCratesTiming isEqualTo "atMissionCompletion") then
 					{
-							private _crateMoney = missionNamespace getVariable (format["blck_crateMoney%1",_difficulty]);
-							//[format["_monitorSpawnedMissions: (323) _crateMoney = %1",_crateMoney]] call blck_fnc_log;									
+							private _crateMoney = missionNamespace getVariable (format["GMS_crateMoney%1",_difficulty]);
+							//[format["_monitorSpawnedMissions: (323) _crateMoney = %1",_crateMoney]] call GMS_fnc_log;									
 							{
-								[_x] call blck_fnc_loadMissionCrate;											
+								[_x] call GMS_fnc_loadMissionCrate;											
 								[_x, _crateMoney] call GMSCore_fnc_setMoney;									
 							} forEach _crates;
 							//diag_log format["_monitorSpawnedMissions: (329): Loot and Money LOADED _loadCrates Timing = %1 | _crates = %2",_loadCratesTiming,_crates];									
 							{
-								[_x] call blck_fnc_loadMissionCrate;											
-								//[_x, missionNamespace getVariable (format["blck_crateMoney%1",_difficulty])] call GMS_fnc_setMoney;										
+								[_x] call GMS_fnc_loadMissionCrate;											
+								//[_x, missionNamespace getVariable (format["GMS_crateMoney%1",_difficulty])] call GMS_fnc_setMoney;										
 							} forEach _lootVehicles;		
 							//diag_log format["_monitorSpawnedMissions: (592): Loot LOADED _loadCrates Timing = %1",_loadCratesTiming];																	
 					};
@@ -348,8 +348,8 @@ for "_i" from 1 to (count _missionsList) do
 					};
 					diag_log format["_monitorSpawnedMissions: (360):_crates = %1",_crates];
 
-					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call blck_fnc_endMission;
-					[format["_monitorSpawnedMissions (363): _markerMissionName %1: end of case 1 for mission completion",_markerMissionName]] call blck_fnc_log;
+					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call GMS_fnc_endMission;
+					[format["_monitorSpawnedMissions (363): _markerMissionName %1: end of case 1 for mission completion",_markerMissionName]] call GMS_fnc_log;
 				};				
 			};
 		};
@@ -358,5 +358,5 @@ for "_i" from 1 to (count _missionsList) do
 	};
 };
 
-blck_monitoring = false;
-//blck_activeMonitorThreads = blck_activeMonitorThreads - 1;
+GMS_monitoring = false;
+//GMS_activeMonitorThreads = GMS_activeMonitorThreads - 1;

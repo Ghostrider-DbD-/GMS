@@ -1,6 +1,6 @@
 /*
 	By Ghostrider [GRG]
-
+	Copywrite 2022
 	--------------------------
 	License
 	--------------------------
@@ -8,8 +8,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-
-if (isNil "blck_blacklisted_vehicle_weapons") then {blck_blacklisted_vehicle_weapons = []};
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+if (isNil "GMS_blacklisted_vehicle_weapons") then {GMS_blacklisted_vehicle_weapons = []};
 params["_veh","_group",["_crewCount",4]];
 private _units = units _group;
 

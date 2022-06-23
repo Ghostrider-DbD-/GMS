@@ -9,8 +9,8 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_aiDifficultyLevel"];
-private _backpacks = missionNamespace getVariable[format["blck_backpacks_%1",_aiDifficultyLevel],[]];
+private _backpacks = missionNamespace getVariable[format["GMS_backpacks_%1",_aiDifficultyLevel],[]];
 _backpacks

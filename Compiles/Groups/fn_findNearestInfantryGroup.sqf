@@ -1,6 +1,6 @@
 
 /*
-	blck_fnc_findNearestInfantryGroup
+	GMS_fnc_findNearestInfantryGroup
 	
 	by Ghostrider
 	 
@@ -11,7 +11,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params["_pos"];
 private["_units"];
 

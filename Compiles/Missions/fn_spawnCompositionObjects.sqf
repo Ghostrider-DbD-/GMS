@@ -1,5 +1,5 @@
 /*
-	blck_fnc_spawnCompositionObjects
+	GMS_fnc_spawnCompositionObjects
 
 	--------------------------
 	License
@@ -8,7 +8,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_center","_objects"];
 private ["_dam","_sim","_obj"];
@@ -31,7 +31,7 @@ private _hiddenObjs = [];
 
 	private _objPos = _center vectorAdd _relPos;
 
-	if (_className isKindOf "House" && {blck_hideRocksAndPlants}) then 
+	if (_className isKindOf "House" && {GMS_hideRocksAndPlants}) then 
 	{
 		private _shrubs = nearestTerrainObjects[_objPos,["TREE", "SMALL TREE", "BUSH","FENCE", "WALL","ROCK"], sizeOf _className];
 		if !(_shrubs isEqualTo []) then 
@@ -45,13 +45,13 @@ private _hiddenObjs = [];
 	_obj setPosATL _objPos;
 	[_obj] call GMSCore_fnc_emptyObjectInventory;
 	_newObjs pushback _obj;
-	[_obj, _dir] call blck_fnc_setDirUp;
+	[_obj, _dir] call GMS_fnc_setDirUp;
 	_obj setVectorUp [0,0,1];	
 	_obj enableDynamicSimulation _sim;
 	_obj allowDamage _dam;	
 	if ((typeOf _obj) isKindOf "LandVehicle" || {(typeOf _obj) isKindOf "Air" || {(typeOf _obj) isKindOf "Ship"}}) then
 	{
-		[_obj] call blck_fnc_configureMissionVehicle;
+		[_obj] call GMS_fnc_configureMissionVehicle;
 	};	
 } forEach _objects;
 

@@ -1,5 +1,5 @@
 /*
-	blck_fnc_getAllBlckeaglsMarkers
+	GMS_fnc_getAllBlckeaglsMarkers
 
 	By Ghostrider [GRG]
 	Copyright 2016
@@ -10,6 +10,6 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-private _blckMarkers = [blck_missionMarkerRootName] call blck_fnc_getAllMarkersOfSubtype;
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+private _blckMarkers = [GMS_missionMarkerRootName] call GMS_fnc_getAllMarkersOfSubtype;
 _blckMarkers

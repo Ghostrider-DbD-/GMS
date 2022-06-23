@@ -8,13 +8,13 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Blue Mission with template = default2";
 
-_crateLoot = blck_BoxLoot_Blue;
-_lootCounts = blck_lootCountsBlue;
+_crateLoot = GMS_BoxLoot_Blue;
+_lootCounts = GMS_lootCountsBlue;
 _startMsg = "A local Mafia Don has been spotted! Capture him and earn a reward!";
 _endMsg = "The Maria Don was captured and the area is under survivor control!";
 _assetKilledMsg = "Enemy Leader Killed and Bandits Fled with All Loot: Mission Aborted";
@@ -141,7 +141,7 @@ _missionLootBoxes = [
 		//["Land_CargoBox_V1_F",[3,4,0],_crateLoot,[0,10,2,5,5,1]]
 		];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 
-		// blck_lootCountsBlue= [4,12,3,6,6,1];
+		// GMS_lootCountsBlue= [4,12,3,6,6,1];
 _missionPatrolVehicles = [
      //["B_LSV_01_armed_F",[-41.377,-5.40894,-0.0238895],0.00171121],
      ["B_LSV_01_armed_F",[39.5627,-5.26709,-0.0237107],0.00169144]
@@ -163,18 +163,18 @@ _missionPatrolVehicles = [
 	//["B_MRAP_01_gmg_F",[-87.8457,-109.947,7.15256e-007],0,[true,false]]
 ];	
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Blue;
-_maxNoAI = blck_MaxAI_Blue;
-_noAIGroups = blck_AIGrps_Blue;
-_noVehiclePatrols = blck_SpawnVeh_Blue;
-_noEmplacedWeapons = blck_SpawnEmplaced_Blue;
-//_uniforms = blck_SkinList;
-//_headgear = blck_headgear;
-_chancePara = blck_chanceParaBlue; 
-_noPara = blck_noParaBlue;  
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Blue;
+_maxNoAI = GMS_MaxAI_Blue;
+_noAIGroups = GMS_AIGrps_Blue;
+_noVehiclePatrols = GMS_SpawnVeh_Blue;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Blue;
+//_uniforms = GMS_SkinList;
+//_headgear = GMS_headgear;
+_chancePara = GMS_chanceParaBlue; 
+_noPara = GMS_noParaBlue;  
 _chanceHeliPatrol = 0;
 _spawnCratesTiming = "atMissionEndAir";
 _endCondition = assetSecured;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear, assetSecured
 //_timeOut = -1;
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

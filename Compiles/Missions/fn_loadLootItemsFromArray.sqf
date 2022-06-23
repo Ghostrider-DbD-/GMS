@@ -1,9 +1,9 @@
 /*
-	Depends on blck_fnc_addItemToCrate
+	Depends on GMS_fnc_addItemToCrate
 	
 	call as:
 	
-	[_item,_crate] call blck_fnc_loadLootFromItemsArray;
+	[_item,_crate] call GMS_fnc_loadLootFromItemsArray;
 	
 	where
 		_crate is a container such as ammo box or vehicle
@@ -26,27 +26,26 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
-
-	params["_loadout","_crate",["_addAmmo",0]];
-	if ((_loadout select 0) isEqualTo []) exitWith {};
+params["_loadout","_crate",["_addAmmo",0]];
+if ((_loadout select 0) isEqualTo []) exitWith {};
+{
+	private["_tries","_q","_item"];
+	_tries = 0;
+	//diag_log format["_fn_loadLoot:: -- >> now loading for %1",_x];
+	_q = _x select 1; // this can be a number or array.
+	if (_q isEqualType []) then // Assume the array contains a min/max number to add
 	{
-		private["_tries","_q","_item"];
-		_tries = 0;
-		//diag_log format["_fn_loadLoot:: -- >> now loading for %1",_x];
-		_q = _x select 1; // this can be a number or array.
-		if (_q isEqualType []) then // Assume the array contains a min/max number to add
-		{
-			if ((count _q) isEqualTo 2) then {_tries = (_q select 0) + round(random(((_q select 1) - (_q select 0))));} else {_tries = 0;};
-		};
-		if (_q isEqualType 0) then
-		{
-			_tries = _q;
-		};
-		for "_i" from 1 to _tries do
-		{
-			_item = selectRandom (_x select 0);
-			[_item,_crate,_addAmmo] call GMSCore_fnc_addItem;		
-		};
-	}forEach _loadout;
+		if ((count _q) isEqualTo 2) then {_tries = (_q select 0) + round(random(((_q select 1) - (_q select 0))));} else {_tries = 0;};
+	};
+	if (_q isEqualType 0) then
+	{
+		_tries = _q;
+	};
+	for "_i" from 1 to _tries do
+	{
+		_item = selectRandom (_x select 0);
+		[_item,_crate,_addAmmo] call GMSCore_fnc_addItem;		
+	};
+}forEach _loadout;

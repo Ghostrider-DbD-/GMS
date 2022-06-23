@@ -1,5 +1,5 @@
 /*
-	blck_fnc_smokeAtCrates 
+	GMS_fnc_smokeAtCrates 
 	
 	Spawns a smoking wreck or object at a specified location and returns the objects spawn (wreck and the particle effects object)
 	for ghostridergaming
@@ -13,7 +13,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
  private _wreckSelected = selectRandom ["Land_Wreck_Car2_F","Land_Wreck_Car3_F","Land_Wreck_Car_F","Land_Wreck_Offroad2_F","Land_Wreck_Offroad_F","Land_Tyres_F","Land_Pallets_F","Land_MetalBarrel_F"];
 params["_pos","_mode",["_maxDist",12],["_wreckChoices",_wreckSelected],["_addFire",false]];
 private ["_objs","_wreckSelected","_smokeType","_fire","_posFire","_posWreck","_smoke","_dis","_minDis","_maxDis","_closest","_wrecks"];

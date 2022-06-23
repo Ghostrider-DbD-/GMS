@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Blue Mission with template = default";
-_crateLoot = blck_BoxLoot_Blue;
-_lootCounts = blck_lootCountsBlue;
+_crateLoot = GMS_BoxLoot_Blue;
+_lootCounts = GMS_lootCountsBlue;
 _startMsg = "An enemy Bunker was sighted in a nearby sector! Check the Blue marker on your map for the location!";
 _endMsg = "The Bunker at the Blue Marker is under survivor control!";
 _markerLabel = "";
@@ -94,17 +94,17 @@ _missionEmplacedWeapons = []; //
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Blue;
-_maxNoAI = blck_MaxAI_Blue;
-_noAIGroups = blck_AIGrps_Blue;
-_noVehiclePatrols = blck_SpawnVeh_Blue;
-_noEmplacedWeapons = blck_SpawnEmplaced_Blue;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Blue;
+_maxNoAI = GMS_MaxAI_Blue;
+_noAIGroups = GMS_AIGrps_Blue;
+_noVehiclePatrols = GMS_SpawnVeh_Blue;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Blue;
 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";   
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";   

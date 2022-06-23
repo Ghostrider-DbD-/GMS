@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Orange Mission with template = default";
-_crateLoot = blck_BoxLoot_Orange;
-_lootCounts = blck_lootCountsOrange;
+_crateLoot = GMS_BoxLoot_Orange;
+_lootCounts = GMS_lootCountsOrange;
 _startMsg = "An Anemy Outpost was sighted in a nearby sector! Check the Orange marker on your map for the location!";
 _endMsg = "The Outpost at the Orange Marker is under survivor control!";
 _markerLabel = "";
@@ -129,20 +129,20 @@ _missionEmplacedWeapons = []; //
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Orange;
-_maxNoAI = blck_MaxAI_Orange;
-_noAIGroups = blck_AIGrps_Orange;
-_noVehiclePatrols = blck_SpawnVeh_Orange;
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;
-//_uniforms = blck_SkinList;
-//_headgear = blck_headgear;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Orange;
+_maxNoAI = GMS_MaxAI_Orange;
+_noAIGroups = GMS_AIGrps_Orange;
+_noVehiclePatrols = GMS_SpawnVeh_Orange;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
+//_uniforms = GMS_SkinList;
+//_headgear = GMS_headgear;
 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 //_spawnCratesTiming = "atMissionSpawnAir"; 
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

@@ -1,5 +1,5 @@
 /*
-	blck_fnc_findWaterDepth
+	GMS_fnc_findWaterDepth
 
 	by Ghostrider [GRG]
 	Copyright 2016
@@ -10,7 +10,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 private["_depth"];
 params["_pos"];
 _depth = (getTerrainHeightASL _pos);

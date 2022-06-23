@@ -9,7 +9,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params["_diff"];
-private _count = missionNamespace getVariable [format["blck_vehCrew_%1",_diff],0];
+private _count = missionNamespace getVariable [format["GMS_vehCrew_%1",_diff],0];
 _count

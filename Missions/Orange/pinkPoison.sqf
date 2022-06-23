@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Green Mission with template = default";
-_crateLoot = blck_BoxLoot_Orange;
-_lootCounts = blck_lootCountsOrange;
+_crateLoot = GMS_BoxLoot_Orange;
+_lootCounts = GMS_lootCountsOrange;
 _startMsg = "An enemy research center was sighted in a nearby sector! Check the Orange marker on your map for the location!";
 _endMsg = "The Sector at the Orange Marker is under survivor control!";
 
@@ -35,7 +35,7 @@ _garrisonedBuildings_BuildingPosnSystem = [
 _garrisonedBuilding_ATLsystem = [
      ["Land_Offices_01_V1_F",[-37.4473,-24.3594,4.76837e-007],269.862,true,true,
         [
-                #ifdef blck_milServer
+                #ifdef GMS_milServer
                 ["O_Radar_System_02_F",[27.1289,15.6582,-2.38419e-007],0],
                 #endif
                 ["O_HMG_01_high_F",[1.91211,10.3887,0.915],96.7764],
@@ -75,7 +75,7 @@ _missionLootBoxes = [
 _missionLootVehicles = [
 ];
 
-#ifdef blck_milServer
+#ifdef GMS_milServer
 private _CUP_Tanks = [
      "CUP_O_T90_RU",
      "CUP_B_M1A1_DES_US_Army",
@@ -86,7 +86,7 @@ private _CUP_Tanks = [
 #endif
 
 _missionPatrolVehicles = [
-         #ifdef blck_milServer
+         #ifdef GMS_milServer
         ["O_Radar_System_02_F",[27.1289,15.6582,-2.38419e-007],0],
         ["O_T_APC_Tracked_02_AA_ghex_F",[-62.4141,31.1484,2.38419e-007],297.601],
         [selectRandom _CUP_Tanks,[-56.8105,-47.6035,0],227.158],
@@ -133,11 +133,11 @@ _scubaGroupParameters = [
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Orange;
-_maxNoAI = blck_MaxAI_Orange;
-_noAIGroups = blck_AIGrps_Orange;
-_noVehiclePatrols = blck_SpawnVeh_Orange;
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Orange;
+_maxNoAI = GMS_MaxAI_Orange;
+_noAIGroups = GMS_AIGrps_Orange;
+_noVehiclePatrols = GMS_SpawnVeh_Orange;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

@@ -1,11 +1,11 @@
 /*
-	blck_fnc_loadLootItemsFromArray
+	GMS_fnc_loadLootItemsFromArray
 	
-	Depends on blck_fnc_addItemToCrate
+	Depends on GMS_fnc_addItemToCrate
 	
 	call as:
 	
-	[_item,_crate] call blck_fnc_loadLootFromItemsArray;
+	[_item,_crate] call GMS_fnc_loadLootFromItemsArray;
 	
 	where
 		_crate is a container such as ammo box or vehicle
@@ -28,7 +28,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 
 	params["_loadout","_crate",["_addAmmo",0]];

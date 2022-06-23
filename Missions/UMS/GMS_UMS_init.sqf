@@ -10,17 +10,17 @@
 */
 //diag_log "[GMS] Initializing UMS";
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-blck_dynamicUMS_MissionsRuning = 0;
-blck_priorDynamicUMS_Missions = [];
-blck_UMS_ActiveDynamicMissions = [];
+#include " \GMS\Configs\GMS_defines.hpp";
+GMS_dynamicUMS_MissionsRuning = 0;
+GMS_priorDynamicUMS_Missions = [];
+GMS_UMS_ActiveDynamicMissions = [];
 
 //diag_log "Including GMS_UMS_configurations.sqf";
 #include "GMS_UMS_configurations.sqf";
 //diag_log "Including GMS_UMS_dynamicMissionLIsts.sqf";
 //#include "GMS_UMS_dynamicMissionList.sqf";
 //diag_log format ["Initializing UMS static missions at %1",diag_tickTime];
-[] execVM "q\addons\custom_server\Missions\UMS\GMS_UMS_StaticMissions_init.sqf";
+[] execVM "q\addons\GMS\Missions\UMS\GMS_UMS_StaticMissions_init.sqf";
 
 //diag_log "[GMS] UMS <Initialized>";
  

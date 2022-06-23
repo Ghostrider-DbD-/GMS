@@ -9,7 +9,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params["_center",
         "_garrisonedBuilding_ATLsystem",
         ["_aiDifficultyLevel","Red"],
@@ -45,25 +45,25 @@ _unitsSpawned = [];
             ];
         */
         #define areaDimensions []  // an empty array forces the spawnGroup function to skip setup of any waypoint
-        private _group = [[0,0,0],_unitsToSpwan,_aiDifficultyLevel,[],_uniforms,_headgear,_vests,_backpacks,_weaponList,_sidearms,false] call blck_fnc_spawnGroup;
+        private _group = [[0,0,0],_unitsToSpwan,_aiDifficultyLevel,[],_uniforms,_headgear,_vests,_backpacks,_weaponList,_sidearms,false] call GMS_fnc_spawnGroup;
         _unitsSpawned append (units _group);
         private _units = units _group;
         _building = createVehicle[_bldClassName,[0,0,0],[],0,"CAN_COLLIDE"];
         _building setPosATL (_bldRelPos vectorAdd _center);
         _building setDir _bldDir;
         _buildingsSpawned pushBack _building;
-        //_staticsSpawned = [_building,_group,_statics,_men,_aiDifficultyLevel,_uniforms,_headGear,_vests,_backpacks,"none",_weaponList,_sideArms] call blck_fnc_spawnGarrisonInsideBuilding_ATL;
+        //_staticsSpawned = [_building,_group,_statics,_men,_aiDifficultyLevel,_uniforms,_headGear,_vests,_backpacks,"none",_weaponList,_sideArms] call GMS_fnc_spawnGarrisonInsideBuilding_ATL;
         {
             _x params["_staticClassName","_staticRelPos","_staticDir"];
             #define height 0
             #define removeFuel 0
             #define vehHitCode [] 
             #define vehKilledCode []
-            private _damage = if (blck_killEmptyStaticWeapons) then {1} else {0};
-            private _releaseToPlayers = if (blck_killEmptyStaticWeapons) then {false} else {true};
-            private _wep = [_staticClassName,[0,0,0],_staticDir,height,_damage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle; 
+            private _damage = if (GMS_killEmptyStaticWeapons) then {1} else {0};
+            private _releaseToPlayers = if (GMS_killEmptyStaticWeapons) then {false} else {true};
+            private _wep = [_staticClassName,[0,0,0],_staticDir,height,_damage,removeFuel,_releaseToPlayers,GMS_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle; 
             _staticsSpawned pushBack _wep;
-            _wep setVariable["blck_vehType","emplaced"];
+            _wep setVariable["GMS_vehType","emplaced"];
             _staticsSpawned pushBack _wep;
             _wep setPosATL (_staticRelPos vectorAdd getPosATL _building);
             _wep setDir _staticDir;
@@ -78,5 +78,5 @@ _unitsSpawned = [];
             _unit setDir _unitDir;
         }forEach _men;        
 }forEach _garrisonedBuilding_ATLsystem;
-//[format["_garrisonBuilding_ATLSystem: _unitsspawned %1 | _staticsSpawned %2 | BuildingsSpawned %3",_unitsSpawned,_staticsSpawned,_buildingsSpawned]] call blck_fnc_log;
+//[format["_garrisonBuilding_ATLSystem: _unitsspawned %1 | _staticsSpawned %2 | BuildingsSpawned %3",_unitsSpawned,_staticsSpawned,_buildingsSpawned]] call GMS_fnc_log;
 [_unitsSpawned,_staticsSpawned,_buildingsSpawned]

@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Red Mission with template = default";
-_crateLoot = blck_BoxLoot_Red;
-_lootCounts = blck_lootCountsRed;
+_crateLoot = GMS_BoxLoot_Red;
+_lootCounts = GMS_lootCountsRed;
 _startMsg = "An Anemy Ammunition Depot was sighted in a nearby sector! Check the Red marker on your map for the location!";
 _endMsg = "The Ammunition depot at the Red Marker is under survivor control!";
 _markerLabel = "";
@@ -127,9 +127,9 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     //[selectRandom blck_AIPatrolVehicles,[-51.5793,28.9631,0.00801468],179.03],
-     //[selectRandom blck_AIPatrolVehicles,[9.30664,88.3091,0.00802708],89.9029],
-     [selectRandom blck_AIPatrolVehiclesRed,[72.2974,6.63599,0.00802183],0.00106337]
+     //[selectRandom GMS_AIPatrolVehicles,[-51.5793,28.9631,0.00801468],179.03],
+     //[selectRandom GMS_AIPatrolVehicles,[9.30664,88.3091,0.00802708],89.9029],
+     [selectRandom GMS_AIPatrolVehiclesRed,[72.2974,6.63599,0.00802183],0.00106337]
 ];
 
 _submarinePatrolParameters = [
@@ -147,17 +147,17 @@ _missionEmplacedWeapons = []; //
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Red;
-_maxNoAI = blck_MaxAI_Red;
-_noAIGroups = blck_AIGrps_Red;
-_noVehiclePatrols = blck_SpawnVeh_Red;
-_noEmplacedWeapons = blck_SpawnEmplaced_Red;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Red;
+_maxNoAI = GMS_MaxAI_Red;
+_noAIGroups = GMS_AIGrps_Red;
+_noVehiclePatrols = GMS_SpawnVeh_Red;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Red;
 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

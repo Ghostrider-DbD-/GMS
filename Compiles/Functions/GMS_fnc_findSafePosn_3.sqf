@@ -16,30 +16,30 @@
 	However, if we use this approach, we risk having some missions spawn outside the map so much check for that.
 	It may be quicker just to pick a random angle and use 1/2 map size to search a position obtained by getPos[(1/2 mapSize),random(359)]; to pick that random seed location for the search.
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
-if (isNil "blck_locationBlackList") then {blck_locationBlackList = []};
+if (isNil "GMS_locationBlackList") then {GMS_locationBlackList = []};
 
 _fn_buildBlacklistedLocationsList = {
 	params["_minToBases","_minToPlayers","_minToMissions","_minToTowns","_minToRecentMissionLocation"];
-	/* locations of villages / cities / others already included in blck_locationBlackList so we do not need to add it here.  */
-	private _blacklistedLocs =  +blck_locationBlackList;	
+	/* locations of villages / cities / others already included in GMS_locationBlackList so we do not need to add it here.  */
+	private _blacklistedLocs =  +GMS_locationBlackList;	
 
-	for '_i' from 1 to (count blck_recentMissionCoords) do {
-		private _loc = blck_recentMissionCoords deleteAt 0;
+	for '_i' from 1 to (count GMS_recentMissionCoords) do {
+		private _loc = GMS_recentMissionCoords deleteAt 0;
 		if (_loc select 1 < diag_tickTime) then 
 		{
-			blck_recentMissionCoords pushBack _loc;
+			GMS_recentMissionCoords pushBack _loc;
 		};
 	};	
 
 	{
 		_blacklistedLocs pushBack [_x,_minToMissions];
-	} forEach blck_ActiveMissionCoords;	
+	} forEach GMS_ActiveMissionCoords;	
 
 	private _bases = [];
-	if (GMSCore_modtype isEqualTo "Epoch") then {_bases = nearestObjects[blck_mapCenter, ["PlotPole_EPOCH"], blck_mapRange + 25000]};
-	if (GMSCore_modtype isEqualTo "Exile") then {_bases = nearestObjects[blck_mapCenter, ["Exile_Construction_Flag_Static"], blck_mapRange + 25000]};
+	if (GMSCore_modtype isEqualTo "Epoch") then {_bases = nearestObjects[GMS_mapCenter, ["PlotPole_EPOCH"], GMS_mapRange + 25000]};
+	if (GMSCore_modtype isEqualTo "Exile") then {_bases = nearestObjects[GMS_mapCenter, ["Exile_Construction_Flag_Static"], GMS_mapRange + 25000]};
 
 	{
 		_blacklistedLocs pushBack [getPosATL _x,_minToBases];
@@ -49,9 +49,9 @@ _fn_buildBlacklistedLocationsList = {
 		_blacklistedLocs pushBack [getPosATL _x,_minToPlayers];
 	} forEach allPlayers;	
 
-	if (blck_minDistanceFromDMS > 0) then 
+	if (GMS_minDistanceFromDMS > 0) then 
 	{
-		_blacklistedLocs append ([] call blck_fnc_getAllDMSMarkers);
+		_blacklistedLocs append ([] call GMS_fnc_getAllDMSMarkers);
 	};
 
 	_blacklistedLocs
@@ -73,10 +73,10 @@ _fnc_nearWater = {
 	_result
 };
 
-private _minDistToBases = blck_minDistanceToBases;
-private _minDistToPlayers = blck_minDistanceToPlayer;
-private _minDistToTowns = blck_minDistanceFromTowns;
-private _mindistToMissions = blck_MinDistanceFromMission;
+private _minDistToBases = GMS_minDistanceToBases;
+private _minDistToPlayers = GMS_minDistanceToPlayer;
+private _minDistToTowns = GMS_minDistanceFromTowns;
+private _mindistToMissions = GMS_MinDistanceFromMission;
 private _minToRecentMissionLocation = 200;
 private _keyDistances = [_minDistToBases,_minDistToPlayers,_minDistToTowns,_minToRecentMissionLocation];
 private _coords = [];
@@ -84,13 +84,13 @@ private _coords = [];
 private _count = 25;
 private _flatCoords = [];
 private _slope = 0.15;
-private _searchDist = blck_mapRange / 2;
+private _searchDist = GMS_mapRange / 2;
 private _timeIn = diag_tickTime;
 private _validspot = false;
 while { !_validspot} do 
 {
 	private _angle = random(359);
-	private _searchCenter = blck_mapCenter getPos[_searchDist, random(359)];
+	private _searchCenter = GMS_mapCenter getPos[_searchDist, random(359)];
 	_coords = [_searchCenter,0,_searchDist,10,0,_slope,0] call BIS_fnc_findSafePos;
 
 	if (_coords isEqualTo []) then 
@@ -120,17 +120,17 @@ while { !_validspot} do
 		};
 		if(_validspot) then {
 			{
-				if (_coords distance _x < blck_MinDistanceFromMission) exitwith {
+				if (_coords distance _x < GMS_MinDistanceFromMission) exitwith {
 					_validspot = false; 
 				};
-			} foreach (blck_ActiveMissionCoords);
+			} foreach (GMS_ActiveMissionCoords);
 		};
 
 		// Check for near Bases
 		if(_validspot) then {
 			if (GMSCore_modtype isEqualTo "Epoch") then {
 				{
-					if (_coords distance _x < blck_minDistanceToBases) exitwith {
+					if (_coords distance _x < GMS_minDistanceToBases) exitwith {
 						_validspot = false; 
 					};
 				} foreach (missionnamespace getvariable ["Epoch_PlotPoles",[]]);
@@ -138,10 +138,10 @@ while { !_validspot} do
 			else {
 				if (GMSCore_modtype isEqualTo "Exile") then {
 					{
-						if (_coords distance _x < blck_minDistanceToBases) exitwith {
+						if (_coords distance _x < GMS_minDistanceToBases) exitwith {
 							_validspot = false; 
 						};				
-					} foreach (nearestObjects [blck_mapCenter, ["Exile_Construction_Flag_Static"], blck_mapRange + 25000]);
+					} foreach (nearestObjects [GMS_mapCenter, ["Exile_Construction_Flag_Static"], GMS_mapRange + 25000]);
 				};
 			};
 		};
@@ -149,7 +149,7 @@ while { !_validspot} do
 		// Check for near Players
 		if(_validspot) then {
 			{
-				if (_coords distance _x < blck_minDistanceToPlayer) exitwith {
+				if (_coords distance _x < GMS_minDistanceToPlayer) exitwith {
 					_validspot = false;
 				};
 			} foreach allplayers;
@@ -161,17 +161,17 @@ while { !_validspot} do
 				if (_coords distance (_x select 0) < (_x select 1)) exitWith {
 					_validspot = false;
 				};
-			} forEach blck_locationBlackList;
+			} forEach GMS_locationBlackList;
 		};
 
 		// Check for DMS missions 
-		if (blck_minDistanceFromDMS > 0 && {_validspot}) then 
+		if (GMS_minDistanceFromDMS > 0 && {_validspot}) then 
 		{
 			{
-				if (_coords distance _x < blck_minDistanceFromDMS) exitWith {
+				if (_coords distance _x < GMS_minDistanceFromDMS) exitWith {
 					_validspot = false;
 				};
-			} forEach ([] call blck_fnc_getAllDMSMarkers);
+			} forEach ([] call GMS_fnc_getAllDMSMarkers);
 		};		
 
 	};
@@ -181,7 +181,7 @@ while { !_validspot} do
 
 if (_coords isEqualTo []) then 
 {
-	["Could not find a safe position for a mission, consider reducing values for minimum distances between missions and players, bases, other missions or towns","error"] call blck_fnc_log;
+	["Could not find a safe position for a mission, consider reducing values for minimum distances between missions and players, bases, other missions or towns","error"] call GMS_fnc_log;
 } else {
 	_coords set[2, 0];
 	//diag_log format["_fnc_findSafePosn: _exit with _coords = %1 | time spent = %2",_coords,diag_tickTime - _timeIn];

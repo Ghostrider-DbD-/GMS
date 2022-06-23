@@ -9,8 +9,8 @@ fn_selectCrateType = {
 		//default {_item = "GroundWeaponHolder"};
 		//default {_item = "weaponHolderSimulated"};
 	};
-	#ifdef blck_debugMod
-	if (blck_debugLevel > 0) then {
+	#ifdef GMS_debugMod
+	if (GMS_debugLevel > 0) then {
 		diag_log format["---- <<_fn_selectCrateType>>  returning _item = %1",_item];
 	};
 	#endif
@@ -42,17 +42,17 @@ fn_fillContainer = {
 			case "Blue": {
 				if (_lType isEqualto "ammo") then
 				{
-					//blck_lootCountsBlue = [4,12,3,6,6,1];   // Blue
+					//GMS_lootCountsBlue = [4,12,3,6,6,1];   // Blue
 					//_lootCountsBlueAmmo = [2,4,2,2,2,0];
 					_lootCountsBlueAmmo = [floor(random(4)),floor(random(0)),floor(random(3)),floor(random(3)),0,1];
 					//  params["_crate","_boxLoot","_itemCnts"];
-					[_cntr,blck_BoxLoot_Blue,_lootCountsBlueAmmo] call blck_fnc_fillBoxes;
+					[_cntr,GMS_BoxLoot_Blue,_lootCountsBlueAmmo] call GMS_fnc_fillBoxes;
 				};
 				if (_lType isEqualTo "supplies") then
 				{
 					//_lootCountsBlueSupplies = [1,4,5,5,1];
 					_lootCountsBlueSupplies = [floor(random(2)),floor(random(0)),floor(random(6)),floor(random(6)),floor(random(6)),0];
-					[_cntr,blck_BoxLoot_Blue,_lootCountsBlueSupplies] call blck_fnc_fillBoxes;
+					[_cntr,GMS_BoxLoot_Blue,_lootCountsBlueSupplies] call GMS_fnc_fillBoxes;
 				};
 				
 			};
@@ -62,13 +62,13 @@ fn_fillContainer = {
 					//_lootCountsRedAmmo = [3,6,3,3,3,0];
 					_lootCountsRedAmmo = [floor(random(5)),floor(random(0)),floor(random(4)),floor(random(4)),0,1];
 					//  params["_crate","_boxLoot","_itemCnts"];
-					[_cntr,blck_BoxLoot_Red,_lootCountsRedAmmo] call blck_fnc_fillBoxes;
+					[_cntr,GMS_BoxLoot_Red,_lootCountsRedAmmo] call GMS_fnc_fillBoxes;
 				};
 				if (_lType isEqualTo "supplies") then
 				{
 					//_lootCountsRedSupplies = [2,7,7,7,2];
 					_lootCountsRedSupplies = [floor(random(2)),floor(random(5)),floor(random(7)),floor(random(7)),floor(random(7)),floor(random(7))];
-					[_cntr,blck_BoxLoot_Red,_lootCountsRedSupplies] call blck_fnc_fillBoxes;
+					[_cntr,GMS_BoxLoot_Red,_lootCountsRedSupplies] call GMS_fnc_fillBoxes;
 				};
 			};
 		};
@@ -76,12 +76,12 @@ fn_fillContainer = {
 };
 
 
-blck_activeCrashSites = 0;
+GMS_activeCrashSites = 0;
 _fn_spawnWreckMission = {
 	params["_index","_posOfCrash"];
 
-	blck_activeCrashSites  = blck_activeCrashSites + 1;
-	blck_ActiveMissionCoords pushBack _posOfCrash;	
+	GMS_activeCrashSites  = GMS_activeCrashSites + 1;
+	GMS_ActiveMissionCoords pushBack _posOfCrash;	
 	private _crashSiteMissions = [
 		["Plane_Fighter_03_wreck_F","Fighter Crash", "A %1 lord crashed his jet fighter","Survivors secured a jet crash site",5,7,"Red","ammo",3],
 		["Land_UWreck_MV22_F","Osprey Crash", "A %1 lord crashed his MV22","Survivors secured an MV22 crash site",5,7,"Red","ammo",3],
@@ -98,17 +98,17 @@ _fn_spawnWreckMission = {
 	private _uniformsHC = ["U_C_Scientist","U_OrestesBody","U_NikosAgedBody","U_NikosBody"];
 	if ((toLower GMSCore_modtype) isEqualTo "epoch") then
 	{
-		_uniformsHC = _uniformsHC + blck_femaleUniformsEpoch;	
+		_uniformsHC = _uniformsHC + GMS_femaleUniformsEpoch;	
 	};
 	private _headGearHC = ["H_StrawHat_dark","H_StrawHat","H_Hat_brown","H_Hat_grey"];
 	private _mission = selectRandom _crashSiteMissions;
-	[format["_crashes2: _mission = %1",_mission]] call blck_fnc_log;
+	[format["_crashes2: _mission = %1",_mission]] call GMS_fnc_log;
 	_mission params ["_wreckName","_markerLabel","_startMsg","_endMsg","_minAI","_maxAI","_difficulty","_lootType","_level"];
 	private _crashName = format["CrashSite%1",_index];
 	
-	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> Crash site %1 spawned at %2",_crashName,_posOfCrash];};
+	if ((GMS_debugLevel > 0)) then {diag_log format["<<--->> Crash site %1 spawned at %2",_crashName,_posOfCrash];};
 	
-	private _markers = [_crashName,_posOfCrash,_markerLabel,"ColorGreen","mil_triangle",[],""] call blck_fnc_createMissionMarkers;
+	private _markers = [_crashName,_posOfCrash,_markerLabel,"ColorGreen","mil_triangle",[],""] call GMS_fnc_createMissionMarkers;
 	if (GMSCore_modtype isEqualTo "Epoch") then
 	{
 		_startMsg = format[_startMsg,"Bandit"];
@@ -118,11 +118,11 @@ _fn_spawnWreckMission = {
 		_startMsg = format[_startMsg,"Mafia"];
 	};
 
-	[["start",_startMsg,format["%1",_markerLabel]]] call blck_fnc_messageplayers;
+	[["start",_startMsg,format["%1",_markerLabel]]] call GMS_fnc_messageplayers;
 	private _crashedVehicle = _wreckName createVehicle [0,0,0];
 	_crashedVehicle setpos [(_posOfCrash) select 0,(_posOfCrash) select 1,0];
 	private _missionLandscape = ["Land_WoodPile_F","Land_TentA_F","Land_TentA_F","Land_BagFence_Short_F","Land_Sacks_heap_F","Land_Sacks_heap_F","Land_Grave_rocks_F","Land_Grave_rocks_F"];
-	private _obj = [_posOfCrash,_missionLandscape] call blck_fnc_spawnRandomLandscape;
+	private _obj = [_posOfCrash,_missionLandscape] call GMS_fnc_spawnRandomLandscape;
 	_obj pushback _crashedVehicle;
 	private _containers = [_posOfCrash,call fn_selectCrateType /*_containerType*/,_level] call fn_spawnLootContainers;
 	{
@@ -135,29 +135,28 @@ _fn_spawnWreckMission = {
 	#define waypointDimensions [60,60]
 	private _numberAI = [_minAI,_maxAI] call GMS_fnc_getIntegerFromRange;
 
-	private _group = [_posOfCrash,_numberAI,_difficulty,waypointDimensions,_uniformsHC,_headGearHC] call blck_fnc_spawnGroup;
-	blck_monitoredMissionAIGroups pushBack _group;
+	private _group = [_posOfCrash,_numberAI,_difficulty,waypointDimensions,_uniformsHC,_headGearHC] call GMS_fnc_spawnGroup;
+	GMS_monitoredMissionAIGroups pushBack _group;
 	
-	if (blck_showCountAliveAI) then
+	if (GMS_showCountAliveAI) then
 	{
-		[_markers select 1,_markerLabel,units _group] call blck_fnc_updateMarkerAliveCount;
-		blck_missionLabelMarkers pushBack [_markers select 1,_markerLabel,units _group];
+		[_markers select 1,_markerLabel,units _group] call GMS_fnc_updateMarkerAliveCount;
+		GMS_missionLabelMarkers pushBack [_markers select 1,_markerLabel,units _group];
 	};		
 	if !(isNull _group) then
 	{
 		waitUntil{uiSleep 3; {(isPlayer _x) && (_x distance2d _posOfCrash) < 25 /*&& (vehicle _x == _x)*/} count allPlayers > 0};	
 	};
-	[_posOfCrash] spawn blck_fnc_missionCompleteMarker;
+	[_posOfCrash] spawn GMS_fnc_missionCompleteMarker;
 	diag_log format["crashes2 (145) _crashName = %1",_crashName];
-	[_markers select 1] call blck_fnc_deleteMarker;
-	[["end",_endMsg,_markerLabel]] call blck_fnc_messageplayers;
-	if ((blck_debugLevel > 0)) then {diag_log format["<<--->> crash site %1 at %1 cleared",_CrashName,_posOfCrash];};
-	//blck_oldMissionObjects pushback [_posOfCrash,_obj, blck_cleanupCompositionTimer];	
-	[_obj, (diag_tickTime + blck_cleanupCompositionTimer)] call GMS_fnc_addToDeletionCue;
-	blck_liveMissionAI pushback [_posOfCrash,units _group, (diag_tickTime + blck_AliveAICleanUpTimer)];
-	blck_recentMissionCoords pushback[_posOfCrash,diag_tickTime];
-	blck_ActiveMissionCoords = blck_ActiveMissionCoords - _posOfCrash;
-	blck_activeCrashSites = blck_activeCrashSites - 1;
+	[_markers select 1] call GMS_fnc_deleteMarker;
+	[["end",_endMsg,_markerLabel]] call GMS_fnc_messageplayers;
+	if ((GMS_debugLevel > 0)) then {diag_log format["<<--->> crash site %1 at %1 cleared",_CrashName,_posOfCrash];};
+	[_obj, (diag_tickTime + GMS_cleanupCompositionTimer)] call GMS_fnc_addToDeletionCue;
+	GMS_liveMissionAI pushback [_posOfCrash,units _group, (diag_tickTime + GMS_AliveAICleanUpTimer)];
+	GMS_recentMissionCoords pushback[_posOfCrash,diag_tickTime];
+	GMS_ActiveMissionCoords = GMS_ActiveMissionCoords - _posOfCrash;
+	GMS_activeCrashSites = GMS_activeCrashSites - 1;
 };
 
 diag_log "[GMS] <<--->> starting crash site monitor";
@@ -167,13 +166,13 @@ private _lootNum = 5;
 
 while {true} do
 {
-	if (blck_activeCrashSites < blck_maxCrashSites)  then // Spawn another site
+	if (GMS_activeCrashSites < GMS_maxCrashSites)  then // Spawn another site
 	{
-		uiSleep ((blck_TMin_Crashes + random(blck_TMax_Crashes)) - blck_TMin_Crashes);
-		if (diag_FPS > blck_minFPS) then 
+		uiSleep ((GMS_TMin_Crashes + random(GMS_TMax_Crashes)) - GMS_TMin_Crashes);
+		if (diag_FPS > GMS_minFPS) then 
 		{
 			_index = _index + 1;
-			private _posOfCrash = [] call blck_fnc_findSafePosn;
+			private _posOfCrash = [] call GMS_fnc_findSafePosn;
 			if !(_posOfCrash isEqualTo []) then 
 			{
 				[_index,_posOfCrash] spawn _fn_spawnWreckMission;

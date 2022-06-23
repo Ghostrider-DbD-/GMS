@@ -1,5 +1,5 @@
 /*
-	blck_fnc_findShoreLocation
+	GMS_fnc_findShoreLocation
 
 	by Ghostrider [GRG]
 	Copyright 2016
@@ -10,16 +10,16 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 private["_mapCenter","_waterPos","_priorUMSpositions","_maxDistance"];
 
 private _evaluate = true;
  while {_evaluate} do
 {
 	_waterPos = [
-		blck_mapCenter, // center of search area
+		GMS_mapCenter, // center of search area
 		2, // min distance to search 
-		blck_maxSeaSearchDistance, // max distance to search
+		GMS_maxSeaSearchDistance, // max distance to search
 		0, // distance to nearest object
 		2, // water mode [2 = water only]
 		25, // max gradient

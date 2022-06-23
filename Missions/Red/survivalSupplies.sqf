@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Blue Mission with template = default";
-_crateLoot = blck_BoxLoot_Blue;
-_lootCounts = blck_lootCountsBlue;
+_crateLoot = GMS_BoxLoot_Blue;
+_lootCounts = GMS_lootCountsBlue;
 _startMsg = "An enemy cache of supplies was sighted in a nearby sector! Check the Blue marker on your map for the location!";
 _endMsg = "The supply cache is under survivor control!";
 
@@ -64,16 +64,16 @@ _airPatrols = [
 ];
 
 _missionEmplacedWeapons = [
-	#ifdef blck_milServer
+	#ifdef GMS_milServer
      ["I_Mortar_01_F",[4.10889,-12.8853,0.0354419],360],
      ["I_HMG_01_F",[15.5317,-3.51758,0.0759335],202.402],
      ["I_HMG_01_high_F",[9.75928,6.43506,-0.0135579],178.241]
 	 #else
-     [selectRandom blck_staticWeapons,[4.10889,-12.8853,0.0354419],360],
-     [selectRandom blck_staticWeapons,[15.5317,-3.51758,0.0759335],202.402],
-     [selectRandom blck_staticWeapons,[9.75928,6.43506,-0.0135579],178.241]
+     [selectRandom GMS_staticWeapons,[4.10889,-12.8853,0.0354419],360],
+     [selectRandom GMS_staticWeapons,[15.5317,-3.51758,0.0759335],202.402],
+     [selectRandom GMS_staticWeapons,[9.75928,6.43506,-0.0135579],178.241]
 	 #endif  
-	 //  selectRandom blck_staticWeapons
+	 //  selectRandom GMS_staticWeapons
 ];
 
 _missionGroups = [
@@ -86,12 +86,12 @@ _missionGroups = [
 _scubaGroupParameters = [
 ];
 
-_minNoAI = blck_MinAI_Blue;  // Setting this in the mission file overrides the defaults such as blck_MinAI_Blue
-_maxNoAI = blck_MaxAI_Blue;  // Setting this in the mission file overrides the defaults 
-_noAIGroups = blck_AIGrps_Blue;  // Setting this in the mission file overrides the defaults 
-_noVehiclePatrols = blck_SpawnVeh_Blue;  // Setting this in the mission file overrides the defaults 
-_noEmplacedWeapons = blck_SpawnEmplaced_Blue;  // Setting this in the mission file overrides the defaults 
+_minNoAI = GMS_MinAI_Blue;  // Setting this in the mission file overrides the defaults such as GMS_MinAI_Blue
+_maxNoAI = GMS_MaxAI_Blue;  // Setting this in the mission file overrides the defaults 
+_noAIGroups = GMS_AIGrps_Blue;  // Setting this in the mission file overrides the defaults 
+_noVehiclePatrols = GMS_SpawnVeh_Blue;  // Setting this in the mission file overrides the defaults 
+_noEmplacedWeapons = GMS_SpawnEmplaced_Blue;  // Setting this in the mission file overrides the defaults 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;  // Setting this in the mission file overrides the defaults 
+_useMines = GMS_useMines;  // Setting this in the mission file overrides the defaults 
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

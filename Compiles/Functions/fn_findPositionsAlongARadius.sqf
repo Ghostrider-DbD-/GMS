@@ -1,5 +1,5 @@
 /*
-	blck_fnc_findPositionsAlongARadius
+	GMS_fnc_findPositionsAlongARadius
 	
 	Generates an array of equidistant positions along the circle of diameter _radius
 	for ghostridergaming
@@ -12,7 +12,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 private["_locs","_startDir","_currentDir","_Arc","_dist","_newpos"];
 params["_center","_num","_minDistance","_maxDistance"];

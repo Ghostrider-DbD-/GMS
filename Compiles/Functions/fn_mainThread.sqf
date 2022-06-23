@@ -8,7 +8,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 private["_timer1sec","_timer5sec","_timer10Sec","_timer20sec","_timer5min","_timer5min"];
 _timer2sec = diag_tickTime + 2;
@@ -24,12 +24,12 @@ while {true} do
 	
 	if (diag_tickTime > _timer2sec) then 
 	{			
-		[] spawn blck_fnc_monitorSpawnedMissions;
-		if (blck_showCountAliveAI) then
+		[] spawn GMS_fnc_monitorSpawnedMissions;
+		if (GMS_showCountAliveAI) then
 		{
 			{
-				_x call blck_fnc_updateMarkerAliveCount;
-			} forEach blck_missionLabelMarkers;
+				_x call GMS_fnc_updateMarkerAliveCount;
+			} forEach GMS_missionLabelMarkers;
 		};
 		_timer2sec = diag_tickTime + 2;
 	};
@@ -37,26 +37,26 @@ while {true} do
 	if (diag_tickTime > _timer5sec) then
 	{
 		_timer5sec = diag_tickTime + 5;
-		if (blck_simulationManager isEqualTo blck_useBlckeaglsSimulationManagement) then {[] call blck_fnc_simulationMonitor};
-		[] call blck_fnc_vehicleMonitor;		
+		if (GMS_simulationManager isEqualTo GMS_useBlckeaglsSimulationManagement) then {[] call GMS_fnc_simulationMonitor};
+		[] call GMS_fnc_vehicleMonitor;		
 		#ifdef GRGserver
-		[] call blck_fnc_broadcastServerFPS;
+		[] call GMS_fnc_broadcastServerFPS;
 		#endif		
 	};
 	if (diag_tickTime > _timer10Sec) then 
 	{
 		_timer10Sec = diag_tickTime + 10;
-		[] call blck_fnc_scanForPlayersNearVehicles;
-		[] call blck_fnc_spawnNewMissions; 			
-		[] spawn blck_fnc_monitorInitializedMissions;
+		[] call GMS_fnc_scanForPlayersNearVehicles;
+		[] call GMS_fnc_spawnNewMissions; 			
+		[] spawn GMS_fnc_monitorInitializedMissions;
 	};
 	
 	if ((diag_tickTime > _timer1min)) then
 	{
 		_timer1min = diag_tickTime + 60;
-		[] call blck_fnc_restoreHiddenObjects;
-		[] call blck_fnc_groupWaypointMonitor;
-		[] call blck_fnc_cleanupAliveAI;
+		[] call GMS_fnc_restoreHiddenObjects;
+		[] call GMS_fnc_groupWaypointMonitor;
+		[] call GMS_fnc_cleanupAliveAI;
 	};
 	if (diag_tickTime > _timer5min) then 
 	{
@@ -65,15 +65,15 @@ while {true} do
 			format["Timstamp %1 | Running on %2 | Missions Running %2 | Vehicles %3 | Groups %4 | Missions Run %5 | Server FPS %6 | Server Uptime %7 Min",
 				diag_tickTime,
 				_clientID,
-				blck_missionsRunning,
-				count blck_monitoredVehicles,
-				count blck_monitoredMissionAIGroups,
-				blck_missionsRun,
+				GMS_missionsRunning,
+				count GMS_monitoredVehicles,
+				count GMS_monitoredMissionAIGroups,
+				GMS_missionsRun,
 				diag_FPS,
 				floor(diag_tickTime/60)
 			]
-		] call blck_fnc_log;
-		if (blck_debugON) then 
+		] call GMS_fnc_log;
+		if (GMS_debugON) then 
 		{
 			private _activeScripts = diag_activeScripts;
 			[
@@ -81,16 +81,16 @@ while {true} do
 					count diag_activeSQFScripts,
 					_activeScripts select 0,
 					_activeScripts select 1
-					//blck_activeMonitorThreads	
+					//GMS_activeMonitorThreads	
 				]
-			] call blck_fnc_log;
+			] call GMS_fnc_log;
 			{
-				[format["file %1 | running %2",(_x select 1),(_x select 2)]] call blck_fnc_log;
+				[format["file %1 | running %2",(_x select 1),(_x select 2)]] call GMS_fnc_log;
 			} forEach diag_activeSQFScripts;
 		};
-		[] call blck_fnc_cleanEmptyGroups;
-		[blck_landVehiclePatrols] call GMSCore_fnc_removeNullEntries;
-		[blck_aircraftPatrols] call GMSCore_fnc_removeNullEntries;
+		[] call GMS_fnc_cleanEmptyGroups;
+		[GMS_landVehiclePatrols] call GMSCore_fnc_removeNullEntries;
+		[GMS_aircraftPatrols] call GMSCore_fnc_removeNullEntries;
 		_timer5min = diag_tickTime + 300;
 	};
 };

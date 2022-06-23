@@ -8,11 +8,11 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include " \GMS\Configs\GMS_defines.hpp";
 
 //static mission descriptor for code: [position,level, numAI or [min,maxAI],patrolRadius, respawn, group[groupNull],spawnedAt[0],respawn[0]]
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\UMS\GMS_UMS_StaticMissions_Lists.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\UMS\GMS_UMS_StaticMissions_Lists.sqf";
 
 {
 	diag_log format["[GMS] GMS__UMS_StaticMissions_init.sqf <Evaluating Mission = %1>",_x];
@@ -21,7 +21,7 @@
 	{
 		if ((toLower GMSCore_modtype) isEqualTo (toLower(_x select 0))) then
 		{
-			call compilefinal preprocessFileLineNumbers format["\q\addons\custom_server\Missions\UMS\staticMissions\%1",(_x select 2)];
+			call compilefinal preprocessFileLineNumbers format[" \GMS\Missions\UMS\staticMissions\%1",(_x select 2)];
 		};
 	};
 }forEach _staticMissions;

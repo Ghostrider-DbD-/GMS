@@ -6,11 +6,11 @@
 	Note that I exported the mission using the exportAll function of M3EDEN editor.
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
-_crateLoot = blck_BoxLoot_Green;
-_lootCounts = blck_lootCountsGreen;
+_crateLoot = GMS_BoxLoot_Green;
+_lootCounts = GMS_lootCountsGreen;
 _startMsg = "An enemy colone's base was sighted in a nearby sector! Check the Green marker on your map for the location!";
 _endMsg = "The Sector at the Green Marker is under survivor control!";
 _markerLabel = "";
@@ -120,26 +120,26 @@ _missionGroups = [
 _scubaGroupParameters = [
 ];
 
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Green;
-_maxNoAI = blck_MaxAI_Green;
-_noAIGroups = blck_AIGrps_Green;
-_noVehiclePatrols = blck_SpawnVeh_Green;
-_noEmplacedWeapons = blck_SpawnEmplaced_Green;
-_uniforms = blck_SkinList;
-_headgear = blck_headgear;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Green;
+_maxNoAI = GMS_MaxAI_Green;
+_noAIGroups = GMS_AIGrps_Green;
+_noVehiclePatrols = GMS_SpawnVeh_Green;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Green;
+_uniforms = GMS_SkinList;
+_headgear = GMS_headgear;
 
-_chanceHeliPatrol = blck_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
-_noChoppers = blck_noPatrolHelisOrange;
-_missionHelis = blck_patrolHelisOrange;
+_chanceHeliPatrol = GMS_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
+_noChoppers = GMS_noPatrolHelisOrange;
+_missionHelis = GMS_patrolHelisOrange;
 
-//_chancePara = blck_chanceParaGreen; // Setting this in the mission file overrides the defaults 
+//_chancePara = GMS_chanceParaGreen; // Setting this in the mission file overrides the defaults 
 //_noPara = 5;  // Setting this in the mission file overrides the defaults 
 //_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
 //_paraSkill = "orange";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
@@ -150,23 +150,23 @@ _missionLandscapeMode = "precise"; // acceptable values are "random","precise"
 									// In precise mode objects will be spawned at the relative positions specified.
 									// In the random mode, objects will be randomly spawned within the mission area.
 
-_aircraftTypes = blck_patrolHelisRed;  //  You can use one of the pre-defined lists in blck_configs or your own custom array.
-_noAirPatrols =	blck_noPatrolHelisRed; // You can use one of the pre-defined values or a custom one. acceptable values are integers (1,2,3) or a range such as [2,4]; 
+_aircraftTypes = GMS_patrolHelisRed;  //  You can use one of the pre-defined lists in GMS_configs or your own custom array.
+_noAirPatrols =	GMS_noPatrolHelisRed; // You can use one of the pre-defined values or a custom one. acceptable values are integers (1,2,3) or a range such as [2,4]; 
 										//  Note: this value is ignored if you specify air patrols in the array below.
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines  = blck_useMines;  // Set to false if you have vehicles patrolling nearby.
-_uniforms  = blck_SkinList;  // You can replace this list with a custom list of uniforms if you like.
-_headgear  = blck_headgear;  // You can replace this list with a custom list of headgear.
-_vests     = blck_vests;     // You can replace this list with a custom list of vests.
-_backpacks = blck_backpacks; // You can replace this list with a custom list of backpacks.
-_weapons   = blck_WeaponList_Orange; // You can replace this list with a customized list of weapons, or another predifined list from blck_configs_epoch or blck_configs_exile as appropriate.
-_sideArms  = blck_pistols;    // You can replace this list with a custom list of sidearms.
+_useMines  = GMS_useMines;  // Set to false if you have vehicles patrolling nearby.
+_uniforms  = GMS_SkinList;  // You can replace this list with a custom list of uniforms if you like.
+_headgear  = GMS_headgear;  // You can replace this list with a custom list of headgear.
+_vests     = GMS_vests;     // You can replace this list with a custom list of vests.
+_backpacks = GMS_backpacks; // You can replace this list with a custom list of backpacks.
+_weapons   = GMS_WeaponList_Orange; // You can replace this list with a customized list of weapons, or another predifined list from GMS_configs_epoch or GMS_configs_exile as appropriate.
+_sideArms  = GMS_pistols;    // You can replace this list with a custom list of sidearms.
 */
 
 
 //********************************************************
 // Do not modify anything below this line.
 //********************************************************
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
 
 //diag_log format["[blckeagls static missions] COMPLETED initializing mission %1 position at %2 difficulty %3",_mission,_missionCenter,_difficulty];

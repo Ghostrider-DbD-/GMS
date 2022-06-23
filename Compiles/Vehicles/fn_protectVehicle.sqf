@@ -1,6 +1,6 @@
-// Protect Vehicles from being cleaned up by the server
-
 /*
+	By Ghostrider-GRG 
+	Copywrithe 2022
 	--------------------------
 	License
 	--------------------------
@@ -8,7 +8,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_veh"];
 

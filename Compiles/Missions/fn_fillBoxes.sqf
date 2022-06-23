@@ -10,7 +10,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 	private["_a1","_item","_diff","_tries"];
 	params["_crate","_boxLoot","_itemCnts"];
@@ -19,21 +19,21 @@
 	_boxLoot params["_weapons","_magazines","_optics","_materials","_items","_backpacks"];
 
 	/*
-	if (blck_debugON) then 
+	if (GMS_debugON) then 
 	{
-		[format["_fillBoxes: _crate = %1",_crate]] call blck_fnc_log;
+		[format["_fillBoxes: _crate = %1",_crate]] call GMS_fnc_log;
 		{
-			[format["_fillBoxes: _itemCnts %1 = %2",_x,_itemCnts select _forEachIndex]] call blck_fnc_log;
+			[format["_fillBoxes: _itemCnts %1 = %2",_x,_itemCnts select _forEachIndex]] call GMS_fnc_log;
 		} forEach ["_wepCnt","_magCnt","_opticsCnt","_materialsCnt","_itemCnt","_bkcPckCnt"];
 		{
-			[format["_fillboxes: _boxLoot %1 = %2",_x, _boxLoot select _forEachIndex]] call blck_fnc_log;
+			[format["_fillboxes: _boxLoot %1 = %2",_x, _boxLoot select _forEachIndex]] call GMS_fnc_log;
 		} foreach ["_weapons","_magazines","_optics","_materials","_items","_backpacks"];
 	};
 	*/
 	if !(_weapons isEqualTo []) then
 	{
 		private _tries = [_wepCnt] call GMSCore_fnc_getIntegerFromRange;
-		//[format["_fillBoxes: _tries %1 | _wepCnt %2 | _weapons %3",_tries,_wepCnt,_weapons]] call blck_fnc_log;
+		//[format["_fillBoxes: _tries %1 | _wepCnt %2 | _weapons %3",_tries,_wepCnt,_weapons]] call GMS_fnc_log;
 		// Add some randomly selected weapons and corresponding magazines
 		for "_i" from 0 to _tries do 
 		{
@@ -60,7 +60,7 @@
 	if !(_magazines isEqualTo []) then
 	{
 		private _tries = [_magCnt] call GMSCore_fnc_getIntegerFromRange;
-		//[format["_fillBoxes: _tries %1 | _magCnt %2 | _magazines %3",_tries,_magCnt,_magazines]] call blck_fnc_log;
+		//[format["_fillBoxes: _tries %1 | _magCnt %2 | _magazines %3",_tries,_magCnt,_magazines]] call GMS_fnc_log;
 		// Add Magazines, grenades, and 40mm GL shells
 		for "_i" from 0 to _tries do 
 		{
@@ -81,7 +81,7 @@
 	if !(_optics isEqualTo []) then
 	{
 		private _tries = [_opticsCnt] call GMSCore_fnc_getIntegerFromRange;
-		//[format["_fillBoxes: _tries %1 | _wepCnt %2 | _weapons %3",_tries,_opticsCnt,_optics]] call blck_fnc_log;
+		//[format["_fillBoxes: _tries %1 | _wepCnt %2 | _weapons %3",_tries,_opticsCnt,_optics]] call GMS_fnc_log;
 		// Add Optics
 		for "_i" from 0 to _tries do 
 		{
@@ -102,7 +102,7 @@
 	if !(_materials isEqualTo []) then
 	{
 		private _tries = [_materialsCnt] call GMSCore_fnc_getIntegerFromRange;
-		//[format["_fillBoxes: _tries %1 | _materialsCnt %2 | _materials %3",_tries,_materialsCnt,_materials]] call blck_fnc_log;
+		//[format["_fillBoxes: _tries %1 | _materialsCnt %2 | _materials %3",_tries,_materialsCnt,_materials]] call GMS_fnc_log;
 		// Add materials (cindar, mortar, electrical parts etc)
 		for "_i" from 0 to _tries do 
 		{
@@ -123,7 +123,7 @@
 	if !(_items isEqualTo []) then
 	{
 		private _tries = [_itemCnt] call GMSCore_fnc_getIntegerFromRange;
-		//[format["_fillBoxes: _tries %1 | _itemCnt %2 | _items %3",_tries,_itemCnt,_items]] call blck_fnc_log;		
+		//[format["_fillBoxes: _tries %1 | _itemCnt %2 | _items %3",_tries,_itemCnt,_items]] call GMS_fnc_log;		
 		// Add Items (first aid kits, multitool bits, vehicle repair kits, food and drinks)
 		for "_i" from 0 to _tries do 
 		{
@@ -143,7 +143,7 @@
 	if !(_backpacks isEqualTo []) then
 	{	
 		private _tries = [_bkcPckCnt] call GMSCore_fnc_getIntegerFromRange;
-		//[format["_fillBoxes: _tries %1 | _bkcPckCnt %2 | _backpacks %3",_tries,_bkcPckCnt,_backpacks]] call blck_fnc_log;			
+		//[format["_fillBoxes: _tries %1 | _bkcPckCnt %2 | _backpacks %3",_tries,_bkcPckCnt,_backpacks]] call GMS_fnc_log;			
 		for "_i" from 0 to _tries do 
 		{
 				_item = selectRandom _backpacks;

@@ -11,13 +11,6 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-
-#define useAPEX 
-
-////////////////////////////
-//  Do not touch anything below this line
-///////////////////////////
-
 // defines for mission initialization and monitoring 
 #define missionNotspawned 0 // Mission marker spawned but nothing else is 
 #define missionInitialized 1  // All mission material is spawned and mission is active 
@@ -32,19 +25,19 @@
 #define missionComplete 1 
 
 
-//#define blck_debugMode
+//#define GMS_debugMode
 #define GRGserver
-//#define blck_addCarParts
-#define blck_triggerLoopCompleteTime 40*60
+//#define GMS_addCarParts
+#define GMS_triggerLoopCompleteTime 40*60
 #define max_distance_crate_moved_uncompleted_mission 120
 #define onFoot 1
 #define inVehicle 2
 
 // Defines for difficulty
-#define blck_blue 1
-#define blck_red 2 
-#define blck_green 3 
-#define blck_orange 4 
+#define GMS_blue 1
+#define GMS_red 2 
+#define GMS_green 3 
+#define GMS_orange 4 
 
 // Defines for mission characteristics 
 #define playerNear 0 
@@ -63,25 +56,25 @@
 #define groupSpawned 2
 #define timesSpawned 3
 #define respawnAt 4
-#define blck_playerDetectionRangeAir 800
-#define blck_playerDetectionRangeGroundVehicle 400
-#define blck_vehiclePlayerDetectionOdds 0.6
-#define blck_playerDetectionRangeSubs 100
-#define blck_playerDetectionRangeSurfaceVehicle 150
-#define blck_simulationEnabledDistance 2500
-#define blck_simulationManagementOff 0
-#define blck_useBlckeaglsSimulationManager 1
-#define blck_useDynamicSimulationManagement 2
-#define blck_simulationManagementOff 0
-#define blck_useBlckeaglsSimulationManagement 1
-#define blck_useDynamicSimulationManagement 2
+#define GMS_playerDetectionRangeAir 800
+#define GMS_playerDetectionRangeGroundVehicle 400
+#define GMS_vehiclePlayerDetectionOdds 0.6
+#define GMS_playerDetectionRangeSubs 100
+#define GMS_playerDetectionRangeSurfaceVehicle 150
+#define GMS_simulationEnabledDistance 2500
+#define GMS_simulationManagementOff 0
+#define GMS_useBlckeaglsSimulationManager 1
+#define GMS_useDynamicSimulationManagement 2
+#define GMS_simulationManagementOff 0
+#define GMS_useBlckeaglsSimulationManagement 1
+#define GMS_useDynamicSimulationManagement 2
 
-#define blck_maxPatrolRadiusHelisBlue 300
-#define blck_maxPatrolRadiusHelisRed 400
-#define blck_maxPatrolRadiusHelisGreen 500
-#define blck_maxPatrolRadiusHelisOrange 650
+#define GMS_maxPatrolRadiusHelisBlue 300
+#define GMS_maxPatrolRadiusHelisRed 400
+#define GMS_maxPatrolRadiusHelisGreen 500
+#define GMS_maxPatrolRadiusHelisOrange 650
 
-#define blck_turnBackRadiusInfantry 800
-#define blck_turnBackRadiusVehicles 1000
-#define blck_turnBackRadiusHelis 1000
-#define blck_turnBackRadiusJets 1500
+#define GMS_turnBackRadiusInfantry 800
+#define GMS_turnBackRadiusVehicles 1000
+#define GMS_turnBackRadiusHelis 1000
+#define GMS_turnBackRadiusJets 1500

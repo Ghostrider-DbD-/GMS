@@ -11,11 +11,11 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning  Mission with template = default";
-_crateLoot = blck_BoxLoot_Orange;
+_crateLoot = GMS_BoxLoot_Orange;
 _lootCounts = [15,50,20,60,44,5]; 
 _startMsg = "Operation Takeover: An enemy jail was sighted in a nearby sector! Check the marker on your map for the location!";
 _endMsg = "The jail is under survivor control!";
@@ -261,12 +261,12 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     [selectRandom blck_AIPatrolVehiclesOrange,[-63.8125,-49.1621,-0.0237918],0.00168037],
+     [selectRandom GMS_AIPatrolVehiclesOrange,[-63.8125,-49.1621,-0.0237918],0.00168037],
      ["CUP_B_Hilux_igla_BLU_G_F",[-40.9814,84.885,-0.0230246],0.0016978]
-     //[selectRandom blck_tracked_AA_ARMA3,[3.84229,-126.072,-0.0232677],0.00169533],
-     //[selectRandom blck_tracked_APC_ARMA3,[88.3411,-129.767,-0.0238881],0.00167844],
-     //[selectRandom blck_light_AT_ARMA3,[147.447,-71.3848,-0.0238895],0.00165085],
-     //[selectRandom blck_Tanks_ARMA3,[127.943,69.7148,-0.0238514],0.00166813]
+     //[selectRandom GMS_tracked_AA_ARMA3,[3.84229,-126.072,-0.0232677],0.00169533],
+     //[selectRandom GMS_tracked_APC_ARMA3,[88.3411,-129.767,-0.0238881],0.00167844],
+     //[selectRandom GMS_light_AT_ARMA3,[147.447,-71.3848,-0.0238895],0.00165085],
+     //[selectRandom GMS_Tanks_ARMA3,[127.943,69.7148,-0.0238514],0.00166813]
 ];
 _submarinePatrolParameters = [
 ];
@@ -310,18 +310,18 @@ _scubaGroupParameters = [
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Orange;
-_maxNoAI = blck_MaxAI_Orange;
-_noAIGroups = blck_AIGrps_Orange;
-_noVehiclePatrols = blck_SpawnVeh_Orange;
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;
-_minNoAI = blck_MinAI_Orange;  // Setting this in the mission file overrides the defaults such as blck_MinAI_Orange
-_maxNoAI = blck_MaxAI_Orange;  // Setting this in the mission file overrides the defaults 
-_noAIGroups = blck_AIGrps_Orange;  // Setting this in the mission file overrides the defaults 
-_noVehiclePatrols = blck_SpawnVeh_Orange;  // Setting this in the mission file overrides the defaults 
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;  // Setting this in the mission file overrides the defaults 
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Orange;
+_maxNoAI = GMS_MaxAI_Orange;
+_noAIGroups = GMS_AIGrps_Orange;
+_noVehiclePatrols = GMS_SpawnVeh_Orange;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
+_minNoAI = GMS_MinAI_Orange;  // Setting this in the mission file overrides the defaults such as GMS_MinAI_Orange
+_maxNoAI = GMS_MaxAI_Orange;  // Setting this in the mission file overrides the defaults 
+_noAIGroups = GMS_AIGrps_Orange;  // Setting this in the mission file overrides the defaults 
+_noVehiclePatrols = GMS_SpawnVeh_Orange;  // Setting this in the mission file overrides the defaults 
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;  // Setting this in the mission file overrides the defaults 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;  // Setting this in the mission file overrides the defaults 
+_useMines = GMS_useMines;  // Setting this in the mission file overrides the defaults 
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

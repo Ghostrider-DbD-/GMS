@@ -1,12 +1,12 @@
 /*
  
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Scout Mission";
  
-_crateLoot = blck_BoxLoot_Red;
+_crateLoot = GMS_BoxLoot_Red;
 _lootCounts = [3,5,2,3,6,1];
 _startMsg = "A group of Bandit Scouts was sighted in a nearby sector! Check the Red triangular marker on your map for the location!";
 _endMsg = "The Scout Camp is under Survivor Control!";
@@ -27,7 +27,7 @@ _missionGroups = [
      [[5,5,0],3,3,"Red",30,45]
 ];
 
-//_useMines = blck_useMines;
+//_useMines = GMS_useMines;
 _useMines = true;
 _minNoAI = 6;
 _maxNoAI = 9;
@@ -40,7 +40,7 @@ _uniforms = ["U_OG_Guerilla1_1","U_OG_Guerilla2_1","U_OG_Guerilla2_2","U_OG_Guer
 if (GMSCore_modtype isEqualTo "Epoch") then
 {
 	_headGear = ["H_92_EPOCH","H_91_EPOCH","H_90_EPOCH","H_89_EPOCH","H_88_EPOCH","H_87_EPOCH","H_86_EPOCH"];
-	_uniforms = _uniforms + blck_femaleUniformsEpoch;
+	_uniforms = _uniforms + GMS_femaleUniformsEpoch;
 };
 if (GMSCore_modtype isEqualTo "Exile") then
 {
@@ -53,4 +53,4 @@ _chanceHeli = 0;
 _noChoppers = 0;
 _endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

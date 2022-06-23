@@ -1,6 +1,6 @@
 // Sets up waypoints for a specified group.
 /*
-	blck_fnc_setupWaypoints
+	GMS_fnc_setupWaypoints
 
 	for ghostridergaming
 	By Ghostrider [GRG]
@@ -13,7 +13,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 private["_dir","_arc","_noWp","_newpos","_wpradius","_wp"];
 params["_pos","_minDis","_maxDis","_group",["_mode","random"],["_wpPatrolMode","SAFE"],["_soldierType","null"],["_patrolRadius",30],["_wpTimeout",[5.0,7.5,10]]];
 _wp = [_group, 0];
@@ -46,13 +46,13 @@ if !(_soldierType isEqualTo "emplaced") then
 	_wp setWaypointCombatMode "RED";
 	_wp setWaypointTimeout _wpTimeout;
 	_group setCurrentWaypoint _wp;
-	#ifdef blck_debugMode
-	_wp setWaypointStatements ["true","this call blck_fnc_setNextWaypoint; diag_log format['====Updating timestamp for group %1 and changing its WP to a Move Waypoint',group this];"];
+	#ifdef GMS_debugMode
+	_wp setWaypointStatements ["true","this call GMS_fnc_setNextWaypoint; diag_log format['====Updating timestamp for group %1 and changing its WP to a Move Waypoint',group this];"];
 	#else
-	_wp setWaypointStatements ["true","this call blck_fnc_setNextWaypoint;"];	
+	_wp setWaypointStatements ["true","this call GMS_fnc_setNextWaypoint;"];	
 	#endif
-	#ifdef blck_debugMode
-	if (blck_debugLevel >= 3) then
+	#ifdef GMS_debugMode
+	if (GMS_debugLevel >= 3) then
 	{
 		_marker = createMarker [format["GroupMarker%1",_group],_newPos];
 		_group setVariable["wpMarker",_marker,true];
@@ -78,10 +78,10 @@ if !(_soldierType isEqualTo "emplaced") then
 	//_wp setWaypointTimeout [0.1,0.1100,0.1200];	
 	_group setCurrentWaypoint _wp;	
 	_group setVariable["soldierType",_soldierType,true];
-	#ifdef blck_debugMode
-	_wp setWaypointStatements ["true","this call blck_fnc_emplacedWeaponWaypoint; diag_log format['====Updating timestamp for group %1 and changing its WP to an emplaced weapon Waypoint',group this];"];
-	if (blck_debugLevel > 2) then {diag_log format["_fnc_setupWaypoints: configuring weapoints for group %2 for emplaced weapon with _soldierType = %1",_soldierType,_group];};
+	#ifdef GMS_debugMode
+	_wp setWaypointStatements ["true","this call GMS_fnc_emplacedWeaponWaypoint; diag_log format['====Updating timestamp for group %1 and changing its WP to an emplaced weapon Waypoint',group this];"];
+	if (GMS_debugLevel > 2) then {diag_log format["_fnc_setupWaypoints: configuring weapoints for group %2 for emplaced weapon with _soldierType = %1",_soldierType,_group];};
 	#else
-	_wp setWaypointStatements ["true","this call blck_fnc_emplacedWeaponWaypoint;"];
+	_wp setWaypointStatements ["true","this call GMS_fnc_emplacedWeaponWaypoint;"];
 	#endif	
 };

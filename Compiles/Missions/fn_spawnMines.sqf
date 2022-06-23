@@ -1,6 +1,6 @@
 // Spawns mines in a region centered around a specific position and returns an array with the spawned mines for later use, i.e. deletion
 /*
-	blck_fnc_spawnMines
+	GMS_fnc_spawnMines
 	
 	By Ghostrider [GRG]
 	Copyright 2016
@@ -12,7 +12,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_pos"];
 

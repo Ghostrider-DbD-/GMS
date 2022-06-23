@@ -11,10 +11,10 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 //diag_log "[GMS] Spawning Orange Mission with template = default";
-_crateLoot = blck_BoxLoot_Orange;
+_crateLoot = GMS_BoxLoot_Orange;
 _lootCounts = [15,50,20,60,44,5]; ;
 _startMsg = "An enemy General was sighted in a nearby sector! Check the Orange marker on your map for the location!";
 _endMsg = "The Sector at the Orange Marker is under survivor control!";
@@ -30,7 +30,7 @@ _garrisonedBuildings_BuildingPosnSystem = [
 _garrisonedBuilding_ATLsystem = [
      ["Land_Cargo_HQ_V3_F",[-19.5625,12.75,-0.00143886],0,true,true,
 	 	[
-            #ifdef blck_milServer
+            #ifdef GMS_milServer
 			["B_static_AT_F",[-2.19141,2.61328,3.12619],0],
 			["B_static_AA_F",[18.8105,0.414063,4.76837e-007],0],  
             #else
@@ -79,13 +79,13 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-    #ifdef blck_milServer
-     [selectRandom blck_AIPatrolVehiclesOrange,[-53.3984,-32.1953,-0.0238545],0.00168023],
+    #ifdef GMS_milServer
+     [selectRandom GMS_AIPatrolVehiclesOrange,[-53.3984,-32.1953,-0.0238545],0.00168023],
      ["CUP_B_Hilux_igla_BLU_G_F",[-41.373,21.6543,-0.023375],0.00167416]
-     //[selectRandom blck_tracked_AA_ARMA3,[3.89844,48.4082,-0.0219693],0.00167182],
-     //[selectRandom blck_Tanks_ARMA3,[12.877,-54.4258,-0.0238872],0.00167124],
-     //[selectRandom blck_light_AT_ARMA3,[55.5371,-12.541,-0.0210321],0.00167126],
-     //[selectRandom blck_tracked_APC_ARMA3,[50.2324,21.9902,-0.0222204],0.00167786]
+     //[selectRandom GMS_tracked_AA_ARMA3,[3.89844,48.4082,-0.0219693],0.00167182],
+     //[selectRandom GMS_Tanks_ARMA3,[12.877,-54.4258,-0.0238872],0.00167124],
+     //[selectRandom GMS_light_AT_ARMA3,[55.5371,-12.541,-0.0210321],0.00167126],
+     //[selectRandom GMS_tracked_APC_ARMA3,[50.2324,21.9902,-0.0222204],0.00167786]
 ];
 
 _submarinePatrolParameters = [
@@ -105,19 +105,19 @@ _missionEmplacedWeapons = [
      ["B_T_Static_AT_F",[33.5723,20.9922,0.00333142],0.00263668],	 
 ];
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Orange;
-_maxNoAI = blck_MaxAI_Orange;
-_noAIGroups = blck_AIGrps_Orange;
-_noVehiclePatrols = blck_SpawnVeh_Orange;
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;
-_uniforms = blck_SkinList;
-_headgear = blck_headgear;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Orange;
+_maxNoAI = GMS_MaxAI_Orange;
+_noAIGroups = GMS_AIGrps_Orange;
+_noVehiclePatrols = GMS_SpawnVeh_Orange;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
+_uniforms = GMS_SkinList;
+_headgear = GMS_headgear;
 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,25,25,0],[0,0,0,25,25,0],[20,30,0,0,0,0],[0,0,0,0,30,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

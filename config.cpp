@@ -12,13 +12,13 @@
 */
 
  class GMSBuild {
-	 Version = "7.12";
-	 Build = "255"; 
-	 Date = "06-19-2022";
+	 Version = "7.13";
+	 Build = "256"; 
+	 Date = "06-23-2022";
  };
 
 class CfgPatches {
-	class custom_server {
+	class GMS {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -27,16 +27,16 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-	class blck {
-		class blck_start {
-			file = "\q\addons\custom_server\init";
+	class GMS {
+		class startup {
+			file = "\GMS\Compiles\Init";
 			class init {
 				postInit = 1;
 			};
 		};
+		
 		class functions {
-			file = "\q\addons\custom_server\Compiles\Functions";
-			//class addItemToCrate {};
+			file = "\GMS\Compiles\Functions";
 			class broadcastServerFPS {};	
 			class cleanEmptyGroups {};	
 			class countAliveAI {};
@@ -62,11 +62,10 @@ class CfgFunctions {
 			class restoreHiddenObjects {};
 			class setDirUp {};
 			class spawnMarker {};
-			//class updateCrateSignals {};
 			class updateMarkerAliveCount {};
 		};
 		class groups {
-			file = "\q\addons\custom_server\Compiles\Groups";
+			file = "\GMS\Compiles\Groups";
 			class checkGroupWaypointStatus {};
 			class cleanEmptyGroups {};
 			class createGroup {};  // Kept for backwards compatability with static missions if these are kept and not updated.			
@@ -79,9 +78,8 @@ class CfgFunctions {
 			class spawnGroup {};
 		};
 		class missions {
-			file = "\q\addons\custom_server\Compiles\Missions";
+			file = "\GMS\Compiles\Missions";
 			class addMIssionToQue {};
-			//class clearMines {};
 			//class crateMoved {};
 			class endMission {};
 			class fillBoxes {};
@@ -122,10 +120,9 @@ class CfgFunctions {
 			class spawnSimpleObjects {};
 			class spawnSDVPatrol {};
 			class spawnSurfacePatrol {};
-			//class updateMissionQue {};
 		};
 		class units {
-			file = "\q\addons\custom_server\Compiles\Units";
+			file = "\GMS\Compiles\Units";
 			class cleanupAliveAI {};
 			class deleteAI {};
 			class removeAllAIgear {};
@@ -135,11 +132,11 @@ class CfgFunctions {
 			class unitKilled {};
 		};
 		class Utils {
-			file = "\q\addons\custom_server\Compiles\Utils";
+			file = "\GMS\Compiles\Utils";
 			class log {};
 		};
 		class vehicles {
-			file = "\q\addons\custom_server\Compiles\Vehicles";	
+			file = "\GMS\Compiles\Vehicles";	
 			class alertVehicles {};
 			class deleteAIVehicle {};
 			class checkForEmptyVehicle {};	

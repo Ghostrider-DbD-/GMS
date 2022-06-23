@@ -14,13 +14,13 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "privateVars.sqf";
+#include "GMS_privateVars.sqf";
 
 _mission = "UMS mission example #2";  //  Included for additional documentation. Not intended to be spawned as a mission per se.
 _missionCenter = [22584.9,15304.8,0];  // I pulled this from the position of the marker.
 _difficulty = "red";  // Skill level of AI (blue, red, green etc)
 diag_log format["[blckeagls UMS missions] STARTED initializing mission %1 position at %2 difficulty %3",_mission,_missionCenter,_difficulty];
-_crateLoot = blck_BoxLoot_Orange;  // You can use a customized _crateLoot configuration by defining an array here. It must follow the following format shown for a hypothetical loot array called _customLootArray
+_crateLoot = GMS_BoxLoot_Orange;  // You can use a customized _crateLoot configuration by defining an array here. It must follow the following format shown for a hypothetical loot array called _customLootArray
 	/*
 	_customLootArray = 
 		// Loot is grouped as [weapons],[magazines],[items] in order to be able to use the correct function to load the item into the crate later on.
@@ -50,9 +50,9 @@ _crateLoot = blck_BoxLoot_Orange;  // You can use a customized _crateLoot config
 	];	
 	*/
 
-_lootCounts = blck_lootCountsRed; // You can use a customized set of loot counts or one that is predefined but it must follow the following format:
+_lootCounts = GMS_lootCountsRed; // You can use a customized set of loot counts or one that is predefined but it must follow the following format:
 								  // values are: number of things from the weapons, magazines, optics, materials(cinder etc), items (food etc) and backpacks arrays to add, respectively.
-								  //  blck_lootCountsOrange = [[6,8],[24,32],[5,10],[25,35],16,1];   // Orange
+								  //  GMS_lootCountsOrange = [[6,8],[24,32],[5,10],[25,35],16,1];   // Orange
 
 _markerLabel = "";
 //_markerType = ["ellipse",[200,200],"GRID"];
@@ -70,10 +70,10 @@ _missionLandscape = [  //  Paste appropriate lines from M3EDEN output here.
 
 _missionLootBoxes = [  //  Paste appropriate lines from M3EDEN editor output here, then add the appropriate lootArray
 	// [["box_classname1",_customLootArray1,[px,py,pz],...,_customLootArray1],["box_classname2",,[px2,py2,pz2],...,_customLootArray2]
-	//  where _customLootArray follows the same format as blck_BoxLoot_Red and the other pre-defined arrays and
-	//  where _customlootcountsarray1 also follows the same format as the predefined arrays like blck_lootCountsRed
+	//  where _customLootArray follows the same format as GMS_BoxLoot_Red and the other pre-defined arrays and
+	//  where _customlootcountsarray1 also follows the same format as the predefined arrays like GMS_lootCountsRed
 		//  ["Box_NATO_Ammo_F",[22893,16766.8,6.31652],[[0,1,0],[0,0,1]],[true,false], _crateLoot, _lootCounts],
-	[selectRandom blck_UMS_crates,[22584.9,15282.2,-1],[[0,1,0],[0,0,1]],[true,false], _crateLoot, _lootCounts]
+	[selectRandom GMS_UMS_crates,[22584.9,15282.2,-1],[[0,1,0],[0,0,1]],[true,false], _crateLoot, _lootCounts]
 ];  // If this array is empty a single loot chest will be added at the center. If you add items loot chest(s) will be spawned in specific positions.
 
 
@@ -86,7 +86,7 @@ _missionLootVehicles = [  // Paste appropriate lines from the output of M3EDEN E
 // When blank nothing is spawned.
 // You can use the same format used for _missionLootBoxes to add vehicles with/without loot.
 
-_noEmplacedWeapons = blck_SpawnEmplaced_Red; // Modified as needed; can be a numberic value (e.g. 3) or range presented as [2,4]
+_noEmplacedWeapons = GMS_SpawnEmplaced_Red; // Modified as needed; can be a numberic value (e.g. 3) or range presented as [2,4]
 //format: _noEmplacedWeapons  = [2,3]; // a range of values
 // or _noEmplacedWeapons = 3; // a constant number of emplaced weps per misison
 // Note that this value is ignored if you define static weapon positions and types in the array below.
@@ -100,9 +100,9 @@ _missionEmplacedWeapons = [
 // If the number of possible locations exceeds the number of emplaced weapons specified above then only some of the locations in the array will have emplaced weapons spawned.
 // If you leave this array blank then emplaced weapons will be spawned at random locations around the mission using the default list of emplace weapons.
 								
-_minNoAI = blck_MinAI_Red;  //  Modify as needed
-_maxNoAI = blck_MaxAI_Red;	// Modify as needed.
-_noAIGroups = blck_AIGrps_Red;  // Modify as needed; note that these values are ignored of you specify AI patrols in the array below.
+_minNoAI = GMS_MinAI_Red;  //  Modify as needed
+_maxNoAI = GMS_MaxAI_Red;	// Modify as needed.
+_noAIGroups = GMS_AIGrps_Red;  // Modify as needed; note that these values are ignored of you specify AI patrols in the array below.
 _aiGroupParameters = [
 	// [ [px, py, pz] /* position*/, "difficulty", 4 /*Number to Spawn*/, 150 /*radius of patrol*/]
 
@@ -113,7 +113,7 @@ _aiScubaGroupParameters = [
 	//[[22613.5,15269.1,-4.28332],"red",3, 75,900],
 	[[22549,15288.9,0],"red",3, 75,900]
 ];
-_noVehiclePatrols = blck_SpawnVeh_Red; // Modified as needed; can be a numberic value (e.g. 3) or range presented as [2,4]; 
+_noVehiclePatrols = GMS_SpawnVeh_Red; // Modified as needed; can be a numberic value (e.g. 3) or range presented as [2,4]; 
 										//  Note that this value is ignored if you define vehicle patrols in the array below.
 _vehiclePatrolParameters = [
 	//["Vehicle Class Name",Position [22570.1,15235.3,-4.49949],AI Difficulty "red",4 (Units to spawn into vehicle), 75 (radius of patrol area),60 (seconds to wait after all units dead before respawning)],
@@ -129,8 +129,8 @@ _submarinePatrolParameters = [
 	["B_SDV_01_F",[22609.9,15297.8,-1],"red",3, 75,0]	
 ];
 
-_aircraftTypes = blck_patrolHelisRed;  //  You can use one of the pre-defined lists in blck_configs or your own custom array.
-_noAirPatrols =	blck_noPatrolHelisRed; // You can use one of the pre-defined values or a custom one. acceptable values are integers (1,2,3) or a range such as [2,4]; 
+_aircraftTypes = GMS_patrolHelisRed;  //  You can use one of the pre-defined lists in GMS_configs or your own custom array.
+_noAirPatrols =	GMS_noPatrolHelisRed; // You can use one of the pre-defined values or a custom one. acceptable values are integers (1,2,3) or a range such as [2,4]; 
 										//  Note: this value is ignored if you specify air patrols in the array below.
 _airPatrols = [
 	//["Vehicle Class Name",Position [22570.1,15235.3,-4.49949],AI Difficulty "red", 75 (radius of patrol area),60 (seconds to wait after all units dead before respawning)],
@@ -141,6 +141,6 @@ _airPatrols = [
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = false;  // Set to false if you have vehicles patrolling nearby.
 
-#include "\q\addons\custom_server\Missions\UMS\code\GMS_fnc_sm_initializeUMSStaticMission.sqf"; 
+#include " \GMS\Missions\UMS\code\GMS_fnc_sm_initializeUMSStaticMission.sqf"; 
 
 diag_log format["[blckeagls static missions] COMPLETED initializing middions %1 position at %2 difficulty %3",_mission,_missionCenter,_difficulty];

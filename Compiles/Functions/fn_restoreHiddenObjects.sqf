@@ -1,5 +1,5 @@
 /*
-	blck_fnc_restoreHiddenObjects
+	GMS_fnc_restoreHiddenObjects
 
 	By Ghostrider [GRG]
 	Copyright 2016	
@@ -10,18 +10,18 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 
-for "_i" from 1 to (count blck_hiddenTerrainObjects) do 
+for "_i" from 1 to (count GMS_hiddenTerrainObjects) do 
 {
-	if (_i > (count blck_hiddenTerrainObjects)) exitWith {};
-	private _el = blck_hiddenTerrainObjects deleteAt 0;
+	if (_i > (count GMS_hiddenTerrainObjects)) exitWith {};
+	private _el = GMS_hiddenTerrainObjects deleteAt 0;
 	_el params["_obj","_timeout"];
 	if (diag_tickTime > _timeOut) then 
 	{
 		{_x hideObjectGlobal false} forEach _obj;
 	} else {
-		blck_hiddenTerrainObjects pushBack _el;
+		GMS_hiddenTerrainObjects pushBack _el;
 	};
 };

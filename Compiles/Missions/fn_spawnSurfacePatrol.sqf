@@ -9,12 +9,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_SDV","_pos","_difficulty","_numAI","_patrolRadius","_respawnTime"];
 #define surfacePatrolAreaDimensions [150,150]
-private _group = [_pos,_numAI,_difficulty,surfacePatrolAreaDimensions] call blck_fnc_spawnGroup;
-private _vehicle = [_pos,_pos,_vehType,_minDis,_maxDis,_group] call blck_fnc_spawnVehiclePatrol;
+private _group = [_pos,_numAI,_difficulty,surfacePatrolAreaDimensions] call GMS_fnc_spawnGroup;
+private _vehicle = [_pos,_pos,_vehType,_minDis,_maxDis,_group] call GMS_fnc_spawnVehiclePatrol;
 
 _vehicle
 

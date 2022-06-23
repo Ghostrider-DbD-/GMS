@@ -1,9 +1,5 @@
 
 /*
-	algorhytm one: pure chance base on inverse of distance. More efficient.
-	algorhythm two: based on canSee. More detailed.
-*/
-/*
 	By Ghostrider [GRG]
 	Copyright 2016
 	--------------------------
@@ -13,11 +9,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params["_vehicle","_searchRadius","_detectionOdds"];
 private["_player","_detectionOdds","_nearbyPlayers","_knowsAbout","_cansee","_knowledgeGained"];
-_nearbyPlayers = [getPosATL _vehicle, _vehicle getVariable["blck_vehicleSearchRange",500]] call blck_fnc_nearestPlayers;
+_nearbyPlayers = [getPosATL _vehicle, _vehicle getVariable["GMS_vehicleSearchRange",500]] call GMS_fnc_nearestPlayers;
 
-switch blck_revealMode do {
+switch GMS_revealMode do {
 	case "detailed": {
 		private["_crew"];
 		_crew = crew _vehicle;

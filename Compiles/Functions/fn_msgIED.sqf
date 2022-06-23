@@ -1,5 +1,5 @@
 /*
-	blck_fnc_msgIED
+	GMS_fnc_msgIED
 
 	By Ghostrider [GRG]
 	Copyright 2016	
@@ -10,6 +10,6 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-
-	params["_killer"];
-	[["IED","",0,0],[_killer]] call blck_fnc_MessagePlayers;
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+params["_killer"];
+[["IED","",0,0],[_killer]] call GMS_fnc_MessagePlayers;

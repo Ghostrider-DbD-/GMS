@@ -1,5 +1,5 @@
 /*
-	blck_fnc_spawnRandomLandscape
+	GMS_fnc_spawnRandomLandscape
 	
 	spawn a group of objects in random locations aligned with the radial from the center of the region to the object.
 	By Ghostrider [GRG]
@@ -12,7 +12,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params["_coords","_missionLandscape",["_min",3],["_max",15],["_nearest",1]];
 
 #define maxObjectSpawnRadius 25
@@ -25,7 +25,7 @@ private _hiddenObjs = [];
 {
 	private _spawnPos = _coords getPos[minObjectSpawnRadius + random(maxObjectSpawnRadius), random(359)];
 	private _objClassName = _x;
-	if (_objClassName isKindOf "House" && {blck_hideRocksAndPlants}) then 
+	if (_objClassName isKindOf "House" && {GMS_hideRocksAndPlants}) then 
 	{
 		private _shrubs = nearestTerrainObjects[_spawnPos,["TREE", "SMALL TREE", "BUSH","FENCE", "WALL","ROCK"], sizeOf _objClassName];
 		if !(_shrubs isEqualTo []) then 

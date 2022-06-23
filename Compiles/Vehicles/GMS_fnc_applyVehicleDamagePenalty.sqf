@@ -9,6 +9,6 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-
-	params["_vk"];
-	_vk setDamage ((damage _vk) + blck_RunGearDamage);
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+params["_vk"];
+_vk setDamage ((damage _vk) + GMS_RunGearDamage);

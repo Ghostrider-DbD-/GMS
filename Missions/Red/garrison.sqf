@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Green Mission with template = default";
-_crateLoot = blck_BoxLoot_Green;
-_lootCounts = blck_lootCountsGreen;
+_crateLoot = GMS_BoxLoot_Green;
+_lootCounts = GMS_lootCountsGreen;
 _startMsg = "An enemy garrison!";
 _endMsg = "The garrison is under survivor control!";
 _markerLabel = "";
@@ -93,22 +93,22 @@ _missionGroups = [
 _scubaGroupParameters = [
 ];
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Green;
-_maxNoAI = blck_MaxAI_Green;
-_noAIGroups = blck_AIGrps_Green;
-_noVehiclePatrols = blck_SpawnVeh_Green;
-_noEmplacedWeapons = blck_SpawnEmplaced_Green;
-_minNoAI = blck_MinAI_Blue;  // Setting this in the mission file overrides the defaults such as blck_MinAI_Blue
-_maxNoAI = blck_MaxAI_Blue;  // Setting this in the mission file overrides the defaults 
-_noAIGroups = blck_AIGrps_Blue;  // Setting this in the mission file overrides the defaults 
-_noVehiclePatrols = blck_SpawnVeh_Blue;  // Setting this in the mission file overrides the defaults 
-_noEmplacedWeapons = blck_SpawnEmplaced_Blue;  // Setting this in the mission file overrides the defaults 
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Green;
+_maxNoAI = GMS_MaxAI_Green;
+_noAIGroups = GMS_AIGrps_Green;
+_noVehiclePatrols = GMS_SpawnVeh_Green;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Green;
+_minNoAI = GMS_MinAI_Blue;  // Setting this in the mission file overrides the defaults such as GMS_MinAI_Blue
+_maxNoAI = GMS_MaxAI_Blue;  // Setting this in the mission file overrides the defaults 
+_noAIGroups = GMS_AIGrps_Blue;  // Setting this in the mission file overrides the defaults 
+_noVehiclePatrols = GMS_SpawnVeh_Blue;  // Setting this in the mission file overrides the defaults 
+_noEmplacedWeapons = GMS_SpawnEmplaced_Blue;  // Setting this in the mission file overrides the defaults 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;  // Setting this in the mission file overrides the defaults 
-_uniforms = blck_SkinList;  // Setting this in the mission file overrides the defaults 
-_headgear = blck_headgear;  // Setting this in the mission file overrides the defaults 
-_vests = blck_vests;
-_backpacks = blck_backpacks;
+_useMines = GMS_useMines;  // Setting this in the mission file overrides the defaults 
+_uniforms = GMS_SkinList;  // Setting this in the mission file overrides the defaults 
+_headgear = GMS_headgear;  // Setting this in the mission file overrides the defaults 
+_vests = GMS_vests;
+_backpacks = GMS_backpacks;
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

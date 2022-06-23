@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning blue Mission with template = default";
-_crateLoot = blck_BoxLoot_blue;
-_lootCounts = blck_lootCountsblue;
+_crateLoot = GMS_BoxLoot_blue;
+_lootCounts = GMS_lootCountsblue;
 _startMsg = "An enemy sniper base was sighted in a nearby sector! Check the blue marker on your map for the location!";
 _endMsg = "The sniper base is under survivor control!";
 
@@ -73,7 +73,7 @@ _missionLootVehicles = [
 
 _missionPatrolVehicles = [
      //["B_LSV_01_armed_F",[-30.9727,-11.311,-0.023613],0.00171228],
-     [selectRandom blck_AIPatrolVehiclesBlue,[24.6577,5.46826,-0.012536],0.000195805]
+     [selectRandom GMS_AIPatrolVehiclesBlue,[24.6577,5.46826,-0.012536],0.000195805]
 ];
 
 _submarinePatrolParameters = [
@@ -103,10 +103,10 @@ _scubaGroupParameters = [
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_minNoAI = blck_MinAI_Blue;  // Setting this in the mission file overrides the defaults such as blck_MinAI_Blue
-_maxNoAI = blck_MaxAI_Blue;  // Setting this in the mission file overrides the defaults 
-_noAIGroups = blck_AIGrps_Blue;  // Setting this in the mission file overrides the defaults 
-_noVehiclePatrols = blck_SpawnVeh_Blue;  // Setting this in the mission file overrides the defaults 
-_noEmplacedWeapons = blck_SpawnEmplaced_Blue;  // Setting this in the mission file overrides the defaults 
+_minNoAI = GMS_MinAI_Blue;  // Setting this in the mission file overrides the defaults such as GMS_MinAI_Blue
+_maxNoAI = GMS_MaxAI_Blue;  // Setting this in the mission file overrides the defaults 
+_noAIGroups = GMS_AIGrps_Blue;  // Setting this in the mission file overrides the defaults 
+_noVehiclePatrols = GMS_SpawnVeh_Blue;  // Setting this in the mission file overrides the defaults 
+_noEmplacedWeapons = GMS_SpawnEmplaced_Blue;  // Setting this in the mission file overrides the defaults 
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

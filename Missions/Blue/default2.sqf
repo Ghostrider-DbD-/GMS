@@ -9,12 +9,12 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Blue Mission with template = default2";
 
-_crateLoot = blck_BoxLoot_Blue;  
+_crateLoot = GMS_BoxLoot_Blue;  
 			/*
 			You can use a customized loot array if you like. The format is as follows. note that for each category you can give a number or a range.
 		_crateLoot = [
@@ -38,11 +38,11 @@ _crateLoot = blck_BoxLoot_Blue;
 			]
 		];			
 		*/
-_lootCounts = blck_lootCountsBlue;
+_lootCounts = GMS_lootCountsBlue;
 			/*
 			You can use a customized array here if you like; note that you can give a value or a range.
 				// values are: number of things from the weapons, magazines, optics, materials(cinder etc), items (food etc) and backpacks arrays to add, respectively.
-		blck_lootCountsOrange = [
+		GMS_lootCountsOrange = [
 			[6,8],  //  Weapons
 			[24,32], // Magazines
 			[5,10], // Optics
@@ -84,7 +84,7 @@ _missionLootBoxes = [
 		["Land_CargoBox_V1_F",[3,4,0],_crateLoot,[0,10,2,5,5,1]]
 		];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 
-		// blck_lootCountsBlue= [4,12,3,6,6,1];
+		// GMS_lootCountsBlue= [4,12,3,6,6,1];
 _missionLootVehicles = [
 	["I_G_Offroad_01_armed_F",[-8,8,0],_crateLoot,[0,10,2,5,5,1]],
 	["I_G_Offroad_01_armed_F",[8,17,0],_crateLoot,[0,10,2,5,5,1]]
@@ -112,13 +112,13 @@ _missionPatrolVehicles = [
 	["B_MRAP_01_gmg_F",[-87.8457,-109.947,7.15256e-007],0,[true,false]]
 ];	
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Blue;
-_maxNoAI = blck_MaxAI_Blue;
-_noAIGroups = blck_AIGrps_Blue;
-_noVehiclePatrols = blck_SpawnVeh_Blue;
-_noEmplacedWeapons = blck_SpawnEmplaced_Blue;
-//_uniforms = blck_SkinList;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Blue;
+_maxNoAI = GMS_MaxAI_Blue;
+_noAIGroups = GMS_AIGrps_Blue;
+_noVehiclePatrols = GMS_SpawnVeh_Blue;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Blue;
+//_uniforms = GMS_SkinList;
 
 _uniforms = ["U_OrestesBody","U_NikosAgedBody","U_NikosBody"];
 
@@ -130,25 +130,25 @@ _weaponList = [
 	"LMG_Mk200_F","LMG_Zafir_F"
 	];
 */
-_sideArms = blck_Pistols;
-_vests = blck_vests;
+_sideArms = GMS_Pistols;
+_vests = GMS_vests;
 /*
 _vests = [
 	"V_PlateCarrierSpec_blk","V_PlateCarrierSpec_mtp","V_PlateCarrierGL_blk","V_PlateCarrierGL_mtp","V_PlateCarrierIAGL_oli"
   };
 */
-_backpacks = blck_backpacks;
+_backpacks = GMS_backpacks;
 /*
 _backpacks = 
 {
 
 };
 */
-//_chancePara = blck_chanceParaBlue; // Setting this in the mission file overrides the defaults 
-_noPara = blck_noParaBlue;  // Setting this in the mission file overrides the defaults 
-//_chanceHeliPatrol = blck_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
-_noChoppers = blck_noPatrolHelisBlue;
-_missionHelis = blck_patrolHelisBlue;
+//_chancePara = GMS_chanceParaBlue; // Setting this in the mission file overrides the defaults 
+_noPara = GMS_noParaBlue;  // Setting this in the mission file overrides the defaults 
+//_chanceHeliPatrol = GMS_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
+_noChoppers = GMS_noPatrolHelisBlue;
+_missionHelis = GMS_patrolHelisBlue;
 _endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 //_timeOut = -1;
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

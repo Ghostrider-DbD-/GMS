@@ -1,6 +1,6 @@
 /*
 
-	[_missionEmplacedWeapons,_noEmplacedWeapons,_aiDifficultyLevel,_coords,_uniforms,_headGear] call blck_fnc_spawnEmplacedWeaponArray;
+	[_missionEmplacedWeapons,_noEmplacedWeapons,_aiDifficultyLevel,_coords,_uniforms,_headGear] call GMS_fnc_spawnEmplacedWeaponArray;
 	By Ghostrider [GRG]
 	
 	--------------------------
@@ -10,15 +10,15 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_coords",["_missionEmplacedWeapons",[]],["_useRelativePos",true],["_noEmplacedWeapons",0],["_aiDifficultyLevel","red"],["_uniforms",[]], ["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]]];
-if (_uniforms isEqualTo []) 		then {_uniforms = [_aiDifficultyLevel] call blck_fnc_selectAIUniforms};
-if (_headGear  isEqualTo [])		then {_headGear = [_aiDifficultyLevel] call blck_fnc_selectAIHeadgear};
-if (_vests isEqualTo []) 			then {_vests = [_aiDifficultyLevel] call blck_fnc_selectAIVests};
-if (_backpacks  isEqualTo []) 		then {_backpacks = [_aiDifficultyLevel] call blck_fnc_selectAIBackpacks};
-if (_weaponList  isEqualTo []) 	then {_weaponList = [_aiDifficultyLevel] call blck_fnc_selectAILoadout};
-if (_sideArms isEqualTo []) 		then {[_aiDifficultyLevel] call blck_fnc_selectAISidearms};
+if (_uniforms isEqualTo []) 		then {_uniforms = [_aiDifficultyLevel] call GMS_fnc_selectAIUniforms};
+if (_headGear  isEqualTo [])		then {_headGear = [_aiDifficultyLevel] call GMS_fnc_selectAIHeadgear};
+if (_vests isEqualTo []) 			then {_vests = [_aiDifficultyLevel] call GMS_fnc_selectAIVests};
+if (_backpacks  isEqualTo []) 		then {_backpacks = [_aiDifficultyLevel] call GMS_fnc_selectAIBackpacks};
+if (_weaponList  isEqualTo []) 	then {_weaponList = [_aiDifficultyLevel] call GMS_fnc_selectAILoadout};
+if (_sideArms isEqualTo []) 		then {[_aiDifficultyLevel] call GMS_fnc_selectAISidearms};
 
 private["_emplacedWeps","_emplacedAI","_wep","_units","_gunner","_abort","_pos","_mode","_useRelativePos","_useRelativePos"];
 _emplacedWeps = [];
@@ -33,9 +33,9 @@ private _emplacedWepData = +_missionEmplacedWeapons;  //  So we dont overwrite t
 // Define _emplacedWepData if not already configured.
 if (_emplacedWepData isEqualTo []) then
 {
-	private _wepPositions = [_coords,_noEmplacedWeapons,35,50] call blck_fnc_findPositionsAlongARadius;
+	private _wepPositions = [_coords,_noEmplacedWeapons,35,50] call GMS_fnc_findPositionsAlongARadius;
 	{
-		_static = selectRandom blck_staticWeapons;
+		_static = selectRandom GMS_staticWeapons;
 		_emplacedWepData pushback [_static,_x];
 	} forEach _wepPositions;
 	_useRelativePos = false;
@@ -53,13 +53,13 @@ if (_emplacedWepData isEqualTo []) then
 	#define configureWaypoints false
 	#define numberAI 1
 	#define areaDimensions []  // an empty array forces the spawnGroup function to skip setup of any waypoint
-	private _empGroup = [_pos,numberAI,_aiDifficultyLevel,areaDimensions,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call blck_fnc_spawnGroup;
+	private _empGroup = [_pos,numberAI,_aiDifficultyLevel,areaDimensions,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call GMS_fnc_spawnGroup;
 	_empGroup setcombatmode "RED";
 	_empGroup setBehaviour "COMBAT";
 	_empGroup setVariable ["soldierType","emplaced"];
 
 	// TODO: recode to use GMS_fnc to create vehicle
-	//private _wep = [_static,_pos] call blck_fnc_spawnVehicle;
+	//private _wep = [_static,_pos] call GMS_fnc_spawnVehicle;
 	/*
 		["_className",""], // Clasname of vehicle to be spawned
 		["_spawnPos",[0,0,0]],  //  selfevident
@@ -77,14 +77,14 @@ if (_emplacedWepData isEqualTo []) then
 	//_wep setdir _dir;
 
 	// TODO: recode to use GMS_fnc to handle this if needed	
-	//[_wep,2] call blck_fnc_configureMissionVehicle;	
+	//[_wep,2] call GMS_fnc_configureMissionVehicle;	
 	#define height 0
 	#define removeFuel 0
 	#define vehHitCode [] 
 	#define vehKilledCode []
-	private _damage = if (blck_killEmptyStaticWeapons) then {1} else {0};
-	private _releaseToPlayers = if (blck_killEmptyStaticWeapons) then {false} else {true};
-	private _wep = [_static,_pos,_dir,height,_damage,removeFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle;
+	private _damage = if (GMS_killEmptyStaticWeapons) then {1} else {0};
+	private _releaseToPlayers = if (GMS_killEmptyStaticWeapons) then {false} else {true};
+	private _wep = [_static,_pos,_dir,height,_damage,removeFuel,_releaseToPlayers,GMS_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle;
     _wep setVariable["GMS_vehType","emplaced"];	
 	_emplacedWeps pushback _wep;
 	[_wep,_empGroup] call GMSCore_fnc_loadVehicleCrew;
@@ -92,7 +92,7 @@ if (_emplacedWepData isEqualTo []) then
 	_emplacedAI append _units;		
 } forEach _emplacedWepData;
 
-blck_monitoredVehicles append _emplacedWeps;
+GMS_monitoredVehicles append _emplacedWeps;
 
 [_emplacedWeps,_emplacedAI]
 

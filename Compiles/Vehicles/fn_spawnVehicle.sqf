@@ -1,7 +1,5 @@
 /*
-	blck_fnc_spawnVehicle
-	Spawn a vehicle and protect it against cleanup by Epoch
-	Returns the object (vehicle) created.
+	GMS_fnc_spawnVehicle
 	By Ghostrider [GRG]
 
 	--------------------------
@@ -11,24 +9,24 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_vehType",["_pos",[]],["_special","NONE"],["_radius",30]];
 
 private _veh = createVehicle[_vehType, _pos, [], _radius, _special];
 if (count _pos == 2) exitWith {
 	_pos pushBack 0;
-	[format["_fnc_spawnVehicle(20): _pos had only 2 parameters, new value = %1",_pos],'warning'] call blck_fnc_log;
+	[format["_fnc_spawnVehicle(20): _pos had only 2 parameters, new value = %1",_pos],'warning'] call GMS_fnc_log;
 };
 if (_pos isEqualTo []) exitWith 
 {
-	[format["_fnc_spawnVehicle(20): _pos undefined, now set to [0,0,0]"],'warning'] call blck_fnc_log;
+	[format["_fnc_spawnVehicle(20): _pos undefined, now set to [0,0,0]"],'warning'] call GMS_fnc_log;
 };
 _veh setVectorUp surfaceNormal getPosATL _veh;
 _veh allowDamage true;
 _veh enableRopeAttach true;
-_veh setVariable["blck_vehicle",true];
-[_veh] call blck_fnc_protectVehicle;
+_veh setVariable["GMS_vehicle",true];
+[_veh] call GMS_fnc_protectVehicle;
 [_veh] call GMSCore_fnc_emptyObjectInventory;
 if (_vehType isKindOf "Plane") then {
 	private _pos = [_pos select 0, _pos select 1, ((getPos _veh) select 2) + 400];

@@ -11,11 +11,11 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
-_crateLoot = blck_BoxLoot_Green;  // Set to a loot table appropriate to mission difficulty. A custom loot table can also be used.
-_lootCounts = blck_lootCountsGreen;     // Set to a loot counts list appropriate to mission difficulty or a custom array.
+_crateLoot = GMS_BoxLoot_Green;  // Set to a loot table appropriate to mission difficulty. A custom loot table can also be used.
+_lootCounts = GMS_lootCountsGreen;     // Set to a loot counts list appropriate to mission difficulty or a custom array.
 _startMsg = "An enemy research center was sighted in a nearby sector! Check the Green marker on your map for the location!";
 _endMsg = "The Sector at the Green Marker is under survivor control!";
 _markerMissionName = "Development";
@@ -60,7 +60,7 @@ _missionLootBoxes = [  // Self explanatory; all positions are relative to missio
 
 _missionPatrolVehicles = [  // Self explanatory; all positions are relative to mission center. 
                               // Note that defining anything here overrides the defaults for number and type of vehicles.
-                              // You can select a random vehicle from the defaults with selectRandom blck_AIPatrolVehicles or the difficulty specific variants such as blck_AIPatrolVehiclesBlue
+                              // You can select a random vehicle from the defaults with selectRandom GMS_AIPatrolVehicles or the difficulty specific variants such as GMS_AIPatrolVehiclesBlue
      ["B_LSV_01_armed_F",[-50.4993,-5.56201,0],0],
      ["B_MRAP_01_hmg_F",[-4.58496,-51.4932,-4.76837e-007],0],
      ["B_MRAP_01_hmg_F",[-1.01758,31.3022,-4.76837e-007],0],
@@ -72,12 +72,12 @@ _submarinePatrolParameters = [  // Self explanatory; all positions are relative 
 
 _airPatrols = [  // Self explanatory; all positions are relative to mission center. 
                     // Note that defining anything here overrides the defaults for both number of aircraft and types of aircraft.
-                    // you can specify a randomly selected aircraft from the defaults the a mission difficulty with selectRandom blck_patrolHelisBlue/Red/Green/Orange
+                    // you can specify a randomly selected aircraft from the defaults the a mission difficulty with selectRandom GMS_patrolHelisBlue/Red/Green/Orange
 ];
 
 _missionEmplacedWeapons = [  // Self explanatory; all positions are relative to mission center and are set and mission spawn using setPosATL
                               // Listing static weapons here overides the default settings for numbers of statics and weapon types.
-                              // Note that you can select from the defaults using selectRandom blck_staticWeapons;
+                              // Note that you can select from the defaults using selectRandom GMS_staticWeapons;
      ["B_T_HMG_01_F",[-24.9949,-6.60889,0],0],
      ["B_T_HMG_01_F",[-2.10034,17.6167,0],0],
      ["B_T_HMG_01_F",[-1.02319,-24.769,0],0],
@@ -97,12 +97,12 @@ _missionGroups = [  // The coordinates are the center position for each groups p
 _scubaGroupParameters = [  // These groups remain under water in scuba gear. Settings are otherwise as listed in _missionGroups
 ];
 
-_crateLoot = blck_BoxLoot_Red;  				     // can be individualized for a particular mission by defining a loot array.
-_lootCounts = blck_lootCountsRed;  				//  can be individualized for a particular mission by defining an array with the counts of each loot type.
-_minNoAI = blck_MinAI_Red;  					     // can be any value 0..N
-_maxNoAI = blck_MaxAI_Red;						// can be any value 1..N
-_noAIGroups = blck_AIGrps_Red;					// can be any value 0..N (note that 0 here prevents any groups from being spawned)
-_noVehiclePatrols = blck_SpawnVeh_Red;			     // can be any value  0..N
-_noEmplacedWeapons = blck_SpawnEmplaced_Red;	// can be any value
+_crateLoot = GMS_BoxLoot_Red;  				     // can be individualized for a particular mission by defining a loot array.
+_lootCounts = GMS_lootCountsRed;  				//  can be individualized for a particular mission by defining an array with the counts of each loot type.
+_minNoAI = GMS_MinAI_Red;  					     // can be any value 0..N
+_maxNoAI = GMS_MaxAI_Red;						// can be any value 1..N
+_noAIGroups = GMS_AIGrps_Red;					// can be any value 0..N (note that 0 here prevents any groups from being spawned)
+_noVehiclePatrols = GMS_SpawnVeh_Red;			     // can be any value  0..N
+_noEmplacedWeapons = GMS_SpawnEmplaced_Red;	// can be any value
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

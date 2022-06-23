@@ -40,7 +40,7 @@ while{!_validspot} do {
 			if (_position distance _x < 1500) exitwith {
 				_validspot = false; 
 			};
-		} foreach (missionnamespace getvariable ["blck_ActiveMissionCoords",[]]);
+		} foreach (missionnamespace getvariable ["GMS_ActiveMissionCoords",[]]);
 	};
 
 	// Check for near Bases
@@ -55,10 +55,10 @@ while{!_validspot} do {
 		else {
 			if (GMSCore_modtype isEqualTo "Exile") then {
 				{
-					if (_position distance _x < blck_minDistanceToBases) exitwith {
+					if (_position distance _x < GMS_minDistanceToBases) exitwith {
 						_validspot = false; 
 					};				
-				} foreach (nearestObjects [blck_mapCenter, ["Exile_Construction_Flag_Static"], blck_mapRange + 25000]);
+				} foreach (nearestObjects [GMS_mapCenter, ["Exile_Construction_Flag_Static"], GMS_mapRange + 25000]);
 			};
 		};
 	};
@@ -66,7 +66,7 @@ while{!_validspot} do {
 // Check for near Players
 	if(_validspot) then {
 		{
-			if (_position distance _x < blck_minDistanceToPlayer) exitwith {
+			if (_position distance _x < GMS_minDistanceToPlayer) exitwith {
 				_validspot = false;
 			};
 		} foreach allplayers;
@@ -78,17 +78,17 @@ while{!_validspot} do {
 			if (_position distance (_x select 0) < (_x select 1)) exitWith {
 				_validspot = false;
 			};
-		} forEach blck_locationBlackList;
+		} forEach GMS_locationBlackList;
 	};
 
 	// Check for DMS missions 
-	if (blck_minDistanceFromDMS > 0 && {_validspot}) then 
+	if (GMS_minDistanceFromDMS > 0 && {_validspot}) then 
 	{
 		{
-			if (_position distance _x < blck_minDistanceFromDMS) exitWith {
+			if (_position distance _x < GMS_minDistanceFromDMS) exitWith {
 				_validspot = false;
 			};
-		} forEach ([] call blck_fnc_getAllDMSMarkers);
+		} forEach ([] call GMS_fnc_getAllDMSMarkers);
 	};	
 };
 _position set [2, 0];

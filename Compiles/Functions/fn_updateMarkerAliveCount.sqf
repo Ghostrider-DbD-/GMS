@@ -1,5 +1,5 @@
 /*
-	blck_fnc_updateMarkerAliveCount
+	GMS_fnc_updateMarkerAliveCount
 	
 	by Ghostrider [GRG] 
 	Copyright 2016
@@ -10,7 +10,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params["_marker","_rootText","_missionAI"];
 
 private _txtPrior = markerText _marker;

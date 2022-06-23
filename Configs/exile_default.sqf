@@ -12,16 +12,16 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";	
+#include " \GMS\Configs\GMS_defines.hpp";	
 
-#ifdef blck_milServer
+#ifdef GMS_milServer
 if (true) exitWith 
 {
-	diag_log format["Running blck_configs_exile_mil for militarized servers"];
-	execVM "\q\addons\custom_server\Configs\blck_configs_exile_mil.sqf";
+	diag_log format["Running GMS_configs_exile_mil for militarized servers"];
+	execVM " \GMS\Configs\GMS_configs_exile_mil.sqf";
 };
 #endif
-diag_log format ["Loading Exile-specific configs for Non-militarized servers: blck_configs_exile.sqf"];
+diag_log format ["Loading Exile-specific configs for Non-militarized servers: GMS_configs_exile.sqf"];
 
 	
 // list of locations that are protected against mission spawns
@@ -29,14 +29,14 @@ diag_log format ["Loading Exile-specific configs for Non-militarized servers: bl
 switch (toLowerANSI(worldName)) do
 {
 	case "altis": {
-		blck_locationBlackList append [
+		GMS_locationBlackList append [
 		//Add location as [[xpos,ypos,0],minimumDistance],
 		// Note that there should not be a comma after the last item in this table
 		[[10800,10641,0],1000]  // isthmus - missions that spawn here often are glitched.
 		];
 	};
 	case "tanoa": {
-		blck_locationBlackList append [	];
+		GMS_locationBlackList append [	];
 	};
 };
 		
@@ -46,19 +46,19 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 
 **********************************************************************************/
 	
-blck_blacklistSpawns = false;
-blck_listConcreteMixerZones	= false;
+GMS_blacklistSpawns = false;
+GMS_listConcreteMixerZones	= false;
 
-blck_crateMoneyBlue = [100,250];
-blck_crateMoneyRed = [175, 300];
-blck_crateMoneyGreen = [300, 500];
-blck_crateMoneyOrange = [500, 750];
+GMS_crateMoneyBlue = [100,250];
+GMS_crateMoneyRed = [175, 300];
+GMS_crateMoneyGreen = [300, 500];
+GMS_crateMoneyOrange = [500, 750];
 
-blck_crateTypes = ["Box_FIA_Ammo_F","Box_FIA_Support_F","Box_FIA_Wps_F","I_SupplyCrate_F","Box_NATO_AmmoVeh_F","Box_East_AmmoVeh_F","IG_supplyCrate_F","Box_NATO_Wps_F","I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F"];  // Default crate type.
+GMS_crateTypes = ["Box_FIA_Ammo_F","Box_FIA_Support_F","Box_FIA_Wps_F","I_SupplyCrate_F","Box_NATO_AmmoVeh_F","Box_East_AmmoVeh_F","IG_supplyCrate_F","Box_NATO_Wps_F","I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F"];  // Default crate type.
 	
-blck_maximumItemPriceInAI_Loadouts = 1000;
+GMS_maximumItemPriceInAI_Loadouts = 1000;
 
-blck_open_armed_vehicles = [
+GMS_open_armed_vehicles = [
 	"Exile_Car_BTR40_MG_Green",
 	"Exile_Car_HMMWV_M134_Green",
 	"Exile_Car_HMMWV_M2_Green",
@@ -68,7 +68,7 @@ blck_open_armed_vehicles = [
 	"O_G_Offroad_01_armed_F"		
 ];
 
-blck_lightlyArmed_ARMA3 = [
+GMS_lightlyArmed_ARMA3 = [
 	"B_MRAP_01_gmg_F", 
 	"B_MRAP_01_hmg_F",
 	"O_MRAP_02_gmg_F",  
@@ -79,7 +79,7 @@ blck_lightlyArmed_ARMA3 = [
 	"I_APC_Wheeled_03_cannon_F"	
 ];
 
-blck_light_AT_ARMA3 = [
+GMS_light_AT_ARMA3 = [
 	"O_G_Offroad_01_AT_F", 
 	"B_G_Offroad_01_AT_F", 
 	"O_T_LSV_02_AT_F", 
@@ -87,11 +87,11 @@ blck_light_AT_ARMA3 = [
 	"B_T_LSV_01_AT_F", 
 	"B_LSV_01_AT_F"
 ];
-blck_tracked_AA_ARMA3 = [
+GMS_tracked_AA_ARMA3 = [
 	"O_APC_Tracked_02_AA_F",
 	"B_APC_Tracked_01_AA_F"	
 ];
-blck_tracked_APC_ARMA3 = [
+GMS_tracked_APC_ARMA3 = [
 	"B_APC_Tracked_01_rcws_F",
 	//"B_APC_Tracked_01_CRV_F",
 	"O_APC_Tracked_02_cannon_F", 
@@ -99,7 +99,7 @@ blck_tracked_APC_ARMA3 = [
 	"I_APC_tracked_03_cannon_F"
 ];
 
-blck_Tanks_ARMA3 = [
+GMS_Tanks_ARMA3 = [
 	//"B_MBT_01_arty_F",
 	//"B_MBT_01_mlrs_F",
 	"B_MBT_01_TUSK_F",
@@ -108,7 +108,7 @@ blck_Tanks_ARMA3 = [
 	"I_MBT_03_cannon_F"
 ];
 
-blck_open_armed_CUP = [
+GMS_open_armed_CUP = [
 	"CUP_I_Hilux_DSHKM_TK", 
 	"CUP_I_Hilux_armored_DSHKM_TK", 	
 	"CUP_I_Hilux_armored_igla_TK",	
@@ -124,13 +124,13 @@ blck_open_armed_CUP = [
 	"CUP_O_UAZ_MG_CHDKZ"
 ];
 
-blck_closed_armed_CUP = [
+GMS_closed_armed_CUP = [
 	"CUP_BAF_Jackal2_L2A1_D", 
 	"CUP_B_Mastiff_HMG_GB_D", 
 	"CUP_B_Mastiff_HMG_GB_W"
 ];
 
-blck_APC_CUP = [
+GMS_APC_CUP = [
 	"CUP_B_Mastiff_GMG_GB_D",  
 	"CUP_B_Mastiff_HMG_GB_D",  
 	"CUP_B_Ridgback_HMG_GB_D",  
@@ -156,7 +156,7 @@ blck_APC_CUP = [
 	"CUP_O_GAZ_Vodnik_PK_RU"
 ];
 
-blck_Tanks_CUP = [
+GMS_Tanks_CUP = [
 	"CUP_B_M2A3Bradley_USA_D",  
 	//"CUP_B_M113_desert_USA",  
 	//"CUP_B_M163_USA",  
@@ -189,7 +189,7 @@ blck_Tanks_CUP = [
 ];
 
 
-blck_AIPatrolVehicles = 
+GMS_AIPatrolVehicles = 
 [
 //"Exile_Car_Offroad_Armed_Guerilla01",
 //"Exile_Car_Offroad_Armed_Guerilla02",
@@ -218,28 +218,28 @@ blck_AIPatrolVehicles =
 ]; // Type of vehicle spawned to defend AI bases	
 
 
-blck_AIPatrolVehicles = ["Exile_Car_Offroad_Armed_Guerilla01","Exile_Car_Offroad_Armed_Guerilla02","Exile_Car_BTR40_MG_Green","Exile_Car_BTR40_MG_Camo","Exile_Car_HMMWV_M134_Green","Exile_Car_HMMWV_M134_Desert",/*"Exile_Car_HMMWV_M134_Desert","Exile_Car_HMMWV_M2_Desert",*/"B_LSV_01_armed_F"]; // Type of vehicle spawned to defend AI bases	
-blck_AIPatrolVehiclesBlue = blck_open_armed_vehicles;
-blck_AIPatrolVehiclesRed = blck_lightlyArmed_ARMA3;
-blck_AIPatrolVehiclesGreen = blck_light_AT_ARMA3 + blck_tracked_APC_ARMA3;
-blck_AIPatrolVehiclesOrange = blck_Tanks_ARMA3 + blck_light_AT_ARMA3;
+GMS_AIPatrolVehicles = ["Exile_Car_Offroad_Armed_Guerilla01","Exile_Car_Offroad_Armed_Guerilla02","Exile_Car_BTR40_MG_Green","Exile_Car_BTR40_MG_Camo","Exile_Car_HMMWV_M134_Green","Exile_Car_HMMWV_M134_Desert",/*"Exile_Car_HMMWV_M134_Desert","Exile_Car_HMMWV_M2_Desert",*/"B_LSV_01_armed_F"]; // Type of vehicle spawned to defend AI bases	
+GMS_AIPatrolVehiclesBlue = GMS_open_armed_vehicles;
+GMS_AIPatrolVehiclesRed = GMS_lightlyArmed_ARMA3;
+GMS_AIPatrolVehiclesGreen = GMS_light_AT_ARMA3 + GMS_tracked_APC_ARMA3;
+GMS_AIPatrolVehiclesOrange = GMS_Tanks_ARMA3 + GMS_light_AT_ARMA3;
 #ifdef usCUP
-blck_AIPatrolVehiclesBlue = blck_AIPatrolVehiclesBlue + blck_open_armed_CUP;
-blck_AIPatrolVehiclesRed = blck_AIPatrolVehiclesRed + blck_closed_armed_CUP;
-blck_AIPatrolVehiclesGreen = blck_AIPatrolVehiclesGreen + blck_APC_CUP;
-blck_AIPatrolVehiclesOrange = blck_AIPatrolVehiclesOrange + blck_Tanks_CUP;
+GMS_AIPatrolVehiclesBlue = GMS_AIPatrolVehiclesBlue + GMS_open_armed_CUP;
+GMS_AIPatrolVehiclesRed = GMS_AIPatrolVehiclesRed + GMS_closed_armed_CUP;
+GMS_AIPatrolVehiclesGreen = GMS_AIPatrolVehiclesGreen + GMS_APC_CUP;
+GMS_AIPatrolVehiclesOrange = GMS_AIPatrolVehiclesOrange + GMS_Tanks_CUP;
 #endif 
 
 
 // Blacklisted itesm
-blck_blacklistedOptics = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
+GMS_blacklistedOptics = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
 
 // AI Weapons and Attachments
-blck_bipods = ["bipod_01_F_blk","bipod_01_F_mtp","bipod_01_F_snd","bipod_02_F_blk","bipod_02_F_hex","bipod_02_F_tan","bipod_03_F_blk","bipod_03_F_oli"];
+GMS_bipods = ["bipod_01_F_blk","bipod_01_F_mtp","bipod_01_F_snd","bipod_02_F_blk","bipod_02_F_hex","bipod_02_F_tan","bipod_03_F_blk","bipod_03_F_oli"];
 
-blck_Optics_Holo = ["optic_Hamr","optic_MRD","optic_Holosight","optic_Holosight_smg","optic_Aco","optic_ACO_grn","optic_ACO_grn_smg","optic_Aco_smg","optic_Yorris"];
-blck_Optics_Reticule = ["optic_Arco","optic_MRCO"];
-blck_Optics_Scopes = [
+GMS_Optics_Holo = ["optic_Hamr","optic_MRD","optic_Holosight","optic_Holosight_smg","optic_Aco","optic_ACO_grn","optic_ACO_grn_smg","optic_Aco_smg","optic_Yorris"];
+GMS_Optics_Reticule = ["optic_Arco","optic_MRCO"];
+GMS_Optics_Scopes = [
 	"optic_AMS","optic_AMS_khk","optic_AMS_snd",
 	"optic_DMS",
 	"optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_KHS_tan",
@@ -250,8 +250,8 @@ blck_Optics_Scopes = [
 	"optic_tws"
 	//"optic_tws_mg",
 	];
-blck_Optics = blck_Optics_Holo + blck_Optics_Reticule + blck_Optics_Scopes;		
-blck_Optics_Apex = [
+GMS_Optics = GMS_Optics_Holo + GMS_Optics_Reticule + GMS_Optics_Scopes;		
+GMS_Optics_Apex = [
 	//Apex
 	"optic_Arco_blk_F",	"optic_Arco_ghex_F",
 	"optic_DMS_ghex_F",
@@ -262,16 +262,16 @@ blck_Optics_Apex = [
 	"optic_Holosight_blk_F","optic_Holosight_khk_F","optic_Holosight_smg_blk_F"
 	];	
 #ifdef useAPEX	
-blck_Optics = blck_Optics + blck_Optics_Apex;
+GMS_Optics = GMS_Optics + GMS_Optics_Apex;
 #endif
 
-blck_bipods = [
+GMS_bipods = [
 	"bipod_01_F_blk","bipod_01_F_mtp","bipod_01_F_snd","bipod_02_F_blk","bipod_02_F_hex","bipod_02_F_tan","bipod_03_F_blk","bipod_03_F_oli",
 	//Apex
 	"bipod_01_F_khk"
 	];
 
-blck_silencers = [
+GMS_silencers = [
 	"muzzle_snds_338_black","muzzle_snds_338_green","muzzle_snds_338_sand","muzzle_snds_93mmg","muzzle_snds_93mmg_tan","muzzle_snds_acp","muzzle_snds_B",
 	"muzzle_snds_H","muzzle_snds_H_MG","muzzle_snds_H_SW","muzzle_snds_L","muzzle_snds_M",
 	//Apex			
@@ -280,82 +280,82 @@ blck_silencers = [
 	];		
 
 
-blck_RifleSniper = [ 
+GMS_RifleSniper = [ 
 	"srifle_EBR_F","srifle_GM6_F","srifle_LRR_F","srifle_DMR_01_F" 		
 ];
 
-blck_RifleAsault_556 = [
+GMS_RifleAsault_556 = [
 	"arifle_SDAR_F","arifle_TRG21_F","arifle_TRG20_F","arifle_TRG21_GL_F","arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_GL_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_Mk20_GL_plain_F","arifle_SDAR_F"
 	];
 
-blck_RifleAsault_650 = [
+GMS_RifleAsault_650 = [
 	/*"arifle_Katiba_F","arifle_Katiba_C_F","arifle_Katiba_GL_F",*/"arifle_MXC_F","arifle_MX_F","arifle_MX_GL_F","arifle_MXM_F"
 	];
 
-blck_RifleAsault = [
+GMS_RifleAsault = [
 	/*"arifle_Katiba_F","arifle_Katiba_C_F","arifle_Katiba_GL_F",*/"arifle_MXC_F","arifle_MX_F","arifle_MX_GL_F","arifle_MXM_F","arifle_SDAR_F",
 	"arifle_TRG21_F","arifle_TRG20_F","arifle_TRG21_GL_F","arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_GL_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_Mk20_GL_plain_F"
 ];
 
-blck_RifleLMG = [
+GMS_RifleLMG = [
 	"LMG_Mk200_F","LMG_Zafir_F"
 ];
 
-blck_RifleOther = [
+GMS_RifleOther = [
 	"SMG_01_F","SMG_02_F"
 ];
 
-blck_Pistols = [
+GMS_Pistols = [
 	"hgun_PDW2000_F","hgun_ACPC2_F","hgun_Rook40_F","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Pistol_Signal_F"
 ];	
-blck_Pistols_blue = blck_Pistols;
-blck_Pistols_red = blck_Pistols;
-blck_Pistols_green = blck_Pistols;
-blck_Pistols_orange = blck_Pistols;
+GMS_Pistols_blue = GMS_Pistols;
+GMS_Pistols_red = GMS_Pistols;
+GMS_Pistols_green = GMS_Pistols;
+GMS_Pistols_orange = GMS_Pistols;
 
-blck_DLC_MMG = [
+GMS_DLC_MMG = [
 			"MMG_01_hex_F","MMG_02_sand_F","MMG_01_tan_F","MMG_02_black_F","MMG_02_camo_F"
 ];
 
-blck_DLC_Sniper = [
+GMS_DLC_Sniper = [
 	"srifle_DMR_02_camo_F","srifle_DMR_02_F","srifle_DMR_02_sniper_F","srifle_DMR_03_F","srifle_DMR_03_tan_F","srifle_DMR_04_F","srifle_DMR_04_Tan_F","srifle_DMR_05_blk_F","srifle_DMR_05_hex_F","srifle_DMR_05_tan_F","srifle_DMR_06_camo_F","srifle_DMR_06_olive_F"
 ];
 			
 //This defines the random weapon to spawn on the AI
 //https://community.bistudio.com/wiki/Arma_3_CfgWeapons_Weapons
-blck_WeaponList_Orange = blck_RifleSniper + blck_RifleAsault_650 + blck_RifleLMG + blck_DLC_Sniper + blck_DLC_MMG;
-blck_WeaponList_Green = blck_RifleSniper + blck_RifleAsault_650 +blck_RifleLMG + blck_DLC_MMG;
-blck_WeaponList_Blue = blck_RifleOther + blck_RifleAsault_556 + blck_RifleAsault_650;
-blck_WeaponList_Red = blck_RifleAsault_556 + blck_RifleSniper + blck_RifleAsault_650 + blck_RifleLMG;
+GMS_WeaponList_Orange = GMS_RifleSniper + GMS_RifleAsault_650 + GMS_RifleLMG + GMS_DLC_Sniper + GMS_DLC_MMG;
+GMS_WeaponList_Green = GMS_RifleSniper + GMS_RifleAsault_650 +GMS_RifleLMG + GMS_DLC_MMG;
+GMS_WeaponList_Blue = GMS_RifleOther + GMS_RifleAsault_556 + GMS_RifleAsault_650;
+GMS_WeaponList_Red = GMS_RifleAsault_556 + GMS_RifleSniper + GMS_RifleAsault_650 + GMS_RifleLMG;
 
-blck_apexWeapons = ["arifle_AK12_F","arifle_AK12_GL_F","arifle_AKM_F","arifle_AKM_FL_F","arifle_AKS_F","arifle_ARX_blk_F","arifle_ARX_ghex_F","arifle_ARX_hex_F","arifle_CTAR_blk_F","arifle_CTAR_hex_F",
+GMS_apexWeapons = ["arifle_AK12_F","arifle_AK12_GL_F","arifle_AKM_F","arifle_AKM_FL_F","arifle_AKS_F","arifle_ARX_blk_F","arifle_ARX_ghex_F","arifle_ARX_hex_F","arifle_CTAR_blk_F","arifle_CTAR_hex_F",
 					"arifle_CTAR_ghex_F","arifle_CTAR_GL_blk_F","arifle_CTARS_blk_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_khk_F","arifle_SPAR_01_snd_F",
 					"arifle_SPAR_01_GL_blk_F","arifle_SPAR_01_GL_khk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_02_blk_F","arifle_SPAR_02_khk_F","arifle_SPAR_02_snd_F","arifle_SPAR_03_blk_F",
 					"arifle_SPAR_03_khk_F","arifle_SPAR_03_snd_F","arifle_MX_khk_F","arifle_MX_GL_khk_F","arifle_MXC_khk_F","arifle_MXM_khk_F"];
 #ifdef useAPEX			
-blck_WeaponList_Orange = blck_WeaponList_Orange + blck_apexWeapons;
-blck_WeaponList_Green = blck_WeaponList_Green + blck_apexWeapons;	
+GMS_WeaponList_Orange = GMS_WeaponList_Orange + GMS_apexWeapons;
+GMS_WeaponList_Green = GMS_WeaponList_Green + GMS_apexWeapons;	
 #endif
 
-blck_backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
+GMS_backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
 	
-blck_ApexBackpacks = [
+GMS_ApexBackpacks = [
 	"B_Bergen_mcamo_F","B_Bergen_dgtl_F","B_Bergen_hex_F","B_Bergen_tna_F","B_AssaultPack_tna_F","B_Carryall_ghex_F",
 	"B_FieldPack_ghex_F","B_ViperHarness_blk_F","B_ViperHarness_ghex_F","B_ViperHarness_hex_F","B_ViperHarness_khk_F",
 	"B_ViperHarness_oli_F","B_ViperLightHarness_blk_F","B_ViperLightHarness_ghex_F","B_ViperLightHarness_hex_F","B_ViperLightHarness_khk_F","B_ViperLightHarness_oli_F"
 	];	
 #ifdef useAPEX
-blck_backpacks = blck_ApexBackpacks + blck_backpacks;
+GMS_backpacks = GMS_ApexBackpacks + GMS_backpacks;
 #endif
-blck_backpacks_blue = blck_backpacks;
-blck_backpacks_red = blck_backpacks;
-blck_backpacks_green = blck_backpacks;
-blck_backpacks_orange = blck_backpacks;
+GMS_backpacks_blue = GMS_backpacks;
+GMS_backpacks_red = GMS_backpacks;
+GMS_backpacks_green = GMS_backpacks;
+GMS_backpacks_orange = GMS_backpacks;
 
 
-blck_BanditHeadgear = ["H_Shemag_khk","H_Shemag_olive","H_Shemag_tan","H_ShemagOpen_khk"];
+GMS_BanditHeadgear = ["H_Shemag_khk","H_Shemag_olive","H_Shemag_tan","H_ShemagOpen_khk"];
 //This defines the skin list, some skins are disabled by default to permit players to have high visibility uniforms distinct from those of the AI.
-blck_headgear = [
+GMS_headgear = [
 	"H_Cap_blk",
 	"H_Cap_blk_Raven",
 	"H_Cap_blu",
@@ -439,7 +439,7 @@ blck_headgear = [
 	"H_Cap_blk_Syndikat_F",
 	"H_Cap_grn_Syndikat_F"		
 ];
-blck_helmets = [
+GMS_helmets = [
 	"H_HelmetB",
 	"H_HelmetB_black",
 	"H_HelmetB_camo",
@@ -493,14 +493,14 @@ blck_helmets = [
 	"H_HelmetO_ghex_F",
 	"H_HelmetCrew_O_ghex_F"			
 ];
-blck_headgearList = blck_headgear + blck_helmets;
-blck_headgear_blue = blck_headgearList;
-blck_headgear_red = blck_headgearList;
-blck_headgear_green = blck_headgearList;
-blck_headgear_orange = blck_headgearList;
+GMS_headgearList = GMS_headgear + GMS_helmets;
+GMS_headgear_blue = GMS_headgearList;
+GMS_headgear_red = GMS_headgearList;
+GMS_headgear_green = GMS_headgearList;
+GMS_headgear_orange = GMS_headgearList;
 
 //This defines the skin list, some skins are disabled by default to permit players to have high visibility uniforms distinct from those of the AI.
-blck_SkinList = [
+GMS_SkinList = [
 	//https://community.bistudio.com/wiki/Arma_3_CfgWeapons_Equipment
 	// I have commented out some high visibility uniforms that can be reserved for players or special missions.
 	// for example, you could have a uniform list specified in a mission template.
@@ -592,12 +592,12 @@ blck_SkinList = [
 	"U_B_CTRG_Soldier_urb_2_F",
 	"U_B_CTRG_Soldier_urb_3_F"
 ];
-blck_SkinList_blue = blck_SkinList;
-blck_SkinList_red = blck_SkinList;
-blck_SkinList_green = blck_SkinList;
-blck_SkinList_orange = blck_SkinList;
+GMS_SkinList_blue = GMS_SkinList;
+GMS_SkinList_red = GMS_SkinList;
+GMS_SkinList_green = GMS_SkinList;
+GMS_SkinList_orange = GMS_SkinList;
 
-blck_vests = [
+GMS_vests = [
 	"V_Press_F",
 	"V_Rangemaster_belt",
 	"V_TacVest_blk",
@@ -656,19 +656,19 @@ blck_vests = [
 	#endif
 	"V_PlateCarrier2_rgr_noflag_F"
 	];
-blck_vests_blue = blck_vests;
-blck_vests_red = blck_vests;
-blck_vests_green = blck_vests;
-blck_vests_orange = blck_vests;		
+GMS_vests_blue = GMS_vests;
+GMS_vests_red = GMS_vests;
+GMS_vests_green = GMS_vests;
+GMS_vests_orange = GMS_vests;		
 
-blck_UMS_uniforms = 
+GMS_UMS_uniforms = 
 [
 	"U_I_Wetsuit",
 	"U_O_Wetsuit",
 	"U_B_Wetsuit"
 ];
 
-blck_UMS_headgear = 
+GMS_UMS_headgear = 
 [
 	"G_Diving",
 	"G_B_Diving",
@@ -676,19 +676,19 @@ blck_UMS_headgear =
 	"G_I_Diving"
 ];
 
-blck_UMS_vests = 
+GMS_UMS_vests = 
 [
 	"V_RebreatherB",
 	"V_RebreatherIA",
 	"V_RebreatherIR"
 ];
 
-blck_UMS_weapons = 
+GMS_UMS_weapons = 
 [
 	"arifle_SDAR_F"
 ];
 
-blck_UMS_submarines =
+GMS_UMS_submarines =
 [
 	
 	"Exile_Boat_SDV_CSAT",
@@ -696,21 +696,21 @@ blck_UMS_submarines =
 	"Exile_Boat_SDV_Grey"
 ];
 
-blck_UMS_crates =	["Exile_Container_SupplyBox"];
+GMS_UMS_crates =	["Exile_Container_SupplyBox"];
 
 
-blck_UMS_unarmedSurfaceVessels = 
+GMS_UMS_unarmedSurfaceVessels = 
 [
 	"B_Boat_Transport_01_F",
 	"I_Boat_Transport_01_F"
 ];
-blck_UMS_armedSurfaceVessels =
+GMS_UMS_armedSurfaceVessels =
 [
 	"B_Boat_Armed_01_minigun_F",
 	"I_Boat_Armed_01_minigun_F"	
 ];
-blck_UMS_surfaceVessels = blck_UMS_unarmedSurfaceVessels + blck_UMS_armedSurfaceVessels;
-blck_UMS_shipWrecks =
+GMS_UMS_surfaceVessels = GMS_UMS_unarmedSurfaceVessels + GMS_UMS_armedSurfaceVessels;
+GMS_UMS_shipWrecks =
 [
 	"Land_Boat_06_wreck_F",
 	"Land_Boat_05_wreck_F",
@@ -721,10 +721,10 @@ blck_UMS_shipWrecks =
 ];
 
 //CraftingFood
-blck_Meats=[
+GMS_Meats=[
 	
 ];
-blck_Drink = [
+GMS_Drink = [
 	"Exile_Item_PlasticBottleCoffee",
 	"Exile_Item_PowerDrink",
 	"Exile_Item_PlasticBottleFreshWater",
@@ -732,7 +732,7 @@ blck_Drink = [
 	"Exile_Item_EnergyDrink",
 	"Exile_Item_MountainDupe"
 ];
-blck_Food = [
+GMS_Food = [
 	"Exile_Item_EMRE",		
 	"Exile_Item_GloriousKnakworst",
 	"Exile_Item_Surstromming",
@@ -751,10 +751,10 @@ blck_Food = [
 ];
 
 //CraftingFood
-blck_Meats=[
+GMS_Meats=[
 	
 ];
-blck_Drink = [
+GMS_Drink = [
 	"Exile_Item_PlasticBottleCoffee",
 	"Exile_Item_PowerDrink",
 	"Exile_Item_PlasticBottleFreshWater",
@@ -762,7 +762,7 @@ blck_Drink = [
 	"Exile_Item_EnergyDrink",
 	"Exile_Item_MountainDupe"
 ];
-blck_Food = [
+GMS_Food = [
 	"Exile_Item_EMRE",		
 	"Exile_Item_GloriousKnakworst",
 	"Exile_Item_Surstromming",
@@ -780,18 +780,18 @@ blck_Food = [
 	"Exile_Item_InstantCoffee"
 ];
 
-blck_ConsumableItems = blck_Meats + blck_Drink + blck_Food;
-blck_throwableExplosives = ["HandGrenade","MiniGrenade"];
-blck_otherExplosives = ["1Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","DemoCharge_Remote_Mag","SatchelCharge_Remote_Mag"];
-blck_explosives = blck_throwableExplosives + blck_otherExplosives;
-blck_medicalItems = ["Exile_Item_InstaDoc","Exile_Item_Bandage","Exile_Item_Vishpirin"];
-blck_specialItems = blck_throwableExplosives + blck_medicalItems;
-blck_binocs = ["NVGoggles","NVGoggles_INDEP","NVGoggles_OPFOR"];
-blck_NVG = ["NVGoggles","NVGoggles_INDEP","NVGoggles_OPFOR","Exile_Item_XM8"];
-blck_buildingMaterials = ["Exile_Item_ExtensionCord","Exile_Item_JunkMetal","Exile_Item_LightBulb","Exile_Item_MetalBoard",
+GMS_ConsumableItems = GMS_Meats + GMS_Drink + GMS_Food;
+GMS_throwableExplosives = ["HandGrenade","MiniGrenade"];
+GMS_otherExplosives = ["1Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","DemoCharge_Remote_Mag","SatchelCharge_Remote_Mag"];
+GMS_explosives = GMS_throwableExplosives + GMS_otherExplosives;
+GMS_medicalItems = ["Exile_Item_InstaDoc","Exile_Item_Bandage","Exile_Item_Vishpirin"];
+GMS_specialItems = GMS_throwableExplosives + GMS_medicalItems;
+GMS_binocs = ["NVGoggles","NVGoggles_INDEP","NVGoggles_OPFOR"];
+GMS_NVG = ["NVGoggles","NVGoggles_INDEP","NVGoggles_OPFOR","Exile_Item_XM8"];
+GMS_buildingMaterials = ["Exile_Item_ExtensionCord","Exile_Item_JunkMetal","Exile_Item_LightBulb","Exile_Item_MetalBoard",
 		"Exile_Item_MetalPole","Exile_Item_MetalScrews","Exile_Item_Cement","Exile_Item_Sand","Exile_Item_MetalWire","Exile_Item_ExtensionCord","Exile_Item_JunkMetal"];	
-blck_tools = ["Exile_Item_Matches","Exile_Item_CookingPot","Exile_Melee_Axe","Exile_Melee_SledgeHammmer","Exile_Item_Handsaw","Exile_Item_Pliers","Exile_Item_CanOpener","Exile_Item_Shovel"];
-blck_loot = blck_buildingMaterials + blck_tools;
+GMS_tools = ["Exile_Item_Matches","Exile_Item_CookingPot","Exile_Melee_Axe","Exile_Melee_SledgeHammmer","Exile_Item_Handsaw","Exile_Item_Pliers","Exile_Item_CanOpener","Exile_Item_Shovel"];
+GMS_loot = GMS_buildingMaterials + GMS_tools;
 /***************************************************************************************
 DEFAULT CONTENTS OF LOOT CRATES FOR EACH MISSION
 Note however that these configurations can be used in any way you like or replaced with mission-specific customized loot arrays
@@ -799,10 +799,10 @@ for examples of how you can do this see \Major\Compositions.sqf
 ***************************************************************************************/			
 
 // values are: number of things from the weapons, magazines, optics, materials(cinder etc), items (food etc) and backpacks arrays to add, respectively.
-blck_lootCountsOrange = [[6,8],[24,32],[5,10],[25,35],16,1];   // Orange
-blck_lootCountsGreen = [[4,8],[20,30],[5,9],[15,18],18,1]; // Green
-blck_lootCountsRed = [[4,6],[12,18],4,[6,12],6,1];  // Red	
-blck_lootCountsBlue = [4,12,3,6,6,1];   // Blue
+GMS_lootCountsOrange = [[6,8],[24,32],[5,10],[25,35],16,1];   // Orange
+GMS_lootCountsGreen = [[4,8],[20,30],[5,9],[15,18],18,1]; // Green
+GMS_lootCountsRed = [[4,6],[12,18],4,[6,12],6,1];  // Red	
+GMS_lootCountsBlue = [4,12,3,6,6,1];   // Blue
 
 private _weaponsOrange = 
 [// Weapons	
@@ -895,7 +895,7 @@ private _backpacksOrange =
 	["B_Bergen_blk",1,2],["B_Bergen_mcamo",1,2],["B_Bergen_rgr",1,2],["B_Bergen_sgg",1,2],
 	["B_HuntingBackpack",1,2],["B_OutdoorPack_blk",1,2],["B_OutdoorPack_blu",1,2],["B_OutdoorPack_tan",1,2]
 ];		
-blck_BoxLoot_Orange = 
+GMS_BoxLoot_Orange = 
 	// Loot is grouped as [weapons],[magazines],[items] in order to be able to use the correct function to load the item into the crate later on.
 	// Each item consist of the following information ["ItemName",minNum, maxNum] where min is the smallest number added and min+max is the largest number added.
 [  				
@@ -999,7 +999,7 @@ private _backpacksGreen =
 	["B_Bergen_blk",1,2],["B_Bergen_mcamo",1,2],["B_Bergen_rgr",1,2],["B_Bergen_sgg",1,2],
 	["B_HuntingBackpack",1,2],["B_OutdoorPack_blk",1,2],["B_OutdoorPack_blu",1,2],["B_OutdoorPack_tan",1,2]
 ];	
-blck_BoxLoot_Green = 
+GMS_BoxLoot_Green = 
 [
 	_weaponsGreen,
 	_magazinesGreen,			
@@ -1084,7 +1084,7 @@ private _backpacksRed =
 	["B_Bergen_blk",1,2],["B_Bergen_mcamo",1,2],["B_Bergen_rgr",1,2],["B_Bergen_sgg",1,2],
 	["B_HuntingBackpack",1,2],["B_OutdoorPack_blk",1,2],["B_OutdoorPack_blu",1,2],["B_OutdoorPack_tan",1,2]
 ];						
-blck_BoxLoot_Red = 
+GMS_BoxLoot_Red = 
 [	
 	_weaponsRed,
 	_magazinesRed,		
@@ -1175,7 +1175,7 @@ private _backpacksBlue =
 	["B_Bergen_blk",1,2],["B_Bergen_mcamo",1,2],["B_Bergen_rgr",1,2],["B_Bergen_sgg",1,2],
 	["B_HuntingBackpack",1,2],["B_OutdoorPack_blk",1,2],["B_OutdoorPack_blu",1,2],["B_OutdoorPack_tan",1,2]
 ];		
-blck_BoxLoot_Blue = 
+GMS_BoxLoot_Blue = 
 [
 	_weaponsBlue,
 	_magazinesBlue,	
@@ -1185,7 +1185,7 @@ blck_BoxLoot_Blue =
 
 ];
 
-blck_contructionLootExile = [  
+GMS_contructionLootExile = [  
 		[// Weapons	
 							
 		],
@@ -1212,8 +1212,8 @@ blck_contructionLootExile = [
 			
 		]
 ];
-blck_contructionLoot = blck_contructionLootExile;
-blck_supportLootExile = [
+GMS_contructionLoot = GMS_contructionLootExile;
+GMS_supportLootExile = [
 		[// Weapons	
 
 		],
@@ -1238,9 +1238,9 @@ blck_supportLootExile = [
 		]
 ];
 
-blck_supportLoot = blck_supportLootExile;
+GMS_supportLoot = GMS_supportLootExile;
 
-blck_highPoweredLoot = [ 
+GMS_highPoweredLoot = [ 
 		[// Weapons	
 			["MMG_01_hex_F","150Rnd_93x64_Mag"],
 			["MMG_01_tan_F","150Rnd_93x64_Mag"],
@@ -1306,7 +1306,7 @@ blck_highPoweredLoot = [
 			
 		]
 ];			
-blck_configs_loaded = true;
-["Configurations for Exile Loaded"] call blck_fnc_log;
+GMS_configs_loaded = true;
+["Configurations for Exile Loaded"] call GMS_fnc_log;
 
 

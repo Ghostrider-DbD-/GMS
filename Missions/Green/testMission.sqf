@@ -7,8 +7,8 @@
 	By Ghostrider-GRG-
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 _defaultMissionLocations = [];
 _markerType = ["mil_box",[1,1],"<null>"];
@@ -16,8 +16,8 @@ _markerColor = "ColorRed";
 _startMsg = "TODO: Change approiately";
 _endMsg = "TODO: Change Appropriately";
 _markerMissionName = "Stay Away";
-_crateLoot = blck_BoxLoot_Blue;
-_lootCounts = blck_lootCountsBlue;
+_crateLoot = GMS_BoxLoot_Blue;
+_lootCounts = GMS_lootCountsBlue;
 
 _garrisonedBuildings_BuildingPosnSystem = [
 	//      ["Land_Unfinished_Building_02_F",[-28.137,-48.6494,0],0,true,true,0.67,3,[],4],
@@ -88,36 +88,36 @@ _missionLootBoxes = [
 ];
 
 /*
-	Use the parameters below to customize your mission - see the template or blck_configs.sqf for details about each them
+	Use the parameters below to customize your mission - see the template or GMS_configs.sqf for details about each them
 */
-_chanceHeliPatrol = blck_chanceHeliPatrolBlue;
-_noChoppers = blck_noPatrolHelisBlue;
-_missionHelis = blck_patrolHelisBlue;
-_chancePara = blck_chanceParaBlue;
-_noPara = blck_noParaBlue;
+_chanceHeliPatrol = GMS_chanceHeliPatrolBlue;
+_noChoppers = GMS_noPatrolHelisBlue;
+_missionHelis = GMS_patrolHelisBlue;
+_chancePara = GMS_chanceParaBlue;
+_noPara = GMS_noParaBlue;
 _paraTriggerDistance = 400;
 _paraSkill = 'Blue';
 _chanceLoot = 0.0;
-_paraLoot = blck_BoxLoot_Blue;
-_paraLootCounts = blck_lootCountsBlue;
+_paraLoot = GMS_BoxLoot_Blue;
+_paraLootCounts = GMS_lootCountsBlue;
 _missionLandscapeMode = "precise";
-_uniforms = blck_SkinList;
-_headgear = blck_headgear;
-_vests = blck_vests;
-_backpacks = blck_backpacks;
-_sideArms = blck_Pistols;
+_uniforms = GMS_SkinList;
+_headgear = GMS_headgear;
+_vests = GMS_vests;
+_backpacks = GMS_backpacks;
+_sideArms = GMS_Pistols;
 _spawnCratesTiming = "atMissionSpawnGround";
 _loadCratesTiming = "atMissionSpawn";
 _endCondition = allKilledOrPlayerNear;
-_minNoAI = blck_MinAI_Blue;
-_maxNoAI = blck_MaxAI_Blue;
-_noAIGroups = blck_AIGrps_Blue;
-_noVehiclePatrols = blck_SpawnVeh_Blue;
-_noEmplacedWeapons = blck_SpawnEmplaced_Blue;
-_minNoAI = blck_MinAI_Blue;
-_maxNoAI = blck_MaxAI_Blue;
-_noAIGroups = blck_AIGrps_Blue;
-_noVehiclePatrols = blck_SpawnVeh_Blue;
-_noEmplacedWeapons = blck_SpawnEmplaced_Blue;
+_minNoAI = GMS_MinAI_Blue;
+_maxNoAI = GMS_MaxAI_Blue;
+_noAIGroups = GMS_AIGrps_Blue;
+_noVehiclePatrols = GMS_SpawnVeh_Blue;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Blue;
+_minNoAI = GMS_MinAI_Blue;
+_maxNoAI = GMS_MaxAI_Blue;
+_noAIGroups = GMS_AIGrps_Blue;
+_noVehiclePatrols = GMS_SpawnVeh_Blue;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Blue;
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

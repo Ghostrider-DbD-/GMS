@@ -1,5 +1,5 @@
 /*
-	blck_fnc_getAllMarkersOfSubtype
+	GMS_fnc_getAllMarkersOfSubtype
 
 	By Ghostrider [GRG]
 	Copyright 2016
@@ -14,7 +14,7 @@
 /*
 	Useful if you know the rootname for markers for a mission system to add these to black lists or other lists
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 private _subtype = _this;
 private _end = (count _subtype) - 1;
 private _m = [];

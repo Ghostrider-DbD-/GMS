@@ -4,7 +4,7 @@
 	and redirects them.
 
 
-	blck_fnc_groupWaypointMonitor 
+	GMS_fnc_groupWaypointMonitor 
 	
 	for ghostridergaming
 	By Ghostrider [GRG]
@@ -17,7 +17,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 // TODO: Test functionality of this
 _fn_waypointComplete = {
 	private _group = _this select 0;
@@ -38,10 +38,10 @@ _fn_waypointComplete = {
 		_soldierType = _x getVariable["soldierType","null"];
 		switch (_soldierType) do
 		{
-			case "infantry": {[_x, 60] call blck_fnc_checkgroupwaypointstatus;};
-			case "vehicle": {[_x, 90, 800] call blck_fnc_checkgroupwaypointstatus;};
-			case "aircraft": {[_x, 90, 1000] call blck_fnc_checkgroupwaypointstatus;};
+			case "infantry": {[_x, 60] call GMS_fnc_checkgroupwaypointstatus;};
+			case "vehicle": {[_x, 90, 800] call GMS_fnc_checkgroupwaypointstatus;};
+			case "aircraft": {[_x, 90, 1000] call GMS_fnc_checkgroupwaypointstatus;};
 		};
 	};
-} forEach blck_monitoredMissionAIGroups;
+} forEach GMS_monitoredMissionAIGroups;
 

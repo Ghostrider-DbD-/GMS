@@ -11,11 +11,11 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Orange Mission with template = default";
-_crateLoot = blck_BoxLoot_Orange;
+_crateLoot = GMS_BoxLoot_Orange;
 _lootCounts = [15,50,20,60,44,5]; 
 _startMsg = "Operation Shutdown reported in a nearby sector ! Check the marker on your map for the location!";
 _endMsg = "Operation Shutdown has been shutout: time to claim your loot!";
@@ -101,13 +101,13 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     [selectRandom blck_AIPatrolVehiclesOrange,[-48.9414,-27.9336,-0.00839043],0.014744],
+     [selectRandom GMS_AIPatrolVehiclesOrange,[-48.9414,-27.9336,-0.00839043],0.014744],
      ["CUP_B_Hilux_igla_BLU_G_F",[-43.2539,15.6504,0.0234108],359.996]
-     //[selectRandom blck_light_AT_ARMA3,[-27.0313,26.8213,-0.022541],0.00204721],
-     //[selectRandom blck_tracked_AA_ARMA3,[-12.9023,47.8105,0.0262032],359.999],
-     //[selectRandom blck_tracked_APC_ARMA3,[-0.851563,-70.9072,-0.02915],0.0194982],
-     //[selectRandom blck_light_AT_ARMA3,[38.2285,-66.7969,0.00758934],0.0237408],
-     //[selectRandom blck_tracked_APC_ARMA3,[52.9941,22.5596,0.00379944],359.96] 
+     //[selectRandom GMS_light_AT_ARMA3,[-27.0313,26.8213,-0.022541],0.00204721],
+     //[selectRandom GMS_tracked_AA_ARMA3,[-12.9023,47.8105,0.0262032],359.999],
+     //[selectRandom GMS_tracked_APC_ARMA3,[-0.851563,-70.9072,-0.02915],0.0194982],
+     //[selectRandom GMS_light_AT_ARMA3,[38.2285,-66.7969,0.00758934],0.0237408],
+     //[selectRandom GMS_tracked_APC_ARMA3,[52.9941,22.5596,0.00379944],359.96] 
 ];
 /*
 _missionPatrolVehicles = [];
@@ -165,18 +165,18 @@ _scubaGroupParameters = [
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Orange;
-_maxNoAI = blck_MaxAI_Orange;
-_noAIGroups = blck_AIGrps_Orange;
-_noVehiclePatrols = blck_SpawnVeh_Orange;
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;
-_minNoAI = blck_MinAI_Orange;  // Setting this in the mission file overrides the defaults such as blck_MinAI_Orange
-_maxNoAI = blck_MaxAI_Orange;  // Setting this in the mission file overrides the defaults 
-_noAIGroups = blck_AIGrps_Orange;  // Setting this in the mission file overrides the defaults 
-_noVehiclePatrols = blck_SpawnVeh_Orange;  // Setting this in the mission file overrides the defaults 
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;  // Setting this in the mission file overrides the defaults 
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Orange;
+_maxNoAI = GMS_MaxAI_Orange;
+_noAIGroups = GMS_AIGrps_Orange;
+_noVehiclePatrols = GMS_SpawnVeh_Orange;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
+_minNoAI = GMS_MinAI_Orange;  // Setting this in the mission file overrides the defaults such as GMS_MinAI_Orange
+_maxNoAI = GMS_MaxAI_Orange;  // Setting this in the mission file overrides the defaults 
+_noAIGroups = GMS_AIGrps_Orange;  // Setting this in the mission file overrides the defaults 
+_noVehiclePatrols = GMS_SpawnVeh_Orange;  // Setting this in the mission file overrides the defaults 
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;  // Setting this in the mission file overrides the defaults 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;  // Setting this in the mission file overrides the defaults 
+_useMines = GMS_useMines;  // Setting this in the mission file overrides the defaults 
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

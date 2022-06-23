@@ -1,5 +1,5 @@
 /*
-   call as [] call blck_fnc_cleanEmptyGroups;
+   call as [] call GMS_fnc_cleanEmptyGroups;
    Deletes any empty groups and thereby prevents errors resulting from createGroup returning nullGroup.
 
 	By Ghostrider [GRG]
@@ -11,7 +11,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 private _grp = allGroups;
 for "_i" from 1 to (count _grp) do

@@ -12,12 +12,12 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 diag_log "[GMS] Spawning Orange Mission with template = bunkerMission";
-_crateLoot = blck_BoxLoot_Orange;
-_lootCounts = [15,50,20,60,44,5];  //  	blck_lootCountsOrange = [8,32,8,30,16,1];
+_crateLoot = GMS_BoxLoot_Orange;
+_lootCounts = [15,50,20,60,44,5];  //  	GMS_lootCountsOrange = [8,32,8,30,16,1];
 _startMsg = "A Mafia General is building a heavily defended bunker. Stop him and claim a reward!";
 _endMsg = "The Mafia General has been defeated!";
 _markerLabel = "";
@@ -119,26 +119,26 @@ _scubaGroupParameters = [
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Orange;
-_maxNoAI = blck_MaxAI_Orange;
-_noAIGroups = blck_AIGrps_Orange;
-_noVehiclePatrols = blck_SpawnVeh_Orange;
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;
-_uniforms = blck_SkinList;
-_headgear = blck_headgear;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Orange;
+_maxNoAI = GMS_MaxAI_Orange;
+_noAIGroups = GMS_AIGrps_Orange;
+_noVehiclePatrols = GMS_SpawnVeh_Orange;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
+_uniforms = GMS_SkinList;
+_headgear = GMS_headgear;
 
-_chanceHeliPatrol = blck_chanceHeliPatrolOrange;  // Setting this in the mission file overrides the defaults 
-_noChoppers = blck_noPatrolHelisOrange;
-_missionHelis = blck_patrolHelisOrange;
+_chanceHeliPatrol = GMS_chanceHeliPatrolOrange;  // Setting this in the mission file overrides the defaults 
+_noChoppers = GMS_noPatrolHelisOrange;
+_missionHelis = GMS_patrolHelisOrange;
 
-//_chancePara = blck_chanceParaOrange; // Setting this in the mission file overrides the defaults 
+//_chancePara = GMS_chanceParaOrange; // Setting this in the mission file overrides the defaults 
 //_noPara = 5;  // Setting this in the mission file overrides the defaults 
 //_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
 //_paraSkill = "orange";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
 //_chanceLoot = 0.7; 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,25,25,0],[0,0,0,25,25,0],[20,30,0,0,0,0],[0,0,0,0,30,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.

@@ -8,7 +8,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_coords",["_crateType","Box_NATO_Wps_F"],["_crateDir",0]];
 
@@ -19,7 +19,7 @@ _crate allowDamage false;
 _crate enableRopeAttach false;
 [_crate] call GMSCore_fnc_emptyObjectInventory;
 _crate setPosATL [_coords select 0, _coords select 1, (_coords select 2) + 0.25];
-[_crate, _crateDir] call blck_fnc_setDirUp;
+[_crate, _crateDir] call GMS_fnc_setDirUp;
 _crate setVectorUp surfaceNormal getPosATL _crate;
 
 if ((_coords select 2) < 0 || {surfaceIsWater (_coords)}) then

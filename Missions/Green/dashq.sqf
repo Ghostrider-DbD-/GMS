@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Green Mission with template = default";
-_crateLoot = blck_BoxLoot_Green;
-_lootCounts = blck_lootCountsGreen;
+_crateLoot = GMS_BoxLoot_Green;
+_lootCounts = GMS_lootCountsGreen;
 _startMsg = "An enemy HQ center was sighted in a nearby sector! Check the Green marker on your map for the location!";
 _endMsg = "The HQ at the Green Marker is under survivor control!";
 _markerLabel = "";
@@ -204,24 +204,24 @@ _missionEmplacedWeapons = []; //
 
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Green;
-_maxNoAI = blck_MaxAI_Green;
-_noAIGroups = blck_AIGrps_Green;
-_noVehiclePatrols = blck_SpawnVeh_Green;
-_noEmplacedWeapons = blck_SpawnEmplaced_Green;
-//_uniforms = blck_SkinList;
-//_headgear = blck_headgear;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Green;
+_maxNoAI = GMS_MaxAI_Green;
+_noAIGroups = GMS_AIGrps_Green;
+_noVehiclePatrols = GMS_SpawnVeh_Green;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Green;
+//_uniforms = GMS_SkinList;
+//_headgear = GMS_headgear;
 
-//_chancePara = blck_chanceParaGreen; // Setting this in the mission file overrides the defaults 
+//_chancePara = GMS_chanceParaGreen; // Setting this in the mission file overrides the defaults 
 //_noPara = 5;  // Setting this in the mission file overrides the defaults 
 //_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
 //_paraSkill = "Green";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
 //_chanceLoot = 0.7; 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0],[0,0,0,0,15,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

@@ -11,11 +11,11 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params["_pos","_crate",["_crateVisualMarker",true],["_dropHeight", 150]];
 private _chute = createVehicle ["I_Parachute_02_F", _pos, [], 0, "FLY"];
-[_chute] call blck_fnc_protectVehicle;
+[_chute] call GMS_fnc_protectVehicle;
 _crate setVariable["chute",_chute];
 _chute setPos [getPos _chute select 0, getPos _chute select 1, _dropHeight];
 _crate setPos (getPos _chute);

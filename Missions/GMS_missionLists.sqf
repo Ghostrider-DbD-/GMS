@@ -11,10 +11,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-
 private["_pathBlue","_missionListBlue","_pathRed","_missionListRed","_pathGreen","_missionListGreen","_pathOrange","_missionListOrange"];
-
 private _pathScouts = "Scouts";
 private _missionListScouts = ["Scouts"];  // OK Build 224
 

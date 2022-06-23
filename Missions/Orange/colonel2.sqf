@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Orange Mission with template = default";
-_crateLoot = blck_BoxLoot_Orange;
-_lootCounts = [15,50,20,60,44,5];  //  	blck_lootCountsOrange = [8,32,8,30,16,1];
+_crateLoot = GMS_BoxLoot_Orange;
+_lootCounts = [15,50,20,60,44,5];  //  	GMS_lootCountsOrange = [8,32,8,30,16,1];
 _startMsg = "A rogue Colonel is staging for an attack. Players must stop him. !";
 _endMsg = "The rogue Colonel has been defeated!";
 _markerLabel = "";
@@ -168,15 +168,15 @@ if (GMSCore_modtype isEqualTo "Exile") then
 	];
 };
 _missionLootBoxes = [    
-     [/*"Land_Bunker_F"*/ selectRandom blck_crateTypes,[62.877,-20.1797,0.00650358],_crateLoot,_lootCounts,89.743],
-     [/*"Land_Bunker_F"*/ selectRandom blck_crateTypes,[63.877,22.8203,0.00650358],_crateLoot,_lootCounts,89.743]
+     [/*"Land_Bunker_F"*/ selectRandom GMS_crateTypes,[62.877,-20.1797,0.00650358],_crateLoot,_lootCounts,89.743],
+     [/*"Land_Bunker_F"*/ selectRandom GMS_crateTypes,[63.877,22.8203,0.00650358],_crateLoot,_lootCounts,89.743]
 ];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 
 _missionEmplacedWeapons = 
 	[	
-     #ifdef blck_milServer  
+     #ifdef GMS_milServer  
      ["B_HMG_01_high_F",[-82.9199,-66.9844,-0.005615],360],
      ["B_HMG_01_A_F",[-69.1777,86.8281,0.0838783],359.997],
      ["B_GMG_01_F",[-54.8164,-9.12891,0.109973],359.995],
@@ -233,37 +233,37 @@ _missionGroups =
 
 
 _missionPatrolVehicles = [
-     [selectRandom blck_AIPatrolVehiclesOrange,[-124.51,3.77344,-0.0159559],0.00168412],
-     [selectRandom blck_AIPatrolVehiclesOrange,[-109.133,115.871,-0.03388],315.002]
-     //[selectRandom blck_tracked_AA_ARMA3,[106.887,113.871,-0.028933],45.0024],
-     //[selectRandom blck_Tanks_ARMA3,[129.93,-141.285,-0.015038],0.0016877],
-     //[selectRandom blck_light_AT_ARMA3,[180.85,2.07617,-0.0159585],0.00167379],
-     //[selectRandom blck_tracked_APC_ARMA3,[-120.836,-109.834,0.00836205],360]	
+     [selectRandom GMS_AIPatrolVehiclesOrange,[-124.51,3.77344,-0.0159559],0.00168412],
+     [selectRandom GMS_AIPatrolVehiclesOrange,[-109.133,115.871,-0.03388],315.002]
+     //[selectRandom GMS_tracked_AA_ARMA3,[106.887,113.871,-0.028933],45.0024],
+     //[selectRandom GMS_Tanks_ARMA3,[129.93,-141.285,-0.015038],0.0016877],
+     //[selectRandom GMS_light_AT_ARMA3,[180.85,2.07617,-0.0159585],0.00167379],
+     //[selectRandom GMS_tracked_APC_ARMA3,[-120.836,-109.834,0.00836205],360]	
 	
 	
 ];  // can be used to define the spawn positions of vehicle patrols
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Orange;
-_maxNoAI = blck_MaxAI_Orange;
-_noAIGroups = blck_AIGrps_Orange;
-_noVehiclePatrols = blck_SpawnVeh_Orange;
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;
-_uniforms = blck_SkinList;
-_headgear = blck_headgear;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Orange;
+_maxNoAI = GMS_MaxAI_Orange;
+_noAIGroups = GMS_AIGrps_Orange;
+_noVehiclePatrols = GMS_SpawnVeh_Orange;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
+_uniforms = GMS_SkinList;
+_headgear = GMS_headgear;
 
-_chanceHeliPatrol = blck_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
-_noChoppers = blck_noPatrolHelisOrange;
-_missionHelis = blck_patrolHelisOrange;
+_chanceHeliPatrol = GMS_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
+_noChoppers = GMS_noPatrolHelisOrange;
+_missionHelis = GMS_patrolHelisOrange;
 
-//_chancePara = blck_chanceParaOrange; // Setting this in the mission file overrides the defaults 
+//_chancePara = GMS_chanceParaOrange; // Setting this in the mission file overrides the defaults 
 //_noPara = 5;  // Setting this in the mission file overrides the defaults 
 //_paraTriggerDistance = 400; // Distance from mission at which a player triggers these reinforcements and any supplemental loot. 						// To have paras spawn at the time the mission spawns with/without accompanying loot set this to 0.
 //_paraSkill = "orange";  // Choose any skill you like; bump up skill or add AI to justify more valuable loot.
 //_chanceLoot = 0.7; 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,25,25,0],[0,0,0,25,25,0],[20,30,0,0,0,0],[0,0,0,0,30,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
@@ -271,4 +271,4 @@ _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in somethi
 
 //_endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

@@ -1,10 +1,10 @@
 /*
-	blck_fnc_initializeMission 
+	GMS_fnc_initializeMission 
 
 	Perform all functions necessary to initialize a mission.
-	A marker is created and mission info is added to blck_initializedMissionsList
+	A marker is created and mission info is added to GMS_initializedMissionsList
 	 
-	[_mrkr,_difficulty,_m] call blck_fnc_initializeMission;
+	[_mrkr,_difficulty,_m] call GMS_fnc_initializeMission;
 
 	Returns one of the following values:
 	 0 - the search for a position was unsuccessful - _coords == [] 
@@ -12,8 +12,8 @@
 	 2 - the mission has been run the maximum allowed times. 
 */
 
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-// Need to debug for GM map
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+
 private ["_coords","_coordArray","_return"];
 params[
 	"_key",  			// This key can be used to seach the list of available mission types to update that list when a mission is completed or times out
@@ -44,7 +44,7 @@ _markerConfigs params[
 	"_markerBrush"
 ];
 
-[format["_initializeMission (39): _markerName %1 | _key %2 | _missionCount %3 | _maxMissionRespawns %4 | _timesSpawned %5",_markerName,_key,_missionCount,_maxMissionRespawns,_timesSpawned]] call blck_fnc_log;
+[format["_initializeMission (39): _markerName %1 | _key %2 | _missionCount %3 | _maxMissionRespawns %4 | _timesSpawned %5",_markerName,_key,_missionCount,_maxMissionRespawns,_timesSpawned]] call GMS_fnc_log;
 
 private _initialized = 0;
 /*
@@ -64,9 +64,9 @@ if !(_defaultMissionLocations isEqualTo []) then
 } else {
 	if (_isScubaMission) then 
 	{
-		_coords = [] call blck_fnc_findShoreLocation;
+		_coords = [] call GMS_fnc_findShoreLocation;
 	} else {
-		_coords =  [] call blck_fnc_findSafePosn;
+		_coords =  [] call GMS_fnc_findSafePosn;
 		_coords = [_coords select 0, _coords select 1, 0];
 	};
 };
@@ -74,14 +74,14 @@ if !(_defaultMissionLocations isEqualTo []) then
 if (_initialized == 2) exitWith {_initialized};
 if (_coords isEqualTo [] || {_coords isEqualTo [0,0,0]}) exitWith 
 {
-	[format["No Safe Mission Spawn Position Found to spawn Mission %1",_markerMissionName],'warning'] call blck_fnc_log;
+	[format["No Safe Mission Spawn Position Found to spawn Mission %1",_markerMissionName],'warning'] call GMS_fnc_log;
 	// _initialized should be == 0 here
 	_initialized
 };
 
-blck_ActiveMissionCoords pushback _coords; 
-blck_missionsRunning = blck_missionsRunning + 1;
-//[format["_initializeMission (70): _coords = %1 | blck_missionsRunning = %2",_coords,blck_missionsRunning]] call blck_fnc_log;
+GMS_ActiveMissionCoords pushback _coords; 
+GMS_missionsRunning = GMS_missionsRunning + 1;
+//[format["_initializeMission (70): _coords = %1 | GMS_missionsRunning = %2",_coords,GMS_missionsRunning]] call GMS_fnc_log;
 
 private _markers = [];
 
@@ -90,16 +90,16 @@ private _markers = [];
 */
 
 private "_markerPos";
-if (blck_labelMapMarkers select 0) then
+if (GMS_labelMapMarkers select 0) then
 {
 	_markerPos = _coords;
 };
-if !(blck_preciseMapMarkers) then
+if !(GMS_preciseMapMarkers) then
 {
-	_markerPos = [_coords,75] call blck_fnc_randomPosition;
+	_markerPos = [_coords,75] call GMS_fnc_randomPosition;
 };
 
-if (blck_debugLevel >= 3) then 
+if (GMS_debugLevel >= 3) then 
 {
 	{
 		diag_log format["_initializeMission (95) %1 = %2",_x,_markerConfigs select _forEachIndex];
@@ -113,7 +113,7 @@ if (blck_debugLevel >= 3) then
 private _markerError = false;
 if !(toLowerANSI (_markerType) in ["ellipse","rectangle"] || {isClass(configFile >> "CfgMarkers" >> _markerType)} ) then 
 {
-	//[format["_markerType set to 'ELLIPSE': Illegal marker type %1 used for mission %2 of difficulty %3",_markerType,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
+	//[format["_markerType set to 'ELLIPSE': Illegal marker type %1 used for mission %2 of difficulty %3",_markerType,_markerMissionName,_difficulty],"warning"] call GMS_fnc_log;
 	_markerType = "ELLIPSE";
 	_markerSize = [200,200];
 	_markerBrush = "GRID";
@@ -121,7 +121,7 @@ if !(toLowerANSI (_markerType) in ["ellipse","rectangle"] || {isClass(configFile
 };
 if !(isClass(configFile >> "CfgMarkerColors" >> _markerColor)) then 
 {
-	//[format["_markerColor set to 'default': Illegal color %1 used for mission %2 of difficulty %3",_markerColor,_markerMissionName,_difficulty],"warning"] call blck_fnc_log;
+	//[format["_markerColor set to 'default': Illegal color %1 used for mission %2 of difficulty %3",_markerColor,_markerMissionName,_difficulty],"warning"] call GMS_fnc_log;
 	_markerColor = "DEFAULT";
 	_markerError = true;
 };
@@ -136,17 +136,17 @@ private _markers = [
 	_markerColor,
 	_markerType,
 	_markerSize,
-	_markerBrush] call blck_fnc_createMissionMarkers;
+	_markerBrush] call GMS_fnc_createMissionMarkers;
 
-if (blck_debugLevel >= 3) then {[format["_initializeMission (130): _marker = %1 | _markerMissionName = %2 | _difficulty = %3",_markers,_markerMissionName,_difficulty]] call blck_fnc_log};
+if (GMS_debugLevel >= 3) then {[format["_initializeMission (130): _marker = %1 | _markerMissionName = %2 | _difficulty = %3",_markers,_markerMissionName,_difficulty]] call GMS_fnc_log};
 
 /*
 	Send a message to players.
 */
  private _startMsg = _missionMessages select 2;
-[["start",_startMsg,_markerMissionName]] call blck_fnc_messageplayers;
+[["start",_startMsg,_markerMissionName]] call GMS_fnc_messageplayers;
 
-#define missionTimeoutAt (diag_tickTime + blck_MissionTimeout)
+#define missionTimeoutAt (diag_tickTime + GMS_MissionTimeout)
 #define triggered 0
 #define objects []
 #define hiddenObjects []
@@ -170,7 +170,7 @@ private _missionData = [
 	_markers
 ];
 private _spawnPara = -1;
-blck_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs, _spawnPara];
-//[format["_initializeMission (163): count blck_initializedMissionsList = %1",count blck_initializedMissionsList]] call blck_fnc_log;
+GMS_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs, _spawnPara];
+//[format["_initializeMission (163): count GMS_initializedMissionsList = %1",count GMS_initializedMissionsList]] call GMS_fnc_log;
 _initialized = 1;
 _initialized

@@ -1,8 +1,8 @@
 /*
-	blck_fnc_spawnMissionHelis
+	GMS_fnc_spawnMissionHelis
 */
 
-//   [_noChoppers,__missionHelis,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call blck_fnc_spawnMissionHelis;
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params[
 	["_coords",[0,0,0]],
 	["_noChoppers",0],
@@ -23,7 +23,7 @@ for "_i" from 0 to (_noChoppers) do
 	private _heli = selectRandom _missionHelis;
 	private _noCrew = [_heli,false] call BIS_fnc_crewCount;
 	#define patrolArea [1000,1000]
-	private _crewGroup = [_spawnPos,_noCrew,_difficulty,patrolArea,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call blck_fnc_spawnGroup;
+	private _crewGroup = [_spawnPos,_noCrew,_difficulty,patrolArea,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call GMS_fnc_spawnGroup;
 	_crewGroup setVariable["GMS_group",true];
 	_units append (units _crewGroup);
 	
@@ -31,9 +31,9 @@ for "_i" from 0 to (_noChoppers) do
 	#define heliHeight 100 
 	#define heliRemoveFuel 0.2 	
 	#define heliDamage 0.5
-	#define vehHitCode [blck_fnc_vehicleHit] 
-	#define vehKilledCode [blck_fnc_vehicleKilled]								
-	private _releaseToPlayers = blck_allowClaimVehicle;
+	#define vehHitCode [GMS_fnc_vehicleHit] 
+	#define vehKilledCode [GMS_fnc_vehicleKilled]								
+	private _releaseToPlayers = GMS_allowClaimVehicle;
 	// the function returns the vehicle object spawned (_aircraft)
 	/*
 		params[
@@ -51,7 +51,7 @@ for "_i" from 0 to (_noChoppers) do
 		];	
 	*/
 
-	private _aircraft = [_heli,_crewGroup,_spawnPos,heliDir,heliHeight,heliDamage,heliRemoveFuel,_releaseToPlayers,blck_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolAircraft;
+	private _aircraft = [_heli,_crewGroup,_spawnPos,heliDir,heliHeight,heliDamage,heliRemoveFuel,_releaseToPlayers,GMS_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolAircraft;
 	_helis pushBack _aircraft;
 };
 

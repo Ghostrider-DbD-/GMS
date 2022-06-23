@@ -11,10 +11,10 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
-_crateLoot = blck_BoxLoot_Green;
-_lootCounts = blck_lootCountsGreen;
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
+_crateLoot = GMS_BoxLoot_Green;
+_lootCounts = GMS_lootCountsGreen;
 _startMsg = "A hotel complex is under attack in a nearby sector! Check the marker on your map for the location!";
 _endMsg = "The hotel is under survivor control!";
 
@@ -67,16 +67,16 @@ _airPatrols = [
 
 _missionEmplacedWeapons = [
 
-	 #ifdef blck_milServer
+	 #ifdef GMS_milServer
      ["B_HMG_01_high_F",[-20.272,10.5488,-0.013556],0.000288916],
      ["B_HMG_01_high_F",[-19.6602,-14.4653,-0.0135574],359.999],
      ["B_HMG_01_high_F",[-1.26904,8.39893,-0.0135574],359.998],	 
      ["B_Radar_System_01_F",[-5.94189,-6.08398,-0.0288944],265.977]
 	 #else
-     [selectRandom blck_staticWeapons,[-20.272,10.5488,-0.013556],0.000288916],
-     [selectRandom blck_staticWeapons,[-19.6602,-14.4653,-0.0135574],359.999],
-     [selectRandom blck_staticWeapons,[-1.26904,8.39893,-0.0135574],359.998],	 
-     [selectRandom blck_staticWeapons,[-5.94189,-6.08398,-0.0288944],265.977]
+     [selectRandom GMS_staticWeapons,[-20.272,10.5488,-0.013556],0.000288916],
+     [selectRandom GMS_staticWeapons,[-19.6602,-14.4653,-0.0135574],359.999],
+     [selectRandom GMS_staticWeapons,[-1.26904,8.39893,-0.0135574],359.998],	 
+     [selectRandom GMS_staticWeapons,[-5.94189,-6.08398,-0.0288944],265.977]
 	 #endif
 ];
 
@@ -92,12 +92,12 @@ _scubaGroupParameters = [
 //   The lines below define additional variables you may wish to configure.
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Green;
-_maxNoAI = blck_MaxAI_Green;
-_noAIGroups = blck_AIGrps_Green;
-_noVehiclePatrols = blck_SpawnVeh_Green;
-_noEmplacedWeapons = blck_SpawnEmplaced_Green;
-_useMines = blck_useMines;  // Setting this in the mission file overrides the defaults 
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Green;
+_maxNoAI = GMS_MaxAI_Green;
+_noAIGroups = GMS_AIGrps_Green;
+_noVehiclePatrols = GMS_SpawnVeh_Green;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Green;
+_useMines = GMS_useMines;  // Setting this in the mission file overrides the defaults 
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

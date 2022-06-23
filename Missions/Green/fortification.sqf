@@ -11,12 +11,12 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Green Mission with template = default";
-_crateLoot = blck_BoxLoot_Green;
-_lootCounts = blck_lootCountsGreen;
+_crateLoot = GMS_BoxLoot_Green;
+_lootCounts = GMS_lootCountsGreen;
 _startMsg = "An enemy fortification was sighted in a nearby sector! Check the Green marker on your map for the location!";
 _endMsg = "The Sector at the Green Marker is under survivor control!";
 _markerLabel = "";
@@ -152,7 +152,7 @@ _missionLootBoxes = [
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 
 _missionPatrolVehicles = [
-    [selectRandom blck_AIPatrolVehiclesGreen,[21.4174,19.0781,0.00804281],90.3115],
+    [selectRandom GMS_AIPatrolVehiclesGreen,[21.4174,19.0781,0.00804281],90.3115],
     ["CUP_B_Hilux_igla_BLU_G_F",[27.5131,-53.1431,0.00819397],268.528]
 ];
 
@@ -171,19 +171,19 @@ _missionGroups = [
 _scubaGroupParameters = [];
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Green;
-_maxNoAI = blck_MaxAI_Green;
-_noAIGroups = blck_AIGrps_Green;
-_noVehiclePatrols = blck_SpawnVeh_Green;
-_noEmplacedWeapons = blck_SpawnEmplaced_Green;
-_uniforms = blck_SkinList;
-_headgear = blck_headgear;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Green;
+_maxNoAI = GMS_MaxAI_Green;
+_noAIGroups = GMS_AIGrps_Green;
+_noVehiclePatrols = GMS_SpawnVeh_Green;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Green;
+_uniforms = GMS_SkinList;
+_headgear = GMS_headgear;
 //_chanceLoot = 0.6; 
 //private _lootIndex = selectRandom[1,2,3,4];
-//private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+//private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 //private _paralootCountsChoices = [[0,0,0,8,8,0],[0,0,0,8,8,0],[8,8,0,0,0,0],[0,0,0,0,12,0]];
 //_paraLoot = _paralootChoices select _lootIndex;
 //_paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
  
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

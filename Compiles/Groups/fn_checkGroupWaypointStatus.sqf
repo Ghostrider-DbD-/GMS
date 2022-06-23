@@ -12,9 +12,9 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 params["_group","_maxTime","_radius"];
 if (diag_tickTime > (_group getVariable "timeStamp") + _maxTime) then // || ( (getPos (leader)) distance2d (_group getVariable "patrolCenter") > _radius)) then
 {
-	(leader _group) call blck_fnc_setNextWaypoint;
+	(leader _group) call GMS_fnc_setNextWaypoint;
 };

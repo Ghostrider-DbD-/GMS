@@ -11,11 +11,11 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 //diag_log "[GMS] Spawning Orange Mission with template = default";
 //diag_log "[GMS] Spawning Orange Mission with template = default";
-_crateLoot = blck_BoxLoot_Orange;
+_crateLoot = GMS_BoxLoot_Orange;
 _lootCounts = [15,50,20,60,44,5]; 
 _startMsg = "The enemy is building a new stronghold in a nearby sector! Check the Orange marker on your map for the location!";
 _endMsg = "The Sector at the Orange Marker is under survivor control!";
@@ -38,7 +38,7 @@ _garrisonedBuildings_BuildingPosnSystem = [
 _garrisonedBuilding_ATLsystem = [
      ["Land_Cargo_HQ_V3_F",[-37.3086,-12.8696,4.76837e-007],0,true,true,
 	 	[
-		 	#ifdef blck_milServer
+		 	#ifdef GMS_milServer
 			 ["B_static_AT_F",[-1.71509,1.4873,3.12675],0],
 			#endif
 			["B_HMG_01_high_F",[2.66113,2.0166,3.12652],0],
@@ -48,7 +48,7 @@ _garrisonedBuilding_ATLsystem = [
 	 	[
 			["B_HMG_01_high_F",[3.21777,-0.104004,3.12652],0],
 			["B_HMG_01_A_F",[-1.41528,-15.2954,-4.76837e-007],0],
-			#ifdef blck_milServer
+			#ifdef GMS_milServer
 			["B_Radar_System_01_F",[0.416748,17.1714,-4.76837e-007],0],
 			["B_T_Static_AA_F",[11.8047,12.9712,-4.76837e-007],0],
 			#endif
@@ -57,7 +57,7 @@ _garrisonedBuilding_ATLsystem = [
      ["Land_Cargo_Tower_V3_F",[-1.83765,-3.36035,0],0,true,true,
 	 	[
 			["B_HMG_01_high_F",[-2.81006,2.229,8.58897],0],
-			#ifdef blck_milServer
+			#ifdef GMS_milServer
 			["B_static_AA_F",[-13.0447,12.3276,0],0],
 			#endif
 			["B_HMG_01_high_F",[4.09497,3.12305,17.8895],0],
@@ -71,7 +71,7 @@ _garrisonedBuilding_ATLsystem = [
      ["Land_Cargo_HQ_V3_F",[23.7009,-13.7056,4.76837e-007],0,true,true,
 	 	[
 			 ["B_HMG_01_high_F",[-0.497314,-2.94531,3.12652],0],
-			 #ifdef blck_milServer
+			 #ifdef GMS_milServer
 			 ["B_T_Static_AT_F",[5.53101,2.83936,3.1267],0],
 			 #endif
 			 ["B_HMG_01_F",[17.8198,0.767578,-4.76837e-007],0]
@@ -136,7 +136,7 @@ _missionLandscape = [
 _missionLootBoxes = [];  //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining the loot to be spawned, and position.
 _missionEmplacedWeapons = [
-     #ifdef blck_milServer
+     #ifdef GMS_milServer
      ["B_Radar_System_01_F",[-5.12744,-27.8643,0],0],
      ["B_static_AA_F",[-14.8823,8.96729,0],0],
      ["B_HMG_01_A_F",[-50.7012,-12.7607,0],0],
@@ -151,17 +151,17 @@ _missionEmplacedWeapons = [
      ["B_T_Mortar_01_F",[16.4407,7.08545,0],0]
 ]; // can be used to define the precise placement of static weapons [[1,2,3] /*loc 1*/, [2,3,4] /*loc 2*/]; if blank random locations will be used
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Orange;
-_maxNoAI = blck_MaxAI_Orange;
-_noAIGroups = blck_AIGrps_Orange;
-_noVehiclePatrols = blck_SpawnVeh_Orange;
-_noEmplacedWeapons = blck_SpawnEmplaced_Orange;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Orange;
+_maxNoAI = GMS_MaxAI_Orange;
+_noAIGroups = GMS_AIGrps_Orange;
+_noVehiclePatrols = GMS_SpawnVeh_Orange;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
  
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,25,25,0],[0,0,0,25,25,0],[20,30,0,0,0,0],[0,0,0,0,30,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

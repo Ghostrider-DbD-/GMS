@@ -68,12 +68,12 @@ Changed: No searches for missions at sea will be done when the search range is 0
 7.02 Build 230
 
 New: Option to hide bushes and trees that happen to be under the location in which an enterable building is spawned 
-	blck_hideRocksAndPlants = true; //  When true, any rocks, trees or bushes under enterable buildings will be 'hidden'
+	GMS_hideRocksAndPlants = true; //  When true, any rocks, trees or bushes under enterable buildings will be 'hidden'
 
 New: Added support for simple objects.  Note that these can be exported by the editor tool now.
 
 New: Option to drop crates on a parachute at mission spawn which adds some randomness to where crates end up. 
-	blck_spawnCratesTiming = "atMissionSpawnAir";
+	GMS_spawnCratesTiming = "atMissionSpawnAir";
 
 New: You can now add money to crates at static missions by defining the following parameter in your .sqf for the mission.
 	_crateMoney = 10000;
@@ -108,20 +108,20 @@ Changed: Added some CBA compatability (Thanks to porkeid for the fixes)
 FIXED: few minor bug fixes. 
 FIXED: Static Mission Loot vehicles are no longer deleted by Epoch servers when players enter them.
 FIXED: an error in coordinates for some randomly spawned missions tha added an extra 0 to the array with the coordinaates.
-Added: a define for NIA all in one in blck_defines; 
+Added: a define for NIA all in one in GMS_defines; 
 Added a few preconfiguration variables with lists of NIA Armas items.
 Added: an optional parameter to define the location of a mission as one of one or more locations in an array 
   _defaultMissionLocations = [];
 
 Added: a function that returns an array of all mission markers used by blckeagls for mission makers and server owners 
-	blck_fnc_getAllBlackeaglsMarkers
+	GMS_fnc_getAllBlackeaglsMarkers
 	Returns: an array with all markers used by the mission system.
 
 Added: a function to pull a list of all map markers belonging to DMS and avoid spawning new blckeagls missions near these.
-	Configuraiont parameter: blck_minDistanceFromDMS  // set to -1 to disable this check.
-	Function: blck_fnc_getAllDMSMarkers
+	Configuraiont parameter: GMS_minDistanceFromDMS  // set to -1 to disable this check.
+	Function: GMS_fnc_getAllDMSMarkers
 
-Removed: some debugging and map sepcific settings from blck_custom_config.sqf 
+Removed: some debugging and map sepcific settings from GMS_custom_config.sqf 
 Changed: some code for finding locations for a new mission. 
 Added: all blckeagls map markers have the same prefix:  "blckeagls_marker"
 
@@ -146,8 +146,8 @@ Updates to scripts to delete alive and dead AI.
 Updates to simulation managers.
 
 6.92 Guild 192
-All actions on dead AI are handled throug units blck_graveyardGroup 
-All use of blck_deadAI has been deleted.
+All actions on dead AI are handled throug units GMS_graveyardGroup 
+All use of GMS_deadAI has been deleted.
 
 6.92 Build 184
 Fixed an issues that caused blckeagls to load before exile servers were ready to accept players.
@@ -161,46 +161,46 @@ Added a firedNear EH
 Redid system for setting up combatmode and behavior to be context dependent
 Redid setNextWaypont to include an antiStuck check and implement the above checks on behavior and combat mode. 
 Support for claim-vehicle scripts is now built-in 
-	blck_allowClaimVehicle = true; // To allow players to claim vehicles (Exile only).
+	GMS_allowClaimVehicle = true; // To allow players to claim vehicles (Exile only).
 Added a setting to disable having AI toss smoke before healing. Set:
-	blck_useSmokeWhenHealing=false; // to disable this
+	GMS_useSmokeWhenHealing=false; // to disable this
 Added an option to display kill notices using Toasts
-	blck_aiKillUseToast=true; // in blckClient.sqf in the debug folder of your mission.pbo to enable these.
+	GMS_aiKillUseToast=true; // in blckClient.sqf in the debug folder of your mission.pbo to enable these.
 Added offloading of AI to clients
 	////////
 	//  Client Offloading and Headless Client Configurations
-	blck_useHC = true; // Experimental (death messages and rewards not yet working).
+	GMS_useHC = true; // Experimental (death messages and rewards not yet working).
 	//  Credit to Defent and eraser for their excellent work on scripts to transfer AI to clients for which these settings are required.
-	blck_ai_offload_to_client = true; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
-	blck_ai_offload_notifyClient = false;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
+	GMS_ai_offload_to_client = true; // forces AI to be transfered to player's PCs.  Disable if you have players running slow PCs.
+	GMS_ai_offload_notifyClient = false;  // Set true if you want notifications when AI are offloaded to a client PC. Only for testing/debugging purposes.
 										// TODO: set to false before release
-	blck_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated.
+	GMS_limit_ai_offload_to_blckeagls = true;  // when true, only groups spawned by blckeagls are evaluated.
 
 Fixed - Vehicle unlock when empty of crew through adding a getOut event handler.
 Code for spawning vehicles redone to reduced redundancy.
 Monitoring of groups refined to route mission groups that have left the mission area back to it.
 
 V 6.90  Build 175
-1. Added new settings to specify the number of crew per vehhicle to blck_config.sqf and blck_config_mil.sqf
+1. Added new settings to specify the number of crew per vehhicle to GMS_config.sqf and GMS_config_mil.sqf
   
     // global settings for this parameters
     // Determine the number of crew plus driver per vehicle; excess crew are ignored.
     // This can be a value or array of [_min, _max];
-	blck_vehCrew_blue = 3;
-	blck_vehCrew_red = 3;
-	blck_vehCrew_green = 3;
-	blck_vehCrew_orange = 3;
+	GMS_vehCrew_blue = 3;
+	GMS_vehCrew_red = 3;
+	GMS_vehCrew_green = 3;
+	GMS_vehCrew_orange = 3;
 
     You can also define this value in missions by adding the following variable definition to the mission template:
 
-    _vehicleCrewCount = [3,6]; // min/max number of AI to load including driver. see the missions\blue\template.sqf and blck_configs.sqf for more info.
+    _vehicleCrewCount = [3,6]; // min/max number of AI to load including driver. see the missions\blue\template.sqf and GMS_configs.sqf for more info.
 
 2.  Lists of items to be excluded from dynamically generated loadouts has been moved to:
-    blck_config.sqf
-    blck_config_mil.sqf
+    GMS_config.sqf
+    GMS_config_mil.sqf
 
 3. Added a new setting that specifies whether logging of blacklisted items is done (handy for debugging)
-    blck_logBlacklistedItems = true;  // set to false to disable logging 
+    GMS_logBlacklistedItems = true;  // set to false to disable logging 
 
 4. Hit and Killed event handlers extensively reworked. Methods for notification of nearby AI and Vehicles of the killers whereabouts were revised to be more inclusive of neighboring AI.
 
@@ -225,8 +225,8 @@ Added additional error checks for missing mission parameters.
 Fixed: issues that prevented completion of capture/hostage missions on exile servers
 Added: code that forces air, land and sea vehicles to detect nearby players which should help with frozen AI _noChoppers
 Changed: code for blckeagls simulation manager to force simulation when groups are awoken.
-Added: additional settings for simulation management (see blck_configs.sqf for details)
-Changed: Simulation management is now set using the new variable blck_simulationManager which is defined in blck_configs.sqf
+Added: additional settings for simulation management (see GMS_configs.sqf for details)
+Changed: Simulation management is now set using the new variable GMS_simulationManager which is defined in GMS_configs.sqf
 Fixed: Heli's just hovered over missions.
 Fixed: GRG code that locked up the mission system was removed from the public RC.
 
@@ -234,15 +234,15 @@ Fixed: GRG code that locked up the mission system was removed from the public RC
 Added Option to load weapons, pistols, uniforms, headgear, vests and backpacks from CfgPricing (Epoch) or the Arsenal (Exile) and exclude items above a certain price
 	Add details on configs for enabling this and setting the maximum price
 	To use this new feature
-	Set blck_useConfigsGeneratedLoadouts = true; 
+	Set GMS_useConfigsGeneratedLoadouts = true; 
 	
 	To specify the maximum price for items added to AI, change:
-	blck_maximumItemPriceInAI_Loadouts = 100; 
+	GMS_maximumItemPriceInAI_Loadouts = 100; 
 	
-	NOTE: this function overides any loadouts you specify in blck_config.sqf etc.
+	NOTE: this function overides any loadouts you specify in GMS_config.sqf etc.
 	
 Added functions to despawn static patrols of all types when no players are nearby. This tracks the number of infantry alive in a group and respawns only the number alive when the group was despawned.
-Added: Static units will now be spawned with gear specific to difficulty level (blue, red, green, orange) as specified in blck_config.sqf etc.
+Added: Static units will now be spawned with gear specific to difficulty level (blue, red, green, orange) as specified in GMS_config.sqf etc.
 Added: AI now have a chance of spawning with binocs or range finders.
 Added: a lit road cone spawns at the center of the mission to help find it and aid in triggering mission completion.
 
@@ -264,7 +264,7 @@ Changes:
 	Removed some logging that is not required.
 	
 Version 1.82 Build 132
-Added: 	blck_killPercentage = 0.9;  // The mission will complete if this fraction of the total AI spawned has been killed.
+Added: 	GMS_killPercentage = 0.9;  // The mission will complete if this fraction of the total AI spawned has been killed.
 								// This facilitates mission completion when one or two AI are spawned into objects.	
 
 Added: Male and Female uniforms are separated and can be used alone or together for specific missiosn (Epoch Only).
@@ -272,7 +272,7 @@ Added: Male and Female uniforms are separated and can be used alone or together 
 Added: Loot tables updated to include food and supplies as of Epoch 1.1.0.
 
 Added: Setting that configures vehicles to be sold at Black Market Traders.
-	blck_allowSalesAtBlackMktTraders = true; // Allow vehicles to be sold at Halve's black market traders.
+	GMS_allowSalesAtBlackMktTraders = true; // Allow vehicles to be sold at Halve's black market traders.
 	
 Added: Support for hostage rescue missions. 
 	The hostage can be spawned at any location relative to the mission center.
@@ -282,14 +282,14 @@ Added: Support for hostage rescue missions.
 	See missions\blue\hostage.sqf for an example mission.
 	
 	*****  PLEASE READ - IMPORTANT ****
-	Please update the blck_client.sqf in your mission.pbo or you will not be able to interact with or see animations of the new AI characters.
+	Please update the GMS_client.sqf in your mission.pbo or you will not be able to interact with or see animations of the new AI characters.
 	
 Added: Support for Arrest Leader missions.
 	These are similar to the rescue hostage mission except that the leader, when arrested, will sites
 	awaiting arrival of imaginary survivor forces.
 	See missions\blue\capture.sqf for an example mission
 
-Added: 	blck_missionEndCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
+Added: 	GMS_missionEndCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 		which provides a simple way to define the default conditions under which the mission ends for all missions. 
 		You can of course define _endCondition in the specific mission file if you wish.
 		
@@ -297,8 +297,8 @@ Added:  A new mission completion condition for hostage and captive missions.
 		_endCondition = assetSecured;
 		
 Added: 	Mission crates can now be spawned on the ground or in the air at mission completion.
-		blck_spawnCratesTiming sets the default for all missions.
-		blck_spawnCratesTiming = "atMissionEndAir"; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir". 
+		GMS_spawnCratesTiming sets the default for all missions.
+		GMS_spawnCratesTiming = "atMissionEndAir"; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir". 
 		Define _spawnCratesTiming to set this parameter for a particular mission.
 		_spawnCratesTiming = "atMissionEndAir";
 		See the hostage1.sqf mission as an example.
@@ -321,15 +321,15 @@ Added: greater control over AI loadouts.
 		
 Added: greater control of mission helis - you can now set variables in the mission file (see examples below).
 	    when these are not defined in the mission file, defaults are used.
-		_chancePara = blck_chanceParaBlue; // Setting this in the mission file overrides the defaults 
-		_noPara = blck_noParaBlue;  // Setting this in the mission file overrides the defaults 
-		_chanceHeliPatrol = blck_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
-		_noChoppers = blck_noPatrolHelisBlue;
-		_missionHelis = blck_patrolHelisBlue;
+		_chancePara = GMS_chanceParaBlue; // Setting this in the mission file overrides the defaults 
+		_noPara = GMS_noParaBlue;  // Setting this in the mission file overrides the defaults 
+		_chanceHeliPatrol = GMS_chanceHeliPatrolBlue;  // Setting this in the mission file overrides the defaults 
+		_noChoppers = GMS_noPatrolHelisBlue;
+		_missionHelis = GMS_patrolHelisBlue;
 		
 Added: default minimun and maximum radius for groups to patrol.
-		blck_minimumPatrolRadius = 22;  // AI will patrol within a circle with radius of approximately min-max meters. note that because of the way waypoints are completed they may more more or less than this distance.
-		blck_maximumPatrolRadius = 35;
+		GMS_minimumPatrolRadius = 22;  // AI will patrol within a circle with radius of approximately min-max meters. note that because of the way waypoints are completed they may more more or less than this distance.
+		GMS_maximumPatrolRadius = 35;
 		
 Changed: **** VERY IMPORTANT  ******
 		The definitions of private variables used in missions in now read in through an include statement (see Missions\Blue\default.sqf for an example)
@@ -372,18 +372,18 @@ Added: you can now determine whether objects spawned at dynamic missions have si
 Added: you can now spawn simple objects as part of your mission landscape. Useful for STATIC missions only. 
 Added: lists of armed vehicles from which you can choose those you wish to spawn at vehicles broken down by category (wheeled, traced APC, Tank, etc)
 Added: Three constants that define how far away missions are from players when they spawn.
-	blck_minDistanceToBases = 900; Minimum distance from any freq jammer or flag
-	blck_minDistanceToPlayer = 900; Minimum distance from any player
-	blck_minDistanceFromTowns = 300; Minimum distance from cites or towns.
+	GMS_minDistanceToBases = 900; Minimum distance from any freq jammer or flag
+	GMS_minDistanceToPlayer = 900; Minimum distance from any player
+	GMS_minDistanceFromTowns = 300; Minimum distance from cites or towns.
 	
 Changed: Default missions reworked to support the above.
 
 Version 1.79, Build 116
 Added: Map-specific information for Lythium.
-Added: New configuration setting: blck_showCountAliveAI = true;  When = true, the number of alive AI at a mission will be displayed by the mission marker.
+Added: New configuration setting: GMS_showCountAliveAI = true;  When = true, the number of alive AI at a mission will be displayed by the mission marker.
 Added: You can now define the types of patrol vehicles spawned based on AI difficulty.
 
-Fixed: Setting 	blck_useTimeAcceleration = false; now disables the time acceleration module.
+Fixed: Setting 	GMS_useTimeAcceleration = false; now disables the time acceleration module.
 Fixed: several issues with dynamic UMS missions.
 Fixed: AI Heli's at missions should now be released to players when all AI are dead.
 Fixed: script errors when dynamic simulation off.
@@ -391,10 +391,10 @@ Fixed: script errors when dynamic simulation off.
 Changed: Code for checking the state of AI vehicles and releasing them to players was re-written.
 Changed: Eliminated useless files from the debug folder (mission.pbo).
 		Please replace the debug folder in your mission PBO with the updated one found on the github. 
-		[removed all scripts for markers from mission\debug. These are now located in custom_server\compiles\functions.]
+		[removed all scripts for markers from mission\debug. These are now located in GMS\compiles\functions.]
 
 Version 6.78 Build 107
-Fixed: blck_baseSkill is now used properly to set skill of units.
+Fixed: GMS_baseSkill is now used properly to set skill of units.
 Added: Units assemble in formation when spawned.
 
 Version 6.78 build 106
@@ -405,7 +405,7 @@ Removed lines specific to GRG servers.
 Version 6.76 Build 104
 Added: A new timer that determines the time after which Vehicles are deleted once all AI are dead if no player has entered the driver's seat.
 Added: an optional variable in the template for missions called _missionGroups by which you can define the parameters (position, skill level, number, patrol radius) for each group spawned.
-		See the default2.sqf mission under custom_server\Missions\blue for an example 
+		See the default2.sqf mission under GMS\Missions\blue for an example 
 Changed: The method by which the server handles AI damage was changed to use MPHit. 
 Added: an MPKilled event handler for vehicles.
 
@@ -425,19 +425,19 @@ Changed static missions so that AI are spawned only when players are within 2000
 Added optional respawn to static AI groups, vehicles, emplaced weaps and aircraft.
 Added four functions that support spawning of static AI with setting for difficulty, patrol radius, and respawn time.
 	For examples, see the updated static eample mission 
-	and blck_custom_config.sqf and the examples below:
+	and GMS_custom_config.sqf and the examples below:
 	
 	position                 difficulty  radius respawn
-	[[[22920.4,16887.3,3.19144],"red",[1,2], 75,   120]] call blck_fnc_sm_AddGroup;
+	[[[22920.4,16887.3,3.19144],"red",[1,2], 75,   120]] call GMS_fnc_sm_AddGroup;
 	
 	weapon             position                 difficulty radius (not used) respawn time
-	[["B_G_Mortar_01_F",[22867.3,16809.1,3.17968],"red",0,0]] call blck_fnc_sm_AddEmplaced;
+	[["B_G_Mortar_01_F",[22867.3,16809.1,3.17968],"red",0,0]] call GMS_fnc_sm_AddEmplaced;
 	
 	  vehicle                    position               difficulty radius respawn
-	[["B_G_Offroad_01_armed_F",[22819.4,16929.5,3.17413],"red",   600,    0]] call blck_fnc_sm_AddVehicle;
+	[["B_G_Offroad_01_armed_F",[22819.4,16929.5,3.17413],"red",   600,    0]] call GMS_fnc_sm_AddVehicle;
 	
 	aircraft                            position           difficulty radius respawn
-	[["Exile_Chopper_Huey_Armed_Green",[22923.4,16953,3.19],"red",    1000,   0]] call blck_fnc_sm_AddAircraft; 	
+	[["Exile_Chopper_Huey_Armed_Green",[22923.4,16953,3.19],"red",    1000,   0]] call GMS_fnc_sm_AddAircraft; 	
 Re-did event handlers for compatability with Arma 1.78+, and moved most code into pre-compiled functions that execute on the server.
 	
 ======================	
@@ -465,7 +465,7 @@ Version 6.71 Build 77
 [Added] options to have multiple aircraft spawn per mission.	
 	[Note that if you spawn more than one aircraft I recommend that you disable the paratroop spawns to avoid spawning more than 124 groups].
 [Added] an optional militarized setting whereby missions use a full complement of Arma air and ground vehicles including fighter jets and tanks. This is OFF by default.
-	Uncomment #define blck_milServer in custom_server\Configs\blck_defines to enable this.
+	Uncomment #define GMS_milServer in GMS\Configs\GMS_defines to enable this.
 	[ Note!!! There are both general and mod-specific configs for the militarized missions.]
 [Added] Support for setting a range for certain configurations rather than setting a single value.
 This should make missions a little more varied in that players will no longer be looking for the 4 statics that always spawn at an orange mission.
@@ -475,7 +475,7 @@ This pertains to:
 	Numbers of Air Patrols 
 	AI Skills; for example you can now set ["aimingAccuracy",[0.08,16]],["aimingShake",[0.25,0.35]],["aimingSpeed",0.5],["endurance",0.50], .... ];
 	Numbers of Items to load into Mission and Static loot crates; for example, for the orange level of difficulty item counts could be revised as follows:
-	blck_lootCountsOrange = [[6,8],[24,32],[5,10],[25,35],16,1];  
+	GMS_lootCountsOrange = [[6,8],[24,32],[5,10],[25,35],16,1];  
 	
 7/27/17  Version 6.59 Build 60
 [added] AI units in mission vehicles and emplaced weapons are notified of the location of the shooter when an AI unit is hit or killed. Location of the unit is revealed gradually between 0.1 and 4 where 4 is precise. Increments increase with increasing mission difficulty.
@@ -486,7 +486,7 @@ This pertains to:
 [fixed] Exile Respect Loss bug (temporary fix only).
 
 5/21/17 Version 6.58 build 58
-[Fixed] typos for blck_epochValuables.
+[Fixed] typos for GMS_epochValuables.
 [Fixed] All loot was removed from AI vehicles at the time a mission was completed.
 [Fixed] When mission completion criteria included killing all AI, missions could be completed with alive AI in vehicles. 
 
@@ -494,7 +494,7 @@ This pertains to:
 [Added] A FAQ presenting an overview of the mission system and addons.
 [Changed] Helicopter crew waypoint system reverted to that from Build 46.
 [Fixed] Mission timouts would prevent new missions from spawning after a while.
-[Fixed] blck_timeAcceleration now determines if time acceleration is activated.
+[Fixed] GMS_timeAcceleration now determines if time acceleration is activated.
 [Fixed] Missions did not complete correctly under certain circumstances.
 [Fixed] Mission vehicles were not properly deleted, unlocked or otherwise handled at misison end or when AI crew were killed.
 [Fixed] Throws errors when evaluating errors related to certain disallowed types of kills.
@@ -507,8 +507,8 @@ Teaks to heli patrol waypoint system.
 bugfixes.
 
 3/21/17 Version 6.58 Build 44
-[Added] Each mission now has a setting for mines which is set to false. To use the global setting in blck_config for yoru mission just change this to read:
-	_useMines = blck_useMines;
+[Added] Each mission now has a setting for mines which is set to false. To use the global setting in GMS_config for yoru mission just change this to read:
+	_useMines = GMS_useMines;
 [Fixed] Logging by the time acceleration module was disabled.
 [Fixed] Emplaced weapons now spawn in the correct locations.
 [Fixed] Missions end correctly when all AI are dead and _endCondition = allKilledOrPlayerNear; 
@@ -516,14 +516,14 @@ bugfixes.
 
 3/18/17 Version 6.58 Build 44
 [Fixed] Time acceleration was not working.
-[Fixed] blck_timeAcceleration now determines if time acceleration is activated.
+[Fixed] GMS_timeAcceleration now determines if time acceleration is activated.
 [Fixed] The mission described by default2 in the blue missions folder now spawns correctly. 
 	You can use this as a guide for how to place loot crates or static weapons at specific locations like inside or on top of structures.
 	Loot vehicles are now spawned correctly.
 	Loot crates positioned at specific locations are now spawned correctely.
 	static weapons to be spawned at specified positions are now spawned correctly.
 	That mission is disabled by default.
-[Added] option to disable time acceleration (blck_timeAcceleration = true; line 30 of blck_config.sqf)
+[Added] option to disable time acceleration (GMS_timeAcceleration = true; line 30 of GMS_config.sqf)
 [Added] options to have armed heli's patrolling the missions and for them to drop AI.
 [Added] options to have paratroops drop over missions as an alternative to the above.
 [Added] Code optimization for GMS_fnc_spawnMissionAI.sqf and several other AI spawning scripts.
@@ -531,8 +531,8 @@ Added] Formalizing exception handling for the case in which a createGroup reques
 	If this happens during mission spawning the mission will be aborted and all mission objects and AI will be deleted.
 	This should prevent the mission system from crashing causing no further missions to spawn.
 [Added] a new configuration that sets a cap on the maximum number of spawned missions. 
-	blck_maxSpawnedMissions = 4; // Line 181 of blck_configs.sqf
-[Added] a function blck_fnc_allPlayers which returns an array of allPlayers (as a temporizing fix till BIS patches the allPlayers function.
+	GMS_maxSpawnedMissions = 4; // Line 181 of GMS_configs.sqf
+[Added] a function GMS_fnc_allPlayers which returns an array of allPlayers (as a temporizing fix till BIS patches the allPlayers function.
 	
 [Changed] Coding improvements for waypoint generation.
 	Tried a new approach to generating waypoints to make AI more aggressive without the overhead of the last method.
@@ -541,7 +541,7 @@ Added] Formalizing exception handling for the case in which a createGroup reques
 	This will continue until the cap is reached then randomly select a mission from those that are ready to be respawned to be spawned next.
 	If you want the various missions to have an equal chance of being spawned at all times, give the the timers for blue, red, green and red timers the same values for Min and Max.
 [Chaged] logic for detecting whether a player is near the mission center or loot crates to test if a player is near any of an array of location or objects. 	
-[Added] a function blck_fnc_allPlayers which returns an array of allPlayers (as a temporizing fix till BIS patches the allPlayers function.
+[Added] a function GMS_fnc_allPlayers which returns an array of allPlayers (as a temporizing fix till BIS patches the allPlayers function.
 
 To Do - consider moving back to storing AI in a group-based manner (doable easily, needs testing).
 		Build a template for static missions (planned for Ver 6.60).
@@ -553,7 +553,7 @@ Reverted back to v6.56 build 39 then:
 [Changed] the Killed event handler as below.
 [Added] New logic for informing AI of the location of players to give AI a more gradual ramp up from little knowledge about player location to full knowledge.
 [Added] scripts and functions for reinforcements: a) heli patrols; b) paratroops.
-[Added] ...\custom_server\Configs\blck_defines.hpp inside which you can disable APEX gear and other attributes.
+[Added] ...\GMS\Configs\GMS_defines.hpp inside which you can disable APEX gear and other attributes.
 
 [Changed] Re-organized variables in the configs.
 [Changed] Divided configs into tow basic parts: 
@@ -575,7 +575,7 @@ Revised logic for informing AI of the location of players to give AI a more grad
 2/24/17 Version 6.56 Build 39. Reworked Mission End Criteria and timing of loading of loot chests
 Added a check so that mission completion by players near loot crates was tripped only when players were on foot.
 Added a setting that determines whether loot crates are loaded when the mission spawns or once the mission is complete. 
-	see blck_loadCratesTiming = "atMissionCompletion"; (line 78) for this configuration setting.
+	see GMS_loadCratesTiming = "atMissionCompletion"; (line 78) for this configuration setting.
 	
 1/28/17 Version 6.55 Build 38 Bug Fixes
 bug fixes
@@ -583,21 +583,21 @@ Commented out logging that is no longer needed
 Removed a weapon from loot tables that could be used for dupping.
 
 1/24/17 Version 6.55 Build 35 Improved handling of static weapons with dead AI; added option to delete loot chests at some time after mission completion.
-Added a new configuration blck_killEmptyStaticWeapons which determines if static weapons shoudl be disabled after the AI is killed.
-Added a configuration blck_cleanUpLootChests that determines if loot crates are deleted when other mission objects are deleted.
+Added a new configuration GMS_killEmptyStaticWeapons which determines if static weapons shoudl be disabled after the AI is killed.
+Added a configuration GMS_cleanUpLootChests that determines if loot crates are deleted when other mission objects are deleted.
 Fixed an issue that prevented proper deletion of mission objects and live AI.
 
 1/23/17 Version 6.54 Build 33 Bug Fixes
 Fixed typos in GMS_fnc_vehicleMonitor.sqf
 Removed a few files that are not used or needed.
-Removed some code that had been commented out from blck_functions.sqf.
+Removed some code that had been commented out from GMS_functions.sqf.
 
 1/22/17 Version 6.54 build 32 Primarily performance-oriented improvements to switch from using timers and .sqf to a 'thread' that scans various arrays related to missions and mission objects using pre-compiled functions.
 Changed code to test for conditions that trigger to spawn mission objects and AI completely
 Rewrote the code for spawning emplaced weapons from scratch.
 Fixed an error in how the waitTime till a mission was respawned after being updated to inactive status.
 Added additional reporting as to the mission type for which AI, statics and vehicle patrols are being spawned.
-Continued switching from blck_debugOn to blck_debugLevel.
+Continued switching from GMS_debugOn to GMS_debugLevel.
 Continued work to move much of the code from GMS_fnc_missionSpawner to precompiled functions.
 	- tested and working for all but the emplaced weapons module.
 Removed old code that had been commented out from GMS_missionSpawner.
@@ -621,11 +621,11 @@ Ensured that the array used to store the location(s) of active or recent mission
 Rerverted back to the code that spawned a single instance of each mission until I can debug certain issues.
 
 1/7/17 Version 6.53 Build 24 AI difficulty updates; some performance improvements.
-Added a setting blck_baseSkill = 0.7; // This defines the base skil of AI. Increase it to make AI more challenging.
+Added a setting GMS_baseSkill = 0.7; // This defines the base skil of AI. Increase it to make AI more challenging.
 Tweaked AI difficulty settings to make missions more difficult.
 changed - GMS_EH_unitKilled - the event handler now uses precompiled rather than compiled on the fly code.
 changed - several other minor performance tweaks were made server side.
-changed - small changes were made the the loop in blck_client.sqf 
+changed - small changes were made the the loop in GMS_client.sqf 
 Tweaked debugging information to reduced unnecessary logging when not in debug-mode.
 Disabled the loop sending server fps client-side
 fixed - GMS_fnc_updateMissionQue was not correctly updating mission information after mission completion.
@@ -634,9 +634,9 @@ changed - calls to GMS_fnc_vehicleMonitor were moved inside the main loop.
 
 1/3/17 Version 6.51 Build 23 Added several new kinds of messaging to the UI.
 Moved configuration for the client from debug\blckclient.sqf to debug\blckconfig.sqf.
-Added a setting blck_useKillMessages = true/false; (line 60 of the config. when true, kill messages will be send to all players when a player kills an AI. The style of the message is controlled client-side (debug\blck_config.sqf)
-Added a setting blck_useKillScoreMessage = true/false; // (line 61 of the config) when true a tile is displayed to the killer with the kill score information
-Added a setting 	blck_useIEDMessages = true/false;  // when true players will receive a message that their vehicle was damaged when AI are killed in a forbidden way (Run over Or Killed with vehicle-mounted weapons)
+Added a setting GMS_useKillMessages = true/false; (line 60 of the config. when true, kill messages will be send to all players when a player kills an AI. The style of the message is controlled client-side (debug\GMS_config.sqf)
+Added a setting GMS_useKillScoreMessage = true/false; // (line 61 of the config) when true a tile is displayed to the killer with the kill score information
+Added a setting 	GMS_useIEDMessages = true/false;  // when true players will receive a message that their vehicle was damaged when AI are killed in a forbidden way (Run over Or Killed with vehicle-mounted weapons)
 Fixed: Messages that a nearby IED was detonated are now properly displayed when players illegally kill AI.
 Added a way to easily include / exclude APEX items. To exclude them comment out the line 
 	#define useAPEX 1
@@ -656,17 +656,17 @@ Fixed an issue related to bugs in Arma 1.66
 
 11/16/16 Version 6.44 Build 15  Added options for automated generation of location blacklists; added APEX gear; tweaks to the code that loads items into crates.
 Added parameters
-	blck_blacklistTraderCities=true; // the locations of the Epoch/Exile trader cities will be pulled from the config and added to the location blacklist for the mission system.
+	GMS_blacklistTraderCities=true; // the locations of the Epoch/Exile trader cities will be pulled from the config and added to the location blacklist for the mission system.
 	blcklistConcreteMixerZones = true; // Locations of the concrete mixers will be pulled from the configs; no missions will be spawned within 1000 m of these locations.
-	blck_blacklistSpawns = true; // Locations of Exile spawns will be pulled from the config. No missions will spawn within 1000 m of these locations.
+	GMS_blacklistSpawns = true; // Locations of Exile spawns will be pulled from the config. No missions will spawn within 1000 m of these locations.
 Added: the main thread now runs a function that checks for empty groups. 
 Fixed: The mission system would hang on epoch after a while because createGroup returned nullGroup. this appeared to occur because the maximum number of active groups had been reached. Deleting empty groups periodically solved the issue on a test machine.
 Teaked: code to check whether a possible mission spawn location is near a flag or plot pole. Still needs work.
 Added: Completed adding EDEN weapons, optics, bipods, optics to AI configurations and mission loot crates.
 Added APEX headgear and uniforms.  (Note, you would need to add any of these you wished for players to sell to Epoch\<Map Name>\epoch_config\CfgPricing.hpp on Epoch)
-Changed: Definitions of blacklist locations such as spawns moved from GMS_findWorld.sqf to the blck_configs_(epoch|exile).
+Changed: Definitions of blacklist locations such as spawns moved from GMS_findWorld.sqf to the GMS_configs_(epoch|exile).
 Changed: Divided rifles and optics into subcategories to better enable assigning weapons to AI difficulties in a sort of class-based way, e.g., 556, 6.5, or LMG are separate classes.
-Changed: DLS crate loader (not publically available yet) now uses blck_fnc_loadLootItemsFromArray rather than the prior approach for which specific crate loading functions were called depending on the loadout type (weapons, building supplies, foord etc).
+Changed: DLS crate loader (not publically available yet) now uses GMS_fnc_loadLootItemsFromArray rather than the prior approach for which specific crate loading functions were called depending on the loadout type (weapons, building supplies, foord etc).
 Fixed: You can now loot AI bodies in Epoch.
 
 11/12/16 Version 6.43 Build 12  Added MAP ADDONS and Loot Crate Spawners.
@@ -680,14 +680,14 @@ Enhancements to code to equip weapons; pointrs, silencers and bipods are now att
 11/11/16 Version 6.42 build 10 Added code to fit weapons attachments. Improved code to spawn mission objects.
 Redid the code that spawns the objects at missions to work properly with the new formats generated by M3Arma EDEN Editor whilc being backwards compatible with older formats used in the existing missions.
 Added code to add scopes and other attachments to AI weapons.
-Added new variable blck_blacklistedOptics which you can use to block spawning optics like TMS.
-Added new parameter blck_removeNVG which when true will cause NVG to be deleted from AI bodies.
-Fixed: launchers and rounds should now be deleted when blck_removeLaunchers = true;
+Added new variable GMS_blacklistedOptics which you can use to block spawning optics like TMS.
+Added new parameter GMS_removeNVG which when true will cause NVG to be deleted from AI bodies.
+Fixed: launchers and rounds should now be deleted when GMS_removeLaunchers = true;
 Fixed: All AI should spawn with a uniform.
 More bug fixes and correction of typos.
 
 11/2/16 Version 6.41 Build 9  Kill message improvements; added money to AI.
-Added a parameter 	blck_useKilledAIName that, when true, changes the kill messages to show player name and AI unit name 
+Added a parameter 	GMS_useKilledAIName that, when true, changes the kill messages to show player name and AI unit name 
 Added message to players for killstreaks and a crypto/Tabs bonus for killstreaks.
 Exile: AI spawn with a few tabs.
 //Epoch: AI spawn with a few Crypto
@@ -698,7 +698,7 @@ Reworked the code to spawn vehicle patrols and static weapons and clean them up.
 Reworked the code that messages players to be sure that calling titleText does not hang the messaging function and delay hints or system chat notifications.
 
 10/22/16 v 6.3 Build 8-14-16  Code performance improvements.
-Moved routines that delete dead AI, Alive AI and mission objects from individual loops to a single loop spawned by blck_init.sqf.
+Moved routines that delete dead AI, Alive AI and mission objects from individual loops to a single loop spawned by GMS_init.sqf.
 Added functions to cache these data with time stamps for later time-based deletion.
 
 10/21/16 Version 6.2 Build 7  Coding improvements
@@ -733,7 +733,7 @@ Inactivated a call to an exile function that had no value
 5) several other minor optimizations.
 
 9-3-16 Ver 6.0 
-1) Re-did the custom_server folder so the mod automatically starts. Blck_client.sqf no longer calls the mod from the server.
+1) Re-did the GMS folder so the mod automatically starts. GMS_client.sqf no longer calls the mod from the server.
 2) Added a variable GMSCore_modtype which presently can be either "Epoch" or "Exile" with the aim of having a single mission system for both mods.
 3) Added a more intelligent method for loading key components (variables, functions, and map-specific parameters).
 4) Re-did all code to automatically select correct parameters to run correctly on either exile or epoch servers.
@@ -741,11 +741,11 @@ Inactivated a call to an exile function that had no value
 6) Added the Dynamic Loot system from Exile again with Exile and Epoch specific configurations; here the difference is only in the location tables.
 7) Pulled the map addons function from the Exile build and added a functionality to spawn addons appropriately for map and mod type.
 8) Helicrashes redone to provide more variability in the types of wrecks, loot and challenge. These are spawned by a new file Crashes2.sqf
-9) Added a setting to determine the number of crash sites spawned at any one time: blck_maxCrashSites. Set to -1 to disable altogether.
-10) Added settings to enable / disable specific mission classes, e.g., blck_enableOrangeMissions. Set to 1 to enable, -1 to disable.
+9) Added a setting to determine the number of crash sites spawned at any one time: GMS_maxCrashSites. Set to -1 to disable altogether.
+10) Added settings to enable / disable specific mission classes, e.g., GMS_enableOrangeMissions. Set to 1 to enable, -1 to disable.
 
 8-14-16
-Added mission timout feature, set blck_MissionTimeout = -1 to disble;
+Added mission timout feature, set GMS_MissionTimeout = -1 to disble;
 Changed to use of params for all .sqf which also eliminated calls to BIS_fnc_params
 changed to selectRandom for all .sqf
 

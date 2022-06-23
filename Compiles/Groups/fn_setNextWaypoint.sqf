@@ -1,6 +1,6 @@
 // Sets the WP type for WP for the specified group and updates other atributes accordingly.
 /*
-	blck_fnc_setNextWaypoint
+	GMS_fnc_setNextWaypoint
 
 	for ghostridergaming
 	By Ghostrider [GRG]
@@ -18,7 +18,7 @@
 	Replaces changeToSADWaypoint 
 
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 private["_group","_wp","_index","_pattern","_mode","_arc","_dis","_wpPos"];
 

@@ -1,6 +1,6 @@
 
 /*
-	blck_fnc_nearestPlayers
+	GMS_fnc_nearestPlayers
 	for ghostridergaming
 	By Ghostrider [GRG]
 	Copyright 2016
@@ -12,7 +12,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params[["_coords",[]],"_range"];
 /*
@@ -23,7 +23,7 @@ params[["_coords",[]],"_range"];
 if (_coords isEqualTo []) then 
 {
 	_coords = [0,0,0];
-	//diag_log format["[GMS] No value passed to blck_fnc_nearestPlayers for _coords - default of [0,0,0] used"];
+	//diag_log format["[GMS] No value passed to GMS_fnc_nearestPlayers for _coords - default of [0,0,0] used"];
 };
 
 private _players = allPlayers select {(_x distance _coords) < _range};

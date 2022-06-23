@@ -11,13 +11,13 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\q\addons\custom_server\Configs\blck_defines.hpp";
-#include "\q\addons\custom_server\Missions\privateVars.sqf";
+#include " \GMS\Configs\GMS_defines.hpp";
+#include " \GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Green Mission with template = default";
-_crateLoot = blck_BoxLoot_Green;
-_crateLoot = blck_BoxLoot_Orange;
-_lootCounts = blck_lootCountsOrange;
+_crateLoot = GMS_BoxLoot_Green;
+_crateLoot = GMS_BoxLoot_Orange;
+_lootCounts = GMS_lootCountsOrange;
 _startMsg = "A weapons research facility has been located. Strike authorized!!";
 _endMsg = "The weapons research facility has been neutralized.";
 _markerLabel = "";
@@ -272,33 +272,33 @@ _missionGroups =
 	]; // Can be used to define spawn positions of AI patrols
 
 _missionPatrolVehicles = [
-	[selectRandom blck_AIPatrolVehiclesGreen,[92.6699,40.4102,0.000393867],0,[true,false]],
-	[selectRandom blck_AIPatrolVehiclesGreen,[92.6133,40.377,0.000393867],0,[true,false]],
-	[selectRandom blck_AIPatrolVehiclesGreen,[-99.3867,-35.623,0.000393867],0,[true,false]]
-	//[selectRandom blck_AIPatrolVehiclesGreen,[-87.8457,-109.947,7.15256e-007],0,[true,false]]
+	[selectRandom GMS_AIPatrolVehiclesGreen,[92.6699,40.4102,0.000393867],0,[true,false]],
+	[selectRandom GMS_AIPatrolVehiclesGreen,[92.6133,40.377,0.000393867],0,[true,false]],
+	[selectRandom GMS_AIPatrolVehiclesGreen,[-99.3867,-35.623,0.000393867],0,[true,false]]
+	//[selectRandom GMS_AIPatrolVehiclesGreen,[-87.8457,-109.947,7.15256e-007],0,[true,false]]
 ];  // can be used to define the spawn positions of vehicle patrols
 
 //  Change _useMines to true/false below to enable mission-specific settings.
-_useMines = blck_useMines;
-_minNoAI = blck_MinAI_Green;
-_maxNoAI = blck_MaxAI_Green;
-_noAIGroups = blck_AIGrps_Green;
-_noVehiclePatrols = blck_SpawnVeh_Green;
-_noEmplacedWeapons = blck_SpawnEmplaced_Green;
-_uniforms = blck_SkinList;
-_headgear = blck_headgear;
+_useMines = GMS_useMines;
+_minNoAI = GMS_MinAI_Green;
+_maxNoAI = GMS_MaxAI_Green;
+_noAIGroups = GMS_AIGrps_Green;
+_noVehiclePatrols = GMS_SpawnVeh_Green;
+_noEmplacedWeapons = GMS_SpawnEmplaced_Green;
+_uniforms = GMS_SkinList;
+_headgear = GMS_headgear;
 
 /*
 Need to spawn crates INSIDE the dome
 */
-//_chancePara = blck_chanceParaGreen;
+//_chancePara = GMS_chanceParaGreen;
 _spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionEndGround","atMissionEndAir". 
 //_loadCratesTiming = "atMissionSpawn"; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
 //_chanceLoot = 0.6; 
 private _lootIndex = selectRandom[1,2,3,4];
-private _paralootChoices = [blck_contructionLoot,blck_contructionLoot,blck_highPoweredLoot,blck_supportLoot];
+private _paralootChoices = [GMS_contructionLoot,GMS_contructionLoot,GMS_highPoweredLoot,GMS_supportLoot];
 private _paralootCountsChoices = [[0,0,0,8,8,0],[0,0,0,8,8,0],[8,8,0,0,0,0],[0,0,0,0,12,0]];
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
  
-#include "\q\addons\custom_server\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
