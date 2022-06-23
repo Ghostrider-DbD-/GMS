@@ -11,8 +11,8 @@ if (diag_tickTime < (_lastAlert + 5)) exitWith {};  //  so this function is not 
 (group _unit) setVariable["blck_lastAlert",diag_tickTime];
 private _difficulty = (group _unit) getVariable["blck_difficulty","Red"];
 private _index = [_difficulty] call blck_fnc_getIndexFromDifficulty;
-private _nearAir = blck_aircraftPatrols select {_x distance _unit < 1000};
-private _nearLand = blck_landVehiclePatrols select {_x distance _unit < 750};
+private _nearAir = blck_aircraftPatrols select {_x distance _unit < 1500};
+private _nearLand = blck_landVehiclePatrols select {_x distance _unit < 800};
 private _intelligence = blck_AIIntelligence select ([_difficulty] call blck_fnc_getIndexFromDifficulty);
 {
 	private _grp = group(driver _x);

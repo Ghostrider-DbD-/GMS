@@ -13,6 +13,6 @@
 #include "\q\addons\custom_server\Configs\blck_defines.hpp";
 if !(local (_this select 0)) exitWith {};
 params ["_unit", "_source", "_damage", "_instigator"];
-[format["blck_fnc_unitHit: _unit = %1 | _source %2 | vehicle _source %3 | _instigator %4",_unit,_source, vehicle _source, _instigator]] call GMS_fnc_log;
+//[format["blck_fnc_unitHit: _unit = %1 | _source %2 | vehicle _source %3 | _instigator %4",_unit,_source, vehicle _source, _instigator]] call GMS_fnc_log;
 if !(isPlayer _instigator) exitWith {};
 [_unit,_instigator] call blck_fnc_alertVehicles;
