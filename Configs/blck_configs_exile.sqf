@@ -759,6 +759,26 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 			"Exile_Item_FireExtinguisher","Exile_Item_OilCanister","Exile_Item_Screwdriver","Exile_Item_DuctTape","Binocular","Rangefinder","ItemGPS"
 	];
 	private _launchers = [];
+
+blck_buildingMaterials = ["Exile_Item_ExtensionCord","Exile_Item_JunkMetal","Exile_Item_LightBulb","Exile_Item_MetalBoard",
+		"Exile_Item_MetalPole","Exile_Item_MetalScrews","Exile_Item_Cement","Exile_Item_Sand","Exile_Item_MetalWire","Exile_Item_ExtensionCord","Exile_Item_JunkMetal"];	
+blck_tools = ["Exile_Item_Matches","Exile_Item_CookingPot","Exile_Melee_Axe","Exile_Melee_SledgeHammmer","Exile_Item_Handsaw","Exile_Item_Pliers","Exile_Item_CanOpener","Exile_Item_Shovel"];
+blck_loot = blck_buildingMaterials + blck_tools;
+blck_medicalItems = ["Exile_Item_InstaDoc","Exile_Item_Bandage","Exile_Item_Vishpirin"];
+blck_ConsumableItems = blck_Meats + blck_Drink + blck_Food;
+/*
+			"Binocular",
+			"Rangefinder",
+			/*
+			"Laserdesignator",
+			"Laserdesignator_02",
+			"Laserdesignator_03"
+*/
+blck_binocs = ["Binocular","Rangefinder","Laserdesignator"];
+blck_NVG = ["NVGoggles","NVGoggles_INDEP","NVGoggles_OPFOR"];
+blck_throwableExplosives = ["HandGrenade","MiniGrenade"];
+blck_otherExplosives = ["1Rnd_HE_Grenade_shell","3Rnd_HE_Grenade_shell","DemoCharge_Remote_Mag","SatchelCharge_Remote_Mag"];
+blck_explosives = blck_throwableExplosives + blck_otherExplosives;
 /***************************************************************************************
 DEFAULT CONTENTS OF LOOT CRATES FOR EACH MISSION
 Note however that these configurations can be used in any way you like or replaced with mission-specific customized loot arrays

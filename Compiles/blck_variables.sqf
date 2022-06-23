@@ -14,14 +14,10 @@
 
 if (blck_debugOn) then {diag_log "[GMS] loading variables"};
 
-blck_minFPS = 8; 
+blck_minFPS = 12; 
 
 // radius within whih missions are triggered. The trigger causes the crate and AI to spawn.
-#ifdef blck_milServer
 blck_TriggerDistance = 1500;
-#else
-blck_TriggerDistance = 1500;
-#endif
 
 ////////////////////////////////////////////////
 //  Do Not Touch Anything Below This Line
@@ -35,7 +31,6 @@ blck_livemissionai = [];
 blck_monitoredMissionAIGroups = [];  //  Used to track groups in active missions for whatever purpose
 blck_oldMissionObjects = [];
 blck_hiddenTerrainObjects = [];
-//blck_pendingMissions = [];
 blck_missionsRunning = 0;
 blck_missionsRun = 0;
 blck_activeMissions = [];
@@ -51,12 +46,10 @@ blck_revealMode = "detailed"; //""basic" /*group or vehicle level reveals*/,deta
 blck_dynamicMissionsSpawned = 0;
 blck_spawnerMode = 1;
 blck_missionData = [];
-//blck_activeMissionsList = [];
 blck_initializedMissionsList = [];
 blck_landVehiclePatrols = [];
 blck_aircraftPatrols = [];
 blck_blackListedLocations = []; // [ [marker, time]]
-//blck_activeMonitorThreads = 0;
 blck_validEndStates = [allUnitsKilled, playerNear, allKilledOrPlayerNear,assetSecured];
 blck_validLootSpawnTimings = ["atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir"];
 blck_validLootLoadTimings = ["atMissionCompletion", "atMissionSpawn"];
