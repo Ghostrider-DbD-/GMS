@@ -1,7 +1,8 @@
-/*
+
 Ghostrider's Mission System (GMS)
 
 by Ghostrider [GRG]
+Copywrite 2022 
 
 This is a complete reworking of blckeagls mission system which I maintained over many years and was built on the AI mission system by blckeagls ver 2.0.2
 Over the time I have developed this code many have contributed to debugging and testing. Some notable contributors include:
@@ -24,6 +25,8 @@ https://github.com/Ghostrider-DbD-/-timeManagement
 The MapAddons module was moved to a new, reworked mod:
 https://github.com/Ghostrider-DbD-/mapAddons 
 
+The Static Loot System was entirely removed. I may come back to it at a later time. 
+
 The Mission system can now be run entirely on an HC - no more passing AI back and forth. 
 
 The static loot system and dynamic loot system are gone. THese outlived thier usefulness. 
@@ -39,6 +42,9 @@ Changed to code for spawning and configuring units in groups to that from GMSCor
 Changed from the system of cycling waypoints to the area based patrols supported by GMSCore 
 Change how functions that have been recoded to rely on core functions in GMSCore are compiled; these are compiled now in config.hpp\CfgFunctions
 
+/**************************************************************************************
+	OLD CHANGE LOGS BEGIN HERE 
+*************************************************************************************** */
 
 7.06 Build 240
 
