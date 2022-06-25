@@ -1,8 +1,8 @@
 /*
  
 */
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Hunters Mission";
 
@@ -52,4 +52,4 @@ _noChoppers = 0;
 */
 _endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

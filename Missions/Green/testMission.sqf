@@ -7,8 +7,8 @@
 	By Ghostrider-GRG-
 */
 
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 _defaultMissionLocations = [];
 _markerType = ["mil_box",[1,1],"<null>"];
@@ -120,4 +120,4 @@ _noAIGroups = GMS_AIGrps_Blue;
 _noVehiclePatrols = GMS_SpawnVeh_Blue;
 _noEmplacedWeapons = GMS_SpawnEmplaced_Blue;
 
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

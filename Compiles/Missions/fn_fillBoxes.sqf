@@ -18,18 +18,6 @@
 	_itemCnts params["_wepCnt","_magCnt","_opticsCnt","_materialsCnt","_itemCnt","_bkcPckCnt"];
 	_boxLoot params["_weapons","_magazines","_optics","_materials","_items","_backpacks"];
 
-	/*
-	if (GMS_debugON) then 
-	{
-		[format["_fillBoxes: _crate = %1",_crate]] call GMS_fnc_log;
-		{
-			[format["_fillBoxes: _itemCnts %1 = %2",_x,_itemCnts select _forEachIndex]] call GMS_fnc_log;
-		} forEach ["_wepCnt","_magCnt","_opticsCnt","_materialsCnt","_itemCnt","_bkcPckCnt"];
-		{
-			[format["_fillboxes: _boxLoot %1 = %2",_x, _boxLoot select _forEachIndex]] call GMS_fnc_log;
-		} foreach ["_weapons","_magazines","_optics","_materials","_items","_backpacks"];
-	};
-	*/
 	if !(_weapons isEqualTo []) then
 	{
 		private _tries = [_wepCnt] call GMSCore_fnc_getIntegerFromRange;

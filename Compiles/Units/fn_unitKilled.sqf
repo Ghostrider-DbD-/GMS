@@ -62,7 +62,7 @@ if !(_role isEqualTo []) then // _instigator was in a vehicle of some sort
 		case "cargo": {};
 	};
 };
-[format["GMS_fnc_unitKilled: _unit %1 | _killer %2 | _instigator %3 | vehicle _killer %4",_unit,_killer,_instigator,vehicle _killer]] call GMS_fnc_log;
+//[format["GMS_fnc_unitKilled: _unit %1 | _killer %2 | _instigator %3 | vehicle _killer %4",_unit,_killer,_instigator,vehicle _killer]] call GMS_fnc_log;
 //diag_log format["GMS_fnc_unitKilled: _unit %1 | _killer %2 | | weapon = %3 | doing all that stuff now", _unit,_killer, currentWeapon _killer];
 private _difficulty = (group _unit) getVariable["GMS_difficulty","Red"];
 private _index = [_difficulty] call GMS_fnc_getIndexFromDifficulty;
@@ -131,6 +131,7 @@ if (_creditKill) then
 		_killstreak
 	];
 	[_msg] remoteExec["systemChat",-2];
-	[unit, _instigator, _reward, _experience, _killstreak] remoteExec ["GMS_fnc_killedMessages",_instigator];
+	//[["showScore",[_reward,"",_kills],""],[_instigator]] call blck_fnc_messageplayers;
+	[unit, _instigator, _reward, _experience, _killstreak] remoteExec ["GMSCore_fnc_killedMessages",_instigator];
 };
 

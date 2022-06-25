@@ -141,6 +141,6 @@ _airPatrols = [
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = false;  // Set to false if you have vehicles patrolling nearby.
 
-#include " \GMS\Missions\UMS\code\GMS_fnc_sm_initializeUMSStaticMission.sqf"; 
+#include "\GMS\Missions\UMS\code\GMS_fnc_sm_initializeUMSStaticMission.sqf"; 
 
 diag_log format["[blckeagls static missions] COMPLETED initializing middions %1 position at %2 difficulty %3",_mission,_missionCenter,_difficulty];

@@ -11,8 +11,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Green Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
@@ -151,4 +151,4 @@ _chanceHeliPatrol = GMS_chanceHeliPatrolBlue;  // Setting this in the mission fi
 _noChoppers = GMS_noPatrolHelisBlue;
 _missionHelis = GMS_patrolHelisBlue;
 
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

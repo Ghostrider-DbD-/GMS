@@ -12,7 +12,7 @@
 */
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
 
-if (GMS_debugOn) then {diag_log "[GMS] loading variables"};
+if (GMS_debugLevel > 0) then {diag_log "[GMS] loading variables"};
 
 GMS_minFPS = 12; 
 
@@ -52,5 +52,5 @@ GMS_skillsIndex_Red = 1;
 GMS_skillsIndex_Green = 2;
 GMS_skillsIndex_Orange = 3;
 
-if (GMS_debugOn) then {diag_log "[GMS] Variables Loaded"};
+if (GMS_debugLevel > 0) then {diag_log "[GMS] Variables Loaded"};
 

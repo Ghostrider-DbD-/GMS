@@ -1,8 +1,8 @@
 /*
 Mission Compositions by Ghostrider [GRG] for ghostridergaming
 */
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Red Mission with template = default";
 _crateLoot = GMS_BoxLoot_Red;
@@ -69,4 +69,4 @@ _backpacs = GMS_CUPBackpacks;
 _headgear = GMS_CUPHeadgear;
 #endif
 
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

@@ -12,15 +12,8 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include " \GMS\Configs\GMS_defines.hpp";	
+#include "\GMS\Compiles\Init\GMS_defines.hpp"	
 
-#ifdef GMS_milServer
-if (true) exitWith 
-{
-	diag_log format["Running GMS_configs_exile_mil for militarized servers"];
-	execVM " \GMS\Configs\GMS_configs_exile_mil.sqf";
-};
-#endif
 diag_log format ["Loading Exile-specific configs for Non-militarized servers: GMS_configs_exile.sqf"];
 	
 // list of locations that are protected against mission spawns

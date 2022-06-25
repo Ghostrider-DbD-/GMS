@@ -45,11 +45,11 @@ for "_i" from 1 to (count _missionsList) do
 		if ((_missionTimeoutAt > 0) && {diag_tickTime > _missionTimeoutAt}) then 
 		{
 			_monitorAction = -1;
-			diag_log format["_monitorInitializedMissions (37) Mission Timeout Criteria Met at %1",diag_tickTime];
+			//diag_log format["_monitorInitializedMissions (37) Mission Timeout Criteria Met at %1",diag_tickTime];
 		} else {
 			private _playerInRange = [missionCoords, GMS_TriggerDistance, false, true] call GMS_fnc_playerInRange;			
 			if (_playerInRange) then {
-				diag_log format["_monitorInitializedMissions (41) Player in range criteria met at %1",diag_tickTime];
+				//diag_log format["_monitorInitializedMissions (41) Player in range criteria met at %1",diag_tickTime];
 				_monitorAction = 0;
 			} else {
 				if (GMS_debugLevel >= 3) then 

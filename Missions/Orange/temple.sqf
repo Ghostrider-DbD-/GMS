@@ -11,8 +11,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Green Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
@@ -613,4 +613,4 @@ _paraLootCounts = GMS_lootCountsOrange;  // Throw in something more exotic than 
 
 _endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 //_timeOut = -1;
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

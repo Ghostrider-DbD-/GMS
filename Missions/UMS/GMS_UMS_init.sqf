@@ -10,7 +10,7 @@
 */
 //diag_log "[GMS] Initializing UMS";
 
-#include " \GMS\Configs\GMS_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 GMS_dynamicUMS_MissionsRuning = 0;
 GMS_priorDynamicUMS_Missions = [];
 GMS_UMS_ActiveDynamicMissions = [];

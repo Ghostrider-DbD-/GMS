@@ -11,14 +11,13 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-	#include " \GMS\Configs\GMS_defines.hpp"
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 	/*
 		changing any of these variables may break the mission system
 	*/
 	GMS_locationBlackList = [];  // Do not touch ...
-	GMS_debugON = true;  //  should be set to false;  ... 
-	GMS_debugLevel = 4;  //  should be set to 0 ... 
+	GMS_debugLevel = 0;  //  should be set to 0 ... 
 
 	[format["Loading configurations for Non-militarized servers"]] call GMS_fnc_log;
 	/*
@@ -584,14 +583,14 @@ switch (GMSCore_modType) do
 	GMS_chanceVest = 0.1;
 	GMS_chanceBinoc = 0.75;
 
-	private _configToLoad = format[" \GMS\Configs\GMS_configs_%1.sqf",tolower(GMSCore_modtype)];
+	private _configToLoad = format["\GMS\Configs\GMS_configs_%1.sqf",tolower(GMSCore_modtype)];
 	diag_log format["[GMS] _configToLoad = %1",_configToLoad];
 	[] call compileFinal preprocessFileLineNumbers _configToLoad;
 
 	if (GMS_useConfigsGeneratedLoadouts) then 
 	{
 		["Dynamic Configs Enabled"] call GMS_fnc_log;
-		execVM " \GMS\Configs\GMS_dynamicConfigs.sqf";
+		execVM "\GMS\Configs\GMS_dynamicConfigs.sqf";
 	};
 	GMS_configsLoaded = true;
 	//diag_log format["<--- GMS_configs loaded at %1 --->",diag_tickTime];

@@ -12,8 +12,8 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 diag_log "[GMS] Spawning Orange Mission with template = bunkerMission";
 _crateLoot = GMS_BoxLoot_Orange;

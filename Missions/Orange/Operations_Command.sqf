@@ -11,8 +11,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Orange Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
@@ -176,4 +176,4 @@ _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in somethi
 _spawnCratesTiming = "atMissionSpawnGround"; 
 
 
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

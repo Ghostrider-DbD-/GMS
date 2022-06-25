@@ -131,7 +131,7 @@ GMS_customConfigsLoaded = 1;
 
 uiSleep 5;
 
-if (GMS_debugOn) then {
+if (GMS_debugLevel > 0) then {
 	
 	//GMS_MinDistanceFromMission = 1000;
     //GMS_minDistanceToBases = 100;
@@ -208,5 +208,5 @@ if (GMS_debugOn) then {
 	GMS_TMax_Crashes = 15;
 	GMS_TMax_UMS = 25;
 
-	["[GMS] Custom Configs <DEBUG ON> Custom mission timers loaded"] call GMS_fnc_log;
+	["Custom Configs <DEBUG LEVEL > 0> Custom mission timers loaded"] call GMS_fnc_log;
 };

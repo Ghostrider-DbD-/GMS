@@ -16,7 +16,7 @@ if !(isServer) exitWith {};
 params["_msg",["_players",allplayers]];
 
 {
-	if (isPlayer _x) then {_msg remoteExec["fn_handleMessage",(owner _x)]};
+	if (isPlayer _x) then {_msg remoteExec["GMS_fnc_handleMessage",(owner _x)]};
 } forEach _players;
 
 

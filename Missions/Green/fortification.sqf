@@ -11,8 +11,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Green Mission with template = default";
 _crateLoot = GMS_BoxLoot_Green;
@@ -186,4 +186,4 @@ _headgear = GMS_headgear;
 //_paraLoot = _paralootChoices select _lootIndex;
 //_paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
  
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

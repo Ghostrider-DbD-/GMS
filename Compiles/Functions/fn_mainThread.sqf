@@ -73,7 +73,7 @@ while {true} do
 				floor(diag_tickTime/60)
 			]
 		] call GMS_fnc_log;
-		if (GMS_debugON) then 
+		if (GMS_debugLevel > 0) then 
 		{
 			private _activeScripts = diag_activeScripts;
 			[

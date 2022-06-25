@@ -8,7 +8,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include " \GMS\Configs\GMS_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 if (!isServer) exitWith{};
 

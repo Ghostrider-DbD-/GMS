@@ -10,7 +10,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include " \GMS\Configs\GMS_defines.hpp";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 [format["Loading configurations for Epoch for blckeagls"]] call GMS_fnc_log;
 ////////////

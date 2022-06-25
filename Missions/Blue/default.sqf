@@ -12,8 +12,8 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Blue Mission with template = default";
 
@@ -149,4 +149,4 @@ _endCondition = GMS_missionEndCondition;  // Options are allUnitsKilled, playerN
 									// Setting this in the mission file overrides the defaults 
 ////_timeOut = -1;
 */
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

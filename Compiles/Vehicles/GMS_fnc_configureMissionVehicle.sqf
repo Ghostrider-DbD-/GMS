@@ -18,7 +18,7 @@
 */
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
 
-params["_veh"]];
+params["_veh"];
 
 if (GMSCore_modtype isEqualTo "Epoch") then
 {

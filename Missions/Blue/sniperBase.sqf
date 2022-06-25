@@ -11,8 +11,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include " \GMS\Configs\GMS_defines.hpp";
-#include " \GMS\Missions\GMS_privateVars.sqf";
+#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning blue Mission with template = default";
 _crateLoot = GMS_BoxLoot_blue;
@@ -109,4 +109,4 @@ _noAIGroups = GMS_AIGrps_Blue;  // Setting this in the mission file overrides th
 _noVehiclePatrols = GMS_SpawnVeh_Blue;  // Setting this in the mission file overrides the defaults 
 _noEmplacedWeapons = GMS_SpawnEmplaced_Blue;  // Setting this in the mission file overrides the defaults 
 
-#include " \GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

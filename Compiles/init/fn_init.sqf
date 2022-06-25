@@ -9,7 +9,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 
-//#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "GMS_defines.hpp"
 
 ///////////////////////////////////////////////
 //  prevent the system from being started twice
@@ -46,11 +46,11 @@ private _loadingStartTime = diag_tickTime;
 [] call compileFinal preprocessFileLineNumbers "\GMS\Compiles\GMS_functions.sqf";
 diag_log format["[GMS] Loaded Functions at %1",diag_tickTime];
 // Load Configs
-[] call compile preprocessfilelinenumbers " \GMS\Configs\GMS_configs.sqf";
+[] call compile preprocessfilelinenumbers "\GMS\Configs\GMS_configs.sqf";
 
 diag_log format["[GMS] Loaded Configs at %1",diag_tickTime];
 
-waitUntil{(!isNil "GMS_simulationManager") && {(!isNil "GMS_debugOn") && {!(isNil "GMS_configs_loaded")}}};
+waitUntil{(!isNil "GMS_simulationManager") && {(!isNil "GMS_debugLevel") && {!(isNil "GMS_configs_loaded")}}};
 
 {
 	private _var = missionNameSpace getVariable[_x,[]];
@@ -103,12 +103,12 @@ if ((toLowerANSI GMSCore_modtype) isEqualTo "default") then
 //  HINT: Use these for map-specific settings
 #include "\GMS\Configs\GMS_custom_config.sqf";
 
-if (GMS_debugOn) then {[format["[GMS] Custom Configurations Loaded at %1",diag_tickTime]] call GMS_fnc_log};
-if (GMS_debugOn) then {[format["[GMS] debug mode settings:GMS_debugON = %1 | GMS_debugLevel = %2",GMS_debugON,GMS_debugLevel]] call GMS_fnc_log};
+if (GMS_debugLevel > 0) then {[format["Custom Configurations Loaded at %1",diag_tickTime]] call GMS_fnc_log};
+if (GMS_debugLevel > 0) then {[format["GMS_debugLevel = %1",GMS_debugLevel]] call GMS_fnc_log};
 
 // Load vaariables used to store information for the mission system.
 [] call compileFinal preprocessFileLineNumbers "\GMS\Compiles\GMS_variables.sqf";
-if (GMS_debugOn) then {diag_log format["[GMS] Variables loaded at %1",diag_tickTime]};
+if (GMS_debugLevel > 0) then {diag_log format["Variables loaded at %1",diag_tickTime]};
 
 // configure dynamic simulation management is this is being used.
 if (GMS_simulationManager == 2) then 
@@ -119,19 +119,19 @@ if (GMS_simulationManager == 2) then
 
 // find and set Mapcenter and size
 call compileFinal preprocessFileLineNumbers "\GMS\Compiles\init\GMS_fnc_findWorld.sqf";
-if (GMS_debugOn) then {diag_log "[GMS] Map-specific information defined"};
+if (GMS_debugLevel > 0) then {diag_log "Map-specific information defined"};
 
 
 // set up the lists of available missions for each mission category
 #include "\GMS\Missions\GMS_missionLists.sqf";
-if (GMS_debugOn) then {diag_log "[GMS] Mission Lists Loaded Successfully"};
+if (GMS_debugLevel > 0) then {diag_log "Mission Lists Loaded Successfully"};
 // TODO: merge in underwater / sea missions at some point 
 
 switch (GMS_simulationManager) do
 {
 	case 2: {["dynamic simulation manager enabled"] call GMS_fnc_log}; 
-	case 1: {["[GMS] simulation manager enabled"] call GMS_fnc_log};
-	case 0: {["[GMS] simulation management disabled"] call GMS_fnc_log};
+	case 1: {["GMS simulation manager enabled"] call GMS_fnc_log};
+	case 0: {["GMS simulation management disabled"] call GMS_fnc_log};
 };
 
 if (GMS_blacklistTraderCities) then
