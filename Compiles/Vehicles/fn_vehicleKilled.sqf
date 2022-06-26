@@ -12,6 +12,6 @@
 
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
 if !(local (_this select 0)) exitWith {};
-params ["_vehicle", "_source", "_damage", "_instigator"];
+params ["_unit", "_killer", "_instigator"];
 if !(isPlayer _instigator) exitWith {};
 [_unit,_instigator] call GMS_fnc_alertVehicles;

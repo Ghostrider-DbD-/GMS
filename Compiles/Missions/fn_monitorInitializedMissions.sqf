@@ -71,6 +71,22 @@ for "_i" from 1 to (count _missionsList) do
 		// Handle Timeout
 		case -1:
 		{
+			_missionConfigs params[
+				"_difficulty",
+				"_markerConfigs",
+				"_endCondition",	
+				"_isscubamission",	
+				"_missionLootConfigs",
+				"_aiConfigs",
+				"_missionMessages",	
+				"_paraConfigs"
+			];
+
+			_missionMessages params [
+				"_assetKilledMsg",	
+				"_endMsg"
+			];
+						
 			[format["_fnc_monitorInitializedMissions (71): mission timed out: _endMsg %1 | el %2",_endMsg,_el]] call GMS_fnc_log;
 			[_key, _missionData, "", -1] call GMS_fnc_endMission;
 		}; 			

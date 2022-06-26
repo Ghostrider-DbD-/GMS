@@ -9,11 +9,6 @@ fn_selectCrateType = {
 		//default {_item = "GroundWeaponHolder"};
 		//default {_item = "weaponHolderSimulated"};
 	};
-	#ifdef GMS_debugMod
-	if (GMS_debugLevel > 0) then {
-		diag_log format["---- <<_fn_selectCrateType>>  returning _item = %1",_item];
-	};
-	#endif
 	_item
 };
 
@@ -133,7 +128,7 @@ _fn_spawnWreckMission = {
 		_obj pushback _x;
 	}forEach _containers;
 	#define waypointDimensions [60,60]
-	private _numberAI = [_minAI,_maxAI] call GMS_fnc_getIntegerFromRange;
+	private _numberAI = [_minAI,_maxAI] call GMSCore_fnc_getIntegerFromRange;
 
 	private _group = [_posOfCrash,_numberAI,_difficulty,waypointDimensions,_uniformsHC,_headGearHC] call GMS_fnc_spawnGroup;
 	GMS_monitoredMissionAIGroups pushBack _group;
@@ -152,7 +147,7 @@ _fn_spawnWreckMission = {
 	[_markers select 1] call GMS_fnc_deleteMarker;
 	[["end",_endMsg,_markerLabel]] call GMS_fnc_messageplayers;
 	if ((GMS_debugLevel > 0)) then {diag_log format["<<--->> crash site %1 at %1 cleared",_CrashName,_posOfCrash];};
-	[_obj, (diag_tickTime + GMS_cleanupCompositionTimer)] call GMS_fnc_addToDeletionCue;
+	[_obj, (diag_tickTime + GMS_cleanupCompositionTimer)] call GMSCore_fnc_addToDeletionCue;
 	GMS_liveMissionAI pushback [_posOfCrash,units _group, (diag_tickTime + GMS_AliveAICleanUpTimer)];
 	GMS_recentMissionCoords pushback[_posOfCrash,diag_tickTime];
 	GMS_ActiveMissionCoords = GMS_ActiveMissionCoords - _posOfCrash;

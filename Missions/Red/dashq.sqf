@@ -115,7 +115,7 @@ _missionLandscape = [
      ["Land_CncWall1_F",[-28.7524,-1.62573,-0.00143909],14.9051,true,true],
      ["Land_BagFence_Long_F",[-7.8208,13.0066,-0.00143909],269.905,true,true],
      ["Land_BagFence_Long_F",[-4.69067,9.88257,-0.00143909],359.905,true,true],
-     ["Land_Cargo_Patrol_V1_F",[-19.8857,1.92358,-0.00143862],359.905,true,true],
+     ["Land_Cargo_HQ_V1_F",[-19.8857,1.92358,-0.00143862],359.905,true,true],
      ["Land_Cargo_HQ_V1_F",[-17.6404,20.1672,-0.00143862],269.491,true,true],
      ["Land_HelipadSquare_F",[0.169189,17.6489,-0.00143909],359.936,true,true],
      ["Land_BagFence_Round_F",[-7.21484,25.1335,-0.00143909],134.905,true,true],

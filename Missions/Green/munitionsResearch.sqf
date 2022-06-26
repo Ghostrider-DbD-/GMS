@@ -31,7 +31,7 @@ _missionLandscape = [
 	["Land_Research_house_V1_F",[-27.6895,70.9883,0],0,[true,false]],
 	["Land_Research_house_V1_F",[-110.166,14.3926,0],0,[true,false]],
 	["Land_Research_house_V1_F",[54.5078,-70.8457,0],0,[true,false]],
-	["Land_Cargo_Patrol_V1_F",[111.865,11.9375,9.53674e-007],0,[true,false]],
+	["Land_Cargo_House_V1_F",[111.865,11.9375,9.53674e-007],0,[true,false]],
 	["Land_Cargo_HQ_V2_F",[-115.473,-44.5977,-4.76837e-007],0,[true,false]],
 	["Land_SharpRock_apart",[-59.6836,-59.5996,-4.76837e-007],0,[false,false]],
 	["Land_W_sharpRock_apart",[-81.6973,-42.4082,-4.76837e-007],0,[false,false]],
