@@ -54,16 +54,6 @@ _missionLootConfigs params [
 	// Ignore the remaining entries in the configuration
 ];
 
-/*
-[format["_endMission (56) _endMsg = %1",_endMsg]] call GMS_fnc_log;
-[format["_endMission (57) _lootCounts = %1",_lootCounts]] call GMS_fnc_log;
-[format["_endMission (58) _crateLoot = %1",_crateLoot]] call GMS_fnc_log;
-[format["_endMission (59) _crates = %1",_crates]] call GMS_fnc_log;
-[format["_endMission (60) _mines = %1",_mines]] call GMS_fnc_log;
-[format["_endMission (61) _objects = %1",_objects]] call GMS_fnc_log;
-[format["_endMission (62) _missionAI = %1",_missionAI]] call GMS_fnc_log;
-[format["_endMission (63) _aiVehicles = %1",_aiVehicles]] call GMS_fnc_log;
-*/
 {[_x] call GMS_fnc_deleteMarker} forEach (_markers);
 
 {
@@ -223,11 +213,5 @@ if (_isScubaMission) then
 	GMS_UMS_ActiveDynamicMissions = GMS_UMS_ActiveDynamicMissions - [_coords];
 	GMS_dynamicUMS_MissionsRuning = GMS_dynamicUMS_MissionsRuning - 1;		
 };
-/*
-{
-		[format["_endMission: crate %1 contains weapons %2",_x,getWeaponCargo _x]] call GMS_fnc_log;
-		[format["_endMission: crate %1 contains items %2",_x,getItemCargo _x]] call GMS_fnc_log; 
-		[format["_endMission: crate %1 contains magazines %2",_x, getMagazinecargo _x]] call GMS_fnc_log;					
-}forEach _crates;
-*/
+
 GMS_missionsRun = GMS_missionsRun + 1;
