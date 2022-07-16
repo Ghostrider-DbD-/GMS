@@ -118,7 +118,7 @@ for "_i" from 1 to (count _missionsList) do
 					];	
 					//params["_pos","_numAI","_skilllevel",["_uniforms",[]],["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weapons",[]],["_sideArms",[]],["_isScuba",false]];
 					private _paraGroup = [_coords,_noPara,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call GMS_fnc_spawnParaUnits;
-					[format["_monitorSpawneMissions: _noPara = %1 | _chancePara = %2 | _paraGroup = %3",_noPara,_chancePara,_paraGroup]] call GMS_fnc_log;
+					//[format["_monitorSpawneMissions: _noPara = %1 | _chancePara = %2 | _paraGroup = %3",_noPara,_chancePara,_paraGroup]] call GMS_fnc_log;
 					if !(isNull _paraGroup) then 
 					{
 						_missionInfantry append (units _paraGroup);
@@ -132,7 +132,7 @@ for "_i" from 1 to (count _missionsList) do
 						};	
 						_missionData = [_coords,_mines,_objects,_hiddenObjects,_crates,_missionInfantry,_assetSpawned,_aiVehicles,_lootVehicles,_markers];
 						_el set[missionData, _missionData];							
-						diag_log format["_monitorSpawnedMissions (134): para spawned at %1",diag_tickTime];
+						//diag_log format["_monitorSpawnedMissions (134): para spawned at %1",diag_tickTime];
 					};
 				};
 			};
@@ -262,25 +262,63 @@ for "_i" from 1 to (count _missionsList) do
 						};
 					};
 					//diag_log format["_monitorSpawnedMissions: (262):_crates = %1",_crates];
-
-					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call GMS_fnc_endMission;
+					/*
+						["_key",-1],
+						["_missionData",[]],
+						["_endMsg",,""],
+						["_markerData",[]],
+						["_missionLootConfigs",[]],
+						["_isScuba",false],
+						["_endCode",-1]
+					*/
+					[format["_monitorSpawnedMissions (case 1): _markerConfigs %1 | _endMsg %2",_markerConfigs,_endMsg]] call GMS_fnc_log;
+					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission, 1] call GMS_fnc_endMission;
 					//[format["_monitorSpawnedMissions (265): _markerMissionName %1: end of case 1 for mission completion",_markerMissionName]] call GMS_fnc_log;
 				};
 
 				case 2: { // Abort, crate moved.
 					_endMsg = "Crate Removed from Mission Site Before Mission Completion: Mission Aborted";
-					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs, _isscubamission,_exception] call GMS_fnc_endMission;								
+					/*
+						["_key",-1],
+						["_missionData",[]],
+						["_endMsg",,""],
+						["_markerData",[]],
+						["_missionLootConfigs",[]],
+						["_isScuba",false],
+						["_endCode",-1]
+					*/			
+					//[format["_monitorSpawnedMissions (case 2): _markerConfigs %1 | _endMsg %2",_markerConfigs,_endMsg]] call GMS_fnc_log;							
+					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs, _isscubamission, 2] call GMS_fnc_endMission;								
 				};
 
-				case 3: {  // Abort, key asset killed							
-					[_key, _missionData, _assetKilledMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call GMS_fnc_endMission;							
+				case 3: {  // Abort, key asset killed			
+					/*
+						["_key",-1],
+						["_missionData",[]],
+						["_endMsg",,""],
+						["_markerData",[]],
+						["_missionLootConfigs",[]],
+						["_isScuba",false],
+						["_endCode",-1]
+					*/		
+					//[format["_monitorSpawnedMissions (case 3): _markerConfigs %1 | _assetKilledMsg %2",_markerConfigs,_assetKilledMsg]] call GMS_fnc_log;						
+					[_key, _missionData, _assetKilledMsg, _markerConfigs, _missionLootConfigs,_isscubamission, 3] call GMS_fnc_endMission;							
 				};
 
 				case 4: {
 					// Used for testing purposes only 
-					[format["Programed mission abort, debug level >= 4"]] call GMS_fnc_log;
+					//[format["Programed mission abort, debug level >= 4"]] call GMS_fnc_log;
+					/*
+						["_key",-1],
+						["_missionData",[]],
+						["_endMsg",,""],
+						["_markerData",[]],
+						["_missionLootConfigs",[]],
+						["_isScuba",false],
+						["_endCode",-1]
+					*/
 					//diag_log format["_monitorSpawnedMissions: (286): _crates = %1 | _mines = %2",_crates,_mines];					
-					[_key, _missionData, "DEBUG SETTING >= 4", _markerConfigs, _missionLootConfigs, _isscubamission, _exception] call GMS_fnc_endMission;												
+					[_key, _missionData, "DEBUG SETTING >= 4", _markerConfigs, _missionLootConfigs, _isscubamission, 4] call GMS_fnc_endMission;												
 				};
 				
 				case 5: {  // SIMULATED Normal Mission End
@@ -302,7 +340,7 @@ for "_i" from 1 to (count _missionsList) do
 								_objects append _crates;
 							};
 							private _crateMoney = missionNamespace getVariable (format["GMS_crateMoney%1",_difficulty]);	
-							[format["_monitorSpawnedMissions: (312) _crateMoney = %1",_crateMoney]] call GMS_fnc_log;																		
+							//[format["_monitorSpawnedMissions: (312) _crateMoney = %1",_crateMoney]] call GMS_fnc_log;																		
 							{
 								[_x, _crateMoney] call GMSCore_fnc_setMoney;
 							} forEach _crates;				
@@ -346,10 +384,10 @@ for "_i" from 1 to (count _missionsList) do
 							[_assetSpawned,selectRandom(_assetSpawned getVariable["endAnimation",["AidlPercMstpSnonWnonDnon_AI"]])] remoteExec["switchMove",-2];
 						};
 					};
-					diag_log format["_monitorSpawnedMissions: (360):_crates = %1",_crates];
+					//diag_log format["_monitorSpawnedMissions: (360):_crates = %1",_crates];
 
-					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission,_exception] call GMS_fnc_endMission;
-					[format["_monitorSpawnedMissions (363): _markerMissionName %1: end of case 1 for mission completion",_markerMissionName]] call GMS_fnc_log;
+					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission, 5] call GMS_fnc_endMission;
+					//[format["_monitorSpawnedMissions (363): _markerMissionName %1: end of case 1 for mission completion",_markerMissionName]] call GMS_fnc_log;
 				};				
 			};
 		};

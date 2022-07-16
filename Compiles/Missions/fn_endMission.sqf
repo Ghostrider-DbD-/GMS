@@ -19,15 +19,15 @@
 //////////////////////////////////////////////////////////////////////
 
 params[
-	"_key",
-	"_missionData",
-	"_endMsg",
-	"_markerData",
-	"_missionLootConfigs",
-	"_isScuba",
-	"_endCondition"
+	["_key",-1],
+	["_missionData",[]],
+	["_endMsg",""],
+	["_markerData",[]],
+	["_missionLootConfigs",[]],
+	["_isScuba",false],
+	["_endCode",-1]
 ];
-
+//[format["_endMission: _endCode %1 | _markerData %2 | _endMsg %3",_endCode, _markerData, _endMsg]] call GMS_fnc_log;
 _missionData params [
 	"_coords",
 	"_mines",
@@ -46,6 +46,7 @@ _markerData params [
 	"_markerMissionName"
 ];
 
+/*
 _missionLootConfigs params [
 	"_spawnCratesTiming", 
 	"_loadCratesTiming",		
@@ -53,7 +54,7 @@ _missionLootConfigs params [
 	"_lootCounts"
 	// Ignore the remaining entries in the configuration
 ];
-
+*/
 {[_x] call GMS_fnc_deleteMarker} forEach (_markers);
 
 {
@@ -66,10 +67,10 @@ _missionLootConfigs params [
 	};
 } forEach GMS_missionData;
 
-switch (_endCondition) do 
+switch (_endCode) do 
 {
 	case -1: {
-			[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
+			//[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
 			GMS_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];			
 			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;	
 			[_crates, 0] call GMSCore_fnc_deleteObjectsMethod;
@@ -133,7 +134,7 @@ switch (_endCondition) do
 			[format["Mission Aborted <ASSET KILLED> | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call GMS_fnc_log;
 	};
 	case 4: {
-			[format["_endMission (153): _exception 4 | count _mines %1 | count _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
+			//[format["_endMission (153): _exception 4 | count _mines %1 | count _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
 			GMS_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];
 			if (GMS_useSignalEnd) then
 			{
@@ -167,7 +168,7 @@ switch (_endCondition) do
 	};	
 
 	case 5: {
-			[format["_endMission (190): _exception 5 | count _mines %1 | count _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
+			//[format["_endMission (190): _exception 5 | count _mines %1 | count _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
 			GMS_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];
 			if (GMS_useSignalEnd) then
 			{
@@ -203,11 +204,11 @@ switch (_endCondition) do
 
 GMS_missionsRunning = GMS_missionsRunning - 1;
 GMS_ActiveMissionCoords = GMS_ActiveMissionCoords - [ _coords];	
-if !(_isScubaMission) then
+if !(_isScuba) then
 {
 	GMS_recentMissionCoords pushback [_coords,diag_tickTime]; 
 };
-if (_isScubaMission) then
+if (_isScuba) then
 {
 	GMS_priorDynamicUMS_Missions pushback [_coords,diag_tickTime]; 
 	GMS_UMS_ActiveDynamicMissions = GMS_UMS_ActiveDynamicMissions - [_coords];

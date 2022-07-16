@@ -13,7 +13,7 @@
 private _fn_cleanup = {
 	private _m = _this;
 	uiSleep 350;
-	[format["_fn_cleanup: deleting marker %1",_m]] call GMS_fnc_log;
+	//[format["_fn_cleanup: deleting marker %1",_m]] call GMS_fnc_log;
 	deleteMarker _m;
 };
 

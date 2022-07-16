@@ -14,7 +14,7 @@
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
 if !(isServer) exitWith {};
 params["_msg",["_players",allplayers]];
-[format["_messagePlayers - _msg = %1",_msg]] call GMS_fnc_log;
+//[format["_messagePlayers - _msg = %1",_msg]] call GMS_fnc_log;
 {
 	if (isPlayer _x) then {_msg remoteExec["GMS_fnc_handleMessage",(owner _x)]};
 } forEach _players;

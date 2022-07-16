@@ -71,7 +71,7 @@ for "_i" from 1 to (count _missionsList) do
 		// Handle Timeout
 		case -1:
 		{
-			/*
+			
 			_missionConfigs params[
 				"_difficulty",
 				"_markerConfigs",
@@ -89,8 +89,17 @@ for "_i" from 1 to (count _missionsList) do
 			];
 						
 			[format["_fnc_monitorInitializedMissions (71): mission timed out: _endMsg %1 | el %2",_endMsg,_el]] call GMS_fnc_log;
-			*/
-			[_key, _missionData, "", -1] call GMS_fnc_endMission;
+			
+			/*
+				["_key",-1],
+				["_missionData",[]],
+				["_endMsg",,""],
+				["_markerData",[]],
+				["_missionLootConfigs",[]],
+				["_isScuba",false],
+				["_endCode",-1]
+			*/			
+			[_key, _missionData, "", _missionData,_missionLootConfigs,_isscubamission,-1] call GMS_fnc_endMission;
 		}; 			
 		
 		//  Handle mission waiting to be triggerd and player is within the range to trigger		
@@ -418,7 +427,7 @@ for "_i" from 1 to (count _missionsList) do
 				"_lootVehicles",
 				"_markers"
 			];
-			[format["_monitorInitializedMissions (393): _shapedMarker %1 | _coords %2 | count _mines %3 | count _objects %4 | _crates %5",_shapedMarker,_coords,count _mines,count _objects,_crates]] call GMS_fnc_log;
+			//[format["_monitorInitializedMissions (393): _shapedMarker %1 | _coords %2 | count _mines %3 | count _objects %4 | _crates %5",_shapedMarker,_coords,count _mines,count _objects,_crates]] call GMS_fnc_log;
 		};
 	};
 	//diag_log format["_monitorInitializedMissions (396) End of Code Block | GMS_initializedMissionsList = %1",GMS_initializedMissionsList];
