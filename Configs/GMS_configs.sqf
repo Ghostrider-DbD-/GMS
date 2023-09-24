@@ -293,11 +293,11 @@ switch (GMSCore_modType) do
 	GMS_maxSpawnedMissions = 15;
 		
 	//Set to -1 to disable. Values of 2 or more force the mission spawner to spawn copies of that mission - this feature is not recommended because you may run out of available groups.
-	GMS_enableOrangeMissions = 1;  
-	GMS_enableGreenMissions = 2;
-	GMS_enableRedMissions = 2;
-	GMS_enableBlueMissions = 1;
-	GMS_numberUnderwaterDynamicMissions = 0;  // Values from -1 (no UMS) to N (N Underwater missions will be spawned; static UMS units and subs will be spawned.	
+	GMS_enableOrangeMissions = -1;  
+	GMS_enableGreenMissions = -2;
+	GMS_enableRedMissions = -2;
+	GMS_enableBlueMissions = -1;
+	GMS_numberUnderwaterDynamicMissions = -1;  // Values from -1 (no UMS) to N (N Underwater missions will be spawned; static UMS units and subs will be spawned.	
 
 	// sets the maximum number of static missions to spawn - set to -1 to disable spawning them. 
 	GMS_enableStaticMissions = 3; 
@@ -332,7 +332,7 @@ switch (GMSCore_modType) do
 	GMS_TMax_Blue = 360;
 	GMS_TMax_Red = 420;
 	GMS_TMax_UMS = 400;
-	GMS_TMax_Statics = 900; 
+	GMS_TMax_Statics = 30; 
 
 	#ifdef GRGserver
 	GMS_TMax_Hunter = 400;

@@ -16,6 +16,7 @@
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
 params["_missionList","_path","_marker","_difficulty","_tMin","_tMax",["_noMissions",1]];
 if (GMS_debugLevel >= 3) then 
+//if (true) then
 {
 	{
 		diag_log format["_addMissionToQue: _this %1 = %2",_forEachIndex, _this select _forEachIndex];
@@ -25,6 +26,7 @@ private _waitTime = diag_tickTime + (_tMin) + random((_tMax) - (_tMin));
 private _missionsData = []; // Parameters definine each of the missions for this difficulty are stored as arrays here.
 {
 	private _missionFile = format["\GMS\Missions\%1\%2.sqf",_path,_x];
+	//diag_log format["_addMissionToQue: _missionFile = %1",_missionFile];
 	private _missionCode = compileFinal preprocessFileLinenumbers _missionFile;//return all of the values that define how the mission is spawned as an array of values
 	if !(isNil "_missionCode") then 
 	{

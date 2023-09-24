@@ -188,7 +188,9 @@ for "_i" from 1 to (count _missionsList) do
 				"_spawnCratesTiming", 
 				"_loadCratesTiming",		
 				"_crateLoot", 
-				"_lootCounts"  //  A trunkated list of variables is parsed as we do not need all of them
+				"_lootCounts",
+				"_missionLootBoxes",
+				"_missionLootVehicles"
 			];
 
 			_missionMessages params [

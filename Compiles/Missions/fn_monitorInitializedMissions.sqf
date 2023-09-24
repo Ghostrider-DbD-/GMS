@@ -312,7 +312,7 @@ for "_i" from 1 to (count _missionsList) do
 				_missionInfantry append (units (_temp select 0));					
 				uiSleep delayTime;
 			};
-
+			
 			private _userelativepos = true;
 			private _emplacedWeaponsThisMission = [_noEmplacedWeapons] call GMSCore_fnc_getNumberFromRange;
 			if (GMS_useStatic && {((_emplacedWeaponsThisMission > 0) || {!(_missionEmplacedWeapons isEqualTo [])} )} ) then
