@@ -201,6 +201,8 @@ if (GMS_maxCrashSites > 0) then
 
 if (GMS_enableStaticMissions > 0) then 
 {
+	//diag_log format["fn_init: _pathStatics = %1",_pathStatics];
+	//diag_log format["fn_init: _missionListStatics = %1",_missionListStatics];
 	[_missionListStatics,_pathStatics,"StaticsMarker","orange",GMS_TMin_Statics,GMS_TMax_Statics,GMS_enableStaticMissions] call GMS_fnc_addMissionToQue;
 };
 
