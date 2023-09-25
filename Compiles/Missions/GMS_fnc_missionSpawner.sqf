@@ -94,13 +94,13 @@ private _paraSkill = _aiDifficultyLevel;
 
 if !(_spawnCratesTiming in GMS_validLootSpawnTimings) then 
 {
-	[format['Invalid crate spawn timing %1 found in mission %2 :: default value "atMissionSpawnGround" used',_spawnCratesTiming,_markerMissionName],"<WARNING>"] call GMS_fnc_log;
-	_spawnCratesTiming = "atMissionSpawnGround";
+	[format['Invalid crate spawn timing %1 found in mission %2 :: default value atMissionSpawnGround used',_spawnCratesTiming,_markerMissionName],"<WARNING>"] call GMS_fnc_log;
+	_spawnCratesTiming = atMissionSpawnGround;
 };
 if !(_loadCratesTiming in GMS_validLootLoadTimings) then 
 {
-	[format['Invalid crate loading timing %1 found in mission %2 :: default "atMissionSpawn" value used',_loadCratesTiming,_markerMissionName],"<WARNING>"] call GMS_fnc_log;
-	_loadCratesTiming = "atMissionSpawn";
+	[format['Invalid crate loading timing %1 found in mission %2 :: default atMissionSpawn value used',_loadCratesTiming,_markerMissionName],"<WARNING>"] call GMS_fnc_log;
+	_loadCratesTiming = atMissionSpawn;
 };
 if !(_endCondition in GMS_validEndStates) then 
 {

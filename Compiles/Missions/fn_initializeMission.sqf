@@ -99,7 +99,7 @@ if !(GMS_preciseMapMarkers) then
 	_markerPos = [_coords,75] call GMS_fnc_randomPosition;
 };
 
-if (GMS_debugLevel >= 3) then 
+if (GMS_debugLevel >=30) then 
 {
 	{
 		diag_log format["_initializeMission (95) %1 = %2",_x,_markerConfigs select _forEachIndex];
@@ -119,6 +119,7 @@ if !(toLowerANSI (_markerType) in ["ellipse","rectangle"] || {isClass(configFile
 	_markerBrush = "GRID";
 	_markerError = true;
 };
+
 if !(isClass(configFile >> "CfgMarkerColors" >> _markerColor)) then 
 {
 	//[format["_markerColor set to 'default': Illegal color %1 used for mission %2 of difficulty %3",_markerColor,_markerMissionName,_difficulty],"warning"] call GMS_fnc_log;
