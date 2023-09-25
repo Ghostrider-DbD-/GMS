@@ -14,7 +14,7 @@
  class GMSBuild {
 	 Version = "7.15";
 	 Build = "263"; 
-	 Date = "09-23-2023";
+	 Date = "09-24-2023";
  };
 
 class CfgPatches {
@@ -108,6 +108,7 @@ class CfgFunctions {
 			class spawnCrate {};
 			class spawnCompositionObjects {};			
 			class spawnEmplacedWeaponArray {};
+			class spawnMissionAssets {};
 			class spawnMines {};
 			class spawnMissionAI {};
 			class spawnMissionCrates {};

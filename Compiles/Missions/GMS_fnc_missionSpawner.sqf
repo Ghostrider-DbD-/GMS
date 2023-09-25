@@ -177,6 +177,7 @@ private _missionMessages = [
 ];
 
 private _timesSpawned = 0;
+private _isSpawned = false;
 private _table = [
 	_aiDifficultyLevel,
 	_markerConfigs,
@@ -188,7 +189,8 @@ private _table = [
 	_paraConfigs,	
 	_defaultMissionLocations,
 	_maxMissionRespawns,
-	_timesSpawned		
+	_timesSpawned,
+	_isSpawned	
 ];
 //[format["_missionSpawner (182): _defaultMissionLocations %1 | _maxMissionRespawns %2 | _timesSpawned %3",_defaultMissionLocations,_maxMissionRespawns,_timesSpawned]] call GMS_fnc_log;
 _table

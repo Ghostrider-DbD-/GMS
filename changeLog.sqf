@@ -45,7 +45,17 @@ GMS_killMessageTypesKiller = [ ... ];
 
 2. Added an option to spawn static missions. 
 Deposit the .sqf files for these missions in Missions\Statics.
-Add their names to _staticMissions = [ ... ]; in Missions\GMS_missionLists.sqf 
+Add their names to _staticMissions = [ ... ]; in \Missions\GMS_missionLists.sqf 
+Static Missions are initialized (any objects and markers are spawned) beginiing at 60 seconds after server startup. 
+The number of static missions that spawn is set by GMS_enableStaticMissions.
+	If there are more missions listed in _staticMissions, then GMS_enableStaticMissions will be randomly selected and spawned at each server restart.  
+	If there are fewer than GMS_enableStaticMissions missions in _staticMissions then  just the missions in the list will be spawned. 
+Missions are cleared and responding like any dynamic mission. 
+
+Set the timers for min and max in GMS_config.sqf
+
+3. Reworked some code for spawning missions to make the process more easily followed and increase efficiency by calling reather than spawniing _monitorInitializedMissions 
+	and moving code in that function that must be spawned to a separate function. This should reduce the number of times a [] spawn operation is performed.
 
 7.11 Build 253
 Changed format for skills to be compatible with GMS_fnc_skills from GMSCore 

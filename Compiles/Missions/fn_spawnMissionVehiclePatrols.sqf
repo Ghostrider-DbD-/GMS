@@ -14,11 +14,10 @@
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
 
 params[
-	"_coords",
-	"_noVehiclePatrols",
-	"_skillAI",
-	"_missionPatrolVehicles"
-	,["_useRelativePos",true],
+	["_coords",[]],
+	["_skillAI","Red"],
+	["_missionPatrolVehicles",[]],
+	["_useRelativePos",true],
 	["_uniforms",[]], 
 	["_headGear",[]],
 	["_vests",[]],
@@ -32,11 +31,8 @@ params[
 private["_spawnPos"];
 private _vehicles = [];
 private _missionAI = [];
-private _abort = false;
 private _patrolsThisMission = +_missionPatrolVehicles;
-//diag_log format["_spawnMissionVehiclePatrols(30): _noVehiclePatrols = %1 | _patrolsThisMission = %2",_noVehiclePatrols,_patrolsThisMission];
-
-//diag_log format["_spawnMissionVehiclePatrols(42): _patrolsThisMission = %1",_patrolsThisMission];
+//diag_log format["_spawnMissionVehiclePatrols(42): count _patrolsThisMission = %1 | _patrolsThisMission = %2",count _patrolsThisMission, _patrolsThisMission];
 #define configureWaypoints false
 {
 	_x params["_vehName","_pos"];
@@ -72,5 +68,5 @@ private _patrolsThisMission = +_missionPatrolVehicles;
 } forEach _patrolsThisMission;
 GMS_landVehiclePatrols append _vehicles;
 GMS_monitoredVehicles append _vehicles;
-[_vehicles, _missionAI, _abort];
+[_vehicles, _missionAI];
 

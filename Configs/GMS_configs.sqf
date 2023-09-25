@@ -161,7 +161,7 @@ switch (GMSCore_modType) do
 	GMS_spawnCratesTiming = "atMissionSpawnGround"; // Choices: "atMissionSpawnGround","atMissionSpawnAir","atMissionEndGround","atMissionEndAir".
 							 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.
 							 //  This sets the default value but can be overridden by defining  _spawnCrateTiming in the file defining a particular mission.
-	GMS_loadCratesTiming = "atMissionCompletion"; //""atMissionSpawn"; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
+	GMS_loadCratesTiming = "atMissionCompletion"; //"atMissionSpawn"; // valid choices are "atMissionCompletion" and "atMissionSpawn"; 
 							// Pertains only to crates spawned at mission spawn.
 							// This sets the default but can be overridden for specific missions by defining _loadCratesTiming
 							
@@ -170,7 +170,7 @@ switch (GMSCore_modType) do
 							// To spawn crates at mission start but load gear only after the mission is completed set GMS_spawnCratesTiming = "atMissionSpawnGround" && GMS_loadCratesTiming = "atMissionCompletion"
 							// To spawn crates on the ground at mission completion set GMS_spawnCratesTiming = "atMissionEndGround" // Note that a loaded crate will be spawned.
 							// To spawn crates in the air and drop them by chutes set GMS_spawnCratesTiming = "atMissionEndAir" // Note that a loaded crate will be spawned.
-	GMS_allowClaimVehicle = true; // Set this to true if you wish to allow players to claim vehicles using one of the claim vehicle scripts floating around.
+	GMS_allowClaimVehicle = false; // Set this to true if you wish to allow players to claim vehicles using one of the claim vehicle scripts floating around.
 
 	///////////////////////////////
 	// PLAYER PENALTIES
@@ -316,7 +316,7 @@ switch (GMSCore_modType) do
 	GMS_TMin_Blue = 300;
 	GMS_TMin_Red = 360;
 	GMS_TMin_UMS = 300;	
-	GMS_TMin_Statics = 20;
+	GMS_TMin_Statics = 60 * 35;  // minimum time for RESPAWN of static missions
 
 	#ifdef GRGserver
 	GMS_TMin_Hunter = 340;
@@ -330,7 +330,9 @@ switch (GMSCore_modType) do
 	GMS_TMax_Blue = 360;
 	GMS_TMax_Red = 420;
 	GMS_TMax_UMS = 400;
-	GMS_TMax_Statics = 30; 
+	GMS_TMax_Statics = GMS_TMin_Statics + 60; // Maximum time for RESAPWN of static missions
+											  // Be sure the minimum is > than the time at which objects from the previous instance of a static mission are deleted 
+											  // That is set in GMS_cleanupCompositionTimer
 
 	#ifdef GRGserver
 	GMS_TMax_Hunter = 400;
