@@ -17,7 +17,7 @@
 		changing any of these variables may break the mission system
 	*/
 	GMS_locationBlackList = [];  // Do not touch ...
-	GMS_debugLevel = 1;  //  should be set to 0 ... 
+	GMS_debugLevel = 0;  //  should be set to 0 ... 
 
 	[format["Loading configurations for Non-militarized servers"]] call GMS_fnc_log;
 	/*
@@ -267,13 +267,11 @@ switch (GMSCore_modType) do
 	//  Heli Patrol Settings
 	///////////////////////////////
 
-	GMS_chanceHeliPatrolBlue = 0.5;  //[0 - 1]  Set to 0 to deactivate and 1 to always have a heli spawn over the mission center and patrol the mission area. 
-									//  The chance of paratroops dropping from the heli is defined by GMS_chancePara(Blue|Red|Green|Orange) above.
-									// Recommend setting the change = 1 if you wish to spawn multiple helis at a mission.
-	GMS_patrolHelisBlue = _GMS_littleBirds;
-	GMS_noPatrolHelisBlue = 1;
+	GMS_chanceHeliPatrolBlue = 1.0;  //[0 - 1]  The chance a heli will be spawned 
+	GMS_patrolHelisBlue = _GMS_littleBirds; // The default helis 
+	GMS_noPatrolHelisBlue = 1;  // The default number of helis
 	
-	GMS_chanceHeliPatrolRed = 0.75; // 0.4;
+	GMS_chanceHeliPatrolRed = 1.0; // 0.4;
 	GMS_patrolHelisRed = _GMS_littleBirds;
 	GMS_noPatrolHelisRed = 1;
 	
