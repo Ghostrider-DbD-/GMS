@@ -35,19 +35,7 @@ private _missionAI = [];
 private _abort = false;
 private _patrolsThisMission = +_missionPatrolVehicles;
 //diag_log format["_spawnMissionVehiclePatrols(30): _noVehiclePatrols = %1 | _patrolsThisMission = %2",_noVehiclePatrols,_patrolsThisMission];
-if (_patrolsThisMission isEqualTo []) then
-{
-	_useRelativePos = false;
-	private _spawnLocations = [_coords,_noVehiclePatrols,60,100] call GMS_fnc_findPositionsAlongARadius;
-	//diag_log format["_spawnMissionVehiclePatrols (35): _spawnLocations = %1",_spawnLocations];
-	{
 
-		private _veh = [_skillAI] call GMS_fnc_selectPatrolVehicle;
-		[format["GMS_fnc_spawnMissionVehiclePatrols: _veh %1 = %2",_forEachIndex,_veh]] call GMS_fnc_log;
-		_patrolsThisMission pushBack [_veh, _x];
-		//diag_log format["_spawnMissionVehiclePatrols(36): _v = %1 | _patrolsThisMission = %2",_v,_patrolsThisMission];
-	}forEach _spawnLocations;
-};
 //diag_log format["_spawnMissionVehiclePatrols(42): _patrolsThisMission = %1",_patrolsThisMission];
 #define configureWaypoints false
 {

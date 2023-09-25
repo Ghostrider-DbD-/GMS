@@ -28,20 +28,9 @@ _abort = false;
 _pos = [];
 
 private _emplacedWepData = +_missionEmplacedWeapons;  //  So we dont overwrite this for the next instance of the mission
-//diag_log format["_spawnEmplacedWeaponArray(30): _noEmplacedWeapons = %1 | _emplacedWepData = %2",_noEmplacedWeapons,_emplacedWepData];
+diag_log format["_spawnEmplacedWeaponArray(30): _noEmplacedWeapons = %1 | _emplacedWepData = %2",_noEmplacedWeapons,_emplacedWepData];
 
-// Define _emplacedWepData if not already configured.
-if (_emplacedWepData isEqualTo []) then
-{
-	private _wepPositions = [_coords,_noEmplacedWeapons,35,50] call GMS_fnc_findPositionsAlongARadius;
-	{
-		_static = selectRandom GMS_staticWeapons;
-		_emplacedWepData pushback [_static,_x];
-	} forEach _wepPositions;
-	_useRelativePos = false;
-};
-
-//diag_log format["_spawnEmplacedWeaponArray(45): _noEmplacedWeapons = %1 | _emplacedWepData = %2",_noEmplacedWeapons,_emplacedWepData];
+diag_log format["_spawnEmplacedWeaponArray(45): _noEmplacedWeapons = %1 | _emplacedWepData = %2",_noEmplacedWeapons,_emplacedWepData];
 
 {
 	_x params [["_static",""],["_pos",[0,0,0]],["_dir",0]];
@@ -88,6 +77,7 @@ if (_emplacedWepData isEqualTo []) then
     _wep setVariable["GMS_vehType","emplaced"];	
 	_emplacedWeps pushback _wep;
 	[_wep,_empGroup] call GMSCore_fnc_loadVehicleCrew;
+	diag_log format["_spawnEmplacedWeaponArray(91): _wep = %1 | getPos _wep = %2 | _static = %3",_wep, getPosATL _wep, _static];
 	//_gunner setVariable["GRG_vehType","emplaced"];	
 	_emplacedAI append _units;		
 } forEach _emplacedWepData;
