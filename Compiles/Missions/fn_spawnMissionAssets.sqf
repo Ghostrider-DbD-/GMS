@@ -81,6 +81,7 @@ _aiConfigs params [
 	"_maxNoAI", 
 	"_noAIGroups", 		
 	"_missionGroups",
+	"_missionGarrisonedGroups",
 	"_scubaPatrols",  //  Added Build 227
 	"_scubaGroupParameters",		
 	"_hostageConfig",
@@ -137,6 +138,8 @@ if (!(_scubaGroupParameters isEqualTo []) || {_scubaPatrols > 0}) then
 	uiSleep delayTime;
 };
 
+diag_log format["_spawnMissionAssests(141): __missionGarrisonedGroups = %1 ",_missionGarrisonedGroups];
+if !(_missionGarrisonedGroups isEqualTo []) then {[_coords, _missionGarrisonedGroups,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call GMS_fnc_spawnGarrisonedUnits};
 // TODO: 05/08/22 -> redo code to handle this
 if !(_hostageConfig isEqualTo []) then
 {
@@ -160,6 +163,10 @@ if !(_enemyLeaderConfig isEqualTo []) then
 };
 
 // TODO: 05/08/22 -> redo code to handle this
+/*  
+	No longer needed as of Build 270
+	Kept for backwards compatibility with existing missions. 
+*/
 if !(_garrisonedBuilding_ATLsystem isEqualTo []) then  // Note that there is no error checking here for nulGroups
 {
 	_temp = [_coords, _garrisonedBuilding_ATLsystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call GMS_fnc_garrisonBuilding_ATLsystem;
@@ -170,9 +177,19 @@ if !(_garrisonedBuilding_ATLsystem isEqualTo []) then  // Note that there is no 
 	uiSleep delayTime;				
 };	
 
+/*  
+	kept for backwards compatibility 
+	Could easily hand-code these spaawns 
+	The format for each building in _garrisonedBuildings_Building PosnSystem is:
+
+	     //       ["Land_Unfinished_Building_02_F",[-21.8763,-45.978,-0.00213432],0,true,true,0.67,3,[],4],
+        _x params["_bldClassName","_bldRelPos","_bldDir","_allowDamage","_enableSimulation","_probabilityOfGarrision","_noStatics","_typesStatics","_noUnits"];
+		where _typesStatics is an array [] with classnames of statics you would like to spawn.
+*/
 
 if !(_garrisonedBuildings_BuildingPosnSystem isEqualTo []) then
 {
+	
 	_temp = [_coords, _garrisonedBuildings_BuildingPosnSystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call GMS_fnc_garrisonBuilding_RelPosSystem;
 	_objects append (_temp select 1);
 	GMS_monitoredVehicles append (_temp select 2);
