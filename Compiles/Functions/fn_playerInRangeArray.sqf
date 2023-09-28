@@ -14,14 +14,8 @@
 */
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
 
-params["_locations","_dist",["_onFootOnly",false]];
+params["_locations","_dist",["_onFootOnly",true]];
 private _nearLocations = _locations select {[_x,_dist,_onFootOnly] call GMS_fnc_playerInRange};
-//diag_log format["_fnc_playerInRangeArray: _locations = %1 | _dist = %2 | _nearLocations = %3",_locations,_dist,_nearLocations];
 private _return = if (_nearLocations isEqualTo []) then {false} else {true};
 _return
-/*
-{
-	_result = [_x,_dist,_onFootOnly] call GMS_fnc_playerInRange;
-	if (_result) exitWith {};
-} forEach _locations;
-_result
+

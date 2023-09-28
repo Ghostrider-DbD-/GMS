@@ -1,5 +1,5 @@
-//////////////////////////////////////////////////////
-// Test whether one object (e.g., a player) is within a certain range of any of an array of other objects
+///////////////////////////////////////////////////////
+/// Test whether one object (e.g., a player) is within a certain range of any of an array of other objects
 /*
 	GMS_fnc_playerInRange
 
@@ -14,18 +14,22 @@
 */
 
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
-params[["_coords",[0,0,0]],["_range",0],["_onFootOnly",false]];
-private ["_result","_players"];
-
+params[["_coords",[0,0,0]],["_range",0],["_onFootOnly",true],["_onGroundOnly",true]];
 private "_players";
-
+if (_onGroundOnly) then {
+	_players = allPlayers select {(((getPosATL _x) select 2) < 1)};
+} else {
+	_players = allPlayers;
+};
 if (_onFootOnly) then 
 {
-	_players = allPlayers select {(vehicle _x) isEqualTo _x && {_x distance _coords < _range}};	
+	// 9/27/23  Be sure any players detected are on the ground.
+	private _players = _players select{((vehicle _x) isEqualTo _x) && ((_x distance _coords) < _range)};
 } else {
-	_players = allPlayers select {(_x distance _coords) < _range};
+	_players = _players select {(_x distance _coords) < _range};
 };
 
 private _result = if (_players isEqualTo []) then {false} else {true};
-
+//diag_log format["_playerInRange: _result = %1 | _players = %2",_result,_players];
 _result
+ 
