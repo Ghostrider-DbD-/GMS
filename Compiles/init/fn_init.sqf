@@ -197,7 +197,7 @@ if (GMS_maxCrashSites > 0) then
 	[] execVM "\GMS\Missions\HeliCrashs\Crashes2.sqf";
 };
 
-diag_log format ["_init:  Evaluating Static Missions"];
+//diag_log format ["_init:  Evaluating Static Missions"];
 if (GMS_enableStaticMissions > 0) then // GMS_enableStaticMissions should be an integer between 1 and N
 {
 	//diag_log format["fn_init: _pathStatics = %1",_pathStatics];
@@ -226,7 +226,6 @@ if (GMS_enableStaticMissions > 0) then // GMS_enableStaticMissions should be an 
 	*/
 	//diag_log format["_init: _staticsToSpawn = %1:", _staticsToSpawn];
 	[_staticsToSpawn,_pathStatics,"StaticsMarker","orange",GMS_TMin_Statics,GMS_TMax_Statics,GMS_enableStaticMissions,_isStatic] call GMS_fnc_addMissionToQue;
-	["_init (229):  Returned from _addMissionToQue"] call GMS_fnc_log;
 };
 
 //  start the main thread for the mission system which monitors missions running and stuff to be cleaned up
