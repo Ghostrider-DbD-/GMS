@@ -51,6 +51,7 @@
 
 // Defines for mission spawning functions 
 #define isSpawned 11 
+#define spawnedAt 12
 
 //  defines for static group spawners
 #define staticPatrolTriggerRange 2000
