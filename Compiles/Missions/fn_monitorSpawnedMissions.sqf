@@ -63,7 +63,8 @@ for "_i" from 1 to (count _missionsList) do
 			"_defaultMissionLocations",
 			"_maxMissionRespawns",
 			"_timesSpawned",
-			"_isSpawned"
+			"_isSpawned",
+			"_spawnedAt"
 		];	
 
 		private _missionComplete = -1;
@@ -79,13 +80,13 @@ for "_i" from 1 to (count _missionsList) do
 		};
 
 		try {
-			//[format["_monitorSpawnedMissions: (88): _spawnPara = %3 | count _missionInfantry = %1 | _crates = %2",count _missionInfantry, _crates,_spawnPara]] call GMS_fnc_log;
 			if (GMS_debugLevel >= 5) throw 1;
 			if (GMS_debugLevel >= 4) throw 4;
-			private _playerIsNearCrates = [_crates,20,true] call GMS_fnc_playerInRangeArray;
-			private _playerIsNearCenter = [_coords,20,true] call GMS_fnc_playerInRange;
-			private _playerIsNear = if (_playerIsNearCrates || {_playerIsNearCenter}) then {true} else {false};
-			GMS_playerIsNear = _playerIsnear;
+			if !(_isSpawned) throw 6;
+			if (diag_tickTime - _spawnedAt < 120) throw 7;  // We do not want the mission clear immediately after it is spawned. 
+
+			private _playerIsNear = if ({(_x distance2d _coords) < 25 && ((vehicle _x == _x) || (getPosATL _x) select 2 < 5)} count allPlayers > 0) then {true} else {false};
+			//GMS_playerIsNear = _playerIsnear;
 
 			private _minNoAliveForCompletion = (count _missionInfantry) - (round(GMS_killPercentage * (count _missionInfantry)));			
 			private _aiKilled = if (({alive _x} count _missionInfantry) <= _minNoAliveForCompletion)  then {true} else {false}; // mission complete
@@ -209,7 +210,7 @@ for "_i" from 1 to (count _missionsList) do
 			switch (_exception) do 
 			{
 				case 1: {  // Normal Mission End
-					//diag_log format["_monitorSpawnedMissions: (200): _markerMissionName %1: Normal mission end",_markerMissionName];
+					diag_log format["_monitorSpawnedMissions: (200): _markerMissionName %1: Normal mission end",_markerMissionName];
 	
 					if ((_spawnCratesTiming) in ["atMissionEndGround","atMissionEndAir"]) then
 					{
@@ -403,7 +404,13 @@ for "_i" from 1 to (count _missionsList) do
 					[_key, _missionData, _endMsg, _markerConfigs, _missionLootConfigs,_isscubamission, 5] call GMS_fnc_endMission;
 					_missionConfigs set [isSpawned,false];					
 					//[format["_monitorSpawnedMissions (363): _markerMissionName %1: end of case 1 for mission completion",_markerMissionName]] call GMS_fnc_log;
-				};				
+				};		
+				case 6: {
+					// Mission not fully spawned yet for some reason. This should never happen but this case is included for completeness. 
+				};		
+				case 7: {
+					// The mission only just spawned - lets give it 60 sec to settle.
+				};
 			};
 		};
 	} else {

@@ -14,8 +14,8 @@
 */
 #include "\GMS\Compiles\Init\GMS_defines.hpp"
 
-params["_locations","_dist",["_onFootOnly",true]];
-private _nearLocations = _locations select {[_x,_dist,_onFootOnly] call GMS_fnc_playerInRange};
+params["_locations","_dist",["_onFootOnly",true],["_onGroundOnly",true]];
+private _nearLocations = _locations select {[_x,_dist,_onFootOnly,_onGroundOnly] call GMS_fnc_playerInRange};
 private _return = if (_nearLocations isEqualTo []) then {false} else {true};
 _return
 

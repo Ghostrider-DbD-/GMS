@@ -48,7 +48,7 @@ while {true} do
 	{
 		_timer10Sec = diag_tickTime + 10;
 		[] call GMS_fnc_spawnNewMissions; 			
-		[] call GMS_fnc_monitorInitializedMissions;
+		[] spawn GMS_fnc_monitorInitializedMissions;
 	};
 	
 	if ((diag_tickTime > _timer1min)) then

@@ -65,6 +65,7 @@ private _patrolsThisMission = +_missionPatrolVehicles;
 	if (GMS_disableInfrared) then {_vehicle disableTIEquipment true};
 	_vehicles pushback _vehicle;
 	GMS_landVehiclePatrols pushBack _vehicle;
+	(leader _group) call GMSCore_fnc_nextWaypointAreaPatrol;
 } forEach _patrolsThisMission;
 GMS_landVehiclePatrols append _vehicles;
 GMS_monitoredVehicles append _vehicles;

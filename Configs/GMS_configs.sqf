@@ -135,6 +135,9 @@ switch (GMSCore_modType) do
 	GMS_preciseMapMarkers = true;  // Map markers are/are not centered at the loot crate
 	GMS_showCountAliveAI = true;
 
+// radius within whih missions are triggered. The trigger causes the crate and AI to spawn.
+	GMS_TriggerDistance = 1500;
+	
 	//Minimum distance between missions
 	GMS_MinDistanceFromMission = 1200;
 	GMS_minDistanceToBases = 250;
@@ -303,7 +306,7 @@ switch (GMSCore_modType) do
 	#ifdef GRGserver
 	GMS_enableHunterMissions = 1;
 	GMS_enableScoutsMissions =2;
-	GMS_maxcrashsites = 2;
+	GMS_maxcrashsites = 0;  //  TODO: Set to 2-3
 	#endif
 
 	////////////////////

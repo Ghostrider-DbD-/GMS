@@ -37,7 +37,7 @@ for "_i" from 1 to (count _missionsList) do
 	];
 
 	#define triggered 2
-	#define missionCoords _missionData select 0 
+	#define missionCoords (_missionData select 0) 
 	#define delayTime 1
 	
 	private _monitorAction = -2;
@@ -50,11 +50,12 @@ for "_i" from 1 to (count _missionsList) do
 			_monitorAction = -1;
 			//diag_log format["_monitorInitializedMissions (37) Mission Timeout Criteria Met at %1",diag_tickTime];
 		} else {
-			private _playerInRange = [missionCoords, GMS_TriggerDistance, false, true] call GMS_fnc_playerInRange;			
+			// params[["_coords",[0,0,0]],["_range",0],["_onFootOnly",true],["_onGroundOnly",true]];
+			//private _playerInRange = [missionCoords, GMS_TriggerDistance, false, true] call GMS_fnc_playerInRange;			
+			_playerInRange = if ({(_x distance2d missionCoords) < GMS_TriggerDistance && ((vehicle _x == _x) || (getPosATL _x) select 2 < 5)} count allPlayers > 0) then {true} else {false};
+			//diag_log format["_monitorInitializedMissions(56): _playerInRange = %1",_playerInRange];
 			if (_playerInRange) then {
-				//diag_log format["_monitorInitializedMissions (52) Player in range criteria met at %1 for _key %2",diag_tickTime,_key];
-				//diag_log format["_monitorInitializedMissions(53) GMS_monitoring = %1 | GMS_monitoringInitPass = %2",GMS_monitoring,GMS_monitoringInitPass];
-				//diag_log format["_monitorInitializedMissions(54) count of entries for _el = %1", {_x isEqualTo _el} count _missionsList];
+				diag_log format["_monitorInitializedMissions (52) Player in range criteria met at %1 for _key %2",diag_tickTime,_key];
 				_monitorAction = 0;
 			} else {
 				if (GMS_debugLevel >= 3) then 
@@ -93,7 +94,8 @@ for "_i" from 1 to (count _missionsList) do
 				"_defaultMissionLocations",
 				"_maxMissionRespawns",
 				"_timesSpawned",
-				"_isSpawned"  //  index = 11
+				"_isSpawned",  //  index = 11
+				"_spawnedAt"
 			];
 			*/
 
@@ -131,9 +133,10 @@ for "_i" from 1 to (count _missionsList) do
 		//  Handle mission waiting to be triggerd and player is within the range to trigger		
 		case 0: 
 		{
-			[_missionData,_missionConfigs,_spawnPara] spawn GMS_fnc_spawnMissionAssets;
+			[_missionData,_missionConfigs,_spawnPara] call GMS_fnc_spawnMissionAssets;
 			_el set[triggered,1];
-			_missionConfigs set[isSpawned,true];	
+			_missionConfigs set[isSpawned,true];
+			_missionConfigs set[spawnedAt, diag_tickTime];
 			GMS_monitorTriggered = _el select triggered;					
 			_missionsList pushBack _el;
 		};

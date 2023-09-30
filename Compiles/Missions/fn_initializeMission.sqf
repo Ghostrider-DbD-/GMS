@@ -34,7 +34,8 @@ params[
 	"_defaultMissionLocations",
 	"_maxMissionRespawns",
 	"_timesSpawned",
-	"_isSpawned"
+	"_isSpawned",
+	"_spawnedAt"
 ];
 
 _markerConfigs params[

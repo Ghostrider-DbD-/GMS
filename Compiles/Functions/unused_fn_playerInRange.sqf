@@ -30,6 +30,6 @@ if (_onFootOnly) then
 };
 
 private _result = if (_players isEqualTo []) then {false} else {true};
-//diag_log format["_playerInRange: _result = %1 | _players = %2",_result,_players];
+diag_log format["_playerInRange: _onGroundOnly = %3 |_result = %1 | _players = %2",_result,_players,_onGroundOnly];
 _result
  

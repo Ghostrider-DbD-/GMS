@@ -52,7 +52,7 @@ private _units = [];
 	private _aircraft = [_heli,_crewGroup,_spawnPos,_direction,heliHeight,heliDamage,heliRemoveFuel,_releaseToPlayers,GMS_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolAircraft;
 	_helis pushBack _aircraft;
 } forEach _missionHelis;
-diag_log format["_spawnMissionHelis: GMS_spawnHelisPass = %1 | GMS_monitorTriggered = %2",GMS_spawnHelisPass, GMS_monitorTriggered];
-diag_log format["_spawnMissionHelis: GMS_playerIsNear = %1 | GMS_aiKilled = %2", GMS_playerIsNear, GMS_aiKilled];
+//diag_log format["_spawnMissionHelis: GMS_spawnHelisPass = %1 | GMS_monitorTriggered = %2",GMS_spawnHelisPass, GMS_monitorTriggered];
+//diag_log format["_spawnMissionHelis: GMS_playerIsNear = %1 | GMS_aiKilled = %2", GMS_playerIsNear, GMS_aiKilled];
 GMS_spawnHelisPass = GMS_spawnHelisPass + 1;
 [_helis,_units]
