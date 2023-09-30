@@ -11,7 +11,7 @@ Ideas or code from that by He-Man, Vampire and KiloSwiss have been used for cert
 Many thanks for new Coding and ideas from Grahame.
 
 The reworking of the missions was prompted by several factors. 
-- A desire to optimize code for each function using the most current functions and optimized coding methods.
+- A desire to optimize code for each function using the most game engine functions and optimized coding methods.
 - Development of GMSCore which provides many of the basic functions needed and in addition supports a pretty robust area-based system for generating waypoints for patrols.
 - Realization that blckeagls was a bit bloated and hard to use.
 - Discovery that blackeagls had some unrecognized bugs.
@@ -24,17 +24,22 @@ https://github.com/Ghostrider-DbD-/-timeManagement
 
 The MapAddons module was moved to a new, reworked mod:
 https://github.com/Ghostrider-DbD-/mapAddons 
-
-The Static Loot System was entirely removed. I may come back to it at a later time. 
-
 The Mission system can now be run entirely on an HC - no more passing AI back and forth. 
-
 The static loot system and dynamic loot system are gone. THese outlived thier usefulness. 
-
-Support for Static Missions was removed. Use the ability to spawn a mission at a specific location instead. This reduced the number of functions needed for GMS and should improve reliability.
 
 I have kept the change log as a bit of history for those interested in development of this mission system. 
 Significant Changes:
+
+Build 266 - Version 7.161 
+ADDED Support for UAVs and UGVs.
+MOVED One setting into GMS_configs.sqf
+	// radius within whih missions are triggered. The trigger causes the crate and AI to spawn.
+	GMS_TriggerDistance = 1500;
+
+Updated methods for spawning units that garrison buildings.
+Note: Turrets (HMG, GMG) are very effective but individual infantry are not. 
+Note: You can now set the position of infantry should you include them. 
+Made other minor changes to functions included for backwards compatibility for the garrisonATL and garrisonBuilding possitions methods of placing turrets and units in buildings. 
 
 7.15
 1. Added control over what kill messages are displayed. 

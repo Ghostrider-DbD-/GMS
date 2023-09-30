@@ -12,9 +12,9 @@
 */
 
  class GMSBuild {
-	 Version = "7.15";
-	 Build = "263"; 
-	 Date = "09-24-2023";
+	 Version = "7.161";
+	 Build = "266"; 
+	 Date = "09-30-2023";
  };
 
 class CfgPatches {
@@ -57,8 +57,8 @@ class CfgFunctions {
 			class missionCompleteMarker {};
 			class msgIED {};
 			class nearestPlayers {};
-			class playerInRange {};
-			class playerInRangeArray {};
+			//class playerInRange {};
+			//class playerInRangeArray {};
 			class restoreHiddenObjects {};
 			class setDirUp {};
 			class spawnMarker {};
@@ -84,6 +84,7 @@ class CfgFunctions {
 			class endMission {};
 			class fillBoxes {};
 			class garrisonBuilding_ATLsystem {};
+			class garrisonBuilding_relPosSystem {};
 			class loadLootItemsFromArray {};
 			class initializeMission {};
 			class loadMissionCrate {};
@@ -104,10 +105,11 @@ class CfgFunctions {
 			class selectNumberParatroops {};
 			class selectVehicleCrewCount {};
 			class signalEnd {};
-			class smokeAtCrates {};			
+			class spawnSmokingObject {};			
 			class spawnCrate {};
 			class spawnCompositionObjects {};			
 			class spawnEmplacedWeaponArray {};
+			class spawnGarrisonedUnits {};
 			class spawnMissionAssets {};
 			class spawnMines {};
 			class spawnMissionAI {};

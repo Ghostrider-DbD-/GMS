@@ -286,6 +286,29 @@ switch (GMSCore_modType) do
 	GMS_patrolHelisOrange = _GMS_armed_heavyAttackHelis + _GMS_armed_attackHelis;  //_GMS_littleBirds;
 	GMS_noPatrolHelisOrange = 1;
 
+	///////////////////////////////
+	//  Mission Drone Settings
+	///////////////////////////////
+	GMS_numberUGVs = 0; 
+	GMS_UGVtypes = [  // 
+		// Stompers
+		"O_UGV_01_rcws_F",5 // east - Use for Exile  
+		//"B_UGV_01_rcws_F",5 // west 
+		//"I_UGV_01_rcws_F",5 // GUER
+	];
+
+	GMS_numberUAVs = 0; 
+	GMSAI_UAVTypes = [  //  note that faction may matter here.
+		// East 
+		"O_UAV_01_F",2,  // Darter equivalent, unarmed
+		//"O_UAV_02_F",2, // Ababil with Scalpel Missels
+		"O_UAV_02_CAS_F",2  // Ababil with Bombx
+		//"O_UAV_01_F",2
+		// West - see CfgVehicles WEST online or in the editor
+		// Independent/GUER
+		//"I_UAV_01_F",1
+	];
+
 	////////////////////
 	// Enable / Disable Missions
 	////////////////////
