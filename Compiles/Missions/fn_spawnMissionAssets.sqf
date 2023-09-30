@@ -98,7 +98,7 @@ _markerConfigs params[
 private["_temp"];
 if (GMS_SmokeAtMissions select 0) then  // spawn a fire and smoke near the crate
 {
-	_temp = [_coords,GMS_SmokeAtMissions select 1] call GMS_fnc_smokeAtCrates;
+	_temp = [_coords,GMS_SmokeAtMissions select 1] call GMS_fnc_spawnSmokingObject;
 	_objects append _temp;
 	uiSleep delayTime;					
 };
@@ -138,8 +138,12 @@ if (!(_scubaGroupParameters isEqualTo []) || {_scubaPatrols > 0}) then
 	uiSleep delayTime;
 };
 
-diag_log format["_spawnMissionAssests(141): __missionGarrisonedGroups = %1 ",_missionGarrisonedGroups];
+diag_log format["_spawnMissionAssests(141): _coords %1 | _missionGarrisonedGroups = %2 ",_coords, _missionGarrisonedGroups];
+
+
 if !(_missionGarrisonedGroups isEqualTo []) then {[_coords, _missionGarrisonedGroups,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call GMS_fnc_spawnGarrisonedUnits};
+
+
 // TODO: 05/08/22 -> redo code to handle this
 if !(_hostageConfig isEqualTo []) then
 {
@@ -278,7 +282,6 @@ if (GMS_useVehiclePatrols && {!(_missionPatrolVehicles isEqualTo [])}) then
 		}forEach _spawnLocations;					
 		_temp = [_coords,_difficulty,_vicsToSpawn,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
 		_temp params["_vehs","_units"]; 
-
 		_aiVehicles append _vehs;
 		_missionInfantry append _units;
 		uiSleep delayTime;				
