@@ -82,11 +82,10 @@ if (isNil "_missionLootBoxes") then {_missionLootBoxes = []};
 if (isNil "_rewardVehicles") then {_rewardVehicles = []};
 
 if (isNil "_defaultMissionLocations") then {_defaultMissionLocations = []};
-if (isNil "_chanceMissionSpawned") then {_chanceMissionSpawned = 100};
+if (isNil "_chanceMissionSpawned") then {_chanceMissionSpawned = 1.0};
 if (isNil "_maxMissionRespawns") then {_maxMissionRespawns = -1};
 if (isNil "_simpleObjects") then {_simpleObjects = []};
 if (isNil "_missionemplacedweapons") then {_missionemplacedweapons = []};
-
 // Allow for and capture any custom difficult setting in the mission
 if !(isNil "_difficulty") then {_aiDifficultyLevel = _difficulty}; 
 
@@ -181,19 +180,24 @@ private _missionMessages = [
 
 private _timesSpawned = 0;
 private _isSpawned = false;
+private _spawnedAt = -1;
+
+// This table structure is directly accessed using indexes defined in Compiles\Init\GMS_defines.hpp
 private _table = [
-	_aiDifficultyLevel,
-	_markerConfigs,
-	_endCondition,	
-	_isscubamission,	
-	_missionLootConfigs,
-	_aiConfigs,
-	_missionMessages,
-	_paraConfigs,	
-	_defaultMissionLocations,
-	_maxMissionRespawns,
-	_timesSpawned,
-	_isSpawned	
+	_aiDifficultyLevel,		// index 0
+	_markerConfigs,			// index 1
+	_endCondition,			// index 2
+	_isscubamission,		// index 3
+	_missionLootConfigs,	// index 4
+	_aiConfigs,				// index 5
+	_missionMessages,		// index 6
+	_paraConfigs,			// index 7
+	_defaultMissionLocations, 
+	_maxMissionRespawns,	// index 9 
+	_timesSpawned,			// index 10 
+	_chanceMissionSpawned,	// index 11
+	_isSpawned,				// index 12
+	_spawnedAt				// index 13
 ];
 //[format["_missionSpawner (182): _defaultMissionLocations %1 | _maxMissionRespawns %2 | _timesSpawned %3",_defaultMissionLocations,_maxMissionRespawns,_timesSpawned]] call GMS_fnc_log;
 _table

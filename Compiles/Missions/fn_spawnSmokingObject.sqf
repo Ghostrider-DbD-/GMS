@@ -18,10 +18,10 @@
 params[["_pos",[0,0,0]],
 	["_mode","random"],
 	["_maxDist",12],
-	["_wreck",selectRandom _wrecksAvailable],
+	["_wrecks",_wrecksAvailable],
 	["_addFire",false]];
 if (_pos isEqualTo [0,0,0]) exitWith {["No position passed to GMS_fnc_smokeAtCrates","warning"] call GMS_fnc_log};
-
+private _wreck = selectRandom _wrecks;
 /*
 {
 	diag_log format["_smokeatCrate: _this %1 = %2",_foreachIndex, _x];

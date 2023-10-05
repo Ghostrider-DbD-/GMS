@@ -156,7 +156,7 @@ _fn_spawnWreckMission = {
 	};		
 	if !(isNull _group) then
 	{
-		waitUntil{uiSleep 3; {(_x distance2d _posOfCrash) < 25 && (vehicle _x == _x)} count allPlayers > 0};	
+		waitUntil{uiSleep 3; {(_x distance2d _posOfCrash) < 10 && (vehicle _x == _x)} count allPlayers > 0};	
 	};
 	[_posOfCrash] spawn GMS_fnc_missionCompleteMarker;
 	diag_log format["crashes2 (145) _crashName = %1",_crashName];
