@@ -24,11 +24,11 @@ if ((tolower GMSCore_modtype) isEqualTo "exile") then
 {
 	private _traderCites = allMapMarkers;
 	{
-			if (getMarkerType _x isEqualTo "ExileTraderZone" && GMS_blacklistTraderCities) then {
-				GMS_locationBlackList pushback [(getMarkerPos _x),1000];
+			if (getMarkerType _x isEqualTo "loc_meet" && GMS_blacklistTraderCities) then {
+				GMS_locationBlackList pushback [(getMarkerPos _x),1500];
 			};
 				
-			if ((getMarkerType _x isEqualTo "ExileSpawnZone") && GMS_blacklistSpawns) then {
+			if ((getMarkerType _x isEqualTo "respawn_para") && GMS_blacklistSpawns) then {
 				GMS_locationBlackList pushback [(getMarkerPos _x),1000];			
 			};
 			//  

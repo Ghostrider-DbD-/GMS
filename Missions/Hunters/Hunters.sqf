@@ -7,7 +7,7 @@
 //diag_log "[GMS] Spawning Hunters Mission";
 
 _crateLoot = GMS_BoxLoot_Green;
-_lootCounts = [3,6,3,4,10,1];
+_lootCounts = [4,6,4,4,10,2];
 _startMsg = "A group of Bandit Hunters was sighted in a nearby sector! Check the Red Triangular marker on your map for the location!";
 _endMsg = "The Hunter Camp is under Survivor Control!";
 _markerLabel = "Hunters";
