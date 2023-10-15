@@ -21,15 +21,16 @@ private _missionListHunters = ["Hunters"];  // OK Build 224
 private _pathBlue = "Blue";
 private _missionListBlue = [
 		//"hostage1",  // OK
-		"captive1",  // OK
-		"sniperBase",  // Spawns OK does not clear 249
+		//"captive1",  // OK
+		"sniperBase",  // Spawns OK - clears when all AI Dead but not when player is at mission crate.
 		"survivalSupplies",  // Spawns OK Debug = 4 Build 246
 		//"derbunker", // OK, an interesting mission, better as a red / green though
 		//"forgotten_HQ",  //  ok BUT TOO TOUGH FOR BLUE OR RED
 		//"garrison",  //  OK but do not use.
 		//"IDAP",  //  OK but too difficult for a blue mission	
-		"Service_point",  // OK build 224
+		"Service_point",  // OK build 224  //  clears when all AI Dead but not when player at mission crate
 		//"Toxin",  //  OK but too difficult for a blue mission
+		// "penis",
 		"default"  //  Spawns OK Debug = 4 Build 246
 		//"ForgottenHQ"
 	];
@@ -38,7 +39,7 @@ private _pathRed = "Red";
 private _missionListRed = [
 		//"default",  //  OK Build 224
 		//"medicalCamp",
-		"hostage1",
+		//"hostage1",
 		//"captive1",
 		"fuelDepot",  // Spawns OK Debug = 4 Build 246
 		"junkyardWilly",  // Spawns OK Debug = 4 Build 246
@@ -98,6 +99,7 @@ private _missionListOrange = [/*"default","default2","medicalCamp","redCamp","re
 		//"Ammunition_depot"  // OK Build 252; need to update vics, only  12 AI for some reason
 		//"Camp_Moreell"  // OK Build 252 with crate drop from 50 meters
 		//"Operations_Command",  // OK Build 252
+		"clit",
 		"tko_camp"  // // OK Build 252***
 		/////  UNUSED FOR ONE REASON OR ANOTHER
 		//"Outpost"  // dOES NOT COMPLETE, ODD LOOT CHEST PLACEMENT	
@@ -109,6 +111,7 @@ private _missionListStatics = [
 	/// The format for these is filename 
 	/// Do NOT include the extension here.
 	/// You will need to add the mission files to the statics folder. 
+	//"spatzle",
 	//"saltflatsone"
 
 ];

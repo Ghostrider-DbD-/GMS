@@ -25,7 +25,8 @@ params[
 	["_markerData",[]],
 	["_missionLootConfigs",[]],
 	["_isScuba",false],
-	["_endCode",-1]
+	["_endCode",-1],
+	["_isStatic",false]
 ];
 //[format["_endMission: _endCode %1 | _markerData %2 | _endMsg %3",_endCode, _markerData, _endMsg]] call GMS_fnc_log;
 _missionData params [
@@ -55,6 +56,7 @@ _missionLootConfigs params [
 	// Ignore the remaining entries in the configuration
 ];
 */
+
 {[_x] call GMS_fnc_deleteMarker} forEach (_markers);
 
 {
@@ -70,7 +72,10 @@ _missionLootConfigs params [
 switch (_endCode) do 
 {
 	case -1: {
-			//[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
+			[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
+			if !(_endMsg isEqualTo "") then {
+				[["end",_endMsg,_markerMissionName]] call GMS_fnc_messageplayers;
+			};
 			GMS_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];			
 			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;	
 			[_crates, 0] call GMSCore_fnc_deleteObjectsMethod;
@@ -92,23 +97,24 @@ switch (_endCode) do
 			
 			[["end",_endMsg,_markerMissionName]] call GMS_fnc_messageplayers;
 
-			[_coords, _markerName] spawn GMS_fnc_missionCompleteMarker;
+			[_coords, _markerName] call GMS_fnc_missionCompleteMarker;
 
 			{
-				private ["_v","_posnVeh"];
-				_posnVeh = GMS_monitoredVehicles find _x;  // returns -1 if the vehicle is not in the array else returns 0-(count GMS_monitoredVehicles -1)
-				if (_posnVeh >= 0) then
-				{
-					(GMS_monitoredVehicles select _posnVeh) setVariable ["missionCompleted", diag_tickTime];
-				} else {
+				//private ["_v","_posnVeh"];
+				//_posnVeh = GMS_monitoredVehicles find _x;  // returns -1 if the vehicle is not in the array else returns 0-(count GMS_monitoredVehicles -1)
+				//if (_posnVeh >= 0) then
+				//{
+				//	(GMS_monitoredVehicles select _posnVeh) setVariable ["missionCompleted", diag_tickTime];
+				//} else {
 					_x setVariable ["missionCompleted", diag_tickTime];
-					GMS_monitoredVehicles pushback _x;
-				};
+					GMS_monitoredVehicles pushBackUnique _x;
+				//};
 			} forEach _aiVehicles;
 			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;
 			[_objects, (diag_tickTime + GMS_cleanupCompositionTimer)] call GMSCore_fnc_addToDeletionCue;	
 			GMS_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime + GMS_cleanupCompositionTimer)];
 			[_missionAI, (diag_tickTime + GMS_AliveAICleanUpTimer)] call GMSCore_fnc_addToDeletionCue;
+			if (_isStatic) then {[_crates, diag_tickTime + GMS_cleanupCompositionTimer] call GMSCore_fnc_addToDeletionCue};
 			[format["Mission Completed | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call GMS_fnc_log;			
 	};
 	case 2: {  // Aborted for moving a crate 
