@@ -72,9 +72,9 @@ _missionLootConfigs params [
 switch (_endCode) do 
 {
 	case -1: {
-			[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
+			//[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
 			if !(_endMsg isEqualTo "") then {
-				[["end",_endMsg,_markerMissionName]] call GMS_fnc_messageplayers;
+				[["end",_endMsg,"News Update"]] call GMS_fnc_messageplayers;
 			};
 			GMS_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime)];			
 			[_mines, 0] call GMSCore_fnc_deleteObjectsMethod;	

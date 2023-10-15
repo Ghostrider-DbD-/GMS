@@ -15,7 +15,7 @@
 //if (GMS_monitoring) exitWith {diag_log format["_monitorInitializedMissions: execution terminated for GMS_monitoring = true at %1",diag_tickTime]};
 GMS_monitoring = true;
 GMS_monitoringInitPass = GMS_monitoringInitPass + 1;
-[format["_monitorInitializedMissions (17): GMS_initializedMissionsList = %1", GMS_initializedMissionsList]] call GMS_fnc_log;
+//[format["_monitorInitializedMissions (17): GMS_initializedMissionsList = %1", GMS_initializedMissionsList]] call GMS_fnc_log;
 
 private _missionsList = GMS_initializedMissionsList;
 for "_i" from 1 to (count _missionsList) do 
@@ -43,7 +43,7 @@ for "_i" from 1 to (count _missionsList) do
 	#define delayTime 1
 
 	if !(_triggered == 0) then {
-		_missionList pushBack _el;
+		_missionsList pushBack _el;
 	} else {
 		private _playerInRange = if ({(_x distance2d missionCoords) < GMS_TriggerDistance /*&& ((vehicle _x == _x) || (getPosATL _x) select 2 < 5)*/} count allPlayers > 0) then {true} else {false};
 		try {
@@ -62,7 +62,7 @@ for "_i" from 1 to (count _missionsList) do
 					throw 0;
 				};  //  simulate the mission being tripped by a player
 				default {
-					[format["_monitorInitializedMissions (77): throw -2 | mission not triggered or timed out at %1",diag_tickTime]] call GMS_fnc_log;					
+					//[format["_monitorInitializedMissions (77): throw -2 | mission not triggered or timed out at %1",diag_tickTime]] call GMS_fnc_log;					
 					throw -2;
 				};
 			};
