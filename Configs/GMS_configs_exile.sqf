@@ -26,14 +26,16 @@ switch (toLower(worldName)) do
 		// Note that there should not be a comma after the last item in this table
 		[[10800,10641,0],1000],  // isthmus - missions that spawn here often are glitched.
 		[[14599.966,16797.193,0],3000], // TERMINAL
-		[[24127.771,16169.194,0],1800], // HOLY DIVER
+		[[24127.771,16169.194,0],1600], // HOLY DIVER
 		[[12823.13,16681.56],1200],		// MIL HILL
 	    [[8713.47,23018.19],3200],		// NW MILI
-	    [[10969.26,8490.82],2400],		// STRONGHOLD
-		[[20788.121,7233.124],1800],	// WAR ENSEMBLE
-		[[23300,18800,0],950],	    // FLATS SPREAD
-		[[16696.7,13598,0],2000],		    // CHELO	
-		[[20917.549,19239.043,0],1600]		    // CLIT		
+	    [[8308.293,7260.224],3200],		// STRONGHOLD
+		[[20788.121,7233.124],1400],	// WAR ENSEMBLE
+		[[23300,18800,0],900],	    // FLATS SPREAD
+		[[6094.97,12612.9],2000], // WEST DUMP
+		[[6384.37,16240.63],2000], 		//KORE
+		[[16696.7,13598,0],1800],		    // CHELO	
+		[[20917.549,19239.043,0],1800]		    // CLIT		
 		];
 	};
 	case "tanoa": {
@@ -50,12 +52,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	GMS_blacklistSpawns = true;
 	GMS_listConcreteMixerZones	= true;
 
-	GMS_crateMoneyBlue = [1400,2150];
-	GMS_crateMoneyRed = [3175, 5300];
-	GMS_crateMoneyGreen = [16300, 21500];
-	GMS_crateMoneyOrange = [23500, 24750];
-
-	GMS_crateTypes = ["Box_FIA_Ammo_F","Box_FIA_Support_F","Box_FIA_Wps_F","I_SupplyCrate_F","Box_NATO_AmmoVeh_F","Box_East_AmmoVeh_F","IG_supplyCrate_F","Box_NATO_Wps_F","I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F"];  // Default crate type.
+	GMS_crateTypes = ["I_CargoNet_01_ammo_F"];  // Default crate type.
 			
 	GMS_maximumItemPriceInAI_Loadouts = 1000;
 	

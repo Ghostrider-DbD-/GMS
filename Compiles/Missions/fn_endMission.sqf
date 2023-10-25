@@ -85,7 +85,7 @@ switch (_endCode) do
 			[_lootVehicles, 0] call GMSCore_fnc_deleteObjectsMethod;
 	};
 	case 1: {  // Normal End
-			//[format["_endMission (102): _exception 1 (normal ending) | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
+			[format["_endMission (102): _exception 1 (normal ending) | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
 			if (GMS_useSignalEnd) then
 			{
 				//[_crates select 0,150, GMS_smokeShellAtCrates] call GMSCore_fnc_visibleMarker;
@@ -114,7 +114,9 @@ switch (_endCode) do
 			[_objects, (diag_tickTime + GMS_cleanupCompositionTimer)] call GMSCore_fnc_addToDeletionCue;	
 			GMS_hiddenTerrainObjects pushBack[_hiddenObjects,(diag_tickTime + GMS_cleanupCompositionTimer)];
 			[_missionAI, (diag_tickTime + GMS_AliveAICleanUpTimer)] call GMSCore_fnc_addToDeletionCue;
-			if (_isStatic) then {[_crates, diag_tickTime + GMS_cleanupCompositionTimer] call GMSCore_fnc_addToDeletionCue};
+			if (_isStatic) then {
+				[_crates, diag_tickTime + GMS_cleanupCompositionTimer] call GMSCore_fnc_addToDeletionCue;
+			};
 			[format["Mission Completed | _coords %1 : _markerClass %2 :  _markerMissionName %3",_coords,_markerName,_markerName]] call GMS_fnc_log;			
 	};
 	case 2: {  // Aborted for moving a crate 

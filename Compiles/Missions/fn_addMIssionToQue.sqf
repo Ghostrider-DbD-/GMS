@@ -12,7 +12,7 @@ params[["_missionList",[]],["_path",""],["_marker",""],["_difficulty","Red"],["_
 //diag_log format["_addMissionToQue: _this = %1",_this];  
 
 //{
-	//diag_log format["_addMissionToQue: _this %1 = %2",_forEachIndex, _this select _forEachIndex];
+//	diag_log format["_addMissionToQue: _this %1 = %2",_forEachIndex, _this select _forEachIndex];
 //} forEach _this;
 
 private "_waitTime";
@@ -22,13 +22,14 @@ if (_isStatic) then {
 	_waitTime = diag_tickTime + (_tMin) + random((_tMax) - (_tMin));
 };
 
-diag_log format["_addMissionToQue: _waitTime = %1",_waitTime];
+//diag_log format["_addMissionToQue: _waitTime = %1",_waitTime];
 
+private "_missionFile";
 
 private _missionsData = []; // Parameters definine each of the missions for this difficulty are stored as arrays here.
 {
-	private _missionFile = format["\GMS\Missions\%1\%2.sqf",_path,_x];
-	diag_log format["_addMissionToQue: _missionFile = %1",_missionFile];
+	_missionFile = format["\GMS\Missions\%1\%2.sqf",_path,_x];
+	if (GMS_debugLevel > 0) then {[format["_addMissionToQue: adding %1 mission with fileName %2",_difficulty,_missionFile]] call GMS_fnc_log};
 	private _missionCode = compileFinal preprocessFileLinenumbers _missionFile;//return all of the values that define how the mission is spawned as an array of values
 	if !(isNil "_missionCode") then 
 	{
@@ -36,10 +37,10 @@ private _missionsData = []; // Parameters definine each of the missions for this
 		if !(isNil "_data") then 
 		{
 			_missionsData pushBack _data;
-			diag_log format["_addMissionToQue: _data = %1",_data];
+			//diag_log format["_addMissionToQue: _data = %1",_data];
 		};
 	} else {
-		diag_log format["bad path\mission combination %1",_missionFile];
+		//diag_log format["bad path\mission combination %1",_missionFile];
 	};
 } forEach _missionList;
 
@@ -54,9 +55,10 @@ private _missions = [
 	_tMax, // as above
 	_waitTime,  // time at which a mission should be spawned
 	_missionsData,  // Array of data about individual missions that could be spawned. The data table for each mission is defined in _missionSpawner
-	_isStatic
+	_isStatic,
+	_missionFile
 ];
-diag_log format["_addMissionToQue (55): _missions = %1",_missions];
+//diag_log format["_addMissionToQue (55): _missions = %1",_missions];
 GMS_missionData pushBack _missions;
 
 

@@ -58,12 +58,12 @@ switch (toLower (worldName)) do
 		_nightTime = abs(24 - _daylight);
 		_time = dayTime;
 		_serverUpTime = 8;
-		GMS_enableOrangeMissions = 1;  
+		GMS_enableOrangeMissions = 0;  
 		GMS_enableGreenMissions = 1;
-		GMS_enableRedMissions = 1;
-		GMS_enableBlueMissions = 1;
-		GMS_enableHunterMissions = 1;
-		GMS_enableScoutsMissions = 1;
+		GMS_enableRedMissions = 0;
+		GMS_enableBlueMissions = 0;
+		GMS_enableHunterMissions = 0;
+		GMS_enableScoutsMissions = 0;
 		GMS_maxCrashSites = -1;  // recommended settings: 3 for Altis, 2 for Tanoa, 1 for smaller maps. Set to -1 to disable
 		
 		GMS_timeAcceleration = true; // When true, time acceleration will be periodically updated based on amount of daylight at that time according to the values below.
@@ -129,8 +129,6 @@ switch (toLower (worldName)) do
 
 GMS_customConfigsLoaded = 1;
 
-uiSleep 5;
-
 if (GMS_debugLevel > 0) then {
 	
 	//GMS_MinDistanceFromMission = 1000;
@@ -138,7 +136,7 @@ if (GMS_debugLevel > 0) then {
     //GMS_minDistanceToPlayer = 1000;
     //GMS_minDistanceFromTowns = 100;
 	//GMS_preciseMapMarkers = true;
-	GMS_MissionTimeout = 120;
+	//GMS_MissionTimeout = 120;
 	GMS_cleanupCompositionTimer = 30;
 	GMS_AliveAICleanUpTimer = 30;
 	GMS_bodyCleanUpTimer = 30;
@@ -148,9 +146,9 @@ if (GMS_debugLevel > 0) then {
 	GMS_launchersPerGroup = 1;
 
 	GMS_enableOrangeMissions = 1;  
-	GMS_enableGreenMissions = 0; // 10-02-2023 Tested with mission list= "FieldCamp", "FieldHQ", "factory", "fortification", "Camp_Moreell", "lager"
-	GMS_enableRedMissions = 0;   // 10-2-2023 Tested with mission list= "fuelDepot", "junkyardWilly", "TraderBoss", "carThieves", "Ammunition_depot", "IDAP", "Outpost", "Service_Point"
-	GMS_enableBlueMissions = 0;  // 10-2-2023 Tested with mission list= "sniperBase", "survivalSupplies", "Service_point", and "default"
+	GMS_enableGreenMissions = 1; // 10-02-2023 Tested with mission list= "FieldCamp", "FieldHQ", "factory", "fortification", "Camp_Moreell", "lager"
+	GMS_enableRedMissions = 1;   // 10-2-2023 Tested with mission list= "fuelDepot", "junkyardWilly", "TraderBoss", "carThieves", "Ammunition_depot", "IDAP", "Outpost", "Service_Point"
+	GMS_enableBlueMissions = 1;  // 10-2-2023 Tested with mission list= "sniperBase", "survivalSupplies", "Service_point", and "default"
 	GMS_numberUnderwaterDynamicMissions = 0;	
 	GMS_enableHunterMissions = 1;
 	GMS_enableScoutsMissions = 1;
@@ -199,7 +197,7 @@ if (GMS_debugLevel > 0) then {
 	GMS_TMin_Scouts = 45;
 	GMS_TMin_Crashes = 5;
 	GMS_TMin_UMS = 20;
-	GMS_TMin_Statics = 120;  // minimum time for RESPAWN of static missions
+	GMS_TMin_Statics = 400;  // minimum time for RESPAWN of static missions
 	//Maximum Spawn time between missions in seconds
 	GMS_TMax_Blue = 12;
 	GMS_TMax_Red = 15;
