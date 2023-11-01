@@ -129,6 +129,8 @@ switch (toLower (worldName)) do
 
 GMS_customConfigsLoaded = 1;
 
+uiSleep 5;
+
 if (GMS_debugLevel > 0) then {
 	
 	//GMS_MinDistanceFromMission = 1000;
@@ -152,7 +154,7 @@ if (GMS_debugLevel > 0) then {
 	GMS_numberUnderwaterDynamicMissions = 0;	
 	GMS_enableHunterMissions = 1;
 	GMS_enableScoutsMissions = 1;
-	GMS_enableStaticMissions = 0;
+	GMS_enableStaticMissions = 5;
 	GMS_maxCrashSites = 0; 
 
 	GMS_noPatrolHelisBlue = 0;

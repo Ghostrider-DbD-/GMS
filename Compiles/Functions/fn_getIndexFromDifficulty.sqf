@@ -1,5 +1,5 @@
 
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 params["_difficulty"];
 //diag_log format["getIndexFromDifficult: _dificulty = %1 | typeName _difficulty = %2",_difficulty, typeName _difficulty];
 private _return = 0;

@@ -11,7 +11,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 
 _fnc_dropMissionCrates = {
 	private ["_crates","_marker","_markers","_GMS_localMissionMarker","_location","_airborneCrates","_curPosCrate"];

@@ -29,14 +29,14 @@ class CfgPatches {
 class CfgFunctions {
 	class GMS {
 		class startup {
-			file = "GMS\Compiles\Init";
+			file = "\x\addons\GMS\Compiles\Init";
 			class init {
 				postInit = 1;
 			};
 		};
 		
 		class functions {
-			file = "GMS\Compiles\Functions";
+			file = "\x\addons\GMS\Compiles\Functions";
 			class broadcastServerFPS {};	
 			class cleanEmptyGroups {};	
 			class countAliveAI {};
@@ -63,7 +63,7 @@ class CfgFunctions {
 			class updateMarkerAliveCount {};
 		};
 		class groups {
-			file = "GMS\Compiles\Groups";
+			file = "\x\addons\GMS\Compiles\Groups";
 			class checkGroupWaypointStatus {};
 			class cleanEmptyGroups {};
 			class createGroup {};  // Kept for backwards compatability with static missions if these are kept and not updated.			
@@ -76,7 +76,7 @@ class CfgFunctions {
 			class spawnGroup {};
 		};
 		class missions {
-			file = "GMS\Compiles\Missions";
+			file = "\x\addons\GMS\Compiles\Missions";
 			class addMIssionToQue {};
 			//class crateMoved {};
 			class endMission {};
@@ -123,7 +123,7 @@ class CfgFunctions {
 			class spawnSurfacePatrol {};
 		};
 		class units {
-			file = "GMS\Compiles\Units";
+			file = "\x\addons\GMS\Compiles\Units";
 			class cleanupAliveAI {};
 			class deleteAI {};
 			class removeAllAIgear {};
@@ -133,11 +133,11 @@ class CfgFunctions {
 			class unitKilled {};
 		};
 		class Utils {
-			file = "GMS\Compiles\Utils";
+			file = "\x\addons\GMS\Compiles\Utils";
 			class log {};
 		};
 		class vehicles {
-			file = "GMS\Compiles\Vehicles";	
+			file = "\x\addons\GMS\Compiles\Vehicles";	
 			class alertVehicles {};
 			class deleteAIVehicle {};
 			class checkForEmptyVehicle {};	

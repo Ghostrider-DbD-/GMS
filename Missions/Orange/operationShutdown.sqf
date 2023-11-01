@@ -27,7 +27,7 @@ _missionLandscapeMode = "precise"; // acceptable values are "none","random","pre
 //   Past the output of the script here
 
 
-_markerType =["ellipse",[350,350],"SOLID"];
+_markerType = ["ellipse",[750,750],"SOLID"];
 _markerColor = "ColorOrange";
 _markerLabel = "";
 
@@ -80,23 +80,9 @@ _missionLandscape = [
 ];
 
 _missionLootBoxes = [
-     ["Box_NATO_Support_F",[-1.32813,-18.2129,-0.00100327],_crateLoot,_lootCounts,0.00164539],
-     ["O_supplyCrate_F",[5.16602,-14.0596,0.000209808],_crateLoot,_lootCounts,0.00196599],
-     ["Box_East_AmmoVeh_F",[1.7168,-16.6084,0.0303707],_crateLoot,_lootCounts,0.00182862]
+
 ];
-/*
-_countBoxes = 0;
-_missionLootBoxes = [];
-while {_countBoxes < 3} do
-{
-     _b = _missionLootBoxChoices deleteAt round(random(count _missionLootBoxChoices));
-     if (typeName _b isEqualTo "ARRAY") then
-     {
-          _missionLootBoxes pushBack _b;
-          _countBoxes = _countBoxes + 1;
-     };
-};
-*/
+
 _missionLootVehicles = [
 ];
 

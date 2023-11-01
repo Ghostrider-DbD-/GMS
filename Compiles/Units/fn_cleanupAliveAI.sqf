@@ -9,7 +9,7 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 
 for "_i" from 1 to (count GMS_liveMissionAI) do {
 	if ((_i) <= count GMS_liveMissionAI) then {

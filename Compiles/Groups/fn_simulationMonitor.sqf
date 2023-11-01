@@ -11,8 +11,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
-
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
+//  TODO: Move Simulation Management to GMSCore
 if (GMS_simulationManager isEqualTo GMS_simulationManagementOff) exitWith {};
 
 if (GMS_simulationManager isEqualTo GMS_useDynamicSimulationManagement) exitWith 

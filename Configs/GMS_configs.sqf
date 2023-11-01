@@ -11,13 +11,13 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 
 	/*
 		changing any of these variables may break the mission system
 	*/
 	GMS_locationBlackList = [];  // Do not touch ...
-	GMS_debugLevel = 3;  //  should be set to 0 ... 
+	GMS_debugLevel = 0;  //  should be set to 0 ... 
 
 	[format["Loading configurations for Non-militarized servers"]] call GMS_fnc_log;
 	/*
@@ -121,10 +121,10 @@ switch (GMSCore_modType) do
 		GMS_rewardsOrange = [[12,20],[20,25]];
 
 		// Amount of tabs added to each mission crate
-		GMS_crateMoneyBlue = [2500,400];
-		GMS_crateMoneyRed = [6000, 8000];
-		GMS_crateMoneyGreen = [15000, 25000];
-		GMS_crateMoneyOrange = [25000, 30000];
+		GMS_crateMoneyBlue = [3000,5000];
+		GMS_crateMoneyRed = [5000, 7000];
+		GMS_crateMoneyGreen = [10000, 15000];
+		GMS_crateMoneyOrange = [15000, 20000];
 
 		GMS_rewardsNotifications = ["dynamicText"];
 
@@ -147,19 +147,15 @@ switch (GMSCore_modType) do
 	GMS_labelMapMarkers = [true,"center"];  
 	GMS_preciseMapMarkers = true;  // Map markers are/are not centered at the loot crate
 	GMS_showCountAliveAI = true;
-	GMS_defaultMarkerType = "ELLIPSE";
-	GMS_defaultMarkerColor = "ColorYellow";  // soe you can easily see something went wrong
-	GMS_defaultMarkerBrush = "SOLID";
-	GMS_defaultMarkerSize = [200,200];
 
 // radius within whih missions are triggered. The trigger causes the crate and AI to spawn.
 	GMS_TriggerDistance = 2000;
 	
 	//Minimum distance between missions
-	GMS_MinDistanceFromMission = 1000;
-	GMS_minDistanceToBases = 100;
+	GMS_MinDistanceFromMission = 1200;
+	GMS_minDistanceToBases = 150;
 	GMS_minDistanceToPlayer = 1800;
-	GMS_minDistanceFromTowns = 100;
+	GMS_minDistanceFromTowns = 200;
 	GMS_minDistanceFromDMS = 800;  // minimum distance for a GMS mission from any nearby DMS missions. set to -1 to disable this check.	
 	
 	///////////////////////////////
@@ -255,7 +251,7 @@ switch (GMSCore_modType) do
 	GMS_chanceParaRed = 0;
 	GMS_noParaRed = 3;
 	
-	GMS_chanceParaGreen = 0.60;
+	GMS_chanceParaGreen = 0.5;
 	GMS_noParaGreen = 4;
 	
 	GMS_chanceParaOrange = 0.95;
@@ -298,17 +294,17 @@ switch (GMSCore_modType) do
 	GMS_patrolHelisBlue = _GMS_littleBirds;
 	GMS_noPatrolHelisBlue = 1;
 	
-	GMS_chanceHeliPatrolRed = 0.3; // 0.4;
+	GMS_chanceHeliPatrolRed = 0.30; // 0.4;
 	GMS_patrolHelisRed = _GMS_littleBirds;
 	GMS_noPatrolHelisRed = 1;
 	
-	GMS_chanceHeliPatrolGreen = 0.6;
-	GMS_patrolHelisGreen = _GMS_armed_hellcats + _cup_Helis_missiles;  // _GMS_armed_orcas + _GMS_armed_ghosthawks;  //_GMS_littleBirds;
-	GMS_noPatrolHelisGreen = 1;
+	GMS_chanceHeliPatrolGreen = 0.75;
+	GMS_patrolHelisGreen = _GMS_armed_hellcats + _GMS_armed_ghosthawks;  // _GMS_armed_orcas + _GMS_armed_ghosthawks;  //_GMS_littleBirds;
+	GMS_noPatrolHelisGreen = 2;
 	
-	GMS_chanceHeliPatrolOrange = 0.95;
+	GMS_chanceHeliPatrolOrange = 0.99;
 	GMS_patrolHelisOrange = _GMS_armed_heavyAttackHelis + _GMS_armed_attackHelis;  //_GMS_littleBirds;
-	GMS_noPatrolHelisOrange = 1;
+	GMS_noPatrolHelisOrange = 2;
 
 	///////////////////////////////
 	//  Mission Drone Settings
@@ -338,11 +334,11 @@ switch (GMSCore_modType) do
 	////////////////////
 	
 	// Maximum number of missions shown on the map at any one time.
-	GMS_maxSpawnedMissions = 9;
+	GMS_maxSpawnedMissions = 10;
 		
 	//Set to -1 to disable. Values of 2 or more force the mission spawner to spawn copies of that mission - this feature is not recommended because you may run out of available groups.
 	GMS_enableOrangeMissions = 1;  
-	GMS_enableGreenMissions = 1;
+	GMS_enableGreenMissions = 2;
 	GMS_enableRedMissions = 2;
 	GMS_enableBlueMissions = 2;
 	GMS_numberUnderwaterDynamicMissions = 0;  // Values from -1 (no UMS) to N (N Underwater missions will be spawned; static UMS units and subs will be spawned.	
@@ -571,10 +567,10 @@ switch (GMSCore_modType) do
 
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];	
-	GMS_AIAlertDistance = [250,450,1000,1300];  //  Radius within which AI will be notified of enemy activity. Depricated as a group-sed system is used now. The group is informed of the enemy location when a group member is hit or killed.
+	GMS_AIAlertDistance = [350,600,1200,1500];  //  Radius within which AI will be notified of enemy activity. Depricated as a group-sed system is used now. The group is informed of the enemy location when a group member is hit or killed.
 	// How precisely player locations will be revealed to AI after an AI kill
 	// values are ordered as follows [blue, red, green, orange];
-	GMS_AIIntelligence = [0.35, 0.55, 0.75, 0.95];  
+	GMS_AIIntelligence = [0.38, 0.58, 0.78, 0.98];  
 	
 	GMS_baseSkill = 1.0;  // The overal skill of the AI - range 0.1 to 1.0.
 	
@@ -585,15 +581,15 @@ switch (GMSCore_modType) do
 	**************************************************************/
 	//This defines the skill, minimum/Maximum number of AI and how many AI groups are spawned for each mission type
 	// Orange Missions
-	GMS_MinAI_Orange = 16;
-	GMS_MaxAI_Orange = 21;
+	GMS_MinAI_Orange = 17;
+	GMS_MaxAI_Orange = 22;
 	GMS_AIGrps_Orange = 5;
 	GMS_SkillsOrange = [
-		[0.18],  // aiming accuracy
+		[0.20],  // aiming accuracy
 		[0.75,0.85],  //  aiming speed 
 		[0.25],  //  aiming shake 
 		1.0,  //  spot distance 
-		0.90,  //  spot time 
+		0.95,  //  spot time 
 		1.00,  // courage 
 		1.00,  //  reload speed 
 		1.00,  //  commanding 
@@ -601,15 +597,15 @@ switch (GMSCore_modType) do
 	];
 	
 	// Green Missions
-	GMS_MinAI_Green = 12;
-	GMS_MaxAI_Green = 17;
+	GMS_MinAI_Green = 13;
+	GMS_MaxAI_Green = 18;
 	GMS_AIGrps_Green = 4;
 	GMS_SkillsGreen = [
-		[0.16],  //  aiming accuracy 
+		[0.18],  //  aiming accuracy 
 		[0.65,0.75],  //  aiming speed 
 		[0.18], //  aiming shake
-		0.90,  //  spot distance 
-		0.85,  // spot time 
+		0.92,  //  spot distance 
+		0.88,  // spot time 
 		0.9,  //  courage 
 		0.9,  //  reload speed 
 		0.9,  //  comanding 
@@ -617,11 +613,11 @@ switch (GMSCore_modType) do
 	];
 	
 	// Red Missions
-	GMS_MinAI_Red = 8;
-	GMS_MaxAI_Red = 11;
+	GMS_MinAI_Red = 10;
+	GMS_MaxAI_Red = 13;
 	GMS_AIGrps_Red = 3;
 	GMS_SkillsRed = [
-		[0.12],  //  aiming accuracy 
+		[0.14],  //  aiming accuracy 
 		0.6,  //  aiming speed 
 		[0.14],  //  aiming shake 
 		0.7,  //  spot distance 
@@ -633,8 +629,8 @@ switch (GMSCore_modType) do
 	];
 	
 	// Blue Missions
-	GMS_MinAI_Blue = 4;	
-	GMS_MaxAI_Blue = 8;
+	GMS_MinAI_Blue = 6;	
+	GMS_MaxAI_Blue = 10;
 	GMS_AIGrps_Blue = 2;
 	GMS_SkillsBlue = [
 		[0.08],  // aiming accuracy 
