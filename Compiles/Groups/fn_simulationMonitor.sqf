@@ -54,7 +54,7 @@ if (GMS_simulationManager isEqualTo GMS_useBlckeaglsSimulationManager) then
 	/*
 	{
 		// disable simulation once players have left the area.
-		private _nearPlayers = [getPosATL (_x),GMS_simulationEnabledDistance] call GMS_fnc_nearestPlayers;		
+		private _nearPlayers = [getPosATL (_x),GMS_simulationEnabledDistance] call GMSCore_fnc_nearestPlayers;		
 		if (simulationEnabled _x) then 
 		{		
 			if (_nearPlayers isEqualTo []) then 

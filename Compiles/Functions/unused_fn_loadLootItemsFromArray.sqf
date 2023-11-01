@@ -1,8 +1,7 @@
 /*
 	GMS_fnc_loadLootItemsFromArray
 	
-	Depends on GMS_fnc_addItemToCrate
-	
+
 	call as:
 	
 	[_item,_crate] call GMS_fnc_loadLootFromItemsArray;
