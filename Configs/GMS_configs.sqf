@@ -17,7 +17,7 @@
 		changing any of these variables may break the mission system
 	*/
 	GMS_locationBlackList = [];  // Do not touch ...
-	GMS_debugLevel = 0;  //  should be set to 0 ... 
+	GMS_debugLevel = 3;  //  should be set to 0 ... 
 
 	[format["Loading configurations for Non-militarized servers"]] call GMS_fnc_log;
 	/*
@@ -552,9 +552,16 @@ switch (GMSCore_modType) do
 	GMS_launcherTypes = ["launch_RPG32_F"];  //["CUP_launch_RPG7V"];  //
 	GMS_launchersPerGroup = 1;  // Defines the number of AI per group spawned with a launcher
 	GMS_launcherCleanup = false;// When true, launchers and launcher ammo are removed from dead AI.
-	GMS_minimumPatrolRadius = 36;  // AI will patrol within a circle with radius of approximately min-max meters. note that because of the way waypoints are completed they may more more or less than this distance.
-	GMS_maximumPatrolRadius = 66;
-	
+
+	/*
+	// This is now handled by GMSCore
+
+	//  These values are applied to AI groups on foot only.
+	GMS_minimumPatrolRadius = 36;  // AI will patrol within a area of approximately min-max meters. note that because of the way waypoints are completed they may more more or less than this distance.
+	GMS_maximumPatrolRadius = 66;  // These values should be at least 30 to be sure some movement occurs.
+	*/
+
+	// Used by GMSCore to decide when a group is stuck etc.
 	GMS_waypointTimeoutInfantry = 300; 
 	GMS_waypointTimeoutVehicle = 300;
 	GMS_waypointTimeoutAir = 300;
@@ -667,7 +674,7 @@ switch (GMSCore_modType) do
 	GMS_chanceVest = 0.6;
 	GMS_chanceBinoc = 0.75;
 
-	private _configToLoad = format["\GMS\Configs\GMS_configs_%1.sqf",tolower(GMSCore_modtype)];
+	private _configToLoad = format["\x\addons\GMS\Configs\GMS_configs_%1.sqf",tolower(GMSCore_modtype)];
 	//diag_log format["[GMS] _configToLoad = %1",_configToLoad];
 	[] call compileFinal preprocessFileLineNumbers _configToLoad;
 

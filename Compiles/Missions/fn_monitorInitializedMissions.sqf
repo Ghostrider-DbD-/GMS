@@ -146,7 +146,7 @@ for "_i" from 1 to (count _missionsList) do
 				//  Handle mission waiting to be triggerd and player is within the range to trigger		
 				case 0: 
 				{
-					[_missionData,_missionConfigs,_spawnPara] call GMS_fnc_spawnMissionAssets;
+					[_missionData,_missionConfigs,_spawnPara,_missionFile] call GMS_fnc_spawnMissionAssets;
 
 					// _el is structured as: 
 					/* 

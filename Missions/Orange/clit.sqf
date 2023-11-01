@@ -5,8 +5,8 @@
 	By Ghostrider-GRG-
 */
 
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
-#include "\GMS\Missions\GMS_privateVars.sqf" 
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Missions\GMS_privateVars.sqf" 
 
 _defaultMissionLocations = [[20944.5,19254,14.0241]];
 _maxMissionRespawns = -1; // Chage this to either zero for no respawns or a positive number if you want to limit the number of times a mission spawns at the same location
@@ -108,4 +108,4 @@ _noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
 _submarinePatrols = 0; // Default number of submarine patrols at pirate missions
 _scubaPatrols = 0; // Default number of scuba diver patrols at pirate missions
 
-#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

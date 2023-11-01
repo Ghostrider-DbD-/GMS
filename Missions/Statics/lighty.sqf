@@ -10,8 +10,8 @@
 /*
 	Do not touch the code below 
 */
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
-#include "\GMS\Missions\GMS_privateVars.sqf" 
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Missions\GMS_privateVars.sqf" 
 _defaultMissionLocations = [[28325.3,25777.6,0.000283241]];
 
 /*
@@ -144,4 +144,4 @@ _missionLootBoxes = [
 /*
 	Do not touch the code below 
 */
-#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

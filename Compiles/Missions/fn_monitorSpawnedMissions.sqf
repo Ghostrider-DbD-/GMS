@@ -155,6 +155,7 @@ for "_i" from 1 to (count _missionsList) do
 						if (random(1) < _chanceLoot) then
 						{
 							private _extraCrates = [_coords,[[selectRandom GMS_crateTypes,[0,0,0],_paraLoot,_paraLootCounts]], "atMissionSpawn","atMissionSpawnAir", "start", _difficulty] call GMS_fnc_spawnMissionCrates;
+							if (GMS_debugLevel > 0) then {[format["_monitorSpawnedMissions (158): _extracrates %1 dropped for _missionFile %2",_extraCrates,_missionFile]] call GMS_fnc_log};
 							if (GMS_cleanUpLootChests) then
 							{
 								_objects append _extraCrates;

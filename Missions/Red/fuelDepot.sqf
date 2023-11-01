@@ -1,8 +1,8 @@
 /*
 Mission Compositions by Ghostrider [GRG] for ghostridergaming
 */
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
-#include "\GMS\Missions\GMS_privateVars.sqf";
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning Red Mission with template = default";
 _crateLoot = GMS_BoxLoot_Red;
@@ -69,4 +69,4 @@ _noAIGroups = GMS_AIGrps_Red;
 _noVehiclePatrols = GMS_SpawnVeh_Red;
 _noEmplacedWeapons = GMS_SpawnEmplaced_Red;
 
-#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

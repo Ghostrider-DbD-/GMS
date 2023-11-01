@@ -18,7 +18,7 @@ for "_i" from 1 to (count GMS_liveMissionAI) do {
 
 		if (diag_tickTime > _timer) then 
 		{
-			private _nearplayer = [_missionCenter,800] call GMS_fnc_nearestPlayers;
+			private _nearplayer = [_missionCenter,800] call GMSCore_fnc_nearestPlayers;
 			if (_nearPlayer isEqualTo []) then 
 			{
 				{

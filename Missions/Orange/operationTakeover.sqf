@@ -11,8 +11,8 @@
 
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
-#include "\GMS\Missions\GMS_privateVars.sqf";
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Missions\GMS_privateVars.sqf";
 
 //diag_log "[GMS] Spawning  Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
@@ -324,4 +324,4 @@ _noEmplacedWeapons = GMS_SpawnEmplaced_Orange;  // Setting this in the mission f
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = GMS_useMines;  // Setting this in the mission file overrides the defaults 
 
-#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

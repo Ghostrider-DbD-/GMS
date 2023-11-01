@@ -5,8 +5,8 @@
 	By Ghostrider-GRG-
 */
 
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
-#include "\GMS\Missions\GMS_privateVars.sqf" 
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Missions\GMS_privateVars.sqf" 
 
 _difficulty = "Blue";
 _chanceMissionSpawned = 1;
@@ -103,8 +103,8 @@ _missionLootBoxes = [
 	By Ghostrider-GRG-
 */
 
-#include "\GMS\Compiles\Init\GMS_defines.hpp"
-#include "\GMS\Missions\GMS_privateVars.sqf" 
+#include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
+#include "\x\addons\GMS\Missions\GMS_privateVars.sqf" 
 
 _difficulty = "Blue";
 _chanceMissionSpawned = 1;
@@ -222,6 +222,6 @@ _noEmplacedWeapons = GMS_SpawnEmplaced_Blue;
 _submarinePatrols = 0;
 _scubaPatrols = 0;
 
-#include "\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
 
 PASSED
