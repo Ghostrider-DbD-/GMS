@@ -33,6 +33,9 @@ The static loot system and dynamic loot system are gone. THese outlived thier us
 I have kept the change log as a bit of history for those interested in development of this mission system. 
 Significant Changes:
 
+Build 278 
+	Removed unused files 
+	
 Build 276 
 	Unused code no longer compiled. Some of that code remains for bookkeeping. 
 	Added a new mission configuration _cleanupLootContainers
