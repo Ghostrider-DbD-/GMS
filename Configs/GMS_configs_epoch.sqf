@@ -235,7 +235,8 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	];
 	
 	GMS_DLC_Sniper = [
-		"srifle_DMR_02_camo_F","srifle_DMR_02_F","srifle_DMR_02_sniper_F","srifle_DMR_03_F","srifle_DMR_03_tan_F","srifle_DMR_04_F","srifle_DMR_04_Tan_F","srifle_DMR_05_blk_F","srifle_DMR_05_hex_F","srifle_DMR_05_tan_F","srifle_DMR_06_camo_F","srifle_DMR_06_olive_F"
+		"srifle_DMR_02_camo_F","srifle_DMR_02_F","srifle_DMR_02_sniper_F","srifle_DMR_03_F","srifle_DMR_03_tan_F","srifle_DMR_04_F","srifle_DMR_04_Tan_F","srifle_DMR_05_blk_F","srifle_DMR_05_hex_F","srifle_DMR_05_tan_F","srifle_DMR_06_camo_F","srifle_DMR_06_olive_F",
+		"M14_EPOCH", "M14Grn_EPOCH", "M14_EPOCH", "M14Grn_EPOCH", "m107_EPOCH", "m107Tan_EPOCH"
 	];
 	GMS_apexWeapons = ["arifle_AK12_F","arifle_AK12_GL_F","arifle_AKM_F","arifle_AKM_FL_F","arifle_AKS_F","arifle_ARX_blk_F","arifle_ARX_ghex_F","arifle_ARX_hex_F","arifle_CTAR_blk_F","arifle_CTAR_hex_F",
 						"arifle_CTAR_ghex_F","arifle_CTAR_GL_blk_F","arifle_CTARS_blk_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_khk_F","arifle_SPAR_01_snd_F",
@@ -627,13 +628,7 @@ for examples of how you can do this see \Major\Compositions.sqf
 	GMS_lootCountsRed = [4,0,4,6,6,0];  // Red	
 	GMS_lootCountsBlue = [4,0,3,5,5,0];   // Blue
 	private _weapons = [
-		"MultiGun",
-		"M14_EPOCH",
-		"M14Grn_EPOCH",
-		"M14_EPOCH",
-		"M14Grn_EPOCH",		
-		"m107_EPOCH",
-		"m107Tan_EPOCH",
+
 		"CUP_Famas_F1_Rail",
 		"CUP_Famas_F1_Rail_Wood",
 		"CUP_Famas_F1_Rail_Arid",
@@ -771,7 +766,7 @@ for examples of how you can do this see \Major\Compositions.sqf
 		["CookedChicken_EPOCH",1,3],["CookedGoat_EPOCH",1,3],["CookedSheep_EPOCH",1,3],["FoodSnooter",1,3],["FoodMeeps",1,3],["FoodBioMeat",1,3],["ItemTuna",1,3],["ItemSeaBass",1,3],["ItemTrout",1,3],
 		"Towelette" , "ItemVitamins", "morphine_epoch", "iodide_pills_epoch", "adrenaline_epoch", "caffeinepills_epoch", "orlistat_epoch", "ItemCanteen_Empty", "ItemCanteen_Clean", "ItemBottlePlastic_Empty", 
 		"ItemBottlePlastic_Clean", "atropine_epoch", "ItemWaterPurificationTablets", "ItemPainKillers", "ItemDefibrillator", 
-		"ItemBloodBag_Empty", "ItemBloodBag_Full", "ItemAntibiotic", "nanite_cream_epoch", "nanite_pills_epoch","ItemKeyKit"
+		"ItemBloodBag_Empty", "ItemBloodBag_Full", "ItemAntibiotic", "nanite_cream_epoch", "nanite_pills_epoch","ItemKeyKit", "MultiGun"
 	];
 	private _kitsPartsMaterials = [
 		["CinderBlocks",5,15],

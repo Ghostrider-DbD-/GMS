@@ -21,11 +21,11 @@ _chanceMissionSpawned = 1;
 /*	 Set number of times a mission respawns or use -1 for inifinite respawns 	*/
 _maxMissionRespawns = -1;
 /* 	Add your Start, End and Timeout Messages Here  */
-_startMsg = "Enemy outpost has been scouted and marked on the map (RED)";
+_startMsg = "Enemy outpost has been scouted and marked on the map (ORANGE/MEDIUM)";
 _endMsg = "Enemy outpost has been cleared and looted.";
 _timeoutMsg = "Enemy forces have abandoned the outpost.";
-_markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorRed";
+_markerType = ["ELLIPSE",[350,350],"SOLID"];
+_markerColor = "ColorOrange";
 
 
 _markerMissionName = "Cleese Point";
@@ -124,17 +124,11 @@ _missionLandscape = [
      ["Land_HBarrier_1_F",[10.7458,-17.5574,0],224.613,[true,true]],
      ["Land_HBarrier_3_F",[-4.32495,-18.4043,0],358.802,[true,true]],
      ["Land_HBarrier_3_F",[4.2981,-18.1074,0],358.802,[true,true]],
-     ["Land_PortableLight_double_F",[8.84082,-8.60962,0],136.662,[true,true]],
-     ["Land_PortableLight_double_F",[-3.95996,-10.3132,0],340.729,[true,true]],
-     ["Land_PaperBox_closed_F",[-9.5542,4.65063,0],312.011,[true,true]],
-     ["Land_PaperBox_closed_F",[-7.63843,3.97437,0],69.6406,[true,true]],
      ["Land_WaterTank_F",[-6.46362,-8.56372,0],358.416,[true,true]],
      ["Land_ToiletBox_F",[8.56494,-0.862305,0],88.4168,[true,true]],
      ["Land_HBarrier_1_F",[-11.9878,8.49463,0],42.7515,[true,true]],
      ["Land_HBarrier_1_F",[-9.00488,11.2712,0],48.1634,[true,true]],
      ["Land_TTowerSmall_2_F",[5.33765,1.16333,0],358.802,[true,true]],
-     ["Land_GarbageBarrel_01_F",[8.63013,-4.7688,0],164.046,[true,true]],
-     ["Land_ToiletBox_F",[8.64893,-3.42847,0],88.4194,[true,true]],
      ["Land_HBarrier_3_F",[-16.0476,10.6465,0],305.431,[true,true]],
      ["Land_HBarrier_3_F",[-11.2776,15.6228,0],324.789,[true,true]]
 ];
@@ -168,13 +162,14 @@ _missionUAVs = [
 _missionEmplacedWeapons = [
      ["B_HMG_01_high_F", [-4.43018,-15.582,0], 0, "Red"],
      ["B_HMG_01_high_F", [1.04272,11.2759,4.34404], 0, "Red"],
-     ["B_HMG_01_high_F", [16.418,-4.17114,0], 0, "Red"],
-     ["B_GMG_01_high_F", [-15.4568,0.457031,0], 0, "Red"]
+     ["B_HMG_01_high_F", [16.418,-4.17114,0], 0, "Green"],
+     ["B_GMG_01_high_F", [-15.4568,0.457031,0], 0, "Green"]
 ];
 
 _missionGroups = [
      [[17.535,9.26514,3.12796],2,3,"Green"],
-     [[-13.558,24.0972,3.12796],2,3,"Green"]
+     [[-23.558,24.0972,3.12796],2,3,"Green"],
+     [[-2.44092,13.9883,0.00143909],2,4,"Orange"] 
 ];
 
 _missionGarrisonedGroups = [

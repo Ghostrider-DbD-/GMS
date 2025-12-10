@@ -21,11 +21,11 @@ _chanceMissionSpawned = 1;
 /*	 Set number of times a mission respawns or use -1 for inifinite respawns 	*/
 _maxMissionRespawns = -1;
 /* 	Add your Start, End and Timeout Messages Here  */
-_startMsg = "Enemy outpost has been scouted and marked on the map (RED)";
+_startMsg = "Enemy outpost has been scouted and marked on the map (ORANGE/MEDIUM)";
 _endMsg = "Enemy outpost has been cleared and looted.";
 _timeoutMsg = "Enemy forces have abandoned the outpost.";
-_markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorRed";
+_markerType = ["ELLIPSE",[350,350],"SOLID"];
+_markerColor = "ColorOrange";
 
 
 _markerMissionName = "Sittingduck Point";
@@ -122,20 +122,7 @@ _missionLandscape = [
      ["Land_HBarrier_5_F",[21.053,4.39233,0],269.796,[true,true]],
      ["Land_HBarrier_5_F",[13.5566,19.1094,0],180.674,[true,true]],
      ["Land_HBarrier_5_F",[8.00391,19.2422,0],180.674,[true,true]],
-     ["Land_HBarrier_5_F",[18.9922,18.9785,0],180.674,[true,true]],
-     ["Land_Cargo_Patrol_V2_F",[-12.8511,14.97,4.76837e-007],126.833,[true,true]],
-     ["Land_ScrapHeap_1_F",[0.215332,10.49,0],265.634,[true,true]],
-     ["Land_ScrapHeap_2_F",[0.347168,4.22729,0],85.4637,[true,true]],
-     ["MetalBarrel_burning_F",[12.8228,-2.74902,0],289.211,[true,true]],
-     ["Land_Garbage_square5_F",[13.4072,-2.86401,0],219.536,[true,true]],
-     ["Land_JunkPile_F",[-9.7627,-2.86621,0],270.784,[true,true]],
-     ["Land_Sign_WarningMilitaryArea_F",[5.04541,-20.8191,0],2.31973,[true,true]],
-     ["Land_Pallets_stack_F",[-8.26514,-1.25098,0],44.6072,[true,true]],
-     ["Land_GarbageBarrel_01_F",[-3.46631,4.20801,0],98.2682,[true,true]],
-     ["Land_Garbage_square5_F",[4.35034,-12.9548,0],271.827,[true,true]],
-     ["Land_Garbage_square5_F",[-1.54224,6.71387,0],294.992,[true,true]],
-     ["Land_CratesShabby_F",[-8.4751,0.258789,0],161.852,[true,true]],
-     ["Land_Loudspeakers_F",[9.40039,3.82007,0],271.827,[true,true]]
+     ["Land_HBarrier_5_F",[18.9922,18.9785,0],180.674,[true,true]]
 ];
 
 _simpleObjects = [
@@ -166,15 +153,23 @@ _missionUAVs = [
 ];
 _missionEmplacedWeapons = [
      ["B_HMG_01_high_F", [7.12891,-15.0647,4.34404], 0, "Red"],
-     ["B_HMG_01_high_F", [-14.0496,14.7151,4.34404], 0, "Red"],
+     ["B_HMG_01_high_F", [-14.0496,14.7151,4.34404], 0, "Green"],
      ["B_GMG_01_high_F", [15.8967,7.802,3.12652], 0, "Red"],
-     ["B_HMG_01_high_F", [12.3574,12.7839,3.12651], 0, "Red"],
+     ["B_HMG_01_high_F", [12.3574,12.7839,3.12651], 0, "Green"],
      ["B_HMG_01_high_F", [7.36865,-17.1321,0], 0, "Red"]
 ];
 
 _missionGroups = [
      [[17.535,9.26514,3.12796],2,3,"Green"],
-     [[-13.558,24.0972,3.12796],2,3,"Green"]
+     [[-13.558,24.0972,3.12796],2,3,"Green"],
+     [[3.74072,13.2544,0.00143909],2,3,"Green"],
+     //[[-3.54211,-13.5405,0.00143909],2,4,"Green"],
+     [[32.109,-4.81934,0.00143909],2,3,"Green"]
+     //[[-12.3046,24.1689,0.603113],2,4,"Green"],
+     //[[-6.83374,21.272,0.00143909],2,4,"Green"]
+     //[[4.87683,-6.9248,0.00143909],2,4,"Green"],
+     //[[-1.02954,26.0737,0.00143909],2,4,"Green"]
+     //[[-9.27332,9.60596,0.00143909],2,3,"Green"]	 
 ];
 
 _missionGarrisonedGroups = [

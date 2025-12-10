@@ -17,11 +17,11 @@
 //diag_log "[GMS] Spawning Orange Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
 _lootCounts = GMS_lootCountsOrange;
-_startMsg = "An enemy Military Camp was sighted in a nearby sector! Check the Orange marker on your map for the location!";
+_startMsg = "An enemy Military Camp was sighted in a nearby sector! (BLACK/HARDEST)";
 _endMsg = "The Military Camp at the Orange Marker is under survivor control!";
 _markerLabel = "";
 _markerType = ["ellipse",[750,750],"SOLID"];
-_markerColor = "ColorOrange";
+_markerColor = "ColorBlack";
 _markerMissionName = "Military Camp";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
@@ -130,7 +130,7 @@ _missionLootVehicles = [
 
 _missionPatrolVehicles = [
      [selectRandom GMS_AIPatrolVehiclesOrange,[-41.377,-5.40894,-0.0238895],0.00171121],
-     [selectRandom GMS_AIPatrolVehiclesGreen,[39.5627,-5.26709,-0.0237107],0.00169144]
+     [selectRandom GMS_AIPatrolVehiclesOrange,[39.5627,-5.26709,-0.0237107],0.00169144]
 ];
 
 _submarinePatrolParameters = [
@@ -143,11 +143,11 @@ _missionEmplacedWeapons = [
      ["B_static_AA_F",[-8.31958,-28.7351,-0.0135579],359.998],
      ["B_HMG_01_high_F",[-25.1523,-1.33643,-0.0135579],359.999],
      ["B_HMG_01_high_F",[-23.7974,-12.0527,-0.0135579],359.998],
-     ["B_static_AA_F",[-18.7363,-10.283,-0.0135579],359.998]
-    // ["B_HMG_01_high_F",[-21.9993,4.10132,-0.0135579],359.999],
-     //["B_HMG_01_high_F",[-18.2954,25.033,-0.0135579],359.999],
-     //["B_static_AA_F",[-0.275879,18.9167,-0.0135579],0.000433404],
-     //["B_HMG_01_high_F",[18.0608,-20.4434,-0.0135579],359.999],
+     ["B_static_AA_F",[-18.7363,-10.283,-0.0135579],359.998],
+     ["B_HMG_01_high_F",[-21.9993,4.10132,-0.0135579],359.999],
+     ["B_HMG_01_high_F",[-18.2954,25.033,-0.0135579],359.999],
+     ["B_static_AA_F",[-0.275879,18.9167,-0.0135579],0.000433404],
+     ["B_HMG_01_high_F",[18.0608,-20.4434,-0.0135579],359.999]
      //["B_HMG_01_high_F",[5.96338,-3.91113,-0.0135593],286.946]
 ];
 
@@ -159,15 +159,15 @@ _missionGroups = [
      //[[-5.94653,-0.124756,0],3,3,"Orange",30,45],
      //[[20.2122,-6.24878,0],3,3,"Orange",30,45],
      //[[20.0557,6.34253,0],3,3,"Orange",30,45],
-     [[15.1677,-10.6943,0],2,3,"Orange",30,45],
+     [[15.1677,-10.6943,0],1,3,"Orange",30,45],
      // [[2.0083,-14.293,-4.76837e-007],2,3,"Orange",30,45],
      [[1.84692,-7.56616,-4.76837e-007],2,3,"Orange",30,45],
-     [[2.71069,-14.7263,-4.76837e-007],2,3,"Orange",30,45],
-     [[2.50513,-13.1191,0],2,3,"Orange",30,45],
-     [[13.8992,11.4729,0],2,3,"Orange",30,45],
+     [[2.71069,-14.7263,-4.76837e-007],1,3,"Orange",30,45],
+     [[2.50513,-13.1191,0],1,3,"Orange",30,45],
+     [[13.8992,11.4729,0],1,3,"Orange",30,45],
     // [[3.75098,11.2024,0],2,3,"Orange",30,45],
-     [[18.3645,19.8477,0],2,3,"Orange",30,45],
-     [[3.17798,26.7761,0],2,3,"Orange",30,45]
+     [[18.3645,19.8477,0],1,3,"Orange",30,45],
+     [[3.17798,26.7761,0],1,3,"Orange",30,45]
 ];
 
 //////////

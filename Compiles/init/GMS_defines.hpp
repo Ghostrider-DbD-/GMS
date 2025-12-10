@@ -27,6 +27,7 @@
 
 //#define GMS_debugMode
 #define GRGserver
+
 //#define GMS_addCarParts
 #define GMS_triggerLoopCompleteTime 40*60
 #define max_distance_crate_moved_uncompleted_mission 120
@@ -67,9 +68,9 @@
 #define GMS_vehiclePlayerDetectionOdds 0.6
 #define GMS_playerDetectionRangeSubs 100
 #define GMS_playerDetectionRangeSurfaceVehicle 150
-#define GMS_simulationEnabledDistance 2500
+#define GMS_simulationEnabledDistance 3000
 #define GMS_simulationManagementOff 0
-#define GMS_useBlckeaglsSimulationManager 1
+#define GMS_useGMS_SimulationManager 1
 #define GMS_useDynamicSimulationManagement 2
 #define GMS_simulationManagementOff 0
 #define GMS_useBlckeaglsSimulationManagement 1
@@ -84,3 +85,7 @@
 #define GMS_turnBackRadiusVehicles 1000
 #define GMS_turnBackRadiusHelis 1000
 #define GMS_turnBackRadiusJets 1500
+
+// Defines for patrol map markers
+#define PATROL_MARKER_SIZE_AIR 300,300
+#define PATROL_MARKERSIZE_LAND 100,100

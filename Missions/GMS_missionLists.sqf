@@ -11,7 +11,7 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/	
 */
 
-private["_pathBlue","_missionListBlue","_pathRed","_missionListRed","_pathGreen","_missionListGreen","_pathOrange","_missionListOrange"];
+private["_pathBlue","_missionListBlue","_pathRed","_missionListRed","_pathGreen","_missionListGreen","_pathOrange","_missionListOrange","_pathStatics","_missionListStatics"];
 private _pathScouts = "Scouts";
 private _missionListScouts = ["Scouts"];
 
@@ -20,26 +20,40 @@ private _missionListHunters = ["Hunters"];
 
 private _pathBlue = "Blue";
 private _missionListBlue = [
-		"sniperBase",
-		"survivalSupplies",  
-		"Service_point",  
 		"campwhiskey",
 		"campvodka", 
 		"campbourbon",
 		"camptequila", 
 		"campgin",
-		"campbrandy"	
+		"campbrandy",
+		"market",
+		"quad",
+		"smallhq",
+		"strip",
+		"storage",
+		"survivalcamp",
+		"insurgent",
+		"campsite",
+		"comms",
+		"radiotower",
+		"storageyard",
+		"hqtents",
+		"smallfort",
+		"cargotower",
+		"cargopost",
+		"rb1",
+		"rb2",
+		"rb3",
+		"mercscouts",
+		"rb4",
+		"gas1",
+		"gas2",
+		"gas3",
+		"gas4"
 	];
 
 private _pathRed = "Red";
 private _missionListRed = [
-		"fuelDepot",
-		"junkyardWilly",
-		"TraderBoss", 
-		"carThieves",
-		"Ammunition_depot", 
-		"IDAP",  
-		"Service_Point",
 		"sleepy",
 		"overwatch",
 		"station", 
@@ -47,33 +61,82 @@ private _missionListRed = [
 		"cleese",
 		"chapman",
 		"loveshack",
-		"banjo"
+		"banjo",
+		"powcamp",
+		"radar",
+		"icbm",
+		"construction",
+		"supplydrop",
+		"flightschool",
+		"merclz",
+		"forthq",
+		"fieldbarracks",
+		"fieldradar",
+		"bunkered",
+		"villa",
+		"armsdeal"
 	];
 
 private _pathGreen = "Green";
-private _missionListGreen = [/*"default","default2",/*"medicalCamp","redCamp","resupplyCamp","banditVillage",*/
+private _missionListGreen = [
 		"munitionsResearch",
-		"fortification" 
+		"fortification",
+		"wodger",
+		"farp",
+		//"twins",
+		"valley",
+		"fanatics",
+		"beach",
+		"gaga",
+		"docksuckers",
+		"mercware",
+		"solarmercs",
+		//"nesolar",
+		//"tankyou",
+		"pepper",
+		"weapons",
+		"frini",
+		"kavala",
+		"shipping",
+		"athira",
+		"southmil",
+		"milly",
+		"jungle",
+		"thetip",
+		"lighthouse",
+		"dump",
+		"outpostconstruction",
+		"pyrsos",
+		"holy"
 	];
 
 private _pathOrange = "Orange";
-private _missionListOrange = [/*"default","default2","medicalCamp","redCamp","resupplyCamp","officeComplex",*/
-		"CommandersComplex", // ***
+private _missionListOrange = [
+		"CommandersComplex",
 		"generalsCamp",
-		"colonel2",
 		"operationShutdown",
 		"operationTakeover",
 		"dashq",  
-		"tko_camp"  
+		"tko_camp",
+		"albatross",
+		"architect",
+		"mountain",
+		"smuggler",
+		"fork",
+		"boobs",
+		"sheep",
+		"parrot1",
+		"power",
+		"python",
+		"anthrax",
+		"jabberwocky",
+		"mrdeath"
+		//"fawlty"
 	];
 
 private _pathStatics = "Statics";
 private _missionListStatics = [
-	/// The format for these is filename 
-	/// Do NOT include the extension here.
-	/// You will need to add the mission files to the statics folder. 
-	//"spatzle",
-	//"saltflatsone"
+		//"docksuckers"
 ];
 
 private _pathUMS = "UMS\dynamicMissions";

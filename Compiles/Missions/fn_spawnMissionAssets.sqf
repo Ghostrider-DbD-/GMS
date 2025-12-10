@@ -237,7 +237,7 @@ if (GMS_useStatic && !(_missionEmplacedWeapons isEqualTo [])) then
 		uisleep delayTime;
 	};						
 };
-diag_log format["_spawnMissionAssets(241): _missionLootVehicles = %1",_missionLootVehicles];
+//diag_log format["_spawnMissionAssets(241): _missionLootVehicles = %1",_missionLootVehicles];
 if !(_missionLootVehicles isEqualTo []) then 
 {
 	_lootVehicles = [_coords,_missionLootVehicles,_spawnCratesTiming,_missionFile] call GMS_fnc_spawnMissionLootVehicles;				
@@ -245,25 +245,23 @@ if !(_missionLootVehicles isEqualTo []) then
 };
 
 /*  GMS_fnc_spawnMissionVehiclePatrols
-	params[
-		["_coords",[]],
-		["_skillAI","Red"],
-		["_missionPatrolVehicles",[]],
-		["_useRelativePos",true],
-		["_uniforms",[]], 
-		["_headGear",[]],
-		["_vests",[]],
-		["_backpacks",[]],
-		["_weaponList",[]],
-		["_sideArms",[]], 
-		["_isScubaGroup",false],
-		["_crewCount",4]
+	["_coords",[]],
+	["_skillAI","Red"],
+	["_missionPatrolVehicles",[]],
+	["_uniforms",[]], 
+	["_headGear",[]],
+	["_vests",[]],
+	["_backpacks",[]],
+	["_weaponList",[]],
+	["_sideArms",[]], 
+	["_isScubaGroup",false],
+	["_crewCount",4]
 	];
 */
-diag_log format["_spawnMissionAssets (264): __missionPatrolVehicles = %1",_missionPatrolVehicles];
+//diag_log format["_spawnMissionAssets (264): __missionPatrolVehicles = %1",_missionPatrolVehicles];
 if (GMS_useVehiclePatrols && {!(_missionPatrolVehicles isEqualTo [])}) then
 {
-	_temp = [_coords,_difficulty,_missionPatrolVehicles,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
+	_temp = [_coords,_markerName,_difficulty,_missionPatrolVehicles,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
 	_temp params["_vehs","_units"]; 
 	_aiVehicles append _vehs;
 	_missionInfantry append _units;
@@ -280,7 +278,7 @@ if (GMS_useVehiclePatrols && {!(_missionPatrolVehicles isEqualTo [])}) then
 			_vicsToSpawn pushBack [_veh, _x vectorDiff _coords];
 		}forEach _spawnLocations;	
 		#define useRelativePos true				
-		_temp = [_coords,_difficulty,_vicsToSpawn, _uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
+		_temp = [_coords,_markerName,_difficulty,_vicsToSpawn, _uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
 		_temp params["_vehs","_units"]; 
 		_aiVehicles append _vehs;
 		_missionInfantry append _units;
@@ -288,6 +286,7 @@ if (GMS_useVehiclePatrols && {!(_missionPatrolVehicles isEqualTo [])}) then
 	};	
 };
 
+// TODO: Update code to match latest GMSCore
 if (GMS_useVehiclePatrols && {((_submarinePatrols > 0) || {!(_submarinePatrolParameters isEqualTo [])} )} ) then
 {
 	_temp = [_coords,_noPatrols,_difficulty,_submarinePatrolParameters,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
@@ -315,7 +314,7 @@ if (GMS_useVehiclePatrols && {((_submarinePatrols > 0) || {!(_submarinePatrolPar
 
 if !(_airPatrols isEqualTo [] && {random(1) < _chanceHeliPatrol}) then // Spawn any choppers defined in the array  
 {
-	_temp = [_coords, _airPatrols,_difficulty,_uniforms,_headgear,_vests,_backpacks,_weaponList,_sidearms] call GMS_fnc_spawnMissionHelis;
+	_temp = [_coords, _markerName, _airPatrols,_difficulty,_uniforms,_headgear,_vests,_backpacks,_weaponList,_sidearms] call GMS_fnc_spawnMissionHelis;
 	_temp params["_helisSpawned","_unitsSpawned"];
 	GMS_monitoredVehicles append _helisSpawned;
 	GMS_aircraftPatrols append _helisSpawned; // Used to find nearest heli ... 
@@ -335,7 +334,7 @@ if !(_airPatrols isEqualTo [] && {random(1) < _chanceHeliPatrol}) then // Spawn 
 			private _heli = selectRandom _availableHelis; 
 			_helisToSpawn pushBack[_heli, _x vectorDiff _coords, random(359)];
 		} forEach _spawnLocations;
-		_temp = [_coords,_helisToSpawn,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call GMS_fnc_spawnMissionHelis;
+		_temp = [_coords,_markerName, _helisToSpawn,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call GMS_fnc_spawnMissionHelis;
 		_temp params["_helisSpawned","_unitsSpawned"];
 		GMS_monitoredVehicles append _helisSpawned;
 		GMS_aircraftPatrols append _helisSpawned; // Used to find nearest heli ... 

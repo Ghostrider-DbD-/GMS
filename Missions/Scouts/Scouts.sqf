@@ -7,7 +7,7 @@
 //diag_log "[GMS] Spawning Scout Mission";
  
 _crateLoot = GMS_BoxLoot_Blue;
-_lootCounts = [5,5,4,4,6,2];
+_lootCounts = GMS_lootCountsBlue;
 _startMsg = "A group of Bandit Scouts was sighted in a nearby sector! Check the Red triangular marker on your map for the location!";
 _endMsg = "The Scout Camp is under Survivor Control!";
 _timeoutMsg = "The Scouts Have Moved Out of Their Camp";
@@ -23,9 +23,9 @@ _missionLootVehicles = []; //  Parameters are "Box Item Code", array defining th
 _missionEmplacedWeapons = []; // can be used to define the precise placement of static weapons [[1,2,3] /*loc 1*/, [2,3,4] /*loc 2*/]; if blank random locations will be used
 //  Change _useMines to true/false below to enable mission-specific settings.
 _missionGroups = [
-     [[-5,-5,0],3,3,"Red",30,45],
-     [[-5,5,0],3,3,"Red",30,45],
-     [[5,5,0],3,3,"Red",30,45]
+     [[-5,-5,0],3,3,"Green",30,45],
+     [[-15,15,0],2,3,"Orange",30,45],
+     [[5,5,0],3,3,"Green",30,45]
 ];
 
 //_useMines = GMS_useMines;

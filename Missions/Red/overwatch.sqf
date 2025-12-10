@@ -21,11 +21,11 @@ _chanceMissionSpawned = 1;
 /*	 Set number of times a mission respawns or use -1 for inifinite respawns 	*/
 _maxMissionRespawns = -1;
 /* 	Add your Start, End and Timeout Messages Here  */
-_startMsg = "Enemy outpost has been scouted and marked on the map (RED)";
+_startMsg = "Enemy outpost has been scouted and marked on the map (ORANGE/MEDIUM)";
 _endMsg = "Enemy outpost has been cleared and looted.";
 _timeoutMsg = "Enemy forces have abandoned the outpost.";
-_markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorRed";
+_markerType = ["ELLIPSE",[350,350],"SOLID"];
+_markerColor = "ColorOrange";
 
 
 _markerMissionName = "Overwatch";
@@ -109,29 +109,16 @@ _missionLandscape = [
      ["Land_HBarrierBig_F",[-29.29,-6.67603,0],260.921,[true,true]],
      ["Land_PortableLight_double_F",[-2.97949,-0.870605,8.58897],88.9744,[true,true]],
      ["Land_PortableLight_double_F",[-0.270508,7.40747,4.64145],271.052,[true,true]],
-     ["Land_Razorwire_F",[27.6936,-21.5305,0],130.828,[true,true]],
-     ["Land_Razorwire_F",[33.71,21.0552,0],63.3236,[true,true]],
-     ["Land_Razorwire_F",[-1.91626,43.2783,0],353.962,[true,true]],
-     ["Land_Razorwire_F",[-39.0532,18.0989,0],298.805,[true,true]],
-     ["Land_Razorwire_F",[-24.8943,-28.4514,0],212.627,[true,true]],
-     ["Land_Razorwire_F",[-8.64624,-34.1641,0],177.922,[true,true]],
-     ["Land_Razorwire_F",[11.6047,-32.5916,0],175.731,[true,true]],
-     ["Land_Razorwire_F",[-39.6636,-5.64844,0],251.529,[true,true]],
-     ["Land_Razorwire_F",[-22.1072,34.9204,0],142.909,[true,true]],
-     ["Land_Razorwire_F",[19.4436,35.4185,0],214.404,[true,true]],
-     ["Land_Razorwire_F",[34.6499,1.10889,0],279.546,[true,true]],
      ["Land_Pallets_stack_F",[-15.6758,5.10474,0],263.779,[true,true]],
      ["Land_PaperBox_closed_F",[-6.90356,-12.5784,0],269.945,[true,true]],
      ["Land_WaterTank_F",[11.7793,4.76099,0],359.457,[true,true]],
      ["Land_WaterTank_F",[11.9082,1.91528,0],359.457,[true,true]],
      ["Land_PaperBox_closed_F",[-8.07202,-14.374,0],300.411,[true,true]],
-     ["Land_Pallets_stack_F",[-15.6953,7.49536,0],225.143,[true,true]],
      ["Land_HBarrier_3_F",[14.4512,-10.8035,0],129.284,[true,true]],
      ["Land_HBarrier_3_F",[16.2302,11.5349,0],244.614,[true,true]],
      ["Land_HBarrier_3_F",[-0.464111,23.5669,0],357.596,[true,true]],
      ["Land_HBarrier_3_F",[-18.7661,10.0859,0],298.384,[true,true]],
      ["Land_HBarrier_3_F",[-14.4148,-12.1699,0],230.161,[true,true]],
-     ["Land_ToiletBox_F",[-2.63184,5.65259,0],268.476,[true,true]],
      ["Land_HBarrier_5_F",[5.98389,12.9143,0],179.126,[true,true]],
      ["Land_HBarrier_5_F",[-5.74805,12.3289,0],178.494,[true,true]],
      ["Land_HBarrier_5_F",[6.46899,-5.96338,0],178.314,[true,true]],
@@ -165,10 +152,10 @@ _missionUAVs = [
 
 ];
 _missionEmplacedWeapons = [
-     ["B_HMG_01_high_F", [-0.540283,32.9336,0], 0, "Red"],
+     ["B_HMG_01_high_F", [-0.540283,32.9336,0], 0, "Green"],
      ["B_HMG_01_high_F", [-29.1284,13.1614,0], 0, "Red"],
      ["B_HMG_01_high_F", [-21.0464,-18.9463,0], 0, "Red"],
-     ["B_HMG_01_high_F", [21.1582,-16.0713,0], 0, "Red"],
+     ["B_HMG_01_high_F", [21.1582,-16.0713,0], 0, "Orange"],
      ["B_HMG_01_high_F", [25.0803,16.96,0], 0, "Red"],
      ["B_HMG_01_high_F", [4.46924,0.205078,17.8895], 0, "Red"],
      ["B_GMG_01_high_F", [0.517822,6.75073,17.8895], 0, "Red"]
@@ -176,7 +163,8 @@ _missionEmplacedWeapons = [
 
 _missionGroups = [
      [[17.535,9.26514,3.12796],2,3,"Green"],
-     [[-13.558,24.0972,3.12796],2,3,"Green"]
+     [[-13.558,24.0972,3.12796],1,3,"Green"],
+     [[3.74072,13.2544,0.00143909],2,3,"Green"]	 
 ];
 
 _missionGarrisonedGroups = [

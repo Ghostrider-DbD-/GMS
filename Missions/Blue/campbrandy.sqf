@@ -21,11 +21,11 @@ _chanceMissionSpawned = 1;
 /*	 Set number of times a mission respawns or use -1 for inifinite respawns 	*/
 _maxMissionRespawns = -1;
 /* 	Add your Start, End and Timeout Messages Here  */
-_startMsg = "An enemy camp has been scouted and marked on the map. (Blue)";
+_startMsg = "An enemy camp has been scouted and marked on the map. (GREEN/EASY)";
 _endMsg = "Enemy Camp Brandy has been been cleared!!";
 _timeoutMsg = "Enemy camp has packed up and moved.";
 _markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorBlue";
+_markerColor = "ColorGreen";
 
 
 _markerMissionName = "Camp Brandy";
@@ -86,24 +86,24 @@ _garrisonedBuildings_BuildingPosnSystem = [
 
 ];
 _missionLandscape = [
-     ["Land_d_Windmill01_F",[0.93335,-0.279541,0],8.40899,[true,true]],
-     ["Land_d_House_Small_02_V1_F",[-16.7925,3.76196,0],8.40899,[true,true]],
-     ["Land_Wreck_Truck_dropside_F",[-5.82764,-7.52271,0],268.716,[true,true]],
-     ["Land_Wreck_Car2_F",[-10.3225,-7.23999,0],110.971,[true,true]],
-     ["Land_Pipes_large_F",[-5.37036,5.61572,0],358.884,[true,true]],
-     ["Land_Pallets_stack_F",[-2.33789,5.34375,0],97.283,[true,true]],
-     ["Land_WoodenBox_F",[-0.724854,4.72339,0],250.848,[true,true]],
-     ["Land_Pallets_stack_F",[-1.82422,3.74414,0],166.979,[true,true]],
-     ["Land_Sacks_heap_F",[-0.140625,-7.23828,0],353.17,[true,true]],
-     ["Land_Sacks_heap_F",[0.00585938,-5.82617,0],97.166,[true,true]],
-     ["Land_Sacks_heap_F",[-2.49609,-7.81152,0],91.113,[true,true]],
-     ["Land_Sacks_heap_F",[-1.41992,-7.52539,0],254.03,[true,true]],
-     ["Land_CratesShabby_F",[-12.8123,-5.6626,0],4.89426,[true,true]],
-     ["Land_CratesWooden_F",[-11.8789,-1.16992,0],190.636,[true,true]],
-     ["Land_WoodenCart_F",[7.08594,-0.929688,0],359.928,[true,true]],
-     ["Land_CratesShabby_F",[-12.6147,-2.18481,0],278.435,[true,true]],
-     ["Land_Sacks_heap_F",[6.82227,1.06348,0],63.793,[true,true]],
-     ["RoadCone_F",[-16.9468,-3.62524,0],0,[true,true]]
+     ["Land_d_Windmill01_F",[0.93335,-0.279541,0],8.40899,[false,false]],
+     ["Land_d_House_Small_02_V1_F",[-16.7925,3.76196,0],8.40899,[false,false]],
+     ["Land_Wreck_Truck_dropside_F",[-5.82764,-7.52271,0],268.716,[false,false]],
+     ["Land_Wreck_Car2_F",[-10.3225,-7.23999,0],110.971,[false,false]],
+     ["Land_Pipes_large_F",[-5.37036,5.61572,0],358.884,[false,false]],
+     ["Land_Pallets_stack_F",[-2.33789,5.34375,0],97.283,[false,false]],
+     ["Land_WoodenBox_F",[-0.724854,4.72339,0],250.848,[false,false]],
+     ["Land_Pallets_stack_F",[-1.82422,3.74414,0],166.979,[false,false]],
+     ["Land_Sacks_heap_F",[-0.140625,-7.23828,0],353.17,[false,false]],
+     ["Land_Sacks_heap_F",[0.00585938,-5.82617,0],97.166,[false,false]],
+     ["Land_Sacks_heap_F",[-2.49609,-7.81152,0],91.113,[false,false]],
+     ["Land_Sacks_heap_F",[-1.41992,-7.52539,0],254.03,[false,false]],
+     ["Land_CratesShabby_F",[-12.8123,-5.6626,0],4.89426,[false,false]],
+     ["Land_CratesWooden_F",[-11.8789,-1.16992,0],190.636,[false,false]],
+     ["Land_WoodenCart_F",[7.08594,-0.929688,0],359.928,[false,false]],
+     ["Land_CratesShabby_F",[-12.6147,-2.18481,0],278.435,[false,false]],
+     ["Land_Sacks_heap_F",[6.82227,1.06348,0],63.793,[false,false]],
+     ["RoadCone_F",[-16.9468,-3.62524,0],0,[false,false]]
 ];
 
 _simpleObjects = [

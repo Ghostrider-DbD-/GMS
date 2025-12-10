@@ -17,11 +17,11 @@
 //diag_log "[GMS] Spawning Orange Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
 _lootCounts = GMS_lootCountsOrange;
-_startMsg = "An enemy Operations Base was sighted in a nearby sector! Check the Orange marker on your map for the location!";
+_startMsg = "An enemy Operations Base was sighted in a nearby sector! (BLACK/HARDEST)";
 _endMsg = "The Operations Base at the Orange Marker is under survivor control!";
 _markerLabel = "";
 _markerType = ["ellipse",[750,750],"SOLID"];
-_markerColor = "ColorOrange";
+_markerColor = "ColorBlack";
 _markerMissionName = "Operations Base";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
@@ -208,13 +208,13 @@ _missionEmplacedWeapons = [
 ];
 
 _missionGroups = [
-     [[-41.0581,-3.45898,0],2,3,"Orange",30,45],
-     [[-37.6394,8.57202,0],2,3,"Orange",30,45],
-     [[-21.9045,-23.5044,0],2,3,"Orange",30,45],
-     [[-4.78564,-4.45728,0],2,3,"Orange",30,45],
-     [[-12.2888,11.2847,0],2,3,"Orange",30,45],
-     [[-19.8623,-10.6353,0],2,3,"Orange",30,45],
-     [[4.07446,-4.8584,0],2,3,"Orange",30,45]
+     [[-41.0581,-3.45898,0],1,3,"Orange",30,45],
+     [[-37.6394,8.57202,0],1,3,"Orange",30,45],
+     [[-21.9045,-23.5044,0],1,3,"Orange",30,45],
+     [[-4.78564,-4.45728,0],1,3,"Orange",30,45],
+     [[-12.2888,11.2847,0],1,3,"Orange",30,45],
+     [[-19.8623,-10.6353,0],1,3,"Orange",30,45],
+     [[4.07446,-4.8584,0],1,3,"Orange",30,45]
 ];
 
 //////////

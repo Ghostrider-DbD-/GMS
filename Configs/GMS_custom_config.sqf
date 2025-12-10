@@ -147,14 +147,14 @@ if (GMS_debugLevel > 0) then {
 	//GMS_mainThreadUpdateInterval = 10;
 	GMS_launchersPerGroup = 1;
 
-	GMS_enableOrangeMissions = 1;  
-	GMS_enableGreenMissions = 1; // 10-02-2023 Tested with mission list= "FieldCamp", "FieldHQ", "factory", "fortification", "Camp_Moreell", "lager"
-	GMS_enableRedMissions = 1;   // 10-2-2023 Tested with mission list= "fuelDepot", "junkyardWilly", "TraderBoss", "carThieves", "Ammunition_depot", "IDAP", "Outpost", "Service_Point"
+	GMS_enableOrangeMissions =0;  
+	GMS_enableGreenMissions = 0; // 10-02-2023 Tested with mission list= "FieldCamp", "FieldHQ", "factory", "fortification", "Camp_Moreell", "lager"
+	GMS_enableRedMissions = 0;   // 10-2-2023 Tested with mission list= "fuelDepot", "junkyardWilly", "TraderBoss", "carThieves", "Ammunition_depot", "IDAP", "Outpost", "Service_Point"
 	GMS_enableBlueMissions = 1;  // 10-2-2023 Tested with mission list= "sniperBase", "survivalSupplies", "Service_point", and "default"
 	GMS_numberUnderwaterDynamicMissions = 0;	
-	GMS_enableHunterMissions = 1;
-	GMS_enableScoutsMissions = 1;
-	GMS_enableStaticMissions = 5;
+	GMS_enableHunterMissions = 0;
+	GMS_enableScoutsMissions = 0;
+	GMS_enableStaticMissions = 0;
 	GMS_maxCrashSites = 0; 
 
 	GMS_noPatrolHelisBlue = 1;

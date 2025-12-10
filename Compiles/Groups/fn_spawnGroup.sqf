@@ -41,9 +41,36 @@ if (_backpacks isEqualTo []) then {_backpacks = [_skillLevel] call GMS_fnc_selec
 
 private _difficultyIndex = [_skillLevel] call GMS_fnc_getIndexFromDifficulty;
 
+/*
+params[
+		["_pos",[0,0,0]],  // center of the area in which to spawn units
+		["_patrolAreaMarker",GMSCore_mapMarker],
+		["_markerDelete",false],	
+		["_units",0],  // Number of units to spawn
+		["_side",GMSCore_Side],
+		["_baseSkill",0.7],
+		["_alertDistance",500], 	 // How far GMS will search from the group leader for enemies to alert to the kiillers location
+		["_intelligence",0.5],  	// how much to bump knowsAbout after something happens
+		["_bodycleanuptimer",600],  // How long to wait before deleting corpses for that group
+		["_maxReloads",-1], 			// How many times the units in the group can reload. If set to -1, infinite reloads are available.
+		["_removeLaunchers",true],
+		["_removeNVG",true],
+		["_minDamageToHeal",0.4],
+		["_maxHeals",1],
+		["_smokeShell",""],
+		["_aiHitCode",[]],
+		["_aiKilledCode",[]],
+		["_chanceGarison",0]
+];
+*/
+private _patrolAreaMarker = createMarkerLocal ["GMSPatrol%1",random(10000), _pos];
+_patrolAreaMarker setMarkerShapeLocal "ELLIPSE";
+_patrolAreaMarker setMarkerSizeLocal [100,100];
 private _group = [
 	_pos,
-	_numberToSpawn,
+	_patrolAreaMarker,
+	true, // Delete this marker when all units in group dead
+	_numbertospawn,  // Add units later 
 	GMSCore_side,
 	GMS_baseSkill,
 	(GMS_AIAlertDistance select _difficultyIndex),
@@ -57,8 +84,7 @@ private _group = [
 	"SmokeShellRed",
 	[GMS_fnc_unitHit],  // AI Hit Code 
 	[GMS_fnc_unitKilled],
-	0.33, // chance garrison 
-	false // isDrone Crew
+	0.33 // chance garrison 
 ] call GMSCore_fnc_spawnInfantryGroup;
 //[format["GMS_fnc_spawnGroup: _pos = %2 | _group = %1",_group,_pos]] call GMS_fnc_log;
 _group setVariable["GMS_difficulty",_skillLevel];
@@ -100,20 +126,6 @@ private _gear = [
 private _money = (missionNamespace getVariable[format["GMS_rewards%1",_skillLevel],GMS_rewardsOrange]) select 0;
 //diag_log format["GMS_fnc_spawnGroup: _money = %1 | _group = %2",_money,_group];
 [_group,_difficulty,_money] call GMSCore_fnc_setupGroupMoney;
-
-/*
-params[
-	["_group",grpNull],  // group for which to configure / initialize waypoints
-	["_blackListed",[]],  // areas to avoid within the patrol region
-	["_patrolAreaMarker",""],  // a marker or array defining the patrol area center, size and shape
-	["_timeout",300],
-	["_garrisonChance",0],  // chance that an infantry group will garison an building of type house - ignored for vehicles.
-	["_type",GMS_infrantryPatrol],  // "infantry","vehicle","air","submersible", "staticweapon"
-	["_deletemarker",false]
-];  
-*/
-
-if !(_areaDimensions isEqualTo []) then {[_group,[],[_pos,_areaDimensions],_timeout,0,_waypointClass,true] call GMSCore_fnc_initializeWaypointsAreaPatrol};
 
 _group selectLeader ((units _group) select 0);
 //[format["GMS_fnc_spawnGroup: _group = %1",_group]] call GMS_fnc_log;

@@ -12,9 +12,9 @@
 */
 
  class GMSBuild {
-	 Version = "7.22";
-	 Build = "276"; 
-	 Date = "11-01-2023";
+	 Version = "7.3";
+	 Build = "280"; 
+	 Date = "12-06-2025";
  };
 
 class CfgPatches {
@@ -30,7 +30,7 @@ class CfgFunctions {
 	class GMS {
 		class startup {
 			file = "\x\addons\GMS\Compiles\Init";
-			class init {
+			class initialize {
 				postInit = 1;
 			};
 		};
@@ -59,8 +59,8 @@ class CfgFunctions {
 		};
 		class groups {
 			file = "\x\addons\GMS\Compiles\Groups";
+			class configureGroup {};
 			class findNearestInfantryGroup {};
-			class simulationMonitor {};
 			class spawnGroup {};
 		};
 		class missions {

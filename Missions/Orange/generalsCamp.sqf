@@ -15,13 +15,13 @@
 #include "\x\addons\GMS\Missions\GMS_privateVars.sqf";
 //diag_log "[GMS] Spawning Orange Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
-_lootCounts = [15,50,20,60,44,5]; ;
-_startMsg = "An enemy General was sighted in a nearby sector! Check the Orange marker on your map for the location!";
+_lootCounts = [35,60,30,60,44,9]; ;
+_startMsg = "An enemy General was sighted in a nearby sector! (BLACK/HARDEST)";
 _endMsg = "The Sector at the Orange Marker is under survivor control!";
 _markerLabel = "";
 _markerType = ["ellipse",[750,750],"SOLID"];
-_markerColor = "ColorOrange";
-_markerMissionName = "General";
+_markerColor = "ColorBlack";
+_markerMissionName = "General Buttocks";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
 _garrisonedBuildings_BuildingPosnSystem = [
@@ -31,7 +31,7 @@ _garrisonedBuilding_ATLsystem = [
      ["Land_Cargo_HQ_V3_F",[-19.5625,12.75,-0.00143886],0,true,true,
 	 	[
 			["B_static_AT_F",[-2.19141,2.61328,3.12619],0],
-			["B_static_AA_F",[18.8105,0.414063,4.76837e-007],0],  
+			//["B_static_AA_F",[18.8105,0.414063,4.76837e-007],0],  
 			["B_HMG_01_high_F",[-2.19141,2.61328,3.12619],0],
 			["B_HMG_01_high_F",[18.8105,0.414063,4.76837e-007],0],       
 			["B_G_Mortar_01_F",[4.44531,-1.23633,3.12661],0],
@@ -76,11 +76,10 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-    #ifdef GMS_milServer
-     [selectRandom GMS_AIPatrolVehiclesOrange,[-53.3984,-32.1953,-0.0238545],0.00168023],
-     [selectRandom GMS_AIPatrolVehiclesGreen,[-41.373,21.6543,-0.023375],0.00167416]
-     //[selectRandom GMS_tracked_AA_ARMA3,[3.89844,48.4082,-0.0219693],0.00167182],
-     //[selectRandom GMS_Tanks_ARMA3,[12.877,-54.4258,-0.0238872],0.00167124],
+     //[selectRandom GMS_AIPatrolVehiclesOrange,[-53.3984,-32.1953,-0.0238545],0.00168023],
+     //[selectRandom GMS_AIPatrolVehiclesGreen,[-41.373,21.6543,-0.023375],0.00167416]
+     [selectRandom GMS_tracked_AA_ARMA3,[3.89844,48.4082,-0.0219693],0.00167182],
+     [selectRandom GMS_Tanks_ARMA3,[12.877,-54.4258,-0.0238872],0.00167124]
      //[selectRandom GMS_light_AT_ARMA3,[55.5371,-12.541,-0.0210321],0.00167126],
      //[selectRandom GMS_tracked_APC_ARMA3,[50.2324,21.9902,-0.0222204],0.00167786]
 ];
@@ -94,12 +93,12 @@ _airPatrols = [
 _missionEmplacedWeapons = [
      ["B_T_Static_AT_F",[-17.7773,-27.4141,0.00333524],359.999],
      ["B_static_AA_F",[-0.751953,13.1641,0.00333142],0.000330652],
-     ["B_static_AA_F",[9.62305,-17.4297,0.00333142],0.000328912],    
+     //["B_static_AA_F",[9.62305,-17.4297,0.00333142],0.000328912],    
      ["B_Radar_System_01_F",[11.6035,13.4375,-0.0288956],1.31836e-005],   
      ["B_T_Static_AT_F",[-4.125,30.8418,0.00333095],0.00263487],
      ["B_T_Static_AT_F",[28.8594,-20.3203,0.00333095],0.0122616],  
      ["B_static_AT_F",[38.6895,12.291,0.00333142],0.00263745],
-     ["B_T_Static_AT_F",[33.5723,20.9922,0.00333142],0.00263668],	 
+     ["B_T_Static_AT_F",[33.5723,20.9922,0.00333142],0.00263668]
 ];
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = GMS_useMines;

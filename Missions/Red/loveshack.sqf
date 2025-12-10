@@ -25,10 +25,10 @@ _startMsg = "Enemy outpost has been scouted and marked on the map (RED)";
 _endMsg = "Enemy outpost has been cleared and looted.";
 _timeoutMsg = "Enemy forces have abandoned the outpost.";
 _markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorRed";
+_markerColor = "ColorOrange";
 
 
-_markerMissionName = "Loveshack";
+_markerMissionName = "Bandit Shack";
 /*
 	Use the parameters below to customize your mission - see the template or GMS_configs.sqf for details about each them
 */
@@ -99,13 +99,6 @@ _missionLandscape = [
      ["Land_Bricks_V4_F",[5.08691,-14.9346,0],0,[true,true]],
      ["Land_Timbers_F",[-9.18018,-4.23486,0],88.3955,[true,true]],
      ["Land_WorkStand_F",[-3.33008,-9.63477,0],68.983,[true,true]],
-     ["Land_Pallet_F",[8.56592,6.7832,0],227.548,[true,true]],
-     ["Land_Pallet_F",[8.55469,6.76318,0.204089],227.548,[true,true]],
-     ["Land_Pallet_F",[8.43213,6.78271,0.408177],150.895,[true,true]],
-     ["Land_Pallet_F",[8.33887,6.61768,0.612266],227.548,[true,true]],
-     ["Land_Pallet_F",[7.04297,8.08545,0],297.373,[true,true]],
-     ["Land_Pallet_F",[7.02002,8.08838,0.204089],297.373,[true,true]],
-     ["Land_Pallet_F",[6.99561,8.21045,0.408177],220.72,[true,true]],
      ["Land_WheelCart_F",[5.51611,9.27539,0],73.3509,[true,true]],
      ["Land_WheelCart_F",[6.02637,-11.3428,0],73.3509,[true,true]],
      ["Land_StallWater_F",[1.2417,11.313,0],270.278,[true,true]],
@@ -162,10 +155,6 @@ _missionLandscape = [
      ["Land_FoodSacks_01_small_brown_F",[-13.3638,9.2583,0.618031],0,[true,true]],
      ["Land_FoodSacks_01_large_brown_F",[-12.0313,8.8501,0.618078],0,[true,true]],
      ["Land_WaterBottle_01_pack_F",[-11.6016,10.0708,0],0,[true,true]],
-     ["Land_WaterBottle_01_pack_F",[-11.8433,10.0239,0],27.8593,[true,true]],
-     ["Land_WaterBottle_01_pack_F",[-11.9976,9.75098,0],349.207,[true,true]],
-     ["Land_WaterBottle_01_pack_F",[-11.7622,9.74609,0],0,[true,true]],
-     ["Land_WaterBottle_01_pack_F",[-11.5801,9.75928,0],0,[true,true]],
      ["Land_EmergencyBlanket_01_stack_F",[-10.9473,8.34277,0.618089],0,[true,true]],
      ["Land_EmergencyBlanket_01_stack_F",[-10.9453,8.85352,0.617893],344.542,[true,true]],
      ["Land_PaperBox_01_small_closed_brown_F",[-8.53467,10.5332,0.617389],0,[true,true]],
@@ -330,7 +319,8 @@ _missionEmplacedWeapons = [
 
 _missionGroups = [
      [[17.535,9.26514,3.12796],2,3,"Green"],
-     [[-13.558,24.0972,3.12796],2,3,"Green"]
+     [[-13.558,24.0972,3.12796],2,3,"Green"],
+     [[-2.44092,13.9883,0.00143909],2,4,"Red"] 	 
 ];
 
 _missionGarrisonedGroups = [

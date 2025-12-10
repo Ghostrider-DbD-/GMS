@@ -79,7 +79,8 @@ _markerConfigs params [
 ];
 
 try {
-	if (GMS_debugLevel > 0) then {[format["_initializeMission (82): _timesSpawned %1 | _maxMissionRespawns %2",_timesSpawned,_maxMissionRespawns]] call GMS_fnc_log};
+	[format["_initializeMission(248): Initializeing mission %1",_missionFile]] call GMS_fnc_log;	
+	//if (GMS_debugLevel > 0) then {[format["_initializeMission (82): _timesSpawned %1 | _maxMissionRespawns %2 | _missionFile %3",_timesSpawned,_maxMissionRespawns,_missionFile]] call GMS_fnc_log};
 	if (_timesSpawned >= _maxMissionRespawns && !(_maxMissionRespawns == -1)) throw -2;
 
 	// If the mission is a static mission and it has been spawned but not cleared then pass back a code indicating that
@@ -232,11 +233,12 @@ try {
 		_markers		// index 9
 	];
 
-	#define spawnPara -1
-	GMS_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs, _isStatic,_missionFile];
+	#define spawnPara true
+	GMS_initializedMissionsList pushBack [_key, missionTimeoutAt, triggered, _missionData, _missionConfigs, spawnPara,_isStatic,_missionFile];
 
 	// Repair any damage done by prior activities.
 	{_x setDamage 0} forEach ( nearestObjects [_coords, ["Building"], 500]); 	
+	
 	throw 1;  //  Normal script termination
 }
 

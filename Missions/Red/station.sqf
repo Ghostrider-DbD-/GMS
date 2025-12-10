@@ -21,11 +21,11 @@ _chanceMissionSpawned = 1;
 /*	 Set number of times a mission respawns or use -1 for inifinite respawns 	*/
 _maxMissionRespawns = -1;
 /* 	Add your Start, End and Timeout Messages Here  */
-_startMsg = "Enemy outpost has been scouted and marked on the map (RED)";
+_startMsg = "Enemy outpost has been scouted and marked on the map (ORANGE/MEDIUM)";
 _endMsg = "Enemy outpost has been cleared and looted.";
 _timeoutMsg = "Enemy forces have abandoned the outpost.";
-_markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorRed";
+_markerType = ["ELLIPSE",[350,350],"SOLID"];
+_markerColor = "ColorOrange";
 
 
 _markerMissionName = "Gilliam Station";
@@ -169,15 +169,15 @@ _missionUAVs = [
 ];
 _missionEmplacedWeapons = [
      ["B_HMG_01_high_F", [15.3735,-14.5972,4.34404], 0, "Red"],
-     ["B_GMG_01_high_F", [-12.0066,12.446,3.12651], 0, "Red"],
+     ["B_GMG_01_high_F", [-12.0066,12.446,3.12651], 0, "Orange"],
      ["B_HMG_01_high_F", [-9.58276,6.1814,3.12652], 0, "Red"],
      ["B_HMG_01_high_F", [18.9553,10.0117,0], 0, "Red"],
-     ["B_HMG_01_high_F", [-22.0669,-7.86816,0], 0, "Red"]
+     ["B_HMG_01_high_F", [-22.0669,-7.86816,0], 0, "Green"]
 ];
 
 _missionGroups = [
-     [[17.535,9.26514,3.12796],2,3,"Green"],
-     [[-13.558,24.0972,3.12796],2,3,"Green"]
+     [[17.535,9.26514,3.12796],2,4,"Green"],
+     [[-13.558,24.0972,3.12796],2,4,"Green"]
 ];
 
 _missionGarrisonedGroups = [

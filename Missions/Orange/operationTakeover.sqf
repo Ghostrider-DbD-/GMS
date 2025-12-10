@@ -16,18 +16,18 @@
 
 //diag_log "[GMS] Spawning  Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
-_lootCounts = [15,50,20,60,44,5]; 
-_startMsg = "Operation Takeover: An enemy jail was sighted in a nearby sector! Check the marker on your map for the location!";
+_lootCounts = [35,70,30,60,54,9]; 
+_startMsg = "Operation Takeover: An enemy jail was sighted in a nearby sector! (BLACK/HARDEST)";
 _endMsg = "The jail is under survivor control!";
 
-_markerMissionName = "Jail";
+_markerMissionName = "Operation Takeover";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
 //////////
 //   Past the output of the script here
 
 _markerType = ["ellipse",[750,750],"SOLID"];
-_markerColor = "ColorOrange";
+_markerColor = "ColorBlack";
 _markerLabel = "";
 
 _garrisonedBuildings_BuildingPosnSystem = [
@@ -261,12 +261,12 @@ _missionLootVehicles = [
 ];
 
 _missionPatrolVehicles = [
-     [selectRandom GMS_AIPatrolVehiclesOrange,[-63.8125,-49.1621,-0.0237918],0.00168037],
-     [selectRandom GMS_AIPatrolVehiclesGreen,[-40.9814,84.885,-0.0230246],0.0016978]
-     //[selectRandom GMS_tracked_AA_ARMA3,[3.84229,-126.072,-0.0232677],0.00169533],
+     //[selectRandom GMS_AIPatrolVehiclesOrange,[-63.8125,-49.1621,-0.0237918],0.00168037],
+     //[selectRandom GMS_AIPatrolVehiclesGreen,[-40.9814,84.885,-0.0230246],0.0016978],
+     [selectRandom GMS_tracked_AA_ARMA3,[53.84229,-126.072,-0.0232677],0.00169533],
      //[selectRandom GMS_tracked_APC_ARMA3,[88.3411,-129.767,-0.0238881],0.00167844],
      //[selectRandom GMS_light_AT_ARMA3,[147.447,-71.3848,-0.0238895],0.00165085],
-     //[selectRandom GMS_Tanks_ARMA3,[127.943,69.7148,-0.0238514],0.00166813]
+     [selectRandom GMS_Tanks_ARMA3,[127.943,69.7148,-0.0238514],0.00166813]
 ];
 _submarinePatrolParameters = [
 ];
@@ -275,29 +275,29 @@ _airPatrols = [
 ];
 
 _missionEmplacedWeapons = [
-     ["B_static_AA_F",[0.477783,-44.9006,7.50247],0.110129],
+     //["B_static_AA_F",[0.477783,-44.9006,7.50247],0.110129],
      ["B_static_AT_F",[4.42529,-44.637,1.08487],299.726],
      ["B_HMG_01_high_F",[14.1465,-16.2568,-0.0135579],38.4716],
-     ["B_static_AA_F",[40.0945,-44.1187,7.52176],359.535],
-     //["B_HMG_01_high_F",[39.2375,-46.1826,-0.0135565],220.639],
+     //["B_static_AA_F",[40.0945,-44.1187,7.52176],359.535],
+     ["B_HMG_01_high_F",[39.2375,-46.1826,-0.0135565],220.639],
      ["B_HMG_01_high_F",[42.5383,-44.104,-0.0135584],142.408],
-     //["B_static_AT_F",[34.2683,-44.0796,7.52284],359.944],
+     ["B_static_AT_F",[34.2683,-44.0796,7.52284],359.944],
      ["B_HMG_01_high_F",[34.7786,20.2935,7.94141],114.285]
 ];
 _missionGroups = [
      /*
-     [[-51.2781,2.46313,0.00143909],5,7,"Orange",30,45],
+     [[-51.2781,2.46313,0.00143909],4,6,"Orange",30,45],
      [[-11.7485,-30.1338,0.00143909],5,7,"Orange",30,45],
      [[-11.9927,0.826416,0.00143909],5,7,"Orange",30,45],
-     [[-5.37646,13.8989,0.00143909],5,7,"Orange",30,45],
+     [[-5.37646,13.8989,0.00143909],4,6,"Orange",30,45],
      [[0.439941,18.3259,0.00143909],5,7,"Orange",30,45],
-     [[-6.35693,40.8398,0.00143909],5,7,"Orange",30,45],
+     [[-6.35693,40.8398,0.00143909],4,6,"Orange",30,45],
      [[9.86279,-1.10864,0.00143909],5,7,"Orange",30,45],
-     [[19.6943,15.1899,0.00143909],5,7,"Orange",30,45],
+     [[19.6943,15.1899,0.00143909],5,6,"Orange",30,45],
      [[10.9971,12.2664,0.00143909],5,7,"Orange",30,45],
-     [[18.1143,45.5303,0.00143909],5,7,"Orange",30,45],
+     [[18.1143,45.5303,0.00143909],4,6,"Orange",30,45],
      [[19.3877,25.3489,0.00143909],5,7,"Orange",30,45],
-     [[10.3965,54.8899,0.00143909],5,7,"Orange",30,45]
+     [[10.3965,54.8899,0.00143909],4,6,"Orange",30,45]
      */
 ];
 

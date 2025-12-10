@@ -21,11 +21,11 @@ _chanceMissionSpawned = 1;
 /*	 Set number of times a mission respawns or use -1 for inifinite respawns 	*/
 _maxMissionRespawns = -1;
 /* 	Add your Start, End and Timeout Messages Here  */
-_startMsg = "Enemy outpost has been scouted and marked on the map (RED)";
+_startMsg = "Enemy outpost has been scouted and marked on the map (ORANGE/MEDIUM)";
 _endMsg = "Enemy outpost has been cleared and looted.";
 _timeoutMsg = "Enemy forces have abandoned the outpost.";
-_markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorRed";
+_markerType = ["ELLIPSE",[350,350],"SOLID"];
+_markerColor = "ColorOrange";
 
 
 _markerMissionName = "Sleepy Outpost";
@@ -179,8 +179,16 @@ _missionEmplacedWeapons = [
 ];
 
 _missionGroups = [
-     [[17.535,9.26514,3.12796],2,3,"Green"],
-     [[-13.558,24.0972,3.12796],2,3,"Green"]
+     [[17.535,9.26514,3.12796],2,3,"Green",30,45],
+     [[-13.558,24.0972,3.12796],2,3,"Green",30,45],
+     [[3.74072,13.2544,0.00143909],2,3,"Green",30,45],
+     //[[-3.54211,-13.5405,0.00143909],2,4,"Green"],
+     [[22.109,-4.81934,0.00143909],1,2,"Green",30,45]
+     //[[-12.3046,24.1689,0.603113],2,4,"Green"],
+     //[[-6.83374,21.272,0.00143909],2,4,"Green"]
+     //[[4.87683,-6.9248,0.00143909],2,4,"Green"],
+     //[[-1.02954,26.0737,0.00143909],2,4,"Green"]
+     //[[-9.27332,9.60596,0.00143909],2,3,"Green"]		 
 ];
 
 _missionGarrisonedGroups = [

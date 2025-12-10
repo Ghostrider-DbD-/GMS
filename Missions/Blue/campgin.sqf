@@ -21,11 +21,11 @@ _chanceMissionSpawned = 1;
 /*	 Set number of times a mission respawns or use -1 for inifinite respawns 	*/
 _maxMissionRespawns = -1;
 /* 	Add your Start, End and Timeout Messages Here  */
-_startMsg = "An enemy camp has been scouted and marked on the map. (Blue)";
+_startMsg = "An enemy camp has been scouted and marked on the map. (GREEN/EASY)";
 _endMsg = "Enemy Camp Gin has been been cleared!";
 _timeoutMsg = "Enemy camp has packed up and moved.";
 _markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorBlue";
+_markerColor = "ColorGreen";
 
 
 _markerMissionName = "Camp Gin";
@@ -86,29 +86,23 @@ _garrisonedBuildings_BuildingPosnSystem = [
 
 ];
 _missionLandscape = [
-     ["Land_Unfinished_Building_02_F",[-0.565674,-0.0466309,0],180.205,[true,true]],
-     ["Land_Wreck_Car3_F",[-12.2322,-2.91504,0],6.54897,[true,true]],
-     ["Land_Scaffolding_F",[5.50586,-7.58691,0],269.743,[true,true]],
-     ["Land_Bricks_V1_F",[-5.74146,7.43262,0],175.95,[true,true]],
-     ["Land_WheelCart_F",[10.9922,-5.70313,0],265.465,[true,true]],
-     ["Land_BarrelSand_grey_F",[8.99219,-8.375,0],256.847,[true,true]],
-     ["MetalBarrel_burning_F",[-2.95117,-2.07617,3.73],128.839,[true,true]],
-     ["Land_CinderBlocks_F",[-8.6438,-4.54834,0],287.942,[true,true]],
-     ["Land_CinderBlocks_F",[-8.18286,-1.37256,0],178.704,[true,true]],
-     ["Land_Shoot_House_Corner_Stand_F",[-7.46069,3.79736,0],90.1112,[true,true]],
-     ["Land_Shoot_House_Wall_Stand_F",[-7.84595,2.22241,0],89.8735,[true,true]],
-     ["Land_Shoot_House_Wall_Stand_F",[-7.82642,0.224365,0],88.7147,[true,true]],
-     ["Land_Shoot_House_Wall_Stand_F",[-6.90991,-6.85962,0],359.941,[true,true]],
-     ["Land_Shoot_House_Wall_Stand_F",[-4.92554,-6.8479,0],359.941,[true,true]],
-     ["Land_Shoot_House_Wall_Stand_F",[-8.01001,-5.95532,0],88.7147,[true,true]],
-     ["Land_Shoot_House_Wall_Stand_F",[-1.89868,4.9939,0],88.7147,[true,true]],
-     ["Land_Shoot_House_Wall_Crouch_F",[2.45288,6.5686,0],180.205,[true,true]],
-     ["Land_Shoot_House_Wall_Crouch_F",[3.36353,5.48657,0],269.188,[true,true]],
-     ["Land_Shoot_House_Wall_Long_F",[5.28247,4.40234,0],180.205,[true,true]],
-     ["Land_Shoot_House_Corner_F",[7.8728,3.99658,0],180.205,[true,true]],
-     ["Land_Bricks_V2_F",[-6.92432,6.5188,0],272.435,[true,true]],
-     ["Land_Bricks_V4_F",[-4.35889,6.84644,0],162.602,[true,true]],
-     ["RoadCone_F",[0.683594,1.20654,3.73],0,[true,true]]
+     ["Land_Unfinished_Building_02_F",[-0.565674,-0.0466309,0],180.205,[false,false]],
+     ["Land_Wreck_Car3_F",[-12.2322,-2.91504,0],6.54897,[false,false]],
+     ["Land_BarrelSand_grey_F",[8.99219,-8.375,0],256.847,[false,false]],
+     ["Land_Shoot_House_Corner_Stand_F",[-7.46069,3.79736,0],90.1112,[false,false]],
+     ["Land_Shoot_House_Wall_Stand_F",[-7.84595,2.22241,0],89.8735,[false,false]],
+     ["Land_Shoot_House_Wall_Stand_F",[-7.82642,0.224365,0],88.7147,[false,false]],
+     ["Land_Shoot_House_Wall_Stand_F",[-6.90991,-6.85962,0],359.941,[false,false]],
+     ["Land_Shoot_House_Wall_Stand_F",[-4.92554,-6.8479,0],359.941,[false,false]],
+     ["Land_Shoot_House_Wall_Stand_F",[-8.01001,-5.95532,0],88.7147,[false,false]],
+     ["Land_Shoot_House_Wall_Stand_F",[-1.89868,4.9939,0],88.7147,[false,false]],
+     ["Land_Shoot_House_Wall_Crouch_F",[2.45288,6.5686,0],180.205,[false,false]],
+     ["Land_Shoot_House_Wall_Crouch_F",[3.36353,5.48657,0],269.188,[false,false]],
+     ["Land_Shoot_House_Wall_Long_F",[5.28247,4.40234,0],180.205,[false,false]],
+     ["Land_Shoot_House_Corner_F",[7.8728,3.99658,0],180.205,[false,false]],
+     ["Land_Bricks_V2_F",[-6.92432,6.5188,0],272.435,[false,false]],
+     ["Land_Bricks_V4_F",[-4.35889,6.84644,0],162.602,[false,false]],
+     ["RoadCone_F",[0.683594,1.20654,3.73],0,[false,false]]
 ];
 
 _simpleObjects = [

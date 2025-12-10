@@ -15,6 +15,7 @@
 
 params[
 	["_coords",[]],
+	[["_markerName", ""]],
 	["_skillAI","Red"],
 	["_missionPatrolVehicles",[]],
 	["_uniforms",[]], 
@@ -24,7 +25,7 @@ params[
 	["_weaponList",[]],
 	["_sideArms",[]], 
 	["_isScubaGroup",false],
-	["_crewCount",4]
+	["_maxCrewParam",4]
 ];
 
 private["_spawnPos"];
@@ -47,8 +48,8 @@ private _patrolsThisMission = +_missionPatrolVehicles;
 				
 			#define vehiclePatrolAreaDimensions [100,100]
 			private _maxCrewConfigs = [_vehName,true] call BIS_fnc_crewCount;
-			private _maxCrewBlck = missionNamespace getVariable[format["GMS_vehCrew_%1",_skillAI],3];
-			private _crewCount = _maxCrewBlck min _maxCrewConfigs;
+			//private _maxCrew = missionNamespace getVariable[format["GMS_vehCrew_%1",_skillAI],3];
+			private _crewCount = _maxCrewParam min _maxCrewConfigs;
 			//#define offMap [-1,-1,1]
 			private _vehGroup = [_pos,_crewCount,_skillAI,vehiclePatrolAreaDimensions,_uniforms, _headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaGroup,GMS_waypointTimeoutVehicle,"Vehicle"] call GMS_fnc_spawnGroup;
 			
@@ -64,55 +65,27 @@ private _patrolsThisMission = +_missionPatrolVehicles;
 			private _damage = 0.5;
 			private _releaseToPlayers = GMS_allowClaimVehicle;
 
-			/*
-				params[
+						/*
+			params[
 					["_className",""], // Clasname of vehicle to be spawned
-					["_spawnPos",[0,0,0]],  //  selfevident
-					["_dir",0],  //  selfevident
-					["_height",0],		
+					["_spawnPos",[0,0,0]],  //  selfevident		
+					["_patrolAreaMarker", GMSCore_mapMarker],
 					["_disable",0],  // damage value set to this value if less than this value when all crew are dead
 					["_removeFuel",0.2],  // fuel set to this value when all crew dead
 					["_releaseToPlayers",true],
 					["_deleteTimer",300],
 					["_vehHitCode",[]],
 					["_vehKilledCode",[]]
-				];														
-			*/
-			private _vehicle = [_vehName,_pos,dir,height,maxDamage,removeFuel,_releaseToPlayers,GMS_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle;
-			[_vehicle,_vehGroup] call GMSCore_fnc_loadVehicleCrew;
+				];													
+						*/
+			private _vehicle = [_vehName,_pos, _markerName, maxDamage,removeFuel,_releaseToPlayers,GMS_vehicleDeleteTimer,vehHitCode,vehKilledCode] call GMSCore_fnc_spawnPatrolLand;
+			[_vehicle,_vehGroup] call GMSCore_fnc_addVehicleCrew;
 			_vehGroup setVariable["GMS_group",true];
 			[_vehicle,GMS_forbidenWeapons,GMS_forbidenMagazines] call GMSCore_fnc_disableVehicleWeapons;
 			[_vehicle,GMS_disabledSensors] call GMSCore_fnc_disableVehicleSensors;
 			if (GMS_disableInfrared) then {_vehicle disableTIEquipment true};
 			_vehicles pushback _vehicle;
-			/*  //  From GMSAI 
-					private _movetoPos = [[[getMarkerPos _patrolArea,markerSize _patrolArea]],[]] call BIS_fnc_randomPos;
-					(driver _vehicle) moveTo _movetoPos;
-					[
-						_group,
-						_blacklisted,
-						_patrolArea,
-						_timeout,
-						GMSAI_chanceToGarisonBuilding,
-						"vehicle",
-						_markerDelete
-					] call GMSCore_fnc_initializeWaypointsAreaPatrol;
-			*/
-			[_vehGroup] call GMSCore_fnc_updateWaypointConfigs; // apply any settings related to hunting or searching based on vehicle type
-			private _movetoPos = [[[_pos, vehiclePatrolAreaDimensions]],[]/* add condition that the spawn is not near a trader*/] call BIS_fnc_randomPos;
-			(driver _vehicle) moveTo _movetoPos;
-			(driver _vehicle) call GMSCore_fnc_nextWaypointAreaPatrol;				
-			/*
-			[
-				_crewCount,
-				[],
-				[_pos, vehiclePatrolAreaDimensions],
-				180,
-				0,
-				"vehicle",
-				true
-			]  call GMSCore_fnc_initializeWaypointsAreaPatrol;
-			*/
+
 			GMS_landVehiclePatrols pushBack _vehicle;
 			if (GMS_debugLevel > 0) then {[format["_spawnMissionVehiclePatrols: _vehName %1 spawned with driver %2 and crew %3",_vehName,driver _vehicle, _vehGroup]] call GMS_fnc_log};
 		};

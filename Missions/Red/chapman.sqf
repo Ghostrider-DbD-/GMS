@@ -21,11 +21,11 @@ _chanceMissionSpawned = 1;
 /*	 Set number of times a mission respawns or use -1 for inifinite respawns 	*/
 _maxMissionRespawns = -1;
 /* 	Add your Start, End and Timeout Messages Here  */
-_startMsg = "Enemy outpost has been scouted and marked on the map (RED)";
+_startMsg = "Enemy outpost has been scouted and marked on the map (ORANGE/MEDIUM)";
 _endMsg = "Enemy outpost has been cleared and looted.";
 _timeoutMsg = "Enemy forces have abandoned the outpost.";
-_markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorRed";
+_markerType = ["ELLIPSE",[350,350],"SOLID"];
+_markerColor = "ColorOrange";
 
 
 _markerMissionName = "Chapman Outpost";
@@ -167,15 +167,16 @@ _missionUAVs = [
 ];
 _missionEmplacedWeapons = [
      ["B_HMG_01_high_F", [6.23389,-7.16309,17.8895], 0, "Red"],
-     ["B_GMG_01_high_F", [13.1008,-4.94409,17.8895], 0, "Red"],
+     ["B_GMG_01_high_F", [13.1008,-4.94409,17.8895], 0, "Green"],
      ["B_HMG_01_high_F", [-9.69238,9.60571,3.12649], 0, "Red"],
-     ["B_GMG_01_high_F", [-4.5249,11.874,3.12654], 0, "Red"],
+     ["B_GMG_01_high_F", [-4.5249,11.874,3.12654], 0, "Orange"],
      ["B_HMG_01_high_F", [6.12207,-0.257324,17.8895], 0, "Red"]
 ];
 
 _missionGroups = [
-     [[17.535,9.26514,3.12796],2,3,"Green"],
-     [[-13.558,24.0972,3.12796],2,3,"Green"]
+     [[17.535,9.26514,3.12796],2,3,"Green",30,45],
+     [[-23.558,24.0972,3.12796],2,3,"Green",30,45],
+     [[-2.44092,13.9883,0.00143909],2,3,"Red",30,45] 
 ];
 
 _missionGarrisonedGroups = [

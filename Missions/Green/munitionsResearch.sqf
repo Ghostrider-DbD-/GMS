@@ -17,12 +17,12 @@
 //diag_log "[GMS] Spawning Green Mission with template = default";
 _crateLoot = GMS_BoxLoot_Green;
 _lootCounts = GMS_lootCountsOrange;
-_startMsg = "An munitions research center was sighted in a nearby sector! Check the Green marker on your map for the location!";
+_startMsg = "An munitions research center was sighted in a nearby sector! (RED/HARD)";
 _endMsg = "The Sector at the Green Marker is under survivor control!";
 _markerLabel = "";
 _markerType = ["ELLIPSE",[500,500],"SOLID"];
-_markerColor = "ColorGreen";
-_markerMissionName = "Munitions";
+_markerColor = "ColorRed";
+_markerMissionName = "Munitions Depot";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 _missionLandscape = [
 	["Flag_AltisColonial_F",[3,3,0],0,[false,false]],
@@ -73,12 +73,12 @@ _missionEmplacedWeapons =
 _missionGroups = 
 	[
 	//_x params["_position","_minAI","_maxAI","_skillLevel","_minPatrolRadius","_maxPatrolRadius"];
-	[[-52.6523,15.8281,-0.00143838],3,3,"Green",8,15],
-	[[-48.6113,-38.877,-0.00143886],3,3,"Green",8,15],
-	[[18.4492,-39.5684,-0.00143838],3,3,"Green",8,15],
-	[[42.6504,31.6621,-0.00143886],3,3,"Green",8,15],
-	[[7.51563,46.4531,-0.001438864],3,3,"Green",8,15],
-	[[-8.99219,-11.623,-0.00143838],3,3,"Green",8,15]
+	[[-52.6523,15.8281,-0.00143838],1,3,"Green",8,15],
+	[[-48.6113,-38.877,-0.00143886],1,3,"Green",8,15],
+	[[18.4492,-39.5684,-0.00143838],1,3,"Green",8,15],
+	[[42.6504,31.6621,-0.00143886],1,3,"Green",8,15],
+	[[7.51563,46.4531,-0.001438864],1,3,"Green",8,15]
+	//[[-8.99219,-11.623,-0.00143838],3,3,"Green",8,15]
 ]; // Can be used to define spawn positions of AI patrols
 
 _missionPatrolVehicles = [

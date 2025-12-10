@@ -17,7 +17,7 @@ params["_coords","_missionLootVehicles",["_loadCrateTiming","atMissionSpawn"],["
 if (count _coords isEqualTo 2) then {_coords pushBack 0};
 private _vehs = [];
 {
-	_x params[["_vehType",,""],["_vehOffset",[]],["_dir",0],["_lootArray",[]],["_lootCounts",[]]];
+	_x params[["_vehType",""],["_vehOffset",[]],["_dir",0],["_lootArray",[]],["_lootCounts",[]]];
 	try {
 		if !(isClass(configFile >> "CfgVehicles" >> _vehType)) throw -3;
 		if (_vehOffset isEqualTo []) throw -2; 

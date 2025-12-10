@@ -16,11 +16,11 @@
 
 //diag_log "[GMS] Spawning Orange Mission with template = default";
 _crateLoot = GMS_BoxLoot_Orange;
-_lootCounts = [15,50,20,60,44,5]; 
-_startMsg = "Operation Shutdown reported in a nearby sector ! Check the marker on your map for the location!";
+_lootCounts = [45,75,30,60,44,9]; 
+_startMsg = "Operation Shutdown reported in a nearby sector ! (BLACK/HARDEST)";
 _endMsg = "Operation Shutdown has been shutout: time to claim your loot!";
 
-_markerMissionName = "Operation Shutdown";
+_markerMissionName = "Operation Shutdown (AA)";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
 //////////
@@ -28,7 +28,7 @@ _missionLandscapeMode = "precise"; // acceptable values are "none","random","pre
 
 
 _markerType = ["ellipse",[750,750],"SOLID"];
-_markerColor = "ColorOrange";
+_markerColor = "ColorBlack";
 _markerLabel = "";
 
 _garrisonedBuildings_BuildingPosnSystem = [
@@ -88,9 +88,9 @@ _missionLootVehicles = [
 
 _missionPatrolVehicles = [
      [selectRandom GMS_AIPatrolVehiclesOrange,[-48.9414,-27.9336,-0.00839043],0.014744],
-     [selectRandom GMS_AIPatrolVehiclesGreen,[-43.2539,15.6504,0.0234108],359.996]
+     //[selectRandom GMS_AIPatrolVehiclesGreen,[-43.2539,15.6504,0.0234108],359.996],
      //[selectRandom GMS_light_AT_ARMA3,[-27.0313,26.8213,-0.022541],0.00204721],
-     //[selectRandom GMS_tracked_AA_ARMA3,[-12.9023,47.8105,0.0262032],359.999],
+     [selectRandom GMS_tracked_AA_ARMA3,[-12.9023,47.8105,0.0262032],359.999]
      //[selectRandom GMS_tracked_APC_ARMA3,[-0.851563,-70.9072,-0.02915],0.0194982],
      //[selectRandom GMS_light_AT_ARMA3,[38.2285,-66.7969,0.00758934],0.0237408],
      //[selectRandom GMS_tracked_APC_ARMA3,[52.9941,22.5596,0.00379944],359.96] 

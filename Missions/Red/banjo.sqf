@@ -25,10 +25,10 @@ _startMsg = "Enemy forces are sheltered in a nearby farm house (RED)";
 _endMsg = "Enemies at the farmhouse have been cleared!";
 _timeoutMsg = "Enemy forces at the farmhouse have relocated.";
 _markerType = ["ELLIPSE",[300,300],"SOLID"];
-_markerColor = "ColorRed";
+_markerColor = "ColorOrange";
 
 
-_markerMissionName = "Banjo Music";
+_markerMissionName = "Bandit Hideout";
 /*
 	Use the parameters below to customize your mission - see the template or GMS_configs.sqf for details about each them
 */
@@ -218,24 +218,6 @@ _missionLandscape = [
      ["Land_Portable_generator_F",[10.1216,8.94434,0],89.2494,[true,true]],
      ["Land_WoodenBox_F",[9.93066,8.13477,0],358.16,[true,true]],
      ["Land_WoodenBox_F",[9.97266,8.14844,0.4346],0.0614695,[true,true]],
-     ["Land_CanisterFuel_F",[9.72217,8.27881,3.96191],188.674,[true,true]],
-     ["Land_CanisterFuel_F",[9.71045,8.05469,3.96191],173.239,[true,true]],
-     ["Land_CanisterFuel_F",[9.81006,8.85205,3.96191],109.736,[true,true]],
-     ["Land_CanisterFuel_F",[9.61475,8.9624,3.96191],125.17,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[8.35547,3.21338,0.661166],344.81,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[7.60986,3.26172,0.661166],91.8703,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[8.02783,3.35254,1.07817],344.81,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[9.28369,3.11377,0.661166],1.08926,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[8.83252,3.71387,0.661166],254.029,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[9.06787,3.67188,1.07817],218.175,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[9.32178,3.86035,0.661166],254.029,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[7.0459,0.797852,1.32233],0,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[6.33838,1.04004,1.32233],107.06,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[6.76611,1.01855,1.07817],0,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[7.91504,0.458984,1.32233],16.279,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[7.63721,1.15576,1.32233],269.219,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[7.85303,1.0542,1.07817],233.365,[true,true]],
-     ["Land_PaperBox_01_small_closed_brown_F",[8.14795,1.16943,1.32233],269.219,[true,true]],
      ["Land_CrabCages_F",[3.82227,-5.58936,0],87.8731,[true,true]],
      ["Land_WorkStand_F",[-7.21436,4.59961,0],6.92158,[true,true]],
      ["Land_CampingTable_white_F",[10.1978,2.96045,4.02191],90,[true,true]],
@@ -243,34 +225,7 @@ _missionLandscape = [
      ["Land_CampingChair_V2_F",[8.35791,3.52197,4.02191],285.106,[true,true]],
      ["Land_WoodenTable_large_F",[2.45361,4.59668,4.02191],90,[true,true]],
      ["Land_Laptop_unfolded_F",[10.1616,2.49951,4.83752],280.782,[true,true]],
-     ["Land_HDMICable_01_F",[10.2734,2.90527,4.83752],0,[true,true]],
-     ["SatelliteAntenna_01_Mounted_Olive_F",[11.5366,2.25098,6.91718],91.5832,[true,true]],
-     ["Land_PCSet_01_case_F",[1.57617,4.76416,4.02191],180.803,[true,true]],
-     ["Land_PCSet_01_keyboard_F",[2.07178,5.04443,4.88143],176.125,[true,true]],
-     ["Land_PCSet_01_mousepad_F",[1.63232,5.00293,4.88143],0,[true,true]],
-     ["Land_PCSet_01_mouse_F",[1.64258,5.04883,4.88869],159.993,[true,true]],
-     ["Land_PCSet_01_screen_F",[2.04443,4.66748,4.88143],178.369,[true,true]],
-     ["Land_PortableSpeakers_01_F",[2.04199,4.82471,4.88143],89.8833,[true,true]],
-     ["Land_PortableLongRangeRadio_F",[3.33057,4.87695,4.88143],210.426,[true,true]],
-     ["Land_PortableLongRangeRadio_F",[3.354,5.04053,4.88143],210.426,[true,true]],
-     ["Land_PortableLongRangeRadio_F",[3.2085,4.94287,4.88143],249.899,[true,true]],
-     ["Land_PortableLongRangeRadio_F",[3.44434,4.98975,4.88143],186.286,[true,true]],
-     ["Fridge_01_closed_F",[5.88525,5.19678,4.02191],90.9453,[true,true]],
      ["MapBoard_altis_F",[9.8584,6.83789,4.02191],48.8618,[true,true]],
-     ["Land_OfficeCabinet_01_F",[5.04395,7.31494,4.02191],0,[true,true]],
-     ["Land_OfficeCabinet_01_F",[4.23926,7.31641,4.02191],0,[true,true]],
-     ["Land_Sofa_01_F",[1.7998,-0.106445,0.661166],89.5077,[true,true]],
-     ["Land_Rug_01_F",[3.35596,-0.0805664,0.661166],0,[true,true]],
-     ["Land_Rug_01_F",[4.48975,4.13672,0.661166],0,[true,true]],
-     ["Land_PortableCabinet_01_4drawers_olive_F",[6.51318,4.94385,4.022],0,[true,true]],
-     ["Land_PortableCabinet_01_4drawers_olive_F",[7.05127,4.93799,4.022],0,[true,true]],
-     ["Land_PortableCabinet_01_4drawers_olive_F",[6.51709,5.36816,4.022],180,[true,true]],
-     ["Land_PortableCabinet_01_4drawers_olive_F",[7.04688,5.36816,4.022],180,[true,true]],
-     ["Land_CampingChair_V2_F",[7.84717,5.05566,4.02191],223.046,[true,true]],
-     ["Land_CampingChair_V2_F",[7.45654,5.83691,4.02191],254.726,[true,true]],
-     ["Land_CampingChair_V2_F",[1.91748,3.42773,4.02191],221.993,[true,true]],
-     ["Land_CampingChair_V2_F",[3.55762,2.47412,4.02191],189.268,[true,true]],
-     ["Land_CampingChair_V2_F",[2.13428,5.77246,4.02191],346.216,[true,true]],
      ["Land_Map_altis_F",[2.75977,4.52295,4.88143],286.426,[true,true]],
      ["Land_Sleeping_bag_brown_folded_F",[6.55713,-1.51904,4.02191],0,[true,true]],
      ["Land_Sleeping_bag_brown_folded_F",[6.56982,-1.2627,4.02191],0,[true,true]],
@@ -387,9 +342,9 @@ _missionEmplacedWeapons = [
 ];
 
 _missionGroups = [
-     [[17.535,9.26514,3.12796],1,2,"Red"],
+     [[17.535,9.26514,3.12796],1,3,"Red"],
      [[-13.558,24.0972,3.12796],1,2,"Red"],
-     [[3.74072,13.2544,0.00143909],1,2,"Red"]
+     [[3.74072,13.2544,0.00143909],1,3,"Red"]
 ];
 
 _missionGarrisonedGroups = [
