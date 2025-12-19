@@ -21,7 +21,7 @@ private _difficultyIndex = [_difficulty] call GMS_fnc_getIndexFromDifficulty;
 
 {
 	_x params["_heli","_relPos"];
-	[format["_spawnMissionHelis: _heli %1 | _relPos %2", _heli, _relPos]] call GMS_fnc_log;
+	//[format["_spawnMissionHelis: _heli %1 | _relPos %2", _heli, _relPos]] call GMS_fnc_log;
 	if (isClass(configFile >> "CfgVehicles" >> _heli)) then {
 		private _noCrew = [_heli,false] call BIS_fnc_crewCount;
 		private _spawnPos = _coords vectorAdd _relPos;	

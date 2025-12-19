@@ -59,7 +59,7 @@ private _missionVehicles = [];
 			private _vehicle = _patrol select 1;
 			#define maxGunnersCrew 5
 			#define maxCargoCrew 5 
-			[format["_spawnMissionVehiclePatrols:  _group %1 | _vehicle %2", _group, _vehicle]] call GMS_fnc_log;
+			//[format["_spawnMissionVehiclePatrols:  _group %1 | _vehicle %2", _group, _vehicle]] call GMS_fnc_log;
 			[_group, _vehicle, maxGunnersCrew, maxCargoCrew] call GMSCore_fnc_addVehicleCrew;
 			[_group, _difficulty, _weaponList, _sideArms, _headGear, _uniforms, _vests, _backpacks] call GMS_fnc_configureGroup;	
 

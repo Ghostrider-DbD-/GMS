@@ -40,7 +40,7 @@ if !(_missionGroups isEqualTo []) then
 		_groups pushBack _newGroup;		
 		GMS_monitoredMissionAIGroups pushback _newGroup;
 		_allAI append (units _newGroup);
-		[format["GMS_fnc_spawnMissionAI: _group %1 with %2 units added | _min %3 | _max %4 | _unitsToSpawn %5",_newGroup, count (units _newGroup),_min,_max,_unitsToSpawn]]call GMS_fnc_log;				
+		//[format["GMS_fnc_spawnMissionAI: _group %1 with %2 units added | _min %3 | _max %4 | _unitsToSpawn %5",_newGroup, count (units _newGroup),_min,_max,_unitsToSpawn]]call GMS_fnc_log;				
 	}forEach _missionGroups;
 } else {
 	if (_noAIGroups > 0) then
@@ -56,7 +56,7 @@ if !(_missionGroups isEqualTo []) then
 			_groups pushBack _newGroup;
 			GMS_monitoredMissionAIGroups pushback _newGroup;
 			_allAI append (units _newGroup);
-			[format["GMS_fnc_spawnMissionAI: _group %1 with %2 units added",_newGroup, count (units _newGroup)]]	call GMS_fnc_log;
+			//[format["GMS_fnc_spawnMissionAI: _group %1 with %2 units added",_newGroup, count (units _newGroup)]]	call GMS_fnc_log;
 		} forEach _groupPosns;
 	};
 };

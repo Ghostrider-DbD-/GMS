@@ -196,14 +196,14 @@ if (GMS_useStatic && !(_missionEmplacedWeapons isEqualTo [])) then
 		uisleep delayTime;
 	};						
 };
-diag_log format["_spawnMissionAssets(241): _missionLootVehicles = %1",_missionLootVehicles];
+//diag_log format["_spawnMissionAssets(241): _missionLootVehicles = %1",_missionLootVehicles];
 if !(_missionLootVehicles isEqualTo []) then 
 {
 	_lootVehicles = [_coords,_missionLootVehicles,_spawnCratesTiming,_missionFile] call GMS_fnc_spawnMissionLootVehicles;				
 	uiSleep delayTime;
 };
 
-diag_log format["_spawnMissionAssets (264): __missionPatrolVehicles = %1",_missionPatrolVehicles];
+//diag_log format["_spawnMissionAssets (264): __missionPatrolVehicles = %1",_missionPatrolVehicles];
 if (GMS_useVehiclePatrols) then {
 	_patrolAreaMarkerLand = createMarkerLocal[format["patrolAreaLand%1", random(100000)], _coords];
 	_patrolAreaMarkerLand setMarkerShapeLocal "ELLIPSE";

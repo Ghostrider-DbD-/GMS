@@ -224,7 +224,22 @@ for "_i" from 1 to (count _missionsList) do
 			*/
 			#define markerMissionName 1 
 			private _markerMissionName = _markerConfigs select markerMissionName;
-			
+			/*
+			Full Definition 
+			_missionConfigs params[
+				"_difficulty",
+				"_markerConfigs",
+				"_endCondition",	
+				"_isscubamission",	
+				"_missionLootConfigs",
+				"_aiConfigs",
+				"_missionMessages",	
+				"_paraConfigs",	
+				"_defaultMissionLocations"
+			];	
+			*/
+
+
 			_missionLootConfigs params [
 				"_spawnCratesTiming", 
 				"_loadCratesTiming",		
@@ -244,11 +259,11 @@ for "_i" from 1 to (count _missionsList) do
 					{
 						if !(_missionLootBoxes isEqualTo []) then
 						{
-							_crates = [_coords,_missionLootBoxes,_loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call GMS_fnc_spawnMissionCrates;
+							_crates = [_coords,_missionLootBoxes,_loadCratesTiming, _spawnCratesTiming, "end", _difficulty] call GMS_fnc_spawnMissionCrates;
 						}
 						else
 						{
-							_crates = [_coords,[[selectRandom GMS_crateTypes,[0,0,0],_crateLoot,_lootCounts]], _loadCratesTiming,(_missionLootConfigs select spawnCratesTiming), "end", _difficulty] call GMS_fnc_spawnMissionCrates;
+							_crates = [_coords,[[selectRandom GMS_crateTypes,[0,0,0],_crateLoot,_lootCounts]], _loadCratesTiming, _spawnCratesTiming, "end", _difficulty] call GMS_fnc_spawnMissionCrates;
 						};
 						
 						if (GMS_cleanUpLootChests) then

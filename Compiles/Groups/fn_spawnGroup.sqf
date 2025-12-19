@@ -126,6 +126,6 @@ private _money = (missionNamespace getVariable[format["GMS_rewards%1",_skillLeve
 [_group,_difficulty,_money] call GMSCore_fnc_setupGroupMoney;
 
 _group selectLeader ((units _group) select 0);
-[format["GMS_fnc_spawnGroup: _group = %1",_group]] call GMS_fnc_log;
+//[format["GMS_fnc_spawnGroup: _group = %1",_group]] call GMS_fnc_log;
 _group
 

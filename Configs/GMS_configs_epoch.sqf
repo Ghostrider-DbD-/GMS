@@ -261,7 +261,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		GMS_WeaponList_Green = GMS_WeaponList_Green + GMS_apexWeapons;
 	#endif
 	
-	private _backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
+	GMS_backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
 	private _ApexBackpacks = [
 		"B_Bergen_mcamo_F","B_Bergen_dgtl_F","B_Bergen_hex_F","B_Bergen_tna_F","B_AssaultPack_tna_F","B_Carryall_ghex_F",
 		"B_FieldPack_ghex_F","B_ViperHarness_blk_F","B_ViperHarness_ghex_F","B_ViperHarness_hex_F","B_ViperHarness_khk_F",
@@ -269,15 +269,15 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		];
 	
 	#ifdef useAPEX
-		_backpacks = _backpacks append _ApexBackpacks;
+		GMS_backpacks = GMS_backpacks append _ApexBackpacks;
 	#endif
 
 
 	// TODOI use more PRIVATE variables across other configs for Exile and Default 
-	GMS_backpacks_blue = _backpacks;
-	GMS_backpacks_red = _backpacks;
-	GMS_backpacks_green = _backpacks;
-	GMS_backpacks_orange = _backpacks;
+	GMS_backpacks_blue = GMS_backpacks;
+	GMS_backpacks_red = GMS_backpacks;
+	GMS_backpacks_green = GMS_backpacks;
+	GMS_backpacks_orange = GMS_backpacks;
 	
 	GMS_BanditHeadgear = ["H_Shemag_khk","H_Shemag_olive","H_Shemag_tan","H_ShemagOpen_khk"];
 	//This defines the skin list, some skins are disabled by default to permit players to have high visibility uniforms distinct from those of the AI.
