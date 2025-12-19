@@ -74,18 +74,6 @@ _lootCounts = GMS_lootCountsOrange;
 	Do not touch the code below except to comment out rows containing objects you do not wish to have spawned
 */
 
-/*
-     Depricated Variable Included for Backwards Compatibility with Existing Missions
-*/
-_garrisonedBuilding_ATLsystem = [
-
-];
-/*
-     Depricated Variable Included for Backwards Compatibility with Existing Missions
-*/
-_garrisonedBuildings_BuildingPosnSystem = [
-
-];
 _missionLandscape = [
      ["RoadCone_F",[15403.877,14180.201,55.266],[[0,0.999999,-0.00119604],[-0.00109183,0.00119604,0.999999]],[true,true]],
      //["IG_supplyCrate_F",[10437.5,1311.99,-8.97595],[[0,1,0],[-0.00191986,0,0.999998]],[true,true]],

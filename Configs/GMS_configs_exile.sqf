@@ -189,36 +189,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		//"CUP_O_BMP1_TKA""
 	];
 
-	
-	GMS_AIPatrolVehicles = 
-	[
-	//"Exile_Car_Offroad_Armed_Guerilla01",
-	//"Exile_Car_Offroad_Armed_Guerilla02",
-	//"Exile_Car_BTR40_MG_Green",
-	//"Exile_Car_BTR40_MG_Camo",
-	//"Exile_Car_HMMWV_M134_Green",
-	//"Exile_Car_HMMWV_M134_Desert",
-	//"Exile_Car_HMMWV_M134_Desert",
-	"Exile_Car_HMMWV_M2_Desert",
-	"B_LSV_01_armed_F",
-	//"_MRAP_02_gmg_ghex_F",
-	//"O_MRAP_02_hmg_ghex_F",
-	//"O_MRAP_03_gmg_ghex_F",
-	//"O_MRAP_03_hmg_ghex_F",	
-	"B_MBT_01_cannon_F",
-	"B_MBT_01_cannon_F",	// Duplicate to increase chance that these will spawn relative to others
-	//"B_MBT_01_mlrs_base_F",
-	//"B_MBT_01_mlrs_F",
-	"B_MBT_01_TUSK_F",
-	"B_MBT_01_TUSK_F",// Duplicate to increase chance that these will spawn relative to others
-	"B_APC_Tracked_01_AA_F",
-	"B_APC_Tracked_01_AA_F",// Duplicate to increase chance that these will spawn relative to others
-	"B_APC_Tracked_01_AA_F",// Duplicate to increase chance that these will spawn relative to others	
-	//"B_APC_Tracked_01_CRV_F",
-	"B_APC_Tracked_01_rcws_F"																						
-	]; // Type of vehicle spawned to defend AI bases	
 
-	
 	GMS_AIPatrolVehicles = ["Exile_Car_Offroad_Armed_Guerilla01","Exile_Car_Offroad_Armed_Guerilla02","Exile_Car_BTR40_MG_Green","Exile_Car_BTR40_MG_Camo","Exile_Car_HMMWV_M134_Green","Exile_Car_HMMWV_M134_Desert",/*"Exile_Car_HMMWV_M134_Desert","Exile_Car_HMMWV_M2_Desert",*/"B_LSV_01_armed_F"]; // Type of vehicle spawned to defend AI bases	
 	GMS_AIPatrolVehiclesBlue = GMS_open_armed_vehicles;
 	GMS_AIPatrolVehiclesRed = GMS_lightlyArmed_ARMA3;
@@ -337,20 +308,22 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	GMS_WeaponList_Green = GMS_WeaponList_Green + GMS_apexWeapons;	
 	#endif
 	
-	GMS_backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
-		
-	GMS_ApexBackpacks = [
+	private _backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
+	#ifdef useAPEX
+	private _ApexBackpacks = [
 		"B_Bergen_mcamo_F","B_Bergen_dgtl_F","B_Bergen_hex_F","B_Bergen_tna_F","B_AssaultPack_tna_F","B_Carryall_ghex_F",
 		"B_FieldPack_ghex_F","B_ViperHarness_blk_F","B_ViperHarness_ghex_F","B_ViperHarness_hex_F","B_ViperHarness_khk_F",
 		"B_ViperHarness_oli_F","B_ViperLightHarness_blk_F","B_ViperLightHarness_ghex_F","B_ViperLightHarness_hex_F","B_ViperLightHarness_khk_F","B_ViperLightHarness_oli_F"
-		];	
-	#ifdef useAPEX
-	GMS_backpacks = GMS_ApexBackpacks + GMS_backpacks;
+		];
+	_backpacks = _ApexBackpacks + _backpacks;
 	#endif
-	GMS_backpacks_blue = GMS_backpacks;
-	GMS_backpacks_red = GMS_backpacks;
-	GMS_backpacks_green = GMS_backpacks;
-	GMS_backpacks_orange = GMS_backpacks;
+
+	// Note: you specify what backpacks to allow for each level of AI if you like 
+	// Just define the arrays below rather than allowing them to be defined based on the default	
+	GMS_backpacks_blue = _backpacks;
+	GMS_backpacks_red = _backpacks;
+	GMS_backpacks_green = _backpacks;
+	GMS_backpacks_orange = _backpacks;
 	
 	GMS_BanditHeadgear = ["H_Shemag_khk","H_Shemag_olive","H_Shemag_tan","H_ShemagOpen_khk"];
 	//This defines the skin list, some skins are disabled by default to permit players to have high visibility uniforms distinct from those of the AI.

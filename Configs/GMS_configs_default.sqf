@@ -149,11 +149,11 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		//"CUP_O_BMP1_TKA""
 	];
 	
-	GMS_AIPatrolVehicles = ["B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"]; // Type of vehicle spawned to defend AI bases	
-	GMS_AIPatrolVehiclesBlue = GMS_AIPatrolVehicles;
-	GMS_AIPatrolVehiclesRed = GMS_AIPatrolVehicles;
-	GMS_AIPatrolVehiclesGreen = GMS_AIPatrolVehicles;
-	GMS_AIPatrolVehiclesOrange = GMS_AIPatrolVehicles;
+	private _AIPatrolVehicles = ["B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"]; // Type of vehicle spawned to defend AI bases	
+	GMS_AIPatrolVehiclesBlue = _AIPatrolVehicles;
+	GMS_AIPatrolVehiclesRed = _AIPatrolVehicles;
+	GMS_AIPatrolVehiclesGreen = _AIPatrolVehicles;
+	GMS_AIPatrolVehiclesOrange = _AIPatrolVehicles;
 	
 	// Blacklisted itesm
 	GMS_blacklistedOptics = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
@@ -252,23 +252,21 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		GMS_WeaponList_Green = GMS_WeaponList_Green + GMS_apexWeapons;
 	#endif
 	
-	GMS_backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
-	GMS_ApexBackpacks = [
+	private _backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
+		
+	#ifdef useAPEX
+		private _ApexBackpacks = [
 		"B_Bergen_mcamo_F","B_Bergen_dgtl_F","B_Bergen_hex_F","B_Bergen_tna_F","B_AssaultPack_tna_F","B_Carryall_ghex_F",
 		"B_FieldPack_ghex_F","B_ViperHarness_blk_F","B_ViperHarness_ghex_F","B_ViperHarness_hex_F","B_ViperHarness_khk_F",
 		"B_ViperHarness_oli_F","B_ViperLightHarness_blk_F","B_ViperLightHarness_ghex_F","B_ViperLightHarness_hex_F","B_ViperLightHarness_khk_F","B_ViperLightHarness_oli_F"
 		];
-		
-	#ifdef useAPEX
-		GMS_backpacks = GMS_backpacks + GMS_ApexBackpacks;
+		_backpacks = _backpacks append _ApexBackpacks;
 	#endif
-
-	private _backpacks = GMS_backpacks; 
-
-	GMS_backpacks_blue = GMS_backpacks;
-	GMS_backpacks_red = GMS_backpacks;
-	GMS_backpacks_green = GMS_backpacks;
-	GMS_backpacks_orange = GMS_backpacks;
+	GMS_backpacks = _backpacks; 
+	GMS_backpacks_blue = _backpacks;
+	GMS_backpacks_red = _backpacks;
+	GMS_backpacks_green = _backpacks;
+	GMS_backpacks_orange = _backpacks;
 	
 	GMS_BanditHeadgear = ["H_Shemag_khk","H_Shemag_olive","H_Shemag_tan","H_ShemagOpen_khk"];
 	//This defines the skin list, some skins are disabled by default to permit players to have high visibility uniforms distinct from those of the AI.

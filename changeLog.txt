@@ -27,11 +27,29 @@ https://github.com/Ghostrider-DbD-/-timeManagement
 
 The MapAddons module was moved to a new, reworked mod:
 https://github.com/Ghostrider-DbD-/mapAddons 
+
 The Mission system can now be run entirely on an HC - no more passing AI back and forth. 
 The static loot system and dynamic loot system are gone. THese outlived thier usefulness. 
 
 I have kept the change log as a bit of history for those interested in development of this mission system. 
 Significant Changes:
+
+Build 280
+	Reworked code to be compatible with updated GMSCore 	
+	Removed anything related to waypoint management, vehicle or AI movement, as this is entirely handled by GMSCore 
+	Consolidated code to configure AI and utilized GMSCore functions to make these loadout and sills changes 
+	Removed all code for spawning buildings with pre-placed equipment or units as this had outlived its utility. 
+		
+		/*
+			These variables are ignored 
+		*/
+		_garrisonedBuilding_ATLsystem = [
+
+		];
+
+		_garrisonedBuildings_BuildingPosnSystem = [
+
+		];
 
 Build 279
 	Removed simulation management which is now handled by GMSCore.

@@ -328,4 +328,4 @@ _chanceHeliPatrol = GMS_chanceHeliPatrolOrange;  // Setting this in the mission 
 _noChoppers = GMS_noPatrolHelisOrange;
 _missionHelis = GMS_patrolHelisOrange;
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

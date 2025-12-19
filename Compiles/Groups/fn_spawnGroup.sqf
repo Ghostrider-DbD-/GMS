@@ -23,9 +23,7 @@ params[
 	["_backpacks",[]],
 	["_weaponList",[]],
 	["_sideArms",[]], 
-	["_scuba",false],
-	["_timeOut",300],
-	["_waypointclass","Soldier"]
+	["_scuba",false]
 ];
 /*
 {
@@ -63,9 +61,9 @@ params[
 		["_chanceGarison",0]
 ];
 */
-private _patrolAreaMarker = createMarkerLocal ["GMSPatrol%1",random(10000), _pos];
+private _patrolAreaMarker = createMarkerLocal [format["GMSPatrol%1",random(10000)], _pos];
 _patrolAreaMarker setMarkerShapeLocal "ELLIPSE";
-_patrolAreaMarker setMarkerSizeLocal [100,100];
+_patrolAreaMarker setMarkerSizeLocal _areaDimensions;
 private _group = [
 	_pos,
 	_patrolAreaMarker,
@@ -89,7 +87,7 @@ private _group = [
 //[format["GMS_fnc_spawnGroup: _pos = %2 | _group = %1",_group,_pos]] call GMS_fnc_log;
 _group setVariable["GMS_difficulty",_skillLevel];
 
-[_group] call GMSCore_fnc_setupGroupBehavior;
+[_group] call GMSCore_fnc_setGroupBehavior;
 private _skills = missionNamespace getVariable[format["GMS_Skills%1",_skillLevel],GMS_SkillsRed];
 [_group,_skills] call GMSCore_fnc_setupGroupSkills;
 
@@ -128,6 +126,6 @@ private _money = (missionNamespace getVariable[format["GMS_rewards%1",_skillLeve
 [_group,_difficulty,_money] call GMSCore_fnc_setupGroupMoney;
 
 _group selectLeader ((units _group) select 0);
-//[format["GMS_fnc_spawnGroup: _group = %1",_group]] call GMS_fnc_log;
+[format["GMS_fnc_spawnGroup: _group = %1",_group]] call GMS_fnc_log;
 _group
 

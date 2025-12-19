@@ -141,4 +141,4 @@ _chanceHeliPatrol = 0;
 _spawnCratesTiming = "atMissionEndAir";
 _endCondition = assetSecured;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear, assetSecured
  
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

@@ -148,7 +148,7 @@ for "_i" from 1 to (count _missionsList) do
 						"_weaponList",
 						"_sideArms"	
 					];	
-					//params["_pos","_numAI","_skilllevel",["_uniforms",[]],["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weapons",[]],["_sideArms",[]],["_isScuba",false]];
+					//params["_pos","_numAI","_difficulty",["_uniforms",[]],["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weapons",[]],["_sideArms",[]],["_isScuba",false]];
 					private _paraGroup = [_coords,_noPara,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission] call GMS_fnc_spawnParaUnits;
 
 					[format["_monitorSpawneMissions(151): _noPara = %1 | _chancePara = %2 | _paraGroup = %3",_noPara,_chancePara,_paraGroup]] call GMS_fnc_log;
@@ -259,7 +259,7 @@ for "_i" from 1 to (count _missionsList) do
 
 					if (_loadCratesTiming isEqualTo "atMissionCompletion") then
 					{
-						private _money = (missionNamespace getVariable[format["GMS_rewards%1",_skillLevel],GMS_rewardsOrange]) select 0;
+						private _money = (missionNamespace getVariable[format["GMS_rewards%1",_difficulty],GMS_rewardsOrange]) select 0;
 						diag_log format["_monitorSpawnedMissions(262): _money = %1",_money];
 						{
 							[_x] call GMS_fnc_loadMissionCrate;											

@@ -28,7 +28,7 @@ params[
 	["_endCode",-1],
 	["_isStatic",false]
 ];
-//[format["_endMission: _endCode %1 | _markerData %2 | _endMsg %3",_endCode, _markerData, _endMsg]] call GMS_fnc_log;
+[format["_endMission: _endCode %1 | _markerData %2 | _endMsg %3",_endCode, _markerData, _endMsg]] call GMS_fnc_log;
 _missionData params [
 	"_coords",
 	"_mines",
@@ -72,7 +72,7 @@ _missionLootConfigs params [
 switch (_endCode) do 
 {
 	case -1: {
-			//[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
+			[format["_endMission (93): _exception -1 | _mines %1 | _crates %2 | count _objects %3 | count _missionAI %4 ",_mines,_crates,count _objects, count _missionAI]] call GMS_fnc_log;
 			if !(_endMsg isEqualTo "") then {
 				[["end",_endMsg,"News Update"]] call GMS_fnc_messageplayers;
 			};

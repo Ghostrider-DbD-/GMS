@@ -3,13 +3,15 @@
 */
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 
-params["_coords",["_missionEmplacedWeapons",[]],["_useRelativePos",true],["_aiDifficultyLevel","red"],["_uniforms",[]], ["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]]];
-if (_uniforms isEqualTo []) 		then {_uniforms = [_aiDifficultyLevel] call GMS_fnc_selectAIUniforms};
-if (_headGear  isEqualTo [])		then {_headGear = [_aiDifficultyLevel] call GMS_fnc_selectAIHeadgear};
-if (_vests isEqualTo []) 			then {_vests = [_aiDifficultyLevel] call GMS_fnc_selectAIVests};
-if (_backpacks  isEqualTo []) 		then {_backpacks = [_aiDifficultyLevel] call GMS_fnc_selectAIBackpacks};
-if (_weaponList  isEqualTo []) 		then {_weaponList = [_aiDifficultyLevel] call GMS_fnc_selectAILoadout};
-if (_sideArms isEqualTo []) 		then {[_aiDifficultyLevel] call GMS_fnc_selectAISidearms};
+params["_coords",["_missionEmplacedWeapons",[]],["_useRelativePos",true],["_difficulty","red"],["_uniforms",[]], 
+["_headGear",[]],["_vests",[]],["_backpacks",[]],["_weaponList",[]],["_sideArms",[]]];
+
+if (_uniforms isEqualTo []) 		then {_uniforms = [_difficulty] call GMS_fnc_selectAIUniforms};
+if (_headGear  isEqualTo [])		then {_headGear = [_difficulty] call GMS_fnc_selectAIHeadgear};
+if (_vests isEqualTo []) 			then {_vests = [_difficulty] call GMS_fnc_selectAIVests};
+if (_backpacks  isEqualTo []) 		then {_backpacks = [_difficulty] call GMS_fnc_selectAIBackpacks};
+if (_weaponList  isEqualTo []) 		then {_weaponList = [_difficulty] call GMS_fnc_selectAILoadout};
+if (_sideArms isEqualTo []) 		then {[_difficulty] call GMS_fnc_selectAISidearms};
 
 private["_emplacedWeps","_emplacedAI","_wep","_units","_gunner","_abort","_pos","_mode"];
 _emplacedWeps = [];
@@ -28,57 +30,46 @@ private _emplacedWepData = +_missionEmplacedWeapons;  //  So we dont overwrite t
 		{
 			_pos = _coords vectorAdd _pos;
 		};
-
-		#define configureWaypoints false
-		#define numberAI 1
-		#define areaDimensions []  // an empty array forces the spawnGroup function to skip setup of any waypoint
-		/*
-			params[
-				["_pos",[-1,-1,1]], 
-				["_numbertospawn",0], 
-				["_skillLevel","red"], 
-				["_areaDimensions",[]], 
-				["_uniforms",[]], 
-				["_headGear",[]],
-				["_vests",[]],
-				["_backpacks",[]],
-				["_weaponList",[]],
-				["_sideArms",[]], 
-				["_scuba",false],
-				["_timeOut",300],
-				["_waypointclass","Soldier"]
-			];
-		*/
-		private _empGroup = [_pos,numberAI,_aiDifficultyLevel,areaDimensions,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,-1,"Turret"] call GMS_fnc_spawnGroup;
-		_empGroup setcombatmode "RED";
-		_empGroup setBehaviour "COMBAT";
-		_empGroup setVariable ["soldierType","emplaced"];
-
-		/*
-			["_className",""], // Clasname of vehicle to be spawned
-			["_spawnPos",[0,0,0]],  //  selfevident
-			["_dir",0],  //  selfevident
-			["_height",0],		
-			["_disable",0],  // damage value set to this value if less than this value when all crew are dead
-			["_removeFuel",0.2],  // fuel set to this value when all crew dead
-			["_releaseToPlayers",true],
-			["_deleteTimer",300],
-			["_vehHitCode",[]],
-			["_vehKilledCode",[]]
-		*/
-
-		#define height 0
-		#define removeFuel 0
-		#define vehHitCode [] 
-		#define vehKilledCode []
+		private _difficultyIndex = [_difficulty] call GMS_fnc_getIndexFromDifficulty;
 		private _damage = if (GMS_killEmptyStaticWeapons) then {1} else {0};
 		private _releaseToPlayers = if (GMS_killEmptyStaticWeapons) then {false} else {true};
-		private _wep = [_static,_pos,_dir, height, _damage, removeFuel, _releaseToPlayers, GMS_vehicleDeleteTimer, vehHitCode, vehKilledCode] call GMSCore_fnc_spawnPatrolVehicle;
-		_wep setVariable["GMS_vehType","emplaced"];	
-		_emplacedWeps pushback _wep;
-		[_wep,_empGroup] call GMSCore_fnc_loadVehicleCrew;
+		#define deleteTimer 300 
+		private _static = [_static, _pos, _releaseToPlayers, deleteTimer] call GMSCore_fnc_spawnStatic; 
+		private _group = _static select 0;
+		private _wep = _static select 1; 
+
+		[_group, _difficulty, _weaponList, _sideArms, _headGear, _uniforms, _vests, _backpacks] call GMS_fnc_configureGroup;
+		#define maxUnitReloads -1 // Infinite reloads 
+		#define minDamageToHeal 0.4 
+		#define maximumNumberHeals 1 // allow one heal only 
+		#define smokeShellType "SmokeShellRed"
+		#define chanceUnitsGarison 0
+		#define unitHitCode [] 
+		#define unitKilledCode [GMS_fnc_unitKilled]
 	
-		_emplacedAI append (units _empGroup);
+		[
+				_group, 
+				GMS_baseSkill,
+				GMS_AIAlertDistance select _difficultyIndex,
+				GMS_AIIntelligence select _difficultyIndex,
+				GMS_bodyCleanUpTimer,
+				maxUnitReloads,
+				GMS_launcherCleanup, 
+				GMS_removeNVG, 
+				minDamageToHeal,
+				maximumNumberHeals,
+				smokeShellType,
+				unitHitCode,
+				unitKilledCode,
+				chanceUnitsGarison
+		 ] call GMSCore_fnc_initializeGroup; 		
+		_group setcombatmode "RED";
+		_group setBehaviour "COMBAT";
+		_group setVariable ["soldierType","emplaced"];
+
+		_wep setVariable["GMS_vehType","emplaced"];	
+		_emplacedAI append (units _group);
+		_emplacedWeps pushBack _wep;
 	} else {
 		[format["GMS_fnc_spawnEmplacedWeaponArray:   Invalid classname %1 used in _missionEmplacedWeapons", _static],"warning"] call GMS_fnc_log;
 	};

@@ -271,4 +271,4 @@ _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in somethi
 
 //_endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

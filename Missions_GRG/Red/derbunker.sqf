@@ -27,17 +27,6 @@ _missionLandscapeMode = "precise"; // acceptable values are "none","random","pre
 
 //////////
 //   Past the output of the script here
-_garrisonedBuildings_BuildingPosnSystem = [
-];
-
-_garrisonedBuilding_ATLsystem = [
-     ["Land_Bunker_01_big_F",[-15.925,9.02295,0.760561],90.071,true,true,[["O_HMG_01_high_F",[-5.45947,-3.38574,0.109706],359.994]],[]],
-     ["Land_Bunker_01_tall_F",[-15.377,-8.8042,-0.00143909],90.071,true,true,[["O_HMG_01_high_F",[5.50562,-2.54395,-0.0121193],0.00145215],["O_HMG_01_high_F",[-1.72095,-0.109375,4.96893],0.00948966]],[]],
-     ["Land_Bunker_01_tall_F",[-15.76,28.606,-0.00143909],90.071,true,true,[["O_HMG_01_high_F",[5.47437,2.47559,-0.0121179],0.000581241],["O_HMG_01_high_F",[-1.38867,-0.0722656,4.967],359.999],["O_HMG_01_high_F",[11.8271,5.87988,-0.0121188],0.00143633]],[]],
-     ["Land_Bunker_01_big_F",[20.199,10.729,0.760561],270.416,true,true,[["O_HMG_01_high_F",[5.86328,3.25586,0.109697],0.0117801]],[]],
-     ["Land_Bunker_01_tall_F",[19.8899,-8.86914,-0.00143909],270.416,true,true,[["O_HMG_01_high_F",[-5.13818,-2.33496,-0.0121174],0.0002874],["O_HMG_01_high_F",[1.45801,0.0512695,4.96698],360]],[]],
-     ["Land_Bunker_01_tall_F",[19.731,28.542,-0.00143909],270.416,true,true,[["O_HMG_01_high_F",[-5.00977,2.1792,-0.0121188],0.00143735],["O_HMG_01_high_F",[1.80957,0.26709,4.96756],360],["O_HMG_01_high_F",[-12.0127,6.1333,-0.0121193],0.00145178]],[]]
-];
 
 _missionLandscape = [
      //["Sign_Arrow_F",[-3163.22,-5166.85,-0.00143909],0,true,true],
@@ -107,4 +96,4 @@ private _paralootCountsChoices = [[0,0,0,10,10,0],[0,0,0,10,10,0],[10,10,0,0,0,0
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

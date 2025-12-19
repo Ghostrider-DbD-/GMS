@@ -3,7 +3,7 @@ Mission Compositions prepared for ghostridergaming by Ghostrider [GRG]
 */
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 #include "\x\addons\GMS\Missions\GMS_privateVars.sqf";
-diag_log "[GMS] Spawning Orange Mission with template = commandersComplex";
+//diag_log "[GMS] Spawning Orange Mission with template = commandersComplex";
 _crateLoot = GMS_BoxLoot_Orange;
 _lootCounts = [15,50,20,60,44,5];  //  	GMS_lootCountsOrange = [8,32,8,30,16,1];
 _startMsg = "An enemy Commander was sighted in a nearby sector! Check the Orange marker on your map for the location!";
@@ -94,4 +94,4 @@ private _paralootCountsChoices = [[0,0,0,25,25,0],[0,0,0,25,25,0],[20,30,0,0,0,0
 _paraLoot = _paralootChoices select _lootIndex;
 _paraLootCounts = _paralootCountsChoices select _lootIndex;  // Throw in something more exotic than found at a normal blue mission.
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

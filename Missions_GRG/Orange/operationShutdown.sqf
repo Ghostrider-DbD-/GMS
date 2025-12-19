@@ -165,4 +165,4 @@ _noEmplacedWeapons = GMS_SpawnEmplaced_Orange;  // Setting this in the mission f
 //  Change _useMines to true/false below to enable mission-specific settings.
 _useMines = GMS_useMines;  // Setting this in the mission file overrides the defaults 
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

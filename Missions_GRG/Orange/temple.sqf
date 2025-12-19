@@ -613,4 +613,4 @@ _paraLootCounts = GMS_lootCountsOrange;  // Throw in something more exotic than 
 
 _endCondition = playerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 //_timeOut = -1;
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

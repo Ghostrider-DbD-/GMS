@@ -151,4 +151,4 @@ _chanceHeliPatrol = GMS_chanceHeliPatrolBlue;  // Setting this in the mission fi
 _noChoppers = GMS_noPatrolHelisBlue;
 _missionHelis = GMS_patrolHelisBlue;
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

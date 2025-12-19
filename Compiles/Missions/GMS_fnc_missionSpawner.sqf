@@ -17,7 +17,8 @@ private ["_abort","_crates","_aiGroup","_objects","_groupPatrolRadius","_mission
 		"_AI_Vehicles","_timeOut","_aiDifficultyLevel","_missionPatrolVehicles","_missionGroups","_loadCratesTiming","_spawnCratesTiming","_assetSpawned","_hostageConfig",
 		"_chanceHeliPatrol","_noPara","_chanceLoot","_heliCrew","_loadCratesTiming","_useMines","_GMS_AllMissionAI","_delayTime","_groupPatrolRadius","_simpleObjects",
 		"_wait","_missionStartTime","_playerInRange","_missionTimedOut","_temp","_patrolVehicles","_vehToSpawn","_noChoppers","_chancePara","_paraSkill","_marker","_vehicleCrewCount",
-		"_defaultMissionLocations","_garrisonedbuildings_buildingposnsystem","_garrisonedBuilding_ATLsystem", "_isScubaMission","_markerlabel","_missionLootBoxes","_airpatrols",
+		"_defaultMissionLocations",
+		 "_isScubaMission","_markerlabel","_missionLootBoxes","_airpatrols",
 		"_submarinePatrols","_scubaPatrols","_maxMissionRespawns",
 		// New private variables 09-01-23 thruough 09-27-23
 		"_missionUGVs",
@@ -64,8 +65,6 @@ if (isNil "_paraTriggerDistance") 		then {_paraTriggerDistance = 400;};
 if (isNil "_paraLoot") 					then {_paraLoot = GMS_BoxLoot_Green};  //  Add diffiiculty based settings
 if (isNil "_paraLootCounts") 			then {_paraLootCounts = GMS_lootCountsRed}; // Add difficulty based settings
 if (isNil "_missionLootVehicles") 		then {_missionLootVehicles = []};
-if (isNil "_garrisonedBuilding_ATLsystem") then {_garrisonedBuilding_ATLsystem = []};
-if (isNil "_garrisonedBuildings_BuildingPosnSystem") then {_garrisonedBuildings_BuildingPosnSystem = []};
 if (isNil "_vehicleCrewCount") then {_vehicleCrewCount = [_aiDifficultyLevel] call GMS_fnc_selectVehicleCrewCount};
 if (isNil "_airpatrols") then {_airpatrols = []};
 if (isNil "_missionUGVs") then {_missionUGVs = []};
@@ -156,8 +155,6 @@ private _aiConfigs = [
 	_weaponList,
 	_sideArms, 	
 	_missionLandscapeMode, 	
-	_garrisonedBuildings_BuildingPosnSystem, 
-	_garrisonedBuilding_ATLsystem,
 	_missionLandscape,
 	_simpleObjects,
 	_missionPatrolVehicles,

@@ -13,8 +13,8 @@
 
  class GMSBuild {
 	 Version = "7.3";
-	 Build = "280"; 
-	 Date = "12-06-2025";
+	 Build = "283"; 
+	 Date = "12-18-2025";
  };
 
 class CfgPatches {
@@ -66,9 +66,8 @@ class CfgFunctions {
 		class missions {
 			file = "\x\addons\GMS\Compiles\Missions";
 			class addMIssionToQue {};
-				class endMission {};
+			class endMission {};
 			class fillBoxes {};
-			class garrisonBuilding_ATLsystem {};
 			class loadLootItemsFromArray {};
 			class initializeMission {};
 			class loadMissionCrate {};

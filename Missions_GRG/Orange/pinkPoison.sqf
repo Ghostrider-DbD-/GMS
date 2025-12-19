@@ -140,4 +140,4 @@ _noAIGroups = GMS_AIGrps_Orange;
 _noVehiclePatrols = GMS_SpawnVeh_Orange;
 _noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

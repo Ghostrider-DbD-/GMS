@@ -17,7 +17,7 @@
 		changing any of these variables may break the mission system
 	*/
 	GMS_locationBlackList = [];  // Do not touch ...
-	GMS_debugLevel = 1;  //  should be set to 0 ... 
+	GMS_debugLevel = 5;  //  should be set to 0 ... 
 
 	[format["Loading configurations for Non-militarized servers"]] call GMS_fnc_log;
 	/*
@@ -97,7 +97,6 @@ switch (GMSCore_modType) do
 		GMS_rewardsRed = [[8,14],12,15];
 		GMS_rewardsGreen = [[10,18],[15,20]];
 		GMS_rewardsOrange = [[12,20],20,25];
-		GMS_rewards = [GMS_rewardsBlue,GMS_rewardsRed,GMS_rewardsGreen,GMS_rewardsOrange];
 
 		// Amount of tabs added to each mission crate
 		GMS_crateMoneyBlue = [100,250];
@@ -117,7 +116,6 @@ switch (GMSCore_modType) do
 		GMS_rewardsRed = [[8,14],[12,15]];
 		GMS_rewardsGreen = [[10,18],[15,20]];
 		GMS_rewardsOrange = [[12,20],[20,25]];
-		GMS_rewards = [GMS_rewardsBlue,GMS_rewardsRed,GMS_rewardsGreen,GMS_rewardsOrange];
 
 		// Amount of tabs added to each mission crate
 		GMS_crateMoneyBlue = [3000,5000];
@@ -140,9 +138,10 @@ switch (GMSCore_modType) do
 		GMS_rewardsRed = [[8,14],[12,15]];
 		GMS_rewardsGreen = [[10,18],[15,20]];
 		GMS_rewardsOrange = [[12,20],[20,25]];
-		GMS_rewards = [GMS_rewardsBlue,GMS_rewardsRed,GMS_rewardsGreen,GMS_rewardsOrange];
 	};
 };
+// TODO: remove GMS_rewards from other mod-specific configs 
+
 	///////////////////////////////
 	// MISSION MARKER CONFIGURATION
 	// GMS_labelMapMarkers: Determines if when the mission composition provides text labels, map markers with have a text label indicating the mission type
@@ -173,6 +172,7 @@ switch (GMSCore_modType) do
 	GMS_SmokeAtMissions = [false,"random"];  // set to [false,"anything here"] to disable this function altogether. 
 	GMS_useSignalEnd = true; // When true a smoke grenade/chemlight will appear at the loot crate for 2 min after mission completion.
 	GMS_missionEndCondition = allUnitsKilled; //allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
+	gms_cratemoveallowed = true; // when false there will be a penalty for moving a crate
 
 	 // Added 10/01/23 for those who want some control over the color.
 	GMS_smokeShellAtCrates =  ["SmokeShellOrange","SmokeShellBlue","SmokeShellPurple","SmokeShellRed","SmokeShellGreen","SmokeShellYellow"];
@@ -540,9 +540,9 @@ switch (GMSCore_modType) do
 		];	
 	/////////////////////////////////////////////
 	
-	GMS_groupBehavior = "SAFE";  // https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
-	GMS_combatMode = "RED"; // Change this to "YELLOW" if the AI wander too far from missions for your tastes.
-	GMS_groupFormation = "WEDGE"; // Possibilities include "WEDGE","VEE","FILE","DIAMOND"
+	//GMS_groupBehavior = "SAFE";  // https://community.bistudio.com/wiki/ArmA:_AI_Combat_Modes
+	//GMS_combatMode = "RED"; // Change this to "YELLOW" if the AI wander too far from missions for your tastes.
+	//GMS_groupFormation = "WEDGE"; // Possibilities include "WEDGE","VEE","FILE","DIAMOND"
 
 	GMS_useSmokeWhenHealing = true;  // when true, injured AI will toss a smoke when they attempt to heal.
 	GMS_addAIMoney = false;
@@ -564,10 +564,11 @@ switch (GMSCore_modType) do
 	GMS_maximumPatrolRadius = 66;  // These values should be at least 30 to be sure some movement occurs.
 	*/
 
+	// 
 	// Used by GMSCore to decide when a group is stuck etc.
-	GMS_waypointTimeoutInfantry = 300; 
-	GMS_waypointTimeoutVehicle = 300;
-	GMS_waypointTimeoutAir = 300;
+	//GMS_waypointTimeoutInfantry = 300; 
+	//GMS_waypointTimeoutVehicle = 300;
+	//GMS_waypointTimeoutAir = 300;
 
 	//This defines how long after an AI dies that it's body disappears.
 	GMS_bodyCleanUpTimer = 60*45; // time in seconds after which dead AI bodies are deleted

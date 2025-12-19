@@ -73,18 +73,7 @@ _lootCounts = GMS_lootCountsBlue;
 	Do not touch the code below except to comment out rows containing objects you do not wish to have spawned
 */
 
-/*
-     Depricated Variable Included for Backwards Compatibility with Existing Missions
-*/
-_garrisonedBuilding_ATLsystem = [
-
-];
-/*
-     Depricated Variable Included for Backwards Compatibility with Existing Missions
-*/
-_garrisonedBuildings_BuildingPosnSystem = [
-
-];
+//
 _missionLandscape = [
      ["Land_TentDome_F",[0.188477,-0.161621,0],[[-0.5,-0.866025,0],[0,0,1]],[true,true]],
      ["Land_CanisterPlastic_F",[3.06348,-5.28662,0],[[0.71877,-0.695248,0],[0,0,1]],[true,true]],

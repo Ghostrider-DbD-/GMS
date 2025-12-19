@@ -167,6 +167,6 @@ _sideArms  = GMS_pistols;    // You can replace this list with a custom list of 
 //********************************************************
 // Do not modify anything below this line.
 //********************************************************
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
 
 //diag_log format["[blckeagls static missions] COMPLETED initializing mission %1 position at %2 difficulty %3",_mission,_missionCenter,_difficulty];

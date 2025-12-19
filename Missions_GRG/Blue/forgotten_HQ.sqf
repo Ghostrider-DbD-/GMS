@@ -197,4 +197,4 @@ _loadCratesTiming = GMS_loadCratesTiming; // valid choices are "atMissionComplet
 _endCondition = allKilledOrPlayerNear;  // Options are allUnitsKilled, playerNear, allKilledOrPlayerNear
 									// Setting this in the mission file overrides the defaults 
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

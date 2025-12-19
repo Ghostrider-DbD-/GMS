@@ -12,6 +12,8 @@
 */
 
 private["_pathBlue","_missionListBlue","_pathRed","_missionListRed","_pathGreen","_missionListGreen","_pathOrange","_missionListOrange","_pathStatics","_missionListStatics"];
+private _missionDirectory = "Missions";
+[format["Loading _missionLists.sqf at %1", diag_tickTime]] call GMS_fnc_log;
 private _pathScouts = "Scouts";
 private _missionListScouts = ["Scouts"];
 
@@ -137,8 +139,9 @@ private _missionListOrange = [
 private _pathStatics = "Statics";
 private _missionListStatics = [
 		//"docksuckers"
+		"small_bay_mission"
 ];
-
+[format["missionLists: _missionListStics %1", _missionListStatics]] call GMS_fnc_log;
 private _pathUMS = "UMS\dynamicMissions";
 private _missionListUMS = ["default"];
 

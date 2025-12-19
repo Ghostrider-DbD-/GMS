@@ -131,22 +131,28 @@ _fn_spawnWreckMission = {
 	private _numberAI = [_minAI,_maxAI] call GMSCore_fnc_getIntegerFromRange;
 
 	/*
-		params[
-			["_pos",[-1,-1,1]], 
-			["_numbertospawn",0], 
-			["_skillLevel","red"], 
-			["_areaDimensions",[]], 
-			["_uniforms",[]], 
-			["_headGear",[]],
-			["_vests",[]],
-			["_backpacks",[]],
-			["_weaponList",[]],
-			["_sideArms",[]], 
-			["_scuba",false]
-		];
+	params[
+	["_pos",[-1,-1,1]], 
+	["_numbertospawn",0], 
+	["_skillLevel","red"], 
+	["_areaDimensions",[]], 
+	["_uniforms",[]], 
+	["_headGear",[]],
+	["_vests",[]],
+	["_backpacks",[]],
+	["_weaponList",[]],
+	["_sideArms",[]], 
+	["_scuba",false]
+	];
 	*/
-	// Let the GMS_fnc_spawnGroup scritp assign the defaultsfor everything after headgear.
-	private _group = [_posOfCrash,_numberAI,_difficulty,waypointDimensions,_uniformsHC,_headGearHC] call GMS_fnc_spawnGroup;
+
+	private _group = [_posOfCrash,
+						_numberAI,
+						_difficulty,
+						waypointDimensions,
+						_uniformsHC,
+						_headGearHC
+				] call GMS_fnc_spawnGroup;
 	GMS_monitoredMissionAIGroups pushBack _group;
 	
 	if (GMS_showCountAliveAI) then

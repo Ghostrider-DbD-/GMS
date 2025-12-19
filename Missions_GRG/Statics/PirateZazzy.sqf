@@ -149,4 +149,4 @@ _missionLootBoxes = [
 /*
 	Do not touch the code below 
 */
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

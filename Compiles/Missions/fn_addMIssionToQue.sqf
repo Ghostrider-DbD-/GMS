@@ -8,12 +8,7 @@
 	
 */
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
-params[["_missionList",[]],["_path",""],["_marker",""],["_difficulty","Red"],["_tMin",60],["_tMax",120],["_noMissions",1],["_isStatic",false]];
-//diag_log format["_addMissionToQue: _this = %1",_this];  
-
-//{
-//	diag_log format["_addMissionToQue: _this %1 = %2",_forEachIndex, _this select _forEachIndex];
-//} forEach _this;
+params[["_missionList",[]],["_missionDirectory",""],["_missionSubdirectory",""],["_marker",""],["_difficulty","Red"],["_tMin",60],["_tMax",120],["_noMissions",1],["_isStatic",false]];
 
 private "_waitTime";
 if (_isStatic) then {
@@ -28,7 +23,7 @@ private "_missionFile";
 
 private _missionsData = []; // Parameters definine each of the missions for this difficulty are stored as arrays here.
 {
-	_missionFile = format["\x\addons\GMS\Missions\%1\%2.sqf",_path,_x];
+	_missionFile = format["\x\addons\GMS\%1\%2\%3.sqf",_missionDirectory, _missionSubdirectory,_x];
 	if (GMS_debugLevel > 0) then {[format["_addMissionToQue: adding %1 mission with fileName %2",_difficulty,_missionFile]] call GMS_fnc_log};
 	private _missionCode = compileFinal preprocessFileLinenumbers _missionFile;//return all of the values that define how the mission is spawned as an array of values
 	if !(isNil "_missionCode") then 

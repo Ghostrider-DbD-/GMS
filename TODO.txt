@@ -1,6 +1,9 @@
 
 
 FIX and Test:
-Group movement needs a jumpstart when groups are spawned in - need to check how this is done in GMSAI. 
-Warning Message: Script \GMS\Compiles\Missions\GMS_fnc_garrisonBuilding_relPosSystem.sqf not found
-fn_garrisonBuilding_ATLsystem
+TODO: remove the building garrison systems
+TODO: Redo spawning of ships and subs and verify these are functioning
+TODO: be sure all aspects of mission cleanup function as intended
+TODO: ensure money is added in Epoch and Exile without errors for all types of spawns 
+TODO: look for any remaining code optimization based on difficulty index 
+

@@ -45,4 +45,4 @@ _noAIGroups = GMS_AIGrps_Blue;
 _noVehiclePatrols = GMS_SpawnVeh_Blue;
 _noEmplacedWeapons = GMS_SpawnEmplaced_Blue;
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf"; 

@@ -12,6 +12,7 @@
 */
 
 private["_pathBlue","_missionListBlue","_pathRed","_missionListRed","_pathGreen","_missionListGreen","_pathOrange","_missionListOrange"];
+private _missionDirectory = "Missions_GRG";
 private _pathScouts = "Scouts";
 private _missionListScouts = ["Scouts"];
 

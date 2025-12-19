@@ -105,4 +105,4 @@ _noAIGroups = GMS_AIGrps_Red;					// can be any value 0..N (note that 0 here pre
 _noVehiclePatrols = GMS_SpawnVeh_Red;			     // can be any value  0..N
 _noEmplacedWeapons = GMS_SpawnEmplaced_Red;	// can be any value
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

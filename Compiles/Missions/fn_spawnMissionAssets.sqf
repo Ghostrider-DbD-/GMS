@@ -65,8 +65,6 @@ _aiConfigs params [
 	"_weaponList",
 	"_sideArms", 	
 	"_missionLandscapeMode", 	
-	"_garrisonedBuildings_BuildingPosnSystem", 
-	"_garrisonedBuilding_ATLsystem",
 	"_missionLandscape",
 	"_simpleObjects",
 	"_missionPatrolVehicles",
@@ -95,19 +93,20 @@ _markerConfigs params[
 	"_markerName",  //  The unique text identifier for the marker
 	"_markerMissionName"
 ];
+private "_patrolAreaMarkerAir";
+//_objects pushback _patrolAreaMarkeAir; // This ensures the marker will be deleted during mission cleanup because the delete script is agnostic to types (object, marker, etc)
+private "_patrolAreaMarkerLand";
+//_objects pushback _patrolAreaMarkeAir; // This ensures the marker will be deleted during mission cleanup because the delete script is agnostic to types (object, marker, etc)
+
+//_objects pushback _patrolAreaMarkeLand; // This ensures the marker will be deleted during mission cleanup because the delete script is agnostic to types (object, marker, etc)
+										// But this may be redundant as GMSCore would delete the marker if _deleteMarker is true 
+										// So next step is to be sure _deleteMarker is true in all calls to configure group or spawn patrols for GMSCore
 
 private["_temp"];
 private _countUnits = 0;
 private _unitsAdded = 0;
 if (GMS_SmokeAtMissions select 0) then  // spawn a fire and smoke near the crate
 {
-	/*
-		params[["_pos",[0,0,0]],
-			["_mode","random"],
-			["_maxDist",12],
-			["_wrecks",_wrecksAvailable],
-			["_addFire",false]];
-	*/
 	_temp = [_coords,GMS_SmokeAtMissions select 1, GMS_wrecksAtMissions] call GMS_fnc_spawnSmokingObject;
 	_objects append _temp;
 	uiSleep delayTime;					
@@ -171,46 +170,6 @@ if !(_enemyLeaderConfig isEqualTo []) then
 	uiSleep delayTime;
 };
 
-
-/*  
-	No longer needed as of Build 270
-	Kept for backwards compatibility with existing missions. 
-*/
-if !(_garrisonedBuilding_ATLsystem isEqualTo []) then  // Note that there is no error checking here for nulGroups
-{
-	_temp = [_coords, _garrisonedBuilding_ATLsystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call GMS_fnc_garrisonBuilding_ATLsystem;
-	_temp params["_unitsSpawned","_staticsSpawned","_buildingsSpawned"];
-	_objects append _buildingsSpawned;
-	GMS_monitoredVehicles append _staticsSpawned;
-	_missionInfantry append _unitsSpawned;
-	_unitsAdded = count _unitsSpawned;
-	uiSleep delayTime;	
-	//diag_log format["_fnc_spawnMissionAssets (after GMS_fnc_garrisonBuilding_ATLsystem): _unitsAdded = %1",_unitsAdded];
-};	
-
-/*
-if !(_garrisonedBuildings_BuildingPosnSystem isEqualTo []) then
-{
-	
-	_temp = [_coords, _garrisonedBuildings_BuildingPosnSystem, _difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms] call GMS_fnc_garrisonBuilding_RelPosSystem;
-	_objects append (_temp select 1);
-	GMS_monitoredVehicles append (_temp select 2);
-	_missionInfantry append (units (_temp select 0));					
-	uiSleep delayTime;
-};
-*/
-/*  GMS_fnc_garrisonBuilding_RelPosSystem
-	params["_coords",
-		["_missionEmplacedWeapons",[]],
-		["_useRelativePos",true],
-		["_aiDifficultyLevel","red"],
-		["_uniforms",[]], 
-		["_headGear",[]],
-		["_vests",[]],
-		["_backpacks",[]],
-		["_weaponList",[]],
-		["_sideArms",[]]];
-*/			
 private _userelativepos = true;
  
 if (GMS_useStatic && !(_missionEmplacedWeapons isEqualTo [])) then
@@ -237,112 +196,95 @@ if (GMS_useStatic && !(_missionEmplacedWeapons isEqualTo [])) then
 		uisleep delayTime;
 	};						
 };
-//diag_log format["_spawnMissionAssets(241): _missionLootVehicles = %1",_missionLootVehicles];
+diag_log format["_spawnMissionAssets(241): _missionLootVehicles = %1",_missionLootVehicles];
 if !(_missionLootVehicles isEqualTo []) then 
 {
 	_lootVehicles = [_coords,_missionLootVehicles,_spawnCratesTiming,_missionFile] call GMS_fnc_spawnMissionLootVehicles;				
 	uiSleep delayTime;
 };
 
-/*  GMS_fnc_spawnMissionVehiclePatrols
-	["_coords",[]],
-	["_skillAI","Red"],
-	["_missionPatrolVehicles",[]],
-	["_uniforms",[]], 
-	["_headGear",[]],
-	["_vests",[]],
-	["_backpacks",[]],
-	["_weaponList",[]],
-	["_sideArms",[]], 
-	["_isScubaGroup",false],
-	["_crewCount",4]
-	];
-*/
-//diag_log format["_spawnMissionAssets (264): __missionPatrolVehicles = %1",_missionPatrolVehicles];
-if (GMS_useVehiclePatrols && {!(_missionPatrolVehicles isEqualTo [])}) then
-{
-	_temp = [_coords,_markerName,_difficulty,_missionPatrolVehicles,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
-	_temp params["_vehs","_units"]; 
-	_aiVehicles append _vehs;
-	_missionInfantry append _units;
-	uiSleep delayTime;				
-} else {
-	// GMSCore_fnc_getNumberFromRange returns -1 if there was an issue.	
-	private _noPatrols = [_noVehiclePatrols] call GMSCore_fnc_getNumberFromRange;	
-	if (GMS_useVehiclePatrols && {(_noPatrols > 0)}) then
+diag_log format["_spawnMissionAssets (264): __missionPatrolVehicles = %1",_missionPatrolVehicles];
+if (GMS_useVehiclePatrols) then {
+	_patrolAreaMarkerLand = createMarkerLocal[format["patrolAreaLand%1", random(100000)], _coords];
+	_patrolAreaMarkerLand setMarkerShapeLocal "ELLIPSE";
+	_patrolAreaMarkerLand setMarkerSizeLocal [300,300];	
+	if !(_missionPatrolVehicles isEqualTo []) then
 	{
-		private _spawnLocations = [_coords,_noVehiclePatrols,60,100] call GMS_fnc_findPositionsAlongARadius;	
-		private _vicsToSpawn = [];
-		{
-			private _veh = [_difficulty] call GMS_fnc_selectPatrolVehicle;
-			_vicsToSpawn pushBack [_veh, _x vectorDiff _coords];
-		}forEach _spawnLocations;	
-		#define useRelativePos true				
-		_temp = [_coords,_markerName,_difficulty,_vicsToSpawn, _uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
+		_temp = [_coords, _patrolAreaMarkerLand,_difficulty,_missionPatrolVehicles,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
 		_temp params["_vehs","_units"]; 
 		_aiVehicles append _vehs;
 		_missionInfantry append _units;
 		uiSleep delayTime;				
-	};	
+	} else {
+		// GMSCore_fnc_getNumberFromRange returns -1 if there was an issue.	
+		private _noPatrols = [_noVehiclePatrols] call GMSCore_fnc_getNumberFromRange;	
+		if (_noPatrols > 0) then
+		{
+			private _spawnLocations = [_coords,_noVehiclePatrols,60,100] call GMS_fnc_findPositionsAlongARadius;	
+			private _vicsToSpawn = [];
+			{
+				//  TODO: Fix this 
+				private _index = [_difficulty] call GMS_fnc_getIndexFromDifficulty;
+				private _vehList = GMS_patrolVehiclesLists select _index;
+				private _veh = selectRandom _vehlist; 
+				_vicsToSpawn pushBack [_veh, _x vectorDiff _coords];
+			}forEach _spawnLocations;	
+			#define useRelativePos true				
+			_temp = [_coords, _patrolAreaMarkerLand,_difficulty,_vicsToSpawn, _uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,false,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
+			_temp params["_vehs","_units"]; 
+			_aiVehicles append _vehs;
+			_missionInfantry append _units;
+			uiSleep delayTime;				
+		};	
+	};
+	if !(_submarinePatrolParameters isEqualTo []) then {
+		_temp = [_coords,_patrolAreaMarkerLand,_difficulty,_submarinePatrolParameters,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,true,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
+		_temp params["_vehs","_units"]; 
+		GMS_monitoredVehicles append _vehs;
+		GMS_landVehiclePatrols append _vehs;
+		_missionInfantry append _units;
+		_aiVehicles append _vehs;
+	} else {
+
+	};
 };
 
-// TODO: Update code to match latest GMSCore
-if (GMS_useVehiclePatrols && {((_submarinePatrols > 0) || {!(_submarinePatrolParameters isEqualTo [])} )} ) then
-{
-	_temp = [_coords,_noPatrols,_difficulty,_submarinePatrolParameters,_userelativepos,_uniforms,_headGear,_vests,_backpacks,_weaponList,_sideArms,_isScubaMission,_vehicleCrewCount] call GMS_fnc_spawnMissionVehiclePatrols;
-	_temp params["_vehs","_units"]; 
-	GMS_monitoredVehicles append _vehs;
-	GMS_landVehiclePatrols append _vehs;
-	_aiVehicles append _vehs;
-	_missionInfantry append _units;
-	uiSleep  delayTime;
-};		
-
-/*  GMS_fnc_spawnMissionHelis
-	params[
-		["_coords",[0,0,0]],
-		["_missionHelis",[]],
-		["_difficulty","Red"],
-		["_uniforms",[]],
-		["_headgear",[]],
-		["_vests",[]],
-		["_backpacks",[]],
-		["_weaponList",[]],
-		["_sideArms",[]]
-	];			
-*/
-
-if !(_airPatrols isEqualTo [] && {random(1) < _chanceHeliPatrol}) then // Spawn any choppers defined in the array  
-{
-	_temp = [_coords, _markerName, _airPatrols,_difficulty,_uniforms,_headgear,_vests,_backpacks,_weaponList,_sidearms] call GMS_fnc_spawnMissionHelis;
-	_temp params["_helisSpawned","_unitsSpawned"];
-	GMS_monitoredVehicles append _helisSpawned;
-	GMS_aircraftPatrols append _helisSpawned; // Used to find nearest heli ... 
-	_aiVehicles append _helisSpawned;
-	_missionInfantry append _unitsSpawned;				
-	uisleep delayTime;						
-} else {
-	// GMSCore_fnc_getNumberFromRange returns -1 if there was an issue.		
-	private _noPatrols = [_noVehiclePatrols] call GMSCore_fnc_getNumberFromRange;	
-	if ((_noChoppers > 0) && {random(1) < _chanceHeliPatrol}) then
+if (random(1) < _chanceHeliPatrol) then {
+	_patrolAreaMarkerAir = createMarkerLocal[format["patrolAreaAir%1", random(100000)], _coords];
+	_patrolAreaMarkerAir setMarkerShapeLocal "ELLIPSE";
+	_patrolAreaMarkerAir setMarkerSizeLocal [300,300];		
+	if !(_airPatrols isEqualTo []) then // Spawn any choppers defined in the array  
 	{
-		//  GMS_fnc_findPositionsAlongARadius:  params["_center","_num","_minDistance","_maxDistance"];
-		private _spawnLocations = [_coords,_noChoppers,100,120] call GMS_fnc_findPositionsAlongARadius;		
-		private _helisToSpawn = []; 
-		private _availableHelis = [_difficulty] call GMS_fnc_selectMissionHelis;
-		{
-			private _heli = selectRandom _availableHelis; 
-			_helisToSpawn pushBack[_heli, _x vectorDiff _coords, random(359)];
-		} forEach _spawnLocations;
-		_temp = [_coords,_markerName, _helisToSpawn,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call GMS_fnc_spawnMissionHelis;
+		_temp = [_coords, _patrolAreaMarkerAir, _airPatrols,_difficulty,_uniforms,_headgear,_vests,_backpacks,_weaponList,_sidearms] call GMS_fnc_spawnMissionHelis;
 		_temp params["_helisSpawned","_unitsSpawned"];
 		GMS_monitoredVehicles append _helisSpawned;
 		GMS_aircraftPatrols append _helisSpawned; // Used to find nearest heli ... 
 		_aiVehicles append _helisSpawned;
-		_missionInfantry append _unitsSpawned;			
-		uisleep delayTime;				
-	};				
-};
+		_missionInfantry append _unitsSpawned;				
+		uisleep delayTime;						
+	} else {
+		// GMSCore_fnc_getNumberFromRange returns -1 if there was an issue.		
+		private _noPatrols = [_noVehiclePatrols] call GMSCore_fnc_getNumberFromRange;	
+		if ((_noChoppers > 0) && {random(1) < _chanceHeliPatrol}) then
+		{
+			//  GMS_fnc_findPositionsAlongARadius:  params["_center","_num","_minDistance","_maxDistance"];
+			private _spawnLocations = [_coords,_noChoppers,100,120] call GMS_fnc_findPositionsAlongARadius;		
+			private _helisToSpawn = []; 
+			private _availableHelis = [_difficulty] call GMS_fnc_selectMissionHelis;
+			{
+				private _heli = selectRandom _availableHelis; 
+				_helisToSpawn pushBack[_heli, _x vectorDiff _coords, random(359)];
+			} forEach _spawnLocations;
+			_temp = [_coords, _patrolAreaMarkerAir, _helisToSpawn,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call GMS_fnc_spawnMissionHelis;
+			_temp params["_helisSpawned","_unitsSpawned"];
+			GMS_monitoredVehicles append _helisSpawned;
+			GMS_aircraftPatrols append _helisSpawned; // Used to find nearest heli ... 
+			_aiVehicles append _helisSpawned;
+			_missionInfantry append _unitsSpawned;			
+			uisleep delayTime;				
+		};				
+	};
+}; 
 
 if (_spawnCratesTiming in ["atMissionSpawnGround","atMissionSpawnAir"]) then
 {
@@ -378,22 +320,9 @@ if (GMS_showCountAliveAI) then
 	];
 };
 
-/*
-_missionData params [
-	"_coords",				// index 0 
-	"_mines",				// index 1 
-	"_objects",				// index 2 
-	"_hiddenObjects",		// index 3 
-	"_crates",				// index 4 
-	"_missionInfantry",		// index 5 
-	"_assetSpawned",		// index 6 
-	"_aiVehicles",			// index 7 
-	"_lootVehicles",		// index 8 
-	"_markers"				// index 9
-];
-*/
 #define indexMines 1 
 #define indexCrates 4
 _missionData set[indexMines, _mines]; 
 _missionData set[indexCrates, _crates];
+[format["_spawnMissionAssets:  script complete for _markerMissionName %1", _markerMissionName]] call GMS_fnc_log;
 

@@ -100,4 +100,4 @@ _noVehiclePatrols = GMS_SpawnVeh_Green;
 _noEmplacedWeapons = GMS_SpawnEmplaced_Green;
 _useMines = GMS_useMines;  // Setting this in the mission file overrides the defaults 
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

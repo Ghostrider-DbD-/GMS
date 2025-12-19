@@ -175,20 +175,23 @@ diag_log "[GMS] <<--->> starting crash site monitor";
 private _index = 0;
 private _lootNum = 5;
 
-while {true} do
-{
-	if (GMS_activeCrashSites < GMS_maxCrashSites)  then // Spawn another site
+_fn_crashSiteMonitor = {
+	while {true} do
 	{
-		uiSleep ((GMS_TMin_Crashes + random(GMS_TMax_Crashes)) - GMS_TMin_Crashes);
-		if (diag_FPS > GMS_minFPS) then 
+		if (GMS_activeCrashSites < GMS_maxCrashSites)  then // Spawn another site
 		{
-			_index = _index + 1;
-			private _posOfCrash = [] call GMS_fnc_findSafePosn;
-			if !(_posOfCrash isEqualTo []) then 
+			uiSleep ((GMS_TMin_Crashes + random(GMS_TMax_Crashes)) - GMS_TMin_Crashes);
+			if (diag_FPS > GMS_minFPS) then 
 			{
-				[_index,_posOfCrash] spawn _fn_spawnWreckMission;
+				_index = _index + 1;
+				private _posOfCrash = [] call GMS_fnc_findSafePosn;
+				if !(_posOfCrash isEqualTo []) then 
+				{
+					[_index,_posOfCrash] spawn _fn_spawnWreckMission;
+				};
 			};
 		};
+		uiSleep 20;
 	};
-	uiSleep 20;
 };
+[] call _fn_crashSiteMonitor;

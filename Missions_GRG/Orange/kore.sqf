@@ -109,4 +109,4 @@ _noEmplacedWeapons = GMS_SpawnEmplaced_Orange;
 _submarinePatrols = 0; // Default number of submarine patrols at pirate missions
 _scubaPatrols = 0; // Default number of scuba diver patrols at pirate missions
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

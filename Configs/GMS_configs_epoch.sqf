@@ -145,7 +145,8 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		"CUP_O_BMP1_TKA"
 	];	
 	
-	GMS_AIPatrolVehicles = ["B_G_Offroad_01_armed_EPOCH","B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"]; // Type of vehicle spawned to defend AI bases	
+	// TODO: be sure GMS_AIPatrolVehicles is not shown in other mod-specific configs
+	//private _AIPatrolVehicles = ["B_G_Offroad_01_armed_EPOCH","B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"]; // Type of vehicle spawned to defend AI bases	
 	//GMS_AIPatrolVehicles = GMS_lightlyArmed_CUP;
 	GMS_AIPatrolVehiclesBlue = ["B_G_Offroad_01_armed_EPOCH","B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"];
 	GMS_AIPatrolVehiclesRed = ["O_MBT_02_cannon_F","O_APC_Tracked_02_AA_F","O_APC_Tracked_02_cannon_F"];  // I recomend you switch Red and Green here
@@ -225,6 +226,9 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	GMS_Pistols = [
 		"hgun_PDW2000_F","hgun_ACPC2_F","hgun_Rook40_F","hgun_P07_F","hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Pistol_Signal_F"
 	];	
+
+	// Note: you can also specify lists of sidearms that can be equiped for each dificulty level
+	// By setting an individualized list below. 
 	GMS_Pistols_blue = GMS_Pistols;
 	GMS_Pistols_red = GMS_Pistols;
 	GMS_Pistols_green = GMS_Pistols;
@@ -245,6 +249,7 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 						
 	//This defines the random weapon to spawn on the AI
 	//https://community.bistudio.com/wiki/Arma_3_CfgWeapons_Weapons
+	// You can further individualize these lists
 	GMS_WeaponList_Orange = GMS_RifleSniper + GMS_RifleAsault_650 + GMS_RifleLMG + GMS_DLC_Sniper + GMS_DLC_MMG;
 	GMS_WeaponList_Green = GMS_RifleSniper + 	GMS_RifleAsault_650 +GMS_RifleLMG + GMS_DLC_MMG + GMS_apexWeapons;
 	GMS_WeaponList_Blue = GMS_RifleOther + GMS_RifleAsault_556 +GMS_RifleAsault_650;
@@ -256,20 +261,23 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 		GMS_WeaponList_Green = GMS_WeaponList_Green + GMS_apexWeapons;
 	#endif
 	
-	GMS_backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
-	GMS_ApexBackpacks = [
+	private _backpacks = ["B_Carryall_ocamo","B_Carryall_oucamo","B_Carryall_mcamo","B_Carryall_oli","B_Carryall_khk","B_Carryall_cbr" ];  
+	private _ApexBackpacks = [
 		"B_Bergen_mcamo_F","B_Bergen_dgtl_F","B_Bergen_hex_F","B_Bergen_tna_F","B_AssaultPack_tna_F","B_Carryall_ghex_F",
 		"B_FieldPack_ghex_F","B_ViperHarness_blk_F","B_ViperHarness_ghex_F","B_ViperHarness_hex_F","B_ViperHarness_khk_F",
 		"B_ViperHarness_oli_F","B_ViperLightHarness_blk_F","B_ViperLightHarness_ghex_F","B_ViperLightHarness_hex_F","B_ViperLightHarness_khk_F","B_ViperLightHarness_oli_F"
 		];
 	
 	#ifdef useAPEX
-		GMS_backpacks = GMS_backpacks + GMS_ApexBackpacks;
+		_backpacks = _backpacks append _ApexBackpacks;
 	#endif
-	GMS_backpacks_blue = GMS_backpacks;
-	GMS_backpacks_red = GMS_backpacks;
-	GMS_backpacks_green = GMS_backpacks;
-	GMS_backpacks_orange = GMS_backpacks;
+
+
+	// TODOI use more PRIVATE variables across other configs for Exile and Default 
+	GMS_backpacks_blue = _backpacks;
+	GMS_backpacks_red = _backpacks;
+	GMS_backpacks_green = _backpacks;
+	GMS_backpacks_orange = _backpacks;
 	
 	GMS_BanditHeadgear = ["H_Shemag_khk","H_Shemag_olive","H_Shemag_tan","H_ShemagOpen_khk"];
 	//This defines the skin list, some skins are disabled by default to permit players to have high visibility uniforms distinct from those of the AI.
@@ -402,11 +410,14 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 			"H_HelmetO_ghex_F",
 			"H_HelmetCrew_O_ghex_F"			
 	];
-	GMS_headgearList = GMS_headgear + GMS_helmets;
-	GMS_headgear_blue = GMS_headgearList;
-	GMS_headgear_red = GMS_headgearList;
-	GMS_headgear_green = GMS_headgearList;
-	GMS_headgear_orange = GMS_headgearList;
+
+	// Note: you can specify what headgear to use for each level of AI
+	// By setting up lists for each of the difficultiy levels below
+	private _headgearList = GMS_headgear + GMS_helmets;
+	GMS_headgear_blue = _headgearList;
+	GMS_headgear_red = _headgearList;
+	GMS_headgear_green = _headgearList;
+	GMS_headgear_orange = _headgearList;
 	
 	//This defines the skin list, some skins are disabled by default to permit players to have high visibility uniforms distinct from those of the AI.
 	GMS_SkinList_Male = [

@@ -121,4 +121,4 @@ _noEmplacedWeapons = GMS_SpawnEmplaced_Red;
 _submarinePatrols = 0;
 _scubaPatrols = 0;
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

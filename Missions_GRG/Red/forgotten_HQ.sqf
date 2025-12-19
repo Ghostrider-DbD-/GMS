@@ -27,17 +27,6 @@ _missionLandscapeMode = "precise"; // acceptable values are "none","random","pre
 
 //////////
 //   Past the output of the script here
-_garrisonedBuildings_BuildingPosnSystem = [
-];
-
-_garrisonedBuilding_ATLsystem = [
-     ["Land_Cargo_Patrol_V2_F",[-16.0361,-36.5635,-0.00143862],0,true,true,[["O_G_HMG_02_high_F",[1.07422,-1.17676,4.38749],183.214]],[]],
-     ["Land_Cargo_Patrol_V2_F",[1.44385,-36.4934,-0.00143862],0,true,true,[["O_G_HMG_02_high_F",[-1.49438,-1.08521,4.38749],183.771]],[]],
-     ["Land_Cargo_HQ_V2_F",[-20.6721,-8.55249,-0.00143862],180,true,true,[["O_G_HMG_02_high_F",[-4.84253,-3.34399,3.16997],0.00630354]],[]],
-     ["Land_Cargo_Tower_V2_F",[-16.9631,-26.0334,-0.00143909],180,true,true,[["O_G_HMG_02_high_F",[-4.54858,0.758057,17.9329],0.00661736],["O_G_HMG_02_high_F",[3.65967,3.33838,17.9329],0.000690221]],[]],
-     ["Land_Cargo_HQ_V2_F",[7.14893,2.62769,-0.00143862],270.279,true,true,[["O_G_HMG_02_high_F",[-0.843506,5.84277,3.16996],0.00567617]],[]]
-];
-
 
 _missionLandscape = [
      ["Land_CncWall4_F",[-32.4219,-12.8027,-0.00143909],90,true,true],
@@ -187,4 +176,4 @@ _spawnCratesTiming = "atMissionSpawnAir"; // Choices: "atMissionSpawnGround","at
 						 // Crates spawned in the air will be spawned at mission center or the position(s) defined in the mission file and dropped under a parachute.
 						 //  This sets the default value but can be overridden by defining  _spawnCrateTiming in the file defining a particular mission.
 
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";  

@@ -25,15 +25,6 @@ _markerColor = "ColorBlack";
 _markerMissionName = "Military Camp";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
 
-//////////
-//   Past the output of the script here
-_garrisonedBuildings_BuildingPosnSystem = [
-];
-
-_garrisonedBuilding_ATLsystem = [
-     ["Land_Cargo_House_V3_F",[8.00928,15.6453,-0.00143909],0,true,true,[["B_HMG_01_high_F",[-8.28516,3.27148,-0.0121188],0.000433404]],[]]
-];
-
 _missionLandscape = [
      //["babe_helper",[-3327.46,-2809.42,-0.00143909],0,true,true],
      //["Sign_Arrow_Green_F",[-3324.96,-2809.92,-0.00143909],0,true,true],

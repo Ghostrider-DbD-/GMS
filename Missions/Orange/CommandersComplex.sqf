@@ -3,7 +3,7 @@ Mission Compositions prepared for ghostridergaming by Ghostrider [GRG]
 */
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 #include "\x\addons\GMS\Missions\GMS_privateVars.sqf";
-diag_log "[GMS] Spawning Orange Mission with template = commandersComplex";
+//diag_log "[GMS] Spawning Orange Mission with template = commandersComplex";
 _crateLoot = GMS_BoxLoot_Orange;
 _lootCounts = [35,70,30,60,54,9];  //  	GMS_lootCountsOrange = [8,32,8,30,16,1];
 _startMsg = "An enemy Commander was sighted in a nearby sector! (BLACK/HARDEST)";
@@ -13,13 +13,6 @@ _markerType = ["ellipse",[750,750],"SOLID"];
 _markerColor = "ColorBlack";
 _markerMissionName = "Commander Creosote (AA)";
 _missionLandscapeMode = "precise"; // acceptable values are "none","random","precise"
-
-_garrisonedBuildings_BuildingPosnSystem = [
-];
-
-_garrisonedBuilding_ATLsystem = [     
-     ["Land_Cargo_HQ_V3_F",[8.32422,-11.2773,-0.00143886],0,true,true,[["B_static_AA_F",[-3.21094,2.91797,3.13029],359.986],["B_static_AT_F",[3.09961,3.7168,3.67582],320.819],["B_static_AT_F",[-2.95117,-5.06445,3.13029],0.00396196],["B_static_AA_F",[6.08203,2.0957,3.13441],359.809],["B_static_AA_F",[-12.6777,-1.39648,0.00477552],0.00115225],["B_T_HMG_01_F",[-5.99609,-11.9609,0.077373],359.996],["B_static_AA_F",[1.77344,13.498,0.00477648],359.997],["B_static_AT_F",[15.0996,-8.0293,0.00477219],0.000537688],["B_T_HMG_01_F",[15.2148,8.1875,0.077373],359.997],["B_HMG_01_A_F",[-18.8223,-10.2754,0.0773745],359.997]],[]]
-];
 
 _missionLandscape = [
      ["Land_BagBunker_Small_F",[-27.3281,-18.457,-0.299264],86.0005,true,true],

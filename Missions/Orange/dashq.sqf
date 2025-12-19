@@ -27,12 +27,6 @@ _missionLandscapeMode = "precise"; // acceptable values are "none","random","pre
 
 //////////
 //   Past the output of the script here
-_garrisonedBuildings_BuildingPosnSystem = [
-];
-
-_garrisonedBuilding_ATLsystem = [
-     ["Land_Cargo_HQ_V1_F",[-0.358154,-18.6514,-0.00143862],179.905,true,true,[["B_HMG_01_high_F",[-6.5437,1.09253,3.11855],145.121],["B_HMG_01_high_F",[-13.9094,-10.7791,-0.0121183],206.716]],[]]
-];
 
 _missionLandscape = [
      ["Land_PortableLight_double_F",[-42.614,-26.0178,-0.00143909],225.577,true,true],

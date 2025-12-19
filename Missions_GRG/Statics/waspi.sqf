@@ -79,12 +79,7 @@ _lootCounts = GMS_lootCountsOrange;
 _garrisonedBuilding_ATLsystem = [
 
 ];
-/*
-     Depricated Variable Included for Backwards Compatibility with Existing Missions
-*/
-_garrisonedBuildings_BuildingPosnSystem = [
-
-];
+//
 _missionLandscape = [
      ["CUP_B_LHD_WASP_USMC_Empty",[1.25586,-0.912354,202.956],306.311,[true,true]],
      ["RoadCone_F",[-37.853,31.032,210.918],0,[true,true]]
@@ -152,4 +147,4 @@ _missionLootBoxes = [
 /*
 	Do not touch the code below 
 */
-#include "\x\addons\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";
+#include "\x\addons\GMS\Compiles\Missions\GMS_fnc_missionSpawner.sqf";

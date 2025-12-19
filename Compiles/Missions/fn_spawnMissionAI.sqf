@@ -36,35 +36,11 @@ if !(_missionGroups isEqualTo []) then
 		//[format["GMS_fnc_spawnMissionAI: params returned _minAI %1 | _maxAI %2 _position %3 | _skillLevel %4",_minAI,_maxAI,_position,_skillLevel]] call GMS_fnc_log;
 		_unitsToSpawn = round(_min + round(random(_max - _min)));
 		private _groupPos = _coords vectorAdd _position;
-		private _newGroup = [_groupPos,_unitsToSpawn,_aiDifficultyLevel,patrolAreadDimensions,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup,GMS_waypointTimeoutInfantry,"Soldier"] call GMS_fnc_spawnGroup;
-		/*
-		[
-			_group,
-			GMSAI_BlacklistedLocations,
-			_patrolMarker,
-			waypointTimeoutInfantryPatrols,
-			GMSAI_chanceToGarisonBuilding,
-			"infantry",
-			_deletemarker
-		] call GMSCore_fnc_initializeWaypointsAreaPatrol;
-		*/
-		private _movetoPos = [[[_groupPos, patrolAreadDimensions]],[]/* add condition that the spawn is not near a trader*/] call BIS_fnc_randomPos;
-		(leader _newGroup) moveTo _movetoPos;
-		(leader _newGroup) call GMSCore_fnc_nextWaypointAreaPatrol;		
-		/*
-		[
-			_newGroup, 
-			[_groupPos, [50,50]],
-			300,
-			0.33,
-			"infantry",
-			true
-		] call GMSCore_fnc_initializeWaypointsAreaPatrol;
-		*/
+		private _newGroup = [_groupPos,_unitsToSpawn,_aiDifficultyLevel,patrolAreadDimensions,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call GMS_fnc_spawnGroup;	
 		_groups pushBack _newGroup;		
 		GMS_monitoredMissionAIGroups pushback _newGroup;
 		_allAI append (units _newGroup);
-		//[format["GMS_fnc_spawnMissionAI: _group %1 with %2 units added | _min %3 | _max %4 | _unitsToSpawn %5",_newGroup, count (units _newGroup),_min,_max,_unitsToSpawn]]call GMS_fnc_log;				
+		[format["GMS_fnc_spawnMissionAI: _group %1 with %2 units added | _min %3 | _max %4 | _unitsToSpawn %5",_newGroup, count (units _newGroup),_min,_max,_unitsToSpawn]]call GMS_fnc_log;				
 	}forEach _missionGroups;
 } else {
 	if (_noAIGroups > 0) then
@@ -76,11 +52,11 @@ if !(_missionGroups isEqualTo []) then
 		private _area = [_coords,[200,200]];
 		private _groupPosns = [_coords,_noAIGroups,30,50] call GMS_fnc_findPositionsAlongARadius;
 		{
-			_newGroup = [_x,_unitsPerGroup,_aiDifficultyLevel,patrolAreadDimensions,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup,GMS_waypointTimeoutInfantry] call GMS_fnc_spawnGroup;
+			_newGroup = [_x,_unitsPerGroup,_aiDifficultyLevel,patrolAreadDimensions,_uniforms,_headGear,_vests,_backpacks,_weapons,_sideArms,_isScubaGroup] call GMS_fnc_spawnGroup;
 			_groups pushBack _newGroup;
 			GMS_monitoredMissionAIGroups pushback _newGroup;
 			_allAI append (units _newGroup);
-			//[format["GMS_fnc_spawnMissionAI: _group %1 with %2 units added",_newGroup, count (units _newGroup)]]	call GMS_fnc_log;
+			[format["GMS_fnc_spawnMissionAI: _group %1 with %2 units added",_newGroup, count (units _newGroup)]]	call GMS_fnc_log;
 		} forEach _groupPosns;
 	};
 };
