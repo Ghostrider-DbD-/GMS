@@ -13,8 +13,8 @@
 
  class GMSBuild {
 	 Version = "7.3";
-	 Build = "283"; 
-	 Date = "12-18-2025";
+	 Build = "284"; 
+	 Date = "12-26-2025";
  };
 
 class CfgPatches {
@@ -24,6 +24,10 @@ class CfgPatches {
 		requiredVersion = 0.1;
 		requiredAddons[] = {"GMSCore"};
 	};
+};
+
+class CfgGMSmissiosystem {
+	GMS_debugLevel = 5;
 };
 
 class CfgFunctions {
