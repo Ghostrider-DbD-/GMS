@@ -23,6 +23,7 @@ GMS_minFPS = 12;
 //  Do Not Touch Anything Below This Line
 ///////////////////////////////////////////////
 
+GMS_locationBlackList = [];  
 GMS_townLocations = []; //nearestLocations [GMS_mapCenter, ["NameCity","NameCityCapital"], 30000];
 GMS_ActiveMissionCoords = [];
 GMS_recentMissionCoords = [];

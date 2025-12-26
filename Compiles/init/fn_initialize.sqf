@@ -31,10 +31,22 @@ if (hasInterface) exitWith
 	// Just some housekeeping for ghost.
 	private _loadingStartTime = diag_tickTime;
 
+		/*
+		changing any of these variables may break the mission system
+	*/
+
+	GMS_debugLevel = getNumber(configFile >> "CfgGMSmissiosystem" >> "GMS_debugLevel");  // 
+
+	diag_log format["[GMS] _initialize: GMS_debugLevel = %1", GMS_debugLevel];
+
 	// compile functions
 	[] call compileFinal preprocessFileLineNumbers "\x\addons\GMS\Compiles\Init\GMS_functions.sqf";
 	diag_log format["[GMS] Loaded Functions at %1",diag_tickTime];
 	
+	// Load vaariables used to store information for the mission system.
+	[] call compileFinal preprocessFileLineNumbers "\x\addons\GMS\Compiles\Init\GMS_variables.sqf";
+	if (GMS_debugLevel > 0) then {[format["DEBUG ON: Variables loaded at %1",diag_tickTime]] call GMS_fnc_log};
+
 	// Load Configs
 	[] call compile preprocessfilelinenumbers "\x\addons\GMS\Configs\GMS_configs.sqf";
 
@@ -49,10 +61,6 @@ if (hasInterface) exitWith
 
 	if (GMS_debugLevel > 0) then {[format["DEBUG ON: Custom Configurations Loaded at %1",diag_tickTime]] call GMS_fnc_log};
 	if (GMS_debugLevel > 0) then {[format["GMS_debugLevel = %1",GMS_debugLevel]] call GMS_fnc_log};
-
-	// Load vaariables used to store information for the mission system.
-	[] call compileFinal preprocessFileLineNumbers "\x\addons\GMS\Compiles\Init\GMS_variables.sqf";
-	if (GMS_debugLevel > 0) then {[format["DEBUG ON: Variables loaded at %1",diag_tickTime]] call GMS_fnc_log};
 
 	// find and set Mapcenter and size
 	[] call compileFinal preprocessFileLineNumbers "\x\addons\GMS\Compiles\init\GMS_fnc_findWorld.sqf";

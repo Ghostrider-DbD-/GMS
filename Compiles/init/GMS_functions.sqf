@@ -11,6 +11,9 @@
 	http://creativecommons.org/licenses/by-nc-sa/4.0/
 */
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
+// TODO: Review these and update as needed.
+// TODO: we no longer spawn UMS Missions
+// TODO: Rethink the need for leader and hostage missions; no one liked them - too much chance of failure and too hard to complete.
 
 private _functions = [
 	// General functions

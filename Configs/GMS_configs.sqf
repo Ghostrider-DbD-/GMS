@@ -13,12 +13,6 @@
 
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 
-	/*
-		changing any of these variables may break the mission system
-	*/
-	GMS_locationBlackList = [];  // Do not touch ...
-	GMS_debugLevel = 5;  //  should be set to 0 ... 
-
 	[format["Loading configurations for Non-militarized servers"]] call GMS_fnc_log;
 	/*
 		**************************************
