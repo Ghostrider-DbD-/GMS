@@ -23,9 +23,12 @@ if (GMS_missionsRunning >= GMS_maxSpawnedMissions) exitWith
 for "_i" from 1 to (count GMS_missionData) do 
 {	
 	if (_i > (count GMS_missionData)) exitWith {};
+
+	// Select a category of mission to test for spawning (Blue, Red, Green, Orange, Scouts, Hunters)
+
 	private _missionDescriptors = GMS_missionData deleteAt 0;	
 
-	// _missionDescriptor is configures as follows:
+	// _missionDescriptor contains all data about a class of missions (blue, red, green, orange, Scouts, Hunters, Statics) and contains the following fields:
 	/*
 		private _mission = [
 			_key,				// We can search for this key or for _missionDescriptors if we need to delete this particular mission.
@@ -36,12 +39,11 @@ for "_i" from 1 to (count GMS_missionData) do
 			_tMax, 				// as above
 			_waitTime,  		// time at which a mission should be spawned
 			_missionsData,  	// Array of data about individual missions that could be spawned. The data table for each mission is defined in _missionSpawner
-			_isStatic,
-			_missionFile
+			_isStatic
 		];
 	*/	
 	
-	_missionDescriptors params["_key","_difficulty","_maxMissions","_activeMissions","_tMin","_tMax","_waitTime","_missionsData","_isStatic","_missionFile"];
+	_missionDescriptors params["_key","_difficulty","_maxMissions","_activeMissions","_tMin","_tMax","_waitTime","_missionsData","_isStatic","_missionListsFile"];
 	
 	// Just in case there are no missions to choose from for some reason.
 	// But this could happen if all of the available missions had reached their maximal number of respawns.
@@ -56,6 +58,9 @@ for "_i" from 1 to (count GMS_missionData) do
 		{
 			// time to reset timers and spawn something.
 			private _missionSelected = selectRandom _missionsData;
+			_missionSelected params["_missionParameters","_missionFileName"];
+			[format["_spawnNewMission: _missionSelected %1", _missionSelected]] call GMS_fnc_log;
+
 			// _missionSelected is configured as:
 			/*
 				params [
@@ -75,7 +80,7 @@ for "_i" from 1 to (count GMS_missionData) do
 					_spawnedAt					// index 14
 				];
 			*/
-			private _missionInitialized = [_key,_missionSelected,GMS_MissionsSpawned,_isStatic,_missionFile] call GMS_fnc_initializeMission;
+			private _missionInitialized = [_key,_missionParameters,GMS_MissionsSpawned,_isStatic,_missionFileName] call GMS_fnc_initializeMission;
 
 			switch (_missionInitialized) do 
 			{
@@ -101,7 +106,7 @@ for "_i" from 1 to (count GMS_missionData) do
 							// Remove this mission from the list. 
 					private _posn = _missionsData findIf {(_x select 0) isEqualTo _key};
 					_missionsData deleteAt _posn;
-					[format["Removed %1 from list of missions because of a FATAL ERROR", _missionFile],'warning'] call GMS_fnc_log;
+					[format["Removed %1 from list of missions because of a FATAL ERROR", _missionListsFile],'warning'] call GMS_fnc_log;
 					#define missionsData 7
 					_missionDescriptors set [missionsData, _missionsData];						
 				};

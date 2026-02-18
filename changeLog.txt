@@ -34,6 +34,13 @@ The static loot system and dynamic loot system are gone. THese outlived thier us
 I have kept the change log as a bit of history for those interested in development of this mission system. 
 Significant Changes:
 
+Build 287
+	Minor bug fixes 	
+	Adjusted AI numbers at all missions to match the default values 
+	Tested all missions to be sure the spawn and clear 
+
+
+
 Build 280
 	Reworked code to be compatible with updated GMSCore 	
 	Removed anything related to waypoint management, vehicle or AI movement, as this is entirely handled by GMSCore 

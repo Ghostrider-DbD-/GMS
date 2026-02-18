@@ -248,11 +248,12 @@ if (GMS_useVehiclePatrols) then {
 
 	};
 };
-
+//[format["_spawnMissionAssets: _missionHelis %1", _missionHelis]] call GMS_fnc_log;
 if (random(1) < _chanceHeliPatrol) then {
 	_patrolAreaMarkerAir = createMarkerLocal[format["patrolAreaAir%1", random(100000)], _coords];
 	_patrolAreaMarkerAir setMarkerShapeLocal "ELLIPSE";
 	_patrolAreaMarkerAir setMarkerSizeLocal [300,300];		
+
 	if !(_airPatrols isEqualTo []) then // Spawn any choppers defined in the array  
 	{
 		_temp = [_coords, _patrolAreaMarkerAir, _airPatrols,_difficulty,_uniforms,_headgear,_vests,_backpacks,_weaponList,_sidearms] call GMS_fnc_spawnMissionHelis;
@@ -271,16 +272,19 @@ if (random(1) < _chanceHeliPatrol) then {
 			private _spawnLocations = [_coords,_noChoppers,100,120] call GMS_fnc_findPositionsAlongARadius;		
 			private _helisToSpawn = []; 
 			private _availableHelis = [_difficulty] call GMS_fnc_selectMissionHelis;
-			{
-				private _heli = selectRandom _availableHelis; 
-				_helisToSpawn pushBack[_heli, _x vectorDiff _coords, random(359)];
-			} forEach _spawnLocations;
-			_temp = [_coords, _patrolAreaMarkerAir, _helisToSpawn,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call GMS_fnc_spawnMissionHelis;
-			_temp params["_helisSpawned","_unitsSpawned"];
-			GMS_monitoredVehicles append _helisSpawned;
-			GMS_aircraftPatrols append _helisSpawned; // Used to find nearest heli ... 
-			_aiVehicles append _helisSpawned;
-			_missionInfantry append _unitsSpawned;			
+			[format["_spawnMissionAssets: _availableHelis = %1", _availableHelis]] call GMS_fnc_log;
+			if !(_availableHelis isEqualTo []) then {
+				{
+					private _heli = selectRandom _availableHelis; 
+					_helisToSpawn pushBack[_heli, _x vectorDiff _coords, random(359)];
+				} forEach _spawnLocations;
+				_temp = [_coords, _patrolAreaMarkerAir, _helisToSpawn,_difficulty,_uniforms,_headGear,_vests,_backpacks,_weaponList, _sideArms] call GMS_fnc_spawnMissionHelis;
+				_temp params["_helisSpawned","_unitsSpawned"];
+				GMS_monitoredVehicles append _helisSpawned;
+				GMS_aircraftPatrols append _helisSpawned; // Used to find nearest heli ... 
+				_aiVehicles append _helisSpawned;
+				_missionInfantry append _unitsSpawned;	
+			};		
 			uisleep delayTime;				
 		};				
 	};

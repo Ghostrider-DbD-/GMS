@@ -9,6 +9,8 @@
 */
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 params[["_missionList",[]],["_missionDirectory",""],["_missionSubdirectory",""],["_marker",""],["_difficulty","Red"],["_tMin",60],["_tMax",120],["_noMissions",1],["_isStatic",false]];
+[format["_addMissionToCue: _missionDirectory %1", _missionDirectory]] call GMS_fnc_log;
+[format["_addMissionToCue: _missionSubdirectory %1", _missionSubdirectory]] call GMS_fnc_log;
 
 private "_waitTime";
 if (_isStatic) then {
@@ -23,6 +25,7 @@ private "_missionFile";
 
 private _missionsData = []; // Parameters definine each of the missions for this difficulty are stored as arrays here.
 {
+	
 	_missionFile = format["\x\addons\GMS\%1\%2\%3.sqf",_missionDirectory, _missionSubdirectory,_x];
 	if (GMS_debugLevel > 0) then {[format["_addMissionToQue: adding %1 mission with fileName %2",_difficulty,_missionFile]] call GMS_fnc_log};
 	private _missionCode = compileFinal preprocessFileLinenumbers _missionFile;//return all of the values that define how the mission is spawned as an array of values
@@ -31,7 +34,7 @@ private _missionsData = []; // Parameters definine each of the missions for this
 		private _data = [_marker,_difficulty] call _missionCode;
 		if !(isNil "_data") then 
 		{
-			_missionsData pushBack _data;
+			_missionsData pushBack [_data, _missionFile];
 			//diag_log format["_addMissionToQue: _data = %1",_data];
 		};
 	} else {
@@ -39,7 +42,10 @@ private _missionsData = []; // Parameters definine each of the missions for this
 	};
 } forEach _missionList;
 
+[format["_addMissionToCue: count _missionsData = %1", count _missionsData]] call GMS_fnc_log;
 
+private _missionListFile = format["\x\addons\GMS\%1\GMS_missionsLists.sqf" , _missionDirectory];
+[format["_addMissionToQue: _missionListFile %1", _missionListFile]] call GMS_fnc_log;
 private _key = round(random(10000));
 private _missions = [
 	_key,
@@ -51,7 +57,7 @@ private _missions = [
 	_waitTime,  // time at which a mission should be spawned
 	_missionsData,  // Array of data about individual missions that could be spawned. The data table for each mission is defined in _missionSpawner
 	_isStatic,
-	_missionFile
+	_missionListFile
 ];
 //diag_log format["_addMissionToQue (55): _missions = %1",_missions];
 GMS_missionData pushBack _missions;

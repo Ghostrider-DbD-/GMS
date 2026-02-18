@@ -17,11 +17,28 @@
 if !(isNil "GMS_missionSystemRunning") exitWith {"[GMS] Mission System already initialized"};
 GMS_missionSystemRunning = true;
 
+/*
+private _data = [1,2,3,4,5,6,7,8,9];
+for "_i" from 1 to 10 do {
+	for "_i" from 0 to 15 do {
+		private _count = _i;
+		private _output = [_data, _count] call GMSCore_fnc_selectRandomCount;
+		[format["_initialize: _count %1 _output %2", _count, _output]] call GMS_fnc_log;
+	};
+};
+_data = [];
+_count = 1;
+_output = [_data, _count] call GMSCore_fnc_selectRandomCount;
+[format["_initialize: _count %1 _output %2", _count, _output]] call GMS_fnc_log;
+*/
+
 // Only run this on a dedicated server
 if (hasInterface) exitWith 
 {
 	"[GMS] Mission system may only be run on a dedicate server or headless client";
 };
+
+/*  Test GMSCore_fnc_selectRandomCount*/
 
 [] spawn {
 	waitUntil {!isNil "GMSCore_Initialized"}; 
@@ -66,96 +83,28 @@ if (hasInterface) exitWith
 	[] call compileFinal preprocessFileLineNumbers "\x\addons\GMS\Compiles\init\GMS_fnc_findWorld.sqf";
 	if (GMS_debugLevel > 0) then {["DEBUG ON: Map-specific information defined"] call GMS_fnc_log};
 
-	// set up the lists of available missions for each mission category
-	#include "\x\addons\GMS\Missions\GMS_missionLists.sqf";
-	//#include "\x\addons\GMS\Missions_GRG\GMS_missionLists.sqf";
-	if (GMS_debugLevel > 0) then {["DEBUG ON: Mission Lists Loaded Successfully"] call GMS_fnc_log};
-	// TODO: merge in underwater / sea missions at some point 
+	{
+		// Parameters addBlacklistedLocation 
+		_x params[["_location", [[0,0,0], 0, 0]],["_name",""]];
+		[format["_initialze: _x %1 | _location %2 | _name %3", _x, _location, _name]] call GMS_fnc_log;
+		//[_location, _name] call GMSCore_fnc_addMissionNoSpawnZone;
+	} forEach GMS_locationBlackList;
 
-	//Start the mission timers
-	if (GMS_enableOrangeMissions > 0) then
-	{
-		[_missionListOrange,_missionDirectory,_pathOrange,"OrangeMarker","orange",GMS_TMin_Orange,GMS_TMax_Orange,GMS_enableOrangeMissions] call GMS_fnc_addMissionToQue;
-	};
-	if (GMS_enableGreenMissions > 0) then
-	{
-		[_missionListGreen,_missionDirectory,_pathGreen,"GreenMarker","green",GMS_TMin_Green,GMS_TMax_Green,GMS_enableGreenMissions] call GMS_fnc_addMissionToQue;
-	};
-	if (GMS_enableRedMissions > 0) then
-	{
-		[_missionListRed,_missionDirectory,_pathRed,"RedMarker","red",GMS_TMin_Red,GMS_TMax_Red,GMS_enableRedMissions] call GMS_fnc_addMissionToQue;
-	};
-	if (GMS_enableBlueMissions > 0) then
-	{
-		[_missionListBlue,_missionDirectory,_pathBlue,"BlueMarker","blue",GMS_TMin_Blue,GMS_TMax_Blue,GMS_enableBlueMissions] call GMS_fnc_addMissionToQue;
-	};
-
-	/*
-	if (GMS_numberUnderwaterDynamicMissions > 0) then 
-	{
-		if !(GMS_maxSeaSearchDistance == 0) then {
-			[_missionListUMS,_missionDirectory,_pathUMS,"UMSMarker","Red",GMS_TMin_UMS,GMS_TMax_UMS,GMS_numberUnderwaterDynamicMissions] call GMS_fnc_addMissionToQue;
+	private _modType = [] call GMSCore_fnc_getModType; 
+	[format["_initialize: _modeType = %1", _modType]] call GMS_fnc_log; 
+	switch (toLower _modType) do {
+		case "epoch": { 
+			["Missions_Epoch"] call GMS_fnc_loadMissionData;
+		};
+		case "exile": {
+			["Missions_Exile"] call GMS_fnc_loadMissionData;
+		};
+		case "default": {
+			["Missions_Default"] call GMS_fnc_loadMissionData;
 		};
 	};
-	*/
-	if (GMS_enableScoutsMissions > 0) then
-	{
-		[_missionListScouts,_missionDirectory,_pathScouts,"ScoutsMarker","red",GMS_TMin_Scouts,GMS_TMax_Scouts,GMS_enableScoutsMissions] call GMS_fnc_addMissionToQue;
-	};
 
-	if (GMS_enableHunterMissions > 0) then
-	{
-		[_missionListHunters,_missionDirectory,_pathHunters,"HunterMarker","green",GMS_TMin_Hunter,GMS_TMax_Hunter,GMS_enableHunterMissions] call GMS_fnc_addMissionToQue;
-	};
-
-	if (GMS_enableStaticMissions > 0 && !(_missionListStatics isEqualTo [])) then // GMS_enableStaticMissions should be an integer between 1 and N
-	{
-		[_missionListStatics, _missionDirectory, _pathStatics,"StaticsMarker","red", GMS_TMin_Statics, GMS_TMax_Statics, GMS_enableStaticMissions] call GMS_fnc_addMissionToQue;
-	};
-
-	// Flag any class names with issues (invald classname or classname without pricing)
-	{
-		private _var = missionNameSpace getVariable[_x,[]];
-		//[format["validating classnames and pricing for %1 | count = %2 | _x = %3",_x,count _var, _var]] call GMS_fnc_log;
-		_var = [_var,true] call GMSCore_fnc_checkClassnamesArray;
-		_var = [_var,true] call GMSCore_fnc_checkClassNamePrices;
-		//[format["GMS_init_server: Updated %1 | count = %2 | _x = %3",_x,count _var, _var]] call GMS_fnc_log;
-
-		//  NOTE: The lists below may need updating depending on what you have in your config files
-	} forEach [
-		"GMS_patrolHelisBlue",
-		"GMS_patrolHelisRed",
-		"GMS_patrolHelisGreen",
-		"GMS_patrolHelisOrange",
-		"GMS_AIPatrolVehiclesBlue",
-		"GMS_AIPatrolVehiclesRed",
-		"GMS_AIPatrolVehiclesGreen",
-		"GMS_AIPatrolVehiclesOrange",
-		"GMS_tools",
-		"GMS_buildingMaterials",
-		"GMS_NVG",
-		"GMS_specialItems",
-		"GMS_ConsumableItems",
-		"GMS_vests_blue",
-		"GMS_vests_red",
-		"GMS_vests_green",
-		"GMS_vests_orange",
-		"GMS_SkinList_blue",
-		"GMS_SkinList_red",
-		"GMS_SkinList_green",
-		"GMS_SkinList_orange",
-		"GMS_headgear_blue",
-		"GMS_headgear_red",
-		"GMS_headgear_green",
-		"GMS_headgear_orange",
-		"GMS_backpacks_blue",
-		"GMS_backpacks_red",
-		"GMS_backpacks_green",
-		"GMS_WeaponList_Blue",
-		"GMS_WeaponList_Red",
-		"GMS_WeaponList_Green",
-		"GMS_WeaponList_Orange"
-	];
+	[] call GMS_fnc_validateClassnames; 
 
 	// Define some arrays we will need when spawning stuff 
 	

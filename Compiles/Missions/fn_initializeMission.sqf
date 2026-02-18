@@ -79,8 +79,8 @@ _markerConfigs params [
 ];
 
 try {
-	[format["_initializeMission(248): Initializeing mission %1",_missionFile]] call GMS_fnc_log;	
-	//if (GMS_debugLevel > 0) then {[format["_initializeMission (82): _timesSpawned %1 | _maxMissionRespawns %2 | _missionFile %3",_timesSpawned,_maxMissionRespawns,_missionFile]] call GMS_fnc_log};
+	
+	if (GMS_debugLevel > 0) then {[format["_initializeMission (83): _timesSpawned %1 | _maxMissionRespawns %2 | _missionFile %3",_timesSpawned,_maxMissionRespawns,_missionFile]] call GMS_fnc_log};
 	if (_timesSpawned >= _maxMissionRespawns && !(_maxMissionRespawns == -1)) throw -2;
 
 	// If the mission is a static mission and it has been spawned but not cleared then pass back a code indicating that
@@ -192,8 +192,7 @@ try {
 		_markerShape,
 		_markerSize,
 		_markerBrush,
-		_showMarkers,
-		_missionFile
+		_showMarkers
 	] call GMS_fnc_createMissionMarkers;
 
 	if (_markers isEqualTo []) throw -1;  // Something happened when creating markers so alert the server scripter.

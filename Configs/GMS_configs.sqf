@@ -13,7 +13,7 @@
 
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 
-	[format["Loading configurations for Non-militarized servers"]] call GMS_fnc_log;
+	[format["Loading configurations from GMS_configs.sqf"]] call GMS_fnc_log;
 	/*
 		**************************************
 		Configurations begin here
@@ -590,7 +590,7 @@ switch (GMSCore_modType) do
 	GMS_MaxAI_Orange = 22;
 	GMS_AIGrps_Orange = 5;
 	GMS_SkillsOrange = [
-		[0.20],  // aiming accuracy
+		[0.14],  // aiming accuracy
 		[0.75,0.85],  //  aiming speed 
 		[0.25],  //  aiming shake 
 		1.0,  //  spot distance 
@@ -606,7 +606,7 @@ switch (GMSCore_modType) do
 	GMS_MaxAI_Green = 18;
 	GMS_AIGrps_Green = 4;
 	GMS_SkillsGreen = [
-		[0.18],  //  aiming accuracy 
+		[0.12],  //  aiming accuracy 
 		[0.65,0.75],  //  aiming speed 
 		[0.18], //  aiming shake
 		0.92,  //  spot distance 
@@ -622,7 +622,7 @@ switch (GMSCore_modType) do
 	GMS_MaxAI_Red = 13;
 	GMS_AIGrps_Red = 3;
 	GMS_SkillsRed = [
-		[0.14],  //  aiming accuracy 
+		[0.10],  //  aiming accuracy 
 		0.6,  //  aiming speed 
 		[0.14],  //  aiming shake 
 		0.7,  //  spot distance 

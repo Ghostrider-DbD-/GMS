@@ -12,7 +12,7 @@
 
 #include "\x\addons\GMS\Compiles\Init\GMS_defines.hpp"
 
-[format["Loading configurations for Epoch for blckeagls"]] call GMS_fnc_log;
+[format["Loading configurations for Epoch from GMS_configs_epoch.sqf"]] call GMS_fnc_log;
 ////////////
 // Epoch-specific settings
 ////////////	
@@ -149,9 +149,12 @@ AI WEAPONS, UNIFORMS, VESTS AND GEAR
 	//private _AIPatrolVehicles = ["B_G_Offroad_01_armed_EPOCH","B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"]; // Type of vehicle spawned to defend AI bases	
 	//GMS_AIPatrolVehicles = GMS_lightlyArmed_CUP;
 	GMS_AIPatrolVehiclesBlue = ["B_G_Offroad_01_armed_EPOCH","B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"];
-	GMS_AIPatrolVehiclesRed = ["O_MBT_02_cannon_F","O_APC_Tracked_02_AA_F","O_APC_Tracked_02_cannon_F"];  // I recomend you switch Red and Green here
-	GMS_AIPatrolVehiclesGreen = ["B_G_Offroad_01_armed_EPOCH","B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"];
-	GMS_AIPatrolVehiclesOrange = ["O_MBT_02_cannon_F","O_APC_Tracked_02_AA_F","O_APC_Tracked_02_cannon_F"];
+	//GMS_AIPatrolVehiclesRed = ["O_MBT_02_cannon_F","O_APC_Tracked_02_AA_F","O_APC_Tracked_02_cannon_F"];  // I recomend you switch Red and Green here
+	//GMS_AIPatrolVehiclesGreen = ["B_G_Offroad_01_armed_EPOCH","B_LSV_01_armed_F","I_C_Offroad_02_LMG_F","B_T_LSV_01_armed_black_F","B_T_LSV_01_armed_olive_F","B_T_LSV_01_armed_sand_F"];
+	//GMS_AIPatrolVehiclesOrange = ["O_MBT_02_cannon_F","O_APC_Tracked_02_AA_F","O_APC_Tracked_02_cannon_F"];
+	GMS_AIPatrolVehiclesRed = GMS_AIPatrolVehiclesBlue;
+	GMS_AIPatrolVehiclesGreen = GMS_AIPatrolVehiclesBlue;
+	GMS_AIPatrolVehiclesOrange = GMS_AIPatrolVehiclesBlue; 
 	
 	// Blacklisted itesm
 	GMS_blacklistedOptics = ["optic_Nightstalker","optic_tws","optic_tws_mg"];

@@ -13,9 +13,12 @@
 
  class GMSBuild {
 	 Version = "7.3";
-	 Build = "284"; 
-	 Date = "12-26-2025";
+	 Build = "288"; 
+	 Date = "02-02-2026";
  };
+class CfgGMSmissiosystem {
+	GMS_debugLevel = 5;
+};
 
 class CfgPatches {
 	class GMS {
@@ -26,8 +29,21 @@ class CfgPatches {
 	};
 };
 
-class CfgGMSmissiosystem {
-	GMS_debugLevel = 5;
+class Flag; 
+class CfgMarkers {
+	class GMS_Markers  : Flag
+	{
+		scope = 1;						// accessibility: 0 = private, 1 = protected, 2 = public
+		name = "Mission Location";			// name used in the Editor and other UIs
+		icon = "\A3\ui_f\data\map\markers\nato\respawn_plane_ca.paa";		// marker icon
+		texture = "\A3\ui_f\data\map\markers\nato\respawn_plane_ca.paa";	// ?
+		color[] = { 0, 0, 0, 1 };		// Color used for the icon and text
+		shadow = 0;						// 1 = shadow, 0 = no shadow
+		markerClass = "NATO_Respawn";	// ?
+		side = 1;						// side ID (0 = OPFOR, 1 = BLUFOR, 2 = INDFOR etc)
+		size = 32;						// default icon size
+		showEditorMarkerColor = 1;		// whether to show icon color in the editor
+	};
 };
 
 class CfgFunctions {
@@ -37,6 +53,8 @@ class CfgFunctions {
 			class initialize {
 				postInit = 1;
 			};
+			class loadMissionData {};
+			class validateClassnames {};
 		};
 		
 		class functions {

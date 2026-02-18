@@ -73,7 +73,6 @@
 #define GMS_useGMS_SimulationManager 1
 #define GMS_useDynamicSimulationManagement 2
 #define GMS_simulationManagementOff 0
-#define GMS_useBlckeaglsSimulationManagement 1
 #define GMS_useDynamicSimulationManagement 2
 
 #define GMS_maxPatrolRadiusHelisBlue 300

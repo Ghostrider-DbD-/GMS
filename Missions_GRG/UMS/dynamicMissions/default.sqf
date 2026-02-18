@@ -13,36 +13,6 @@ params["_missionCenter","_mission"];
 //_mission = "UMS mission example #2";  //  Included for additional documentation. Not intended to be spawned as a mission per se.
 //_missionCenter = [22584.9,15304.8,0];  // I pulled this from the position of the marker.
 _aiDifficultyLevel = "red";  // Skill level of AI (blue, red, green etc)
-//diag_log format["[blckeagls UMS missions] STARTED initializing dynamic mission %1 position at %2 difficulty %3",_mission,_missionCenter,_difficulty];
-//_crateLoot = GMS_BoxLoot_Orange;  // You can use a customized _crateLoot configuration by defining an array here. It must follow the following format shown for a hypothetical loot array called _customLootArray
-	/*
-	_customLootArray = 
-		// Loot is grouped as [weapons],[magazines],[items] in order to be able to use the correct function to load the item into the crate later on.
-		// Each item consist of the following information ["ItemName",minNum, maxNum] where min is the smallest number added and min+max is the largest number added.
-		
-		[  
-			[// Weapons	
-
-				["srifle_DMR_06_olive_F","20Rnd_762x51_Mag"]				
-			],
-			[//Magazines
-				["10Rnd_93x64_DMR_05_Mag" ,1,5]				
-			],			
-			[  // Optics
-				["optic_KHS_tan",1,3]
-			],
-			[// Materials and supplies				
-				["Exile_Item_MetalScrews",3,10]
-				//
-			],
-			[//Items
-				["Exile_Item_MountainDupe",1,3]				
-			],
-			[ // Backpacks
-				["B_OutdoorPack_tan",1,2]
-			]
-	];	
-	*/
 
 _isScubaMission = true;  // This tells the mission spawner to search for a location on the water near a shore rather than on land.
 _crateLoot = GMS_BoxLoot_Red;
