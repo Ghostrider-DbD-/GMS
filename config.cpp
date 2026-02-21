@@ -17,7 +17,7 @@
 	 Date = "02-02-2026";
  };
 class CfgGMSmissiosystem {
-	GMS_debugLevel = 5;
+	GMS_debugLevel = 0;
 };
 
 class CfgPatches {
